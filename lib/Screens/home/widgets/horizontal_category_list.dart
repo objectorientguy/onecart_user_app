@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../configs/app_dimentions.dart';
+import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../categories/category_item_screen.dart';
 

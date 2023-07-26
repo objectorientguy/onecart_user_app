@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
-import '../../../configs/app_dimentions.dart';
+import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
 class AddressBar extends StatelessWidget {
