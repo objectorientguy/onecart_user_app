@@ -1,4 +1,4 @@
-const double topBottomPadding = 26.0;
+const double topBottomPadding = 20.0;
 const double leftRightMargin = 14.0;
 
 const double xxxTiniestSpacing = 2;

@@ -1,3 +1,12 @@
 const double kZero = 0.0;
 const double kBottomNavBarIconSize = 26.0;
 const double kBottomNavBarHeight = 80.0;
+const double kBottomNavBarRadius = 20.0;
+const double kLocationIconSize = 28.0;
+const double kLocationIconHeightFactor = 0.7;
+const double kSearchBarRadius = 30.0;
+const double kShadowBlurRadius = 30.0;
+const double kCircleAvatarRadius = 25.0;
+const double kHorizontalCategoryListHeight = 125.0;
+const double kHorizontalCategoryListItemWidth = 80.0;
+const double kNavToolbarHeight = 80.0;
