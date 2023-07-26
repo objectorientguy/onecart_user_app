@@ -3,15 +3,24 @@ import 'app_color.dart';
 import 'app_dimentions.dart';
 
 ThemeData appTheme = ThemeData(
+  scaffoldBackgroundColor: AppColor.white,
+  colorScheme: colorScheme,
   appBarTheme: appBarTheme,
   bottomNavigationBarTheme: bottomNavigationBarTheme,
 );
 
+ColorScheme colorScheme = const ColorScheme.light(
+    primary: AppColor.primary,
+    secondary: AppColor.primary,
+    background: AppColor.white,
+    surface: AppColor.white);
+
 BottomNavigationBarThemeData bottomNavigationBarTheme =
     const BottomNavigationBarThemeData(
+  selectedItemColor: AppColor.primary,
   backgroundColor: AppColor.white,
   elevation: kZero,
-  selectedLabelStyle: TextStyle(color: AppColor.primary, fontSize: 16),
+  selectedLabelStyle: TextStyle(color: AppColor.primary, fontSize: 13),
   selectedIconTheme: IconThemeData(
     color: AppColor.primary,
     size: kBottomNavBarIconSize,
@@ -19,11 +28,72 @@ BottomNavigationBarThemeData bottomNavigationBarTheme =
 );
 
 AppBarTheme appBarTheme = const AppBarTheme(
+  toolbarHeight: kNavToolbarHeight,
   backgroundColor: AppColor.white,
   elevation: 0,
 );
 
 extension AppTextTheme on TextTheme {
+  TextStyle get headingLarge {
+    return const TextStyle(
+        fontSize: 30, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
+  }
+
+  TextStyle get headingMedium {
+    return const TextStyle(
+        fontSize: 23, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
+  }
+
+  TextStyle get headingSmall {
+    return const TextStyle(
+        fontSize: 19, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
+  }
+
+  TextStyle get headingTiny {
+    return const TextStyle(
+        fontSize: 15, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
+  }
+
+  TextStyle get subHeadingLarge {
+    return const TextStyle(
+        fontSize: 15, fontWeight: FontWeight.w400, color: AppColor.grey);
+  }
+
+  TextStyle get subHeadingMedium {
+    return const TextStyle(
+        fontSize: 13, fontWeight: FontWeight.w400, color: AppColor.grey);
+  }
+
+  TextStyle get subHeadingSmall {
+    return const TextStyle(
+        fontSize: 10, fontWeight: FontWeight.w400, color: AppColor.grey);
+  }
+
+  TextStyle get textLarge {
+    return const TextStyle(
+        fontSize: 15, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
+  }
+
+  TextStyle get textMedium {
+    return const TextStyle(
+        fontSize: 13, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
+  }
+
+  TextStyle get textSmall {
+    return const TextStyle(
+        fontSize: 10, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
+  }
+
+  TextStyle get textButtonLarge {
+    return const TextStyle(
+        fontSize: 14, fontWeight: FontWeight.w400, color: AppColor.white);
+  }
+
+  TextStyle get textButtonSmall {
+    return const TextStyle(
+        fontSize: 12, fontWeight: FontWeight.w700, color: AppColor.primary);
+  }
+
   TextStyle get medium {
     return const TextStyle(
         fontSize: 16, fontWeight: FontWeight.w500, color: AppColor.black);
