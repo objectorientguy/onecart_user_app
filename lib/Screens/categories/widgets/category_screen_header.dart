@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../configs/app_color.dart';
-import '../../../configs/app_dimentions.dart';
+import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
 class CategoryScreenHeader extends StatelessWidget {
@@ -25,13 +25,29 @@ class CategoryScreenHeader extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CircleAvatar(
-              radius: kCircleAvatarRadius,
-              backgroundImage: AssetImage('assets/img.png'),
+            Row(
+              children: [
+                const CircleAvatar(
+                  radius: kCircleAvatarRadius,
+                  backgroundImage: AssetImage('assets/img.png'),
+                ),
+                const SizedBox(width: tinySpacing),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 100,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.zero,
+                      hintText: 'Search products...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(kSearchBarRadius),
+                      ),
+                      prefixIcon: const Icon(Icons.search),
+                    ),
+                  ),
+                )
+              ],
             ),
-            const SizedBox(
-              height: tinySpacing,
-            ),
+            const SizedBox(height: tinySpacing),
             const Row(
               children: [
                 Text(
@@ -48,9 +64,7 @@ class CategoryScreenHeader extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: tinySpacing,
-            ),
+            const SizedBox(height: tinySpacing),
             const Row(
               children: [
                 Text(
@@ -63,9 +77,7 @@ class CategoryScreenHeader extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: tinySpacing,
-            ),
+            const SizedBox(height: tinySpacing),
             Row(
               children: [
                 Flexible(
@@ -94,9 +106,7 @@ class CategoryScreenHeader extends StatelessWidget {
                         items: const []),
                   ),
                 ),
-                const SizedBox(
-                  width: tinierSpacing,
-                ),
+                const SizedBox(width: tinierSpacing),
                 Flexible(
                   flex: 1,
                   child: Container(
@@ -111,9 +121,7 @@ class CategoryScreenHeader extends StatelessWidget {
                         style: TextStyle(color: AppColor.primary, fontSize: 16),
                       )),
                 ),
-                const SizedBox(
-                  width: tinierSpacing,
-                ),
+                const SizedBox(width: tinierSpacing),
                 Flexible(
                   flex: 1,
                   child: Container(

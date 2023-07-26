@@ -3,7 +3,6 @@ import 'package:onecart_user_app/Screens/categories/widgets/category_screen_head
 import 'package:onecart_user_app/Screens/categories/widgets/store_list.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
-import '../../configs/app_dimentions.dart';
 
 class CategoryItemScreen extends StatelessWidget {
   static const routeName = 'CategoryItemScreen';
@@ -30,16 +29,6 @@ class CategoryItemScreen extends StatelessWidget {
               ))
         ],
         titleSpacing: xxxTiniestSpacing,
-        title: TextField(
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.zero,
-            hintText: 'Search products...',
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(kSearchBarRadius),
-            ),
-            prefixIcon: const Icon(Icons.search),
-          ),
-        ),
       ),
       body: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,

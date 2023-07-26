@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'app_color.dart';
-import 'app_dimentions.dart';
+import 'app_dimensions.dart';
 
 ThemeData appTheme = ThemeData(
   scaffoldBackgroundColor: AppColor.white,
@@ -28,7 +28,6 @@ BottomNavigationBarThemeData bottomNavigationBarTheme =
 );
 
 AppBarTheme appBarTheme = const AppBarTheme(
-  toolbarHeight: kNavToolbarHeight,
   backgroundColor: AppColor.white,
   elevation: 0,
 );
@@ -36,7 +35,7 @@ AppBarTheme appBarTheme = const AppBarTheme(
 extension AppTextTheme on TextTheme {
   TextStyle get headingLarge {
     return const TextStyle(
-        fontSize: 30, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
+        fontSize: 25, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
   }
 
   TextStyle get headingMedium {
@@ -71,7 +70,7 @@ extension AppTextTheme on TextTheme {
 
   TextStyle get textLarge {
     return const TextStyle(
-        fontSize: 15, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
+        fontSize: 17, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
   }
 
   TextStyle get textMedium {
