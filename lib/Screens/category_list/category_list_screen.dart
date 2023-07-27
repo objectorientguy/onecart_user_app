@@ -9,22 +9,21 @@ class CategoryListScreen extends StatefulWidget {
   static const routeName = 'CategoryListScreen';
   const CategoryListScreen({Key? key}) : super(key: key);
 
-
-
   @override
   State<CategoryListScreen> createState() => _CategoryListScreenState();
 }
 
 class _CategoryListScreenState extends State<CategoryListScreen> {
   List categoryData = [
-  {'name': 'Fruits & Vegetables', 'value': true},
-  {'name': 'Staples', 'value': false},
-  {'name': 'Dairy and Bakery', 'value': false},
-  {'name': 'Snacks & Branded Fruits', 'value': false},
-  {'name': 'Beverages', 'value': false},
-  {'name': 'Premium Fruits', 'value': false},
-  {'name': 'Home Care', 'value': false},
-  {'name': 'Personal Care','value': false}];
+    {'name': 'Fruits & Vegetables', 'value': true},
+    {'name': 'Staples', 'value': false},
+    {'name': 'Dairy and Bakery', 'value': false},
+    {'name': 'Snacks & Branded Fruits', 'value': false},
+    {'name': 'Beverages', 'value': false},
+    {'name': 'Premium Fruits', 'value': false},
+    {'name': 'Home Care', 'value': false},
+    {'name': 'Personal Care', 'value': false}
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,22 +55,25 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: xxxTinySpacing,
-                      vertical: tinierSpacing),
+                      horizontal: xxxTinySpacing, vertical: tinierSpacing),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12))),
-              child: Text('Done',style: Theme.of(context).textTheme.textButtonLarger,)),
+              child: Text(
+                'Done',
+                style: Theme.of(context).textTheme.textButtonLarger,
+              )),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(
             leftRightMargin, 0, leftRightMargin, leftRightMargin),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
                 const CircleAvatar(
-                  radius: kCircleAvatarRadius*1.3,
+                  radius: kCircleAvatarRadius * 1.3,
                   backgroundImage: AssetImage('assets/img.png'),
                 ),
                 const SizedBox(width: tinySpacing),
@@ -91,9 +93,14 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
               ],
             ),
             const SizedBox(height: xxxTinySpacing),
-            Text('Choudhary Supermarket',style: Theme.of(context).textTheme.subHeadingLarge),
+            Text('Choudhary Supermarket',
+                style: Theme.of(context).textTheme.subHeadingLarge),
             const SizedBox(height: xxxTinierSpacing),
-            Text('Categories',style: Theme.of(context).textTheme.headingLarge.copyWith(fontSize: 32)),
+            Text('Categories',
+                style: Theme.of(context)
+                    .textTheme
+                    .headingLarge
+                    .copyWith(fontSize: 32)),
             const SizedBox(height: tinySpacing),
             Expanded(
               child: ListView.builder(
@@ -101,28 +108,40 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
                 shrinkWrap: true,
                 itemBuilder: (builder, index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: tinierSpacing),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: tinierSpacing),
                     child: InkWell(
-                      onTap: (){
+                      onTap: () {
                         setState(() {
-                          if(categoryData[index]['value'] == false){
-                        categoryData[index]['value'] = true;
-                        }
-                          else if(categoryData[index]['value'] == true){
+                          if (categoryData[index]['value'] == false) {
+                            categoryData[index]['value'] = true;
+                          } else if (categoryData[index]['value'] == true) {
                             categoryData[index]['value'] = false;
                           }
-
                         });
                       },
                       child: Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: xxxTiniestSpacing),
-                            child: Icon(categoryData[index]['value']==false?Icons.radio_button_off:Icons.radio_button_checked,size: 30,
-                              color: categoryData[index]['value']==false?AppColor.grey:AppColor.primary,),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: xxxTiniestSpacing),
+                            child: Icon(
+                              categoryData[index]['value'] == false
+                                  ? Icons.radio_button_off
+                                  : Icons.radio_button_checked,
+                              size: 30,
+                              color: categoryData[index]['value'] == false
+                                  ? AppColor.grey
+                                  : AppColor.primary,
+                            ),
                           ),
-                          const SizedBox(width: xxxTinierSpacing,),
-                          Text(categoryData[index]['name'],style: Theme.of(context).textTheme.textLarge,)
+                          const SizedBox(
+                            width: xxxTinierSpacing,
+                          ),
+                          Text(
+                            categoryData[index]['name'],
+                            style: Theme.of(context).textTheme.textLarge,
+                          )
                         ],
                       ),
                     ),
@@ -135,7 +154,5 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
         ),
       ),
     );
-
   }
 }
-
