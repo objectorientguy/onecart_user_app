@@ -7,6 +7,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_color.dart';
 import '../../configs/app_spacing.dart';
+import '../cart/cart_screen.dart';
 
 class ItemDetailsScreen extends StatelessWidget {
   static const routeName = 'ItemDetailsScreen';
@@ -57,7 +58,10 @@ class ItemDetailsScreen extends StatelessWidget {
                 children: [
                   const SizedBox(height: xxxTinySpacing),
                   ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, CartScreen.routeName,
+                            arguments: false);
+                      },
                       style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               horizontal: xxxTinySpacing,

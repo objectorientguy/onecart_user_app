@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/Screens/categories/widgets/category_screen_header.dart';
-import 'package:onecart_user_app/Screens/categories/widgets/stores_item_list.dart';
-import 'package:onecart_user_app/configs/app_color.dart';
-import 'package:onecart_user_app/configs/app_spacing.dart';
+import 'package:onecart_user_app/Screens/cart/widgets/cart_bottom_bar.dart';
+import 'package:onecart_user_app/Screens/cart/widgets/cart_header.dart';
+import 'package:onecart_user_app/Screens/cart/widgets/cart_item_list.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
 
-class CategoryItemScreen extends StatelessWidget {
-  static const routeName = 'CategoryItemScreen';
-  const CategoryItemScreen({Key? key}) : super(key: key);
+import '../../configs/app_color.dart';
+
+class CartScreen extends StatelessWidget {
+  static const routeName = 'CartScreen';
+  const CartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title:
+            Text('Your Cart', style: Theme.of(context).textTheme.headingMedium),
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -28,15 +32,12 @@ class CategoryItemScreen extends StatelessWidget {
                 color: AppColor.black,
               ))
         ],
-        titleSpacing: xxxTiniestSpacing,
       ),
+      bottomNavigationBar: const CartBottomBar(),
       body: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CategoryItemScreenHeader(),
-          Expanded(
-            child: StoreItemList(),
-          ),
+          CartHeader(),
+          CartItemList(),
         ],
       ),
     );

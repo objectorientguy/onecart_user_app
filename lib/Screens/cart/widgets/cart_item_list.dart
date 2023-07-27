@@ -3,29 +3,21 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
-import '../../item_details/item_details_screen.dart';
 
-class StoreItemList extends StatelessWidget {
-  const StoreItemList({
+class CartItemList extends StatelessWidget {
+  const CartItemList({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      physics: const BouncingScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: 9,
-      itemBuilder: (context, index) {
-        if (index == 0 || index == 8) {
-          return const SizedBox();
-        }
-        return InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, ItemDetailsScreen.routeName,
-                arguments: false);
-          },
-          child: Row(
+    return Expanded(
+      child: ListView.separated(
+        physics: const BouncingScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: 7,
+        itemBuilder: (context, index) {
+          return Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
@@ -36,7 +28,7 @@ class StoreItemList extends StatelessWidget {
                         DecorationImage(image: AssetImage('assets/img_2.png'))),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.65,
+                width: MediaQuery.of(context).size.width * 0.68,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -114,21 +106,47 @@ class StoreItemList extends StatelessWidget {
                             ),
                           ],
                         ),
-                        TextButton(
-                          onPressed: () {},
-                          style: TextButton.styleFrom(
-                            minimumSize: Size.zero,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: xxTinierSpacing,
-                                vertical: xxTiniestSpacing),
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
-                            backgroundColor: AppColor.primary,
-                          ),
-                          child: Text('ADD',
-                              style:
-                                  Theme.of(context).textTheme.textButtonLarge),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 2, vertical: 2),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Colors.green, width: 1.0),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.add,
+                                    color: AppColor.primary,
+                                  ),
+                                )),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: xxxTinierSpacing),
+                              child: Text('1',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .textMedium
+                                      .copyWith(color: AppColor.primary)),
+                            ),
+                            Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 2, vertical: 2),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Colors.green, width: 1.0),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.remove,
+                                    color: AppColor.primary,
+                                  ),
+                                ))
+                          ],
                         )
                       ],
                     ),
@@ -136,19 +154,14 @@ class StoreItemList extends StatelessWidget {
                 ),
               )
             ],
-          ),
-        );
-      },
-      separatorBuilder: (context, index) {
-        if (index == 0 || index == 7) {
-          return const SizedBox(
-            height: smallSpacing,
           );
-        }
-        return const Divider(
-          height: xxxSmallSpacing,
-        );
-      },
+        },
+        separatorBuilder: (context, index) {
+          return const Divider(
+            height: xxxSmallSpacing,
+          );
+        },
+      ),
     );
   }
 }

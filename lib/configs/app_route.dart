@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/home/home_screen.dart';
 
+import '../Screens/cart/cart_screen.dart';
 import '../Screens/categories/category_item_screen.dart';
 import '../Screens/category_list/category_list_screen.dart';
 import '../Screens/item_details/item_details_screen.dart';
@@ -14,6 +15,8 @@ class AppRoutes {
         return _createRoute(const ItemDetailsScreen());
       case CategoryListScreen.routeName:
         return _createRoute(const CategoryListScreen());
+      case CartScreen.routeName:
+        return _createRoute(const CartScreen());
       default:
         return _createRoute(const HomeScreen());
     }
