@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../category_list/category_list_screen.dart';
 
-class CategoryScreenHeader extends StatelessWidget {
-  const CategoryScreenHeader({
+class CategoryItemScreenHeader extends StatelessWidget {
+  const CategoryItemScreenHeader({
     super.key,
   });
 
@@ -48,21 +49,27 @@ class CategoryScreenHeader extends StatelessWidget {
               ],
             ),
             const SizedBox(height: tinySpacing),
-            const Row(
-              children: [
-                Text(
-                  'Fruits and vegetables',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
-                ),
-                SizedBox(
-                  width: xxTinySpacing,
-                ),
-                Icon(
-                  Icons.keyboard_arrow_down_outlined,
-                  color: AppColor.primary,
-                  size: 26,
-                ),
-              ],
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, CategoryListScreen.routeName,
+                    arguments: false);
+              },
+              child: const Row(
+                children: [
+                  Text(
+                    'Fruits and vegetables',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+                  ),
+                  SizedBox(
+                    width: xxTinySpacing,
+                  ),
+                  Icon(
+                    Icons.keyboard_arrow_down_outlined,
+                    color: AppColor.primary,
+                    size: 26,
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: tinySpacing),
             const Row(
