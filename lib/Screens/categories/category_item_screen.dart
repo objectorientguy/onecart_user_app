@@ -33,7 +33,7 @@ class CategoryItemScreen extends StatelessWidget {
       body: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CategoryScreenHeader(),
+          CategoryItemScreenHeader(),
           Expanded(
             child: StoreList(),
           ),

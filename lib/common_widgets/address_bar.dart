@@ -46,7 +46,7 @@ class AddressBar extends StatelessWidget {
             SizedBox(
               width: 300,
               child: Text(
-                'Address - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+                'Akshya Nagar 1st Block 1st Cross, Ramamurthy Nagar, Nagpur-440009',
                 style: Theme.of(context).textTheme.subHeadingMedium,
                 overflow: TextOverflow.ellipsis,
               ),
