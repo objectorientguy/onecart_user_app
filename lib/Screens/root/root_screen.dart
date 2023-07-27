@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/profile_screen/profile_screen.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
+import '../category_grid/category_grid_screen.dart';
 import '../home/home_screen.dart';
 
 class RootScreen extends StatefulWidget {
@@ -32,6 +33,7 @@ class _RootScreenState extends State<RootScreen> {
 
   static const List _widgetOptions = [
     HomeScreen(),
+    CategoryFridScreen(),
     Text('Index 1: Orders'),
     ProfileScreen(),
   ];
@@ -65,6 +67,8 @@ class _RootScreenState extends State<RootScreen> {
               items: const [
                 BottomNavigationBarItem(
                     icon: Icon(Icons.home_filled), label: 'Home'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.grid_view_rounded), label: 'Categories'),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.my_library_books), label: 'Orders'),
                 BottomNavigationBarItem(
