@@ -11,6 +11,7 @@ class TodayDealsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenwidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(
           horizontal: leftRightMargin, vertical: topBottomPadding),
@@ -38,43 +39,46 @@ class TodayDealsSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: MediaQuery.of(context).size.width * 0.24,
-                      width: MediaQuery.of(context).size.width * 0.24,
+                      height: screenwidth * 0.24,
+                      width: screenwidth * 0.24,
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage('assets/img_2.png'))),
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.65,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: screenwidth * 0.65,
+                          child: Text(
                             'Lays American Style Creame and Onion Potato Chips',
                             style: Theme.of(context).textTheme.textLarge,
                           ),
-                          const SizedBox(height: xxxTiniestSpacing),
-                          InkWell(
-                            onTap: () {},
-                            child: const Row(
-                              children: [
-                                Text(
-                                  '196 GM',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColor.primary),
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_down_outlined,
-                                  color: AppColor.primary,
-                                  size: 23,
-                                ),
-                              ],
-                            ),
+                        ),
+                        const SizedBox(height: xxxTiniestSpacing),
+                        InkWell(
+                          onTap: () {},
+                          child: const Row(
+                            children: [
+                              Text(
+                                '196 GM',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColor.primary),
+                              ),
+                              Icon(
+                                Icons.keyboard_arrow_down_outlined,
+                                color: AppColor.primary,
+                                size: 23,
+                              ),
+                            ],
                           ),
-                          const SizedBox(height: xxTinierSpacing),
-                          Row(
+                        ),
+                        const SizedBox(height: xxTinierSpacing),
+                        SizedBox(
+                          width: screenwidth * 0.65,
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
@@ -143,8 +147,8 @@ class TodayDealsSection extends StatelessWidget {
                               )
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     )
                   ],
                 ),
