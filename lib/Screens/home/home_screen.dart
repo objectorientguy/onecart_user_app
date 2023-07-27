@@ -3,7 +3,7 @@ import 'package:onecart_user_app/Screens/home/widgets/address_bar.dart';
 import 'package:onecart_user_app/Screens/home/widgets/horizontal_category_list.dart';
 import 'package:onecart_user_app/Screens/home/widgets/todays_deals_section.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
-import '../../commonWidgets/carousel_slider.dart';
+import '../../common_widgets/carousel_slider.dart';
 import '../../configs/app_dimensions.dart';
 
 class HomeScreen extends StatelessWidget {
