@@ -35,22 +35,22 @@ AppBarTheme appBarTheme = const AppBarTheme(
 extension AppTextTheme on TextTheme {
   TextStyle get headingLarge {
     return const TextStyle(
-        fontSize: 25, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
+        fontSize: 25, fontWeight: FontWeight.w700, color: AppColor.black);
   }
 
   TextStyle get headingMedium {
     return const TextStyle(
-        fontSize: 23, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
+        fontSize: 23, fontWeight: FontWeight.w700, color: AppColor.black);
   }
 
   TextStyle get headingSmall {
     return const TextStyle(
-        fontSize: 19, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
+        fontSize: 19, fontWeight: FontWeight.w700, color: AppColor.black);
   }
 
   TextStyle get headingTiny {
     return const TextStyle(
-        fontSize: 15, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
+        fontSize: 15, fontWeight: FontWeight.w700, color: AppColor.black);
   }
 
   TextStyle get subHeadingLarge {
@@ -75,7 +75,7 @@ extension AppTextTheme on TextTheme {
 
   TextStyle get textMedium {
     return const TextStyle(
-        fontSize: 13, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
+        fontSize: 14, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
   }
 
   TextStyle get textSmall {
@@ -86,6 +86,11 @@ extension AppTextTheme on TextTheme {
   TextStyle get textButtonLarge {
     return const TextStyle(
         fontSize: 14, fontWeight: FontWeight.w400, color: AppColor.white);
+  }
+
+  TextStyle get textButtonLarger {
+    return const TextStyle(
+        fontSize: 17, fontWeight: FontWeight.w700, color: AppColor.white);
   }
 
   TextStyle get textButtonSmall {

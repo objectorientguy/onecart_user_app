@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/home/home_screen.dart';
 
 import '../Screens/categories/category_item_screen.dart';
+import '../Screens/item_details/item_details_screen.dart';
 
 class AppRoutes {
   static Route onGenerateRoutes(RouteSettings settings) {
     switch (settings.name) {
       case CategoryItemScreen.routeName:
         return _createRoute(const CategoryItemScreen());
+      case ItemDetailsScreen.routeName:
+        return _createRoute(const ItemDetailsScreen());
       default:
         return _createRoute(const HomeScreen());
     }
