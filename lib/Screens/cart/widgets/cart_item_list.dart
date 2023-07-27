@@ -37,29 +37,7 @@ class CartItemList extends StatelessWidget {
                       style: Theme.of(context).textTheme.textLarge,
                     ),
                     const SizedBox(
-                      height: xxxTiniestSpacing,
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: const Row(
-                        children: [
-                          Text(
-                            '196 GM',
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColor.primary),
-                          ),
-                          Icon(
-                            Icons.keyboard_arrow_down_outlined,
-                            color: AppColor.primary,
-                            size: 23,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: xxTinierSpacing,
+                      height: tinySpacing,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

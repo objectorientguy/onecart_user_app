@@ -4,6 +4,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../checkout/checkout_screen.dart';
 
 class CartBottomBar extends StatelessWidget {
   const CartBottomBar({
@@ -95,15 +96,18 @@ class CartBottomBar extends StatelessWidget {
                 ),
                 const SizedBox(height: tinierSpacing),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, CheckoutScreen.routeName,
+                          arguments: false);
+                    },
                     style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(
-                            horizontal: MediaQuery.of(context).size.width - 290,
-                            vertical: xxTinySpacing),
+                            horizontal: MediaQuery.of(context).size.width - 300,
+                            vertical: xxTinierSpacing),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12))),
                     child: Text(
-                      'Proceed To Payment',
+                      'PROCEED TO PAYMENT',
                       style: Theme.of(context).textTheme.textButtonLarger,
                     ))
               ],
