@@ -3,6 +3,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
+import '../../varient/select_varient_screen.dart';
 
 class ItemDetailsSection extends StatelessWidget {
   const ItemDetailsSection({
@@ -20,25 +21,29 @@ class ItemDetailsSection extends StatelessWidget {
             style: Theme.of(context).textTheme.headingLarge,
           ),
           const SizedBox(height: tinySpacing),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            decoration: BoxDecoration(
-              border: Border.all(color: AppColor.primaryMedium, width: 1),
-              borderRadius: BorderRadius.circular(8.0),
+          InkWell(
+            onTap: (){
+              Navigator.pushNamed(context, SelectVariantScreen.routeName,
+                  arguments: false);
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: tinierSpacing,vertical: tinierSpacing),
+              decoration: BoxDecoration(
+                border: Border.all(color: AppColor.primaryMedium, width: 1),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child:Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('196 Gms',
+                          style: Theme.of(context)
+                              .textTheme
+                              .textLarge
+                              .copyWith(fontWeight: FontWeight.w600)),
+                  const Icon(Icons.arrow_forward_ios,color: AppColor.primary,size: 20)
+                ],
+              ),
+
             ),
-            child: DropdownButton<String>(
-                value: 'Exotic Fruits and vegetables',
-                hint: Text('196 Gms',
-                    style: Theme.of(context)
-                        .textTheme
-                        .textLarge
-                        .copyWith(fontWeight: FontWeight.w600)),
-                onChanged: (newValue) {},
-                icon: const Icon(Icons.keyboard_arrow_down_outlined,
-                    color: AppColor.primary),
-                isExpanded: true,
-                underline: const SizedBox(), // Hides the default underline
-                items: const []),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(

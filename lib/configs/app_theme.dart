@@ -33,6 +33,7 @@ AppBarTheme appBarTheme = const AppBarTheme(
 );
 
 extension AppTextTheme on TextTheme {
+
   TextStyle get headingLarge {
     return const TextStyle(
         fontSize: 25, fontWeight: FontWeight.w700, color: AppColor.black);
@@ -58,6 +59,11 @@ extension AppTextTheme on TextTheme {
         fontSize: 15, fontWeight: FontWeight.w400, color: AppColor.grey);
   }
 
+  TextStyle get subHeadingLarger {
+    return const TextStyle(
+        fontSize: 17, fontWeight: FontWeight.w400, color: AppColor.grey);
+  }
+
   TextStyle get subHeadingMedium {
     return const TextStyle(
         fontSize: 13, fontWeight: FontWeight.w400, color: AppColor.grey);
@@ -66,6 +72,11 @@ extension AppTextTheme on TextTheme {
   TextStyle get subHeadingSmall {
     return const TextStyle(
         fontSize: 10, fontWeight: FontWeight.w400, color: AppColor.grey);
+  }
+
+  TextStyle get textLarger {
+    return const TextStyle(
+        fontSize: 19, fontWeight: FontWeight.w500, color: AppColor.mediumBlack);
   }
 
   TextStyle get textLarge {

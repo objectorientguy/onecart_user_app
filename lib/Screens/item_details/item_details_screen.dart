@@ -3,6 +3,7 @@ import 'package:onecart_user_app/Screens/item_details/widgets/delivery_details_s
 import 'package:onecart_user_app/Screens/item_details/widgets/item_details_section.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/item_photos_section.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/selling_partner_deatils.dart';
+import 'package:onecart_user_app/common_widgets/custom_elevated_button.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_color.dart';
@@ -57,17 +58,11 @@ class ItemDetailsScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: xxxTinySpacing),
-                  ElevatedButton(
+                  CustomElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, CartScreen.routeName,
                             arguments: false);
                       },
-                      style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: xxxTinySpacing,
-                              vertical: tinierSpacing),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
