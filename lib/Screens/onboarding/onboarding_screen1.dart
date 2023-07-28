@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/onboarding/onboarding_screen2.dart';
+import 'package:onecart_user_app/configs/app_color.dart';
+import 'package:onecart_user_app/configs/app_spacing.dart';
 
 class OnboardingScreen1 extends StatelessWidget {
   const OnboardingScreen1({super.key});
@@ -10,25 +13,29 @@ class OnboardingScreen1 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Image.asset('assets/onboard1.png'),
-          ),
+          Image.asset('assets/onboard1.png'),
+          SizedBox(height: xxxSmallestSpacing),
           Text(
             'Welcome to',
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: Colors.grey.shade800, fontWeight: FontWeight.w500),
+                color: AppColor.mediumBlack, fontWeight: FontWeight.w500),
           ),
-          Text('Healthy mart grocery',
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 38)),
-          Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Text('Eat fresh fruits and vegetables and try to be healthy',
+          SizedBox(width: 300,height: 110,
+            child: const Text('Healthy mart grocery',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 22, color: Colors.grey.shade800)),
+                maxLines: 2,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36)),
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(width: 280,height: 60,
+                child: Text('Eat fresh fruits and vegetables and try to be healthy',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 20, color: AppColor.mediumBlack)),
+              ),
+            ],
           ),
           Text(
             '- - - -',
@@ -39,10 +46,13 @@ class OnboardingScreen1 extends StatelessWidget {
               height: 50,
               width: 320,
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                          builder: (context) =>
+                          const OnboardingScreen2()));},
                   style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      backgroundColor: Colors.green.shade500,
+                      backgroundColor: AppColor.primary,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0))),
                   child: const Text('Next')),
@@ -57,7 +67,7 @@ class OnboardingScreen1 extends StatelessWidget {
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      backgroundColor: Colors.grey.shade300,
+                      backgroundColor: AppColor.lightGrey,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0))),
                   child: const Text('Skip',style: TextStyle(color: Colors.black))
