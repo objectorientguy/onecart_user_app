@@ -22,27 +22,29 @@ class ItemDetailsSection extends StatelessWidget {
           ),
           const SizedBox(height: tinySpacing),
           InkWell(
-            onTap: (){
+            onTap: () {
               Navigator.pushNamed(context, SelectVariantScreen.routeName,
                   arguments: false);
             },
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: tinierSpacing,vertical: tinierSpacing),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: tinierSpacing, vertical: tinierSpacing),
               decoration: BoxDecoration(
                 border: Border.all(color: AppColor.primaryMedium, width: 1),
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              child:Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('196 Gms',
-                          style: Theme.of(context)
-                              .textTheme
-                              .textLarge
-                              .copyWith(fontWeight: FontWeight.w600)),
-                  const Icon(Icons.arrow_forward_ios,color: AppColor.primary,size: 20)
+                      style: Theme.of(context)
+                          .textTheme
+                          .textLarge
+                          .copyWith(fontWeight: FontWeight.w600)),
+                  const Icon(Icons.arrow_forward_ios,
+                      color: AppColor.primary, size: 20)
                 ],
               ),
-
             ),
           ),
           Padding(

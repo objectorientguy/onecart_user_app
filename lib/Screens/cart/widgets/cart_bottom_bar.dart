@@ -3,7 +3,6 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../common_widgets/custom_elevated_button.dart';
 import '../../../configs/app_color.dart';
-import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../checkout/checkout_screen.dart';
 
@@ -17,56 +16,53 @@ class CartBottomBar extends StatelessWidget {
     return BottomAppBar(
       child: Padding(
           padding: const EdgeInsets.all(leftRightMargin),
-          child: Column(mainAxisSize: MainAxisSize.min,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Icon(
-                        Icons.location_on,
-                        color: AppColor.primary,
-                        size: kLocationIconSize,
-                      ),
-                      const SizedBox(
-                        width: xxTiniestSpacing,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Text('Subtotal',
+                          style: Theme.of(context).textTheme.subHeadingLarge),
+                      const SizedBox(height: xxxTinierSpacing),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Row(
-                            children: [
-                              Text('Home',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headingTiny),
-                              const SizedBox(
-                                width: xxxTiniestSpacing,
-                              ),
-                              const Center(
-                                  heightFactor: kLocationIconHeightFactor,
-                                  child: Icon(
-                                    Icons.keyboard_arrow_down_outlined,
-                                    color: AppColor.primary,
-                                    size: kLocationIconSize,
-                                  ))
-                            ],
-                          ),
-                          const SizedBox(
-                            height: xxTiniestSpacing,
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.55,
-                            child: Text(
-                              'Akshya Nagar 1st Block 1st Cross, Ramamurthy Nagar, Nagpur-440009',
+                          Text('₹',
                               style: Theme.of(context)
                                   .textTheme
-                                  .subHeadingMedium,
-                              overflow: TextOverflow.ellipsis,
+                                  .headingLarge
+                                  .copyWith(fontWeight: FontWeight.w100)),
+                          Text('2,199',
+                              style: Theme.of(context).textTheme.headingLarge),
+                          Text('.43',
+                              style: Theme.of(context).textTheme.textLarge),
+                          const SizedBox(
+                            width: xxxTinierSpacing,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: AppColor.grey,
+                                ),
+                                color: AppColor.primaryLight,
+                                borderRadius: BorderRadius.circular(15)),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: xxTiniestSpacing,
+                                horizontal: xxTinierSpacing),
+                            child: Center(
+                              child: Text('3 ITEMS',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .textSmall
+                                      .copyWith(
+                                          color: AppColor.primary,
+                                          fontWeight: FontWeight.w700)),
                             ),
-                          )
+                          ),
                         ],
                       )
                     ],
@@ -80,8 +76,7 @@ class CartBottomBar extends StatelessWidget {
                       ),
                       child: const Text(
                         'CHANGE',
-                        style:
-                            TextStyle(color: AppColor.primary, fontSize: 14),
+                        style: TextStyle(color: AppColor.primary, fontSize: 14),
                       )),
                 ],
               ),

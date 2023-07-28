@@ -6,6 +6,7 @@ import '../Screens/cart/cart_screen.dart';
 import '../Screens/categories/category_item_screen.dart';
 import '../Screens/category_list/category_list_screen.dart';
 import '../Screens/checkout/checkout_screen.dart';
+import '../Screens/checkout/order_success.dart';
 import '../Screens/item_details/item_details_screen.dart';
 import '../Screens/varient/select_varient_screen.dart';
 
@@ -26,6 +27,8 @@ class AppRoutes {
         return _createRoute(const SelectVariantScreen());
       case AddressScreen.routeName:
         return _createRoute(const AddressScreen());
+      case OrderSuccessScreen.routeName:
+        return _createRoute(const OrderSuccessScreen());
       default:
         return _createRoute(const HomeScreen());
     }

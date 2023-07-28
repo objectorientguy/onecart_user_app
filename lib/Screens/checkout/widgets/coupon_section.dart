@@ -32,16 +32,13 @@ class CouponSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('PAYTMTREATS',
-                      style:
-                      Theme.of(context).textTheme.textLarge),
+                      style: Theme.of(context).textTheme.textLarge),
                   const SizedBox(
                     height: xxTiniestSpacing,
                   ),
                   Text(
                     'Offer applied on the bill',
-                    style: Theme.of(context)
-                        .textTheme
-                        .subHeadingMedium,
+                    style: Theme.of(context).textTheme.subHeadingMedium,
                     overflow: TextOverflow.ellipsis,
                   )
                 ],

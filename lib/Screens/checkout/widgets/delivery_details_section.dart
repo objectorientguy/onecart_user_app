@@ -12,11 +12,17 @@ class DeliveryDetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: const EdgeInsets.symmetric(horizontal: leftRightMargin,vertical: topBottomPadding),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+          horizontal: leftRightMargin, vertical: topBottomPadding),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Deliver To',style:Theme.of(context).textTheme.subHeadingLarge),
-          const SizedBox(height: tinierSpacing,),
+          Text('Deliver To',
+              style: Theme.of(context).textTheme.subHeadingLarge),
+          const SizedBox(
+            height: tinierSpacing,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -37,9 +43,7 @@ class DeliveryDetailsSection extends StatelessWidget {
                       Row(
                         children: [
                           Text('Home',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headingTiny),
+                              style: Theme.of(context).textTheme.headingTiny),
                           const SizedBox(
                             width: xxxTiniestSpacing,
                           ),
@@ -59,9 +63,7 @@ class DeliveryDetailsSection extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.55,
                         child: Text(
                           'Akshya Nagar 1st Block 1st Cross, Ramamurthy Nagar, Nagpur-440009',
-                          style: Theme.of(context)
-                              .textTheme
-                              .subHeadingMedium,
+                          style: Theme.of(context).textTheme.subHeadingMedium,
                         ),
                       )
                     ],
@@ -69,34 +71,40 @@ class DeliveryDetailsSection extends StatelessWidget {
                 ],
               ),
               Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10, vertical: 7),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.green, width: 1.0),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: const Text(
                     'CHANGE',
-                    style:
-                    TextStyle(color: AppColor.primary, fontSize: 14),
+                    style: TextStyle(color: AppColor.primary, fontSize: 14),
                   )),
             ],
           ),
-          const Divider(height: smallerSpacing,thickness: 0.3),
-          Text('Delivery Partner',style:Theme.of(context).textTheme.subHeadingLarge),
-          const SizedBox(height: tinierSpacing,),
+          const Divider(height: smallerSpacing, thickness: 0.3),
+          Text('Delivery Partner',
+              style: Theme.of(context).textTheme.subHeadingLarge),
+          const SizedBox(
+            height: tinierSpacing,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: tiniestSpacing),
-                    child: Container(height: 40,width: 40,
-                      decoration: BoxDecoration(borderRadius:BorderRadius.circular(12),
-                          image: const DecorationImage(fit: BoxFit.fitHeight,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: tiniestSpacing),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          image: const DecorationImage(
+                              fit: BoxFit.fitHeight,
                               image: AssetImage('assets/dunzo.png'))),
-
                     ),
                   ),
                   const SizedBox(
@@ -106,16 +114,13 @@ class DeliveryDetailsSection extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Dunzo',
-                          style:
-                          Theme.of(context).textTheme.textLarge),
+                          style: Theme.of(context).textTheme.textLarge),
                       const SizedBox(
                         height: xxTiniestSpacing,
                       ),
                       Text(
                         '10-20 mins',
-                        style: Theme.of(context)
-                            .textTheme
-                            .subHeadingMedium,
+                        style: Theme.of(context).textTheme.subHeadingMedium,
                         overflow: TextOverflow.ellipsis,
                       )
                     ],
@@ -123,16 +128,15 @@ class DeliveryDetailsSection extends StatelessWidget {
                 ],
               ),
               Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10, vertical: 7),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.green, width: 1.0),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: const Text(
                     'CHANGE',
-                    style:
-                    TextStyle(color: AppColor.primary, fontSize: 14),
+                    style: TextStyle(color: AppColor.primary, fontSize: 14),
                   )),
             ],
           )

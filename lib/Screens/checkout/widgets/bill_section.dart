@@ -11,13 +11,16 @@ class BillSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: const EdgeInsets.symmetric(horizontal: leftRightMargin,vertical: topBottomPadding),
-        child:Column(
+    return Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: leftRightMargin, vertical: topBottomPadding),
+        child: Column(
           children: [
             const SizedBox(height: tinySpacing),
             Row(
               children: [
-                Text('Bill Details',style:Theme.of(context).textTheme.headingSmall),
+                Text('Bill Details',
+                    style: Theme.of(context).textTheme.headingSmall),
                 const SizedBox(width: xxxTinierSpacing),
                 Container(
                   decoration: BoxDecoration(
@@ -27,14 +30,10 @@ class BillSection extends StatelessWidget {
                       color: AppColor.primaryLight,
                       borderRadius: BorderRadius.circular(15)),
                   padding: const EdgeInsets.symmetric(
-                      vertical: xxTiniestSpacing,
-                      horizontal: tinierSpacing),
+                      vertical: xxTiniestSpacing, horizontal: tinierSpacing),
                   child: Center(
                     child: Text('3 ITEMS',
-                        style: Theme.of(context)
-                            .textTheme
-                            .textSmall
-                            .copyWith(
+                        style: Theme.of(context).textTheme.textSmall.copyWith(
                             color: AppColor.primary,
                             fontWeight: FontWeight.w700)),
                   ),
@@ -42,26 +41,49 @@ class BillSection extends StatelessWidget {
               ],
             ),
             const SizedBox(height: smallestSpacing),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Cart Total',style: Theme.of(context).textTheme.subHeadingLarger,),
-                Text('₹3,000',style: Theme.of(context).textTheme.textLarger,)
+                Text(
+                  'Cart Total',
+                  style: Theme.of(context).textTheme.subHeadingLarger,
+                ),
+                Text(
+                  '₹3,000',
+                  style: Theme.of(context).textTheme.textLarger,
+                )
               ],
             ),
-            const Divider(height: smallerSpacing,thickness: 0.3),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            const Divider(height: smallerSpacing, thickness: 0.3),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Discount',style: Theme.of(context).textTheme.subHeadingLarger,),
-                Text('-₹300',style: Theme.of(context).textTheme.textLarger.copyWith(color: AppColor.primary),)
+                Text(
+                  'Discount',
+                  style: Theme.of(context).textTheme.subHeadingLarger,
+                ),
+                Text(
+                  '-₹300',
+                  style: Theme.of(context)
+                      .textTheme
+                      .textLarger
+                      .copyWith(color: AppColor.primary),
+                )
               ],
             ),
-            const Divider(height: smallerSpacing,thickness: 0.3),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            const Divider(height: smallerSpacing, thickness: 0.3),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
-                    Text('Coupon Applied',style: Theme.of(context).textTheme.subHeadingLarger,),
-                    const SizedBox(width: xxxTinierSpacing,),
+                    Text(
+                      'Coupon Applied',
+                      style: Theme.of(context).textTheme.subHeadingLarger,
+                    ),
+                    const SizedBox(
+                      width: xxxTinierSpacing,
+                    ),
                     Container(
                       decoration: BoxDecoration(
                           border: Border.all(
@@ -78,26 +100,43 @@ class BillSection extends StatelessWidget {
                                 .textTheme
                                 .textSmall
                                 .copyWith(
-                                color: AppColor.primary,
-                                fontWeight: FontWeight.w700)),
+                                    color: AppColor.primary,
+                                    fontWeight: FontWeight.w700)),
                       ),
                     )
                   ],
                 ),
-                Text('-₹300',style: Theme.of(context).textTheme.textLarger.copyWith(color: AppColor.primary),)
+                Text(
+                  '-₹300',
+                  style: Theme.of(context)
+                      .textTheme
+                      .textLarger
+                      .copyWith(color: AppColor.primary),
+                )
               ],
             ),
-            const Divider(height: smallerSpacing,thickness: 0.3),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            const Divider(height: smallerSpacing, thickness: 0.3),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Delivery Charges',style: Theme.of(context).textTheme.subHeadingLarger,),
-                Text('₹30.87',style: Theme.of(context).textTheme.textLarger,)
+                Text(
+                  'Delivery Charges',
+                  style: Theme.of(context).textTheme.subHeadingLarger,
+                ),
+                Text(
+                  '₹30.87',
+                  style: Theme.of(context).textTheme.textLarger,
+                )
               ],
             ),
-            const Divider(height: smallerSpacing,thickness: 0.3),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            const Divider(height: smallerSpacing, thickness: 0.3),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Total',style: Theme.of(context).textTheme.subHeadingLarger,),
+                Text(
+                  'Total',
+                  style: Theme.of(context).textTheme.subHeadingLarger,
+                ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -114,7 +153,6 @@ class BillSection extends StatelessWidget {
               ],
             ),
           ],
-        )
-    );
+        ));
   }
 }
