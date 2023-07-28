@@ -49,7 +49,8 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
       ),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: topBottomPadding,horizontal: leftRightMargin),
+          padding: const EdgeInsets.symmetric(
+              vertical: topBottomPadding, horizontal: leftRightMargin),
           child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(

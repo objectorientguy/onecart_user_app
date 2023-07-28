@@ -7,6 +7,7 @@ import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../common_widgets/custom_elevated_button.dart';
 import '../../configs/app_color.dart';
+import 'order_success.dart';
 
 class CheckoutScreen extends StatelessWidget {
   static const routeName = 'CheckoutScreen';
@@ -17,7 +18,7 @@ class CheckoutScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title:
-        Text('Checkout', style: Theme.of(context).textTheme.headingMedium),
+            Text('Checkout', style: Theme.of(context).textTheme.headingMedium),
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -39,7 +40,12 @@ class CheckoutScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(leftRightMargin),
           child: CustomElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  OrderSuccessScreen.routeName,
+                );
+              },
               child: Text(
                 'PAY AND CHECKOUT',
                 style: Theme.of(context).textTheme.textButtonLarger,
@@ -51,11 +57,20 @@ class CheckoutScreen extends StatelessWidget {
         child: Column(
           children: [
             const BillSection(),
-            Container(height: xxSmallerSpacing,color: AppColor.lighterGrey,),
+            Container(
+              height: xxSmallerSpacing,
+              color: AppColor.lighterGrey,
+            ),
             const CouponSection(),
-            Container(height: xxSmallerSpacing,color: AppColor.lighterGrey,),
+            Container(
+              height: xxSmallerSpacing,
+              color: AppColor.lighterGrey,
+            ),
             const DeliveryDetailsSection(),
-            Container(height: xxSmallerSpacing,color: AppColor.lighterGrey,),
+            Container(
+              height: xxSmallerSpacing,
+              color: AppColor.lighterGrey,
+            ),
             const PaymentDetailsSection(),
           ],
         ),
@@ -63,11 +78,3 @@ class CheckoutScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-

@@ -12,3 +12,5 @@ const double kHorizontalCategoryListItemWidth = 80.0;
 const double kNavToolbarHeight = 80.0;
 const double kElevatedButtonHeight = 50.0;
 const double kGeneralBorderRadius = 12.0;
+const double kSuccessImageHeight = 200.0;
+const double kSuccessDescriptionWidth = 250.0;

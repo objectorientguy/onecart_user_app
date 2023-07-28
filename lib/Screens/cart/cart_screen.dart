@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/cart/widgets/cart_bottom_bar.dart';
-import 'package:onecart_user_app/Screens/cart/widgets/cart_header.dart';
 import 'package:onecart_user_app/Screens/cart/widgets/cart_item_list.dart';
+import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_color.dart';
@@ -36,7 +36,9 @@ class CartScreen extends StatelessWidget {
       bottomNavigationBar: const CartBottomBar(),
       body: const Column(
         children: [
-          CartHeader(),
+          SizedBox(
+            height: tinySpacing,
+          ),
           CartItemList(),
         ],
       ),

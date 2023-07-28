@@ -11,28 +11,40 @@ class PaymentDetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: const EdgeInsets.symmetric(horizontal: leftRightMargin,vertical: topBottomPadding),
-      child:Column(crossAxisAlignment: CrossAxisAlignment.start,
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+          horizontal: leftRightMargin, vertical: topBottomPadding),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Pay Using',style:Theme.of(context).textTheme.subHeadingLarge),
-          const SizedBox(height: tinierSpacing,),
+          Text('Pay Using', style: Theme.of(context).textTheme.subHeadingLarge),
+          const SizedBox(
+            height: tinierSpacing,
+          ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: xxxTinierSpacing,vertical: topBottomPadding),
+            padding: const EdgeInsets.symmetric(
+                horizontal: xxxTinierSpacing, vertical: topBottomPadding),
             decoration: BoxDecoration(
                 border: Border.all(color: AppColor.lightGrey),
                 borderRadius: BorderRadius.circular(12)),
-            child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: tiniestSpacing),
-                      child: Container(height: 40,width: 40,
-                        decoration: BoxDecoration(borderRadius:BorderRadius.circular(12),
-                            image: const DecorationImage(fit: BoxFit.fitHeight,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: tiniestSpacing),
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            image: const DecorationImage(
+                                fit: BoxFit.fitHeight,
                                 image: AssetImage('assets/hdfc.png'))),
-
                       ),
                     ),
                     const SizedBox(
@@ -42,27 +54,26 @@ class PaymentDetailsSection extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('HDFC Credit Card',
-                            style:
-                            Theme.of(context).textTheme.headingSmall),
+                            style: Theme.of(context).textTheme.headingSmall),
                         const SizedBox(
                           height: xxTinySpacing,
                         ),
                         Text(
                           'Platinum  5241 XXXX XXXX 0321',
-                          style: Theme.of(context)
-                              .textTheme
-                              .subHeadingLarge,
+                          style: Theme.of(context).textTheme.subHeadingLarge,
                         ),
                         const SizedBox(
                           height: xxTinySpacing,
                         ),
                         Row(
                           children: [
-                            Text('Available Limit',style:
-                            Theme.of(context).textTheme.textLarge),
-                            const SizedBox(width: xxxTinySpacing,),
-                            Text('₹84,321',style:
-                            Theme.of(context).textTheme.headingSmall)
+                            Text('Available Limit',
+                                style: Theme.of(context).textTheme.textLarge),
+                            const SizedBox(
+                              width: xxxTinySpacing,
+                            ),
+                            Text('₹84,321',
+                                style: Theme.of(context).textTheme.headingSmall)
                           ],
                         )
                       ],

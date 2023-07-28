@@ -44,7 +44,7 @@ class AddressBar extends StatelessWidget {
               height: xxTiniestSpacing,
             ),
             SizedBox(
-              width: 300,
+              width: MediaQuery.of(context).size.width * 0.8,
               child: Text(
                 'Akshya Nagar 1st Block 1st Cross, Ramamurthy Nagar, Nagpur-440009',
                 style: Theme.of(context).textTheme.subHeadingMedium,

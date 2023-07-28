@@ -161,7 +161,6 @@ class SelectVariantScreen extends StatelessWidget {
                   );
                 }),
           ]),
-        )
-    );
+        ));
   }
 }
