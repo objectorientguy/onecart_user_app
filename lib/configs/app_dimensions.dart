@@ -10,3 +10,5 @@ const double kCircleAvatarRadius = 25.0;
 const double kHorizontalCategoryListHeight = 125.0;
 const double kHorizontalCategoryListItemWidth = 80.0;
 const double kNavToolbarHeight = 80.0;
+const double kElevatedButtonHeight = 50.0;
+const double kGeneralBorderRadius = 12.0;

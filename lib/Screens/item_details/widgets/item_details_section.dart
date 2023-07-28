@@ -39,7 +39,7 @@ class ItemDetailsSection extends StatelessWidget {
                               .textTheme
                               .textLarge
                               .copyWith(fontWeight: FontWeight.w600)),
-                  Icon(Icons.arrow_forward_ios,color: AppColor.primary,size: 20)
+                  const Icon(Icons.arrow_forward_ios,color: AppColor.primary,size: 20)
                 ],
               ),
 

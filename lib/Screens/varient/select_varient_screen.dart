@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import '../../common_widgets/custom_elevated_button.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_spacing.dart';
 
@@ -8,9 +9,16 @@ class SelectVariantScreen extends StatelessWidget {
   const SelectVariantScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    List variantData = [
+      {'variant': '196 gm'},
+      {'variant': '420 gm'},
+      {'variant': '640 gm'},
+      {'variant': '900 gm'},
+    ];
     return Scaffold(
         appBar: AppBar(
-          title: Text('Select Variant', style: Theme.of(context).textTheme.headingMedium),
+          title: Text('Select Variant',
+              style: Theme.of(context).textTheme.headingMedium),
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -28,325 +36,131 @@ class SelectVariantScreen extends StatelessWidget {
                   color: AppColor.black,
                 ))
           ],
-          titleSpacing: xxxTiniestSpacing,
         ),
-        bottomNavigationBar: BottomAppBar(elevation: 0,color: Colors.transparent,
+        bottomNavigationBar: BottomAppBar(
           child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                  width: 1000,
-                  height: 50,
-                  child: ElevatedButton(
-                      onPressed: (){},
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0)
-                          )
-                      ),
-                      child: const Text('DONE',
-                          style: TextStyle(fontSize: 20))))),
+            padding: const EdgeInsets.symmetric(
+                vertical: topBottomPadding, horizontal: leftRightMargin),
+            child: CustomElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'DONE',
+                  style: Theme.of(context).textTheme.textButtonLarger,
+                )),
+          ),
         ),
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                    top: 1.0, left: 20.0, bottom: 10.0, right: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 14.0),
-                      child: Image.asset('assets/img_2.png',
-                          height: 100, width: 50),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+              horizontal: leftRightMargin, vertical: topBottomPadding),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Row(
+              children: [
+                Image.asset(
+                  'assets/img_2.png',
+                  height: 50,
+                ),
+                const SizedBox(
+                  width: xxxTinierSpacing,
+                ),
+                Flexible(
+                    child: Text(
+                        'Lays American Style Cream & Onion Potato Chips',
+                        style: Theme.of(context)
+                            .textTheme
+                            .textLarge
+                            .copyWith(fontWeight: FontWeight.w500))),
+              ],
+            ),
+            const SizedBox(height: tinySpacing),
+            ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: 4,
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: xxxTinySpacing),
+                itemBuilder: (context, index) {
+                  return Container(
+                    padding: const EdgeInsets.all(leftRightMargin),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: AppColor.lightGrey),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              variantData[index]['variant'],
+                              style: Theme.of(context).textTheme.headingTiny,
+                            ),
+                            const SizedBox(height: xxxTiniestSpacing),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '₹29',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .subHeadingLarge,
+                                ),
+                                const SizedBox(width: xxxTinierSpacing),
+                                Text(
+                                  '₹50',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .subHeadingMedium
+                                      .copyWith(
+                                          decoration:
+                                              TextDecoration.lineThrough),
+                                ),
+                                const SizedBox(width: xxxTinierSpacing),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: AppColor.grey,
+                                      ),
+                                      color: AppColor.primaryLight,
+                                      borderRadius: BorderRadius.circular(15)),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: xxTiniestSpacing,
+                                      horizontal: xxTinierSpacing),
+                                  child: Center(
+                                    child: Text('40% OFF',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .textSmall
+                                            .copyWith(
+                                                color: AppColor.primary,
+                                                fontWeight: FontWeight.w700)),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          style: TextButton.styleFrom(
+                            minimumSize: Size.zero,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: tinierSpacing,
+                                vertical: tiniestSpacing),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12)),
+                            backgroundColor: AppColor.primary,
+                          ),
+                          child: Text('SELECT',
+                              style:
+                                  Theme.of(context).textTheme.textButtonLarge),
+                        ),
+                      ],
                     ),
-                    const Flexible(
-                        child: Text(
-                            'Lays American Style Cream & Onion Potato Chips',
-                            maxLines: 3,
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 15))),
-                    const SizedBox(width: 15.0)
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0,right: 8.0,bottom: 2.0),
-                child: Card(
-                    color: Colors.white,shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                    child:  Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text('196gm',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15)),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Text('₹29',
-                                      style: TextStyle(
-                                          color: Colors.black54, fontSize: 15)),
-                                  const SizedBox(width: 10),
-                                  const Text('₹50',
-                                      style: TextStyle(
-                                          color: Colors.black54, fontSize: 10)),
-                                  const SizedBox(width: 10),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey.shade300),
-                                      borderRadius:BorderRadius.circular(10.0),
-                                      color: Colors.grey.shade100,
-                                    ),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                      child: Text('40% OFF',style: TextStyle(color: Colors.green),),
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            width: 80,
-                            height: 30,
-                            child: ElevatedButton(
-                                onPressed: (){},
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.green,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10.0)
-                                    )
-                                ),
-                                child: const Text('SELECT',
-                                    style: TextStyle(fontSize: 13))),
-                          )
-                        ],
-                      ),
-                    )
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0,right: 8.0,bottom: 2.0,top: 4.0),
-                child: Card(
-                    color: Colors.white,shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                    child:  Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text('420gm',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15)),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Text('₹29',
-                                      style: TextStyle(
-                                          color: Colors.black54, fontSize: 15)),
-                                  const SizedBox(width: 10),
-                                  const Text('₹50',
-                                      style: TextStyle(
-                                          color: Colors.black54, fontSize: 10)),
-                                  const SizedBox(width: 10),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey.shade300),
-                                      borderRadius:BorderRadius.circular(10.0),
-                                      color: Colors.grey.shade100,
-                                    ),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                      child: Text('40% OFF',style: TextStyle(color: Colors.green),),
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            width: 80,
-                            height: 30,
-                            child: ElevatedButton(
-                                onPressed: (){},
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.green,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10.0)
-                                    )
-                                ),
-                                child: const Text('SELECT',
-                                    style: TextStyle(fontSize: 13))),
-                          )
-                        ],
-                      ),
-                    )
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0,right: 8.0,bottom: 2.0,top: 4.0),
-                child: Card(
-                    color: Colors.white,shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                    child:  Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text('640gm',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15)),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Text('₹29',
-                                      style: TextStyle(
-                                          color: Colors.black54, fontSize: 15)),
-                                  const SizedBox(width: 10),
-                                  const Text('₹50',
-                                      style: TextStyle(
-                                          color: Colors.black54, fontSize: 10)),
-                                  const SizedBox(width: 10),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey.shade300),
-                                      borderRadius:BorderRadius.circular(10.0),
-                                      color: Colors.grey.shade100,
-                                    ),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                      child: Text('40% OFF',style: TextStyle(color: Colors.green),),
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            width: 80,
-                            height: 30,
-                            child: ElevatedButton(
-                                onPressed: (){},
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.green,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10.0)
-                                    )
-                                ),
-                                child: const Text('SELECT',
-                                    style: TextStyle(fontSize: 13))),
-                          )
-                        ],
-                      ),
-                    )
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0,right: 8.0,bottom: 2.0,top: 4.0),
-                child: Card(
-                    color: Colors.white,shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                    child:  Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text('900gm',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15)),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Text('₹29',
-                                      style: TextStyle(
-                                          color: Colors.black54, fontSize: 15)),
-                                  const SizedBox(width: 10),
-                                  const Text('₹50',
-                                      style: TextStyle(
-                                          color: Colors.black54, fontSize: 10)),
-                                  const SizedBox(width: 10),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey.shade300),
-                                      borderRadius:BorderRadius.circular(10.0),
-                                      color: Colors.grey.shade100,
-                                    ),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                      child: Text('40% OFF',style: TextStyle(color: Colors.green),),
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            width: 80,
-                            height: 30,
-                            child: ElevatedButton(
-                                onPressed: (){},
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.green,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10.0)
-                                    )
-                                ),
-                                child: const Text('SELECT',
-                                    style: TextStyle(fontSize: 13))),
-                          )
-                        ],
-                      ),
-                    )
-                ),
-              ),
-            ]
+                  );
+                }),
+          ]),
         )
     );
   }

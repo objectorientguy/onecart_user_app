@@ -33,6 +33,7 @@ AppBarTheme appBarTheme = const AppBarTheme(
 );
 
 extension AppTextTheme on TextTheme {
+
   TextStyle get headingLarge {
     return const TextStyle(
         fontSize: 25, fontWeight: FontWeight.w700, color: AppColor.black);

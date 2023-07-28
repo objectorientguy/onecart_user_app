@@ -5,6 +5,7 @@ import 'package:onecart_user_app/Screens/checkout/widgets/delivery_details_secti
 import 'package:onecart_user_app/Screens/checkout/widgets/payment_details_section.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import '../../common_widgets/custom_elevated_button.dart';
 import '../../configs/app_color.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -34,17 +35,11 @@ class CheckoutScreen extends StatelessWidget {
               ))
         ],
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
+      bottomNavigationBar: BottomAppBar(
         child: Padding(
-          padding: const EdgeInsets.only(bottom: topBottomPadding),
-          child: ElevatedButton(
+          padding: const EdgeInsets.all(leftRightMargin),
+          child: CustomElevatedButton(
               onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: xxxTinySpacing, vertical: tinierSpacing),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12))),
               child: Text(
                 'PAY AND CHECKOUT',
                 style: Theme.of(context).textTheme.textButtonLarger,

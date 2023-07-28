@@ -47,19 +47,17 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
         ],
         titleSpacing: xxxTiniestSpacing,
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
+      bottomNavigationBar: BottomAppBar(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: topBottomPadding),
+          padding: const EdgeInsets.symmetric(vertical: topBottomPadding,horizontal: leftRightMargin),
           child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: xxxTinySpacing, vertical: tinierSpacing),
+                  minimumSize: const Size(double.maxFinite, 50),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12))),
               child: Text(
-                'Done',
+                'DONE',
                 style: Theme.of(context).textTheme.textButtonLarger,
               )),
         ),
