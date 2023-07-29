@@ -33,7 +33,7 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
                 children: [
                   Stack(children: [
                     CircleAvatar(
-                        radius: 60,
+                        radius: 60,backgroundColor: AppColor.lightGrey,
                         backgroundImage: AssetImage('assets/defaultImage.png')),
                     Positioned(
                       bottom: 0,
@@ -82,22 +82,27 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
                   ),
                   SizedBox(height: 10.0),
                   TextField(
-                    controller: _date,readOnly: true,
+                    controller: _date,
+                    readOnly: true,
                     decoration: InputDecoration(
                       hintText: 'Date of birth ',
                       hintStyle: TextStyle(color: AppColor.grey),
-                      suffixIcon: IconButton(onPressed: () async{
-                        DateTime? pickeddate = await showDatePicker(context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(1940,1,1),
-                            lastDate: DateTime.now());
-                        if(pickeddate != null){
-                          setState(() {
-                            _date.text= pickeddate.toString().split(" ")[0];
-                          });
-                        }
-                      },
-                          icon: Icon(Icons.calendar_month_rounded,color: AppColor.black)),
+                      suffixIcon: IconButton(
+                          onPressed: () async {
+                            DateTime? pickeddate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(1940, 1, 1),
+                                lastDate: DateTime.now());
+                            if (pickeddate != null) {
+                              setState(() {
+                                _date.text =
+                                    pickeddate.toString().split(" ")[0];
+                              });
+                            }
+                          },
+                          icon: Icon(Icons.calendar_month_rounded,
+                              color: AppColor.black)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                         borderSide: const BorderSide(),
@@ -143,9 +148,7 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
                                 borderRadius: BorderRadius.circular(10.0))),
                         child: Text('Continue')),
                   ), //continue
-                ]
-            )
-        ),
+                ])),
       ),
     );
   }
