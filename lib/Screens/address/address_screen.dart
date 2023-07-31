@@ -33,7 +33,10 @@ class AddressScreen extends StatelessWidget {
       {
         'name': 'Address 3',
         'isCurrent': false,
-        'value': ['663 Briarhill Lane', '44255', 'Mantua', 'Ohio', '937-251-2113']
+        'value': [
+          '663 Briarhill Lane', '44255',
+          'Mantua', 'Ohio',
+          '937-251-2113']
       }
     ];
     return Scaffold(
@@ -138,7 +141,7 @@ class AddressScreen extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: (){
-                        Navigator.pushNamed(context, EditAddressScreen.routeName);
+                        Navigator.pushNamed(context, EditAddressScreen.routeName,arguments: addressData[index]);
                       },
                       child: Container(
                           padding: const EdgeInsets.symmetric(

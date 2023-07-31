@@ -2,18 +2,31 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../common_widgets/custom_elevated_button.dart';
 import '../../configs/app_color.dart';
+import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 
 class EditAddressScreen extends StatelessWidget {
   static const routeName = 'EditAddressScreen';
-  const EditAddressScreen({Key? key}) : super(key: key);
+  final Map addressDataMap;
+  const EditAddressScreen({Key? key, required this.addressDataMap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController laneController = TextEditingController();
+    TextEditingController cityController = TextEditingController();
+    TextEditingController stateController = TextEditingController();
+    TextEditingController pinController = TextEditingController();
+    TextEditingController postalController = TextEditingController();
+    laneController.value = TextEditingValue(text: addressDataMap['value'][0]);
+    cityController.value = TextEditingValue(text: addressDataMap['value'][1]);
+    stateController.value = TextEditingValue(text: addressDataMap['value'][2]);
+    pinController.value = TextEditingValue(text: addressDataMap['value'][3]);
+    postalController.value = TextEditingValue(text: addressDataMap['value'][4]);
     return Scaffold(
       appBar: AppBar(
-        title: Text('My addresses',
+        title: Text('Edit address',
             style: Theme.of(context).textTheme.headingMedium),
         leading: IconButton(
             onPressed: () {
@@ -37,31 +50,93 @@ class EditAddressScreen extends StatelessWidget {
             horizontal: leftRightMargin, vertical: topBottomPadding),
         child: Column(
           children: [
-            const TextField(),
+            TextField(
+              controller: laneController,
+              decoration: InputDecoration(
+                hintText: 'Search products...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(kGeneralBorderRadius),
+                  borderSide: const BorderSide(),
+                ),
+              ),
+            ),
             Row(
               children: [
                 SizedBox(width: (MediaQuery.of(context).size.width-(2*leftRightMargin)-xxxTinierSpacing)/2,
-                  child: const TextField(
+                  child: TextField(
+                    controller: cityController,
                     decoration: InputDecoration(
+                      hintText: 'Search products...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(kGeneralBorderRadius),
+                        borderSide: const BorderSide(),
+                      ),
                     ),
-                  ),
+                  )
                 ),
                 const SizedBox(width: xxxTinierSpacing),
                 SizedBox(width: (MediaQuery.of(context).size.width-(2*leftRightMargin)-xxxTinierSpacing)/2,
-                  child: const TextField(
+                  child: TextField(
+                    controller: stateController,
                     decoration: InputDecoration(
+                      hintText: 'Search products...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(kGeneralBorderRadius),
+                        borderSide: const BorderSide(),
+                      ),
                     ),
-                  ),
+                  )
                 ),
-                // TextField(),
               ],
             ),
-            const TextField(),
-            const TextField(),
+            TextField(
+              controller: pinController,
+              decoration: InputDecoration(
+                hintText: 'Search products...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(kGeneralBorderRadius),
+                  borderSide: const BorderSide(),
+                ),
+              ),
+            ),
+            TextField(
+              controller: postalController,
+              decoration: InputDecoration(
+                prefixIcon: const DropdownMenu(dropdownMenuEntries: [],
+                inputDecorationTheme: InputDecorationTheme(
+                  border: InputBorder.none
+                ),),
+                hintText: 'Search products...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(kGeneralBorderRadius),
+                  borderSide: const BorderSide(),
+                ),
+              ),
+            ),
             Row(
               children: [
-                ElevatedButton(onPressed: (){}, child: const Text('Save')),
-                ElevatedButton(onPressed: (){}, child: const Text('Cancel'))
+                Expanded(
+                  child: CustomElevatedButton(
+                      onPressed: () {},
+                      child: Text(
+                        'SAVE',
+                        style: Theme.of(context).textTheme.textButtonLarger,
+                      )),
+                ),
+                SizedBox(width: xxxTinierSpacing),
+                Expanded(
+                  child: ElevatedButton(
+                      onPressed: () {},
+    style: ElevatedButton.styleFrom(
+      backgroundColor: AppColor.lighterGrey,
+    minimumSize: const Size(double.maxFinite, kElevatedButtonHeight),
+    shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(kGeneralBorderRadius))),
+                      child: Text(
+                        'CANCEL',
+                        style: Theme.of(context).textTheme.textButtonLarger.copyWith(color: AppColor.darkGrey),
+                      )),
+                ),
               ],
             )
           ],

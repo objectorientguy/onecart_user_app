@@ -31,7 +31,7 @@ class AppRoutes {
       case OrderSuccessScreen.routeName:
         return _createRoute(const OrderSuccessScreen());
       case EditAddressScreen.routeName:
-        return _createRoute(const EditAddressScreen());
+        return _createRoute(EditAddressScreen(addressDataMap: settings.arguments as Map));
       default:
         return _createRoute(const HomeScreen());
     }
