@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/home/home_screen.dart';
 
 import '../Screens/address/address_screen.dart';
+import '../Screens/address/edit_address_screen.dart';
 import '../Screens/cart/cart_screen.dart';
 import '../Screens/categories/category_item_screen.dart';
 import '../Screens/category_list/category_list_screen.dart';
@@ -29,6 +30,8 @@ class AppRoutes {
         return _createRoute(const AddressScreen());
       case OrderSuccessScreen.routeName:
         return _createRoute(const OrderSuccessScreen());
+      case EditAddressScreen.routeName:
+        return _createRoute(const EditAddressScreen());
       default:
         return _createRoute(const HomeScreen());
     }

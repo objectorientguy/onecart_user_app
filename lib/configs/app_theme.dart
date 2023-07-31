@@ -11,7 +11,7 @@ ThemeData appTheme = ThemeData(
 
 ColorScheme colorScheme = const ColorScheme.light(
     primary: AppColor.primary,
-    secondary: AppColor.primary,
+    secondary: AppColor.primaryLight,
     background: AppColor.white,
     surface: AppColor.white);
 
