@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/onboarding/onboarding_screen5.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
-
+import '../../configs/app_spacing.dart';
 class OnboardingScreen6 extends StatefulWidget {
   const OnboardingScreen6({super.key});
-
   @override
   State<OnboardingScreen6> createState() => _OnboardingScreen6State();
 }
-
 class _OnboardingScreen6State extends State<OnboardingScreen6> {
   TextEditingController _date = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +31,7 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
           titleSpacing: 1.0),
       body: SingleChildScrollView(
         child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
