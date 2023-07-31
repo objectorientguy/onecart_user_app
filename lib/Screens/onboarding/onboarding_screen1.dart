@@ -72,7 +72,7 @@ class OnboardingScreen1 extends StatelessWidget {
                       backgroundColor: AppColor.lightGrey,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0))),
-                  child: const Text('Skip',style: TextStyle(color: Colors.black))
+                  child: const Text('Skip',style: TextStyle(color: AppColor.black))
               ),
             ),
           )

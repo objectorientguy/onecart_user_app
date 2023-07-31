@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/onboarding/onboarding_screen4.dart';
 import 'package:onecart_user_app/Screens/onboarding/onboarding_screen6.dart';
+import 'package:onecart_user_app/Screens/onboarding/onboarding_screen7.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 class OnboardingScreen5 extends StatefulWidget {
   const OnboardingScreen5({super.key});
-
   @override
   State<OnboardingScreen5> createState() => _OnboardingScreen5State();
 }
@@ -15,6 +15,11 @@ class OnboardingScreen5 extends StatefulWidget {
 class _OnboardingScreen5State extends State<OnboardingScreen5> {
   bool isHiddenPassword = true;
   bool isSigninScreen = false;
+  bool showWrongEmail = false;
+  bool showWrongPassword = false;
+  bool rememberMe = false;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +47,65 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
                 : Text('Create your account',
                     style: Theme.of(context).textTheme.headingLarger),
             SizedBox(height: 20),
+            Visibility(
+              visible: showWrongEmail,
+              child: Container(
+                  width: 320,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColor.lightRed),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('   Email address is incorrect',
+                          style: Theme.of(context).textTheme.Smallred),
+                      IconButton(
+                          onPressed: () {
+                            setState(() {
+                              showWrongEmail = false;
+                            });
+                          },
+                          icon: Icon(
+                            Icons.cancel_presentation_rounded,
+                            color: AppColor.red,
+                          ))
+                    ],
+                  )),
+            ),
+            Visibility(
+              visible: showWrongPassword,
+              child: Container(
+                  width: 320,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColor.lightRed),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('Password is incorrect',
+                          style: Theme.of(context).textTheme.Smallred),
+                      IconButton(
+                          onPressed: () {
+                            setState(() {
+                              showWrongPassword = false;
+                            });
+                          },
+                          icon: Icon(
+                            Icons.cancel_presentation_rounded,
+                            color: AppColor.red,
+                          ))
+                    ],
+                  )),
+            ),
+            SizedBox(height: 20),
             SizedBox(
               width: 320,
               child: TextField(
+                controller: emailController,
                 decoration: InputDecoration(
                   hintText: 'Email address',
                   hintStyle: TextStyle(color: AppColor.grey),
@@ -61,6 +122,7 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
             SizedBox(
               width: 320,
               child: TextField(
+                controller: passwordController,
                 obscureText: isHiddenPassword,
                 decoration: InputDecoration(
                   hintText: 'Password',
@@ -93,10 +155,10 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Switch(
-                        value: false,
+                        value: rememberMe,
                         onChanged: (value) {
                           setState(() {
-                            value = !value;
+                            rememberMe = value;
                           });
                         },
                         activeTrackColor: AppColor.primary,
@@ -116,10 +178,26 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
                     height: 50,
                     child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const OnboardingScreen6()));
+                          if (emailController.value == 'johndoe@gmail.com') {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const OnboardingScreen7()));
+                          } else {
+                            setState(() {
+                              showWrongEmail = ! showWrongEmail;
+                            });
+                          }
+                          if (passwordController.value == '12345678') {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                    const OnboardingScreen7()));
+                          } else {
+                            setState(() {
+                              showWrongPassword = ! showWrongPassword;
+                            });
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                             elevation: 0,
