@@ -7,6 +7,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 
 import 'app_module/app_module.dart';
 
+
 void main() {
   _initDependencies();
   runApp(const MyApp());
