@@ -15,8 +15,8 @@ class OnboardingScreen5 extends StatefulWidget {
 class _OnboardingScreen5State extends State<OnboardingScreen5> {
   bool isHiddenPassword = true;
   bool isSigninScreen = false;
-  bool showWrongEmail = false;
-  bool showWrongPassword = false;
+  bool showWrongEmail = true;
+  bool showWrongPassword = true;
   bool rememberMe = false;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -51,7 +51,7 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
               visible: showWrongEmail,
               child: Container(
                   width: 320,
-                  height: 60,
+                  height: 50,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: AppColor.lightRed),
@@ -185,7 +185,7 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
                                         const OnboardingScreen7()));
                           } else {
                             setState(() {
-                              showWrongEmail = ! showWrongEmail;
+                              showWrongEmail = true;
                             });
                           }
                           if (passwordController.value == '12345678') {
@@ -195,7 +195,7 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
                                     const OnboardingScreen7()));
                           } else {
                             setState(() {
-                              showWrongPassword = ! showWrongPassword;
+                              showWrongPassword = true;
                             });
                           }
                         },

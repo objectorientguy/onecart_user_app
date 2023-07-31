@@ -144,4 +144,7 @@ extension AppTextTheme on TextTheme {
   TextStyle get Smallred {
     return const TextStyle(fontSize: 15, color: AppColor.red);
   }
+  TextStyle get smallGrey {
+    return const TextStyle(fontSize: 17, color: AppColor.darkGrey);
+  }
 }
