@@ -143,7 +143,6 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                             elevation: 0,
-                            backgroundColor: AppColor.lightGrey,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0))),
                         child: Text('Continue')),

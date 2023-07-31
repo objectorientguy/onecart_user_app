@@ -11,6 +11,7 @@ class OnboardingScreen5 extends StatefulWidget {
 
 class _OnboardingScreen5State extends State<OnboardingScreen5> {
   bool isHiddenPassword = true;
+  bool isSigninScreen = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,8 +27,12 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 20),
-            Text('Create your account',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
+            (isSigninScreen)
+                ? Text('Login to your account',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30))
+                : Text('Create your account',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
             SizedBox(height: 20),
             SizedBox(
               width: 320,
@@ -88,6 +93,17 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
                           borderRadius: BorderRadius.circular(10.0))),
                   child: const Text('Sign up')),
             ),
+            Visibility(
+              visible: isSigninScreen,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text('toggle switch button'),
+                    Text('Remember me'),
+                    Text('Forget password')
+                  ]),
+            ),
             SizedBox(height: 10),
             Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -105,9 +121,21 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('Already have an account?'),
+                (isSigninScreen) ? Text("D'ont have an account?") : Text('Already have an account?'),
+                (isSigninScreen) ? TextButton(
+                    onPressed: () {
+                      setState(() {
+                        isSigninScreen = !isSigninScreen;
+                      });
+                    },
+                    child: Text('Sign up',
+                        style: TextStyle(color: AppColor.primary))) :
                 TextButton(
-                    onPressed: null,
+                    onPressed: () {
+                      setState(() {
+                        isSigninScreen = !isSigninScreen;
+                      });
+                    },
                     child: Text('Sign in',
                         style: TextStyle(color: AppColor.primary))),
               ],

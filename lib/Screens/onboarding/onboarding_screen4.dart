@@ -64,7 +64,8 @@ class OnboardingScreen4 extends StatelessWidget {
               height: 50,
               width: 320,
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const OnboardingScreen5()));},
                   style: ElevatedButton.styleFrom(
                       elevation: 0,
                       backgroundColor: AppColor.lightGrey,
