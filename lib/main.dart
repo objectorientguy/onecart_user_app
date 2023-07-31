@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:onecart_user_app/Screens/root/root_screen.dart';
+import 'package:onecart_user_app/Screens/onboarding/onboarding_screen1.dart';
 import 'package:onecart_user_app/blocs/authentication_bloc/authentication_bloc.dart';
 import 'package:onecart_user_app/configs/app_route.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import 'app_module/app_module.dart';
 
 
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: appTheme,
           onGenerateRoute: AppRoutes.onGenerateRoutes,
-          home: const RootScreen(),
+          home: const OnboardingScreen1(),
         ),
       ),
     );

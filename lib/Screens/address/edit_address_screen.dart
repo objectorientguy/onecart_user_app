@@ -134,7 +134,7 @@ class EditAddressScreen extends StatelessWidget {
     borderRadius: BorderRadius.circular(kGeneralBorderRadius))),
                       child: Text(
                         'CANCEL',
-                        style: Theme.of(context).textTheme.textButtonLarger.copyWith(color: AppColor.darkGrey),
+                        style: Theme.of(context).textTheme.textButtonLarger.copyWith(color: AppColor.darkerGrey),
                       )),
                 ),
               ],

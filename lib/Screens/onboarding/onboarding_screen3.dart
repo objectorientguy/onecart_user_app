@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/onboarding/onboarding_screen4.dart';
-import 'package:onecart_user_app/Screens/onboarding/onboarding_screen5.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../configs/app_dimensions.dart';
+import '../root/root_screen.dart';
 
 class OnboardingScreen3 extends StatelessWidget {
   const OnboardingScreen3({super.key});
@@ -64,8 +64,8 @@ class OnboardingScreen3 extends StatelessWidget {
             SizedBox(height: xxTinierSpacing),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const OnboardingScreen5()));
+                Navigator.pushNamed(context, RootScreen.routeName,
+                    arguments: false);
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: AppColor.lightGrey,

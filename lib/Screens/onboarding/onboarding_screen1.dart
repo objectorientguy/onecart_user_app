@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/onboarding/onboarding_screen2.dart';
-import 'package:onecart_user_app/Screens/onboarding/onboarding_screen5.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../configs/app_dimensions.dart';
+import '../root/root_screen.dart';
 
 class OnboardingScreen1 extends StatelessWidget {
   const OnboardingScreen1({super.key});
@@ -18,7 +18,7 @@ class OnboardingScreen1 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset('assets/onboard1.png'),
-            SizedBox(height: xxxSmallestSpacing),
+            const SizedBox(height: xxxSmallestSpacing),
             Text('Welcome to',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.xtextMedium),
@@ -29,7 +29,7 @@ class OnboardingScreen1 extends StatelessWidget {
                   maxLines: 2,
                   style: Theme.of(context).textTheme.headingLargest),
             ),
-            SizedBox(height: xxxSmallestSpacing),
+            const SizedBox(height: xxxSmallestSpacing),
             Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,9 +42,9 @@ class OnboardingScreen1 extends StatelessWidget {
                         style: Theme.of(context).textTheme.textLarger),
                   ),
                 ]),
-            SizedBox(height: xxxSmallestSpacing),
-            Text('- - - -', textAlign: TextAlign.center),
-            SizedBox(height: xxxSmallestSpacing),
+            const SizedBox(height: xxxSmallestSpacing),
+            const Text('- - - -', textAlign: TextAlign.center),
+            const SizedBox(height: xxxSmallestSpacing),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -61,11 +61,11 @@ class OnboardingScreen1 extends StatelessWidget {
                 style: Theme.of(context).textTheme.textButtonLarger,
               ),
             ),
-            SizedBox(height: xxTinierSpacing),
+            const SizedBox(height: xxTinierSpacing),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const OnboardingScreen5()));
+                Navigator.pushNamed(context, RootScreen.routeName,
+                    arguments: false);
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: AppColor.lightGrey,

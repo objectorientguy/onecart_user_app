@@ -91,9 +91,6 @@ extension AppTextTheme on TextTheme {
     return const TextStyle(
         fontSize: 17, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
   }
-  TextStyle get textLarger {
-    return const TextStyle(fontSize: 20, color: AppColor.mediumBlack);
-  }
 
   TextStyle get textMedium {
     return const TextStyle(
@@ -166,6 +163,6 @@ extension AppTextTheme on TextTheme {
     return const TextStyle(fontSize: 15, color: AppColor.red);
   }
   TextStyle get smallGrey {
-    return const TextStyle(fontSize: 17, color: AppColor.darkGrey);
+    return const TextStyle(fontSize: 17, color: AppColor.darkerGrey);
   }
 }
