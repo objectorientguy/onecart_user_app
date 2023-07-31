@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/orders/orders_screen.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../category_grid/category_grid_screen.dart';
@@ -34,7 +35,7 @@ class _RootScreenState extends State<RootScreen> {
   static const List _widgetOptions = [
     HomeScreen(),
     CategoryFridScreen(),
-    Text('Index 1: Orders'),
+    OrdersScreen(),
     ProfileScreen(),
   ];
 
