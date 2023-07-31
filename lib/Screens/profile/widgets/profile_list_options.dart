@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:onecart_user_app/blocs/authentication_bloc/authentication%20events.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
-import '../../../blocs/authentication_bloc/authentication_bloc.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../address/address_screen.dart';
+import '../../favorites/no_favorites.dart';
 
 class ProfileOptionsList extends StatelessWidget {
   const ProfileOptionsList({
@@ -71,8 +68,11 @@ class ProfileOptionsList extends StatelessWidget {
         ),
         const Divider(height: 40, thickness: 0.3),
         InkWell(
-          onTap: () {
-            context.read<AuthenticationBloc>().add(AuthenticateUser());
+          onTap: (){
+            Navigator.pushNamed(
+              context,
+              NoFavoritesScreen.routeName,
+            );
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

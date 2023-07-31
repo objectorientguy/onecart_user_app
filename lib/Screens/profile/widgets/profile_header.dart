@@ -21,25 +21,46 @@ class ProfileHeader extends StatelessWidget {
               Text('Account', style: Theme.of(context).textTheme.headingMedium),
         ),
         const SizedBox(height: largerSpacing),
-        Row(
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CircleAvatar(
-              backgroundColor: AppColor.primary,
-              radius: kCircleAvatarRadius * 1.1,
-              child: Text('JD',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headingLarge
-                      .copyWith(color: AppColor.white)),
+            Row(
+              children: [
+                CircleAvatar(
+                  backgroundColor: AppColor.primary,
+                  radius: kCircleAvatarRadius * 1.1,
+                  child: Text('JD',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headingLarge
+                          .copyWith(color: AppColor.white)),
+                ),
+                const SizedBox(
+                  width: xxxTinySpacing,
+                ),
+                Text('John Doe',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headingLarge
+                        .copyWith(color: AppColor.black))
+              ],
             ),
-            const SizedBox(
-              width: xxxTinySpacing,
+            InkWell(
+              onTap: (){
+                // Navigator.pushNamed(context, EditAddressScreen.routeName,arguments: addressData[index]);
+              },
+              child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 10, vertical: 7),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.green, width: 1.0),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const Text(
+                    'EDIT',
+                    style:
+                    TextStyle(color: AppColor.primary, fontSize: 14),
+                  )),
             ),
-            Text('John Doe',
-                style: Theme.of(context)
-                    .textTheme
-                    .headingLarge
-                    .copyWith(color: AppColor.black))
           ],
         ),
         const SizedBox(height: xxSmallerSpacing),
