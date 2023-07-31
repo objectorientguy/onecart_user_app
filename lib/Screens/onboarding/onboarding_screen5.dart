@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/onboarding/onboarding_screen4.dart';
 import 'package:onecart_user_app/Screens/onboarding/onboarding_screen6.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
+import 'package:onecart_user_app/configs/app_spacing.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
 
 class OnboardingScreen5 extends StatefulWidget {
   const OnboardingScreen5({super.key});
@@ -19,20 +22,25 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
       appBar: AppBar(
         elevation: 0.00,
         backgroundColor: AppColor.white,
-        leading: Icon(Icons.arrow_back_rounded, color: AppColor.black),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => const OnboardingScreen4()));
+          },
+          icon: Icon(Icons.arrow_back_rounded, color: AppColor.black),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 20),
             (isSigninScreen)
                 ? Text('Login to your account',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30))
+                    style: Theme.of(context).textTheme.headingLarger)
                 : Text('Create your account',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
+                    style: Theme.of(context).textTheme.headingLarger),
             SizedBox(height: 20),
             SizedBox(
               width: 320,
@@ -49,7 +57,7 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
                 ),
               ),
             ), //email
-            SizedBox(height: 10),
+            SizedBox(height: xxTinierSpacing),
             SizedBox(
               width: 320,
               child: TextField(
@@ -77,34 +85,67 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
                 ),
               ),
             ), //password
-            SizedBox(height: 10),
-            SizedBox(
-              width: 320,
-              height: 50,
-              child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const OnboardingScreen6()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      backgroundColor: AppColor.primary,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0))),
-                  child: const Text('Sign up')),
-            ),
+            SizedBox(height: tiniestSpacing),
             Visibility(
               visible: isSigninScreen,
               child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('toggle switch button'),
+                    Switch(
+                        value: false,
+                        onChanged: (value) {
+                          setState(() {
+                            value = !value;
+                          });
+                        },
+                        activeTrackColor: AppColor.primary,
+                        inactiveTrackColor: AppColor.lightGrey),
                     Text('Remember me'),
-                    Text('Forget password')
+                    SizedBox(width: largerSpacing),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text('Forget password?'),
+                    )
                   ]),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: tiniestSpacing),
+            (isSigninScreen)
+                ? SizedBox(
+                    width: 320,
+                    height: 50,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const OnboardingScreen6()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor: AppColor.primary,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        child: const Text('Sign in')),
+                  )
+                : SizedBox(
+                    width: 320,
+                    height: 50,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const OnboardingScreen6()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor: AppColor.primary,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        child: const Text('Sign up')),
+                  ),
+            SizedBox(height: xxTinierSpacing),
             Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -121,23 +162,26 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                (isSigninScreen) ? Text("D'ont have an account?") : Text('Already have an account?'),
-                (isSigninScreen) ? TextButton(
-                    onPressed: () {
-                      setState(() {
-                        isSigninScreen = !isSigninScreen;
-                      });
-                    },
-                    child: Text('Sign up',
-                        style: TextStyle(color: AppColor.primary))) :
-                TextButton(
-                    onPressed: () {
-                      setState(() {
-                        isSigninScreen = !isSigninScreen;
-                      });
-                    },
-                    child: Text('Sign in',
-                        style: TextStyle(color: AppColor.primary))),
+                (isSigninScreen)
+                    ? Text("D'ont have an account?")
+                    : Text('Already have an account?'),
+                (isSigninScreen)
+                    ? TextButton(
+                        onPressed: () {
+                          setState(() {
+                            isSigninScreen = !isSigninScreen;
+                          });
+                        },
+                        child: Text('Sign up',
+                            style: TextStyle(color: AppColor.primary)))
+                    : TextButton(
+                        onPressed: () {
+                          setState(() {
+                            isSigninScreen = !isSigninScreen;
+                          });
+                        },
+                        child: Text('Sign in',
+                            style: TextStyle(color: AppColor.primary))),
               ],
             ),
           ],

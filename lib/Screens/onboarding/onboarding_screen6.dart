@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/onboarding/onboarding_screen5.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
 
 class OnboardingScreen6 extends StatefulWidget {
@@ -18,7 +19,14 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
       appBar: AppBar(
           elevation: 0.00,
           backgroundColor: AppColor.white,
-          leading: Icon(Icons.arrow_back_rounded, color: AppColor.black),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => const OnboardingScreen5()));
+            },
+            icon: Icon(Icons.arrow_back_rounded, color: AppColor.black),
+          ),
+          //Icon(Icons.arrow_back_rounded, color: AppColor.black),
           title: Text(
             'Fill your profile',
             style: TextStyle(color: AppColor.black),
@@ -33,7 +41,8 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
                 children: [
                   Stack(children: [
                     CircleAvatar(
-                        radius: 60,backgroundColor: AppColor.lightGrey,
+                        radius: 60,
+                        backgroundColor: AppColor.lightGrey,
                         backgroundImage: AssetImage('assets/defaultImage.png')),
                     Positioned(
                       bottom: 0,
