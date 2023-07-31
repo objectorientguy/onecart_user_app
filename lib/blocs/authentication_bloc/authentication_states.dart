@@ -1,4 +1,3 @@
 abstract class AuthenticationStates {}
 
-class AuthenticationInitial extends AuthenticationStates{}
-
+class AuthenticationInitial extends AuthenticationStates {}

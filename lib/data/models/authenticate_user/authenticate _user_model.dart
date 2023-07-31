@@ -1,8 +1,10 @@
 import 'dart:convert';
 
-AuthenticateUserModel authenticateUserModelFromJson(String str) => AuthenticateUserModel.fromJson(json.decode(str));
+AuthenticateUserModel authenticateUserModelFromJson(String str) =>
+    AuthenticateUserModel.fromJson(json.decode(str));
 
-String authenticateUserModelToJson(AuthenticateUserModel data) => json.encode(data.toJson());
+String authenticateUserModelToJson(AuthenticateUserModel data) =>
+    json.encode(data.toJson());
 
 class AuthenticateUserModel {
   final int status;
@@ -15,17 +17,18 @@ class AuthenticateUserModel {
     required this.data,
   });
 
-  factory AuthenticateUserModel.fromJson(Map<String, dynamic> json) => AuthenticateUserModel(
-    status: json["status"],
-    message: json["message"],
-    data: Data.fromJson(json["data"]),
-  );
+  factory AuthenticateUserModel.fromJson(Map<String, dynamic> json) =>
+      AuthenticateUserModel(
+        status: json["status"],
+        message: json["message"],
+        data: Data.fromJson(json["data"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    "message": message,
-    "data": data.toJson(),
-  };
+        "status": status,
+        "message": message,
+        "data": data.toJson(),
+      };
 }
 
 class Data {
@@ -44,18 +47,18 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    customerName: json["customer_name"],
-    createdAt: DateTime.parse(json["created_at"]),
-    customerId: json["customer_id"],
-    customerBirthdate: json["customer_birthdate"],
-    customerContact: json["customer_contact"],
-  );
+        customerName: json["customer_name"],
+        createdAt: DateTime.parse(json["created_at"]),
+        customerId: json["customer_id"],
+        customerBirthdate: json["customer_birthdate"],
+        customerContact: json["customer_contact"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "customer_name": customerName,
-    "created_at": createdAt.toIso8601String(),
-    "customer_id": customerId,
-    "customer_birthdate": customerBirthdate,
-    "customer_contact": customerContact,
-  };
+        "customer_name": customerName,
+        "created_at": createdAt.toIso8601String(),
+        "customer_id": customerId,
+        "customer_birthdate": customerBirthdate,
+        "customer_contact": customerContact,
+      };
 }

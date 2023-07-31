@@ -10,7 +10,8 @@ import 'authentication_states.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvents, AuthenticationStates> {
-  final AuthenticationRepository _authenticationRepository = getIt<AuthenticationRepository>();
+  final AuthenticationRepository _authenticationRepository =
+      getIt<AuthenticationRepository>();
 
   AuthenticationStates get initialState => AuthenticationInitial();
 
@@ -20,8 +21,8 @@ class AuthenticationBloc
 
   FutureOr<void> _authenticateUser(
       AuthenticateUser event, Emitter<AuthenticationStates> emit) async {
-    AuthenticateUserModel authenticateUserModel = await _authenticationRepository.authenticateUser();
+    AuthenticateUserModel authenticateUserModel =
+        await _authenticationRepository.authenticateUser();
     log(authenticateUserModel.data.customerId.toString());
   }
 }
-

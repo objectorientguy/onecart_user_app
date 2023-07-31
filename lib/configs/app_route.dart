@@ -9,6 +9,7 @@ import '../Screens/category_list/category_list_screen.dart';
 import '../Screens/checkout/checkout_screen.dart';
 import '../Screens/checkout/order_success.dart';
 import '../Screens/item_details/item_details_screen.dart';
+import '../Screens/root/root_screen.dart';
 import '../Screens/varient/select_varient_screen.dart';
 
 class AppRoutes {
@@ -31,7 +32,10 @@ class AppRoutes {
       case OrderSuccessScreen.routeName:
         return _createRoute(const OrderSuccessScreen());
       case EditAddressScreen.routeName:
-        return _createRoute(EditAddressScreen(addressDataMap: settings.arguments as Map));
+        return _createRoute(
+            EditAddressScreen(addressDataMap: settings.arguments as Map));
+      case RootScreen.routeName:
+        return _createRoute(const RootScreen());
       default:
         return _createRoute(const HomeScreen());
     }

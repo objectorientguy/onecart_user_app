@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:onecart_user_app/Screens/onboarding/onboarding_screen1.dart';
 import 'package:onecart_user_app/blocs/authentication_bloc/authentication_bloc.dart';
 import 'package:onecart_user_app/configs/app_route.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import 'Screens/on_boarding/on_boarding_screen.dart';
 import 'app_module/app_module.dart';
-
 
 void main() {
   _initDependencies();
@@ -22,7 +21,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(lazy:false, create: (context) => AuthenticationBloc())],
+      providers: [
+        BlocProvider(lazy: false, create: (context) => AuthenticationBloc())
+      ],
       child: GestureDetector(
         onTap: () {
           FocusManager.instance.primaryFocus?.unfocus();
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: appTheme,
           onGenerateRoute: AppRoutes.onGenerateRoutes,
-          home: const OnboardingScreen1(),
+          home: const OnBoardingScreen(),
         ),
       ),
     );

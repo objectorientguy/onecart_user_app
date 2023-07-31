@@ -16,8 +16,10 @@ class AddressScreen extends StatelessWidget {
         'name': 'Home',
         'isCurrent': true,
         'value': [
-          '4976 Reynolds Valley','90014',
-          'Los Angeles', 'California',
+          '4976 Reynolds Valley',
+          '90014',
+          'Los Angeles',
+          'California',
           '213-293-0083'
         ]
       },
@@ -25,8 +27,10 @@ class AddressScreen extends StatelessWidget {
         'name': 'Work',
         'isCurrent': false,
         'value': [
-          '2789 Lee Avenue','08052',
-          'Maple Shade', 'New Jersey',
+          '2789 Lee Avenue',
+          '08052',
+          'Maple Shade',
+          'New Jersey',
           '609-230-8821'
         ]
       },
@@ -34,9 +38,12 @@ class AddressScreen extends StatelessWidget {
         'name': 'Address',
         'isCurrent': false,
         'value': [
-          '663 Briarhill Lane', '44255',
-          'Mantua', 'Ohio',
-          '937-251-2113']
+          '663 Briarhill Lane',
+          '44255',
+          'Mantua',
+          'Ohio',
+          '937-251-2113'
+        ]
       }
     ];
     return Scaffold(
@@ -140,8 +147,10 @@ class AddressScreen extends StatelessWidget {
                       ],
                     ),
                     InkWell(
-                      onTap: (){
-                        Navigator.pushNamed(context, EditAddressScreen.routeName,arguments: addressData[index]);
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, EditAddressScreen.routeName,
+                            arguments: addressData[index]);
                       },
                       child: Container(
                           padding: const EdgeInsets.symmetric(
@@ -152,8 +161,8 @@ class AddressScreen extends StatelessWidget {
                           ),
                           child: const Text(
                             'EDIT',
-                            style:
-                                TextStyle(color: AppColor.primary, fontSize: 14),
+                            style: TextStyle(
+                                color: AppColor.primary, fontSize: 14),
                           )),
                     ),
                   ],

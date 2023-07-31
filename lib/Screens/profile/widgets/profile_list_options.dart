@@ -71,7 +71,9 @@ class ProfileOptionsList extends StatelessWidget {
         ),
         const Divider(height: 40, thickness: 0.3),
         InkWell(
-          onTap: (){context.read<AuthenticationBloc>().add(AuthenticateUser());},
+          onTap: () {
+            context.read<AuthenticationBloc>().add(AuthenticateUser());
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/Screens/profile/widgets/profile_footer.dart';
 import 'package:onecart_user_app/Screens/profile/widgets/profile_header.dart';
 import 'package:onecart_user_app/Screens/profile/widgets/profile_list_options.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_dimensions.dart';
 
@@ -26,22 +26,21 @@ class ProfileScreen extends StatelessWidget {
                     spreadRadius: kZero,
                     blurRadius: kShadowBlurRadius),
               ]),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
                     horizontal: leftRightMargin, vertical: topBottomPadding),
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ProfileHeader(),
-                      SizedBox(height: mediumSpacing),
-                      ProfileOptionsList(),
+                      const ProfileHeader(),
+                      const SizedBox(height: mediumSpacing),
+                      const ProfileOptionsList(),
+                      const SizedBox(height: xxxLargerSpacing),
+                      Text('App Version 1.8.0',
+                          style: Theme.of(context).textTheme.subHeadingMedium),
                     ]),
               ),
             ),
-            const SizedBox(
-              height: smallSpacing,
-            ),
-            const ProfileFooter()
           ],
         ),
       ),

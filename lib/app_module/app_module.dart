@@ -5,6 +5,7 @@ import '../repositories/authentication/authentication_repository_impl.dart';
 
 final getIt = GetIt.instance;
 
-configurableDependencies(){
-  getIt.registerLazySingleton<AuthenticationRepository>(() => AuthenticationRepositoryImpl());
+configurableDependencies() {
+  getIt.registerLazySingleton<AuthenticationRepository>(
+      () => AuthenticationRepositoryImpl());
 }

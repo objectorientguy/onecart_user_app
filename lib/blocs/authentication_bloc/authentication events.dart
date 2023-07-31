@@ -1,5 +1,3 @@
 abstract class AuthenticationEvents {}
 
-class AuthenticateUser extends AuthenticationEvents {
-
-}
+class AuthenticateUser extends AuthenticationEvents {}
