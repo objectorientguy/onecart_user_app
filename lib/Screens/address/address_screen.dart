@@ -13,7 +13,7 @@ class AddressScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List addressData = [
       {
-        'name': 'Address 1',
+        'name': 'Home',
         'isCurrent': true,
         'value': [
           '4976 Reynolds Valley','90014',
@@ -22,7 +22,7 @@ class AddressScreen extends StatelessWidget {
         ]
       },
       {
-        'name': 'Address 2',
+        'name': 'Work',
         'isCurrent': false,
         'value': [
           '2789 Lee Avenue','08052',
@@ -31,7 +31,7 @@ class AddressScreen extends StatelessWidget {
         ]
       },
       {
-        'name': 'Address 3',
+        'name': 'Address',
         'isCurrent': false,
         'value': [
           '663 Briarhill Lane', '44255',

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onecart_user_app/blocs/authentication_bloc/authentication%20events.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../../blocs/authentication_bloc/authentication_bloc.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
@@ -67,48 +70,51 @@ class ProfileOptionsList extends StatelessWidget {
           ),
         ),
         const Divider(height: 40, thickness: 0.3),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Icon(
-                  Icons.favorite,
-                  color: AppColor.primary,
-                  size: kLocationIconSize,
-                ),
-                const SizedBox(
-                  width: xxTinierSpacing,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Favorite items',
-                        style: Theme.of(context).textTheme.headingSmall),
-                    const SizedBox(
-                      height: xxTiniestSpacing,
-                    ),
-                    SizedBox(
-                      child: Text(
-                        'All your handpicked items at one place',
-                        style: Theme.of(context).textTheme.subHeadingMedium,
-                        overflow: TextOverflow.ellipsis,
+        InkWell(
+          onTap: (){context.read<AuthenticationBloc>().add(AuthenticateUser());},
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(
+                    Icons.favorite,
+                    color: AppColor.primary,
+                    size: kLocationIconSize,
+                  ),
+                  const SizedBox(
+                    width: xxTinierSpacing,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Favorite items',
+                          style: Theme.of(context).textTheme.headingSmall),
+                      const SizedBox(
+                        height: xxTiniestSpacing,
                       ),
-                    )
-                  ],
-                )
-              ],
-            ),
-            const Row(
-              children: [
-                Icon(Icons.arrow_forward_ios),
-                SizedBox(
-                  width: xxxTinierSpacing,
-                )
-              ],
-            )
-          ],
+                      SizedBox(
+                        child: Text(
+                          'All your handpicked items at one place',
+                          style: Theme.of(context).textTheme.subHeadingMedium,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+              const Row(
+                children: [
+                  Icon(Icons.arrow_forward_ios),
+                  SizedBox(
+                    width: xxxTinierSpacing,
+                  )
+                ],
+              )
+            ],
+          ),
         ),
         const Divider(height: 40, thickness: 0.3),
         Row(

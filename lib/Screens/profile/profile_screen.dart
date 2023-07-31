@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/Screens/profile_screen/widgets/profile_footer.dart';
-import 'package:onecart_user_app/Screens/profile_screen/widgets/profile_header.dart';
-import 'package:onecart_user_app/Screens/profile_screen/widgets/profile_list_options.dart';
+import 'package:onecart_user_app/Screens/profile/widgets/profile_footer.dart';
+import 'package:onecart_user_app/Screens/profile/widgets/profile_header.dart';
+import 'package:onecart_user_app/Screens/profile/widgets/profile_list_options.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 

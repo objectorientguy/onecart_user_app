@@ -16,14 +16,14 @@ class EditAddressScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController laneController = TextEditingController();
     TextEditingController cityController = TextEditingController();
-    TextEditingController stateController = TextEditingController();
+    TextEditingController titleController = TextEditingController();
     TextEditingController pinController = TextEditingController();
-    TextEditingController postalController = TextEditingController();
+    TextEditingController phoneController = TextEditingController();
     laneController.value = TextEditingValue(text: addressDataMap['value'][0]);
-    cityController.value = TextEditingValue(text: addressDataMap['value'][1]);
-    stateController.value = TextEditingValue(text: addressDataMap['value'][2]);
-    pinController.value = TextEditingValue(text: addressDataMap['value'][3]);
-    postalController.value = TextEditingValue(text: addressDataMap['value'][4]);
+    cityController.value = TextEditingValue(text: addressDataMap['value'][2]);
+    titleController.value = TextEditingValue(text: addressDataMap['name']);
+    pinController.value = TextEditingValue(text: addressDataMap['value'][1]);
+    phoneController.value = TextEditingValue(text: addressDataMap['value'][4]);
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit address',
@@ -51,6 +51,17 @@ class EditAddressScreen extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              controller: titleController,
+              decoration: InputDecoration(
+                hintText: 'Search products...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(kGeneralBorderRadius),
+                  borderSide: const BorderSide(),
+                ),
+              ),
+            ),
+            SizedBox(height: xxxTinierSpacing),
+            TextField(
               controller: laneController,
               decoration: InputDecoration(
                 hintText: 'Search products...',
@@ -60,59 +71,48 @@ class EditAddressScreen extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(height: xxxTinierSpacing),
+            TextField(
+              controller: phoneController,
+              decoration: InputDecoration(
+                hintText: 'Search products...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(kGeneralBorderRadius),
+                  borderSide: const BorderSide(),
+                ),
+              ),
+            ),
+            SizedBox(height: xxxTinierSpacing),
             Row(
               children: [
                 SizedBox(width: (MediaQuery.of(context).size.width-(2*leftRightMargin)-xxxTinierSpacing)/2,
-                  child: TextField(
-                    controller: cityController,
-                    decoration: InputDecoration(
-                      hintText: 'Search products...',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-                        borderSide: const BorderSide(),
+                    child: TextField(
+                      controller: cityController,
+                      decoration: InputDecoration(
+                        hintText: 'Search products...',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(kGeneralBorderRadius),
+                          borderSide: const BorderSide(),
+                        ),
                       ),
-                    ),
-                  )
+                    )
                 ),
                 const SizedBox(width: xxxTinierSpacing),
                 SizedBox(width: (MediaQuery.of(context).size.width-(2*leftRightMargin)-xxxTinierSpacing)/2,
-                  child: TextField(
-                    controller: stateController,
-                    decoration: InputDecoration(
-                      hintText: 'Search products...',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-                        borderSide: const BorderSide(),
+                    child: TextField(
+                      controller: pinController,
+                      decoration: InputDecoration(
+                        hintText: 'Search products...',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(kGeneralBorderRadius),
+                          borderSide: const BorderSide(),
+                        ),
                       ),
-                    ),
-                  )
+                    )
                 ),
               ],
             ),
-            TextField(
-              controller: pinController,
-              decoration: InputDecoration(
-                hintText: 'Search products...',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-                  borderSide: const BorderSide(),
-                ),
-              ),
-            ),
-            TextField(
-              controller: postalController,
-              decoration: InputDecoration(
-                prefixIcon: const DropdownMenu(dropdownMenuEntries: [],
-                inputDecorationTheme: InputDecorationTheme(
-                  border: InputBorder.none
-                ),),
-                hintText: 'Search products...',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-                  borderSide: const BorderSide(),
-                ),
-              ),
-            ),
+            SizedBox(height: smallSpacing),
             Row(
               children: [
                 Expanded(

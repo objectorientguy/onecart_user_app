@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/Screens/profile_screen/profile_screen.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../category_grid/category_grid_screen.dart';
 import '../home/home_screen.dart';
+import '../profile/profile_screen.dart';
 
 class RootScreen extends StatefulWidget {
   static const routeName = 'RootScreen';
