@@ -4,13 +4,17 @@ import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
+//import 'package:image_picker/image_picker.dart';
+//import 'dart:io';
 class OnboardingScreen6 extends StatefulWidget {
   const OnboardingScreen6({super.key});
   @override
   State<OnboardingScreen6> createState() => _OnboardingScreen6State();
 }
 class _OnboardingScreen6State extends State<OnboardingScreen6> {
-  TextEditingController _date = TextEditingController();
+  final TextEditingController _date = TextEditingController();
+  //PickedFile _imageFile;
+  //final ImagePicker _picker = ImagePicker();
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: AppColor.white,
@@ -31,13 +35,20 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
                     CircleAvatar(
                         radius: kCircleAvatarRadius2,
                         backgroundColor: AppColor.lightGrey,
-                        backgroundImage: AssetImage('assets/defaultImage.png')),
+                        backgroundImage: /*(_imageFile == null) ? */
+                        AssetImage('assets/defaultImage.png'),
+                            /*: FileImage(File(_imageFile.path))*/),
                     Positioned(bottom: 0, right: 0,
                       child: Container(height: 30, width: 30,
                         decoration: BoxDecoration(shape: BoxShape.circle,
                             border: Border.all(width: 2.0, color: AppColor.white),
                             color: AppColor.primary),
-                        child: IconButton(onPressed: () {},
+                        child: IconButton(onPressed: () {
+                          showModalBottomSheet(
+                              context: context,
+                              builder: ((builder) => bottomSheet()),
+                          );
+                        },
                           icon: Icon(Icons.edit_rounded,size: 12,color: AppColor.white),
                           padding: EdgeInsets.all(2.0)),),)]),
                   SizedBox(height: smallerSpacing),
@@ -111,4 +122,38 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
       ),
     );
   }
+  Widget bottomSheet(){
+    return Container(
+      height: 100, width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+      child: Column(
+        children: [
+          Text('Choose Profile photo'),
+          SizedBox(
+            height: 20,
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(onPressed: (){
+                //takePhoto(ImageSource.camera);
+              }, icon: Icon(Icons.camera_alt_rounded)),
+              Text('Camera'),
+              IconButton(onPressed: (){
+                //takePhoto(ImageSource.gallery);
+              }, icon: Icon(Icons.image_rounded)),
+              Text('Gallery'),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+  /*void takePhoto(ImageSource source) async{
+    final pickedFile = await _picker.pickImage(
+      source: source,
+    );
+    setState(() {
+      _imageFile = pickedFile;
+    });
+  }*/
 }
