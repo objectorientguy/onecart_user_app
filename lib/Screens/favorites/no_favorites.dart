@@ -26,8 +26,7 @@ class NoFavoritesScreen extends StatelessWidget {
                   fit: BoxFit.fitHeight,
                 )),
             const SizedBox(height: tinySpacing),
-            Text('Sorry',
-                style: Theme.of(context).textTheme.headingLarge),
+            Text('Sorry', style: Theme.of(context).textTheme.headingLarge),
             const SizedBox(
               height: xxTinySpacing,
             ),

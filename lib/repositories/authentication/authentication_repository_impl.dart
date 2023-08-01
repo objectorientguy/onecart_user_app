@@ -1,5 +1,4 @@
-import 'package:onecart_user_app/data/models/authenticate_user/authenticate%20_user_model.dart';
-
+import '../../data/models/authenticate_user/authenticate_user_model.dart';
 import 'authentication_repository.dart';
 
 class AuthenticationRepositoryImpl extends AuthenticationRepository {

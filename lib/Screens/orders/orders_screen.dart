@@ -12,8 +12,8 @@ class OrdersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Orders',
-            style: Theme.of(context).textTheme.headingMedium),
+        title:
+            Text('My Orders', style: Theme.of(context).textTheme.headingMedium),
         leading: const SizedBox(),
         actions: [
           IconButton(
@@ -32,16 +32,16 @@ class OrdersScreen extends StatelessWidget {
             shrinkWrap: true,
             itemCount: 7,
             separatorBuilder: (context, index) => const Divider(
-              height: smallestSpacing,
-              thickness: 2,
-            ),
+                  height: smallestSpacing,
+                  thickness: 2,
+                ),
             itemBuilder: (context, index) {
               if (index == 6) {
                 return const SizedBox();
               }
               return Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: xxxTinierSpacing),
+                    const EdgeInsets.symmetric(horizontal: xxxTinierSpacing),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,39 +66,44 @@ class OrdersScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Order #1234',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headingTiny),
+                                style: Theme.of(context).textTheme.headingTiny),
                             const SizedBox(height: xxxTiniestSpacing),
-                            SizedBox(width: MediaQuery.sizeOf(context).width*0.55,
+                            SizedBox(
+                              width: MediaQuery.sizeOf(context).width * 0.55,
                               child: Text(
                                 'Placed on November 13, 2021, 10:00 AM',
                                 style:
-                                Theme.of(context).textTheme.subHeadingLarge,
+                                    Theme.of(context).textTheme.subHeadingLarge,
                               ),
                             ),
                             Row(
                               children: [
                                 Text(
                                   'Items: ',
-                                  style:
-                                  Theme.of(context).textTheme.subHeadingLarge,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .subHeadingLarge,
                                 ),
                                 Text(
                                   '10',
-                                  style:
-                                  Theme.of(context).textTheme.subHeadingLarge.copyWith(color:AppColor.primary),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .subHeadingLarge
+                                      .copyWith(color: AppColor.primary),
                                 ),
                                 const SizedBox(width: xxxTinierSpacing),
                                 Text(
                                   'Total Price: ',
-                                  style:
-                                  Theme.of(context).textTheme.subHeadingLarge,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .subHeadingLarge,
                                 ),
                                 Text(
                                   '₹200.00',
-                                  style:
-                                  Theme.of(context).textTheme.subHeadingLarge.copyWith(color:AppColor.primary),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .subHeadingLarge
+                                      .copyWith(color: AppColor.primary),
                                 ),
                               ],
                             ),
@@ -107,8 +112,9 @@ class OrdersScreen extends StatelessWidget {
                       ],
                     ),
                     InkWell(
-                      onTap: (){
-                        Navigator.pushNamed(context, OrdersDetailsScreen.routeName);
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, OrdersDetailsScreen.routeName);
                       },
                       child: Container(
                           padding: const EdgeInsets.symmetric(
@@ -117,7 +123,10 @@ class OrdersScreen extends StatelessWidget {
                             border: Border.all(color: Colors.green, width: 1.0),
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: const Icon(Icons.keyboard_arrow_right,color: AppColor.primary,)),
+                          child: const Icon(
+                            Icons.keyboard_arrow_right,
+                            color: AppColor.primary,
+                          )),
                     ),
                   ],
                 ),

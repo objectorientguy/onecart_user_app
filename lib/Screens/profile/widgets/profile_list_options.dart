@@ -68,7 +68,7 @@ class ProfileOptionsList extends StatelessWidget {
         ),
         const Divider(height: 40, thickness: 0.3),
         InkWell(
-          onTap: (){
+          onTap: () {
             Navigator.pushNamed(
               context,
               NoFavoritesScreen.routeName,
