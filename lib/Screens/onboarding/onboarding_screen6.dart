@@ -41,95 +41,72 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
                           icon: Icon(Icons.edit_rounded,size: 12,color: AppColor.white),
                           padding: EdgeInsets.all(2.0)),),)]),
                   SizedBox(height: smallerSpacing),
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Full name',
-                      hintStyle: TextStyle(color: AppColor.grey),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(),
-                      ),
-                    ),
-                  ),
+                  SizedBox(width: kTextboxWidth,
+                    child: TextField(decoration: InputDecoration(
+                        hintText: 'Full name', hintStyle: TextStyle(color: AppColor.grey),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: const BorderSide(),),),),),
                   SizedBox(height: xxTinierSpacing),
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Username',
-                      hintStyle: TextStyle(color: AppColor.grey),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(),
-                      ),
-                    ),
-                  ),
+                  SizedBox(width: kTextboxWidth,
+                    child: TextField(decoration: InputDecoration(
+                        hintText: 'Username', hintStyle: TextStyle(color: AppColor.grey),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: const BorderSide(),),),),),
                   SizedBox(height: xxTinierSpacing),
-                  TextField(
-                    controller: _date,
-                    readOnly: true,
-                    decoration: InputDecoration(
-                      hintText: 'Date of birth ',
-                      hintStyle: TextStyle(color: AppColor.grey),
-                      suffixIcon: IconButton(
-                          onPressed: () async {
-                            DateTime? pickeddate = await showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime(1940, 1, 1),
-                                lastDate: DateTime.now());
-                            if (pickeddate != null) {
-                              setState(() {
-                                _date.text =
-                                    pickeddate.toString().split(" ")[0];
-                              });
-                            }
-                          },
-                          icon: Icon(Icons.calendar_month_rounded,
-                              color: AppColor.black)),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(),
+                  SizedBox(width: kTextboxWidth,
+                    child: TextField(controller: _date, readOnly: true,
+                      decoration: InputDecoration(
+                        hintText: 'Date of birth ',
+                        hintStyle: TextStyle(color: AppColor.grey),
+                        suffixIcon: IconButton(
+                            onPressed: () async {
+                              DateTime? pickeddate = await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(1940, 1, 1),
+                                  lastDate: DateTime.now());
+                              if (pickeddate != null) {
+                                setState(() {
+                                  _date.text =
+                                      pickeddate.toString().split(" ")[0];
+                                });
+                              }
+                            },
+                            icon: Icon(Icons.calendar_month_rounded,
+                                color: AppColor.black)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: const BorderSide(),
+                        ),
                       ),
                     ),
                   ), //date of birth
                   SizedBox(height: xxTinierSpacing),
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Email address',
-                      hintStyle: TextStyle(color: AppColor.grey),
-                      suffixIcon: Icon(
-                        Icons.email_rounded,
-                        color: AppColor.black,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(),
-                      ),
-                    ),
-                  ),
+                  SizedBox(width: kTextboxWidth,
+                    child: TextField(decoration: InputDecoration(
+                        hintText: 'Email address', hintStyle: TextStyle(color: AppColor.grey),
+                        suffixIcon: Icon(Icons.email_rounded, color: AppColor.black,),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: const BorderSide(),),),),),
                   SizedBox(height: xxTinierSpacing),
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Phone number',
-                      hintStyle: TextStyle(color: AppColor.grey),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(),
-                      ),
-                    ),
-                  ), //phone number
+                  SizedBox(width: kTextboxWidth,
+                    child: TextField(decoration: InputDecoration(
+                        hintText: 'Phone number', hintStyle: TextStyle(color: AppColor.grey),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: const BorderSide(),),),),), //phone number
                   SizedBox(height: xxTinierSpacing),
-                  ElevatedButton(
-                      onPressed: () {},
+                  ElevatedButton(onPressed: () {},
                     style: ElevatedButton.styleFrom(
                         minimumSize:
                         const Size(double.maxFinite, kElevatedButtonHeight),
                         shape: RoundedRectangleBorder(
-                            borderRadius:
-                            BorderRadius.circular(kGeneralBorderRadius))),
-                    child: Text(
-                      'Continue',
-                      style: Theme.of(context).textTheme.textButtonLarger,
-                    ),), //continue
+                            borderRadius: BorderRadius.circular(kGeneralBorderRadius))),
+                    child: Text('Continue',
+                      style: Theme.of(context).textTheme.textButtonLarger,),), //continue
                 ])),
       ),
     );
