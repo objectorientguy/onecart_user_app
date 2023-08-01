@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/Screens/item_details/widgets/delivery_details_section.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/item_details_section.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/item_photos_section.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/selling_partner_deatils.dart';
@@ -52,7 +51,6 @@ class ItemDetailsScreen extends StatelessWidget {
             const SizedBox(
               height: tinySpacing,
             ),
-            const SellingPartnerSection(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
               child: Column(

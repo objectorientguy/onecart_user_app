@@ -123,9 +123,11 @@ class OrdersScreen extends StatelessWidget {
                             border: Border.all(color: Colors.green, width: 1.0),
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: const Icon(
-                            Icons.keyboard_arrow_right,
-                            color: AppColor.primary,
+                          child: const Center(
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              color: AppColor.primary,
+                            ),
                           )),
                     ),
                   ],

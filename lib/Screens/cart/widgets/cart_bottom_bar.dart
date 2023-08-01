@@ -67,17 +67,6 @@ class CartBottomBar extends StatelessWidget {
                       )
                     ],
                   ),
-                  Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 7),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.green, width: 1.0),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const Text(
-                        'CHANGE',
-                        style: TextStyle(color: AppColor.primary, fontSize: 14),
-                      )),
                 ],
               ),
               const SizedBox(height: tinierSpacing),

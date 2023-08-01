@@ -97,8 +97,8 @@ class StoreItemList extends StatelessWidget {
                           style: TextButton.styleFrom(
                             minimumSize: Size.zero,
                             padding: const EdgeInsets.symmetric(
-                                horizontal: xxTinierSpacing,
-                                vertical: xxTiniestSpacing),
+                                horizontal: xxTinySpacing,
+                                vertical: xxTinierSpacing),
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8)),
