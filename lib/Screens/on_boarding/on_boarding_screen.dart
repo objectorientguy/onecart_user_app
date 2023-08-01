@@ -91,7 +91,8 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_isLastPage) {
-                      Navigator.pushNamed(context, RootScreen.routeName);
+                      Navigator.pushReplacementNamed(
+                          context, RootScreen.routeName);
                     } else {
                       _carouselController.nextPage();
                     }
