@@ -7,6 +7,7 @@ const double kLocationIconHeightFactor = 0.7;
 const double kSearchBarRadius = 30.0;
 const double kShadowBlurRadius = 30.0;
 const double kCircleAvatarRadius = 25.0;
+const double kCircleAvatarRadius2 = 25.0;
 const double kHorizontalCategoryListHeight = 125.0;
 const double kHorizontalCategoryListItemWidth = 80.0;
 const double kNavToolbarHeight = 80.0;

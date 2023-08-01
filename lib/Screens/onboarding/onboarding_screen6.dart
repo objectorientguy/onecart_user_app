@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/onboarding/onboarding_screen5.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
+import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 class OnboardingScreen6 extends StatefulWidget {
   const OnboardingScreen6({super.key});
@@ -11,60 +13,34 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
   TextEditingController _date = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.white,
-      appBar: AppBar(
-          elevation: 0.00,
-          backgroundColor: AppColor.white,
-          leading: IconButton(
-            onPressed: () {
+    return Scaffold(backgroundColor: AppColor.white,
+      appBar: AppBar(elevation: 0.00, backgroundColor: AppColor.white,
+          leading: IconButton(onPressed: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => const OnboardingScreen5()));
-            },
+                  builder: (context) => const OnboardingScreen5()));},
             icon: Icon(Icons.arrow_back_rounded, color: AppColor.black),
           ),
-          //Icon(Icons.arrow_back_rounded, color: AppColor.black),
-          title: Text(
-            'Fill your profile',
-            style: TextStyle(color: AppColor.black),
-          ),
+          title: Text('Fill your profile', style: TextStyle(color: AppColor.black)),
           titleSpacing: 1.0),
       body: SingleChildScrollView(
-        child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+        child: Padding(padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
+            child: Column(mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Stack(children: [
                     CircleAvatar(
-                        radius: 60,
+                        radius: kCircleAvatarRadius2,
                         backgroundColor: AppColor.lightGrey,
                         backgroundImage: AssetImage('assets/defaultImage.png')),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border:
-                                Border.all(width: 2.0, color: AppColor.white),
+                    Positioned(bottom: 0, right: 0,
+                      child: Container(height: 30, width: 30,
+                        decoration: BoxDecoration(shape: BoxShape.circle,
+                            border: Border.all(width: 2.0, color: AppColor.white),
                             color: AppColor.primary),
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.edit_rounded,
-                            size: 12,
-                            color: AppColor.white,
-                          ),
-                          padding: EdgeInsets.all(2.0),
-                          onPressed: () {},
-                        ),
-                      ),
-                    )
-                  ]),
-                  SizedBox(height: 30.0),
+                        child: IconButton(onPressed: () {},
+                          icon: Icon(Icons.edit_rounded,size: 12,color: AppColor.white),
+                          padding: EdgeInsets.all(2.0)),),)]),
+                  SizedBox(height: smallerSpacing),
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'Full name',
@@ -75,7 +51,7 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: xxTinierSpacing),
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'Username',
@@ -86,7 +62,7 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: xxTinierSpacing),
                   TextField(
                     controller: _date,
                     readOnly: true,
@@ -115,7 +91,7 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
                       ),
                     ),
                   ), //date of birth
-                  SizedBox(height: 10.0),
+                  SizedBox(height: xxTinierSpacing),
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'Email address',
@@ -130,7 +106,7 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: xxTinierSpacing),
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'Phone number',
@@ -141,18 +117,19 @@ class _OnboardingScreen6State extends State<OnboardingScreen6> {
                       ),
                     ),
                   ), //phone number
-                  SizedBox(height: 10.0),
-                  SizedBox(
-                    width: 330,
-                    height: 60,
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0))),
-                        child: Text('Continue')),
-                  ), //continue
+                  SizedBox(height: xxTinierSpacing),
+                  ElevatedButton(
+                      onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        minimumSize:
+                        const Size(double.maxFinite, kElevatedButtonHeight),
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                            BorderRadius.circular(kGeneralBorderRadius))),
+                    child: Text(
+                      'Continue',
+                      style: Theme.of(context).textTheme.textButtonLarger,
+                    ),), //continue
                 ])),
       ),
     );

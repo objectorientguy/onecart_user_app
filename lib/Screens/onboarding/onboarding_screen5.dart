@@ -164,10 +164,8 @@ class _OnboardingScreen5State extends State<OnboardingScreen5> {
                           activeTrackColor: AppColor.primary,
                           inactiveTrackColor: AppColor.lightGrey),
                       Text('Remember me'),
-                      SizedBox(width: largerSpacing),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text('Forget password?'),
+                      SizedBox(width: xxxMediumSpacing),
+                      TextButton(onPressed: () {},child: Text('Forget password?'),
                       )
                     ]),
               ),

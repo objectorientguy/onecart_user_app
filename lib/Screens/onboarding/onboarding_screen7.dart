@@ -3,6 +3,8 @@ import 'package:onecart_user_app/Screens/onboarding/onboarding_screen5.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+
+import '../../configs/app_dimensions.dart';
 class OnboardingScreen7 extends StatelessWidget {
   const OnboardingScreen7({super.key});
   @override
@@ -16,32 +18,33 @@ class OnboardingScreen7 extends StatelessWidget {
         },
             icon: Icon(Icons.arrow_back_rounded,color: AppColor.black,)),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children:[
-            Image.asset('assets/welcome.png'),
-            Text('Welcome back!',style: Theme.of(context).textTheme.headingMedium),
-            SizedBox(height: xxxTinierSpacing),
-            Text('Are you ready for shopping today?',style: Theme.of(context).textTheme.smallGrey),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: SizedBox(
-                height: 50,
-                width: 320,
-                child: ElevatedButton(onPressed: (){},
-                    style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: AppColor.primary,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children:[
+              SizedBox(height: xxxSmallerSpacing),
+              Image.asset('assets/welcome.png'),
+              SizedBox(height: xxxTinierSpacing),
+              Text('Welcome back!',style: Theme.of(context).textTheme.headingMedium),
+              SizedBox(height: xxxTinierSpacing),
+              Text('Are you ready for shopping today?',style: Theme.of(context).textTheme.smallGrey),
+              SizedBox(height: xxxSmallestSpacing),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    minimumSize:
+                    const Size(double.maxFinite, kElevatedButtonHeight),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0))),
-                    child: const Text('Go shopping now!')
-              ),
-              ),
-            ),
-          ],
+                        borderRadius:
+                        BorderRadius.circular(kGeneralBorderRadius))),
+                child: Text('Go shopping now',
+                  style: Theme.of(context).textTheme.textButtonLarger,
+                ),),
+            ],
+          ),
         ),
       ),
     );
