@@ -13,7 +13,6 @@ import '../Screens/item_details/item_details_screen.dart';
 import '../Screens/orders/order_details_screen.dart';
 import '../Screens/profile/edit_field_screen.dart';
 import '../Screens/profile/edit_profie_screen.dart';
-import '../Screens/orders/order_details_screen.dart';
 import '../Screens/root/root_screen.dart';
 import '../Screens/varient/select_varient_screen.dart';
 
