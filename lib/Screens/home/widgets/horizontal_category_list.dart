@@ -59,6 +59,8 @@ class HorizontalCategoryList extends StatelessWidget {
                     child: Text(
                       categoryData[index - 1]['name'],
                       textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   )
                 ],
@@ -67,7 +69,9 @@ class HorizontalCategoryList extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) {
-          return const SizedBox();
+          return const SizedBox(
+            width: tiniestSpacing,
+          );
         },
       ),
     );
