@@ -10,8 +10,8 @@ import '../../configs/app_spacing.dart';
 
 import '../categories/category_item_screen.dart';
 
-class CategoryFridScreen extends StatelessWidget {
-  const CategoryFridScreen({Key? key}) : super(key: key);
+class CategoryGridScreen extends StatelessWidget {
+  const CategoryGridScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,14 @@ class CategoryFridScreen extends StatelessWidget {
           BlocBuilder<GetAllCategoriesBloc, CategoriesStates>(
             builder: (context, state) {
               if (state is GetAllCategoriesLoading) {
-                return const Center(child: CircularProgressIndicator());
+                return const Column(
+                  children: [
+                    SizedBox(
+                      height: 200,
+                    ),
+                    Center(child: CircularProgressIndicator()),
+                  ],
+                );
               } else if (state is GetAllCategoriesLoaded) {
                 return Expanded(
                   child: GridView.builder(
