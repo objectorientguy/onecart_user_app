@@ -1,19 +1,33 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/get_product_bloc/get_product_events.dart';
 import 'package:onecart_user_app/blocs/get_product_bloc/get_product_states.dart';
 
-// class GetproductBloc extends Bloc<GetProduct, GetProductStates> {
-//   final ProductsRepository _addressRepository = getIt<AddressRepository>();
-//
-//   GetProductStates get initialState => ProductInitial();
-//
-//   AddressBloc() : super(AddressInitial()) {
-//     on<AddAddress>(_addAddress);
-//     on<FetchAddresses>(_fetchAddress);
-//     on<DeleteAddress>(_deleteAddress);
-//     on<FetchCurrentLocation>(_currentLocation);
-//     on<SelectedAddress>(_fetchSelectedAddress);
-//     on<LocationInitialEvent>(_locationInitial);
-//     on<AddressValidations>(_validateAddress);
-//   }
-// }
+import '../../app_module/app_module.dart';
+import '../../data/models/get_product/get_product_model.dart';
+import '../../repositories/product_list/product_list_repository.dart';
+
+class GetProductBloc extends Bloc<GetProduct, GetProductStates> {
+  final ProductsRepository _productsRepository = getIt<ProductsRepository>();
+
+  GetProductStates get initialState => ProductInitial();
+
+  GetProductBloc() : super(ProductInitial()) {
+    on<GetProduct>(_fetchProducts);
+  }
+
+  FutureOr<void> _fetchProducts(
+      GetProduct event, Emitter<GetProductStates> emit) async {
+    emit(FetchProductLoading());
+    try {
+      GetProductByIdModel getProductListModel =
+          await _productsRepository.fetchProducts();
+      log(getProductListModel.data.toString());
+      emit(FetchProductLoaded(getProductByIdModel: getProductListModel));
+    } catch (e) {
+      emit(FetchProductError(message: e.toString()));
+    }
+  }
+}

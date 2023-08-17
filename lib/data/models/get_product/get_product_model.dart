@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-GetProductByIdModel getProductByIdModelFromJson(String str) => GetProductByIdModel.fromJson(json.decode(str));
+GetProductByIdModel getProductByIdModelFromJson(String str) =>
+    GetProductByIdModel.fromJson(json.decode(str));
 
-String getProductByIdModelToJson(GetProductByIdModel data) => json.encode(data.toJson());
+String getProductByIdModelToJson(GetProductByIdModel data) =>
+    json.encode(data.toJson());
 
 class GetProductByIdModel {
   final int? status;
@@ -19,17 +21,22 @@ class GetProductByIdModel {
     this.data,
   });
 
-  factory GetProductByIdModel.fromJson(Map<String, dynamic> json) => GetProductByIdModel(
-    status: json["status"],
-    message: json["message"],
-    data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
-  );
+  factory GetProductByIdModel.fromJson(Map<String, dynamic> json) =>
+      GetProductByIdModel(
+        status: json["status"],
+        message: json["message"],
+        data: json["data"] == null
+            ? []
+            : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    "message": message,
-    "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
-  };
+        "status": status,
+        "message": message,
+        "data": data == null
+            ? []
+            : List<dynamic>.from(data!.map((x) => x.toJson())),
+      };
 }
 
 class Datum {
@@ -58,28 +65,30 @@ class Datum {
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-    companyName: json["company_name"],
-    categoryId: json["category_id"],
-    productName: json["product_name"],
-    image: json["image"] == null ? [] : List<String>.from(json["image"]!.map((x) => x)),
-    cost: json["cost"],
-    details: json["details"],
-    companyId: json["company_id"],
-    productId: json["product_id"],
-    itemCount: json["item_count"],
-    discountedCost: json["discounted_cost"],
-  );
+        companyName: json["company_name"],
+        categoryId: json["category_id"],
+        productName: json["product_name"],
+        image: json["image"] == null
+            ? []
+            : List<String>.from(json["image"]!.map((x) => x)),
+        cost: json["cost"],
+        details: json["details"],
+        companyId: json["company_id"],
+        productId: json["product_id"],
+        itemCount: json["item_count"],
+        discountedCost: json["discounted_cost"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "company_name": companyName,
-    "category_id": categoryId,
-    "product_name": productName,
-    "image": image == null ? [] : List<dynamic>.from(image!.map((x) => x)),
-    "cost": cost,
-    "details": details,
-    "company_id": companyId,
-    "product_id": productId,
-    "item_count": itemCount,
-    "discounted_cost": discountedCost,
-  };
+        "company_name": companyName,
+        "category_id": categoryId,
+        "product_name": productName,
+        "image": image == null ? [] : List<dynamic>.from(image!.map((x) => x)),
+        "cost": cost,
+        "details": details,
+        "company_id": companyId,
+        "product_id": productId,
+        "item_count": itemCount,
+        "discounted_cost": discountedCost,
+      };
 }
