@@ -5,6 +5,7 @@ import 'package:onecart_user_app/configs/app_route.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import 'Screens/on_boarding/on_boarding_screen.dart';
 import 'app_module/app_module.dart';
+import 'blocs/get_product_bloc/get_product_bloc.dart';
 import 'blocs/categories_bloc/categories_bloc.dart';
 
 void main() {
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(lazy: false, create: (context) => AuthenticationBloc()),
+        BlocProvider(lazy: false, create: (context) => GetProductBloc())
         BlocProvider(lazy: false, create: (context) => AuthenticationBloc()),
         BlocProvider(lazy: false, create: (context) => GetAllCategoriesBloc())
       ],
