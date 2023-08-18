@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../category_list/category_list_screen.dart';
 
 class CategoryItemScreenHeader extends StatelessWidget {
   const CategoryItemScreenHeader({
@@ -50,25 +49,10 @@ class CategoryItemScreenHeader extends StatelessWidget {
             ),
             const SizedBox(height: tinySpacing),
             InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, CategoryListScreen.routeName,
-                    arguments: false);
-              },
-              child: const Row(
-                children: [
-                  Text(
-                    'Fruits and vegetables',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
-                  ),
-                  SizedBox(
-                    width: xxTinySpacing,
-                  ),
-                  Icon(
-                    Icons.keyboard_arrow_down_outlined,
-                    color: AppColor.primary,
-                    size: 26,
-                  ),
-                ],
+              onTap: () {},
+              child: const Text(
+                'Fruits and vegetables',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
               ),
             ),
             const SizedBox(height: tinySpacing),
@@ -81,79 +65,6 @@ class CategoryItemScreenHeader extends StatelessWidget {
                       fontSize: 15,
                       color: AppColor.grey),
                   overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-            const SizedBox(height: tinySpacing),
-            Row(
-              children: [
-                Flexible(
-                  flex: 2,
-                  child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.green, width: 1.0),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: DropdownButton<String>(
-                        isDense: true,
-                        value: 'Exotic Fruits and vegetables',
-                        hint: const Text(
-                          'Exotic Fruits & vegetables',
-                          style: TextStyle(color: AppColor.black),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        onChanged: (newValue) {},
-                        icon: const Icon(Icons.keyboard_arrow_down_outlined,
-                            color: AppColor.primary),
-                        isExpanded: true,
-                        underline:
-                            const SizedBox(), // Hides the default underline
-                        items: const []),
-                  ),
-                ),
-                const SizedBox(width: tinierSpacing),
-                Flexible(
-                  flex: 1,
-                  child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 7),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.green, width: 1.0),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: const Text(
-                        '2 Filters',
-                        style: TextStyle(color: AppColor.primary, fontSize: 16),
-                      )),
-                ),
-                const SizedBox(width: tinierSpacing),
-                Flexible(
-                  flex: 1,
-                  child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.green, width: 1.0),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: DropdownButton<String>(
-                        isDense: true,
-                        value: 'Exotic Fruits and vegetables',
-                        hint: const Text(
-                          'Price',
-                          style: TextStyle(color: AppColor.primary),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        onChanged: (newValue) {},
-                        icon: const Icon(Icons.arrow_downward,
-                            color: AppColor.primary),
-                        isExpanded: true,
-                        underline:
-                            const SizedBox(), // Hides the default underline
-                        items: const []),
-                  ),
                 ),
               ],
             ),
