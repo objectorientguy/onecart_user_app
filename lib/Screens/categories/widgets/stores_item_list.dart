@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
@@ -24,7 +22,6 @@ class StoreItemList extends StatelessWidget {
         if (state is FetchProductLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is FetchProductLoaded) {
-          log(state.getProductByIdModel.message.toString());
           return SingleChildScrollView(
             child: Column(
               children: [

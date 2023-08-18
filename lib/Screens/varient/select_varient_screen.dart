@@ -1,20 +1,24 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import '../../blocs/varient_bloc/varient_bloc.dart';
+import '../../blocs/varient_bloc/varient_events.dart';
+import '../../blocs/varient_bloc/varient_states.dart';
 import '../../common_widgets/custom_elevated_button.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_spacing.dart';
 
 class SelectVariantScreen extends StatelessWidget {
   static const routeName = 'SelectVariantScreen';
+
   const SelectVariantScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    List variantData = [
-      {'variant': '196 gm'},
-      {'variant': '420 gm'},
-      {'variant': '640 gm'},
-      {'variant': '900 gm'},
-    ];
+    context.read<SelectVarientBloc>().add(GetAllVarients());
+
     return Scaffold(
         appBar: AppBar(
           title: Text('Select Variant',
@@ -50,117 +54,169 @@ class SelectVariantScreen extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: leftRightMargin, vertical: topBottomPadding),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Row(
-              children: [
-                Image.asset(
-                  'assets/img_2.png',
-                  height: 50,
-                ),
-                const SizedBox(
-                  width: xxxTinierSpacing,
-                ),
-                Flexible(
-                    child: Text(
-                        'Lays American Style Cream & Onion Potato Chips',
-                        style: Theme.of(context)
-                            .textTheme
-                            .textLarge
-                            .copyWith(fontWeight: FontWeight.w500))),
-              ],
-            ),
-            const SizedBox(height: tinySpacing),
-            ListView.separated(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 4,
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: xxxTinySpacing),
-                itemBuilder: (context, index) {
-                  return Container(
-                    padding: const EdgeInsets.all(leftRightMargin),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: AppColor.lightGrey),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            padding: const EdgeInsets.symmetric(
+                horizontal: leftRightMargin, vertical: topBottomPadding),
+            child: BlocBuilder<SelectVarientBloc, SelectVarientStates>(
+              builder: (context, state) {
+                if (state is GetAllVarientsLoading) {
+                  return const Column(
+                    children: [
+                      SizedBox(
+                        height: 200,
+                      ),
+                      Center(child: CircularProgressIndicator()),
+                    ],
+                  );
+                } else if (state is GetAllVarientsLoaded) {
+                  log(state.selectVarientListModel.message.toString());
+                  return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Row(
                           children: [
-                            Text(
-                              variantData[index]['variant'],
-                              style: Theme.of(context).textTheme.headingTiny,
+                            Image.asset(
+                              'assets/img_2.png',
+                              height: 50,
                             ),
-                            const SizedBox(height: xxxTiniestSpacing),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '₹29',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subHeadingLarge,
-                                ),
-                                const SizedBox(width: xxxTinierSpacing),
-                                Text(
-                                  '₹50',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subHeadingMedium
-                                      .copyWith(
-                                          decoration:
-                                              TextDecoration.lineThrough),
-                                ),
-                                const SizedBox(width: xxxTinierSpacing),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: AppColor.grey,
-                                      ),
-                                      color: AppColor.primaryLight,
-                                      borderRadius: BorderRadius.circular(15)),
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: xxTiniestSpacing,
-                                      horizontal: xxTinierSpacing),
-                                  child: Center(
-                                    child: Text('40% OFF',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .textSmall
-                                            .copyWith(
-                                                color: AppColor.primary,
-                                                fontWeight: FontWeight.w700)),
-                                  ),
-                                )
-                              ],
+                            const SizedBox(
+                              width: xxxTinierSpacing,
                             ),
+                            Flexible(
+                                child: Text(
+                                    'Lays American Style Cream & Onion Potato Chips',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .textLarge
+                                        .copyWith(
+                                            fontWeight: FontWeight.w500))),
                           ],
                         ),
-                        TextButton(
-                          onPressed: () {},
-                          style: TextButton.styleFrom(
-                            minimumSize: Size.zero,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: tinierSpacing,
-                                vertical: tiniestSpacing),
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12)),
-                            backgroundColor: AppColor.primary,
-                          ),
-                          child: Text('SELECT',
-                              style:
-                                  Theme.of(context).textTheme.textButtonLarge),
-                        ),
-                      ],
-                    ),
-                  );
-                }),
-          ]),
-        ));
+                        const SizedBox(height: tinySpacing),
+                        ListView.separated(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount:
+                                state.selectVarientListModel.data!.length,
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(height: xxxTinySpacing),
+                            itemBuilder: (context, index) {
+                              return Container(
+                                padding: const EdgeInsets.all(leftRightMargin),
+                                decoration: BoxDecoration(
+                                    border:
+                                        Border.all(color: AppColor.lightGrey),
+                                    borderRadius: BorderRadius.circular(12)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          state.selectVarientListModel
+                                              .data![index].weight
+                                              .toString(),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headingTiny,
+                                        ),
+                                        const SizedBox(
+                                            height: xxxTiniestSpacing),
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              state.selectVarientListModel
+                                                  .data![index].discountedCost
+                                                  .toString(),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .subHeadingLarge,
+                                            ),
+                                            const SizedBox(
+                                                width: xxxTinierSpacing),
+                                            Text(
+                                              state.selectVarientListModel
+                                                  .data![index].variantPrice
+                                                  .toString(),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .subHeadingMedium
+                                                  .copyWith(
+                                                      decoration: TextDecoration
+                                                          .lineThrough),
+                                            ),
+                                            const SizedBox(
+                                                width: xxxTinierSpacing),
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    color: AppColor.grey,
+                                                  ),
+                                                  color: AppColor.primaryLight,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15)),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical:
+                                                          xxTiniestSpacing,
+                                                      horizontal:
+                                                          xxTinierSpacing),
+                                              child: Center(
+                                                child: Text(
+                                                    state.selectVarientListModel
+                                                        .data![index].discount
+                                                        .toString(),
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .textSmall
+                                                        .copyWith(
+                                                            color: AppColor
+                                                                .primary,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700)),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    TextButton(
+                                      onPressed: () {},
+                                      style: TextButton.styleFrom(
+                                        minimumSize: Size.zero,
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: tinierSpacing,
+                                            vertical: tiniestSpacing),
+                                        tapTargetSize:
+                                            MaterialTapTargetSize.shrinkWrap,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(12)),
+                                        backgroundColor: AppColor.primary,
+                                      ),
+                                      child: Text('SELECT',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .textButtonLarge),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }),
+                      ]);
+                }
+                if (state is GetAllVarientsError) {
+                  return Container();
+                } else {
+                  return const SizedBox();
+                }
+              },
+            )));
   }
 }
