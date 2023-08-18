@@ -1,29 +1,23 @@
-import 'package:equatable/equatable.dart';
+
 
 import '../../data/models/address_model/address_model.dart';
 
-abstract class AddressStates extends Equatable{}
+abstract class AddressStates {}
 
 class AddressInitial extends AddressStates{
-  @override
-  List<Object?> get props => throw UnimplementedError();
-
 }
 
-class FetchAddressLoading extends AddressStates{
-  @override
 
-  List<Object?> get props => [];
+class FetchAddressLoading extends AddressStates{
+
 
 }
 
 class FetchAddressLoaded extends AddressStates{
-final FetchAddressModel fetchAddressModel;
+final GetAllAddressModel fetchAddressModel;
 
 FetchAddressLoaded({required this.fetchAddressModel});
 
-  @override
-  List<Object?> get props => [];
 }
 
 class FetchAddressError extends AddressStates{
@@ -31,7 +25,4 @@ class FetchAddressError extends AddressStates{
 
   FetchAddressError({required this.message});
 
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
 }

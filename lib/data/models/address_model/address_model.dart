@@ -1,25 +1,25 @@
 // To parse this JSON data, do
-
-//     final fetchAddressModel = fetchAddressModelFromJson(jsonString);
+//
+//     final getAllAddressModel = getAllAddressModelFromJson(jsonString);
 
 import 'dart:convert';
 
-FetchAddressModel fetchAddressModelFromJson(String str) => FetchAddressModel.fromJson(json.decode(str));
+GetAllAddressModel getAllAddressModelFromJson(String str) => GetAllAddressModel.fromJson(json.decode(str));
 
-String fetchAddressModelToJson(FetchAddressModel data) => json.encode(data.toJson());
+String getAllAddressModelToJson(GetAllAddressModel data) => json.encode(data.toJson());
 
-class FetchAddressModel {
-  final int? status;
+class GetAllAddressModel {
+  final String? status;
   final String? message;
   final List<Datum>? data;
 
-  FetchAddressModel({
+  GetAllAddressModel({
     this.status,
     this.message,
     this.data,
   });
 
-  factory FetchAddressModel.fromJson(Map<String, dynamic> json) => FetchAddressModel(
+  factory GetAllAddressModel.fromJson(Map<String, dynamic> json) => GetAllAddressModel(
     status: json["status"],
     message: json["message"],
     data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
@@ -33,41 +33,45 @@ class FetchAddressModel {
 }
 
 class Datum {
+  final String? addressType;
+  final int? phoneNo;
+  final String? state;
   final int? addressId;
+  final int? userContact;
   final String? addressName;
   final String? city;
-  final int? userContact;
-  final int? companyId;
-  final String? addressTitle;
   final int? pincode;
 
   Datum({
+    this.addressType,
+    this.phoneNo,
+    this.state,
     this.addressId,
+    this.userContact,
     this.addressName,
     this.city,
-    this.userContact,
-    this.companyId,
-    this.addressTitle,
     this.pincode,
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+    addressType: json["address_type"],
+    phoneNo: json["phone_no"],
+    state: json["state"],
     addressId: json["address_id"],
+    userContact: json["user_contact"],
     addressName: json["address_name"],
     city: json["city"],
-    userContact: json["user_contact"],
-    companyId: json["company_id"],
-    addressTitle: json["address_title"],
     pincode: json["pincode"],
   );
 
   Map<String, dynamic> toJson() => {
+    "address_type": addressType,
+    "phone_no": phoneNo,
+    "state": state,
     "address_id": addressId,
+    "user_contact": userContact,
     "address_name": addressName,
     "city": city,
-    "user_contact": userContact,
-    "company_id": companyId,
-    "address_title": addressTitle,
     "pincode": pincode,
   };
 }

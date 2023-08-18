@@ -50,9 +50,9 @@ class AddressScreen extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: state.fetchAddressModel.data!.length,
                 separatorBuilder: (context, index) => const Divider(
-                      height: smallestSpacing,
-                      thickness: 2,
-                    ),
+                  height: smallestSpacing,
+                  thickness: 2,
+                ),
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(
@@ -86,29 +86,27 @@ class AddressScreen extends StatelessWidget {
                                         style: Theme.of(context)
                                             .textTheme
                                             .headingTiny),
-                                    const SizedBox(width: xxxTinierSpacing),
                                   ],
                                 ),
                                 const SizedBox(height: xxxTiniestSpacing),
                                 Text(
-                                  state.fetchAddressModel.data![index].addressName.toString(),
+                                  state.fetchAddressModel.data![index].addressType.toString(),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .subHeadingLarge,
+                                ),
+                                Text(state.fetchAddressModel.data![index].phoneNo.toString(),
                                   style: Theme.of(context)
                                       .textTheme
                                       .subHeadingLarge,
                                 ),
                                 Text(
-                                  state.fetchAddressModel.data![index].phoneNo.toString(),
+                                 state.fetchAddressModel.data![index].addressId.toString(),
                                   style: Theme.of(context)
                                       .textTheme
-                                      .subHeadingLarge,
-                                ),
-                                // Text(
-                                //   addressData[index]['value'][4],
-                                //   style: Theme.of(context)
-                                //       .textTheme
-                                //       .subHeadingLarge
-                                //       .copyWith(fontWeight: FontWeight.w700),
-                                // )
+                                      .subHeadingLarge
+                                      .copyWith(fontWeight: FontWeight.w700),
+                                )
                               ],
                             ),
                           ],
@@ -124,7 +122,7 @@ class AddressScreen extends StatelessWidget {
                                   horizontal: 8, vertical: 7),
                               decoration: BoxDecoration(
                                 border:
-                                    Border.all(color: Colors.green, width: 1.0),
+                                Border.all(color: Colors.green, width: 1.0),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: const Text(
