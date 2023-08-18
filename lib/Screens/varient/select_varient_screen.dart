@@ -115,9 +115,7 @@ class SelectVariantScreen extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          state.selectVarientListModel
-                                              .data![index].weight
-                                              .toString(),
+                                          '₹${state.selectVarientListModel.data![index].weight.toString()}',
                                           style: Theme.of(context)
                                               .textTheme
                                               .headingTiny,
@@ -129,9 +127,7 @@ class SelectVariantScreen extends StatelessWidget {
                                               CrossAxisAlignment.end,
                                           children: [
                                             Text(
-                                              state.selectVarientListModel
-                                                  .data![index].discountedCost
-                                                  .toString(),
+                                              '₹${state.selectVarientListModel.data![index].discountedCost.toString()}',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .subHeadingLarge,
@@ -139,9 +135,7 @@ class SelectVariantScreen extends StatelessWidget {
                                             const SizedBox(
                                                 width: xxxTinierSpacing),
                                             Text(
-                                              state.selectVarientListModel
-                                                  .data![index].variantPrice
-                                                  .toString(),
+                                              '₹${state.selectVarientListModel.data![index].variantPrice.toString()}',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .subHeadingMedium
