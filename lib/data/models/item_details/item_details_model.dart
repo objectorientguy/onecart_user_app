@@ -8,7 +8,7 @@ String itemDetailsModelToJson(ItemDetailsModel data) => json.encode(data.toJson(
 class ItemDetailsModel {
   final int? status;
   final String? message;
-  final Data? data;
+  final ItemDetailsData? data;
 
   ItemDetailsModel({
     this.status,
@@ -19,7 +19,7 @@ class ItemDetailsModel {
   factory ItemDetailsModel.fromJson(Map<String, dynamic> json) => ItemDetailsModel(
     status: json["status"],
     message: json["message"],
-    data: json["data"] == null ? null : Data.fromJson(json["data"]),
+    data: json["data"] == null ? null : ItemDetailsData.fromJson(json["data"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -29,7 +29,7 @@ class ItemDetailsModel {
   };
 }
 
-class Data {
+class ItemDetailsData {
   final int? categoryId;
   final String? productName;
   final bool? deal;
@@ -41,7 +41,7 @@ class Data {
   final int? itemCount;
   final String? discountedCost;
 
-  Data({
+  ItemDetailsData({
     this.categoryId,
     this.productName,
     this.deal,
@@ -54,7 +54,7 @@ class Data {
     this.discountedCost,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory ItemDetailsData.fromJson(Map<String, dynamic> json) => ItemDetailsData(
     categoryId: json["category_id"],
     productName: json["product_name"],
     deal: json["deal"],

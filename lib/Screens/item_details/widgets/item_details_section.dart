@@ -35,7 +35,7 @@ class ItemDetailsSection extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, SelectVariantScreen.routeName,
-                      arguments: false);
+                      arguments: state.itemDetailsModel.data);
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
