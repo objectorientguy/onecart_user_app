@@ -2,6 +2,8 @@ import 'package:get_it/get_it.dart';
 
 import '../repositories/authentication/authentication_repository.dart';
 import '../repositories/authentication/authentication_repository_impl.dart';
+import '../repositories/item_details/item_details_repository.dart';
+import '../repositories/item_details/item_details_repository_impl.dart';
 import '../repositories/product_list/product_ist_repository_impl.dart';
 import '../repositories/product_list/product_list_repository.dart';
 import '../repositories/categories/categories_repository.dart';
@@ -14,6 +16,8 @@ configurableDependencies() {
       () => AuthenticationRepositoryImpl());
   getIt.registerLazySingleton<ProductsRepository>(
       () => ProductsRepositoryImpl());
+  getIt.registerLazySingleton<ItemDetailsRepository>(
+      () => ItemDetailsRepositoryImpl());
   getIt.registerLazySingleton<CategoriesRepository>(
       () => CategoriesRepositoryImpl());
 }

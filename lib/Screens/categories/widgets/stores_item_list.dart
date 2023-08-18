@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +23,7 @@ class StoreItemList extends StatelessWidget {
         if (state is FetchProductLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is FetchProductLoaded) {
-          log(state.getProductByIdModel.message.toString());
+          // log(state.getProductByIdModel.message.toString());
           return Column(
             children: [
               const SizedBox(height: 50),
