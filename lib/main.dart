@@ -25,8 +25,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(lazy: false, create: (context) => AuthenticationBloc()),
-        BlocProvider(lazy: false, create: (context) => GetProductBloc())
-        BlocProvider(lazy: false, create: (context) => AuthenticationBloc()),
+        BlocProvider(lazy: false, create: (context) => GetProductBloc()),
         BlocProvider(lazy: false, create: (context) => GetAllCategoriesBloc())
       ],
       child: GestureDetector(
