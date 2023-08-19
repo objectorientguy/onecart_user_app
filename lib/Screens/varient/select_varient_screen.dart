@@ -9,11 +9,13 @@ import '../../blocs/varient_bloc/varient_states.dart';
 import '../../common_widgets/custom_elevated_button.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_spacing.dart';
+import '../../data/models/item_details/item_details_model.dart';
 
 class SelectVariantScreen extends StatelessWidget {
   static const routeName = 'SelectVariantScreen';
+  final ItemDetailsData data;
 
-  const SelectVariantScreen({super.key});
+  const SelectVariantScreen({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +84,7 @@ class SelectVariantScreen extends StatelessWidget {
                               width: xxxTinierSpacing,
                             ),
                             Flexible(
-                                child: Text(
-                                    'Lays American Style Cream & Onion Potato Chips',
+                                child: Text(data.companyName!,
                                     style: Theme.of(context)
                                         .textTheme
                                         .textLarge

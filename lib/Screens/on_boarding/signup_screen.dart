@@ -8,6 +8,7 @@ import '../../configs/app_spacing.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
+
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
@@ -24,8 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           backgroundColor: AppColor.white,
           leading: IconButton(
             onPressed: () {
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const LogInScreen()));
+              Navigator.pushReplacementNamed(context, LogInScreen.routeName);
             },
             icon: const Icon(Icons.arrow_back_rounded, color: AppColor.black),
           ),
