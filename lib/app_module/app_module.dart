@@ -7,6 +7,8 @@ import '../repositories/home/home_repository.dart';
 import '../repositories/home/home_repository_impl.dart';
 import '../repositories/item_details/item_details_repository.dart';
 import '../repositories/item_details/item_details_repository_impl.dart';
+import '../repositories/orders/orders_repository.dart';
+import '../repositories/orders/orders_repository_impl.dart';
 import '../repositories/product_list/product_ist_repository_impl.dart';
 import '../repositories/product_list/product_list_repository.dart';
 import '../repositories/categories/categories_repository.dart';
@@ -34,4 +36,6 @@ configurableDependencies() {
 
   getIt.registerLazySingleton<CustomerCache>(
       () => CustomerCache(sharedPreferences: getIt<SharedPreferences>()));
+
+  getIt.registerLazySingleton<OrdersRepository>(() => OrdersRepositoryImpl());
 }
