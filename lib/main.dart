@@ -1,22 +1,38 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/authentication_bloc/authentication_bloc.dart';
+import 'package:onecart_user_app/blocs/onboarding_bloc/onboarding_bloc.dart';
+import 'package:onecart_user_app/blocs/onboarding_bloc/onboarding_states.dart';
 import 'package:onecart_user_app/configs/app_route.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'Screens/on_boarding/on_boarding_screen.dart';
+import 'Screens/root/root_screen.dart';
 import 'app_module/app_module.dart';
 import 'blocs/get_product_bloc/get_product_bloc.dart';
 import 'blocs/categories_bloc/categories_bloc.dart';
+import 'blocs/home/home_bloc.dart';
+import 'blocs/onboarding_bloc/onboarding_events.dart';
 import 'blocs/varient_bloc/varient_bloc.dart';
 import 'blocs/item_details_bloc/item_details_bloc.dart';
 
-void main() {
-  _initDependencies();
+Future<void> main() async {
+  await _initApp();
+  await _initDependencies();
   runApp(const MyApp());
+}
+
+_initApp() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 }
 
 _initDependencies() async {
   configurableDependencies();
+  await getIt.isReady<SharedPreferences>();
 }
 
 class MyApp extends StatelessWidget {
@@ -33,6 +49,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(lazy: false, create: (context) => GetProductBloc()),
         BlocProvider(lazy: false, create: (context) => GetAllCategoriesBloc()),
         BlocProvider(lazy: false, create: (context) => ItemDetailsBloc()),
+        BlocProvider(
+            lazy: false,
+            create: (context) => OnBoardingBloc()..add(CheckLoggedIn())),
+        BlocProvider(lazy: false, create: (context) => GetHomeDetailsBloc()),
       ],
       child: GestureDetector(
         onTap: () {
@@ -42,7 +62,15 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: appTheme,
           onGenerateRoute: AppRoutes.onGenerateRoutes,
-          home: const OnBoardingScreen(),
+          home: BlocBuilder<OnBoardingBloc, OnBoardingStates>(
+              builder: (context, state) {
+            if (state is LoggedIn) {
+              log('loggedIn ===========>');
+              return const RootScreen();
+            } else {
+              return const OnBoardingScreen();
+            }
+          }),
         ),
       ),
     );

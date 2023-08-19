@@ -10,21 +10,22 @@ import '../../data/models/item_details/item_details_model.dart';
 import '../../repositories/item_details/item_details_repository.dart';
 import '../categories_bloc/categories_states.dart';
 
-class ItemDetailsBloc extends Bloc<FetchItemDetails,ItemDetailsStates>{
-
-  final ItemDetailsRepository _itemDetailsRepository=getIt<ItemDetailsRepository>();
+class ItemDetailsBloc extends Bloc<FetchItemDetails, ItemDetailsStates> {
+  final ItemDetailsRepository _itemDetailsRepository =
+      getIt<ItemDetailsRepository>();
 
   GetAllCategoriesInitial get initialState => GetAllCategoriesInitial();
 
   ItemDetailsBloc() : super(ItemDetailsInitial()) {
     on<FetchItemDetails>(_getItemDetails);
   }
-  FutureOr<void> _getItemDetails(FetchItemDetails event, Emitter<ItemDetailsStates> emit) async {
+  FutureOr<void> _getItemDetails(
+      FetchItemDetails event, Emitter<ItemDetailsStates> emit) async {
     log("hello");
     emit(ItemDetailsLoading());
     try {
       ItemDetailsModel getProductDetailsModel =
-      await _itemDetailsRepository.getItemDetails();
+          await _itemDetailsRepository.getItemDetails();
       log(getProductDetailsModel.data.toString());
       emit(ItemDetailsLoaded(itemDetailsModel: getProductDetailsModel));
     } catch (e) {
@@ -32,5 +33,3 @@ class ItemDetailsBloc extends Bloc<FetchItemDetails,ItemDetailsStates>{
     }
   }
 }
-
-
