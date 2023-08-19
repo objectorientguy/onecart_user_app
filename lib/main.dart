@@ -16,6 +16,7 @@ import 'blocs/get_product_bloc/get_product_bloc.dart';
 import 'blocs/categories_bloc/categories_bloc.dart';
 import 'blocs/home/home_bloc.dart';
 import 'blocs/onboarding_bloc/onboarding_events.dart';
+import 'blocs/orders/orders_bloc.dart';
 import 'blocs/varient_bloc/varient_bloc.dart';
 import 'blocs/item_details_bloc/item_details_bloc.dart';
 
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(lazy: false, create: (context) => GetProductBloc()),
         BlocProvider(lazy: false, create: (context) => GetAllCategoriesBloc()),
         BlocProvider(lazy: false, create: (context) => ItemDetailsBloc()),
+        BlocProvider(lazy: false, create: (context) => GetAllOrdersBloc()),
         BlocProvider(
             lazy: false,
             create: (context) => OnBoardingBloc()..add(CheckLoggedIn())),
