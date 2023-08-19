@@ -9,15 +9,14 @@ import 'package:onecart_user_app/repositories/address_repo/address_repository.da
 
 import '../../data/models/address_model/address_model.dart';
 
-class AddressBloc extends Bloc<AddressEvents, AddressStates>{
+class AddressBloc extends Bloc<AddressEvents, AddressStates> {
   final AddressRepository _addressRepository = getIt<AddressRepository>();
 
-AddressStates get initialState => AddressInitial();
+  AddressStates get initialState => AddressInitial();
 
- AddressBloc(): super(AddressInitial()){
-on<FetchAddress>(_fetchAddress);
-
- }
+  AddressBloc() : super(AddressInitial()) {
+    on<FetchAddress>(_fetchAddress);
+  }
 
   FutureOr<void> _fetchAddress(
       FetchAddress event, Emitter<AddressStates> emit) async {
@@ -27,12 +26,9 @@ on<FetchAddress>(_fetchAddress);
       GetAllAddressModel fetchAddressModel =
           await _addressRepository.fetchAddress();
       log(fetchAddressModel.data.toString());
-      emit(FetchAddressLoaded(
-          fetchAddressModel: fetchAddressModel));
-    }catch(e){
+      emit(FetchAddressLoaded(fetchAddressModel: fetchAddressModel));
+    } catch (e) {
       emit(FetchAddressError(message: e.toString()));
     }
-    }
-
-
+  }
 }

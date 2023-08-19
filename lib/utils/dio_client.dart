@@ -26,7 +26,7 @@ class DioClient {
     dynamic jsonResponse;
     try {
       final response =
-      await dio.post(requestUrl, data: body, options: Options());
+          await dio.post(requestUrl, data: body, options: Options());
       jsonResponse = (response.data);
     } on DioException catch (e) {
       if (e.response != null) {

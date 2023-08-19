@@ -5,10 +5,11 @@ import '../../common_widgets/custom_elevated_button.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
+import '../../data/models/address_model/address_model.dart';
 
 class EditAddressScreen extends StatelessWidget {
   static const routeName = 'EditAddressScreen';
-  final Map addressDataMap;
+  final Datum addressDataMap;
   const EditAddressScreen({Key? key, required this.addressDataMap})
       : super(key: key);
 
@@ -19,11 +20,16 @@ class EditAddressScreen extends StatelessWidget {
     TextEditingController titleController = TextEditingController();
     TextEditingController pinController = TextEditingController();
     TextEditingController phoneController = TextEditingController();
-    laneController.value = TextEditingValue(text: addressDataMap['value'][0]);
-    cityController.value = TextEditingValue(text: addressDataMap['value'][2]);
-    titleController.value = TextEditingValue(text: addressDataMap['name']);
-    pinController.value = TextEditingValue(text: addressDataMap['value'][1]);
-    phoneController.value = TextEditingValue(text: addressDataMap['value'][4]);
+    laneController.value =
+        TextEditingValue(text: addressDataMap.addressType.toString());
+    cityController.value =
+        TextEditingValue(text: addressDataMap.addressName.toString());
+    titleController.value =
+        TextEditingValue(text: addressDataMap.state.toString());
+    pinController.value =
+        TextEditingValue(text: addressDataMap.city.toString());
+    phoneController.value =
+        TextEditingValue(text: addressDataMap.pincode.toString());
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit address',

@@ -10,6 +10,5 @@ final getIt = GetIt.instance;
 configurableDependencies() {
   getIt.registerLazySingleton<AuthenticationRepository>(
       () => AuthenticationRepositoryImpl());
-  getIt.registerLazySingleton<AddressRepository>(
-          () => AddressRepositoryImpl());
+  getIt.registerLazySingleton<AddressRepository>(() => AddressRepositoryImpl());
 }
