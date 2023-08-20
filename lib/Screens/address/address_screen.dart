@@ -11,7 +11,8 @@ import 'edit_address_screen.dart';
 
 class AddressScreen extends StatelessWidget {
   static const routeName = 'AddressScreen';
-  const AddressScreen({Key? key}) : super(key: key);
+//  final Map addressDetailsMap = {};
+ const AddressScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,8 @@ class AddressScreen extends StatelessWidget {
           builder: (context, state) {
             if (state is FetchAddressLoading) {
               return const Center(child: CircularProgressIndicator());
-            } else if (state is FetchAddressLoaded) {
+            }
+            else if (state is FetchAddressLoaded) {
               log(state.fetchAddressModel.message.toString());
               return ListView.separated(
                   physics: const BouncingScrollPhysics(),
@@ -121,12 +123,12 @@ class AddressScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              log(state.fetchAddressModel.data![index]
-                                  .toString());
-                              Navigator.pushNamed(
-                                  context, EditAddressScreen.routeName,
-                                  arguments:
-                                      state.fetchAddressModel.data![index]);
+                              // log(state.fetchAddressModel.data![index]
+                              //     .toString());
+                              // Navigator.pushNamed(
+                              //     context, EditAddressScreen.routeName,
+                              //     arguments:
+                              //         state.addressDetails[index]);
                             },
                             child: Container(
                                 padding: const EdgeInsets.symmetric(

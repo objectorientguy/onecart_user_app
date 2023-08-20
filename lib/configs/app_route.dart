@@ -15,7 +15,6 @@ import '../Screens/profile/edit_field_screen.dart';
 import '../Screens/profile/edit_profie_screen.dart';
 import '../Screens/root/root_screen.dart';
 import '../Screens/varient/select_varient_screen.dart';
-import '../data/models/address_model/address_model.dart';
 
 class AppRoutes {
   static Route onGenerateRoutes(RouteSettings settings) {
@@ -33,7 +32,7 @@ class AppRoutes {
       case SelectVariantScreen.routeName:
         return _createRoute(const SelectVariantScreen());
       case AddressScreen.routeName:
-        return _createRoute(const AddressScreen());
+        return _createRoute( const AddressScreen());
       case OrderSuccessScreen.routeName:
         return _createRoute(const OrderSuccessScreen());
       case NoFavoritesScreen.routeName:
@@ -47,7 +46,7 @@ class AppRoutes {
             EditFieldScreen(fieldData: settings.arguments as String));
       case EditAddressScreen.routeName:
         return _createRoute(
-            EditAddressScreen(addressDataMap: settings.arguments as Datum));
+            EditAddressScreen(addressDataMap: settings.arguments as Map));
       case RootScreen.routeName:
         return _createRoute(const LogInScreen());
       default:
