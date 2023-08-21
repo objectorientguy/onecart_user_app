@@ -16,6 +16,7 @@ import '../Screens/profile/edit_profie_screen.dart';
 import '../Screens/root/root_screen.dart';
 import '../Screens/varient/select_varient_screen.dart';
 import '../data/models/item_details/item_details_model.dart';
+import '../data/models/orders/get_all_orders_model.dart';
 
 class AppRoutes {
   static Route onGenerateRoutes(RouteSettings settings) {
@@ -40,7 +41,8 @@ class AppRoutes {
       case NoFavoritesScreen.routeName:
         return _createRoute(const NoFavoritesScreen());
       case OrdersDetailsScreen.routeName:
-        return _createRoute(const OrdersDetailsScreen());
+        return _createRoute(
+            OrdersDetailsScreen(data: settings.arguments as OrderDatum));
       case EditProfileScreen.routeName:
         return _createRoute(const EditProfileScreen());
       case EditFieldScreen.routeName:

@@ -13,7 +13,7 @@ String getAllOrdersListModelToJson(GetAllOrdersListModel data) =>
 class GetAllOrdersListModel {
   final int? status;
   final String? message;
-  final List<Datum>? data;
+  final List<OrderDatum>? data;
 
   GetAllOrdersListModel({
     this.status,
@@ -27,7 +27,7 @@ class GetAllOrdersListModel {
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+            : List<OrderDatum>.from(json["data"]!.map((x) => OrderDatum.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -39,7 +39,7 @@ class GetAllOrdersListModel {
       };
 }
 
-class Datum {
+class OrderDatum {
   final int? orderId;
   final int? userContact;
   final int? itemCount;
@@ -51,7 +51,7 @@ class Datum {
   final DateTime? orderPlaced;
   final String? totalPrice;
 
-  Datum({
+  OrderDatum({
     this.orderId,
     this.userContact,
     this.itemCount,
@@ -64,7 +64,7 @@ class Datum {
     this.totalPrice,
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory OrderDatum.fromJson(Map<String, dynamic> json) => OrderDatum(
         orderId: json["order_id"],
         userContact: json["user_contact"],
         itemCount: json["item_count"],

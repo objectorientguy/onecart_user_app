@@ -142,7 +142,8 @@ class OrdersScreen extends StatelessWidget {
                           InkWell(
                             onTap: () {
                               Navigator.pushNamed(
-                                  context, OrdersDetailsScreen.routeName);
+                                  context, OrdersDetailsScreen.routeName,
+                              arguments: state.getAllOrdersListModel.data![index]);
                             },
                             child: Container(
                                 padding: const EdgeInsets.symmetric(

@@ -6,6 +6,7 @@ import '../../item_details/item_details_screen.dart';
 
 class TodayDealsSection extends StatelessWidget {
   const TodayDealsSection({
+
     super.key,
   });
 

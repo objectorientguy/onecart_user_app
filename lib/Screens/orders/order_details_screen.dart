@@ -3,10 +3,13 @@ import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_color.dart';
+import '../../data/models/orders/get_all_orders_model.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
   static const routeName = 'OrdersDetailsScreen';
-  const OrdersDetailsScreen({Key? key}) : super(key: key);
+  final OrderDatum data;
+
+ const OrdersDetailsScreen({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +83,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Order #1234',
+                            Text(data.orderId.toString(),
                                 style: Theme.of(context).textTheme.headingTiny),
                             const SizedBox(height: xxxTiniestSpacing),
                             Row(
@@ -120,7 +123,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: xxxTinierSpacing),
+                const SizedBox(height: tinierSpacing),
                 ListView.separated(
                     physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
@@ -195,3 +198,4 @@ class OrdersDetailsScreen extends StatelessWidget {
     );
   }
 }
+
