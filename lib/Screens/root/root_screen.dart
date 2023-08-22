@@ -32,11 +32,12 @@ class _RootScreenState extends State<RootScreen> {
     });
   }
 
-  static const List _widgetOptions = [
-    HomeScreen(),
-    CategoryGridScreen(),
-    OrdersScreen(),
-    ProfileScreen(),
+  static final List _widgetOptions = [
+    const HomeScreen(),
+    const CategoryGridScreen(),
+    //  state.getAllCategoriesListModel.data[index].CategoryDatum!
+    const OrdersScreen(),
+    const ProfileScreen(),
   ];
 
   @override

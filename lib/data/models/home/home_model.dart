@@ -34,7 +34,7 @@ class HomeModel {
 
 class Data {
   final List<Category>? categories;
-  final List<Banner>? banners;
+  final List<PromotinalBanner>? banners;
   final List<Deal>? deals;
 
   Data({
@@ -50,8 +50,8 @@ class Data {
                 json["categories"]!.map((x) => Category.fromJson(x))),
         banners: json["banners"] == null
             ? []
-            : List<Banner>.from(
-                json["banners"]!.map((x) => Banner.fromJson(x))),
+            : List<PromotinalBanner>.from(
+                json["banners"]!.map((x) => PromotinalBanner.fromJson(x))),
         deals: json["deals"] == null
             ? []
             : List<Deal>.from(json["deals"]!.map((x) => Deal.fromJson(x))),
@@ -70,7 +70,7 @@ class Data {
       };
 }
 
-class Banner {
+class PromotinalBanner {
   final String? discount;
   final dynamic description;
   final String? tAc;
@@ -78,7 +78,7 @@ class Banner {
   final int? bannerId;
   final String? bannerImage;
 
-  Banner({
+  PromotinalBanner({
     this.discount,
     this.description,
     this.tAc,
@@ -87,7 +87,8 @@ class Banner {
     this.bannerImage,
   });
 
-  factory Banner.fromJson(Map<String, dynamic> json) => Banner(
+  factory PromotinalBanner.fromJson(Map<String, dynamic> json) =>
+      PromotinalBanner(
         discount: json["discount"],
         description: json["description"],
         tAc: json["tAc"],

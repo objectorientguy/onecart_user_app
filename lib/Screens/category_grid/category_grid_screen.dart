@@ -79,11 +79,10 @@ class CategoryGridScreen extends StatelessWidget {
                                   width: kHorizontalCategoryListItemWidth,
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
-                                        image: AssetImage(state
+                                        image: NetworkImage(state
                                             .getAllCategoriesListModel
                                             .data![index]
-                                            .categoryImage
-                                            .toString())),
+                                            .categoryImage!)),
                                     shape: BoxShape.circle,
                                   ),
                                 ),
