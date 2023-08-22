@@ -27,7 +27,8 @@ class GetAllOrdersListModel {
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<OrderDatum>.from(json["data"]!.map((x) => OrderDatum.fromJson(x))),
+            : List<OrderDatum>.from(
+                json["data"]!.map((x) => OrderDatum.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {

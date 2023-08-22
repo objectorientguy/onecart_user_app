@@ -143,7 +143,8 @@ class OrdersScreen extends StatelessWidget {
                             onTap: () {
                               Navigator.pushNamed(
                                   context, OrdersDetailsScreen.routeName,
-                              arguments: state.getAllOrdersListModel.data![index]);
+                                  arguments:
+                                      state.getAllOrdersListModel.data![index]);
                             },
                             child: Container(
                                 padding: const EdgeInsets.symmetric(

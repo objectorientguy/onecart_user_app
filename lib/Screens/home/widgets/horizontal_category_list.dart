@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/data/models/home/home_model.dart';
 
@@ -10,9 +7,9 @@ import '../../categories/category_item_screen.dart';
 
 class HorizontalCategoryList extends StatelessWidget {
   static const routeName = 'HorizontalCategoryList';
-   final List<Category> data;
+  final List<Category> data;
 
-  HorizontalCategoryList(this.data, {super.key});
+  const HorizontalCategoryList(this.data, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,10 +52,10 @@ class HorizontalCategoryList extends StatelessWidget {
                     width: kHorizontalCategoryListItemWidth,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(data[index].categoryImage!)
-                        // data[index].NetworkImage("http://127.0.0.1:8000/images/Fruits-and-Vegetables.jpg"),
+                          image: NetworkImage(data[index].categoryImage!)
+                          // data[index].NetworkImage("http://127.0.0.1:8000/images/Fruits-and-Vegetables.jpg"),
                           //image: AssetImage(categoryData[index - 1]['Image'])
-                        ),
+                          ),
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -66,7 +63,7 @@ class HorizontalCategoryList extends StatelessWidget {
                     width: kHorizontalCategoryListItemWidth * 1.2,
                     child: Text(
                       data[index].categoryName!,
-                     // categoryData[index - 1]['name'],
+                      // categoryData[index - 1]['name'],
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,

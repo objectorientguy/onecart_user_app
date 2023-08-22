@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/common_widgets/address_bar.dart';
@@ -60,17 +58,17 @@ class HomeScreen extends StatelessWidget {
                 } else if (state is GetHomeDetailsLoaded) {
                   return Column(
                     children: [
-                       HorizontalCategoryList(
-                         state.homeModel.data!.categories!,
-                       ),
+                      HorizontalCategoryList(
+                        state.homeModel.data!.categories!,
+                      ),
                       const SizedBox(
                         height: tiniestSpacing,
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.width * 0.55,
                           child: const CarouselSlider()),
-                       TodayDealsSection(),
-                        // state.homeModel.data!.deals!,),
+                      const TodayDealsSection(),
+                      // state.homeModel.data!.deals!,),
                     ],
                   );
                 }

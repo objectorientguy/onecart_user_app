@@ -9,7 +9,7 @@ class OrdersDetailsScreen extends StatelessWidget {
   static const routeName = 'OrdersDetailsScreen';
   final OrderDatum data;
 
- const OrdersDetailsScreen({Key? key, required this.data}) : super(key: key);
+  const OrdersDetailsScreen({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -198,4 +198,3 @@ class OrdersDetailsScreen extends StatelessWidget {
     );
   }
 }
-
