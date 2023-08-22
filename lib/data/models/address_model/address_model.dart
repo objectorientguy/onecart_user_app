@@ -13,7 +13,7 @@ String getAllAddressModelToJson(GetAllAddressModel data) =>
 class GetAllAddressModel {
   final String? status;
   final String? message;
-  final List<Datum>? data;
+  final List<AddressDatum>? data;
 
   GetAllAddressModel({
     this.status,
@@ -27,7 +27,7 @@ class GetAllAddressModel {
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+            : List<AddressDatum>.from(json["data"]!.map((x) => AddressDatum.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -39,7 +39,7 @@ class GetAllAddressModel {
       };
 }
 
-class Datum {
+class AddressDatum {
   final String? addressType;
   final int? phoneNo;
   final String? state;
@@ -49,7 +49,7 @@ class Datum {
   final String? city;
   final int? pincode;
 
-  Datum({
+  AddressDatum({
     this.addressType,
     this.phoneNo,
     this.state,
@@ -60,7 +60,7 @@ class Datum {
     this.pincode,
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory AddressDatum.fromJson(Map<String, dynamic> json) => AddressDatum(
         addressType: json["address_type"],
         phoneNo: json["phone_no"],
         state: json["state"],

@@ -23,14 +23,13 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
     emit(FetchAddressLoading());
     try {
       log('Hello');
-      Map fetchAddressData = {};
+      List fetchAddressData = [];
       GetAllAddressModel fetchAddressModel =
           await _addressRepository.fetchAddress();
      log(fetchAddressModel.data.toString());
-      fetchAddressData = fetchAddressModel.toJson();
-      emit(FetchAddressLoaded(fetchAddressModel: fetchAddressModel, addressDetails: {}, ));
+      fetchAddressData = fetchAddressModel.data!;
+      emit(FetchAddressLoaded(fetchAddressModel: fetchAddressModel, addressDetails: fetchAddressData, ));
     } catch (e) {
-      log('aaaa');
       emit(FetchAddressError(message: e.toString()));
     }
   }

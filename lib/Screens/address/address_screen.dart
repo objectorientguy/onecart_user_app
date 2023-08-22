@@ -7,6 +7,7 @@ import '../../blocs/address_bloc/address_bloc.dart';
 import '../../blocs/address_bloc/address_event.dart';
 import '../../blocs/address_bloc/address_states.dart';
 import '../../configs/app_color.dart';
+import 'edit_address_screen.dart';
 
 class AddressScreen extends StatelessWidget {
   static const routeName = 'AddressScreen';
@@ -16,30 +17,30 @@ class AddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<AddressBloc>().add(FetchAddress());
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('My addresses',
-              style: Theme.of(context).textTheme.headingMedium),
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('My addresses',
+            style: Theme.of(context).textTheme.headingMedium),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_new,
+              color: AppColor.black,
+            )),
+        actions: [
+          IconButton(
+              onPressed: () {},
               icon: const Icon(
-                Icons.arrow_back_ios_new,
+                Icons.more_vert,
                 color: AppColor.black,
-              )),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.more_vert,
-                  color: AppColor.black,
-                ))
-          ],
-        ),
-        body: BlocBuilder<AddressBloc, AddressStates>(
+              ))
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: BlocBuilder<AddressBloc, AddressStates>(
           builder: (context, state) {
             if (state is FetchAddressLoading) {
               return const Center(child: CircularProgressIndicator());
@@ -122,12 +123,12 @@ class AddressScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              // log(state.fetchAddressModel.data![index]
-                              //     .toString());
-                              // Navigator.pushNamed(
-                              //     context, EditAddressScreen.routeName,
-                              //     arguments:
-                              //         state.addressDetails[index]);
+                              log(state.fetchAddressModel.data![index]
+                                  .toString());
+                              Navigator.pushNamed(
+                                  context, EditAddressScreen.routeName,
+                                  arguments:
+                                      state.addressDetails[index]);
                             },
                             child: Container(
                                 padding: const EdgeInsets.symmetric(
