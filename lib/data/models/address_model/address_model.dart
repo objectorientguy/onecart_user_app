@@ -27,7 +27,8 @@ class GetAllAddressModel {
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<AddressDatum>.from(json["data"]!.map((x) => AddressDatum.fromJson(x))),
+            : List<AddressDatum>.from(
+                json["data"]!.map((x) => AddressDatum.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {

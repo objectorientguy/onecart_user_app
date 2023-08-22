@@ -26,9 +26,12 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
       List fetchAddressData = [];
       GetAllAddressModel fetchAddressModel =
           await _addressRepository.fetchAddress();
-     log(fetchAddressModel.data.toString());
+      log(fetchAddressModel.data.toString());
       fetchAddressData = fetchAddressModel.data!;
-      emit(FetchAddressLoaded(fetchAddressModel: fetchAddressModel, addressDetails: fetchAddressData, ));
+      emit(FetchAddressLoaded(
+        fetchAddressModel: fetchAddressModel,
+        addressDetails: fetchAddressData,
+      ));
     } catch (e) {
       emit(FetchAddressError(message: e.toString()));
     }

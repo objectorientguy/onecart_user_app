@@ -58,14 +58,17 @@ class HomeScreen extends StatelessWidget {
                 } else if (state is GetHomeDetailsLoaded) {
                   return Column(
                     children: [
-                      const HorizontalCategoryList(),
+                      HorizontalCategoryList(
+                        state.homeModel.data!.categories!,
+                      ),
                       const SizedBox(
                         height: tiniestSpacing,
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.width * 0.55,
                           child: const CarouselSlider()),
-                      const TodayDealsSection()
+                      const TodayDealsSection(),
+                      // state.homeModel.data!.deals!,),
                     ],
                   );
                 }
