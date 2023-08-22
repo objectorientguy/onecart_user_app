@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/home/home_model.dart';
 import '../../item_details/item_details_screen.dart';
 
 class TodayDealsSection extends StatelessWidget {
-  const TodayDealsSection({
+  static const routeName = 'TodayDealsSection';
+  final List<Deal> data;
+  const TodayDealsSection(
+    this.data, {
     super.key,
   });
 
@@ -28,7 +32,7 @@ class TodayDealsSection extends StatelessWidget {
           ListView.separated(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 3,
+            itemCount: data.length,
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
@@ -41,9 +45,10 @@ class TodayDealsSection extends StatelessWidget {
                     Container(
                       height: screenwidth * 0.24,
                       width: screenwidth * 0.24,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage('assets/img_2.png'))),
+                              image: NetworkImage(data[index].image!),
+                              fit: BoxFit.fill)),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +56,7 @@ class TodayDealsSection extends StatelessWidget {
                         SizedBox(
                           width: screenwidth * 0.65,
                           child: Text(
-                            'Lays American Style Creame and Onion Potato Chips',
+                            data[index].productName!,
                             style: Theme.of(context).textTheme.textLarge,
                           ),
                         ),
@@ -66,7 +71,7 @@ class TodayDealsSection extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    '₹300',
+                                    data[index].cost!.toString(),
                                     style: Theme.of(context)
                                         .textTheme
                                         .headingSmall,
@@ -75,7 +80,7 @@ class TodayDealsSection extends StatelessWidget {
                                     width: xxxTinierSpacing,
                                   ),
                                   Text(
-                                    '₹300',
+                                    data[index].cost!,
                                     style: Theme.of(context)
                                         .textTheme
                                         .subHeadingLarge
@@ -98,7 +103,8 @@ class TodayDealsSection extends StatelessWidget {
                                         vertical: xxTiniestSpacing,
                                         horizontal: xxTinierSpacing),
                                     child: Center(
-                                      child: Text('40% OFF',
+                                      child: Text(
+                                          '${data[index].discountedCost!} % off',
                                           style: Theme.of(context)
                                               .textTheme
                                               .textSmall

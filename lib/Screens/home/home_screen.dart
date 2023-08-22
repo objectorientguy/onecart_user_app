@@ -66,9 +66,10 @@ class HomeScreen extends StatelessWidget {
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.width * 0.55,
-                          child: const CarouselSlider()),
-                      const TodayDealsSection(),
-                      // state.homeModel.data!.deals!,),
+                          child: CarouselSlider(
+                            state.homeModel.data!.banners!,
+                          )),
+                      TodayDealsSection(state.homeModel.data!.deals!),
                     ],
                   );
                 }
