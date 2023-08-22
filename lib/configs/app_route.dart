@@ -32,7 +32,7 @@ class AppRoutes {
       case SelectVariantScreen.routeName:
         return _createRoute(const SelectVariantScreen());
       case AddressScreen.routeName:
-        return _createRoute( const AddressScreen());
+        return _createRoute( AddressScreen());
       case OrderSuccessScreen.routeName:
         return _createRoute(const OrderSuccessScreen());
       case NoFavoritesScreen.routeName:

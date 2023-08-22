@@ -136,25 +136,24 @@ class EditAddressScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.textButtonLarger,
                       )),
                 ),
-                const SizedBox(width: xxxTinierSpacing),
-                Expanded(
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColor.lighterGrey,
-                          minimumSize: const Size(
-                              double.maxFinite, kElevatedButtonHeight),
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(kGeneralBorderRadius))),
-                      child: Text(
-                        'CANCEL',
-                        style: Theme.of(context)
-                            .textTheme
-                            .textButtonLarger
-                            .copyWith(color: AppColor.darkerGrey),
-                      )),
-                ),
+                // Expanded(
+                //   child: ElevatedButton(
+                //       onPressed: () {},
+                //       style: ElevatedButton.styleFrom(
+                //           backgroundColor: AppColor.lighterGrey,
+                //           minimumSize: const Size(
+                //               double.maxFinite, kElevatedButtonHeight),
+                //           shape: RoundedRectangleBorder(
+                //               borderRadius:
+                //                   BorderRadius.circular(kGeneralBorderRadius))),
+                //       child: Text(
+                //         'CANCEL',
+                //         style: Theme.of(context)
+                //             .textTheme
+                //             .textButtonLarger
+                //             .copyWith(color: AppColor.darkerGrey),
+                //       )),
+                // ),
               ],
             )
           ],

@@ -7,12 +7,11 @@ import '../../blocs/address_bloc/address_bloc.dart';
 import '../../blocs/address_bloc/address_event.dart';
 import '../../blocs/address_bloc/address_states.dart';
 import '../../configs/app_color.dart';
-import 'edit_address_screen.dart';
 
 class AddressScreen extends StatelessWidget {
   static const routeName = 'AddressScreen';
-//  final Map addressDetailsMap = {};
- const AddressScreen({Key? key}) : super(key: key);
+ final Map addressDetailsMap = {};
+  AddressScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
