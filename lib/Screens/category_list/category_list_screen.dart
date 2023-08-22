@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_color.dart';
@@ -7,6 +8,7 @@ import '../../configs/app_spacing.dart';
 
 class CategoryListScreen extends StatefulWidget {
   static const routeName = 'CategoryListScreen';
+
   const CategoryListScreen({Key? key}) : super(key: key);
 
   @override
@@ -24,6 +26,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     {'name': 'Home Care', 'value': false},
     {'name': 'Personal Care', 'value': false}
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

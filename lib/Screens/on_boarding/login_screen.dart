@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:onecart_user_app/Screens/on_boarding/signup_screen.dart';
 import 'package:onecart_user_app/Screens/on_boarding/welcome_screen.dart';
+import 'package:onecart_user_app/Screens/root/root_screen.dart';
+import 'package:onecart_user_app/blocs/authentication_bloc/authentication_bloc.dart';
+import 'package:onecart_user_app/blocs/authentication_bloc/authentication_events.dart';
 
 import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+
 import '../../configs/app_dimensions.dart';
 
 class LogInScreen extends StatefulWidget {
-  const LogInScreen({super.key});
+  static const routeName = 'LogInScreen';
+
+  const LogInScreen({
+    super.key,
+  });
+
   @override
   State<LogInScreen> createState() => _LogInScreenState();
 }
@@ -21,6 +32,7 @@ class _LogInScreenState extends State<LogInScreen> {
   bool showWrongPassword = false;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -170,7 +182,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   ? SizedBox(
                       width: kTextboxWidth,
                       child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (emailController.text == 'abc@gmail.com') {
                             if (passwordController.text == '12345678') {
                               Navigator.of(context).pushReplacement(
@@ -204,9 +216,12 @@ class _LogInScreenState extends State<LogInScreen> {
                       width: kTextboxWidth,
                       child: ElevatedButton(
                         onPressed: () {
+                          context
+                              .read<AuthenticationBloc>()
+                              .add(AuthenticatedUser());
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => const SignUpScreen()));
+                                  builder: (context) => const RootScreen()));
                         },
                         style: ElevatedButton.styleFrom(
                             minimumSize: const Size(
@@ -246,6 +261,10 @@ class _LogInScreenState extends State<LogInScreen> {
                             setState(() {
                               isSigninScreen = !isSigninScreen;
                             });
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const SignUpScreen()));
                           },
                           child: const Text('Sign up',
                               style: TextStyle(color: AppColor.primary)))
