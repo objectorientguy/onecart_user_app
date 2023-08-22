@@ -1,6 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../repositories/address_repo/address_repository.dart';
+import '../repositories/address_repo/address_repository_impl.dart';
 import '../repositories/authentication/authentication_repository.dart';
 import '../repositories/authentication/authentication_repository_impl.dart';
 import '../repositories/home/home_repository.dart';
@@ -24,6 +26,8 @@ configurableDependencies() {
       () async => await SharedPreferences.getInstance());
   getIt.registerLazySingleton<AuthenticationRepository>(
       () => AuthenticationRepositoryImpl());
+  getIt.registerLazySingleton<AddressRepository>(() => AddressRepositoryImpl());
+
   getIt.registerLazySingleton<ProductsRepository>(
       () => ProductsRepositoryImpl());
   getIt.registerLazySingleton<ItemDetailsRepository>(

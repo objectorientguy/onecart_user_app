@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/on_boarding/login_screen.dart';
+import 'package:onecart_user_app/data/models/address_model/address_model.dart';
 
 import '../Screens/address/address_screen.dart';
 import '../Screens/address/edit_address_screen.dart';
@@ -35,7 +36,7 @@ class AppRoutes {
         return _createRoute(
             SelectVariantScreen(data: settings.arguments as ItemDetailsData));
       case AddressScreen.routeName:
-        return _createRoute(const AddressScreen());
+        return _createRoute( AddressScreen());
       case OrderSuccessScreen.routeName:
         return _createRoute(const OrderSuccessScreen());
       case NoFavoritesScreen.routeName:
@@ -50,7 +51,7 @@ class AppRoutes {
             EditFieldScreen(fieldData: settings.arguments as String));
       case EditAddressScreen.routeName:
         return _createRoute(
-            EditAddressScreen(addressDataMap: settings.arguments as Map));
+            EditAddressScreen(addressDataMap: settings.arguments as AddressDatum));
       case RootScreen.routeName:
         return _createRoute(const LogInScreen());
       default:
