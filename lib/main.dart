@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'Screens/on_boarding/on_boarding_screen.dart';
 import 'Screens/root/root_screen.dart';
 import 'app_module/app_module.dart';
+import 'blocs/address_bloc/address_bloc.dart';
 import 'blocs/get_product_bloc/get_product_bloc.dart';
 import 'blocs/categories_bloc/categories_bloc.dart';
 import 'blocs/home/home_bloc.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(lazy: false, create: (context) => AuthenticationBloc()),
+        BlocProvider(lazy: false, create: (context) => AddressBloc())
         BlocProvider(lazy: false, create: (context) => GetProductBloc()),
         BlocProvider(lazy: false, create: (context) => GetAllCategoriesBloc()),
         BlocProvider(lazy: false, create: (context) => SelectVarientBloc()),

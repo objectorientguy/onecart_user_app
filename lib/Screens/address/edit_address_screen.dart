@@ -19,11 +19,16 @@ class EditAddressScreen extends StatelessWidget {
     TextEditingController titleController = TextEditingController();
     TextEditingController pinController = TextEditingController();
     TextEditingController phoneController = TextEditingController();
-    laneController.value = TextEditingValue(text: addressDataMap['value'][0]);
-    cityController.value = TextEditingValue(text: addressDataMap['value'][2]);
-    titleController.value = TextEditingValue(text: addressDataMap['name']);
-    pinController.value = TextEditingValue(text: addressDataMap['value'][1]);
-    phoneController.value = TextEditingValue(text: addressDataMap['value'][4]);
+    laneController.value =
+        TextEditingValue(text: addressDataMap["address_type"].toString());
+    cityController.value =
+        TextEditingValue(text: addressDataMap["address_name"].toString());
+    titleController.value =
+        TextEditingValue(text: addressDataMap["phone_no"].toString());
+    pinController.value =
+        TextEditingValue(text: addressDataMap["state"].toString());
+    phoneController.value =
+        TextEditingValue(text: addressDataMap["city"].toString());
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit address',
@@ -131,25 +136,24 @@ class EditAddressScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.textButtonLarger,
                       )),
                 ),
-                const SizedBox(width: xxxTinierSpacing),
-                Expanded(
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColor.lighterGrey,
-                          minimumSize: const Size(
-                              double.maxFinite, kElevatedButtonHeight),
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(kGeneralBorderRadius))),
-                      child: Text(
-                        'CANCEL',
-                        style: Theme.of(context)
-                            .textTheme
-                            .textButtonLarger
-                            .copyWith(color: AppColor.darkerGrey),
-                      )),
-                ),
+                // Expanded(
+                //   child: ElevatedButton(
+                //       onPressed: () {},
+                //       style: ElevatedButton.styleFrom(
+                //           backgroundColor: AppColor.lighterGrey,
+                //           minimumSize: const Size(
+                //               double.maxFinite, kElevatedButtonHeight),
+                //           shape: RoundedRectangleBorder(
+                //               borderRadius:
+                //                   BorderRadius.circular(kGeneralBorderRadius))),
+                //       child: Text(
+                //         'CANCEL',
+                //         style: Theme.of(context)
+                //             .textTheme
+                //             .textButtonLarger
+                //             .copyWith(color: AppColor.darkerGrey),
+                //       )),
+                // ),
               ],
             )
           ],

@@ -34,7 +34,7 @@ class AppRoutes {
         return _createRoute(
             SelectVariantScreen(data: settings.arguments as ItemDetailsData));
       case AddressScreen.routeName:
-        return _createRoute(const AddressScreen());
+        return _createRoute( AddressScreen());
       case OrderSuccessScreen.routeName:
         return _createRoute(const OrderSuccessScreen());
       case NoFavoritesScreen.routeName:
