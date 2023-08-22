@@ -9,7 +9,7 @@ class FetchAddressLoading extends AddressStates {}
 class FetchAddressLoaded extends AddressStates {
   final GetAllAddressModel fetchAddressModel;
 
-final Map addressDetails;
+final List addressDetails;
   FetchAddressLoaded({required this.fetchAddressModel, required this.addressDetails});
 }
 
