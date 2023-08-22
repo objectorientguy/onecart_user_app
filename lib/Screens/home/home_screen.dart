@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/common_widgets/address_bar.dart';
 import 'package:onecart_user_app/Screens/home/widgets/horizontal_category_list.dart';
 import 'package:onecart_user_app/Screens/home/widgets/todays_deals_section.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
+import '../../blocs/home/home_bloc.dart';
+import '../../blocs/home/home_events.dart';
+import '../../blocs/home/home_states.dart';
 import '../../common_widgets/carousel_slider.dart';
 import '../../configs/app_dimensions.dart';
 
@@ -11,6 +15,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<GetHomeDetailsBloc>().add(GetHomeDetails());
     return SafeArea(
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -39,14 +44,38 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const HorizontalCategoryList(),
-            const SizedBox(
-              height: tiniestSpacing,
-            ),
-            SizedBox(
-                height: MediaQuery.of(context).size.width * 0.55,
-                child: const CarouselSlider()),
-            const TodayDealsSection()
+            BlocBuilder<GetHomeDetailsBloc, HomeStates>(
+              builder: (context, state) {
+                if (state is GetHomeDetailsLoading) {
+                  return const Column(
+                    children: [
+                      SizedBox(
+                        height: 200,
+                      ),
+                      Center(child: CircularProgressIndicator()),
+                    ],
+                  );
+                } else if (state is GetHomeDetailsLoaded) {
+                  return Column(
+                    children: [
+                      const HorizontalCategoryList(),
+                      const SizedBox(
+                        height: tiniestSpacing,
+                      ),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.width * 0.55,
+                          child: const CarouselSlider()),
+                      const TodayDealsSection()
+                    ],
+                  );
+                }
+                if (state is GetHomeDetailsError) {
+                  return Container();
+                } else {
+                  return const SizedBox();
+                }
+              },
+            )
           ],
         ),
       ),

@@ -180,7 +180,7 @@ class ProfileOptionsList extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Setiings',
+                    Text('Settings',
                         style: Theme.of(context).textTheme.headingSmall),
                     const SizedBox(
                       height: xxTiniestSpacing,
