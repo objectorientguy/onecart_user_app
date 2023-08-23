@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,7 +23,7 @@ class GetHomeDetailsBloc extends Bloc<GetHomeDetails, HomeStates> {
     emit(GetHomeDetailsLoading());
     try {
       HomeModel homeModel = await _homeRepository.getHomeDetails();
-
+      log('123');
       emit(GetHomeDetailsLoaded(homeModel: homeModel));
     } catch (e) {
       emit(GetHomeDetailsError(message: e.toString()));

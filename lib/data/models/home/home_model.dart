@@ -20,16 +20,16 @@ class HomeModel {
   });
 
   factory HomeModel.fromJson(Map<String, dynamic> json) => HomeModel(
-        status: json["status"],
-        message: json["message"],
-        data: json["data"] == null ? null : Data.fromJson(json["data"]),
-      );
+    status: json["status"],
+    message: json["message"],
+    data: json["data"] == null ? null : Data.fromJson(json["data"]),
+  );
 
   Map<String, dynamic> toJson() => {
-        "status": status,
-        "message": message,
-        "data": data?.toJson(),
-      };
+    "status": status,
+    "message": message,
+    "data": data?.toJson(),
+  };
 }
 
 class Data {
@@ -44,30 +44,16 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        categories: json["categories"] == null
-            ? []
-            : List<Category>.from(
-                json["categories"]!.map((x) => Category.fromJson(x))),
-        banners: json["banners"] == null
-            ? []
-            : List<PromotinalBanner>.from(
-                json["banners"]!.map((x) => PromotinalBanner.fromJson(x))),
-        deals: json["deals"] == null
-            ? []
-            : List<Deal>.from(json["deals"]!.map((x) => Deal.fromJson(x))),
-      );
+    categories: json["categories"] == null ? [] : List<Category>.from(json["categories"]!.map((x) => Category.fromJson(x))),
+    banners: json["banners"] == null ? [] : List<PromotinalBanner>.from(json["banners"]!.map((x) => PromotinalBanner.fromJson(x))),
+    deals: json["deals"] == null ? [] : List<Deal>.from(json["deals"]!.map((x) => Deal.fromJson(x))),
+  );
 
   Map<String, dynamic> toJson() => {
-        "categories": categories == null
-            ? []
-            : List<dynamic>.from(categories!.map((x) => x.toJson())),
-        "banners": banners == null
-            ? []
-            : List<dynamic>.from(banners!.map((x) => x.toJson())),
-        "deals": deals == null
-            ? []
-            : List<dynamic>.from(deals!.map((x) => x.toJson())),
-      };
+    "categories": categories == null ? [] : List<dynamic>.from(categories!.map((x) => x.toJson())),
+    "banners": banners == null ? [] : List<dynamic>.from(banners!.map((x) => x.toJson())),
+    "deals": deals == null ? [] : List<dynamic>.from(deals!.map((x) => x.toJson())),
+  };
 }
 
 class PromotinalBanner {
@@ -87,48 +73,47 @@ class PromotinalBanner {
     this.bannerImage,
   });
 
-  factory PromotinalBanner.fromJson(Map<String, dynamic> json) =>
-      PromotinalBanner(
-        discount: json["discount"],
-        description: json["description"],
-        tAc: json["tAc"],
-        isActive: json["isActive"],
-        bannerId: json["banner_id"],
-        bannerImage: json["banner_image"],
-      );
+  factory PromotinalBanner.fromJson(Map<String, dynamic> json) => PromotinalBanner(
+    discount: json["discount"],
+    description: json["description"],
+    tAc: json["tAc"],
+    isActive: json["isActive"],
+    bannerId: json["banner_id"],
+    bannerImage: json["banner_image"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "discount": discount,
-        "description": description,
-        "tAc": tAc,
-        "isActive": isActive,
-        "banner_id": bannerId,
-        "banner_image": bannerImage,
-      };
+    "discount": discount,
+    "description": description,
+    "tAc": tAc,
+    "isActive": isActive,
+    "banner_id": bannerId,
+    "banner_image": bannerImage,
+  };
 }
 
 class Category {
-  final String? categoryName;
   final String? categoryImage;
+  final String? categoryName;
   final int? categoryId;
 
   Category({
-    this.categoryName,
     this.categoryImage,
+    this.categoryName,
     this.categoryId,
   });
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
-        categoryName: json["category_name"],
-        categoryImage: json["category_image"],
-        categoryId: json["category_id"],
-      );
+    categoryImage: json["category_image"],
+    categoryName: json["category_name"],
+    categoryId: json["category_id"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "category_name": categoryName,
-        "category_image": categoryImage,
-        "category_id": categoryId,
-      };
+    "category_image": categoryImage,
+    "category_name": categoryName,
+    "category_id": categoryId,
+  };
 }
 
 class Deal {
@@ -137,11 +122,11 @@ class Deal {
   final String? productName;
   final String? brandName;
   final bool? deal;
-  final String? cost;
+  final int? cost;
   final String? details;
   final int? productId;
-  final String? image;
-  final int? itemCount;
+  final List<String>? image;
+  final String? itemCount;
   final String? discountedCost;
 
   Deal({
@@ -159,30 +144,30 @@ class Deal {
   });
 
   factory Deal.fromJson(Map<String, dynamic> json) => Deal(
-        companyName: json["company_name"],
-        categoryId: json["category_id"],
-        productName: json["product_name"],
-        brandName: json["brand_name"],
-        deal: json["deal"],
-        cost: json["cost"],
-        details: json["details"],
-        productId: json["product_id"],
-        image: json["image"],
-        itemCount: json["item_count"],
-        discountedCost: json["discounted_cost"],
-      );
+    companyName: json["company_name"],
+    categoryId: json["category_id"],
+    productName: json["product_name"],
+    brandName: json["brand_name"],
+    deal: json["deal"],
+    cost: json["cost"],
+    details: json["details"],
+    productId: json["product_id"],
+    image: json["image"] == null ? [] : List<String>.from(json["image"]!.map((x) => x)),
+    itemCount: json["item_count"],
+    discountedCost: json["discounted_cost"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "company_name": companyName,
-        "category_id": categoryId,
-        "product_name": productName,
-        "brand_name": brandName,
-        "deal": deal,
-        "cost": cost,
-        "details": details,
-        "product_id": productId,
-        "image": image,
-        "item_count": itemCount,
-        "discounted_cost": discountedCost,
-      };
+    "company_name": companyName,
+    "category_id": categoryId,
+    "product_name": productName,
+    "brand_name": brandName,
+    "deal": deal,
+    "cost": cost,
+    "details": details,
+    "product_id": productId,
+    "image": image == null ? [] : List<dynamic>.from(image!.map((x) => x)),
+    "item_count": itemCount,
+    "discounted_cost": discountedCost,
+  };
 }

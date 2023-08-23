@@ -47,7 +47,7 @@ class TodayDealsSection extends StatelessWidget {
                       width: screenwidth * 0.24,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(data[index].image!),
+                              image: NetworkImage(data[index].image!.toString()),
                               fit: BoxFit.fill)),
                     ),
                     Column(
@@ -80,7 +80,7 @@ class TodayDealsSection extends StatelessWidget {
                                     width: xxxTinierSpacing,
                                   ),
                                   Text(
-                                    data[index].cost!,
+                                    data[index].cost!.toString(),
                                     style: Theme.of(context)
                                         .textTheme
                                         .subHeadingLarge
