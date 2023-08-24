@@ -1,46 +1,41 @@
 // To parse this JSON data, do
 //
-//     final getAllAddressModel = getAllAddressModelFromJson(jsonString);
+//     final editAddressModel = editAddressModelFromJson(jsonString);
 
 import 'dart:convert';
 
-GetAllAddressModel getAllAddressModelFromJson(String str) =>
-    GetAllAddressModel.fromJson(json.decode(str));
+EditAddressModel editAddressModelFromJson(String str) =>
+    EditAddressModel.fromJson(json.decode(str));
 
-String getAllAddressModelToJson(GetAllAddressModel data) =>
+String editAddressModelToJson(EditAddressModel data) =>
     json.encode(data.toJson());
 
-class GetAllAddressModel {
+class EditAddressModel {
   final String? status;
   final String? message;
-  final List<AddressDatum>? data;
+  final Data? data;
 
-  GetAllAddressModel({
+  EditAddressModel({
     this.status,
     this.message,
     this.data,
   });
 
-  factory GetAllAddressModel.fromJson(Map<String, dynamic> json) =>
-      GetAllAddressModel(
+  factory EditAddressModel.fromJson(Map<String, dynamic> json) =>
+      EditAddressModel(
         status: json["status"],
         message: json["message"],
-        data: json["data"] == null
-            ? []
-            : List<AddressDatum>.from(
-                json["data"]!.map((x) => AddressDatum.fromJson(x))),
+        data: json["data"] == null ? null : Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
-        "data": data == null
-            ? []
-            : List<dynamic>.from(data!.map((x) => x.toJson())),
+        "data": data?.toJson(),
       };
 }
 
-class AddressDatum {
+class Data {
   final int? userContact;
   final String? addressName;
   final int? addressId;
@@ -50,7 +45,7 @@ class AddressDatum {
   final int? phoneNo;
   final String? state;
 
-  AddressDatum({
+  Data({
     this.userContact,
     this.addressName,
     this.addressId,
@@ -61,7 +56,7 @@ class AddressDatum {
     this.state,
   });
 
-  factory AddressDatum.fromJson(Map<String, dynamic> json) => AddressDatum(
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
         userContact: json["user_contact"],
         addressName: json["address_name"],
         addressId: json["address_id"],

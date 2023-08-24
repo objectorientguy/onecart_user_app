@@ -71,39 +71,39 @@ class Data {
 }
 
 class PromotinalBanner {
-  final String? discount;
   final dynamic description;
+  final String? discount;
   final String? tAc;
-  final bool? isActive;
-  final int? bannerId;
   final String? bannerImage;
+  final int? bannerId;
+  final bool? isActive;
 
   PromotinalBanner({
-    this.discount,
     this.description,
+    this.discount,
     this.tAc,
-    this.isActive,
-    this.bannerId,
     this.bannerImage,
+    this.bannerId,
+    this.isActive,
   });
 
   factory PromotinalBanner.fromJson(Map<String, dynamic> json) =>
       PromotinalBanner(
-        discount: json["discount"],
         description: json["description"],
+        discount: json["discount"],
         tAc: json["tAc"],
-        isActive: json["isActive"],
-        bannerId: json["banner_id"],
         bannerImage: json["banner_image"],
+        bannerId: json["banner_id"],
+        isActive: json["isActive"],
       );
 
   Map<String, dynamic> toJson() => {
-        "discount": discount,
         "description": description,
+        "discount": discount,
         "tAc": tAc,
-        "isActive": isActive,
-        "banner_id": bannerId,
         "banner_image": bannerImage,
+        "banner_id": bannerId,
+        "isActive": isActive,
       };
 }
 
@@ -132,57 +132,63 @@ class Category {
 }
 
 class Deal {
-  final String? companyName;
   final int? categoryId;
   final String? productName;
+  final List<String>? image;
+  final int? itemCount;
+  final int? discount;
+  final String? details;
+  final String? companyName;
+  final int? productId;
   final String? brandName;
   final bool? deal;
-  final String? cost;
-  final String? details;
-  final int? productId;
-  final String? image;
-  final int? itemCount;
-  final String? discountedCost;
+  final int? price;
+  final int? discountedCost;
 
   Deal({
-    this.companyName,
     this.categoryId,
     this.productName,
-    this.brandName,
-    this.deal,
-    this.cost,
-    this.details,
-    this.productId,
     this.image,
     this.itemCount,
+    this.discount,
+    this.details,
+    this.companyName,
+    this.productId,
+    this.brandName,
+    this.deal,
+    this.price,
     this.discountedCost,
   });
 
   factory Deal.fromJson(Map<String, dynamic> json) => Deal(
-        companyName: json["company_name"],
         categoryId: json["category_id"],
         productName: json["product_name"],
+        image: json["image"] == null
+            ? []
+            : List<String>.from(json["image"]!.map((x) => x)),
+        itemCount: json["item_count"],
+        discount: json["discount"],
+        details: json["details"],
+        companyName: json["company_name"],
+        productId: json["product_id"],
         brandName: json["brand_name"],
         deal: json["deal"],
-        cost: json["cost"],
-        details: json["details"],
-        productId: json["product_id"],
-        image: json["image"],
-        itemCount: json["item_count"],
+        price: json["price"],
         discountedCost: json["discounted_cost"],
       );
 
   Map<String, dynamic> toJson() => {
-        "company_name": companyName,
         "category_id": categoryId,
         "product_name": productName,
+        "image": image == null ? [] : List<dynamic>.from(image!.map((x) => x)),
+        "item_count": itemCount,
+        "discount": discount,
+        "details": details,
+        "company_name": companyName,
+        "product_id": productId,
         "brand_name": brandName,
         "deal": deal,
-        "cost": cost,
-        "details": details,
-        "product_id": productId,
-        "image": image,
-        "item_count": itemCount,
+        "price": price,
         "discounted_cost": discountedCost,
       };
 }

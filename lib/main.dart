@@ -46,7 +46,6 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(lazy: false, create: (context) => AuthenticationBloc()),
         BlocProvider(lazy: false, create: (context) => AddressBloc()),
-        BlocProvider(lazy: false, create: (context) => AddressBloc()),
         BlocProvider(lazy: false, create: (context) => GetProductBloc()),
         BlocProvider(lazy: false, create: (context) => GetAllCategoriesBloc()),
         BlocProvider(lazy: false, create: (context) => SelectVarientBloc()),

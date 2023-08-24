@@ -51,7 +51,8 @@ class AppRoutes {
             EditFieldScreen(fieldData: settings.arguments as String));
       case EditAddressScreen.routeName:
         return _createRoute(EditAddressScreen(
-            addressDataMap: settings.arguments as AddressDatum));
+          addressDataMap: settings.arguments as AddressDatum,
+        ));
       case RootScreen.routeName:
         return _createRoute(const LogInScreen());
       default:

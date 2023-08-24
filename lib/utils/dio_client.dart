@@ -39,6 +39,23 @@ class DioClient {
     return jsonResponse;
   }
 
+  Future<dynamic> put(String requestUrl, Map? body) async {
+    dynamic jsonResponse;
+    try {
+      final response =
+          await dio.put(requestUrl, data: body, options: Options());
+      jsonResponse = (response.data);
+    } on DioException catch (e) {
+      if (e.response != null) {
+        e.response!.statusCode;
+        e.response!.data;
+      } else {
+        e.message.toString();
+      }
+    }
+    return jsonResponse;
+  }
+
   Future<dynamic> multiPart(
       String requestUrl, File imageFile, String hashCode) async {
     dynamic jsonResponse;
