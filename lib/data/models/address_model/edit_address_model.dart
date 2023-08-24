@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-EditAddressModel editAddressModelFromJson(String str) => EditAddressModel.fromJson(json.decode(str));
+EditAddressModel editAddressModelFromJson(String str) =>
+    EditAddressModel.fromJson(json.decode(str));
 
-String editAddressModelToJson(EditAddressModel data) => json.encode(data.toJson());
+String editAddressModelToJson(EditAddressModel data) =>
+    json.encode(data.toJson());
 
 class EditAddressModel {
   final String? status;
@@ -19,17 +21,18 @@ class EditAddressModel {
     this.data,
   });
 
-  factory EditAddressModel.fromJson(Map<String, dynamic> json) => EditAddressModel(
-    status: json["status"],
-    message: json["message"],
-    data: json["data"] == null ? null : Data.fromJson(json["data"]),
-  );
+  factory EditAddressModel.fromJson(Map<String, dynamic> json) =>
+      EditAddressModel(
+        status: json["status"],
+        message: json["message"],
+        data: json["data"] == null ? null : Data.fromJson(json["data"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    "message": message,
-    "data": data?.toJson(),
-  };
+        "status": status,
+        "message": message,
+        "data": data?.toJson(),
+      };
 }
 
 class Data {
@@ -54,24 +57,24 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    userContact: json["user_contact"],
-    addressName: json["address_name"],
-    addressId: json["address_id"],
-    city: json["city"],
-    pincode: json["pincode"],
-    addressType: json["address_type"],
-    phoneNo: json["phone_no"],
-    state: json["state"],
-  );
+        userContact: json["user_contact"],
+        addressName: json["address_name"],
+        addressId: json["address_id"],
+        city: json["city"],
+        pincode: json["pincode"],
+        addressType: json["address_type"],
+        phoneNo: json["phone_no"],
+        state: json["state"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "user_contact": userContact,
-    "address_name": addressName,
-    "address_id": addressId,
-    "city": city,
-    "pincode": pincode,
-    "address_type": addressType,
-    "phone_no": phoneNo,
-    "state": state,
-  };
+        "user_contact": userContact,
+        "address_name": addressName,
+        "address_id": addressId,
+        "city": city,
+        "pincode": pincode,
+        "address_type": addressType,
+        "phone_no": phoneNo,
+        "state": state,
+      };
 }

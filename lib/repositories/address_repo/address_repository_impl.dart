@@ -14,9 +14,10 @@ class AddressRepositoryImpl implements AddressRepository {
   }
 
   @override
-  Future<EditAddressModel> editAddress(Map saveAddress) async{
-    final response = await DioClient()
-        .put("https://oneart.onrender.com/editAddress?addressId=3",saveAddress);
+  Future<EditAddressModel> editAddress(Map saveAddress, addressId) async {
+    final response = await DioClient().put(
+        "https://oneart.onrender.com/editAddress?addressId=$addressId",
+        saveAddress);
     log('response=========>$response');
     return EditAddressModel.fromJson(response);
   }

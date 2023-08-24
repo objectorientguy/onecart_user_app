@@ -4,6 +4,7 @@ class FetchAddress extends AddressEvents {}
 
 class EditAddress extends AddressEvents {
   final Map saveAddress;
+  final int addressId;
 
-  EditAddress({required this.saveAddress});
+  EditAddress({required this.addressId, required this.saveAddress});
 }

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/common_widgets/address_bar.dart';
@@ -49,7 +48,6 @@ class HomeScreen extends StatelessWidget {
             BlocBuilder<GetHomeDetailsBloc, HomeStates>(
               builder: (context, state) {
                 if (state is GetHomeDetailsLoading) {
-                  log('message');
                   return const Column(
                     children: [
                       SizedBox(
@@ -59,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   );
                 } else if (state is GetHomeDetailsLoaded) {
-                  log('home');
+                  log('increase');
                   return Column(
                     children: [
                       HorizontalCategoryList(

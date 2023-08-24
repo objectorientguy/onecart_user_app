@@ -21,12 +21,14 @@ class GetHomeDetailsBloc extends Bloc<GetHomeDetails, HomeStates> {
   FutureOr<void> _getHomeDetails(
       GetHomeDetails event, Emitter<HomeStates> emit) async {
     emit(GetHomeDetailsLoading());
-    try {
-      HomeModel homeModel = await _homeRepository.getHomeDetails();
-      log('123');
-      emit(GetHomeDetailsLoaded(homeModel: homeModel));
-    } catch (e) {
-      emit(GetHomeDetailsError(message: e.toString()));
-    }
+    // try {
+    log('key');
+    HomeModel homeModel = await _homeRepository.getHomeDetails();
+    log('yek');
+    emit(GetHomeDetailsLoaded(homeModel: homeModel));
+    // } catch (e) {
+    //   log(e.toString());
+    //   emit(GetHomeDetailsError(message: e.toString()));
+    // }
   }
 }

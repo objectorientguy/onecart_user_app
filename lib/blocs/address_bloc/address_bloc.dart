@@ -20,15 +20,13 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
     on<EditAddress>(_editAddress);
   }
 
-  FutureOr<void> _fetchAddress(FetchAddress event,
-      Emitter<AddressStates> emit) async {
+  FutureOr<void> _fetchAddress(
+      FetchAddress event, Emitter<AddressStates> emit) async {
     emit(FetchAddressLoading());
     try {
-      log('Hello');
       List fetchAddressData = [];
       GetAllAddressModel fetchAddressModel =
-      await _addressRepository.fetchAddress();
-      log(fetchAddressModel.data.toString());
+          await _addressRepository.fetchAddress();
       fetchAddressData = fetchAddressModel.data!;
       emit(FetchAddressLoaded(
         fetchAddressModel: fetchAddressModel,
@@ -39,20 +37,20 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
     }
   }
 
-  FutureOr<void> _editAddress(EditAddress event,
-      Emitter<AddressStates> emit) async {
+  FutureOr<void> _editAddress(
+      EditAddress event, Emitter<AddressStates> emit) async {
     emit(EditAddressLoading());
-    try{
-      log('hhhh=======>${event.saveAddress}');
-      EditAddressModel editAddress =
-          await _addressRepository.editAddress(event.saveAddress);
-      // log(EditAddressModel.data.toString());
-      log('wwww');
-      emit(EditAddressLoaded(editAddressModel: editAddress));
-
-    } catch (e){
+    try {
+      EditAddressModel editAddress = await _addressRepository.editAddress(
+          event.saveAddress, event.addressId);
+      log('group');
+      emit(EditAddressLoaded(
+        editAddressModel: editAddress,
+        saveAddress: {},
+        addressId: [],
+      ));
+    } catch (e) {
       emit(EditAddressError(message: e.toString()));
     }
   }
-
 }

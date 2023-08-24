@@ -132,64 +132,71 @@ class OrdersDetailsScreen extends StatelessWidget {
                           height: smallestSpacing,
                         ),
                     itemBuilder: (context, index) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(width: xMediumSpacing),
-                              const SizedBox(
-                                width: xxxTinySpacing,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(orderData[index]['title'],
-                                          style: (orderData[index]['status'] !=
-                                                  'pending')
-                                              ? Theme.of(context)
-                                                  .textTheme
-                                                  .textMedium
-                                              : Theme.of(context)
-                                                  .textTheme
-                                                  .textMedium
-                                                  .copyWith(
-                                                      color: AppColor.grey)),
-                                      const SizedBox(width: xxxTinierSpacing),
-                                      (orderData[index]['status'] != 'pending')
-                                          ? const Icon(
-                                              Icons.check,
-                                              color: AppColor.primary,
-                                              size: 15,
-                                            )
-                                          : const SizedBox()
-                                    ],
-                                  ),
-                                  const SizedBox(height: xxxTiniestSpacing),
-                                  Text(
-                                    orderData[index]['date'],
+                      return SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const SizedBox(width: xMediumSpacing),
+                                const SizedBox(
+                                  width: xxxTinySpacing,
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(orderData[index]['title'],
+                                            style: (orderData[index]
+                                                        ['status'] !=
+                                                    'pending')
+                                                ? Theme.of(context)
+                                                    .textTheme
+                                                    .textMedium
+                                                : Theme.of(context)
+                                                    .textTheme
+                                                    .textMedium
+                                                    .copyWith(
+                                                        color: AppColor.grey)),
+                                        const SizedBox(width: xxxTinierSpacing),
+                                        (orderData[index]['status'] !=
+                                                'pending')
+                                            ? const Icon(
+                                                Icons.check,
+                                                color: AppColor.primary,
+                                                size: 15,
+                                              )
+                                            : const SizedBox()
+                                      ],
+                                    ),
+                                    const SizedBox(height: xxxTiniestSpacing),
+                                    Text(
+                                      orderData[index]['date'],
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subHeadingMedium,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            (orderData[index]['status'] == 'current')
+                                ? Text(
+                                    'Check My Package',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subHeadingMedium,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          (orderData[index]['status'] == 'current')
-                              ? Text(
-                                  'Check My Package',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .textMedium
-                                      .copyWith(color: AppColor.primary),
-                                )
-                              : const SizedBox()
-                        ],
+                                        .textMedium
+                                        .copyWith(color: AppColor.primary),
+                                  )
+                                : const SizedBox()
+                          ],
+                        ),
                       );
                     })
               ],

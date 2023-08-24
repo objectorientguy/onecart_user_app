@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
@@ -45,7 +44,6 @@ class AddressScreen extends StatelessWidget {
             if (state is FetchAddressLoading) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is FetchAddressLoaded) {
-              log(state.fetchAddressModel.message.toString());
               return ListView.separated(
                   physics: const BouncingScrollPhysics(),
                   shrinkWrap: true,
@@ -122,8 +120,6 @@ class AddressScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              log(state.fetchAddressModel.data![index]
-                                  .toString());
                               Navigator.pushNamed(
                                   context, EditAddressScreen.routeName,
                                   arguments: state.addressDetails[index]);

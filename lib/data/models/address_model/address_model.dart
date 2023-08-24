@@ -41,45 +41,45 @@ class GetAllAddressModel {
 }
 
 class AddressDatum {
+  final int? userContact;
+  final String? addressName;
+  final int? addressId;
+  final String? city;
+  final int? pincode;
   final String? addressType;
   final int? phoneNo;
   final String? state;
-  final int? addressId;
-  final int? userContact;
-  final String? addressName;
-  final String? city;
-  final int? pincode;
 
   AddressDatum({
+    this.userContact,
+    this.addressName,
+    this.addressId,
+    this.city,
+    this.pincode,
     this.addressType,
     this.phoneNo,
     this.state,
-    this.addressId,
-    this.userContact,
-    this.addressName,
-    this.city,
-    this.pincode,
   });
 
   factory AddressDatum.fromJson(Map<String, dynamic> json) => AddressDatum(
+        userContact: json["user_contact"],
+        addressName: json["address_name"],
+        addressId: json["address_id"],
+        city: json["city"],
+        pincode: json["pincode"],
         addressType: json["address_type"],
         phoneNo: json["phone_no"],
         state: json["state"],
-        addressId: json["address_id"],
-        userContact: json["user_contact"],
-        addressName: json["address_name"],
-        city: json["city"],
-        pincode: json["pincode"],
       );
 
   Map<String, dynamic> toJson() => {
+        "user_contact": userContact,
+        "address_name": addressName,
+        "address_id": addressId,
+        "city": city,
+        "pincode": pincode,
         "address_type": addressType,
         "phone_no": phoneNo,
         "state": state,
-        "address_id": addressId,
-        "user_contact": userContact,
-        "address_name": addressName,
-        "city": city,
-        "pincode": pincode,
       };
 }

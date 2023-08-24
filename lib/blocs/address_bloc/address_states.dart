@@ -27,7 +27,11 @@ class EditAddressLoading extends AddressStates {}
 class EditAddressLoaded extends AddressStates {
   final EditAddressModel editAddressModel;
 
-  EditAddressLoaded({required this.editAddressModel});
+  final Map saveAddress;
+  EditAddressLoaded(
+      {required this.saveAddress,
+      required this.editAddressModel,
+      required addressId});
 }
 
 class EditAddressError extends AddressStates {
