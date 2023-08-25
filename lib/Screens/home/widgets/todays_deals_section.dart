@@ -24,7 +24,7 @@ class TodayDealsSection extends StatelessWidget {
         children: [
           Text(
             "Today's Deals",
-            style: Theme.of(context).textTheme.subHeadingLarge,
+            style: Theme.of(context).textTheme.headingTiny,
           ),
           const SizedBox(
             height: xxTinySpacing,
@@ -43,14 +43,16 @@ class TodayDealsSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
+                      padding: const EdgeInsets.all(8.0),
                       height: screenwidth * 0.24,
-                      width: screenwidth * 0.24,
+                      width: screenwidth * 0.20,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image:
-                                  NetworkImage(data[index].image!.toString()),
+                                  NetworkImage(data[index].image![0]),
                               fit: BoxFit.fill)),
                     ),
+                    const SizedBox(width: 20,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -58,11 +60,21 @@ class TodayDealsSection extends StatelessWidget {
                           width: screenwidth * 0.65,
                           child: Text(
                             data[index].productName!,
-                            style: Theme.of(context).textTheme.textLarge,
+                            style: Theme.of(context).textTheme.textLarger,
                           ),
                         ),
                         const SizedBox(
-                          height: tinySpacing,
+                          height: tiniestSpacing,
+                        ),
+                        SizedBox(
+                          width: screenwidth * 0.65,
+                          child: Text(
+                            data[index].details!,
+                            style: Theme.of(context).textTheme.subHeadingMedium,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: xxxTinierSpacing,
                         ),
                         SizedBox(
                           width: screenwidth * 0.65,
@@ -72,10 +84,10 @@ class TodayDealsSection extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    data[index].price!.toString(),
+                                    '₹ ${data[index].discountedCost!.toString()}',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .headingSmall,
+                                        .textMedium,
                                   ),
                                   const SizedBox(
                                     width: xxxTinierSpacing,
@@ -84,7 +96,7 @@ class TodayDealsSection extends StatelessWidget {
                                     data[index].price!.toString(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subHeadingLarge
+                                        .subHeadingSmall
                                         .copyWith(
                                             decoration:
                                                 TextDecoration.lineThrough),
@@ -102,16 +114,16 @@ class TodayDealsSection extends StatelessWidget {
                                             BorderRadius.circular(15)),
                                     padding: const EdgeInsets.symmetric(
                                         vertical: xxTiniestSpacing,
-                                        horizontal: xxTinierSpacing),
+                                        horizontal: xxxTinierSpacing),
                                     child: Center(
                                       child: Text(
-                                          '${data[index].discountedCost!} % off',
+                                          '${data[index].discount!} % off',
                                           style: Theme.of(context)
                                               .textTheme
                                               .textSmall
                                               .copyWith(
                                                   color: AppColor.primary,
-                                                  fontWeight: FontWeight.w700)),
+                                                  fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ],
@@ -121,7 +133,7 @@ class TodayDealsSection extends StatelessWidget {
                                 style: TextButton.styleFrom(
                                   minimumSize: Size.zero,
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: xxTinySpacing,
+                                      horizontal: xxxTinySpacing,
                                       vertical: xxTinierSpacing),
                                   tapTargetSize:
                                       MaterialTapTargetSize.shrinkWrap,

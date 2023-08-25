@@ -57,15 +57,23 @@ extension AppTextTheme on TextTheme {
     return const TextStyle(
         fontSize: 19, fontWeight: FontWeight.w700, color: AppColor.black);
   }
+  TextStyle get headingSmallx {
+    return const TextStyle(
+        fontSize: 17, fontWeight: FontWeight.w500, color: AppColor.black);
+  }
 
   TextStyle get headingTiny {
     return const TextStyle(
-        fontSize: 15, fontWeight: FontWeight.w700, color: AppColor.black);
+        fontSize: 15, fontWeight: FontWeight.w400, color: AppColor.black);
   }
 
   TextStyle get subHeadingLarge {
     return const TextStyle(
         fontSize: 15, fontWeight: FontWeight.w400, color: AppColor.grey);
+  }
+  TextStyle get subHeadingLargex {
+    return const TextStyle(
+        fontSize: 15, fontWeight: FontWeight.w300, color: AppColor.grey);
   }
 
   TextStyle get subHeadingLarger {
@@ -85,7 +93,7 @@ extension AppTextTheme on TextTheme {
 
   TextStyle get textLarger {
     return const TextStyle(
-        fontSize: 19, fontWeight: FontWeight.w500, color: AppColor.mediumBlack);
+        fontSize: 19, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
   }
 
   TextStyle get textLarge {
@@ -101,6 +109,10 @@ extension AppTextTheme on TextTheme {
   TextStyle get xtextMedium {
     return const TextStyle(
         fontSize: 14, fontWeight: FontWeight.w500, color: AppColor.mediumBlack);
+  }
+  TextStyle get textMediumx {
+    return const TextStyle(
+        fontSize: 13, fontWeight: FontWeight.w300, color: AppColor.grey);
   }
 
   TextStyle get textSmall {

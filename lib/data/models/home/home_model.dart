@@ -142,8 +142,8 @@ class Deal {
   final int? productId;
   final String? brandName;
   final bool? deal;
-  final int? price;
-  final int? discountedCost;
+  final double? price;
+  final double? discountedCost;
 
   Deal({
     this.categoryId,
