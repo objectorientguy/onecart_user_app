@@ -108,14 +108,14 @@ class ItemDetailsSection extends StatelessWidget {
                         children: [
                           Text(
                             '₹${state.itemDetailsModel.data!.discountedCost.toString()}',
-                            style: Theme.of(context).textTheme.headingMedium,
+                            style: Theme.of(context).textTheme.headingTiny,
                           ),
                           const SizedBox(width: xxxTinierSpacing),
                           Text(
                             '₹${state.itemDetailsModel.data!.price}',
                             style: Theme.of(context)
                                 .textTheme
-                                .subHeadingLarge
+                                .subHeadingMedium
                                 .copyWith(
                                     decoration: TextDecoration.lineThrough),
                           ),

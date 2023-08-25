@@ -57,6 +57,7 @@ extension AppTextTheme on TextTheme {
     return const TextStyle(
         fontSize: 19, fontWeight: FontWeight.w700, color: AppColor.black);
   }
+
   TextStyle get headingSmallx {
     return const TextStyle(
         fontSize: 17, fontWeight: FontWeight.w500, color: AppColor.black);
@@ -71,6 +72,7 @@ extension AppTextTheme on TextTheme {
     return const TextStyle(
         fontSize: 15, fontWeight: FontWeight.w400, color: AppColor.grey);
   }
+
   TextStyle get subHeadingLargex {
     return const TextStyle(
         fontSize: 15, fontWeight: FontWeight.w300, color: AppColor.grey);
@@ -110,6 +112,7 @@ extension AppTextTheme on TextTheme {
     return const TextStyle(
         fontSize: 14, fontWeight: FontWeight.w500, color: AppColor.mediumBlack);
   }
+
   TextStyle get textMediumx {
     return const TextStyle(
         fontSize: 13, fontWeight: FontWeight.w300, color: AppColor.grey);

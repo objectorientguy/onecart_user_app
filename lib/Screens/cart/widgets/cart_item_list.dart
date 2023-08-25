@@ -46,7 +46,7 @@ class CartItemList extends StatelessWidget {
                           children: [
                             Text(
                               '₹300',
-                              style: Theme.of(context).textTheme.headingSmall,
+                              style: Theme.of(context).textTheme.headingTiny,
                             ),
                             const SizedBox(
                               width: xxxTinierSpacing,
@@ -55,7 +55,7 @@ class CartItemList extends StatelessWidget {
                               '₹300',
                               style: Theme.of(context)
                                   .textTheme
-                                  .subHeadingLarge
+                                  .subHeadingMedium
                                   .copyWith(
                                       decoration: TextDecoration.lineThrough),
                             ),
@@ -79,7 +79,7 @@ class CartItemList extends StatelessWidget {
                                         .textSmall
                                         .copyWith(
                                             color: AppColor.primary,
-                                            fontWeight: FontWeight.w700)),
+                                            fontWeight: FontWeight.w500)),
                               ),
                             ),
                           ],

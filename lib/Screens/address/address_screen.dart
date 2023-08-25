@@ -103,9 +103,8 @@ class AddressScreen extends StatelessWidget {
                                   Text(
                                     state.fetchAddressModel.data![index].phoneNo
                                         .toString(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .textMediumx,
+                                    style:
+                                        Theme.of(context).textTheme.textMediumx,
                                   ),
                                 ],
                               ),

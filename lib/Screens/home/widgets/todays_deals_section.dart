@@ -48,11 +48,12 @@ class TodayDealsSection extends StatelessWidget {
                       width: screenwidth * 0.20,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image:
-                                  NetworkImage(data[index].image![0]),
+                              image: NetworkImage(data[index].image![0]),
                               fit: BoxFit.fill)),
                     ),
-                    const SizedBox(width: 20,),
+                    const SizedBox(
+                      width: 20,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -85,9 +86,8 @@ class TodayDealsSection extends StatelessWidget {
                                 children: [
                                   Text(
                                     '₹ ${data[index].discountedCost!.toString()}',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .textMedium,
+                                    style:
+                                        Theme.of(context).textTheme.textMedium,
                                   ),
                                   const SizedBox(
                                     width: xxxTinierSpacing,
