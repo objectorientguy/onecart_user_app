@@ -7,7 +7,7 @@ class SelectVarientRepositoryImpl implements SelectVarientRepository {
   @override
   Future<SelectVarientListModel> getAllVarients() async {
     final response = await DioClient()
-        .get("https://oneart.onrender.com/getProductVariants/101");
+        .get("https://oneart.onrender.com/getProductVariants/1");
     return SelectVarientListModel.fromJson(response);
   }
 }

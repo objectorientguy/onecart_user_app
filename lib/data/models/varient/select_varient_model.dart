@@ -4,11 +4,9 @@
 
 import 'dart:convert';
 
-SelectVarientListModel selectVarientListModelFromJson(String str) =>
-    SelectVarientListModel.fromJson(json.decode(str));
+SelectVarientListModel selectVarientListModelFromJson(String str) => SelectVarientListModel.fromJson(json.decode(str));
 
-String selectVarientListModelToJson(SelectVarientListModel data) =>
-    json.encode(data.toJson());
+String selectVarientListModelToJson(SelectVarientListModel data) => json.encode(data.toJson());
 
 class SelectVarientListModel {
   final int? status;
@@ -21,64 +19,67 @@ class SelectVarientListModel {
     this.data,
   });
 
-  factory SelectVarientListModel.fromJson(Map<String, dynamic> json) =>
-      SelectVarientListModel(
-        status: json["status"],
-        message: json["message"],
-        data: json["data"] == null
-            ? []
-            : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
-      );
+  factory SelectVarientListModel.fromJson(Map<String, dynamic> json) => SelectVarientListModel(
+    status: json["status"],
+    message: json["message"],
+    data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+  );
 
   Map<String, dynamic> toJson() => {
-        "status": status,
-        "message": message,
-        "data": data == null
-            ? []
-            : List<dynamic>.from(data!.map((x) => x.toJson())),
-      };
+    "status": status,
+    "message": message,
+    "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
+  };
 }
 
 class Datum {
-  final String? discount;
+  final String? variantName;
   final int? variantId;
-  final String? image;
-  final int? variantQuantity;
-  final double? variantPrice;
-  final String? discountedCost;
+  final double? discountedCost;
+  final String? discount;
   final String? weight;
+  final List<String>? image;
+  final double? variantPrice;
+  final String? brandName;
+  final int? itemCount;
   final int? productId;
 
   Datum({
-    this.discount,
+    this.variantName,
     this.variantId,
-    this.image,
-    this.variantQuantity,
-    this.variantPrice,
     this.discountedCost,
+    this.discount,
     this.weight,
+    this.image,
+    this.variantPrice,
+    this.brandName,
+    this.itemCount,
     this.productId,
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        discount: json["discount"],
-        variantId: json["variant_id"],
-        image: json["image"],
-        variantQuantity: json["variant_quantity"],
-        variantPrice: json["variant_price"],
-        discountedCost: json["discounted_cost"],
-        weight: json["weight"],
-        productId: json["product_id"],
-      );
+    variantName: json["variant_name"],
+    variantId: json["variant_id"],
+    discountedCost: json["discounted_cost"],
+    discount: json["discount"],
+    weight: json["weight"],
+    image: json["image"] == null ? [] : List<String>.from(json["image"]!.map((x) => x)),
+    variantPrice: json["variant_price"],
+    brandName: json["brand_name"],
+    itemCount: json["item_count"],
+    productId: json["product_id"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "discount": discount,
-        "variant_id": variantId,
-        "image": image,
-        "variant_quantity": variantQuantity,
-        "variant_price": variantPrice,
-        "discounted_cost": discountedCost,
-        "weight": weight,
-        "product_id": productId,
-      };
+    "variant_name": variantName,
+    "variant_id": variantId,
+    "discounted_cost": discountedCost,
+    "discount": discount,
+    "weight": weight,
+    "image": image == null ? [] : List<dynamic>.from(image!.map((x) => x)),
+    "variant_price": variantPrice,
+    "brand_name": brandName,
+    "item_count": itemCount,
+    "product_id": productId,
+  };
 }

@@ -6,7 +6,7 @@ class ItemDetailsRepositoryImpl implements ItemDetailsRepository {
   @override
   Future<ItemDetailsModel> getItemDetails() async {
     final response =
-        await DioClient().get("https://oneart.onrender.com/products/101");
+        await DioClient().get("https://oneart.onrender.com/products/1");
     return ItemDetailsModel.fromJson(response);
   }
 }
