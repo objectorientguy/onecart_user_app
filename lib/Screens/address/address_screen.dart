@@ -88,7 +88,7 @@ class AddressScreen extends StatelessWidget {
                                           style: Theme.of(context)
                                               .textTheme
                                               .headingTiny),
-                                      const SizedBox(width: xxxTinierSpacing),
+                                      const SizedBox(width: xxTinierSpacing),
                                     ],
                                   ),
                                   const SizedBox(height: xxxTiniestSpacing),
@@ -98,22 +98,15 @@ class AddressScreen extends StatelessWidget {
                                         .toString(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subHeadingLarge,
+                                        .subHeadingLargex,
                                   ),
                                   Text(
                                     state.fetchAddressModel.data![index].phoneNo
                                         .toString(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subHeadingLarge,
+                                        .textMediumx,
                                   ),
-                                  // Text(
-                                  //   addressData[index]['value'][4],
-                                  //   style: Theme.of(context)
-                                  //       .textTheme
-                                  //       .subHeadingLarge
-                                  //       .copyWith(fontWeight: FontWeight.w700),
-                                  // )
                                 ],
                               ),
                             ],
