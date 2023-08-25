@@ -1,20 +1,21 @@
+
 import 'dart:convert';
 
-AuthenticateUserModel authenticateUserModelFromJson(String str) =>
+AuthenticateUserModel authenticateUserFromJson(String str) =>
     AuthenticateUserModel.fromJson(json.decode(str));
 
-String authenticateUserModelToJson(AuthenticateUserModel data) =>
+String authenticateUserToJson(AuthenticateUserModel data) =>
     json.encode(data.toJson());
 
 class AuthenticateUserModel {
-  final int status;
-  final String message;
-  final Data data;
+  final int? status;
+  final String? message;
+  final Data? data;
 
   AuthenticateUserModel({
-    required this.status,
-    required this.message,
-    required this.data,
+    this.status,
+    this.message,
+    this.data,
   });
 
   factory AuthenticateUserModel.fromJson(Map<String, dynamic> json) =>
@@ -25,40 +26,44 @@ class AuthenticateUserModel {
       );
 
   Map<String, dynamic> toJson() => {
-        "status": status,
-        "message": message,
-        "data": data.toJson(),
-      };
+    "status": status,
+    "message": message,
+    "data": data!.toJson(),
+  };
 }
 
 class Data {
-  final String customerName;
-  final DateTime createdAt;
-  final String customerId;
+  final bool? isNewCustomer;
+  final String? customerId;
+  final String? customerName;
   final dynamic customerBirthdate;
-  final int customerContact;
+  final dynamic createdAt;
+  final int? customerContact;
 
   Data({
-    required this.customerName,
-    required this.createdAt,
-    required this.customerId,
+    this.isNewCustomer,
+    this.customerId,
+    this.customerName,
     this.customerBirthdate,
-    required this.customerContact,
+    this.createdAt,
+    this.customerContact,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        customerName: json["customer_name"],
-        createdAt: DateTime.parse(json["created_at"]),
-        customerId: json["customer_id"],
-        customerBirthdate: json["customer_birthdate"],
-        customerContact: json["customer_contact"],
-      );
+    isNewCustomer: json["is_new_customer"],
+    customerId: json["customer_id"],
+    customerName: json["customer_name"],
+    customerBirthdate: json["customer_birthdate"],
+    createdAt: json["created_at"],
+    customerContact: json["customer_contact"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "customer_name": customerName,
-        "created_at": createdAt.toIso8601String(),
-        "customer_id": customerId,
-        "customer_birthdate": customerBirthdate,
-        "customer_contact": customerContact,
-      };
+    "is_new_customer": isNewCustomer,
+    "customer_id": customerId,
+    "customer_name": customerName,
+    "customer_birthdate": customerBirthdate,
+    "created_at": createdAt,
+    "customer_contact": customerContact,
+  };
 }

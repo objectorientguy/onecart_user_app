@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../repositories/authentication/authentication_repository.dart';
 import '../repositories/authentication/authentication_repository_impl.dart';
@@ -8,6 +9,7 @@ import '../repositories/categories/categories_repository.dart';
 import '../repositories/categories/categories_repository_impl.dart';
 import '../repositories/varient/varient_repository.dart';
 import '../repositories/varient/varient_repository_impl.dart';
+import '../utils/shared_preference.dart';
 
 final getIt = GetIt.instance;
 
@@ -20,4 +22,7 @@ configurableDependencies() {
       () => CategoriesRepositoryImpl());
   getIt.registerLazySingleton<SelectVarientRepository>(
       () => SelectVarientRepositoryImpl());
+  getIt.registerLazySingleton<CustomerCache>(
+          () => CustomerCache(sharedPreferences: getIt<SharedPreferences>()));
+
 }

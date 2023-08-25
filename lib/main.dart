@@ -8,9 +8,13 @@ import 'app_module/app_module.dart';
 import 'blocs/get_product_bloc/get_product_bloc.dart';
 import 'blocs/categories_bloc/categories_bloc.dart';
 import 'blocs/varient_bloc/varient_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+
+Future main() async{
   _initDependencies();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

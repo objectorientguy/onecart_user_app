@@ -14,6 +14,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _date = TextEditingController();
+  String phoneNumber = '';
 
   @override
   Widget build(BuildContext context) {

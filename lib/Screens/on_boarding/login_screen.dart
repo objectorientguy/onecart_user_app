@@ -1,11 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:onecart_user_app/Screens/on_boarding/signup_screen.dart';
-import 'package:onecart_user_app/Screens/on_boarding/welcome_screen.dart';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onecart_user_app/Screens/on_boarding/signup_screen.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import '../../blocs/authentication_bloc/authentication_bloc.dart';
+import '../../blocs/authentication_bloc/authentication_events.dart';
 import '../../configs/app_dimensions.dart';
+import '../home/otp.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
@@ -19,6 +23,8 @@ class _LogInScreenState extends State<LogInScreen> {
   bool rememberMe = false;
   bool showWrongEmail = false;
   bool showWrongPassword = false;
+  String phoneNumber = '';
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
@@ -52,10 +58,11 @@ class _LogInScreenState extends State<LogInScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('  Email address is incorrect',
+                        Text('Email address is incorrect',
                             style: Theme.of(context).textTheme.smallRed),
                         IconButton(
                             onPressed: () {
+
                               setState(() {
                                 showWrongEmail = false;
                               });
@@ -98,6 +105,9 @@ class _LogInScreenState extends State<LogInScreen> {
               SizedBox(
                 width: kTextboxWidth,
                 child: TextField(
+                  onChanged: (value){
+                    phoneNumber=value;
+                  },
                   controller: emailController,
                   decoration: InputDecoration(
                     hintText: 'Email address',
@@ -171,22 +181,15 @@ class _LogInScreenState extends State<LogInScreen> {
                       width: kTextboxWidth,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (emailController.text == 'abc@gmail.com') {
-                            if (passwordController.text == '12345678') {
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const WelcomeScreen()));
-                            } else {
-                              setState(() {
-                                showWrongPassword = true;
-                              });
-                            }
+                          if (phoneNumber.length == 10) {
+                            context.read<AuthenticationBloc>().add(
+                                GetOtp(phoneNumber: '+91 $phoneNumber'));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MyVerify()));
+
                           } else {
-                            setState(() {
-                              showWrongEmail = true;
-                            });
+                            log("error logging in!");
                           }
+
                         },
                         style: ElevatedButton.styleFrom(
                             minimumSize: const Size(

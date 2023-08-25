@@ -1,19 +1,35 @@
-import '../../data/models/authenticate_user/authenticate_user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'authentication_repository.dart';
 
-class AuthenticationRepositoryImpl extends AuthenticationRepository {
+class AuthenticationRepositoryImpl implements AuthenticationRepository {
+
   @override
-  Future<AuthenticateUserModel> authenticateUser() async {
-    return AuthenticateUserModel.fromJson({
-      "status": 200,
-      "message": "New user successfully Logged in for this company!",
-      "data": {
-        "customer_name": "Testing Cpmpany filter",
-        "created_at": "2023-07-29T15:47:25.666864+05:30",
-        "customer_id": "123AB",
-        "customer_birthdate": null,
-        "customer_contact": 12345670
-      }
-    });
+  Future verifyPhoneNumber({required String phoneNumber,
+    required Function(PhoneAuthCredential) verificationCompleted,
+    required Function(FirebaseAuthException) verificationFailed,
+    required Function(String, int?) codeSent,
+    required Function(String) codeAutoRetrievalTimeout}) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    try {
+      await auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        verificationCompleted: verificationCompleted,
+        verificationFailed: verificationFailed,
+        codeSent: codeSent,
+        codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
+      );
+    } catch (error) {
+      rethrow;
+    }
   }
+// Future<AuthenticateUser> authenticateUser(Map userDetailsMap) async {
+//   try {
+//     final response = await apiProvider.post(
+//         StringConstants.baseUrl + StringConstants.kAuthenticateUser,
+//         userDetailsMap);
+//     return AuthenticateUser.fromJson(response);
+//   } catch (error) {
+//     rethrow;
+//   }
+// }
 }
