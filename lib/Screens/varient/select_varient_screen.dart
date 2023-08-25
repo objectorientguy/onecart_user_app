@@ -13,9 +13,9 @@ import '../../data/models/item_details/item_details_model.dart';
 
 class SelectVariantScreen extends StatelessWidget {
   static const routeName = 'SelectVariantScreen';
-  final ItemDetailsData data;
+  final ItemDetailsData dataone;
 
-  const SelectVariantScreen({super.key, required this.data});
+  const SelectVariantScreen({super.key, required this.dataone});
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class SelectVariantScreen extends StatelessWidget {
                               width: xxxTinierSpacing,
                             ),
                             Flexible(
-                                child: Text(data.companyName!,
+                                child: Text(dataone.brandName.toString(),
                                     style: Theme.of(context)
                                         .textTheme
                                         .textLarge

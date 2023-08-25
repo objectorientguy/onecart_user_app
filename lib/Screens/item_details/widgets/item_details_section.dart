@@ -29,7 +29,7 @@ class ItemDetailsSection extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  state.itemDetailsModel.data!.companyName.toString(),
+                  state.itemDetailsModel.data!.brandName.toString(),
                   style: Theme.of(context).textTheme.headingLarge,
                 ),
                 const SizedBox(height: tinySpacing),
@@ -112,7 +112,7 @@ class ItemDetailsSection extends StatelessWidget {
                           ),
                           const SizedBox(width: xxxTinierSpacing),
                           Text(
-                            '₹${state.itemDetailsModel.data!.cost.toString()}',
+                            '₹${state.itemDetailsModel.data!.price}',
                             style: Theme.of(context)
                                 .textTheme
                                 .subHeadingLarge
