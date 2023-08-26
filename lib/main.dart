@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/authentication_bloc/authentication_bloc.dart';
+import 'package:onecart_user_app/blocs/checkout_bloc/checkout_bloc.dart';
 import 'package:onecart_user_app/blocs/onboarding_bloc/onboarding_bloc.dart';
 import 'package:onecart_user_app/blocs/onboarding_bloc/onboarding_states.dart';
 import 'package:onecart_user_app/configs/app_route.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(lazy: false, create: (context) => GetAllCategoriesBloc()),
         BlocProvider(lazy: false, create: (context) => ItemDetailsBloc()),
         BlocProvider(lazy: false, create: (context) => GetAllOrdersBloc()),
+        BlocProvider(lazy: false, create: (context) => CheckoutBloc()),
         BlocProvider(
             lazy: false,
             create: (context) => OnBoardingBloc()..add(CheckLoggedIn())),
