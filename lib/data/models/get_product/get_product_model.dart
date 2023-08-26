@@ -13,7 +13,7 @@ String getProductByIdModelToJson(GetProductByIdModel data) =>
 class GetProductByIdModel {
   final int? status;
   final String? message;
-  final List<Datum>? data;
+  final List<CategoryProductDatum>? data;
 
   GetProductByIdModel({
     this.status,
@@ -27,7 +27,8 @@ class GetProductByIdModel {
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+            : List<CategoryProductDatum>.from(
+                json["data"]!.map((x) => CategoryProductDatum.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -39,7 +40,7 @@ class GetProductByIdModel {
       };
 }
 
-class Datum {
+class CategoryProductDatum {
   final String? companyName;
   final int? categoryId;
   final String? productName;
@@ -51,7 +52,7 @@ class Datum {
   final int? itemCount;
   final String? discountedCost;
 
-  Datum({
+  CategoryProductDatum({
     this.companyName,
     this.categoryId,
     this.productName,
@@ -64,7 +65,8 @@ class Datum {
     this.discountedCost,
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory CategoryProductDatum.fromJson(Map<String, dynamic> json) =>
+      CategoryProductDatum(
         companyName: json["company_name"],
         categoryId: json["category_id"],
         productName: json["product_name"],

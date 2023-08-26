@@ -78,7 +78,7 @@ class StoreList extends StatelessWidget {
                 const SizedBox(
                   height: tinySpacing,
                 ),
-                const StoreItemList(),
+                // StoreItemList(),
               ],
             ),
           );

@@ -26,9 +26,10 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutStates> {
       FetchCheckoutModel fetchCheckoutModel =
           await _checkoutRepository.fetchCheckout();
       fetchCheckoutData = fetchCheckoutModel.data! as List;
+      log('eee');
       emit(FetchCheckoutLoaded(
           fetchCheckoutModel: fetchCheckoutModel,
-          CheckoutDetails: fetchCheckoutData));
+          checkOutDetails: fetchCheckoutData));
     } catch (e) {
       emit(FetchCheckoutError(message: e.toString()));
     }

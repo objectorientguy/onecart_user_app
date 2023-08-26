@@ -25,7 +25,7 @@ class AppRoutes {
     switch (settings.name) {
       case CategoryItemScreen.routeName:
         return _createRoute(CategoryItemScreen(
-          categoryDeals: settings.arguments as Category,
+          categoryDetails: settings.arguments as Category,
         ));
       case ItemDetailsScreen.routeName:
         return _createRoute(ItemDetailsScreen(

@@ -17,8 +17,6 @@ class DioClient {
       log("requestUrl==========>$requestUrl");
       final response =
           await dio.get(requestUrl, options: Options(headers: headers));
-      final response =
-          await dio.get(requestUrl, options: Options(headers: headers));
       jsonResponse = (response.data);
     } on DioException catch (e) {
       if (e.response != null) {
