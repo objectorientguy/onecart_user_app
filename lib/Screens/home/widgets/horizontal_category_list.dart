@@ -13,18 +13,6 @@ class HorizontalCategoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // const List categoryData = [
-    //   {'name': 'Fruits & Vegetables', 'Image': 'assets/img.png'},
-    //   {'name': 'Staples', 'Image': 'assets/imgC2.png'},
-    //   {'name': 'Dairy and Bakery', 'Image': 'assets/imgC3.png'},
-    //   {'name': 'Snacks & Branded Fruits', 'Image': 'assets/imgC4.png'},
-    //   {'name': 'Beverages', 'Image': 'assets/imgC5.png'},
-    //   {'name': 'Premium Fruits', 'Image': 'assets/img.png'},
-    //   {'name': 'Home Care', 'Image': 'assets/imgC5.png'},
-    //   {'name': 'Personal Care', 'Image': 'assets/imgC2.png'},
-    //   {'name': 'Breakfast & Instant Food', 'Image': 'assets/imgC3.png'},
-    //   {'name': 'Home Care', 'Image': 'assets/imgC4.png'},
-    // ];
     return SizedBox(
       height: kHorizontalCategoryListHeight,
       child: ListView.separated(
@@ -52,10 +40,7 @@ class HorizontalCategoryList extends StatelessWidget {
                     width: kHorizontalCategoryListItemWidth,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: NetworkImage(data[index].categoryImage!)
-                          // data[index].NetworkImage("http://127.0.0.1:8000/images/Fruits-and-Vegetables.jpg"),
-                          //image: AssetImage(categoryData[index - 1]['Image'])
-                          ),
+                          image: NetworkImage(data[index].categoryImage!)),
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -63,7 +48,6 @@ class HorizontalCategoryList extends StatelessWidget {
                     width: kHorizontalCategoryListItemWidth * 1.2,
                     child: Text(
                       data[index].categoryName!,
-                      // categoryData[index - 1]['name'],
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,

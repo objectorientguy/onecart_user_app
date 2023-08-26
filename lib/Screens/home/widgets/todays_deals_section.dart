@@ -8,6 +8,7 @@ import '../../item_details/item_details_screen.dart';
 class TodayDealsSection extends StatelessWidget {
   static const routeName = 'TodayDealsSection';
   final List<Deal> data;
+
   const TodayDealsSection(
     this.data, {
     super.key,
