@@ -25,7 +25,7 @@ class ItemDetailsBloc extends Bloc<FetchItemDetails, ItemDetailsStates> {
     emit(ItemDetailsLoading());
     try {
       ItemDetailsModel getProductDetailsModel =
-          await _itemDetailsRepository.getItemDetails();
+          await _itemDetailsRepository.getItemDetails(event.itemId);
       log(getProductDetailsModel.data.toString());
       emit(ItemDetailsLoaded(itemDetailsModel: getProductDetailsModel));
     } catch (e) {

@@ -6,6 +6,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/orders/orders_bloc.dart';
 import '../../blocs/orders/orders_events.dart';
 import '../../blocs/orders/orders_states.dart';
+import '../../common_widgets/generic_app_bar.dart';
 import '../../configs/app_color.dart';
 import 'order_details_screen.dart';
 
@@ -16,18 +17,8 @@ class OrdersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<GetAllOrdersBloc>().add(GetAllOrders());
     return Scaffold(
-      appBar: AppBar(
-        title:
-            Text('My Orders', style: Theme.of(context).textTheme.headingMedium),
-        leading: const SizedBox(),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.more_vert,
-                color: AppColor.black,
-              ))
-        ],
+      appBar: const GenericAppBar(
+        title: 'Orders',
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(

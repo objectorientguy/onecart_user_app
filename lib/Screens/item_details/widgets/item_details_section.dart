@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../blocs/item_details_bloc/item_details_bloc.dart';
-import '../../../blocs/item_details_bloc/item_details_events.dart';
+
 import '../../../blocs/item_details_bloc/item_details_states.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
@@ -16,8 +16,6 @@ class ItemDetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<ItemDetailsBloc>().add(FetchItemDetails());
-
     return BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
       builder: (context, state) {
         if (state is ItemDetailsLoading) {

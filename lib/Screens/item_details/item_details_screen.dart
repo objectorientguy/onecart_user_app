@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/item_details_section.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/item_photos_section.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/delivery_details_section.dart';
 import 'package:onecart_user_app/common_widgets/custom_elevated_button.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../blocs/item_details_bloc/item_details_bloc.dart';
+import '../../blocs/item_details_bloc/item_details_events.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_spacing.dart';
+import '../../data/models/home/home_model.dart';
 import '../cart/cart_screen.dart';
 
 class ItemDetailsScreen extends StatelessWidget {
   static const routeName = 'ItemDetailsScreen';
-  const ItemDetailsScreen({Key? key}) : super(key: key);
+  final Deal itemDetails;
+
+  const ItemDetailsScreen({Key? key, required this.itemDetails})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    context
+        .read<ItemDetailsBloc>()
+        .add(FetchItemDetails(itemDetails.productId!));
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
