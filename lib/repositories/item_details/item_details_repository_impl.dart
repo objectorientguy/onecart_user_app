@@ -4,9 +4,10 @@ import 'item_details_repository.dart';
 
 class ItemDetailsRepositoryImpl implements ItemDetailsRepository {
   @override
-  Future<ItemDetailsModel> getItemDetails() async {
+  Future<ItemDetailsModel> getItemDetails(int prodId) async {
     final response =
-        await DioClient().get("https://oneart.onrender.com/products/1");
+        await DioClient().get("https://oneart.onrender.com/products/$prodId");
+
     return ItemDetailsModel.fromJson(response);
   }
 }

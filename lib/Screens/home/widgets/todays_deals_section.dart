@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:onecart_user_app/configs/app_theme.dart';
+
 import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/home/home_model.dart';
@@ -38,7 +40,7 @@ class TodayDealsSection extends StatelessWidget {
               return InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, ItemDetailsScreen.routeName,
-                      arguments: false);
+                      arguments: data[index]);
                 },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,

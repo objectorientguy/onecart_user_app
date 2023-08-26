@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/varient_bloc/varient_bloc.dart';
 import '../../blocs/varient_bloc/varient_events.dart';
@@ -22,27 +23,7 @@ class SelectVariantScreen extends StatelessWidget {
     context.read<SelectVarientBloc>().add(GetAllVarients());
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Select Variant',
-              style: Theme.of(context).textTheme.headingMedium),
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.close,
-                color: AppColor.black,
-                size: 30,
-              )),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.more_vert,
-                  color: AppColor.black,
-                ))
-          ],
-        ),
+        appBar: const GenericAppBar(title: 'Select Variant'),
         bottomNavigationBar: BottomAppBar(
           child: Padding(
             padding: const EdgeInsets.symmetric(

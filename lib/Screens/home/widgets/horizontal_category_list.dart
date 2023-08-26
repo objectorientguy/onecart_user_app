@@ -31,7 +31,7 @@ class HorizontalCategoryList extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 Navigator.pushNamed(context, CategoryItemScreen.routeName,
-                    arguments: false);
+                    arguments: data[index]);
               },
               child: Column(
                 children: [
