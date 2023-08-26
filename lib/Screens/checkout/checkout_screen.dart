@@ -6,35 +6,20 @@ import 'package:onecart_user_app/Screens/checkout/widgets/payment_details_sectio
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../common_widgets/custom_elevated_button.dart';
+import '../../common_widgets/generic_app_bar.dart';
 import '../../configs/app_color.dart';
 import 'order_success.dart';
 
 class CheckoutScreen extends StatelessWidget {
   static const routeName = 'CheckoutScreen';
+
   const CheckoutScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:
-            Text('Checkout', style: Theme.of(context).textTheme.headingMedium),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new,
-              color: AppColor.black,
-            )),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.more_vert,
-                color: AppColor.black,
-              ))
-        ],
+      appBar: const GenericAppBar(
+        title: 'Checkout',
       ),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
