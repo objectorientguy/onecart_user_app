@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/get_product/get_product_model.dart';
 
 class CategoryItemScreenHeader extends StatelessWidget {
-  const CategoryItemScreenHeader({
+  final List<CategoryProductDatum> data;
+  const CategoryItemScreenHeader(
+    this.data, {
     super.key,
   });
 
@@ -50,9 +53,10 @@ class CategoryItemScreenHeader extends StatelessWidget {
             const SizedBox(height: tinySpacing),
             InkWell(
               onTap: () {},
-              child: const Text(
-                'Fruits and vegetables',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+              child:  Text("Fruits and Vegetables",
+                //data[].productName!.toString(),
+                style:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
               ),
             ),
             const SizedBox(height: tinySpacing),

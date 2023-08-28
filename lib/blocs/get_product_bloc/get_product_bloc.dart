@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/get_product_bloc/get_product_events.dart';
@@ -25,6 +26,7 @@ class GetProductBloc extends Bloc<GetProduct, GetProductStates> {
 
       emit(FetchProductLoaded(getProductByIdModel: getProductListModel));
     } catch (e) {
+      log(e.toString());
       emit(FetchProductError(message: e.toString()));
     }
   }

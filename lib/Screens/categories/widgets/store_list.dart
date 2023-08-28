@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/Screens/categories/widgets/stores_item_list.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_color.dart';
@@ -78,7 +77,7 @@ class StoreList extends StatelessWidget {
                 const SizedBox(
                   height: tinySpacing,
                 ),
-                const StoreItemList(),
+                // StoreItemList(),
               ],
             ),
           );
