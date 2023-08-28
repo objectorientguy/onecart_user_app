@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../../../blocs/item_details_bloc/item_details_bloc.dart';
 import '../../../blocs/item_details_bloc/item_details_events.dart';
 import '../../../blocs/item_details_bloc/item_details_states.dart';
@@ -10,14 +9,19 @@ import '../../../configs/app_spacing.dart';
 import '../../varient/select_varient_screen.dart';
 
 class ItemDetailsSection extends StatelessWidget {
-  const ItemDetailsSection({
-    super.key,
-  });
+  // static Map saveCartDetails = {};
+  const ItemDetailsSection({super.key});
+  // final AddToCartData addToCartMap;
 
   @override
   Widget build(BuildContext context) {
-    context.read<ItemDetailsBloc>().add(FetchItemDetails());
 
+    // saveCartDetails = {
+    //   'product_id': addToCartMap.productId,
+    //   'item_count':addToCartMap.itemCount,
+    //   'variant_id':addToCartMap.variantId
+    // };
+    context.read<ItemDetailsBloc>().add(FetchItemDetails());
     return BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
       builder: (context, state) {
         if (state is ItemDetailsLoading) {
@@ -131,7 +135,7 @@ class ItemDetailsSection extends StatelessWidget {
                                 vertical: xxTiniestSpacing,
                                 horizontal: xxTinierSpacing),
                             child: Center(
-                              child: Text('40% OFF',
+                              child: Text('${state.itemDetailsModel.data!.discount.toString()} %',
                                   style: Theme.of(context)
                                       .textTheme
                                       .textSmall
