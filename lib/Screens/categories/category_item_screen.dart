@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:onecart_user_app/Screens/categories/widgets/category_screen_header.dart';
 import 'package:onecart_user_app/Screens/categories/widgets/stores_item_list.dart';
-import 'package:onecart_user_app/data/models/get_product/get_product_model.dart';
-
 import '../../blocs/get_product_bloc/get_product_bloc.dart';
 import '../../blocs/get_product_bloc/get_product_events.dart';
 import '../../blocs/get_product_bloc/get_product_states.dart';
@@ -33,11 +30,10 @@ class CategoryItemScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CategoryItemScreenHeader(
-                      state.getProductByIdModel.data! as CategoryProductDatum),
+                  CategoryItemScreenHeader(state.getProductByIdModel.data!),
+                      // ),
                   Expanded(
-                    child: StoreItemList(state.getProductByIdModel.data!
-                        as CategoryProductDatum),
+                    child: StoreItemList(state.getProductByIdModel.data!),
                   ),
                 ],
               ),

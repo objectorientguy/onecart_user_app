@@ -6,8 +6,8 @@ import '../../../configs/app_spacing.dart';
 import '../../../data/models/get_product/get_product_model.dart';
 
 class CategoryItemScreenHeader extends StatelessWidget {
-  final CategoryProductDatum data;
-  CategoryItemScreenHeader(
+  final List<CategoryProductDatum> data;
+  const CategoryItemScreenHeader(
     this.data, {
     super.key,
   });
@@ -53,8 +53,8 @@ class CategoryItemScreenHeader extends StatelessWidget {
             const SizedBox(height: tinySpacing),
             InkWell(
               onTap: () {},
-              child: Text(
-                data.productName!.toString(),
+              child:  Text("Fruits and Vegetables",
+                //data[].productName!.toString(),
                 style:
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
               ),

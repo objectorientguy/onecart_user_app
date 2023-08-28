@@ -6,7 +6,7 @@ import '../../../data/models/get_product/get_product_model.dart';
 import '../../item_details/item_details_screen.dart';
 
 class StoreItemList extends StatelessWidget {
-  final CategoryProductDatum data;
+  final List<CategoryProductDatum> data;
   const StoreItemList(
     this.data, {
     super.key,
@@ -22,7 +22,7 @@ class StoreItemList extends StatelessWidget {
           ListView.separated(
             physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 5,
+            itemCount: data.length,
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
@@ -37,7 +37,7 @@ class StoreItemList extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.24,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(data.image!.toString()))),
+                              image: NetworkImage(data[index].image!.toString()))),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.65,
@@ -45,7 +45,7 @@ class StoreItemList extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            data.details.toString(),
+                            data[index].details.toString(),
                             style: Theme.of(context).textTheme.textLarge,
                           ),
                           const SizedBox(
@@ -57,7 +57,7 @@ class StoreItemList extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    data.cost!.toString(),
+                                    data[index].price!.toString(),
                                     style: Theme.of(context)
                                         .textTheme
                                         .headingSmall,
@@ -66,7 +66,7 @@ class StoreItemList extends StatelessWidget {
                                     width: xxxTinierSpacing,
                                   ),
                                   Text(
-                                    data.discountedCost!.toString(),
+                                    data[index].discountedCost!.toString(),
                                     style: Theme.of(context)
                                         .textTheme
                                         .subHeadingLarge
