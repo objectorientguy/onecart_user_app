@@ -24,7 +24,7 @@ class SelectVarientBloc extends Bloc<GetAllVarients, SelectVarientStates> {
     emit(GetAllVarientsLoading());
     try {
       SelectVarientListModel selectVarientListModel =
-          await _selectVarientRepository.getAllVarients();
+          await _selectVarientRepository.getAllVarients(event.varId);
       log(selectVarientListModel.data.toString());
 
       emit(

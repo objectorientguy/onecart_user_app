@@ -75,6 +75,7 @@ class TodayDealsSection extends StatelessWidget {
                           child: Text(
                             data[index].details!,
                             style: Theme.of(context).textTheme.subHeadingMedium,
+                            maxLines: 1,
                           ),
                         ),
                         const SizedBox(
