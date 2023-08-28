@@ -6,15 +6,15 @@ import '../../../data/models/get_product/get_product_model.dart';
 import '../../item_details/item_details_screen.dart';
 
 class StoreItemList extends StatelessWidget {
-  final List<CategoryProductDatum> data;
+  final List<CategoryProductDatum> storedata;
   const StoreItemList(
-    this.data, {
-    super.key,
+    {
+    super.key, required this.storedata,
   });
 
   @override
   Widget build(BuildContext context) {
-    // context.read<GetProductBloc>().add(FetchProduct());
+    // context.read<GetProductBloc>().add(FetchProduct(cateId: ));
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -22,7 +22,7 @@ class StoreItemList extends StatelessWidget {
           ListView.separated(
             physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
-            itemCount: data.length,
+            itemCount: storedata.length,
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
@@ -37,7 +37,7 @@ class StoreItemList extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.24,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(data[index].image!.toString()))),
+                              image: NetworkImage(storedata[index].image![0].toString()))),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.65,
@@ -45,7 +45,7 @@ class StoreItemList extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            data[index].details.toString(),
+                            storedata[index].details.toString(),
                             style: Theme.of(context).textTheme.textLarge,
                           ),
                           const SizedBox(
@@ -57,19 +57,19 @@ class StoreItemList extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    data[index].price!.toString(),
+                                    storedata[index].price!.toString(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .headingSmall,
+                                        .headingTiny,
                                   ),
                                   const SizedBox(
-                                    width: xxxTinierSpacing,
+                                    width: tiniestSpacing,
                                   ),
                                   Text(
-                                    data[index].discountedCost!.toString(),
+                                    storedata[index].discountedCost!.toString(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subHeadingLarge
+                                        .subHeadingMedium
                                         .copyWith(
                                             decoration:
                                                 TextDecoration.lineThrough),
@@ -89,7 +89,7 @@ class StoreItemList extends StatelessWidget {
                                         vertical: xxTiniestSpacing,
                                         horizontal: xxTinierSpacing),
                                     child: Center(
-                                      child: Text('40% OFF',
+                                      child: Text('${storedata[index].discount!} % off',
                                           style: Theme.of(context)
                                               .textTheme
                                               .textSmall

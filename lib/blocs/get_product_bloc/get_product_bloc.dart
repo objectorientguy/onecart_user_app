@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/get_product_bloc/get_product_events.dart';
@@ -14,20 +13,20 @@ class GetProductBloc extends Bloc<GetProduct, GetProductStates> {
   GetProductStates get initialState => ProductInitial();
 
   GetProductBloc() : super(ProductInitial()) {
-    on<GetProduct>(_fetchProducts);
+    on<FetchProduct>(_fetchProducts);
   }
 
   FutureOr<void> _fetchProducts(
-      GetProduct event, Emitter<GetProductStates> emit) async {
+      FetchProduct event, Emitter<GetProductStates> emit) async {
     emit(FetchProductLoading());
-    try {
+   // try {
       GetProductByIdModel getProductListModel =
-          await _productsRepository.fetchProducts();
+          await _productsRepository.fetchProducts(event.cateId);
 
       emit(FetchProductLoaded(getProductByIdModel: getProductListModel));
-    } catch (e) {
-      log(e.toString());
-      emit(FetchProductError(message: e.toString()));
-    }
+    // } catch (e) {
+    //   log(e.toString());
+    //   emit(FetchProductError(message: e.toString()));
+    // }
   }
 }

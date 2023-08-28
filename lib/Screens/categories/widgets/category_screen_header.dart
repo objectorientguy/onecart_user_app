@@ -6,10 +6,10 @@ import '../../../configs/app_spacing.dart';
 import '../../../data/models/get_product/get_product_model.dart';
 
 class CategoryItemScreenHeader extends StatelessWidget {
-  final List<CategoryProductDatum> data;
+  final CategoryHeader categorydata;
   const CategoryItemScreenHeader(
-    this.data, {
-    super.key,
+     {
+    super.key, required this.categorydata,
   });
 
   @override
@@ -30,9 +30,9 @@ class CategoryItemScreenHeader extends StatelessWidget {
           children: [
             Row(
               children: [
-                const CircleAvatar(
+                 CircleAvatar(
                   radius: kCircleAvatarRadius,
-                  backgroundImage: AssetImage('assets/img.png'),
+                  backgroundImage: NetworkImage(categorydata.categoryImage!),
                 ),
                 const SizedBox(width: tinySpacing),
                 SizedBox(
@@ -53,25 +53,13 @@ class CategoryItemScreenHeader extends StatelessWidget {
             const SizedBox(height: tinySpacing),
             InkWell(
               onTap: () {},
-              child:  Text("Fruits and Vegetables",
-                //data[].productName!.toString(),
+              child:  Text(
+                categorydata.categoryName!,
                 style:
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
               ),
             ),
             const SizedBox(height: tinySpacing),
-            const Row(
-              children: [
-                Text(
-                  '21 Stores · 234 Products',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 15,
-                      color: AppColor.grey),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
           ],
         ),
       ),
