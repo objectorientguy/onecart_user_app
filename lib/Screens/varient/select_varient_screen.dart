@@ -57,7 +57,7 @@ class SelectVariantScreen extends StatelessWidget {
                           children: [
                             Image.asset(
                               'assets/img_2.png',
-                              height: 50,
+                              height: 40,
                             ),
                             const SizedBox(
                               width: xxxTinierSpacing,
