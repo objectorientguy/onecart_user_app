@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:onecart_user_app/configs/app_theme.dart';
+
 import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/home/home_model.dart';
@@ -8,6 +10,7 @@ import '../../item_details/item_details_screen.dart';
 class TodayDealsSection extends StatelessWidget {
   static const routeName = 'TodayDealsSection';
   final List<Deal> data;
+
   const TodayDealsSection(
     this.data, {
     super.key,
@@ -24,7 +27,7 @@ class TodayDealsSection extends StatelessWidget {
         children: [
           Text(
             "Today's Deals",
-            style: Theme.of(context).textTheme.subHeadingLarge,
+            style: Theme.of(context).textTheme.headingTiny,
           ),
           const SizedBox(
             height: xxTinySpacing,
@@ -37,19 +40,22 @@ class TodayDealsSection extends StatelessWidget {
               return InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, ItemDetailsScreen.routeName,
-                      arguments: false);
+                      arguments: data[index]);
                 },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
+                      padding: const EdgeInsets.all(8.0),
                       height: screenwidth * 0.24,
-                      width: screenwidth * 0.24,
+                      width: screenwidth * 0.20,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image:
-                                  NetworkImage(data[index].image!.toString()),
+                              image: NetworkImage(data[index].image![0]),
                               fit: BoxFit.fill)),
+                    ),
+                    const SizedBox(
+                      width: 20,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,11 +64,21 @@ class TodayDealsSection extends StatelessWidget {
                           width: screenwidth * 0.65,
                           child: Text(
                             data[index].productName!,
-                            style: Theme.of(context).textTheme.textLarge,
+                            style: Theme.of(context).textTheme.textLarger,
                           ),
                         ),
                         const SizedBox(
-                          height: tinySpacing,
+                          height: tiniestSpacing,
+                        ),
+                        SizedBox(
+                          width: screenwidth * 0.65,
+                          child: Text(
+                            data[index].details!,
+                            style: Theme.of(context).textTheme.subHeadingMedium,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: xxxTinierSpacing,
                         ),
                         SizedBox(
                           width: screenwidth * 0.65,
@@ -72,10 +88,9 @@ class TodayDealsSection extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    data[index].price!.toString(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headingSmall,
+                                    '₹ ${data[index].discountedCost!.toString()}',
+                                    style:
+                                        Theme.of(context).textTheme.textMedium,
                                   ),
                                   const SizedBox(
                                     width: xxxTinierSpacing,
@@ -84,7 +99,7 @@ class TodayDealsSection extends StatelessWidget {
                                     data[index].price!.toString(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subHeadingLarge
+                                        .subHeadingSmall
                                         .copyWith(
                                             decoration:
                                                 TextDecoration.lineThrough),
@@ -102,16 +117,16 @@ class TodayDealsSection extends StatelessWidget {
                                             BorderRadius.circular(15)),
                                     padding: const EdgeInsets.symmetric(
                                         vertical: xxTiniestSpacing,
-                                        horizontal: xxTinierSpacing),
+                                        horizontal: xxxTinierSpacing),
                                     child: Center(
                                       child: Text(
-                                          '${data[index].discountedCost!} % off',
+                                          '${data[index].discount!} % off',
                                           style: Theme.of(context)
                                               .textTheme
                                               .textSmall
                                               .copyWith(
                                                   color: AppColor.primary,
-                                                  fontWeight: FontWeight.w700)),
+                                                  fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ],
@@ -121,7 +136,7 @@ class TodayDealsSection extends StatelessWidget {
                                 style: TextButton.styleFrom(
                                   minimumSize: Size.zero,
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: xxTinySpacing,
+                                      horizontal: xxxTinySpacing,
                                       vertical: xxTinierSpacing),
                                   tapTargetSize:
                                       MaterialTapTargetSize.shrinkWrap,

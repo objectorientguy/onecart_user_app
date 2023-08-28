@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/address_bloc/address_bloc.dart';
@@ -11,31 +12,15 @@ import 'edit_address_screen.dart';
 class AddressScreen extends StatelessWidget {
   static const routeName = 'AddressScreen';
   final Map addressDetailsMap = {};
+
   AddressScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     context.read<AddressBloc>().add(FetchAddress());
     return Scaffold(
-      appBar: AppBar(
-        title: Text('My addresses',
-            style: Theme.of(context).textTheme.headingMedium),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new,
-              color: AppColor.black,
-            )),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.more_vert,
-                color: AppColor.black,
-              ))
-        ],
+      appBar: const GenericAppBar(
+        title: 'My Addresses',
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -88,7 +73,7 @@ class AddressScreen extends StatelessWidget {
                                           style: Theme.of(context)
                                               .textTheme
                                               .headingTiny),
-                                      const SizedBox(width: xxxTinierSpacing),
+                                      const SizedBox(width: xxTinierSpacing),
                                     ],
                                   ),
                                   const SizedBox(height: xxxTiniestSpacing),
@@ -98,22 +83,14 @@ class AddressScreen extends StatelessWidget {
                                         .toString(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subHeadingLarge,
+                                        .subHeadingLargex,
                                   ),
                                   Text(
                                     state.fetchAddressModel.data![index].phoneNo
                                         .toString(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subHeadingLarge,
+                                    style:
+                                        Theme.of(context).textTheme.textMediumx,
                                   ),
-                                  // Text(
-                                  //   addressData[index]['value'][4],
-                                  //   style: Theme.of(context)
-                                  //       .textTheme
-                                  //       .subHeadingLarge
-                                  //       .copyWith(fontWeight: FontWeight.w700),
-                                  // )
                                 ],
                               ),
                             ],

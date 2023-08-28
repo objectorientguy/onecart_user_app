@@ -54,13 +54,13 @@ class PaymentDetailsSection extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('HDFC Credit Card',
-                            style: Theme.of(context).textTheme.headingSmall),
+                            style: Theme.of(context).textTheme.headingSmallx),
                         const SizedBox(
                           height: xxTinySpacing,
                         ),
                         Text(
                           'Platinum  5241 XXXX XXXX 0321',
-                          style: Theme.of(context).textTheme.subHeadingLarge,
+                          style: Theme.of(context).textTheme.subHeadingMedium,
                         ),
                         const SizedBox(
                           height: xxTinySpacing,
@@ -68,12 +68,12 @@ class PaymentDetailsSection extends StatelessWidget {
                         Row(
                           children: [
                             Text('Available Limit',
-                                style: Theme.of(context).textTheme.textLarge),
+                                style: Theme.of(context).textTheme.headingTiny),
                             const SizedBox(
                               width: xxxTinySpacing,
                             ),
                             Text('₹84,321',
-                                style: Theme.of(context).textTheme.headingSmall)
+                                style: Theme.of(context).textTheme.xtextMedium)
                           ],
                         )
                       ],

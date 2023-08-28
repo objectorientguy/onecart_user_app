@@ -6,7 +6,8 @@ import 'package:onecart_user_app/blocs/address_bloc/address_event.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/address_bloc/address_states.dart';
 import '../../common_widgets/custom_elevated_button.dart';
-import '../../configs/app_color.dart';
+import '../../common_widgets/generic_app_bar.dart';
+
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 import '../../data/models/address_model/address_model.dart';
@@ -15,6 +16,7 @@ class EditAddressScreen extends StatelessWidget {
   static const routeName = 'EditAddressScreen';
   final AddressDatum addressDataMap;
   static Map saveAddress = {};
+
   const EditAddressScreen({
     Key? key,
     required this.addressDataMap,
@@ -34,25 +36,8 @@ class EditAddressScreen extends StatelessWidget {
     log('saveAddress.toString()');
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Edit address',
-            style: Theme.of(context).textTheme.headingMedium),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new,
-              color: AppColor.black,
-            )),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.more_vert,
-                color: AppColor.black,
-              ))
-        ],
+      appBar: const GenericAppBar(
+        title: 'Edit Address',
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(

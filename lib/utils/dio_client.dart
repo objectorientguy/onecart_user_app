@@ -1,15 +1,22 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 
 class DioClient {
   final Dio dio = Dio(BaseOptions(connectTimeout: const Duration(seconds: 75)));
+  var headers = {
+    'Content-Type': 'application/json',
+    "Access-Control-Allow-Origin": "*",
+  };
 
   Future<dynamic> get(String requestUrl, [Map? body]) async {
     dynamic jsonResponse;
     try {
-      final response = await dio.get(requestUrl, options: Options());
+      log("requestUrl==========>$requestUrl");
+      final response =
+          await dio.get(requestUrl, options: Options(headers: headers));
       jsonResponse = (response.data);
     } on DioException catch (e) {
       if (e.response != null) {
@@ -25,8 +32,8 @@ class DioClient {
   Future<dynamic> post(String requestUrl, Map? body) async {
     dynamic jsonResponse;
     try {
-      final response =
-          await dio.post(requestUrl, data: body, options: Options());
+      final response = await dio.post(requestUrl,
+          data: body, options: Options(headers: headers));
       jsonResponse = (response.data);
     } on DioException catch (e) {
       if (e.response != null) {
@@ -42,8 +49,8 @@ class DioClient {
   Future<dynamic> put(String requestUrl, Map? body) async {
     dynamic jsonResponse;
     try {
-      final response =
-          await dio.put(requestUrl, data: body, options: Options());
+      final response = await dio.put(requestUrl,
+          data: body, options: Options(headers: headers));
       jsonResponse = (response.data);
     } on DioException catch (e) {
       if (e.response != null) {
@@ -64,7 +71,8 @@ class DioClient {
         'file': await MultipartFile.fromFile(imageFile.path),
         'hashcode': MultipartFile.fromString(hashCode)
       });
-      final response = await dio.post(requestUrl, data: formData);
+      final response = await dio.post(requestUrl,
+          data: formData, options: Options(headers: headers));
       jsonResponse = jsonDecode(response.toString());
     } on DioException catch (e) {
       if (e.response != null) {
