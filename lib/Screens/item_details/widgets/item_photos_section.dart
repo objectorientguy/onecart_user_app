@@ -4,8 +4,10 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
 
 class ItemPhotosSection extends StatelessWidget {
+  final List imageList;
   const ItemPhotosSection({
     super.key,
+    required this.imageList,
   });
 
   @override
@@ -16,9 +18,9 @@ class ItemPhotosSection extends StatelessWidget {
           child: Container(
             width: MediaQuery.of(context).size.width - 30,
             height: MediaQuery.of(context).size.width * 0.6,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/img_2.png'),
+                    image: NetworkImage(imageList[0].toString()),
                     fit: BoxFit.fitHeight)),
           ),
         ),
