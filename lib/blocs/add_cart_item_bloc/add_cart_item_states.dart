@@ -1,10 +1,10 @@
 import '../../data/models/add_cart_items/add_cart_items_model.dart';
 
-abstract class AddItemsToCartStates{}
+abstract class AddItemsToCartStates {}
 
-class AddItemInitial extends AddItemsToCartStates{}
+class AddItemInitial extends AddItemsToCartStates {}
 
-class AddItemLoading extends AddItemsToCartStates{}
+class AddItemLoading extends AddItemsToCartStates {}
 
 class AddItemsError extends AddItemsToCartStates {
   final String message;
@@ -12,7 +12,7 @@ class AddItemsError extends AddItemsToCartStates {
   AddItemsError({required this.message});
 }
 
-class AddItemLoaded extends AddItemsToCartStates{
+class AddItemLoaded extends AddItemsToCartStates {
   final AddToCartModel addToTheCartModel;
 
   final List addressDetails;
@@ -26,5 +26,4 @@ class AddItemLoaded extends AddItemsToCartStates{
   //     {required this.saveAddress,
   //       required this.editAddressModel,
   //       required addressId});
-
 }

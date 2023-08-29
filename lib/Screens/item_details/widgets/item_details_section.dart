@@ -128,7 +128,8 @@ class ItemDetailsSection extends StatelessWidget {
                                 vertical: xxTiniestSpacing,
                                 horizontal: xxTinierSpacing),
                             child: Center(
-                              child: Text('${state.itemDetailsModel.data!.discount.toString()} %',
+                              child: Text(
+                                  '${state.itemDetailsModel.data!.discount.toString()} %',
                                   style: Theme.of(context)
                                       .textTheme
                                       .textSmall
