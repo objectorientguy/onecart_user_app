@@ -34,7 +34,7 @@ class _RootScreenState extends State<RootScreen> {
 
   static final List _widgetOptions = [
     const HomeScreen(),
-     const CategoryGridScreen(),
+    const CategoryGridScreen(),
     //  state.getAllCategoriesListModel.data[index].CategoryDatum!
     const OrdersScreen(),
     const ProfileScreen(),

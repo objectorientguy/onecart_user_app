@@ -38,7 +38,7 @@ class StoreItemList extends StatelessWidget {
                         height: MediaQuery.of(context).size.width * 0.24,
                         width: MediaQuery.of(context).size.width * 0.24,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
                                 image: NetworkImage(
                                     storedata[index].image![0].toString()))),
