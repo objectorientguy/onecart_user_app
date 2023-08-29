@@ -27,57 +27,57 @@ class _RootScreenState extends State<RootScreen> {
   }
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    // setState(() {
+    _selectedIndex = index;
+    // });
   }
 
   static final List _widgetOptions = [
     const HomeScreen(),
     const CategoryGridScreen(),
-    //  state.getAllCategoriesListModel.data[index].CategoryDatum!
     const OrdersScreen(),
-    const ProfileScreen(),
+    const ProfileScreen()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
-        bottomNavigationBar: Container(
-          height: kBottomNavBarHeight,
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(kBottomNavBarRadius),
-                  topRight: Radius.circular(kBottomNavBarRadius)),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColor.grey,
-                  spreadRadius: 1,
-                  blurRadius: kBottomNavBarRadius,
-                ),
-              ]),
-          child: ClipRRect(
-            borderRadius: const BorderRadius.only(
+      bottomNavigationBar: Container(
+        height: kBottomNavBarHeight,
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(kBottomNavBarRadius),
                 topRight: Radius.circular(kBottomNavBarRadius)),
-            child: BottomNavigationBar(
-              enableFeedback: true,
-              type: BottomNavigationBarType.fixed,
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-              items: const [
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.home_filled), label: 'Home'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.grid_view_rounded), label: 'Categories'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.my_library_books), label: 'Orders'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.person), label: 'Account')
-              ],
-            ),
+            boxShadow: [
+              BoxShadow(
+                color: AppColor.grey,
+                spreadRadius: 1,
+                blurRadius: kBottomNavBarRadius,
+              ),
+            ]),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(kBottomNavBarRadius),
+              topRight: Radius.circular(kBottomNavBarRadius)),
+          child: BottomNavigationBar(
+            enableFeedback: true,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            items: const [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home_filled), label: 'Home'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.grid_view_rounded), label: 'Categories'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.my_library_books), label: 'Orders'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person), label: 'Account')
+            ],
           ),
-        ));
+        ),
+      ),
+      body: _widgetOptions[_selectedIndex],
+    );
   }
 }
