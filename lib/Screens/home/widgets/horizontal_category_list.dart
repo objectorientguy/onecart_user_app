@@ -10,7 +10,7 @@ import '../../categories/category_item_screen.dart';
 
 class HorizontalCategoryList extends StatelessWidget {
   static const routeName = 'HorizontalCategoryList';
-  final List<dynamic> data;
+  final List<Category> data;
 
   const HorizontalCategoryList({super.key, required this.data});
 
