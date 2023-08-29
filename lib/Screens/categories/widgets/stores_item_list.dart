@@ -32,13 +32,17 @@ class StoreItemList extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      height: MediaQuery.of(context).size.width * 0.24,
-                      width: MediaQuery.of(context).size.width * 0.24,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  storedata[index].image![0].toString()))),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Container(
+                        height: MediaQuery.of(context).size.width * 0.24,
+                        width: MediaQuery.of(context).size.width * 0.24,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    storedata[index].image![0].toString()))),
+                      ),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.65,
@@ -46,11 +50,18 @@ class StoreItemList extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            storedata[index].details.toString(),
+                            storedata[index].productName.toString(),
                             style: Theme.of(context).textTheme.textLarge,
                           ),
                           const SizedBox(
-                            height: tinySpacing,
+                            height: xxxTinierSpacing,
+                          ),
+                          Text(
+                            storedata[index].details.toString(),
+                            style: Theme.of(context).textTheme.textMediumx,
+                          ),
+                          const SizedBox(
+                            height: xxxTinySpacing,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
