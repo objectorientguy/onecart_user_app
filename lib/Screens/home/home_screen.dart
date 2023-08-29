@@ -20,81 +20,69 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final myController = TextEditingController();
     context.read<GetHomeDetailsBloc>().add(GetHomeDetails());
-
     return SafeArea(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: leftRightMargin, vertical: topBottomPadding),
-            child: Column(
-              children: [
-                const AddressBar(),
-                const SizedBox(
-                  height: xxxSmallerSpacing,
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search products...',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(kSearchBarRadius),
-                      borderSide: const BorderSide(),
-                    ),
-                    suffixIcon: InkWell(
-                        onTap: () {
-                          context.read<SearchProductsBloc>().add(
-                              SearchAllProducts(searchTerm: myController.text));
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const SearchScreen()));
-                        },
-                        child: const Icon(Icons.search)),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          BlocBuilder<GetHomeDetailsBloc, HomeStates>(
-            builder: (context, state) {
-              if (state is GetHomeDetailsLoading) {
-                return const Column(
-                  children: [
-                    SizedBox(
-                      height: 200,
-                    ),
-                    Center(child: CircularProgressIndicator()),
-                  ],
-                );
-              } else if (state is GetHomeDetailsLoaded) {
-                return Expanded(
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
+      child: BlocBuilder<GetHomeDetailsBloc, HomeStates>(
+        builder: (context, state) {
+          if (state is GetHomeDetailsLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is GetHomeDetailsLoaded) {
+            return SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: leftRightMargin,
+                        vertical: topBottomPadding),
                     child: Column(
                       children: [
+
                         HorizontalCategoryList(
                           data: state.homeModel.data!.categories!,
                         ),
                         const SizedBox(
-                          height: tiniestSpacing,
+                          height: xxxSmallerSpacing,
                         ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.width * 0.55,
-                            child: CarouselSlider(
-                              state.homeModel.data!.banners!,
-                            )),
-                        TodayDealsSection(state.homeModel.data!.deals!),
+                        TextField(
+                          controller: myController,
+                          decoration: InputDecoration(
+                            hintText: 'Search products...',
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.circular(kSearchBarRadius),
+                              borderSide: const BorderSide(),
+                            ),
+                            suffixIcon: InkWell(
+                                onTap: () {
+                                },
+                                child: const Icon(Icons.search)),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                );
-              }
-              if (state is GetHomeDetailsError) {
-                return Container();
-              } else {
-                return const SizedBox();
-              }
-            },
-          )
-        ],
+                  HorizontalCategoryList(
+                    data: state.homeModel.data!.categories!,
+                  ),
+                  const SizedBox(
+                    height: tiniestSpacing,
+                  ),
+                  SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.55,
+                      child: CarouselSlider(
+                        state.homeModel.data!.banners!,
+                      )),
+                  TodayDealsSection(state.homeModel.data!.deals!),
+                ],
+              ),
+            );
+          }
+          if (state is GetHomeDetailsError) {
+            return Container();
+          } else {
+            return const SizedBox();
+          }
+        },
       ),
     );
   }
