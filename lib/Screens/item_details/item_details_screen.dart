@@ -12,12 +12,11 @@ import '../../blocs/item_details_bloc/item_details_states.dart';
 
 import '../../configs/app_color.dart';
 import '../../configs/app_spacing.dart';
-import '../../data/models/home/home_model.dart';
 import '../cart/cart_screen.dart';
 
 class ItemDetailsScreen extends StatelessWidget {
   static const routeName = 'ItemDetailsScreen';
-  final Deal itemDetails;
+  final dynamic itemDetails;
 
   const ItemDetailsScreen({Key? key, required this.itemDetails})
       : super(key: key);
