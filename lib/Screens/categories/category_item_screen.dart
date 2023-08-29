@@ -5,11 +5,10 @@ import 'package:onecart_user_app/Screens/categories/widgets/stores_item_list.dar
 import '../../blocs/get_product_bloc/get_product_bloc.dart';
 import '../../blocs/get_product_bloc/get_product_states.dart';
 import '../../common_widgets/generic_app_bar.dart';
-import '../../data/models/home/home_model.dart';
 
 class CategoryItemScreen extends StatelessWidget {
   static const routeName = 'CategoryItemScreen';
-  final Category categoryDetails;
+  final dynamic categoryDetails;
 
   const CategoryItemScreen({Key? key, required this.categoryDetails})
       : super(key: key);
