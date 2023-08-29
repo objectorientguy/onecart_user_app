@@ -63,7 +63,7 @@ class SelectVariantScreen extends StatelessWidget {
                               width: xxxTinierSpacing,
                             ),
                             Flexible(
-                                child: Text(dataone.brandName.toString(),
+                                child: Text(dataone.productName.toString(),
                                     style: Theme.of(context)
                                         .textTheme
                                         .textLarge
