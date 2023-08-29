@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:onecart_user_app/Screens/home/widgets/horizontal_category_list.dart';
+import 'package:onecart_user_app/Screens/home/widgets/search_screen.dart';
 import 'package:onecart_user_app/Screens/home/widgets/todays_deals_section.dart';
+import 'package:onecart_user_app/common_widgets/address_bar.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import '../../blocs/home/home_bloc.dart';
 import '../../blocs/home/home_events.dart';
 import '../../blocs/home/home_states.dart';
+import '../../blocs/search_product_bloc/search_product_bloc.dart';
+import '../../blocs/search_product_bloc/search_product_events.dart';
 import '../../common_widgets/carousel_slider.dart';
 import '../../configs/app_dimensions.dart';
 
@@ -32,10 +37,7 @@ class HomeScreen extends StatelessWidget {
                         vertical: topBottomPadding),
                     child: Column(
                       children: [
-
-                        HorizontalCategoryList(
-                          data: state.homeModel.data!.categories!,
-                        ),
+                        const AddressBar(),
                         const SizedBox(
                           height: xxxSmallerSpacing,
                         ),
@@ -50,6 +52,11 @@ class HomeScreen extends StatelessWidget {
                             ),
                             suffixIcon: InkWell(
                                 onTap: () {
+                                  context.read<SearchProductsBloc>().add(
+                                      SearchAllProducts(
+                                          searchTerm: myController.text));
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => SearchScreen()));
                                 },
                                 child: const Icon(Icons.search)),
                           ),
