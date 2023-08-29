@@ -3,9 +3,13 @@ import 'package:onecart_user_app/data/models/home/home_model.dart';
 
 class CarouselSlider extends StatefulWidget {
   static const routeName = 'HorizontalCategoryList';
+
   final List<PromotinalBanner> data;
 
-  const CarouselSlider(this.data, {super.key});
+  const CarouselSlider(
+    this.data, {
+    super.key,
+  });
 
   @override
   State<CarouselSlider> createState() => _CarouselSliderState();
