@@ -44,6 +44,7 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: Zoom(
+
                       child: Image.network(
                         widget.imageList[index].toString(),
                         fit: BoxFit.fill,
