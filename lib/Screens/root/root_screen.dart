@@ -27,9 +27,9 @@ class _RootScreenState extends State<RootScreen> {
   }
 
   void _onItemTapped(int index) {
-    // setState(() {
+    setState(() {
     _selectedIndex = index;
-    // });
+    });
   }
 
   static final List _widgetOptions = [
