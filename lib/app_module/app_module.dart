@@ -5,6 +5,8 @@ import '../repositories/address_repo/address_repository.dart';
 import '../repositories/address_repo/address_repository_impl.dart';
 import '../repositories/authentication/authentication_repository.dart';
 import '../repositories/authentication/authentication_repository_impl.dart';
+import '../repositories/checkout_repo/checkout_repository.dart';
+import '../repositories/checkout_repo/checkout_repository_impl.dart';
 import '../repositories/home/home_repository.dart';
 import '../repositories/home/home_repository_impl.dart';
 import '../repositories/item_details/item_details_repository.dart';
@@ -53,4 +55,6 @@ configurableDependencies() {
       () => CustomerCache(sharedPreferences: getIt<SharedPreferences>()));
 
   getIt.registerLazySingleton<OrdersRepository>(() => OrdersRepositoryImpl());
+  getIt.registerLazySingleton<CheckoutRepository>(
+      () => CheckoutRepositoryImpl());
 }

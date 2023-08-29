@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onecart_user_app/blocs/get_product_bloc/get_product_bloc.dart';
+import 'package:onecart_user_app/blocs/get_product_bloc/get_product_events.dart';
+import 'package:onecart_user_app/data/models/home/home_model.dart';
+
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../categories/category_item_screen.dart';
@@ -7,7 +12,7 @@ class HorizontalCategoryList extends StatelessWidget {
   static const routeName = 'HorizontalCategoryList';
   final List<dynamic> data;
 
-  const HorizontalCategoryList(this.data, {super.key});
+  const HorizontalCategoryList({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +24,13 @@ class HorizontalCategoryList extends StatelessWidget {
         shrinkWrap: true,
         itemCount: data.length,
         itemBuilder: (context, index) {
-          if (index == 0 || index == 11) {
-            return const SizedBox(
-              width: xxxTinierSpacing,
-            );
-          }
           return SizedBox(
             width: kHorizontalCategoryListItemWidth * 1.2,
             child: InkWell(
               onTap: () {
+                context
+                    .read<GetProductBloc>()
+                    .add(FetchProduct(cateId: data[index].categoryId!));
                 Navigator.pushNamed(context, CategoryItemScreen.routeName,
                     arguments: data[index]);
               },

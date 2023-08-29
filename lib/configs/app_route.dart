@@ -5,7 +5,6 @@ import '../Screens/address/address_screen.dart';
 import '../Screens/address/edit_address_screen.dart';
 import '../Screens/cart/cart_screen.dart';
 import '../Screens/categories/category_item_screen.dart';
-import '../Screens/category_list/category_list_screen.dart';
 import '../Screens/checkout/checkout_screen.dart';
 import '../Screens/checkout/order_success.dart';
 import '../Screens/favorites/no_favorites.dart';
@@ -24,14 +23,12 @@ class AppRoutes {
     switch (settings.name) {
       case CategoryItemScreen.routeName:
         return _createRoute(CategoryItemScreen(
-          categoryDeals: settings.arguments as Category,
+          categoryDetails: settings.arguments as Category,
         ));
       case ItemDetailsScreen.routeName:
         return _createRoute(ItemDetailsScreen(
-          itemDetails: settings.arguments as Deal,
+          itemDetails: settings.arguments as dynamic,
         ));
-      case CategoryListScreen.routeName:
-        return _createRoute(const CategoryListScreen());
       case CartScreen.routeName:
         return _createRoute(const CartScreen());
       case CheckoutScreen.routeName:

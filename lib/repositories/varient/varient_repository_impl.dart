@@ -5,9 +5,9 @@ import '../../utils/dio_client.dart';
 
 class SelectVarientRepositoryImpl implements SelectVarientRepository {
   @override
-  Future<SelectVarientListModel> getAllVarients() async {
+  Future<SelectVarientListModel> getAllVarients(int variantId) async {
     final response = await DioClient()
-        .get("https://oneart.onrender.com/getProductVariants/1");
+        .get("https://oneart.onrender.com/getProductVariants/$variantId");
     return SelectVarientListModel.fromJson(response);
   }
 }

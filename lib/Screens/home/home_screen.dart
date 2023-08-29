@@ -38,7 +38,10 @@ class HomeScreen extends StatelessWidget {
                         vertical: topBottomPadding),
                     child: Column(
                       children: [
-                        const AddressBar(),
+
+                        HorizontalCategoryList(
+                          data: state.homeModel.data!.categories!,
+                        ),
                         const SizedBox(
                           height: xxxSmallerSpacing,
                         ),

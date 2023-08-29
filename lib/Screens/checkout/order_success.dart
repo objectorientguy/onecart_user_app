@@ -34,7 +34,7 @@ class OrderSuccessScreen extends StatelessWidget {
             SizedBox(
                 width: kSuccessDescriptionWidth,
                 child: Text(
-                  'Your Order Has Been Delivered Successfully.',
+                  'Your Order Has Been Delivered   Successfully.',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.subHeadingLarger,
                 )),
