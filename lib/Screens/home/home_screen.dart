@@ -1,9 +1,7 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/home/widgets/search_screen.dart';
-import 'package:onecart_user_app/common_widgets/address_bar.dart';
 import 'package:onecart_user_app/Screens/home/widgets/horizontal_category_list.dart';
 import 'package:onecart_user_app/Screens/home/widgets/todays_deals_section.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
@@ -70,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   HorizontalCategoryList(
-                    state.homeModel.data!.categories!,
+                    data: state.homeModel.data!.categories!,
                   ),
                   const SizedBox(
                     height: tiniestSpacing,
