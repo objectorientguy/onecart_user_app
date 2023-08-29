@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zoom_widget/zoom_widget.dart';
 
 class ImageCarouselSlider extends StatefulWidget {
   final List imageList;
@@ -43,12 +42,11 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                   margin: const EdgeInsets.all(8),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: Zoom(
-                      child: Image.network(
+                    child: Image.network(
                         widget.imageList[index].toString(),
                         fit: BoxFit.fill,
                       ),
-                    ),
+
                   ),
                 );
               }),
