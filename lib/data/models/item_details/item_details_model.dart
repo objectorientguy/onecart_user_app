@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final itemDetailsModel = itemDetailsModelFromJson(jsonString);
+
 import 'dart:convert';
 
 ItemDetailsModel itemDetailsModelFromJson(String str) =>
@@ -34,64 +38,72 @@ class ItemDetailsModel {
 }
 
 class ItemDetailsData {
+  final String? companyName;
   final int? categoryId;
-  final String? productName;
+  final int? brandId;
   final List<String>? image;
   final int? itemCount;
   final int? discount;
   final String? details;
-  final String? companyName;
+  final String? weight;
   final int? productId;
-  final String? brandName;
+  final String? productName;
   final bool? deal;
   final double? price;
   final double? discountedCost;
+  final String? description;
 
   ItemDetailsData({
+    this.companyName,
     this.categoryId,
-    this.productName,
+    this.brandId,
     this.image,
     this.itemCount,
     this.discount,
     this.details,
-    this.companyName,
+    this.weight,
     this.productId,
-    this.brandName,
+    this.productName,
     this.deal,
     this.price,
     this.discountedCost,
+    this.description,
   });
 
   factory ItemDetailsData.fromJson(Map<String, dynamic> json) =>
       ItemDetailsData(
+        companyName: json["company_name"],
         categoryId: json["category_id"],
-        productName: json["product_name"],
+        brandId: json["brand_id"],
         image: json["image"] == null
             ? []
             : List<String>.from(json["image"]!.map((x) => x)),
         itemCount: json["item_count"],
         discount: json["discount"],
         details: json["details"],
-        companyName: json["company_name"],
+        weight: json["weight"],
         productId: json["product_id"],
-        brandName: json["brand_name"],
+        productName: json["product_name"],
         deal: json["deal"],
         price: json["price"],
         discountedCost: json["discounted_cost"],
+        description: json["description"],
       );
 
   Map<String, dynamic> toJson() => {
+        "company_name": companyName,
         "category_id": categoryId,
-        "product_name": productName,
+        "brand_id": brandId,
         "image": image == null ? [] : List<dynamic>.from(image!.map((x) => x)),
         "item_count": itemCount,
         "discount": discount,
         "details": details,
-        "company_name": companyName,
+        "weight": weight,
         "product_id": productId,
-        "brand_name": brandName,
+        "product_name": productName,
         "deal": deal,
         "price": price,
         "discounted_cost": discountedCost,
+        "description": description,
       };
 }

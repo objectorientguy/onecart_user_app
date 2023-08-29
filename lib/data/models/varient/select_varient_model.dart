@@ -13,7 +13,7 @@ String selectVarientListModelToJson(SelectVarientListModel data) =>
 class SelectVarientListModel {
   final int? status;
   final String? message;
-  final List<Datum>? data;
+  final List<VarientDatum>? data;
 
   SelectVarientListModel({
     this.status,
@@ -27,7 +27,8 @@ class SelectVarientListModel {
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+            : List<VarientDatum>.from(
+                json["data"]!.map((x) => VarientDatum.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -39,7 +40,7 @@ class SelectVarientListModel {
       };
 }
 
-class Datum {
+class VarientDatum {
   final String? variantName;
   final int? variantId;
   final double? discountedCost;
@@ -51,7 +52,7 @@ class Datum {
   final int? itemCount;
   final int? productId;
 
-  Datum({
+  VarientDatum({
     this.variantName,
     this.variantId,
     this.discountedCost,
@@ -64,7 +65,7 @@ class Datum {
     this.productId,
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory VarientDatum.fromJson(Map<String, dynamic> json) => VarientDatum(
         variantName: json["variant_name"],
         variantId: json["variant_id"],
         discountedCost: json["discounted_cost"],

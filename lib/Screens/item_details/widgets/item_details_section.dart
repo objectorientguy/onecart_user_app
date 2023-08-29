@@ -49,7 +49,7 @@ class ItemDetailsSection extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('196 Gms',
+                  Text(itemData.weight.toString(),
                       style: Theme.of(context)
                           .textTheme
                           .textLarge
@@ -159,7 +159,7 @@ class ItemDetailsSection extends StatelessWidget {
             ],
           ),
           const SizedBox(height: xxxTinySpacing),
-          SizedBox(height: 200, child: Text(itemData.details.toString())),
+          SizedBox(height: 200, child: Text(itemData.description.toString())),
 
           // Text('description'),
         ],
