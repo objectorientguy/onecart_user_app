@@ -49,94 +49,96 @@ class OrdersScreen extends StatelessWidget {
                     return Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: xxxTinierSpacing),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration: const BoxDecoration(
-                                      color: AppColor.primaryLighter,
-                                      shape: BoxShape.circle),
-                                  child: const Icon(
-                                    Icons.shopping_bag_outlined,
-                                    color: AppColor.primary,
-                                  )),
-                              const SizedBox(
-                                width: xxxTinySpacing,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                      state.getAllOrdersListModel.data![index]
-                                          .orderId
-                                          .toString(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headingTiny),
-                                  const SizedBox(height: xxxTiniestSpacing),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.55,
-                                    child: Text(
-                                      state.getAllOrdersListModel.data![index]
-                                          .orderPlaced
-                                          .toString(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .subHeadingLarge,
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Items: ',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .subHeadingLarge,
-                                      ),
-                                      Text(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, OrdersDetailsScreen.routeName,
+                              arguments:
+                                  state.getAllOrdersListModel.data![index]);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                    height: 40,
+                                    width: 40,
+                                    decoration: const BoxDecoration(
+                                        color: AppColor.primaryLighter,
+                                        shape: BoxShape.circle),
+                                    child: const Icon(
+                                      Icons.shopping_bag_outlined,
+                                      color: AppColor.primary,
+                                    )),
+                                const SizedBox(
+                                  width: xxxTinySpacing,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
                                         state.getAllOrdersListModel.data![index]
-                                            .itemCount
+                                            .orderId
                                             .toString(),
                                         style: Theme.of(context)
                                             .textTheme
-                                            .subHeadingLarge
-                                            .copyWith(color: AppColor.primary),
-                                      ),
-                                      const SizedBox(width: xxxTinierSpacing),
-                                      Text(
-                                        'Total Price: ',
+                                            .headingTiny),
+                                    const SizedBox(height: xxxTiniestSpacing),
+                                    SizedBox(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.55,
+                                      child: Text(
+                                        state.getAllOrdersListModel.data![index]
+                                            .orderPlaced
+                                            .toString(),
                                         style: Theme.of(context)
                                             .textTheme
                                             .subHeadingLarge,
                                       ),
-                                      Text(
-                                        '₹${state.getAllOrdersListModel.data![index].totalPrice.toString()}',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .subHeadingLarge
-                                            .copyWith(color: AppColor.primary),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, OrdersDetailsScreen.routeName,
-                                  arguments:
-                                      state.getAllOrdersListModel.data![index]);
-                            },
-                            child: Container(
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Items: ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subHeadingLarge,
+                                        ),
+                                        Text(
+                                          state.getAllOrdersListModel
+                                              .data![index].itemCount
+                                              .toString(),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subHeadingLarge
+                                              .copyWith(
+                                                  color: AppColor.primary),
+                                        ),
+                                        const SizedBox(width: xxxTinierSpacing),
+                                        Text(
+                                          'Total Price: ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subHeadingLarge,
+                                        ),
+                                        Text(
+                                          '₹${state.getAllOrdersListModel.data![index].totalPrice.toString()}',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subHeadingLarge
+                                              .copyWith(
+                                                  color: AppColor.primary),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 2, vertical: 2),
                                 decoration: BoxDecoration(
@@ -150,8 +152,8 @@ class OrdersScreen extends StatelessWidget {
                                     color: AppColor.primary,
                                   ),
                                 )),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     );
                   });

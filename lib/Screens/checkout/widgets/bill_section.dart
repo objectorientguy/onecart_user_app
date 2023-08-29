@@ -3,11 +3,10 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/checkout_model/checkout_model.dart';
 
 class BillSection extends StatelessWidget {
-  final List<CheckoutData> data;
-  const BillSection(this.data, {super.key});
+  //final List<CheckoutData> data;
+  const BillSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class BillSection extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       vertical: xxTiniestSpacing, horizontal: tinierSpacing),
                   child: Center(
-                    child: Text(data.toString(),
+                    child: Text('Hello',
                         style: Theme.of(context).textTheme.textSmall.copyWith(
                             color: AppColor.primary,
                             fontWeight: FontWeight.w700)),
@@ -50,7 +49,7 @@ class BillSection extends StatelessWidget {
                   style: Theme.of(context).textTheme.subHeadingLarger,
                 ),
                 Text(
-                  "data![index].cartItemCount!.toString()",
+                  "2000",
                   style: Theme.of(context).textTheme.textLarger,
                 )
               ],

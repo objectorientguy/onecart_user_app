@@ -25,7 +25,7 @@ class CartItemList extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.24,
                 decoration: const BoxDecoration(
                     image:
-                    DecorationImage(image: AssetImage('assets/img_2.png'))),
+                        DecorationImage(image: AssetImage('assets/img_2.png'))),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.68,
@@ -57,7 +57,7 @@ class CartItemList extends StatelessWidget {
                                   .textTheme
                                   .subHeadingSmall
                                   .copyWith(
-                                  decoration: TextDecoration.lineThrough),
+                                      decoration: TextDecoration.lineThrough),
                             ),
                             const SizedBox(
                               width: xxxTinierSpacing,
@@ -78,8 +78,8 @@ class CartItemList extends StatelessWidget {
                                         .textTheme
                                         .textSmall
                                         .copyWith(
-                                        color: AppColor.primary,
-                                        fontWeight: FontWeight.w700)),
+                                            color: AppColor.primary,
+                                            fontWeight: FontWeight.w700)),
                               ),
                             ),
                           ],

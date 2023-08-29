@@ -28,7 +28,7 @@ class _RootScreenState extends State<RootScreen> {
 
   void _onItemTapped(int index) {
     setState(() {
-    _selectedIndex = index;
+      _selectedIndex = index;
     });
   }
 
