@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../blocs/categories_bloc/categories_bloc.dart';
 import '../../blocs/categories_bloc/categories_events.dart';
 import '../../blocs/categories_bloc/categories_states.dart';
+import '../../blocs/get_product_bloc/get_product_bloc.dart';
+import '../../blocs/get_product_bloc/get_product_events.dart';
 import '../../common_widgets/address_bar.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
@@ -11,6 +13,7 @@ import '../../configs/app_spacing.dart';
 import '../categories/category_item_screen.dart';
 
 class CategoryGridScreen extends StatelessWidget {
+
   const CategoryGridScreen({Key? key}) : super(key: key);
 
   @override
@@ -68,9 +71,15 @@ class CategoryGridScreen extends StatelessWidget {
                           width: kHorizontalCategoryListItemWidth,
                           child: InkWell(
                             onTap: () {
-                              Navigator.pushNamed(
-                                  context, CategoryItemScreen.routeName,
-                                  arguments: false);
+                              context
+                                  .read<GetProductBloc>()
+                                  .add(FetchProduct(cateId: state
+                                  .getAllCategoriesListModel
+                                  .data![index].categoryId!));
+                              Navigator.pushNamed(context, CategoryItemScreen.routeName,
+                                  arguments: state
+                                      .getAllCategoriesListModel
+                                      .data![index]);
                             },
                             child: Column(
                               children: [
