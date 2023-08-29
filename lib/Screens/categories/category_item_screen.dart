@@ -27,10 +27,12 @@ class CategoryItemScreen extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CategoryItemScreenHeader(categorydata: state.getProductByIdModel.category!),
-                    // ),
+                CategoryItemScreenHeader(
+                    categorydata: state.getProductByIdModel.category!),
+                // ),
                 Expanded(
-                  child: StoreItemList(storedata: state.getProductByIdModel.data!),
+                  child:
+                      StoreItemList(storedata: state.getProductByIdModel.data!),
                 ),
               ],
             );

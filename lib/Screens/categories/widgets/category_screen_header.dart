@@ -7,9 +7,9 @@ import '../../../data/models/get_product/get_product_model.dart';
 
 class CategoryItemScreenHeader extends StatelessWidget {
   final CategoryHeader categorydata;
-  const CategoryItemScreenHeader(
-     {
-    super.key, required this.categorydata,
+  const CategoryItemScreenHeader({
+    super.key,
+    required this.categorydata,
   });
 
   @override
@@ -30,7 +30,7 @@ class CategoryItemScreenHeader extends StatelessWidget {
           children: [
             Row(
               children: [
-                 CircleAvatar(
+                CircleAvatar(
                   radius: kCircleAvatarRadius,
                   backgroundImage: NetworkImage(categorydata.categoryImage!),
                 ),
@@ -53,7 +53,7 @@ class CategoryItemScreenHeader extends StatelessWidget {
             const SizedBox(height: tinySpacing),
             InkWell(
               onTap: () {},
-              child:  Text(
+              child: Text(
                 categorydata.categoryName!,
                 style:
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.w700),

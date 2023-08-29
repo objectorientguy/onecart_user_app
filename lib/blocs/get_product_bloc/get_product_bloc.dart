@@ -19,11 +19,11 @@ class GetProductBloc extends Bloc<GetProduct, GetProductStates> {
   FutureOr<void> _fetchProducts(
       FetchProduct event, Emitter<GetProductStates> emit) async {
     emit(FetchProductLoading());
-   // try {
-      GetProductByIdModel getProductListModel =
-          await _productsRepository.fetchProducts(event.cateId);
+    // try {
+    GetProductByIdModel getProductListModel =
+        await _productsRepository.fetchProducts(event.cateId);
 
-      emit(FetchProductLoaded(getProductByIdModel: getProductListModel));
+    emit(FetchProductLoaded(getProductByIdModel: getProductListModel));
     // } catch (e) {
     //   log(e.toString());
     //   emit(FetchProductError(message: e.toString()));

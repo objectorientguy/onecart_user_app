@@ -12,7 +12,7 @@ class HorizontalCategoryList extends StatelessWidget {
   static const routeName = 'HorizontalCategoryList';
   final List<Category> data;
 
-  const HorizontalCategoryList({super.key,required this.data});
+  const HorizontalCategoryList({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,9 @@ class HorizontalCategoryList extends StatelessWidget {
             width: kHorizontalCategoryListItemWidth * 1.2,
             child: InkWell(
               onTap: () {
-                context.read<GetProductBloc>().add(FetchProduct(cateId: data[index].categoryId!));
+                context
+                    .read<GetProductBloc>()
+                    .add(FetchProduct(cateId: data[index].categoryId!));
                 Navigator.pushNamed(context, CategoryItemScreen.routeName,
                     arguments: data[index]);
               },

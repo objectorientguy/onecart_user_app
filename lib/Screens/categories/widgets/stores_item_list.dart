@@ -7,9 +7,9 @@ import '../../item_details/item_details_screen.dart';
 
 class StoreItemList extends StatelessWidget {
   final List<CategoryProductDatum> storedata;
-  const StoreItemList(
-    {
-    super.key, required this.storedata,
+  const StoreItemList({
+    super.key,
+    required this.storedata,
   });
 
   @override
@@ -37,7 +37,8 @@ class StoreItemList extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.24,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(storedata[index].image![0].toString()))),
+                              image: NetworkImage(
+                                  storedata[index].image![0].toString()))),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.65,
@@ -58,9 +59,8 @@ class StoreItemList extends StatelessWidget {
                                 children: [
                                   Text(
                                     storedata[index].price!.toString(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headingTiny,
+                                    style:
+                                        Theme.of(context).textTheme.headingTiny,
                                   ),
                                   const SizedBox(
                                     width: tiniestSpacing,
@@ -89,7 +89,8 @@ class StoreItemList extends StatelessWidget {
                                         vertical: xxTiniestSpacing,
                                         horizontal: xxTinierSpacing),
                                     child: Center(
-                                      child: Text('${storedata[index].discount!} % off',
+                                      child: Text(
+                                          '${storedata[index].discount!} % off',
                                           style: Theme.of(context)
                                               .textTheme
                                               .textSmall
