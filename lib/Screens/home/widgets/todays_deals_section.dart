@@ -75,7 +75,7 @@ class TodayDealsSection extends StatelessWidget {
                           child: Text(
                             data[index].details!,
                             style: Theme.of(context).textTheme.subHeadingMedium,
-                            maxLines: 1,
+                            maxLines: 2,
                           ),
                         ),
                         const SizedBox(
@@ -97,7 +97,7 @@ class TodayDealsSection extends StatelessWidget {
                                     width: xxxTinierSpacing,
                                   ),
                                   Text(
-                                    data[index].price!.toString(),
+                                    '₹ ${data[index].price!.toString()}',
                                     style: Theme.of(context)
                                         .textTheme
                                         .subHeadingSmall

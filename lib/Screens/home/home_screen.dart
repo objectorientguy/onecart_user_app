@@ -56,7 +56,8 @@ class HomeScreen extends StatelessWidget {
                                       SearchAllProducts(
                                           searchTerm: myController.text));
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => const SearchScreen()));
+                                      builder: (context) =>
+                                          const SearchScreen()));
                                 },
                                 child: const Icon(Icons.search)),
                           ),

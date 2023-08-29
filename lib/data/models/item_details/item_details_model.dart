@@ -1,6 +1,3 @@
-// To parse this JSON data, do
-//
-//     final itemDetailsModel = itemDetailsModelFromJson(jsonString);
 import 'dart:convert';
 
 ItemDetailsModel itemDetailsModelFromJson(String str) =>
@@ -38,14 +35,15 @@ class ItemDetailsModel {
 
 class ItemDetailsData {
   final String? companyName;
-  final int? productId;
-  final String? productName;
+  final int? categoryId;
+  final int? brandId;
   final List<String>? image;
   final int? itemCount;
   final int? discount;
   final String? details;
-  final int? categoryId;
-  final int? brandId;
+  final String? weight;
+  final int? productId;
+  final String? productName;
   final bool? deal;
   final double? price;
   final double? discountedCost;
@@ -53,14 +51,15 @@ class ItemDetailsData {
 
   ItemDetailsData({
     this.companyName,
-    this.productId,
-    this.productName,
+    this.categoryId,
+    this.brandId,
     this.image,
     this.itemCount,
     this.discount,
     this.details,
-    this.categoryId,
-    this.brandId,
+    this.weight,
+    this.productId,
+    this.productName,
     this.deal,
     this.price,
     this.discountedCost,
@@ -70,16 +69,17 @@ class ItemDetailsData {
   factory ItemDetailsData.fromJson(Map<String, dynamic> json) =>
       ItemDetailsData(
         companyName: json["company_name"],
-        productId: json["product_id"],
-        productName: json["product_name"],
+        categoryId: json["category_id"],
+        brandId: json["brand_id"],
         image: json["image"] == null
             ? []
             : List<String>.from(json["image"]!.map((x) => x)),
         itemCount: json["item_count"],
         discount: json["discount"],
         details: json["details"],
-        categoryId: json["category_id"],
-        brandId: json["brand_id"],
+        weight: json["weight"],
+        productId: json["product_id"],
+        productName: json["product_name"],
         deal: json["deal"],
         price: json["price"],
         discountedCost: json["discounted_cost"],
@@ -88,14 +88,15 @@ class ItemDetailsData {
 
   Map<String, dynamic> toJson() => {
         "company_name": companyName,
-        "product_id": productId,
-        "product_name": productName,
+        "category_id": categoryId,
+        "brand_id": brandId,
         "image": image == null ? [] : List<dynamic>.from(image!.map((x) => x)),
         "item_count": itemCount,
         "discount": discount,
         "details": details,
-        "category_id": categoryId,
-        "brand_id": brandId,
+        "weight": weight,
+        "product_id": productId,
+        "product_name": productName,
         "deal": deal,
         "price": price,
         "discounted_cost": discountedCost,

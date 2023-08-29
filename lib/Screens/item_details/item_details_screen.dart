@@ -96,11 +96,6 @@ class ItemDetailsScreen extends StatelessWidget {
                     imageList: state.itemDetailsModel.data!.image!,
                   ),
                   ItemDetailsSection(itemData: state.itemDetailsModel.data!),
-                  //const DeliverDetailsSection(),
-
-                  // const SizedBox(
-                  //   height: 190,
-                  // ),
                 ],
               ),
             );

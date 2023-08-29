@@ -13,7 +13,6 @@ import '../../configs/app_spacing.dart';
 import '../categories/category_item_screen.dart';
 
 class CategoryGridScreen extends StatelessWidget {
-
   const CategoryGridScreen({Key? key}) : super(key: key);
 
   @override
@@ -71,15 +70,13 @@ class CategoryGridScreen extends StatelessWidget {
                           width: kHorizontalCategoryListItemWidth,
                           child: InkWell(
                             onTap: () {
-                              context
-                                  .read<GetProductBloc>()
-                                  .add(FetchProduct(cateId: state
-                                  .getAllCategoriesListModel
-                                  .data![index].categoryId!));
-                              Navigator.pushNamed(context, CategoryItemScreen.routeName,
+                              context.read<GetProductBloc>().add(FetchProduct(
+                                  cateId: state.getAllCategoriesListModel
+                                      .data![index].categoryId!));
+                              Navigator.pushNamed(
+                                  context, CategoryItemScreen.routeName,
                                   arguments: state
-                                      .getAllCategoriesListModel
-                                      .data![index]);
+                                      .getAllCategoriesListModel.data![index]);
                             },
                             child: Column(
                               children: [

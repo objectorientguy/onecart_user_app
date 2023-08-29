@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
@@ -49,14 +48,24 @@ class SelectVariantScreen extends StatelessWidget {
                     ],
                   );
                 } else if (state is GetAllVarientsLoaded) {
-                  log(state.selectVarientListModel.message.toString());
                   return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            Image.asset(
-                              'assets/img_2.png',
+                            const SizedBox(
+                              width: 16,
+                            ),
+                            CachedNetworkImage(
+                              imageUrl: dataone.image![0],
+                              errorWidget: (context, url, error) =>
+                                  const Center(
+                                      child: SizedBox(
+                                          width: 40,
+                                          child: Text(
+                                            'No image',
+                                            textAlign: TextAlign.center,
+                                          ))),
                               height: 40,
                             ),
                             const SizedBox(
@@ -66,7 +75,7 @@ class SelectVariantScreen extends StatelessWidget {
                                 child: Text(dataone.productName.toString(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .textLarge
+                                        .textLarger
                                         .copyWith(
                                             fontWeight: FontWeight.w500))),
                           ],
@@ -92,9 +101,18 @@ class SelectVariantScreen extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Image.network(
-                                        state.selectVarientListModel
+                                      CachedNetworkImage(
+                                        imageUrl: state.selectVarientListModel
                                             .data![index].image![0],
+                                        errorWidget: (context, url, error) =>
+                                            const Center(
+                                                child: SizedBox(
+                                                    width: 40,
+                                                    child: Text(
+                                                      'No image',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                    ))),
                                         height: 40,
                                       ),
                                       Column(
@@ -102,7 +120,9 @@ class SelectVariantScreen extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            '₹${state.selectVarientListModel.data![index].weight.toString()}',
+                                            state.selectVarientListModel
+                                                .data![index].weight
+                                                .toString(),
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .headingTiny,
