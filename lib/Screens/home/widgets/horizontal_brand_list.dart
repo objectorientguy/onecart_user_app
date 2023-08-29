@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:onecart_user_app/blocs/get_product_bloc/get_product_bloc.dart';
-import 'package:onecart_user_app/blocs/get_product_bloc/get_product_events.dart';
-import 'package:onecart_user_app/data/models/home/home_model.dart';
-
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/search_product/search_product_model.dart';
 import '../../categories/category_item_screen.dart';
 
-class HorizontalCategoryList extends StatelessWidget {
-  static const routeName = 'HorizontalCategoryList';
-  final List<dynamic> data;
+class HorizontalBrandList extends StatelessWidget {
+  final List<Brand> data;
 
-  const HorizontalCategoryList({super.key, required this.data});
+  const HorizontalBrandList(this.data, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +19,15 @@ class HorizontalCategoryList extends StatelessWidget {
         shrinkWrap: true,
         itemCount: data.length,
         itemBuilder: (context, index) {
+          if (index == 0 || index == 11) {
+            return const SizedBox(
+              width: xxxTinierSpacing,
+            );
+          }
           return SizedBox(
             width: kHorizontalCategoryListItemWidth * 1.2,
             child: InkWell(
               onTap: () {
-                context
-                    .read<GetProductBloc>()
-                    .add(FetchProduct(cateId: data[index].categoryId!));
                 Navigator.pushNamed(context, CategoryItemScreen.routeName,
                     arguments: data[index]);
               },
@@ -41,14 +38,14 @@ class HorizontalCategoryList extends StatelessWidget {
                     width: kHorizontalCategoryListItemWidth,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: NetworkImage(data[index].categoryImage!)),
+                          image: NetworkImage(data[index].brandImage!)),
                       shape: BoxShape.circle,
                     ),
                   ),
                   SizedBox(
                     width: kHorizontalCategoryListItemWidth * 1.2,
                     child: Text(
-                      data[index].categoryName!,
+                      data[index].brandName!,
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
