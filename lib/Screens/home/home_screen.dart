@@ -37,7 +37,6 @@ class HomeScreen extends StatelessWidget {
                         vertical: topBottomPadding),
                     child: Column(
                       children: [
-
                         const AddressBar(),
                         const SizedBox(
                           height: xxxSmallerSpacing,
@@ -53,11 +52,11 @@ class HomeScreen extends StatelessWidget {
                             ),
                             suffixIcon: InkWell(
                                 onTap: () {
-                                  context.read<SearchProductsBloc>().add(SearchAllProducts(searchTerm: myController.text));
-                                  Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              SearchScreen()));
+                                  context.read<SearchProductsBloc>().add(
+                                      SearchAllProducts(
+                                          searchTerm: myController.text));
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => SearchScreen()));
                                 },
                                 child: const Icon(Icons.search)),
                           ),

@@ -17,8 +17,7 @@ class OrdersScreen extends StatelessWidget {
     context.read<GetAllOrdersBloc>().add(GetAllOrders());
     return Scaffold(
       appBar: AppBar(
-        title: Text("Orders",style:
-        Theme.of(context).textTheme.headingMedium),
+        title: Text("Orders", style: Theme.of(context).textTheme.headingMedium),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
