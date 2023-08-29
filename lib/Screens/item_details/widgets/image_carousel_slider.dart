@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zoom_widget/zoom_widget.dart';
 
 class ImageCarouselSlider extends StatefulWidget {
   final List imageList;
@@ -43,12 +42,11 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                   margin: const EdgeInsets.all(8),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: Zoom(
-                      child: Image.network(
+                    child: Image.network(
                         widget.imageList[index].toString(),
                         fit: BoxFit.fill,
                       ),
-                    ),
+
                   ),
                 );
               }),
@@ -65,33 +63,6 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
               );
             },
             itemBuilder: (context, index) {
-              if (index == 3) {
-                return Stack(children: [
-                  Container(
-                    height: 60,
-                    width: 60,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/img_2.png'),
-                            fit: BoxFit.fitHeight)),
-                  ),
-                  Opacity(
-                    opacity: 0.6,
-                    child: Container(
-                      height: 60,
-                      width: 60,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Center(
-                          child: Text(
-                        '+2',
-                        style: TextStyle(color: Colors.white),
-                      )),
-                    ),
-                  ),
-                ]);
-              }
               return Container(
                 height: 60,
                 width: 60,
