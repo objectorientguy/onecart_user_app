@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../../../blocs/varient_bloc/varient_bloc.dart';
 import '../../../blocs/varient_bloc/varient_events.dart';
 import '../../../configs/app_color.dart';
@@ -11,6 +9,7 @@ import '../../../data/models/item_details/item_details_model.dart';
 import '../../varient/select_varient_screen.dart';
 
 class ItemDetailsSection extends StatelessWidget {
+
   final ItemDetailsData itemData;
 
   const ItemDetailsSection({
@@ -135,6 +134,7 @@ class ItemDetailsSection extends StatelessWidget {
                                 .textTheme
                                 .textSmall
                                 .copyWith(
+
                                     color: AppColor.primary,
                                     fontWeight: FontWeight.w700)),
                       ),
