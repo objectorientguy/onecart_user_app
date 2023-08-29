@@ -27,7 +27,7 @@ class StoreItemList extends StatelessWidget {
               return InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, ItemDetailsScreen.routeName,
-                      arguments: false);
+                      arguments: storedata[index]);
                 },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +58,7 @@ class StoreItemList extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    storedata[index].price!.toString(),
+                                    storedata[index].discountedCost!.toString(),
                                     style:
                                         Theme.of(context).textTheme.headingTiny,
                                   ),
@@ -66,7 +66,7 @@ class StoreItemList extends StatelessWidget {
                                     width: tiniestSpacing,
                                   ),
                                   Text(
-                                    storedata[index].discountedCost!.toString(),
+                                    storedata[index].price!.toString(),
                                     style: Theme.of(context)
                                         .textTheme
                                         .subHeadingMedium
