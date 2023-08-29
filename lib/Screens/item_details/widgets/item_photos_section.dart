@@ -57,7 +57,7 @@ class ItemPhotosSection extends StatelessWidget {
                           color: AppColor.black),
                       child: const Center(
                           child: Text(
-                        '+2',
+                        '+2 ',
                         style: TextStyle(color: AppColor.white),
                       )),
                     ),
