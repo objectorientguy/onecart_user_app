@@ -27,71 +27,69 @@ class ItemDetailsScreen extends StatelessWidget {
     context
         .read<ItemDetailsBloc>()
         .add(FetchItemDetails(itemDetails.productId!));
-    return BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
-      builder: (context, state) {
-        if (state is ItemDetailsLoading) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state is ItemDetailsLoaded) {
-          return Scaffold(
-            bottomNavigationBar: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: leftRightMargin, vertical: 12),
-              child: CustomElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, CartScreen.routeName,
-                        arguments: false);
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text('₹8900 ',
-                              style:
-                                  Theme.of(context).textTheme.textButtonLarger),
-                          Text('| 23 ITEMS',
-                              style:
-                                  Theme.of(context).textTheme.textButtonLarge)
-                        ],
-                      ),
-                      const Row(
-                        children: [
-                          Text('SEE CART'),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            size: 20,
-                          )
-                        ],
-                      )
-                    ],
-                  )),
-            ),
-            appBar: AppBar(
-              leading: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back_ios_new,
-                    color: AppColor.black,
-                  )),
-              actions: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.share_outlined,
-                      color: AppColor.primary,
-                    )),
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.more_vert,
-                      color: AppColor.black,
-                    )),
+    return Scaffold(
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: leftRightMargin, vertical: 12),
+        child: CustomElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, CartScreen.routeName,
+                  arguments: false);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Text('₹8900 ',
+                        style: Theme.of(context).textTheme.textButtonLarger),
+                    Text('| 23 ITEMS',
+                        style: Theme.of(context).textTheme.textButtonLarge)
+                  ],
+                ),
+                const Row(
+                  children: [
+                    Text('SEE CART'),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                    )
+                  ],
+                )
               ],
-              titleSpacing: xxxTiniestSpacing,
-            ),
-            body: SingleChildScrollView(
+            )),
+      ),
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_new,
+              color: AppColor.black,
+            )),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.share_outlined,
+                color: AppColor.primary,
+              )),
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.more_vert,
+                color: AppColor.black,
+              )),
+        ],
+        titleSpacing: xxxTiniestSpacing,
+      ),
+      body: BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
+        builder: (context, state) {
+          if (state is ItemDetailsLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is ItemDetailsLoaded) {
+            return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
@@ -106,15 +104,15 @@ class ItemDetailsScreen extends StatelessWidget {
                   // ),
                 ],
               ),
-            ),
-          );
-        }
-        if (state is ItemDetailsError) {
-          return Container();
-        } else {
-          return const SizedBox();
-        }
-      },
+            );
+          }
+          if (state is ItemDetailsError) {
+            return Container();
+          } else {
+            return const SizedBox();
+          }
+        },
+      ),
     );
   }
 }
