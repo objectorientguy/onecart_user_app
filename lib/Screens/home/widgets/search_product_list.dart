@@ -11,9 +11,9 @@ class SearchProductList extends StatelessWidget {
   final List<SearchResult> data;
 
   const SearchProductList(
-      this.data, {
-        super.key,
-      });
+    this.data, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,6 @@ class SearchProductList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         const SizedBox(
           height: xxTinySpacing,
         ),
@@ -82,8 +81,7 @@ class SearchProductList extends StatelessWidget {
                               children: [
                                 Text(
                                   '₹ ${data[index].discountedCost!.toString()}',
-                                  style:
-                                  Theme.of(context).textTheme.textMedium,
+                                  style: Theme.of(context).textTheme.textMedium,
                                 ),
                                 const SizedBox(
                                   width: xxxTinierSpacing,
@@ -94,8 +92,8 @@ class SearchProductList extends StatelessWidget {
                                       .textTheme
                                       .subHeadingSmall
                                       .copyWith(
-                                      decoration:
-                                      TextDecoration.lineThrough),
+                                          decoration:
+                                              TextDecoration.lineThrough),
                                 ),
                                 const SizedBox(
                                   width: xxxTinierSpacing,
@@ -106,8 +104,7 @@ class SearchProductList extends StatelessWidget {
                                         color: AppColor.grey,
                                       ),
                                       color: AppColor.primaryLight,
-                                      borderRadius:
-                                      BorderRadius.circular(15)),
+                                      borderRadius: BorderRadius.circular(15)),
                                   padding: const EdgeInsets.symmetric(
                                       vertical: xxTiniestSpacing,
                                       horizontal: xxxTinierSpacing),
@@ -118,8 +115,8 @@ class SearchProductList extends StatelessWidget {
                                             .textTheme
                                             .textSmall
                                             .copyWith(
-                                            color: AppColor.primary,
-                                            fontWeight: FontWeight.w500)),
+                                                color: AppColor.primary,
+                                                fontWeight: FontWeight.w500)),
                                   ),
                                 ),
                               ],
@@ -131,8 +128,7 @@ class SearchProductList extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: xxxTinySpacing,
                                     vertical: xxTinierSpacing),
-                                tapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8)),
                                 backgroundColor: AppColor.primary,

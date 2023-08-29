@@ -19,7 +19,7 @@ class SearchScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
           },
           child: const Icon(
@@ -41,17 +41,19 @@ class SearchScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(kSearchBarRadius),
                   borderSide: const BorderSide(),
                 ),
-                suffixIcon:
-                    InkWell(onTap: () {
-                      context.read<SearchProductsBloc>().add(SearchAllProducts(searchTerm: myController.text));
-                    }, child: const Icon(Icons.search)),
+                suffixIcon: InkWell(
+                    onTap: () {
+                      context.read<SearchProductsBloc>().add(
+                          SearchAllProducts(searchTerm: myController.text));
+                    },
+                    child: const Icon(Icons.search)),
               ),
             ),
           ),
           const SizedBox(
             height: xMediumSpacing,
           ),
-          BlocBuilder<SearchProductsBloc,SearchProductStates>(
+          BlocBuilder<SearchProductsBloc, SearchProductStates>(
             builder: (context, state) {
               if (state is SearchProductsLoading) {
                 return const Center(child: CircularProgressIndicator());
@@ -62,49 +64,83 @@ class SearchScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding:  const EdgeInsets.symmetric(
-                              horizontal: leftRightMargin, vertical: topBottomPadding),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: leftRightMargin,
+                              vertical: topBottomPadding),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                               Text("Category",style: Theme.of(context).textTheme.headingLarge
-                                  ),
-                              (state.getSearchProductsList.data!.categories!.isEmpty)?
-                               Column(
-                                children: [
-                                  const SizedBox(height: xxxSmallestSpacing,),
-                                  Text("No results Found!",style: Theme.of(context).textTheme.mediumLarge),
-                                  const SizedBox(height: xxxLargerSpacing,)
-                                ],
-                              ):
-                              HorizontalCategoryList(
-                                   data: state.getSearchProductsList.data!.categories!,
-                              ),
+                              Text("Category",
+                                  style:
+                                      Theme.of(context).textTheme.headingLarge),
+                              (state.getSearchProductsList.data!.categories!
+                                      .isEmpty)
+                                  ? Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: xxxSmallestSpacing,
+                                        ),
+                                        Text("No results Found!",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .mediumLarge),
+                                        const SizedBox(
+                                          height: xxxLargerSpacing,
+                                        )
+                                      ],
+                                    )
+                                  : HorizontalCategoryList(
+                                      data: state.getSearchProductsList.data!
+                                          .categories!,
+                                    ),
                               const SizedBox(
                                 height: tiniestSpacing,
                               ),
-                               Text("Brands",style: Theme.of(context).textTheme.headingLarge),
-                              (state.getSearchProductsList.data!.brands!.isEmpty)? Column(
-                                children: [
-                                  const SizedBox(height: xxxSmallestSpacing,),
-                                  Text("No brands found!",style: Theme.of(context).textTheme.mediumLarge),
-                                  const SizedBox(height: xxxLargerSpacing,)
-                                ],
-                              ):HorizontalBrandList(state.getSearchProductsList.data!.brands!),
-                               Text(
+                              Text("Brands",
+                                  style:
+                                      Theme.of(context).textTheme.headingLarge),
+                              (state.getSearchProductsList.data!.brands!
+                                      .isEmpty)
+                                  ? Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: xxxSmallestSpacing,
+                                        ),
+                                        Text("No brands found!",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .mediumLarge),
+                                        const SizedBox(
+                                          height: xxxLargerSpacing,
+                                        )
+                                      ],
+                                    )
+                                  : HorizontalBrandList(state
+                                      .getSearchProductsList.data!.brands!),
+                              Text(
                                 "Product's",
                                 style: Theme.of(context).textTheme.headingLarge,
                               ),
-                              (state.getSearchProductsList.data!.searchResults!.isEmpty)? Column(
-                                children: [
-                                  const SizedBox(height: xxxSmallestSpacing,),
-                                  Text("No Products Found!",style: Theme.of(context).textTheme.mediumLarge),
-                                ],
-                              ):SearchProductList(state.getSearchProductsList.data!.searchResults!)
+                              (state.getSearchProductsList.data!.searchResults!
+                                      .isEmpty)
+                                  ? Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: xxxSmallestSpacing,
+                                        ),
+                                        Text("No Products Found!",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .mediumLarge),
+                                      ],
+                                    )
+                                  : SearchProductList(state
+                                      .getSearchProductsList
+                                      .data!
+                                      .searchResults!)
                             ],
                           ),
                         ),
-
                       ],
                     ),
                   ),
@@ -117,7 +153,6 @@ class SearchScreen extends StatelessWidget {
               }
             },
           )
-
         ],
       ),
     );

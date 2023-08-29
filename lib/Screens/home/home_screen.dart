@@ -35,19 +35,17 @@ class HomeScreen extends StatelessWidget {
                 ),
                 TextField(
                   decoration: InputDecoration(
-                    // contentPadding: EdgeInsets.zero,
                     hintText: 'Search products...',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(kSearchBarRadius),
                       borderSide: const BorderSide(),
                     ),
                     suffixIcon: InkWell(
-                        onTap: (){
-                          context.read<SearchProductsBloc>().add(SearchAllProducts(searchTerm: myController.text));
-                          Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      SearchScreen()));
+                        onTap: () {
+                          context.read<SearchProductsBloc>().add(
+                              SearchAllProducts(searchTerm: myController.text));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const SearchScreen()));
                         },
                         child: const Icon(Icons.search)),
                   ),
