@@ -1,5 +1,6 @@
 import 'package:onecart_user_app/data/models/address_model/edit_address_model.dart';
 
+import '../../data/models/address_model/add_address_model.dart';
 import '../../data/models/address_model/address_model.dart';
 
 abstract class AddressStates {}
@@ -38,4 +39,22 @@ class EditAddressError extends AddressStates {
   final String message;
 
   EditAddressError({required this.message});
+}
+
+class AddAddressLoading extends AddressStates {}
+
+class AddAddressLoaded extends AddressStates {
+  final AddAddressModel addAddressModel;
+
+  final Map addAddress;
+  AddAddressLoaded({
+    required this.addAddress,
+    required this.addAddressModel,
+  });
+}
+
+class AddAddressError extends AddressStates {
+  final String message;
+
+  AddAddressError({required this.message});
 }

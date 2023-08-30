@@ -34,7 +34,6 @@ configurableDependencies() {
   getIt.registerLazySingleton<AuthenticationRepository>(
       () => AuthenticationRepositoryImpl());
   getIt.registerLazySingleton<AddressRepository>(() => AddressRepositoryImpl());
-
   getIt.registerLazySingleton<ProductsRepository>(
       () => ProductsRepositoryImpl());
   getIt.registerLazySingleton<ItemDetailsRepository>(
@@ -43,18 +42,13 @@ configurableDependencies() {
       () => CategoriesRepositoryImpl());
   getIt.registerLazySingleton<SelectVarientRepository>(
       () => SelectVarientRepositoryImpl());
-
   getIt.registerLazySingleton<ViewCartRepository>(
       () => ViewCartRepositoryImpl());
-
   getIt.registerLazySingleton<SearchProductsRepository>(
       () => SearchProductsRepositoryImpl());
-
   getIt.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl());
-
   getIt.registerLazySingleton<CustomerCache>(
       () => CustomerCache(sharedPreferences: getIt<SharedPreferences>()));
-
   getIt.registerLazySingleton<OrdersRepository>(() => OrdersRepositoryImpl());
   getIt.registerLazySingleton<CheckoutRepository>(
       () => CheckoutRepositoryImpl());
