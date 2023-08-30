@@ -15,6 +15,7 @@ import 'order_success.dart';
 
 class CheckoutScreen extends StatelessWidget {
   static const routeName = 'CheckoutScreen';
+
   const CheckoutScreen({Key? key}) : super(key: key);
 
   @override
@@ -22,82 +23,78 @@ class CheckoutScreen extends StatelessWidget {
     context.read<CheckoutBloc>().add(FetchCheckoutDetails());
 
     return Scaffold(
-      appBar: AppBar(
-        title:
-            Text('Checkout', style: Theme.of(context).textTheme.headingMedium),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new,
-              color: AppColor.black,
-            )),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.more_vert,
-                color: AppColor.black,
-              ))
-        ],
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Padding(
-          padding: const EdgeInsets.all(leftRightMargin),
-          child: CustomElevatedButton(
+        appBar: AppBar(
+          title: Text('Checkout',
+              style: Theme.of(context).textTheme.headingMedium),
+          leading: IconButton(
               onPressed: () {
-                Navigator.pushNamed(
-                  context,
-                  OrderSuccessScreen.routeName,
-                );
+                Navigator.pop(context);
               },
-              child: Text(
-                'PAY AND CHECKOUT',
-                style: Theme.of(context).textTheme.textButtonLarger,
+              icon: const Icon(
+                Icons.arrow_back_ios_new,
+                color: AppColor.black,
               )),
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.more_vert,
+                  color: AppColor.black,
+                ))
+          ],
         ),
-      ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: BlocBuilder<CheckoutBloc,CheckoutStates>(
-          builder: (context,state){
-            if(state is FetchCheckoutLoading){
+        bottomNavigationBar: BottomAppBar(
+          child: Padding(
+            padding: const EdgeInsets.all(leftRightMargin),
+            child: CustomElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    OrderSuccessScreen.routeName,
+                  );
+                },
+                child: Text(
+                  'PAY AND CHECKOUT',
+                  style: Theme.of(context).textTheme.textButtonLarger,
+                )),
+          ),
+        ),
+        body: BlocBuilder<CheckoutBloc, CheckoutStates>(
+          builder: (context, state) {
+            if (state is FetchCheckoutLoading) {
               return const Center(child: CircularProgressIndicator());
-            }
-            else if(state is FetchCheckoutLoaded){
-              return Column(
-                children: [
-                  BillSection( checkoutData: state.fetchCheckoutModel.data!,),
-                  Container(
-                    height: xxSmallerSpacing,
-                    color: AppColor.lighterGrey,
-                  ),
-                  const CouponSection(),
-                  Container(
-                    height: xxSmallerSpacing,
-                    color: AppColor.lighterGrey,
-                  ),
-                  const DeliveryDetailsSection(),
-                  Container(
-                    height: xxSmallerSpacing,
-                    color: AppColor.lighterGrey,
-                  ),
-                  const PaymentDetailsSection(),
-                ],
-              );
+            } else if (state is FetchCheckoutLoaded) {
+              return SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      BillSection(
+                        checkoutData: state.fetchCheckoutModel.data!,
+                      ),
+                      Container(
+                        height: xxSmallerSpacing,
+                        color: AppColor.lighterGrey,
+                      ),
+                      const CouponSection(),
+                      Container(
+                        height: xxSmallerSpacing,
+                        color: AppColor.lighterGrey,
+                      ),
+                      const DeliveryDetailsSection(),
+                      Container(
+                        height: xxSmallerSpacing,
+                        color: AppColor.lighterGrey,
+                      ),
+                      const PaymentDetailsSection(),
+                    ],
+                  ));
             }
             if (state is FetchCheckoutError) {
               return Container();
             } else {
               return const SizedBox();
             }
-
           },
-        )
-      ),
-    );
+        ));
   }
 }
-
-

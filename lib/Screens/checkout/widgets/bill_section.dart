@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
@@ -10,7 +11,9 @@ class BillSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    var pointAfterArr = [];
+    pointAfterArr = checkoutData.totalBill.toString().split(".");
+    var toBeUsed = pointAfterArr[1];
     return Padding(
         padding: const EdgeInsets.symmetric(
             horizontal: leftRightMargin, vertical: topBottomPadding),
@@ -124,7 +127,7 @@ class BillSection extends StatelessWidget {
                   style: Theme.of(context).textTheme.subHeadingLarger,
                 ),
                 Text(
-                  '₹30.87',
+                  checkoutData.deliveryCharges.toString(),
                   style: Theme.of(context).textTheme.textLarger,
                 )
               ],
@@ -145,9 +148,10 @@ class BillSection extends StatelessWidget {
                             .textTheme
                             .headingLarge
                             .copyWith(fontWeight: FontWeight.w100)),
-                    Text('2,199',
+                    Text(checkoutData.cartTotal.toString(),
                         style: Theme.of(context).textTheme.headingLarge),
-                    Text('.43', style: Theme.of(context).textTheme.textLarge),
+                    Text(".$toBeUsed",
+                        style: Theme.of(context).textTheme.textLarge),
                   ],
                 )
               ],

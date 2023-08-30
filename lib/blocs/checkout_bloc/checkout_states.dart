@@ -11,7 +11,6 @@ class FetchCheckoutLoaded extends CheckoutStates {
 
   FetchCheckoutLoaded({
     required this.fetchCheckoutModel,
-
   });
 }
 

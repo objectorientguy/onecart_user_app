@@ -22,10 +22,9 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutStates> {
     emit(FetchCheckoutLoading());
     try {
       log('123');
-    FetchCheckoutModel fetchCheckoutModel =
+      FetchCheckoutModel fetchCheckoutModel =
           await _checkoutRepository.fetchCheckout();
-      emit(FetchCheckoutLoaded(
-          fetchCheckoutModel: fetchCheckoutModel));
+      emit(FetchCheckoutLoaded(fetchCheckoutModel: fetchCheckoutModel));
     } catch (e) {
       emit(FetchCheckoutError(message: e.toString()));
     }
