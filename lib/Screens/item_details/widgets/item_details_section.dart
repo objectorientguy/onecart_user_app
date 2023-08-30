@@ -12,14 +12,19 @@ import '../../varient/select_varient_screen.dart';
 
 class ItemDetailsSection extends StatelessWidget {
   final ItemDetailsData itemData;
+  static Map cartItemsDetailsMap = {};
 
-  const ItemDetailsSection({
+
+   const ItemDetailsSection({
     required this.itemData,
-    super.key,
+    super.key
   });
 
   @override
   Widget build(BuildContext context) {
+    cartItemsDetailsMap = {
+
+    };
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 1.3 * leftRightMargin),
       child: Column(

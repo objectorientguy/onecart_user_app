@@ -4,16 +4,13 @@ import '../../utils/dio_client.dart';
 import 'add_cart_item_repository.dart';
 
 class AddToCartRepositoryImpl implements AddToCartRepository {
-  Future<AddToCartModel> addToCart(Map cartdetails, cartId) async {
+  @override
+  Future<AddToCartModel> addItemsToCart(Map cartDetails) async {
     final response = await DioClient()
-        .post("https://oneart.onrender.com/carts/Items=$cartId", cartdetails);
+        .post("https://oneart.onrender.com/carts/Items", cartDetails);
     log('response=========>$response');
     return AddToCartModel.fromJson(response);
   }
 
-  @override
-  Future<AddToCartModel> addItemsToCart() {
-    // TODO: implement addItemsToCart
-    throw UnimplementedError();
-  }
+
 }

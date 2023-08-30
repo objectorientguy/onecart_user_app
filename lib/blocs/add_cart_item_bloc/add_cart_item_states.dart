@@ -14,16 +14,9 @@ class AddItemsError extends AddItemsToCartStates {
 
 class AddItemLoaded extends AddItemsToCartStates {
   final AddToCartModel addToTheCartModel;
+  final Map addressDetails;
 
-  final List addressDetails;
   AddItemLoaded(
       {required this.addToTheCartModel, required this.addressDetails});
 
-  // final EditAddressModel editAddressModel;
-  //
-  // final Map saveAddress;
-  // EditAddressLoaded(
-  //     {required this.saveAddress,
-  //       required this.editAddressModel,
-  //       required addressId});
 }

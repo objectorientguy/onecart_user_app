@@ -5,7 +5,6 @@ import 'package:onecart_user_app/Screens/item_details/widgets/item_details_secti
 
 import 'package:onecart_user_app/common_widgets/custom_elevated_button.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../../blocs/item_details_bloc/item_details_bloc.dart';
 import '../../blocs/item_details_bloc/item_details_events.dart';
 import '../../blocs/item_details_bloc/item_details_states.dart';
