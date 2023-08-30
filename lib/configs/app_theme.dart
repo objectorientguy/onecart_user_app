@@ -93,6 +93,11 @@ extension AppTextTheme on TextTheme {
         fontSize: 10, fontWeight: FontWeight.w400, color: AppColor.grey);
   }
 
+  TextStyle get xsubHeadingSmall {
+    return const TextStyle(
+        fontSize: 8, fontWeight: FontWeight.w400, color: AppColor.grey);
+  }
+
   TextStyle get textLarger {
     return const TextStyle(
         fontSize: 19, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
