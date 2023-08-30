@@ -48,12 +48,16 @@ class ItemDetailsSection extends StatelessWidget {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(itemData.weight.toString(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .textLarge
-                          .copyWith(fontWeight: FontWeight.w600)),
+                  SizedBox(
+                    height: 20,
+                    child: Text(itemData.weight.toString(),
+                        style: Theme.of(context)
+                            .textTheme
+                            .textLarge
+                            .copyWith(fontWeight: FontWeight.w600)),
+                  ),
                   const Icon(Icons.arrow_forward_ios,
                       color: AppColor.primary, size: 20)
                 ],
