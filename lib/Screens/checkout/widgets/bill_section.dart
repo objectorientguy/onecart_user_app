@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/checkout_model/checkout_model.dart';
 
 class BillSection extends StatelessWidget {
-  //final List<CheckoutData> data;
-  const BillSection({super.key});
+  final CheckoutData checkoutData;
+  const BillSection({super.key, required this.checkoutData});
 
   @override
   Widget build(BuildContext context) {
-    // log(data.toString());
+
     return Padding(
         padding: const EdgeInsets.symmetric(
             horizontal: leftRightMargin, vertical: topBottomPadding),
@@ -32,7 +32,7 @@ class BillSection extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       vertical: xxTiniestSpacing, horizontal: tinierSpacing),
                   child: Center(
-                    child: Text('Hello',
+                    child: Text(checkoutData.cartItemCount.toString(),
                         style: Theme.of(context).textTheme.textSmall.copyWith(
                             color: AppColor.primary,
                             fontWeight: FontWeight.w700)),
@@ -49,7 +49,7 @@ class BillSection extends StatelessWidget {
                   style: Theme.of(context).textTheme.subHeadingLarger,
                 ),
                 Text(
-                  "2000",
+                  checkoutData.cartTotal.toString(),
                   style: Theme.of(context).textTheme.textLarger,
                 )
               ],
@@ -63,7 +63,7 @@ class BillSection extends StatelessWidget {
                   style: Theme.of(context).textTheme.subHeadingLarger,
                 ),
                 Text(
-                  '-₹300',
+                  checkoutData.discountSum.toString(),
                   style: Theme.of(context)
                       .textTheme
                       .textLarger

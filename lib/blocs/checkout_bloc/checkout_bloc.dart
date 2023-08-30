@@ -15,21 +15,17 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutStates> {
   CheckoutStates get initialState => CheckoutInitial();
 
   CheckoutBloc() : super(CheckoutInitial()) {
-    on<FetchCheckoutDetails>(_fetchCheckoutDetails);
+    on<CheckoutEvent>(_fetchCheckoutDetails);
   }
   FutureOr<void> _fetchCheckoutDetails(
-      FetchCheckoutDetails event, Emitter<CheckoutStates> emit) async {
+      CheckoutEvent event, Emitter<CheckoutStates> emit) async {
     emit(FetchCheckoutLoading());
     try {
       log('123');
-      List fetchCheckoutData = [];
-      FetchCheckoutModel fetchCheckoutModel =
+    FetchCheckoutModel fetchCheckoutModel =
           await _checkoutRepository.fetchCheckout();
-      fetchCheckoutData = fetchCheckoutModel.data! as List;
-      log('eee');
       emit(FetchCheckoutLoaded(
-          fetchCheckoutModel: fetchCheckoutModel,
-          checkOutDetails: fetchCheckoutData));
+          fetchCheckoutModel: fetchCheckoutModel));
     } catch (e) {
       emit(FetchCheckoutError(message: e.toString()));
     }

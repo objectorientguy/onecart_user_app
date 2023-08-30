@@ -9,10 +9,9 @@ class FetchCheckoutLoading extends CheckoutStates {}
 class FetchCheckoutLoaded extends CheckoutStates {
   final FetchCheckoutModel fetchCheckoutModel;
 
-  final List checkOutDetails;
   FetchCheckoutLoaded({
     required this.fetchCheckoutModel,
-    required this.checkOutDetails,
+
   });
 }
 
