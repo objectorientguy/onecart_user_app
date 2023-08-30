@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../configs/app_color.dart';
+import 'image_zoom_section.dart';
 
 class ImageCarouselSlider extends StatefulWidget {
   final List imageList;
+  static int currentIndex = 0;
 
   const ImageCarouselSlider({
     super.key,
@@ -16,7 +18,6 @@ class ImageCarouselSlider extends StatefulWidget {
 
 class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
   late PageController _pageController;
-  int currentIndex = 0;
 
   @override
   void initState() {
@@ -40,18 +41,24 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
               controller: _pageController,
               onPageChanged: (page) {
                 setState(() {
-                  currentIndex = page;
+                  ImageCarouselSlider.currentIndex = page;
                 });
               },
               itemBuilder: (context, index) {
-                return Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  margin: const EdgeInsets.all(8),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image.network(
-                      widget.imageList[index].toString(),
-                      fit: BoxFit.fill,
+                return InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, ImageZoomSection.routeName,
+                        arguments: widget.imageList);
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    margin: const EdgeInsets.all(8),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.network(
+                        widget.imageList[index].toString(),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 );
@@ -60,7 +67,7 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
         Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(widget.imageList.length, (index) {
-              if (index == currentIndex) {
+              if (index == ImageCarouselSlider.currentIndex) {
                 return const Icon(
                   Icons.circle,
                   color: AppColor.primary,

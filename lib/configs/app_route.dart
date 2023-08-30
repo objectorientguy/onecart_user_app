@@ -9,6 +9,7 @@ import '../Screens/checkout/checkout_screen.dart';
 import '../Screens/checkout/order_success.dart';
 import '../Screens/favorites/no_favorites.dart';
 import '../Screens/item_details/item_details_screen.dart';
+import '../Screens/item_details/widgets/image_zoom_section.dart';
 import '../Screens/orders/order_details_screen.dart';
 import '../Screens/profile/edit_field_screen.dart';
 import '../Screens/profile/edit_profie_screen.dart';
@@ -44,6 +45,10 @@ class AppRoutes {
       case OrdersDetailsScreen.routeName:
         return _createRoute(
             OrdersDetailsScreen(data: settings.arguments as OrderDatum));
+      case ImageZoomSection.routeName:
+        return _createRoute(ImageZoomSection(
+            imageListOne: settings.arguments as List<dynamic>));
+
       case EditProfileScreen.routeName:
         return _createRoute(const EditProfileScreen());
       case EditFieldScreen.routeName:
