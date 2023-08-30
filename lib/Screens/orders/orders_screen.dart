@@ -43,9 +43,6 @@ class OrdersScreen extends StatelessWidget {
                         thickness: 2,
                       ),
                   itemBuilder: (context, index) {
-                    // if (index == 6) {
-                    //   return const SizedBox();
-                    // }
                     return Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: xxxTinierSpacing),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
@@ -14,21 +15,9 @@ class OrdersDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List orderData = [
-      {
-        'title': 'Order Placed',
-        'date': 'Nov 13 2021 10:00 AM',
-        'status': 'done'
-      },
-      {
-        'title': 'Confirmation of Order',
-        'date': 'Nov 13 2021 10:05 AM',
-        'status': 'done'
-      },
-      {
-        'title': 'Order Shipped',
-        'date': 'Nov 13 2021 11:00 AM',
-        'status': 'current'
-      },
+      {'title': 'Order Placed', 'status': 'done'},
+      {'title': 'Confirmation of Order', 'status': 'done'},
+      {'title': 'Order Shipped', 'status': 'current'},
       {'title': 'Out for Delivery', 'date': 'Pending', 'status': 'pending'},
       {'title': 'To be Delivered', 'date': 'Pending', 'status': 'pending'}
     ];
@@ -95,7 +84,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                                       .subHeadingLarge,
                                 ),
                                 Text(
-                                  '10',
+                                  data.itemCount.toString(),
                                   style: Theme.of(context)
                                       .textTheme
                                       .subHeadingLarge
@@ -109,7 +98,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                                       .subHeadingLarge,
                                 ),
                                 Text(
-                                  '₹200.00',
+                                  ' ₹${data.totalPrice.toString()}',
                                   style: Theme.of(context)
                                       .textTheme
                                       .subHeadingLarge
@@ -132,71 +121,69 @@ class OrdersDetailsScreen extends StatelessWidget {
                           height: smallestSpacing,
                         ),
                     itemBuilder: (context, index) {
-                      return SingleChildScrollView(
-                        physics: const BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const SizedBox(width: xMediumSpacing),
-                                const SizedBox(
-                                  width: xxxTinySpacing,
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(orderData[index]['title'],
-                                            style: (orderData[index]
-                                                        ['status'] !=
-                                                    'pending')
-                                                ? Theme.of(context)
-                                                    .textTheme
-                                                    .textMedium
-                                                : Theme.of(context)
-                                                    .textTheme
-                                                    .textMedium
-                                                    .copyWith(
-                                                        color: AppColor.grey)),
-                                        const SizedBox(width: xxxTinierSpacing),
-                                        (orderData[index]['status'] !=
-                                                'pending')
-                                            ? const Icon(
-                                                Icons.check,
-                                                color: AppColor.primary,
-                                                size: 15,
-                                              )
-                                            : const SizedBox()
-                                      ],
-                                    ),
-                                    const SizedBox(height: xxxTiniestSpacing),
-                                    Text(
-                                      orderData[index]['date'],
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .subHeadingMedium,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            (orderData[index]['status'] == 'current')
-                                ? Text(
-                                    'Check My Package',
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const SizedBox(width: xMediumSpacing),
+                              const SizedBox(
+                                width: xxxTinySpacing,
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(orderData[index]['title'],
+                                          style: (orderData[index]['status'] !=
+                                                  'pending')
+                                              ? Theme.of(context)
+                                                  .textTheme
+                                                  .textMedium
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .textMedium
+                                                  .copyWith(
+                                                      color: AppColor.grey)),
+                                      const SizedBox(width: xxxTinierSpacing),
+                                      (orderData[index]['status'] != 'pending')
+                                          ? const Icon(
+                                              Icons.check,
+                                              color: AppColor.primary,
+                                              size: 15,
+                                            )
+                                          : const SizedBox()
+                                    ],
+                                  ),
+                                  const SizedBox(height: xxxTiniestSpacing),
+                                  Text(
+                                    (orderData[index]['status'] != 'pending')
+                                        ? DateFormat('MMM dd y hh:mm a')
+                                            .format(data.orderPlaced!)
+                                            .toString()
+                                        : 'Pending',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .textMedium
-                                        .copyWith(color: AppColor.primary),
-                                  )
-                                : const SizedBox()
-                          ],
-                        ),
+                                        .subHeadingMedium,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          (orderData[index]['status'] == 'current')
+                              ? Text(
+                                  'Check My Package',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .textMedium
+                                      .copyWith(color: AppColor.primary),
+                                )
+                              : const SizedBox()
+                        ],
                       );
                     })
               ],

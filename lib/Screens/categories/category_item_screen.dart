@@ -15,7 +15,6 @@ class CategoryItemScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //context.read<GetAllCategoriesBloc>().add(FetchItemDetails());
     return Scaffold(
       appBar: const GenericAppBar(),
       body: BlocBuilder<GetProductBloc, GetProductStates>(
