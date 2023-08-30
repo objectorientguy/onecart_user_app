@@ -46,11 +46,8 @@ class AppRoutes {
         return _createRoute(
             OrdersDetailsScreen(data: settings.arguments as OrderDatum));
       case ImageZoomSection.routeName:
-        return _createRoute(
-            ImageZoomSection( imageListOne: settings.arguments as List<dynamic> ));
-
-
-
+        return _createRoute(ImageZoomSection(
+            imageListOne: settings.arguments as List<dynamic>));
 
       case EditProfileScreen.routeName:
         return _createRoute(const EditProfileScreen());
