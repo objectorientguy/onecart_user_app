@@ -179,7 +179,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                                   'Check My Package',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .textMedium
+                                      .xxSmall
                                       .copyWith(color: AppColor.primary),
                                 )
                               : const SizedBox()
