@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/address/widget/address_form.dart';
@@ -9,33 +10,30 @@ import '../../blocs/address_bloc/address_states.dart';
 import '../../common_widgets/custom_elevated_button.dart';
 import '../../common_widgets/generic_app_bar.dart';
 import '../../configs/app_spacing.dart';
-import '../../data/models/address_model/address_model.dart';
+import '../../widgets/progress_bar.dart';
 
-class EditAddressScreen extends StatelessWidget {
-  static const routeName = 'EditAddressScreen';
-  final AddressDatum addressDataMap;
+class AddAddressScreen extends StatelessWidget {
+  static const routeName = 'AddAddressScreen';
 
-  const EditAddressScreen({
+  const AddAddressScreen({
     Key? key,
-    required this.addressDataMap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Map saveAddress = {
-      'address_type': addressDataMap.addressType,
-      'address_name': addressDataMap.addressName,
-      'user_contact': addressDataMap.userContact,
-      'phone_no': addressDataMap.phoneNo,
-      'city': addressDataMap.city,
-      'state': addressDataMap.state,
-      'pincode': addressDataMap.pincode,
+    Map addAddress = {
+      'address_type': "",
+      'address_name': "",
+      'user_contact': "9898989898",
+      'phone_no': "",
+      'city': "",
+      'state': "",
+      'pincode': "",
     };
-    log('saveAddress===============>$saveAddress');
 
     return Scaffold(
       appBar: const GenericAppBar(
-        title: 'Edit Address',
+        title: 'Add Address',
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -44,28 +42,32 @@ class EditAddressScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              AddressForm(saveAddress: saveAddress),
+              AddressForm(saveAddress: addAddress),
               const SizedBox(height: smallSpacing),
               BlocListener<AddressBloc, AddressStates>(
                 listener: (BuildContext context, state) {
-                  if (state is EditAddressLoading) {
-                    const Center(child: CircularProgressIndicator());
-                  } else if (state is EditAddressLoaded) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Address Saved")));
+                  if (state is AddAddressLoading) {
+                    ProgressBar.show(context);
+                  } else if (state is AddAddressLoaded) {
+                    ProgressBar.dismiss(context);
                     Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("New Address Added")));
                     context.read<AddressBloc>().add(FetchAddress());
                   }
-                  if (state is EditAddressError) {
+                  if (state is AddAddressError) {
+                    ProgressBar.dismiss(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Something went wrong")));
                     const SizedBox();
                   }
                 },
                 child: CustomElevatedButton(
                     onPressed: () {
-                      log(saveAddress.toString());
-                      context.read<AddressBloc>().add(EditAddress(
-                          saveAddress: saveAddress,
-                          addressId: addressDataMap.addressId!));
+                      log('addAddress=================>$addAddress');
+                      context
+                          .read<AddressBloc>()
+                          .add(AddAddress(addAddress: addAddress));
                     },
                     child: Text(
                       'SAVE',

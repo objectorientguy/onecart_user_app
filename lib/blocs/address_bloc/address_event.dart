@@ -8,3 +8,10 @@ class EditAddress extends AddressEvents {
 
   EditAddress({required this.addressId, required this.saveAddress});
 }
+
+class AddAddress extends AddressEvents {
+  final Map addAddress;
+  // final int addressId;
+
+  AddAddress({required this.addAddress});
+}
