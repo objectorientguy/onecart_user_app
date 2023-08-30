@@ -23,12 +23,11 @@ class ItemDetailsSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 1.3 * leftRightMargin),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          FittedBox(
-            child: Text(
-              itemData.productName.toString(),
-              style: Theme.of(context).textTheme.headingLarge,
-            ),
+          Text(
+            itemData.productName.toString(),
+            style: Theme.of(context).textTheme.headingMedium,
           ),
           const SizedBox(height: tinySpacing),
           InkWell(
@@ -48,12 +47,16 @@ class ItemDetailsSection extends StatelessWidget {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(itemData.weight.toString(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .textLarge
-                          .copyWith(fontWeight: FontWeight.w600)),
+                  SizedBox(
+                    height: 20,
+                    child: Text(itemData.weight.toString(),
+                        style: Theme.of(context)
+                            .textTheme
+                            .textLarge
+                            .copyWith(fontWeight: FontWeight.w600)),
+                  ),
                   const Icon(Icons.arrow_forward_ios,
                       color: AppColor.primary, size: 20)
                 ],

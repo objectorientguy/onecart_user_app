@@ -12,7 +12,6 @@ import '../../blocs/home/home_states.dart';
 import '../../blocs/search_product_bloc/search_product_bloc.dart';
 import '../../blocs/search_product_bloc/search_product_events.dart';
 import '../../common_widgets/carousel_slider.dart';
-import '../../configs/app_dimensions.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -41,25 +40,30 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(
                           height: xxxSmallerSpacing,
                         ),
-                        TextField(
-                          controller: myController,
-                          decoration: InputDecoration(
-                            hintText: 'Search products...',
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.circular(kSearchBarRadius),
-                              borderSide: const BorderSide(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: TextField(
+                            controller: myController,
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  const EdgeInsets.only(left: 30, top: 4),
+                              hintText: 'Search products...',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: const BorderSide(),
+                              ),
+                              suffixIcon: InkWell(
+                                  onTap: () {
+                                    context.read<SearchProductsBloc>().add(
+                                        SearchAllProducts(
+                                            searchTerm: myController.text));
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const SearchScreen()));
+                                  },
+                                  child: const Icon(Icons.search)),
                             ),
-                            suffixIcon: InkWell(
-                                onTap: () {
-                                  context.read<SearchProductsBloc>().add(
-                                      SearchAllProducts(
-                                          searchTerm: myController.text));
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SearchScreen()));
-                                },
-                                child: const Icon(Icons.search)),
                           ),
                         ),
                       ],
@@ -68,9 +72,9 @@ class HomeScreen extends StatelessWidget {
                   HorizontalCategoryList(
                     data: state.homeModel.data!.categories!,
                   ),
-                  const SizedBox(
-                    height: tiniestSpacing,
-                  ),
+                  // const SizedBox(
+                  //   height: tiniestSpacing,
+                  // ),
                   SizedBox(
                       height: MediaQuery.of(context).size.width * 0.55,
                       child: CarouselSlider(
