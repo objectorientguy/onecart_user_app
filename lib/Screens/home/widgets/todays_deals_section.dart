@@ -89,80 +89,76 @@ class TodayDealsSection extends StatelessWidget {
                           ),
                           SizedBox(
                             width: screenwidth * 0.60,
-                            child: FittedBox(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '₹ ${data[index].discountedCost!.toString()}',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .textMedium,
-                                      ),
-                                      const SizedBox(
-                                        width: xxxTinierSpacing,
-                                      ),
-                                      Text(
-                                        '₹ ${data[index].price!.toString()}',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .subHeadingSmall
-                                            .copyWith(
-                                                decoration:
-                                                    TextDecoration.lineThrough),
-                                      ),
-                                      const SizedBox(
-                                        width: xxxTinierSpacing,
-                                      ),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                              color: AppColor.grey,
-                                            ),
-                                            color: AppColor.primaryLight,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: xxTiniestSpacing,
-                                            horizontal: xxxTinierSpacing),
-                                        child: Center(
-                                          child: Text(
-                                              '${data[index].discount!} % off',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .textSmall
-                                                  .copyWith(
-                                                      color: AppColor.primary,
-                                                      fontWeight:
-                                                          FontWeight.w500)),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  TextButton(
-                                    onPressed: () {},
-                                    style: TextButton.styleFrom(
-                                      minimumSize: Size.zero,
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: xxxTinySpacing,
-                                          vertical: xxTinierSpacing),
-                                      tapTargetSize:
-                                          MaterialTapTargetSize.shrinkWrap,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8)),
-                                      backgroundColor: AppColor.primary,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      '₹ ${data[index].discountedCost!.toString()}',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .textMedium,
                                     ),
-                                    child: Text('ADD',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .textButtonLarge),
-                                  )
-                                ],
-                              ),
+                                    const SizedBox(
+                                      width: tiniestSpacing,
+                                    ),
+                                    Text(
+                                      '₹ ${data[index].price!.toString()}',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .xsubHeadingSmall
+                                          .copyWith(
+                                              decoration:
+                                                  TextDecoration.lineThrough),
+                                    ),
+                                    const SizedBox(
+                                      width: tiniestSpacing,
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: AppColor.grey,
+                                          ),
+                                          color: AppColor.primaryLight,
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: xxTiniestSpacing,
+                                          horizontal: xxxTinierSpacing),
+                                      child: Center(
+                                        child: Text(
+                                            '${data[index].discount!} % off',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .textSmall
+                                                .copyWith(
+                                                    color: AppColor.primary,
+                                                    fontWeight:
+                                                        FontWeight.w500)),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                TextButton(
+                                  onPressed: () {},
+                                  style: TextButton.styleFrom(
+                                    minimumSize: Size.zero,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: xxxTinySpacing,
+                                        vertical: xxTinierSpacing),
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8)),
+                                    backgroundColor: AppColor.primary,
+                                  ),
+                                  child: Text('ADD',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .textButtonLarge),
+                                )
+                              ],
                             ),
                           ),
                         ],

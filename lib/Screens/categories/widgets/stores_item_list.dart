@@ -81,7 +81,7 @@ class StoreItemList extends StatelessWidget {
                                     '₹${storedata[index].price!.toString()}',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subHeadingMedium
+                                        .subHeadingSmall
                                         .copyWith(
                                             decoration:
                                                 TextDecoration.lineThrough),
