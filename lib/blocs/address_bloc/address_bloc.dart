@@ -7,17 +7,19 @@ import 'package:onecart_user_app/blocs/address_bloc/address_event.dart';
 import 'package:onecart_user_app/blocs/address_bloc/address_states.dart';
 import 'package:onecart_user_app/repositories/address_repo/address_repository.dart';
 
+import '../../data/models/address_model/add_address_model.dart';
 import '../../data/models/address_model/address_model.dart';
 import '../../data/models/address_model/edit_address_model.dart';
 
 class AddressBloc extends Bloc<AddressEvents, AddressStates> {
   final AddressRepository _addressRepository = getIt<AddressRepository>();
-
+//final CustomerCache _customerCache=getIt<CustomerCache>();
   AddressStates get initialState => AddressInitial();
 
   AddressBloc() : super(AddressInitial()) {
     on<FetchAddress>(_fetchAddress);
     on<EditAddress>(_editAddress);
+    on<AddAddress>(_addAddress);
   }
 
   FutureOr<void> _fetchAddress(
@@ -52,5 +54,21 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
     } catch (e) {
       emit(EditAddressError(message: e.toString()));
     }
+  }
+
+  FutureOr<void> _addAddress(
+      AddAddress event, Emitter<AddressStates> emit) async {
+    emit(AddAddressLoading());
+    // try {
+    // String userId= _customerCache.g
+    AddAddressModel addAddress =
+        await _addressRepository.addAddress(event.addAddress, '');
+    emit(AddAddressLoaded(
+      addAddressModel: addAddress,
+      addAddress: {},
+    ));
+    // } catch (e) {
+    //   emit(AddAddressError(message: e.toString()));
+    // }
   }
 }
