@@ -27,7 +27,7 @@ class ItemDetailsSection extends StatelessWidget {
         children: [
           Text(
             itemData.productName.toString(),
-            style: Theme.of(context).textTheme.headingMedium,
+            style: Theme.of(context).textTheme.headingSmall,
           ),
           const SizedBox(height: tinySpacing),
           InkWell(

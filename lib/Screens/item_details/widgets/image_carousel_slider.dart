@@ -44,14 +44,17 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                 });
               },
               itemBuilder: (context, index) {
-                return Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  margin: const EdgeInsets.all(8),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image.network(
-                      widget.imageList[index].toString(),
-                      fit: BoxFit.fill,
+                return InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    margin: const EdgeInsets.all(8),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.network(
+                        widget.imageList[index].toString(),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 );
