@@ -23,12 +23,11 @@ class ItemDetailsSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 1.3 * leftRightMargin),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          FittedBox(
-            child: Text(
-              itemData.productName.toString(),
-              style: Theme.of(context).textTheme.headingLarge,
-            ),
+          Text(
+            itemData.productName.toString(),
+            style: Theme.of(context).textTheme.headingMedium,
           ),
           const SizedBox(height: tinySpacing),
           InkWell(

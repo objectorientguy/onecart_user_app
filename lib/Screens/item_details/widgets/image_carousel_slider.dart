@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../configs/app_color.dart';
+
 class ImageCarouselSlider extends StatefulWidget {
   final List imageList;
 
@@ -14,6 +16,7 @@ class ImageCarouselSlider extends StatefulWidget {
 
 class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
   late PageController _pageController;
+  int currentIndex = 0;
 
   @override
   void initState() {
@@ -35,7 +38,11 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
               itemCount: widget.imageList.length,
               pageSnapping: true,
               controller: _pageController,
-              onPageChanged: (page) {},
+              onPageChanged: (page) {
+                setState(() {
+                  currentIndex = page;
+                });
+              },
               itemBuilder: (context, index) {
                 return Container(
                   width: MediaQuery.of(context).size.width * 0.9,
@@ -50,29 +57,22 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                 );
               }),
         ),
-        SizedBox(
-          height: 70,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            itemCount: widget.imageList.length,
-            separatorBuilder: (context, index) {
-              return const SizedBox(
-                width: 10,
+        Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(widget.imageList.length, (index) {
+              if (index == currentIndex) {
+                return const Icon(
+                  Icons.circle,
+                  color: AppColor.primary,
+                  size: 12,
+                );
+              }
+              return const Icon(
+                Icons.circle,
+                color: AppColor.grey,
+                size: 10,
               );
-            },
-            itemBuilder: (context, index) {
-              return Container(
-                height: 60,
-                width: 60,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(widget.imageList[index].toString()),
-                        fit: BoxFit.fitHeight)),
-              );
-            },
-          ),
-        ),
+            })),
         const SizedBox(
           height: 20,
         ),
