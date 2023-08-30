@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:onecart_user_app/configs/app_theme.dart';
+import 'package:onecart_user_app/data/models/home/home_model.dart';
 
 import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/search_product/search_product_model.dart';
 import '../../item_details/item_details_screen.dart';
 
 class SearchProductList extends StatelessWidget {
-  final List<SearchResult> data;
+  final List<Deal> data;
 
   const SearchProductList(
     this.data, {
