@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/data/models/address_model/address_model.dart';
+import '../Screens/address/add_address_screen.dart';
 import '../Screens/address/address_screen.dart';
 import '../Screens/address/edit_address_screen.dart';
 import '../Screens/cart/cart_screen.dart';
@@ -52,6 +53,8 @@ class AppRoutes {
         return _createRoute(EditAddressScreen(
           addressDataMap: settings.arguments as AddressDatum,
         ));
+      case AddAddressScreen.routeName:
+        return _createRoute(const AddAddressScreen());
       case RootScreen.routeName:
         return _createRoute(const RootScreen());
       default:

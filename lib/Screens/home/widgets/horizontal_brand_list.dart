@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/search_product/search_product_model.dart';
-import '../../categories/category_item_screen.dart';
 
 class HorizontalBrandList extends StatelessWidget {
   final List<Brand> data;
@@ -27,10 +26,7 @@ class HorizontalBrandList extends StatelessWidget {
           return SizedBox(
             width: kHorizontalCategoryListItemWidth * 1.2,
             child: InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, CategoryItemScreen.routeName,
-                    arguments: data[index]);
-              },
+              onTap: () {},
               child: Column(
                 children: [
                   Container(
