@@ -20,8 +20,7 @@ class TodayDealsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenwidth = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: leftRightMargin, vertical: topBottomPadding),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -57,103 +56,113 @@ class TodayDealsSection extends StatelessWidget {
                     const SizedBox(
                       width: 20,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: screenwidth * 0.65,
-                          child: Text(
-                            data[index].productName!,
-                            style: Theme.of(context).textTheme.textLarger,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: screenwidth * 0.65,
+                            child: Text(
+                              data[index].productName!,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .textLarge
+                                  .copyWith(fontWeight: FontWeight.w600),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: tiniestSpacing,
-                        ),
-                        SizedBox(
-                          width: screenwidth * 0.65,
-                          child: Text(
-                            data[index].details!,
-                            style: Theme.of(context).textTheme.subHeadingMedium,
-                            maxLines: 2,
+                          const SizedBox(
+                            height: tiniestSpacing,
                           ),
-                        ),
-                        const SizedBox(
-                          height: xxxTinierSpacing,
-                        ),
-                        SizedBox(
-                          width: screenwidth * 0.65,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    '₹ ${data[index].discountedCost!.toString()}',
-                                    style:
-                                        Theme.of(context).textTheme.textMedium,
-                                  ),
-                                  const SizedBox(
-                                    width: xxxTinierSpacing,
-                                  ),
-                                  Text(
-                                    '₹ ${data[index].price!.toString()}',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subHeadingSmall
-                                        .copyWith(
-                                            decoration:
-                                                TextDecoration.lineThrough),
-                                  ),
-                                  const SizedBox(
-                                    width: xxxTinierSpacing,
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: AppColor.grey,
-                                        ),
-                                        color: AppColor.primaryLight,
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: xxTiniestSpacing,
-                                        horizontal: xxxTinierSpacing),
-                                    child: Center(
-                                      child: Text(
-                                          '${data[index].discount!} % off',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .textSmall
-                                              .copyWith(
-                                                  color: AppColor.primary,
-                                                  fontWeight: FontWeight.w500)),
+                          SizedBox(
+                            width: screenwidth * 0.65,
+                            child: Text(
+                              data[index].details!,
+                              style:
+                                  Theme.of(context).textTheme.subHeadingMedium,
+                              maxLines: 2,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: xxxTinierSpacing,
+                          ),
+                          SizedBox(
+                            width: screenwidth * 0.60,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      '₹ ${data[index].discountedCost!.toString()}',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .textMedium,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                style: TextButton.styleFrom(
-                                  minimumSize: Size.zero,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: xxxTinySpacing,
-                                      vertical: xxTinierSpacing),
-                                  tapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8)),
-                                  backgroundColor: AppColor.primary,
+                                    const SizedBox(
+                                      width: xxxTinierSpacing,
+                                    ),
+                                    Text(
+                                      '₹ ${data[index].price!.toString()}',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subHeadingSmall
+                                          .copyWith(
+                                              decoration:
+                                                  TextDecoration.lineThrough),
+                                    ),
+                                    const SizedBox(
+                                      width: xxxTinierSpacing,
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: AppColor.grey,
+                                          ),
+                                          color: AppColor.primaryLight,
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: xxTiniestSpacing,
+                                          horizontal: xxxTinierSpacing),
+                                      child: Center(
+                                        child: Text(
+                                            '${data[index].discount!} % off',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .textSmall
+                                                .copyWith(
+                                                    color: AppColor.primary,
+                                                    fontWeight:
+                                                        FontWeight.w500)),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                child: Text('ADD',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .textButtonLarge),
-                              )
-                            ],
+                                TextButton(
+                                  onPressed: () {},
+                                  style: TextButton.styleFrom(
+                                    minimumSize: Size.zero,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: xxxTinySpacing,
+                                        vertical: xxTinierSpacing),
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8)),
+                                    backgroundColor: AppColor.primary,
+                                  ),
+                                  child: Text('ADD',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .textButtonLarge),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     )
                   ],
                 ),
