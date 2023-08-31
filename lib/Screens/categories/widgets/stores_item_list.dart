@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/configs/app_theme.dart';
-import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/get_product/get_product_model.dart';
+import '../../../data/models/home/home_model.dart';
+import '../../home/widgets/product_tile_widget.dart';
 import '../../item_details/item_details_screen.dart';
 
 class StoreItemList extends StatelessWidget {
-  final List<CategoryProductDatum> storedata;
+  final List<Deal> storedata;
 
   const StoreItemList({
     super.key,
@@ -15,6 +14,7 @@ class StoreItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenwidth = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -29,115 +29,120 @@ class StoreItemList extends StatelessWidget {
                   Navigator.pushNamed(context, ItemDetailsScreen.routeName,
                       arguments: storedata[index]);
                 },
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Center(
-                        child: Container(
-                          height: MediaQuery.of(context).size.width * 0.24,
-                          width: MediaQuery.of(context).size.width * 0.28,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                  image: NetworkImage(
-                                      storedata[index].image![0].toString()))),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.65,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            storedata[index].productName.toString(),
-                            style: Theme.of(context).textTheme.textLarge,
-                          ),
-                          const SizedBox(
-                            height: xxxTinierSpacing,
-                          ),
-                          Text(
-                            storedata[index].details.toString(),
-                            style: Theme.of(context).textTheme.textMediumx,
-                          ),
-                          const SizedBox(
-                            height: xxxTinySpacing,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    '₹${storedata[index].discountedCost!.toString()}',
-                                    style:
-                                        Theme.of(context).textTheme.headingTiny,
-                                  ),
-                                  const SizedBox(
-                                    width: tiniestSpacing,
-                                  ),
-                                  Text(
-                                    '₹${storedata[index].price!.toString()}',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subHeadingSmall
-                                        .copyWith(
-                                            decoration:
-                                                TextDecoration.lineThrough),
-                                  ),
-                                  const SizedBox(
-                                    width: xxxTinierSpacing,
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: AppColor.grey,
-                                        ),
-                                        color: AppColor.primaryLight,
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: xxTiniestSpacing,
-                                        horizontal: xxTinierSpacing),
-                                    child: Center(
-                                      child: Text(
-                                          '${storedata[index].discount!} % off',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .textSmall
-                                              .copyWith(
-                                                  color: AppColor.primary,
-                                                  fontWeight: FontWeight.w700)),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                style: TextButton.styleFrom(
-                                  minimumSize: Size.zero,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: xxTinySpacing,
-                                      vertical: xxTinierSpacing),
-                                  tapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8)),
-                                  backgroundColor: AppColor.primary,
-                                ),
-                                child: Text('ADD',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .textButtonLarge),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                child: ProductTileWidget(
+                  screenwidth: screenwidth,
+                  data: storedata,
+                  index: index,
                 ),
+                // child: Row(
+                //   children: [
+                //     Padding(
+                //       padding: const EdgeInsets.only(left: 8),
+                //       child: Center(
+                //         child: Container(
+                //           height: MediaQuery.of(context).size.width * 0.24,
+                //           width: MediaQuery.of(context).size.width * 0.28,
+                //           decoration: BoxDecoration(
+                //               borderRadius: BorderRadius.circular(10),
+                //               image: DecorationImage(
+                //                   image: NetworkImage(
+                //                       storedata[index].image![0].toString()))),
+                //         ),
+                //       ),
+                //     ),
+                //     SizedBox(
+                //       width: MediaQuery.of(context).size.width * 0.65,
+                //       child: Column(
+                //         crossAxisAlignment: CrossAxisAlignment.start,
+                //         children: [
+                //           Text(
+                //             storedata[index].productName.toString(),
+                //             style: Theme.of(context).textTheme.textLarge,
+                //           ),
+                //           const SizedBox(
+                //             height: xxxTinierSpacing,
+                //           ),
+                //           Text(
+                //             storedata[index].details.toString(),
+                //             style: Theme.of(context).textTheme.textMediumx,
+                //           ),
+                //           const SizedBox(
+                //             height: xxxTinySpacing,
+                //           ),
+                //           Row(
+                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //             children: [
+                //               Row(
+                //                 children: [
+                //                   Text(
+                //                     '₹${storedata[index].discountedCost!.toString()}',
+                //                     style:
+                //                         Theme.of(context).textTheme.headingTiny,
+                //                   ),
+                //                   const SizedBox(
+                //                     width: tiniestSpacing,
+                //                   ),
+                //                   Text(
+                //                     '₹${storedata[index].price!.toString()}',
+                //                     style: Theme.of(context)
+                //                         .textTheme
+                //                         .subHeadingSmall
+                //                         .copyWith(
+                //                             decoration:
+                //                                 TextDecoration.lineThrough),
+                //                   ),
+                //                   const SizedBox(
+                //                     width: xxxTinierSpacing,
+                //                   ),
+                //                   Container(
+                //                     decoration: BoxDecoration(
+                //                         border: Border.all(
+                //                           color: AppColor.grey,
+                //                         ),
+                //                         color: AppColor.primaryLight,
+                //                         borderRadius:
+                //                             BorderRadius.circular(15)),
+                //                     padding: const EdgeInsets.symmetric(
+                //                         vertical: xxTiniestSpacing,
+                //                         horizontal: xxTinierSpacing),
+                //                     child: Center(
+                //                       child: Text(
+                //                           '${storedata[index].discount!} % off',
+                //                           style: Theme.of(context)
+                //                               .textTheme
+                //                               .textSmall
+                //                               .copyWith(
+                //                                   color: AppColor.primary,
+                //                                   fontWeight: FontWeight.w700)),
+                //                     ),
+                //                   ),
+                //                 ],
+                //               ),
+                //               TextButton(
+                //                 onPressed: () {},
+                //                 style: TextButton.styleFrom(
+                //                   minimumSize: Size.zero,
+                //                   padding: const EdgeInsets.symmetric(
+                //                       horizontal: xxTinySpacing,
+                //                       vertical: xxTinierSpacing),
+                //                   tapTargetSize:
+                //                       MaterialTapTargetSize.shrinkWrap,
+                //                   shape: RoundedRectangleBorder(
+                //                       borderRadius: BorderRadius.circular(8)),
+                //                   backgroundColor: AppColor.primary,
+                //                 ),
+                //                 child: Text('ADD',
+                //                     style: Theme.of(context)
+                //                         .textTheme
+                //                         .textButtonLarge),
+                //               )
+                //             ],
+                //           ),
+                //         ],
+                //       ),
+                //     )
+                //   ],
+                // ),
               );
             },
             separatorBuilder: (context, index) {

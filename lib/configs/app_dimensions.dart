@@ -1,7 +1,7 @@
 const double kZero = 0.0;
 const double kBottomNavBarIconSize = 26.0;
 const double kBottomNavBarHeight = 90.0;
-const double kBottomNavBarHeightX = 60.0;
+const double kBottomNavBarHeightX = 70.0;
 const double kBottomNavBarRadius = 20.0;
 const double kLocationIconSize = 28.0;
 const double kLocationIconHeightFactor = 0.7;

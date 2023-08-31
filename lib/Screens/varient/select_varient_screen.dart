@@ -75,9 +75,9 @@ class SelectVariantScreen extends StatelessWidget {
                                 child: Text(dataone.productName.toString(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .textLarger
+                                        .headingSmallx
                                         .copyWith(
-                                            fontWeight: FontWeight.w500))),
+                                            fontWeight: FontWeight.w700))),
                           ],
                         ),
                         const SizedBox(height: tinySpacing),

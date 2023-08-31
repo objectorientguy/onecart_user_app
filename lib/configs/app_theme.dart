@@ -178,8 +178,12 @@ extension AppTextTheme on TextTheme {
     return const TextStyle(fontSize: 12, color: AppColor.mediumBlack);
   }
 
+  TextStyle get xxGSmall {
+    return const TextStyle(fontSize: 12, color: AppColor.grey);
+  }
+
   TextStyle get xxxSmall {
-    return const TextStyle(fontSize: 7, color: AppColor.white);
+    return const TextStyle(fontSize: 8, color: AppColor.white);
   }
 
   TextStyle get smallRed {
