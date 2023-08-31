@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import '../home/home_model.dart';
+
 SearchProductModel searchProductModelFromJson(String str) =>
     SearchProductModel.fromJson(json.decode(str));
 
@@ -36,7 +38,7 @@ class SearchProductModel {
 class SearchProductData {
   final List<Category>? categories;
   final List<Brand>? brands;
-  final List<SearchResult>? searchResults;
+  final List<Deal>? searchResults;
 
   SearchProductData({
     this.categories,
@@ -55,8 +57,8 @@ class SearchProductData {
             : List<Brand>.from(json["Brands"]!.map((x) => Brand.fromJson(x))),
         searchResults: json["search_results"] == null
             ? []
-            : List<SearchResult>.from(
-                json["search_results"]!.map((x) => SearchResult.fromJson(x))),
+            : List<Deal>.from(
+                json["search_results"]!.map((x) => Deal.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -120,64 +122,3 @@ class Category {
       };
 }
 
-class SearchResult {
-  final String? companyName;
-  final int? categoryId;
-  final int? brandId;
-  final List<String>? image;
-  final int? itemCount;
-  final int? discount;
-  final String? details;
-  final int? productId;
-  final String? productName;
-  final bool? deal;
-  final double? price;
-  final double? discountedCost;
-
-  SearchResult({
-    this.companyName,
-    this.categoryId,
-    this.brandId,
-    this.image,
-    this.itemCount,
-    this.discount,
-    this.details,
-    this.productId,
-    this.productName,
-    this.deal,
-    this.price,
-    this.discountedCost,
-  });
-
-  factory SearchResult.fromJson(Map<String, dynamic> json) => SearchResult(
-        companyName: json["company_name"],
-        categoryId: json["category_id"],
-        brandId: json["brand_id"],
-        image: json["image"] == null
-            ? []
-            : List<String>.from(json["image"]!.map((x) => x)),
-        itemCount: json["item_count"],
-        discount: json["discount"],
-        details: json["details"],
-        productId: json["product_id"],
-        productName: json["product_name"],
-        deal: json["deal"],
-        price: json["price"],
-        discountedCost: json["discounted_cost"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "company_name": companyName,
-        "category_id": categoryId,
-        "brand_id": brandId,
-        "image": image == null ? [] : List<dynamic>.from(image!.map((x) => x)),
-        "item_count": itemCount,
-        "discount": discount,
-        "details": details,
-        "product_id": productId,
-        "product_name": productName,
-        "deal": deal,
-        "price": price,
-        "discounted_cost": discountedCost,
-      };
-}
