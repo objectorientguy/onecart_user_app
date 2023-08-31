@@ -4,7 +4,6 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../address/address_screen.dart';
-import '../../favorites/no_favorites.dart';
 
 class ProfileOptionsList extends StatelessWidget {
   const ProfileOptionsList({
@@ -69,10 +68,10 @@ class ProfileOptionsList extends StatelessWidget {
         const Divider(height: 40, thickness: 0.3),
         InkWell(
           onTap: () {
-            Navigator.pushNamed(
-              context,
-              NoFavoritesScreen.routeName,
-            );
+            // Navigator.pushNamed(
+            //   context,
+            //   NoFavoritesScreen.routeName,
+            // );
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
