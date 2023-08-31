@@ -42,13 +42,15 @@ class OrderSuccessScreen extends StatelessWidget {
               height: smallerSpacing,
             ),
             CustomElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).popUntil((route) => route.isFirst);
+                },
+              buttonWidth: double.maxFinite,
+              buttonHeight: kElevatedButtonHeightSmall,
                 child: Text(
                   'BACK TO HOME',
                   style: Theme.of(context).textTheme.textButtonLarger,
-                ),
-                onPressed: () {
-                  Navigator.of(context).popUntil((route) => route.isFirst);
-                })
+                ),)
           ],
         ),
       ),

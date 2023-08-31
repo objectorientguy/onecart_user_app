@@ -12,6 +12,7 @@ import '../../blocs/checkout_bloc/checkout_event.dart';
 import '../../blocs/checkout_bloc/checkout_states.dart';
 import '../../common_widgets/custom_elevated_button.dart';
 import '../../configs/app_color.dart';
+import '../../configs/app_dimensions.dart';
 import 'order_success.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -37,6 +38,8 @@ class CheckoutScreen extends StatelessWidget {
                     OrderSuccessScreen.routeName,
                   );
                 },
+                buttonWidth: double.maxFinite,
+                buttonHeight: kElevatedButtonHeightSmall,
                 child: Text(
                   'PAY AND CHECKOUT',
                   style: Theme.of(context).textTheme.textButtonLarger,

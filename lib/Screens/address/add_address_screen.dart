@@ -9,6 +9,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/address_bloc/address_states.dart';
 import '../../common_widgets/custom_elevated_button.dart';
 import '../../common_widgets/generic_app_bar.dart';
+import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 import '../../widgets/progress_bar.dart';
 
@@ -69,6 +70,8 @@ class AddAddressScreen extends StatelessWidget {
                           .read<AddressBloc>()
                           .add(AddAddress(addAddress: addAddress));
                     },
+                    buttonWidth: double.maxFinite,
+                    buttonHeight: kElevatedButtonHeight,
                     child: Text(
                       'SAVE',
                       style: Theme.of(context).textTheme.textButtonLarger,

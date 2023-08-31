@@ -8,6 +8,7 @@ import '../../blocs/varient_bloc/varient_bloc.dart';
 import '../../blocs/varient_bloc/varient_states.dart';
 import '../../common_widgets/custom_elevated_button.dart';
 import '../../configs/app_color.dart';
+import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 import '../../data/models/item_details/item_details_model.dart';
 
@@ -27,6 +28,8 @@ class SelectVariantScreen extends StatelessWidget {
                 vertical: topBottomPadding, horizontal: leftRightMargin),
             child: CustomElevatedButton(
                 onPressed: () {},
+                buttonWidth: double.maxFinite,
+                buttonHeight: kElevatedButtonHeightSmall,
                 child: Text(
                   'DONE',
                   style: Theme.of(context).textTheme.textButtonLarger,

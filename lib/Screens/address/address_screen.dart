@@ -28,30 +28,18 @@ class AddressScreen extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(15),
-        child: Container(
-          height: kBottomNavBarHeightX,
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(kBottomNavBarRadius),
-                  topRight: Radius.circular(kBottomNavBarRadius)),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColor.grey,
-                  spreadRadius: 1,
-                  blurRadius: kBottomNavBarRadius,
-                ),
-              ]),
-          child: CustomElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, AddAddressScreen.routeName,
-                    arguments: false);
-                //arguments: state.addressDetails[index]);
-              },
-              child: Text(
-                'Add New Address',
-                style: Theme.of(context).textTheme.textButtonLarger,
-              )),
-        ),
+        child: CustomElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, AddAddressScreen.routeName,
+                  arguments: false);
+              //arguments: state.addressDetails[index]);
+            },
+            buttonHeight: kElevatedButtonHeightSmall,
+            buttonWidth: double.maxFinite,
+            child: Text(
+              'Add New Address',
+              style: Theme.of(context).textTheme.textButtonLarger,
+            )),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
