@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
@@ -22,25 +23,8 @@ class OrdersDetailsScreen extends StatelessWidget {
       {'title': 'To be Delivered', 'date': 'Pending', 'status': 'pending'}
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Order Details',
-            style: Theme.of(context).textTheme.headingMedium),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new,
-              color: AppColor.black,
-            )),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.more_vert,
-                color: AppColor.black,
-              ))
-        ],
+      appBar: const GenericAppBar(
+        title: 'Order Details',
       ),
       body: Padding(
           padding: const EdgeInsets.symmetric(
