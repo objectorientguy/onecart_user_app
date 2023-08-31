@@ -46,6 +46,13 @@ class AddressForm extends StatelessWidget {
         ),
         const SizedBox(height: xxxTinierSpacing),
         TextFormField(
+          //       validator: (value) {
+          //  if (data.widgetKey == "MOB_NO" && value.isNotEmpty &&
+          // !RegExp(r'^[0-9]{10}$').hasMatch(value)) {
+          // return "Please enter a valid 10-digit contact number";
+          // }
+          // return null;
+          // },
           onChanged: (value) {
             saveAddress['phone_no'] = value;
           },

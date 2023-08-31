@@ -71,8 +71,9 @@ class SearchScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("Category",
-                                  style:
-                                      Theme.of(context).textTheme.headingLarge),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headingSmallx),
                               (state.getSearchProductsList.data!.categories!
                                       .isEmpty)
                                   ? Column(
@@ -83,7 +84,7 @@ class SearchScreen extends StatelessWidget {
                                         Text("No results Found!",
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .mediumLarge),
+                                                .medium),
                                         const SizedBox(
                                           height: xxxLargerSpacing,
                                         )
@@ -97,8 +98,9 @@ class SearchScreen extends StatelessWidget {
                                 height: tiniestSpacing,
                               ),
                               Text("Brands",
-                                  style:
-                                      Theme.of(context).textTheme.headingLarge),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headingSmallx),
                               (state.getSearchProductsList.data!.brands!
                                       .isEmpty)
                                   ? Column(
@@ -109,7 +111,7 @@ class SearchScreen extends StatelessWidget {
                                         Text("No brands found!",
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .mediumLarge),
+                                                .medium),
                                         const SizedBox(
                                           height: xxxLargerSpacing,
                                         )
@@ -119,7 +121,8 @@ class SearchScreen extends StatelessWidget {
                                       .getSearchProductsList.data!.brands!),
                               Text(
                                 "Product's",
-                                style: Theme.of(context).textTheme.headingLarge,
+                                style:
+                                    Theme.of(context).textTheme.headingSmallx,
                               ),
                               (state.getSearchProductsList.data!.searchResults!
                                       .isEmpty)
@@ -131,7 +134,7 @@ class SearchScreen extends StatelessWidget {
                                         Text("No Products Found!",
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .mediumLarge),
+                                                .medium),
                                       ],
                                     )
                                   : SearchProductList(state
