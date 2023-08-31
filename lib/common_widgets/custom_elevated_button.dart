@@ -7,7 +7,11 @@ class CustomElevatedButton extends StatelessWidget {
   final double buttonWidth;
   final double buttonHeight;
   const CustomElevatedButton(
-      {Key? key, required this.child, required this.onPressed, required this.buttonWidth, required this.buttonHeight})
+      {Key? key,
+      required this.child,
+      required this.onPressed,
+      required this.buttonWidth,
+      required this.buttonHeight})
       : super(key: key);
 
   @override
@@ -15,7 +19,7 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-          minimumSize:  Size(buttonWidth, buttonHeight),
+          minimumSize: Size(buttonWidth, buttonHeight),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(kGeneralBorderRadius))),
       child: child,
