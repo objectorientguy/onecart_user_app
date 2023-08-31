@@ -61,7 +61,7 @@ class SearchScreen extends StatelessWidget {
                 return Expanded(
                   child: SingleChildScrollView(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(
@@ -70,74 +70,66 @@ class SearchScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Category",
-                                  style:
-                                      Theme.of(context).textTheme.headingLarge),
                               (state.getSearchProductsList.data!.categories!
                                       .isEmpty)
-                                  ? Column(
+                                  ? const SizedBox()
+                                  : Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
+                                        Text("Category",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headingLarge),
                                         const SizedBox(
                                           height: xxxSmallestSpacing,
                                         ),
-                                        Text("No results Found!",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .mediumLarge),
+                                        HorizontalCategoryList(
+                                          data: state.getSearchProductsList
+                                              .data!.categories!,
+                                        ),
                                         const SizedBox(
-                                          height: xxxLargerSpacing,
-                                        )
+                                          height: smallerSpacing,
+                                        ),
                                       ],
-                                    )
-                                  : HorizontalCategoryList(
-                                      data: state.getSearchProductsList.data!
-                                          .categories!,
                                     ),
-                              const SizedBox(
-                                height: tiniestSpacing,
-                              ),
-                              Text("Brands",
-                                  style:
-                                      Theme.of(context).textTheme.headingLarge),
                               (state.getSearchProductsList.data!.brands!
                                       .isEmpty)
-                                  ? Column(
+                                  ? const SizedBox()
+                                  : Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        const SizedBox(
-                                          height: xxxSmallestSpacing,
-                                        ),
-                                        Text("No brands found!",
+                                        Text("Brands",
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .mediumLarge),
+                                                .headingLarge),
+                                        HorizontalBrandList(state
+                                            .getSearchProductsList
+                                            .data!
+                                            .brands!),
                                         const SizedBox(
-                                          height: xxxLargerSpacing,
-                                        )
+                                          height: smallerSpacing,
+                                        ),
                                       ],
-                                    )
-                                  : HorizontalBrandList(state
-                                      .getSearchProductsList.data!.brands!),
-                              Text(
-                                "Product's",
-                                style: Theme.of(context).textTheme.headingLarge,
-                              ),
+                                    ),
                               (state.getSearchProductsList.data!.searchResults!
                                       .isEmpty)
-                                  ? Column(
+                                  ? const SizedBox():Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        const SizedBox(
-                                          height: xxxSmallestSpacing,
+                                        Text(
+                                          "Product's",
+                                          style: Theme.of(context).textTheme.headingLarge,
                                         ),
-                                        Text("No Products Found!",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .mediumLarge),
+                                        SearchProductList(state
+                                            .getSearchProductsList
+                                            .data!
+                                            .searchResults!)
+
                                       ],
                                     )
-                                  : SearchProductList(state
-                                      .getSearchProductsList
-                                      .data!
-                                      .searchResults!)
+
                             ],
                           ),
                         ),

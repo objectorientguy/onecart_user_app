@@ -13,6 +13,8 @@ class BillSection extends StatelessWidget {
     var pointAfterArr = [];
     pointAfterArr = checkoutData.totalBill.toString().split(".");
     var toBeUsed = pointAfterArr[1];
+
+
     return Padding(
         padding: const EdgeInsets.symmetric(
             horizontal: leftRightMargin, vertical: topBottomPadding),

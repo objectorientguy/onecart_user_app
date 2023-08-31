@@ -12,6 +12,7 @@ import '../../blocs/home/home_states.dart';
 import '../../blocs/search_product_bloc/search_product_bloc.dart';
 import '../../blocs/search_product_bloc/search_product_events.dart';
 import '../../common_widgets/carousel_slider.dart';
+import '../../widgets/text_field_custom.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -42,29 +43,17 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 4),
-                          child: TextField(
-                            controller: myController,
-                            decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.only(left: 30, top: 4),
-                              hintText: 'Search products...',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide: const BorderSide(),
-                              ),
-                              suffixIcon: InkWell(
-                                  onTap: () {
-                                    context.read<SearchProductsBloc>().add(
-                                        SearchAllProducts(
-                                            searchTerm: myController.text));
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const SearchScreen()));
-                                  },
-                                  child: const Icon(Icons.search)),
-                            ),
-                          ),
+                          child: CustomTextField(hintText: "Search Product's", textcontroller: myController, suffixicon: InkWell(
+                              onTap: () {
+                                context.read<SearchProductsBloc>().add(
+                                    SearchAllProducts(
+                                        searchTerm: myController.text));
+                                Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                        const SearchScreen()));
+                              },
+                              child: const Icon(Icons.search)),),
                         ),
                       ],
                     ),
@@ -95,3 +84,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
