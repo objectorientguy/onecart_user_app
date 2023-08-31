@@ -12,8 +12,6 @@ class BillSection extends StatelessWidget {
   Widget build(BuildContext context) {
     var pointAfterArr = [];
     pointAfterArr = checkoutData.totalBill.toString().split(".");
-    var toBeUsed = pointAfterArr[1];
-
 
     return Padding(
         padding: const EdgeInsets.symmetric(
@@ -149,9 +147,9 @@ class BillSection extends StatelessWidget {
                             .textTheme
                             .headingLarge
                             .copyWith(fontWeight: FontWeight.w100)),
-                    Text(checkoutData.cartTotal.toString(),
+                    Text(pointAfterArr[0],
                         style: Theme.of(context).textTheme.headingLarge),
-                    Text(".$toBeUsed",
+                    Text(".${pointAfterArr[1]}",
                         style: Theme.of(context).textTheme.textLarge),
                   ],
                 )
