@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
@@ -84,17 +85,31 @@ class OrdersScreen extends StatelessWidget {
                                             .textTheme
                                             .headingTiny),
                                     const SizedBox(height: xxxTiniestSpacing),
-                                    SizedBox(
-                                      width: MediaQuery.sizeOf(context).width *
-                                          0.55,
-                                      child: Text(
-                                        state.getAllOrdersListModel.data![index]
-                                            .orderPlaced
-                                            .toString(),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .subHeadingLarge,
-                                      ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Order Placed: ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subHeadingLarge,
+                                        ),
+                                        SizedBox(
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  0.55,
+                                          child: Text(
+                                            DateFormat('MMM dd y hh:mm a')
+                                                .format(state
+                                                    .getAllOrdersListModel
+                                                    .data![index]
+                                                    .orderPlaced!)
+                                                .toString(),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subHeadingLarge,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     Row(
                                       children: [
