@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
@@ -35,31 +36,13 @@ class CategoryItemScreenHeader extends StatelessWidget {
                   backgroundImage: NetworkImage(categorydata.categoryImage!),
                 ),
                 const SizedBox(width: tinySpacing),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width - 100,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.zero,
-                      hintText: 'Search products...',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(kSearchBarRadius),
-                      ),
-                      prefixIcon: const Icon(Icons.search),
-                    ),
-                  ),
-                )
+                Text(categorydata.categoryName!,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headingSmallx
+                        .copyWith(fontWeight: FontWeight.w700)),
               ],
             ),
-            const SizedBox(height: tinySpacing),
-            InkWell(
-              onTap: () {},
-              child: Text(
-                categorydata.categoryName!,
-                style:
-                    const TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
-              ),
-            ),
-            const SizedBox(height: tinySpacing),
           ],
         ),
       ),

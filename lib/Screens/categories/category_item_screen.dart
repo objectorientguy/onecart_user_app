@@ -24,14 +24,11 @@ class CategoryItemScreen extends StatelessWidget {
           } else if (state is FetchProductLoaded) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 CategoryItemScreenHeader(
                     categorydata: state.getProductByIdModel.category!),
-                // ),
-                Expanded(
-                  child:
-                      StoreItemList(storedata: state.getProductByIdModel.data!),
-                ),
+                StoreItemList(storedata: state.getProductByIdModel.data!),
               ],
             );
           }
