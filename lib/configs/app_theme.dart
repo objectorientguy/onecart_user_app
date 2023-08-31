@@ -135,7 +135,7 @@ extension AppTextTheme on TextTheme {
 
   TextStyle get textButtonLarger {
     return const TextStyle(
-        fontSize: 17, fontWeight: FontWeight.w700, color: AppColor.white);
+        fontSize: 17, fontWeight: FontWeight.w600, color: AppColor.white);
   }
 
   TextStyle get textButtonSmall {

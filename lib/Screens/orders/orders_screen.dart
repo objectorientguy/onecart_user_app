@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
@@ -55,7 +56,6 @@ class OrdersScreen extends StatelessWidget {
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,17 +84,30 @@ class OrdersScreen extends StatelessWidget {
                                             .textTheme
                                             .headingTiny),
                                     const SizedBox(height: xxxTiniestSpacing),
-                                    SizedBox(
-                                      width: MediaQuery.sizeOf(context).width *
-                                          0.55,
-                                      child: Text(
-                                        state.getAllOrdersListModel.data![index]
-                                            .orderPlaced
-                                            .toString(),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .subHeadingLarge,
-                                      ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Ordered On: ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subHeadingLarge,
+                                        ),
+                                        SizedBox(
+                                          child: Text(
+                                            DateFormat('MMM dd y')
+                                                .format(state
+                                                    .getAllOrdersListModel
+                                                    .data![index]
+                                                    .orderPlaced!)
+                                                .toString(),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subHeadingLarge
+                                                .copyWith(
+                                                    color: AppColor.primary),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     Row(
                                       children: [
@@ -135,20 +148,26 @@ class OrdersScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 2, vertical: 2),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.green, width: 1.0),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.keyboard_arrow_right,
-                                    color: AppColor.primary,
-                                  ),
-                                )),
+                            const Center(
+                              child: Icon(
+                                Icons.keyboard_arrow_right,
+                                color: AppColor.primary,
+                              ),
+                            ),
+                            // Container(
+                            //     padding: const EdgeInsets.symmetric(
+                            //         horizontal: 2, vertical: 2),
+                            //     decoration: BoxDecoration(
+                            //       border: Border.all(
+                            //           color: Colors.green, width: 1.0),
+                            //       borderRadius: BorderRadius.circular(20),
+                            //     ),
+                            //     child: const Center(
+                            //       child: Icon(
+                            //         Icons.keyboard_arrow_right,
+                            //         color: AppColor.primary,
+                            //       ),
+                            //     )),
                           ],
                         ),
                       ),

@@ -105,45 +105,12 @@ class ItemDetailsSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: xxxTinierSpacing),
-                child: Row(
-                  children: [
-                    Text(
-                      '₹${itemData.discountedCost.toString()}',
-                      style: Theme.of(context).textTheme.headingTiny,
-                    ),
-                    const SizedBox(width: xxxTinierSpacing),
-                    Text(
-                      '₹${itemData.price.toString()}',
-                      style: Theme.of(context)
-                          .textTheme
-                          .subHeadingMedium
-                          .copyWith(decoration: TextDecoration.lineThrough),
-                    ),
-                    const SizedBox(width: xxxTinierSpacing),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            color: AppColor.grey,
-                          ),
-                          color: AppColor.primaryLight,
-                          borderRadius: BorderRadius.circular(15)),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: xxTiniestSpacing,
-                          horizontal: xxTinierSpacing),
-                      child: Center(
-                        child: Text('${itemData.discount.toString()}%OFF',
-                            style: Theme.of(context)
-                                .textTheme
-                                .textSmall
-                                .copyWith(
-                                    color: AppColor.primary,
-                                    fontWeight: FontWeight.w700)),
-                      ),
-                    )
-                  ],
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.favorite_border_outlined,
+                  color: AppColor.primary,
+                  size: 22,
                 ),
               ),
               TextButton(
@@ -163,9 +130,41 @@ class ItemDetailsSection extends StatelessWidget {
             ],
           ),
           const SizedBox(height: xxxTinySpacing),
-          SizedBox(height: 200, child: Text(itemData.description.toString())),
-
-          // Text('description'),
+          Row(
+            children: [
+              Text(
+                '₹${itemData.discountedCost.toString()}',
+                style: Theme.of(context).textTheme.headingTiny,
+              ),
+              const SizedBox(width: xxxTinierSpacing),
+              Text(
+                '₹${itemData.price.toString()}',
+                style: Theme.of(context)
+                    .textTheme
+                    .subHeadingMedium
+                    .copyWith(decoration: TextDecoration.lineThrough),
+              ),
+              const SizedBox(width: xxxTinierSpacing),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: AppColor.grey,
+                    ),
+                    color: AppColor.primaryLight,
+                    borderRadius: BorderRadius.circular(15)),
+                padding: const EdgeInsets.symmetric(
+                    vertical: xxTiniestSpacing, horizontal: xxTinierSpacing),
+                child: Center(
+                  child: Text('${itemData.discount.toString()}%OFF',
+                      style: Theme.of(context).textTheme.textSmall.copyWith(
+                          color: AppColor.primary,
+                          fontWeight: FontWeight.w700)),
+                ),
+              )
+            ],
+          ),
+          const SizedBox(height: xxxTinySpacing),
+          SizedBox(child: Text(itemData.description.toString())),
         ],
       ),
     );

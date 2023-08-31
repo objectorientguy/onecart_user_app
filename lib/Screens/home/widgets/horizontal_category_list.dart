@@ -30,6 +30,10 @@ class HorizontalCategoryList extends StatelessWidget {
               width: kHorizontalCategoryListItemWidth * 1.2,
               child: InkWell(
                 onTap: () {
+                  FocusScopeNode currentFocus = FocusScope.of(context);
+                  if (!currentFocus.hasPrimaryFocus) {
+                    currentFocus.unfocus();
+                  }
                   context
                       .read<GetProductBloc>()
                       .add(FetchProduct(cateId: data[index].categoryId!));
@@ -43,6 +47,7 @@ class HorizontalCategoryList extends StatelessWidget {
                       width: kHorizontalCategoryListItemWidth,
                       decoration: BoxDecoration(
                         image: DecorationImage(
+                            fit: BoxFit.fill,
                             image: NetworkImage(data[index].categoryImage!)),
                         shape: BoxShape.circle,
                       ),

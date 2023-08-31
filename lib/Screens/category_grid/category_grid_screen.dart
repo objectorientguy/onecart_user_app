@@ -10,6 +10,7 @@ import '../../common_widgets/address_bar.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 
+import '../../widgets/search_text_field.dart';
 import '../categories/category_item_screen.dart';
 
 class CategoryGridScreen extends StatelessWidget {
@@ -17,6 +18,8 @@ class CategoryGridScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final myControllerone = TextEditingController();
+
     context.read<GetAllCategoriesBloc>().add(GetAllCategories());
 
     return SafeArea(
@@ -31,17 +34,7 @@ class CategoryGridScreen extends StatelessWidget {
                 const SizedBox(
                   height: xxxSmallerSpacing,
                 ),
-                TextField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.zero,
-                    hintText: 'Search products...',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(kSearchBarRadius),
-                      borderSide: const BorderSide(),
-                    ),
-                    prefixIcon: const Icon(Icons.search),
-                  ),
-                ),
+                SearchTextField(hintText: 'Search Categories', suffixicon: const Icon(Icons.search), textcontroller: myControllerone,),
               ],
             ),
           ),

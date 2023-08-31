@@ -62,6 +62,8 @@ class EditFieldScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
+                  buttonWidth: 200,
+                  buttonHeight: 50,
                   child: Text(
                     'SAVE',
                     style: Theme.of(context).textTheme.textButtonLarger,
