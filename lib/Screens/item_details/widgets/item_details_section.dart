@@ -163,7 +163,7 @@ class ItemDetailsSection extends StatelessWidget {
             ],
           ),
           const SizedBox(height: xxxTinySpacing),
-          SizedBox(height: 200, child: Text(itemData.description.toString())),
+          SizedBox(child: Text(itemData.description.toString())),
 
           // Text('description'),
         ],
