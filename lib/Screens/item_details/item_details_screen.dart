@@ -11,7 +11,6 @@ import '../../blocs/item_details_bloc/item_details_bloc.dart';
 import '../../blocs/item_details_bloc/item_details_events.dart';
 import '../../blocs/item_details_bloc/item_details_states.dart';
 
-import '../../configs/app_color.dart';
 import '../../configs/app_spacing.dart';
 import '../cart/cart_screen.dart';
 
