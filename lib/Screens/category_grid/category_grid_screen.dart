@@ -34,11 +34,7 @@ class CategoryGridScreen extends StatelessWidget {
                 const SizedBox(
                   height: xxxSmallerSpacing,
                 ),
-                SearchTextField(
-                  hintText: 'Search Categories',
-                  suffixicon: const Icon(Icons.search),
-                  textcontroller: myControllerone,
-                ),
+                SearchTextField(hintText: 'Search Categories', suffixicon: Icon(Icons.search), textcontroller: myControllerone,),
               ],
             ),
           ),
