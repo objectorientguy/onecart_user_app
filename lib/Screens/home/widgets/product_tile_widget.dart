@@ -21,15 +21,21 @@ class ProductTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Center(
           child: Container(
             height: MediaQuery.of(context).size.width * 0.24,
             width: MediaQuery.of(context).size.width * 0.28,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                    image: NetworkImage(data[index].image![0].toString()))),
+              borderRadius: BorderRadius.circular(10),
+              // image: DecorationImage(
+              //     image: NetworkImage(data[index].image![0].toString()))
+            ),
+            child: Image.network(
+              data[index].image![0].toString(),
+              fit: BoxFit.fill,
+            ),
           ),
         ),
         const SizedBox(

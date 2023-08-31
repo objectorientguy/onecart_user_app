@@ -31,7 +31,11 @@ class SearchProductList extends StatelessWidget {
                 Navigator.pushNamed(context, ItemDetailsScreen.routeName,
                     arguments: data[index]);
               },
-            child: ProductTileWidget(screenwidth: screenwidth, data: data, index: index,),
+              child: ProductTileWidget(
+                screenwidth: screenwidth,
+                data: data,
+                index: index,
+              ),
             );
           },
           separatorBuilder: (context, index) {

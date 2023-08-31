@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../home/home_model.dart';
+import 'package:onecart_user_app/data/models/home/home_model.dart';
 
 SearchProductModel searchProductModelFromJson(String str) =>
     SearchProductModel.fromJson(json.decode(str));
@@ -121,4 +121,3 @@ class Category {
         "category_image": categoryImage,
       };
 }
-
