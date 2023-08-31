@@ -47,6 +47,7 @@ class HorizontalCategoryList extends StatelessWidget {
                       width: kHorizontalCategoryListItemWidth,
                       decoration: BoxDecoration(
                         image: DecorationImage(
+                          fit: BoxFit.fill,
                             image: NetworkImage(data[index].categoryImage!)),
                         shape: BoxShape.circle,
                       ),

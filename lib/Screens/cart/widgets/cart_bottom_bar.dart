@@ -3,6 +3,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../common_widgets/custom_elevated_button.dart';
 import '../../../configs/app_color.dart';
+import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../checkout/checkout_screen.dart';
 
@@ -75,6 +76,8 @@ class CartBottomBar extends StatelessWidget {
                     Navigator.pushNamed(context, CheckoutScreen.routeName,
                         arguments: false);
                   },
+                  buttonHeight: kElevatedButtonHeightSmall,
+                  buttonWidth: double.maxFinite,
                   child: Text(
                     'PROCEED TO PAYMENT',
                     style: Theme.of(context).textTheme.textButtonLarger,
