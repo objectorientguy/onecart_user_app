@@ -41,13 +41,16 @@ class NoFavoritesScreen extends StatelessWidget {
               height: smallerSpacing,
             ),
             CustomElevatedButton(
-                child: Text(
-                  'GO BACK',
-                  style: Theme.of(context).textTheme.textButtonLarger,
-                ),
-                onPressed: () {
-                  Navigator.of(context).popUntil((route) => route.isFirst);
-                })
+              onPressed: () {
+                Navigator.of(context).popUntil((route) => route.isFirst);
+              },
+              buttonHeight: 50,
+              buttonWidth: 200,
+              child: Text(
+                'GO BACK',
+                style: Theme.of(context).textTheme.textButtonLarger,
+              ),
+            )
           ],
         ),
       ),
