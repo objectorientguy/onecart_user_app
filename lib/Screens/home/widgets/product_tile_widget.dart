@@ -22,17 +22,14 @@ class ProductTileWidget extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: xxTiniestSpacing),
-          child: Center(
-            child: Container(
-              height: MediaQuery.of(context).size.width * 0.24,
-              width: MediaQuery.of(context).size.width * 0.28,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                      image: NetworkImage(data[index].image![0].toString()))),
-            ),
+        Center(
+          child: Container(
+            height: MediaQuery.of(context).size.width * 0.24,
+            width: MediaQuery.of(context).size.width * 0.28,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                    image: NetworkImage(data[index].image![0].toString()))),
           ),
         ),
         const SizedBox(
