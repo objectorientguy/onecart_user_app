@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                           height: xxxSmallerSpacing,
                         ),
                         SearchTextField(
-                          hintText: "Search Product's",
+                          hintText: "Search Products",
                           textcontroller: myController,
                           suffixicon: InkWell(
                               onTap: () {
