@@ -19,25 +19,17 @@ class GenericAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        //centerTitle: centerTitle,
-        title: Text(title, style: Theme.of(context).textTheme.xLarge),
-        leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: const Icon(
-            Icons.arrow_back,
-            color: AppColor.black,
-          ),
+      title: Text(title, style: Theme.of(context).textTheme.xLarge),
+      leading: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: const Icon(
+          Icons.arrow_back,
+          color: AppColor.black,
         ),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.more_vert,
-                color: AppColor.black,
-              )),
-        ]);
+      ),
+    );
   }
 
   @override
