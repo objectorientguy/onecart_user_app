@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/image_carousel_slider.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/item_details_section.dart';
+
 import 'package:onecart_user_app/common_widgets/custom_elevated_button.dart';
+import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+
 import '../../blocs/item_details_bloc/item_details_bloc.dart';
 import '../../blocs/item_details_bloc/item_details_events.dart';
 import '../../blocs/item_details_bloc/item_details_states.dart';
+
 import '../../configs/app_color.dart';
 import '../../configs/app_spacing.dart';
 import '../cart/cart_screen.dart';
@@ -55,31 +59,7 @@ class ItemDetailsScreen extends StatelessWidget {
               ],
             )),
       ),
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new,
-              color: AppColor.black,
-            )),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.share_outlined,
-                color: AppColor.primary,
-              )),
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.more_vert,
-                color: AppColor.black,
-              )),
-        ],
-        titleSpacing: xxxTiniestSpacing,
-      ),
+      appBar: const GenericAppBar(),
       body: BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
         builder: (context, state) {
           if (state is ItemDetailsLoading) {
