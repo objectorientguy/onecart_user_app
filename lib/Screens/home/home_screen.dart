@@ -12,6 +12,7 @@ import '../../blocs/home/home_states.dart';
 import '../../blocs/search_product_bloc/search_product_bloc.dart';
 import '../../blocs/search_product_bloc/search_product_events.dart';
 import '../../common_widgets/carousel_slider.dart';
+import '../../widgets/search_text_field.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -40,31 +41,24 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(
                           height: xxxSmallerSpacing,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4),
-                          child: TextField(
-                            controller: myController,
-                            decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.only(left: 30, top: 4),
-                              hintText: 'Search products...',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide: const BorderSide(),
-                              ),
-                              suffixIcon: InkWell(
-                                  onTap: () {
-                                    context.read<SearchProductsBloc>().add(
-                                        SearchAllProducts(
-                                            searchTerm: myController.text));
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const SearchScreen()));
-                                  },
-                                  child: const Icon(Icons.search)),
-                            ),
-                          ),
+                        SearchTextField(
+                          hintText: "Search Product's",
+                          textcontroller: myController,
+                          suffixicon: InkWell(
+                              onTap: () {
+                                FocusScopeNode currentFocus =
+                                    FocusScope.of(context);
+                                if (!currentFocus.hasPrimaryFocus) {
+                                  currentFocus.unfocus();
+                                }
+                                context.read<SearchProductsBloc>().add(
+                                    SearchAllProducts(
+                                        searchTerm: myController.text));
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        const SearchScreen()));
+                              },
+                              child: const Icon(Icons.search)),
                         ),
                       ],
                     ),
@@ -72,9 +66,9 @@ class HomeScreen extends StatelessWidget {
                   HorizontalCategoryList(
                     data: state.homeModel.data!.categories!,
                   ),
-                  // const SizedBox(
-                  //   height: tiniestSpacing,
-                  // ),
+                  const SizedBox(
+                    height: tiniestSpacing,
+                  ),
                   SizedBox(
                       height: MediaQuery.of(context).size.width * 0.55,
                       child: CarouselSlider(
