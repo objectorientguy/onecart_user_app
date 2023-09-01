@@ -18,6 +18,7 @@ class _ImageZoomSectionState extends State<ImageZoomSection> {
   late PageController _pageController;
   int currentIndex = ImageCarouselSlider.currentIndex;
 
+
   @override
   void initState() {
     super.initState();
@@ -87,7 +88,11 @@ class _ImageZoomSectionState extends State<ImageZoomSection> {
                   );
                 }
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                  },
                   child: Container(
                     height: 60,
                     width: 60,
