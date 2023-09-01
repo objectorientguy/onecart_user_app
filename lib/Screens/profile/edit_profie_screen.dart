@@ -4,10 +4,12 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
+import '../../widgets/text_field_widget.dart';
 import 'edit_field_screen.dart';
 
 class EditProfileScreen extends StatelessWidget {
   static const routeName = 'EditProfileScreen';
+
   const EditProfileScreen({Key? key}) : super(key: key);
 
   @override
@@ -122,37 +124,22 @@ class EditProfileScreen extends StatelessWidget {
               Text('Change Password',
                   style: Theme.of(context).textTheme.headingMedium),
               const SizedBox(height: smallestSpacing),
-              TextField(
+              TextFieldWidget(
                 controller: oldPasswordController,
-                decoration: InputDecoration(
-                  hintText: 'Current Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-                    borderSide: const BorderSide(),
-                  ),
-                ),
+                onTextFieldChanged: (String textField) {},
+                hintText: 'Current Password',
               ),
               const SizedBox(height: xxxTinierSpacing),
-              TextField(
+              TextFieldWidget(
                 controller: newPasswordController,
-                decoration: InputDecoration(
-                  hintText: 'New Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-                    borderSide: const BorderSide(),
-                  ),
-                ),
+                onTextFieldChanged: (String textField) {},
+                hintText: 'New Password',
               ),
               const SizedBox(height: xxxTinierSpacing),
-              TextField(
+              TextFieldWidget(
+                onTextFieldChanged: (String textField) {},
                 controller: newPasswordConfirmController,
-                decoration: InputDecoration(
-                  hintText: 'Repeat Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-                    borderSide: const BorderSide(),
-                  ),
-                ),
+                hintText: 'Repeat Password',
               ),
               const SizedBox(height: smallSpacing),
             ],
