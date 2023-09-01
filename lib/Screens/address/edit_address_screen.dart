@@ -15,14 +15,16 @@ import '../../data/models/address_model/address_model.dart';
 class EditAddressScreen extends StatelessWidget {
   static const routeName = 'EditAddressScreen';
   final AddressDatum addressDataMap;
+  final _formKey = GlobalKey<FormState>();
 
-  const EditAddressScreen({
+  EditAddressScreen({
     Key? key,
     required this.addressDataMap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // var  _formKey;
     Map saveAddress = {
       'address_type': addressDataMap.addressType,
       'address_name': addressDataMap.addressName,
@@ -45,7 +47,10 @@ class EditAddressScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              AddressForm(saveAddress: saveAddress),
+              AddressForm(
+                saveAddress: saveAddress,
+                formKey: _formKey,
+              ),
               const SizedBox(height: smallSpacing),
               BlocListener<AddressBloc, AddressStates>(
                 listener: (BuildContext context, state) {
@@ -63,10 +68,16 @@ class EditAddressScreen extends StatelessWidget {
                 },
                 child: CustomElevatedButton(
                     onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        context.read<AddressBloc>().add(EditAddress(
+                            saveAddress: saveAddress,
+                            addressId: addressDataMap.addressId!));
+                      }
+                      const SnackBar(content: Text('Enter the Data'));
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   const SnackBar(content: Text('Enter the Data')),
+                      // );
                       log(saveAddress.toString());
-                      context.read<AddressBloc>().add(EditAddress(
-                          saveAddress: saveAddress,
-                          addressId: addressDataMap.addressId!));
                     },
                     buttonWidth: double.maxFinite,
                     buttonHeight: kElevatedButtonHeight,

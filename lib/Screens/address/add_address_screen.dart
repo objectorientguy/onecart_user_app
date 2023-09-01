@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/address/widget/address_form.dart';
@@ -15,13 +13,15 @@ import '../../widgets/progress_bar.dart';
 
 class AddAddressScreen extends StatelessWidget {
   static const routeName = 'AddAddressScreen';
+  final _formKey = GlobalKey<FormState>();
 
-  const AddAddressScreen({
+  AddAddressScreen({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // var _formKey;
     Map addAddress = {
       'address_type': "",
       'address_name': "",
@@ -43,7 +43,10 @@ class AddAddressScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              AddressForm(saveAddress: addAddress),
+              AddressForm(
+                saveAddress: addAddress,
+                formKey: _formKey,
+              ),
               const SizedBox(height: smallSpacing),
               BlocListener<AddressBloc, AddressStates>(
                 listener: (BuildContext context, state) {
@@ -65,10 +68,13 @@ class AddAddressScreen extends StatelessWidget {
                 },
                 child: CustomElevatedButton(
                     onPressed: () {
-                      log('addAddress=================>$addAddress');
-                      context
-                          .read<AddressBloc>()
-                          .add(AddAddress(addAddress: addAddress));
+                      if (_formKey.currentState!.validate()) {
+                        context
+                            .read<AddressBloc>()
+                            .add(AddAddress(addAddress: addAddress));
+                      }
+                      const SnackBar(content: Text('Enter the Data'));
+                      // log('addAddress=================>${_formKey.currentState?.validate()}');
                     },
                     buttonWidth: double.maxFinite,
                     buttonHeight: kElevatedButtonHeight,

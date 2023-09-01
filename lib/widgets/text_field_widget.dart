@@ -31,7 +31,8 @@ class TextFieldWidget extends StatefulWidget {
       required this.onTextFieldChanged,
       this.readOnly = false,
       this.controller,
-      this.validator, this.suffix})
+      this.validator,
+      this.suffix})
       : super(key: key);
 
   @override

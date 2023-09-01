@@ -59,7 +59,7 @@ class AppRoutes {
           addressDataMap: settings.arguments as AddressDatum,
         ));
       case AddAddressScreen.routeName:
-        return _createRoute(const AddAddressScreen());
+        return _createRoute(AddAddressScreen());
       case RootScreen.routeName:
         return _createRoute(const RootScreen());
       default:
