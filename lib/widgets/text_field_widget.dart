@@ -17,6 +17,7 @@ class TextFieldWidget extends StatefulWidget {
   final bool? readOnly;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final Widget? suffix;
 
   const TextFieldWidget(
       {Key? key,
@@ -30,7 +31,7 @@ class TextFieldWidget extends StatefulWidget {
       required this.onTextFieldChanged,
       this.readOnly = false,
       this.controller,
-      this.validator})
+      this.validator, this.suffix})
       : super(key: key);
 
   @override
@@ -65,6 +66,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           keyboardType: widget.textInputType,
           textAlign: TextAlign.start,
           decoration: InputDecoration(
+            suffix: widget.suffix,
             counterText: "",
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey.shade400),
