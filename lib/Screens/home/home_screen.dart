@@ -51,15 +51,14 @@ class HomeScreen extends StatelessWidget {
                                 if (!currentFocus.hasPrimaryFocus) {
                                   currentFocus.unfocus();
                                 }
-                                if(myController.text.isNotEmpty){
+                                if (myController.text.isNotEmpty) {
                                   context.read<SearchProductsBloc>().add(
                                       SearchAllProducts(
                                           searchTerm: myController.text));
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) =>
-                                      const SearchScreen()));
+                                          const SearchScreen()));
                                 }
-
                               },
                               child: const Icon(Icons.search)),
                         ),

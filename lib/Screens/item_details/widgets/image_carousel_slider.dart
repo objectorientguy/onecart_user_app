@@ -64,7 +64,9 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                 );
               }),
         ),
-        SizedBox(height: 20,),
+        const SizedBox(
+          height: 20,
+        ),
         Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(widget.imageList.length, (index) {
