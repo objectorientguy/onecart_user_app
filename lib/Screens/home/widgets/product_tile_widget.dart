@@ -102,7 +102,7 @@ class ProductTileWidget extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(
                               border: Border.all(
-                                color: AppColor.grey,
+                                color: AppColor.primary,
                               ),
                               color: AppColor.primaryLight,
                               borderRadius: BorderRadius.circular(15)),
@@ -122,23 +122,27 @@ class ProductTileWidget extends StatelessWidget {
                       ],
                     ),
                     //SizedBox(width: xxxTinierSpacing,),
-                    TextButton(
-                      onPressed: () {},
-                      style: TextButton.styleFrom(
-                        minimumSize: Size.zero,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: tinierSpacing,
-                            vertical: tiniestSpacing),
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                        backgroundColor: AppColor.primary,
+                    SizedBox(
+                      height: 30,
+                      width: 50,
+                      child: TextButton(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                          minimumSize: Size.zero,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: tinierSpacing,
+                              vertical: tiniestSpacing),
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                          backgroundColor: AppColor.primary,
+                        ),
+                        child: Text('ADD',
+                            style: Theme.of(context)
+                                .textTheme
+                                .xxGSmall
+                                .copyWith(color: AppColor.white)),
                       ),
-                      child: Text('ADD',
-                          style: Theme.of(context)
-                              .textTheme
-                              .xxGSmall
-                              .copyWith(color: AppColor.white)),
                     )
                   ],
                 ),
