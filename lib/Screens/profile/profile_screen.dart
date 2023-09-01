@@ -12,36 +12,40 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            Container(
-              decoration:
-                  const BoxDecoration(color: AppColor.white, boxShadow: [
-                BoxShadow(
-                    blurStyle: BlurStyle.solid,
-                    color: AppColor.lightGrey,
-                    spreadRadius: kZero,
-                    blurRadius: kShadowBlurRadius),
-              ]),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: leftRightMargin, vertical: topBottomPadding),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const ProfileHeader(),
-                      const SizedBox(height: mediumSpacing),
-                      const ProfileOptionsList(),
-                      const SizedBox(height: xxxLargerSpacing),
-                      Text('App Version 1.8.0',
-                          style: Theme.of(context).textTheme.subHeadingMedium),
-                    ]),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: SafeArea(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              Container(
+                decoration:
+                    const BoxDecoration(color: AppColor.white, boxShadow: [
+                  BoxShadow(
+                      blurStyle: BlurStyle.solid,
+                      color: AppColor.lightGrey,
+                      spreadRadius: kZero,
+                      blurRadius: kShadowBlurRadius),
+                ]),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: leftRightMargin, vertical: topBottomPadding),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const ProfileHeader(),
+                        const SizedBox(height: mediumSpacing),
+                        const ProfileOptionsList(),
+                        const SizedBox(height: xxxLargerSpacing),
+                        Text('App Version 1.8.0',
+                            style:
+                                Theme.of(context).textTheme.subHeadingMedium),
+                      ]),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

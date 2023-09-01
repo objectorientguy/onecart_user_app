@@ -22,98 +22,102 @@ class CategoryGridScreen extends StatelessWidget {
 
     context.read<GetAllCategoriesBloc>().add(GetAllCategories());
 
-    return SafeArea(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: leftRightMargin, vertical: topBottomPadding),
-            child: Column(
-              children: [
-                const AddressBar(),
-                const SizedBox(
-                  height: xxxSmallerSpacing,
-                ),
-                SearchTextField(
-                  hintText: 'Search Categories',
-                  suffixicon: const Icon(Icons.search),
-                  textcontroller: myControllerone,
-                ),
-              ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: leftRightMargin, vertical: topBottomPadding),
+              child: Column(
+                children: [
+                  const AddressBar(),
+                  const SizedBox(
+                    height: xxxSmallerSpacing,
+                  ),
+                  SearchTextField(
+                    hintText: 'Search Categories',
+                    suffixicon: const Icon(Icons.search),
+                    textcontroller: myControllerone,
+                  ),
+                ],
+              ),
             ),
-          ),
-          BlocBuilder<GetAllCategoriesBloc, CategoriesStates>(
-            builder: (context, state) {
-              if (state is GetAllCategoriesLoading) {
-                return const Column(
-                  children: [
-                    SizedBox(
-                      height: 200,
-                    ),
-                    Center(child: CircularProgressIndicator()),
-                  ],
-                );
-              } else if (state is GetAllCategoriesLoaded) {
-                return Expanded(
-                  child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3, childAspectRatio: 0.9),
-                      physics: const BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: state.getAllCategoriesListModel.data!.length,
-                      itemBuilder: (context, index) {
-                        return SizedBox(
-                          width: kHorizontalCategoryListItemWidth,
-                          child: InkWell(
-                            onTap: () {
-                              context.read<GetProductBloc>().add(FetchProduct(
-                                  cateId: state.getAllCategoriesListModel
-                                      .data![index].categoryId!));
-                              Navigator.pushNamed(
-                                  context, CategoryItemScreen.routeName,
-                                  arguments: state
-                                      .getAllCategoriesListModel.data![index]);
-                            },
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: kHorizontalCategoryListItemWidth,
-                                  width: kHorizontalCategoryListItemWidth,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: NetworkImage(state
-                                            .getAllCategoriesListModel
-                                            .data![index]
-                                            .categoryImage!)),
-                                    shape: BoxShape.circle,
+            BlocBuilder<GetAllCategoriesBloc, CategoriesStates>(
+              builder: (context, state) {
+                if (state is GetAllCategoriesLoading) {
+                  return const Column(
+                    children: [
+                      SizedBox(
+                        height: 200,
+                      ),
+                      Center(child: CircularProgressIndicator()),
+                    ],
+                  );
+                } else if (state is GetAllCategoriesLoaded) {
+                  return Expanded(
+                    child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3, childAspectRatio: 0.9),
+                        physics: const BouncingScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: state.getAllCategoriesListModel.data!.length,
+                        itemBuilder: (context, index) {
+                          return SizedBox(
+                            width: kHorizontalCategoryListItemWidth,
+                            child: InkWell(
+                              onTap: () {
+                                context.read<GetProductBloc>().add(FetchProduct(
+                                    cateId: state.getAllCategoriesListModel
+                                        .data![index].categoryId!));
+                                Navigator.pushNamed(
+                                    context, CategoryItemScreen.routeName,
+                                    arguments: state.getAllCategoriesListModel
+                                        .data![index]);
+                              },
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: kHorizontalCategoryListItemWidth,
+                                    width: kHorizontalCategoryListItemWidth,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: NetworkImage(state
+                                              .getAllCategoriesListModel
+                                              .data![index]
+                                              .categoryImage!)),
+                                      shape: BoxShape.circle,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(height: xxxTinierSpacing),
-                                SizedBox(
-                                  width: kHorizontalCategoryListItemWidth * 1.3,
-                                  child: Text(
-                                    state.getAllCategoriesListModel.data![index]
-                                        .categoryName
-                                        .toString(),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                )
-                              ],
+                                  const SizedBox(height: xxxTinierSpacing),
+                                  SizedBox(
+                                    width:
+                                        kHorizontalCategoryListItemWidth * 1.3,
+                                    child: Text(
+                                      state.getAllCategoriesListModel
+                                          .data![index].categoryName
+                                          .toString(),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      }),
-                );
-              }
-              if (state is GetAllCategoriesError) {
-                return Container();
-              } else {
-                return const SizedBox();
-              }
-            },
-          )
-        ],
+                          );
+                        }),
+                  );
+                }
+                if (state is GetAllCategoriesError) {
+                  return Container();
+                } else {
+                  return const SizedBox();
+                }
+              },
+            )
+          ],
+        ),
       ),
     );
   }
