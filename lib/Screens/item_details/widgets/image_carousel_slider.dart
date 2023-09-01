@@ -64,21 +64,37 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                 );
               }),
         ),
-        const SizedBox(height: 20,),
+        const SizedBox(
+          height: 20,
+        ),
         Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(widget.imageList.length, (index) {
               if (index == ImageCarouselSlider.currentIndex) {
-                return const Icon(
-                  Icons.circle,
-                  color: AppColor.primary,
-                  size: 12,
+                return const Row(
+                  children: [
+                    Icon(
+                      Icons.circle,
+                      color: AppColor.black,
+                      size: 7,
+                    ),
+                    SizedBox(
+                      width: 2,
+                    )
+                  ],
                 );
               }
-              return const Icon(
-                Icons.circle,
-                color: AppColor.grey,
-                size: 10,
+              return const Row(
+                children: [
+                  Icon(
+                    Icons.circle,
+                    color: AppColor.grey,
+                    size: 7,
+                  ),
+                  SizedBox(
+                    width: 2,
+                  )
+                ],
               );
             })),
         const SizedBox(

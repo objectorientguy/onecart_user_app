@@ -1,3 +1,4 @@
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -105,13 +106,10 @@ class ItemDetailsSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite_border_outlined,
-                  color: AppColor.primary,
-                  size: 22,
-                ),
+              FavoriteButton(
+                valueChanged: () {},
+                iconSize: 35,
+                iconColor: AppColor.primary,
               ),
               TextButton(
                 onPressed: () {},

@@ -30,8 +30,7 @@ class HomeScreen extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: leftRightMargin,
-                    vertical: topBottomPadding),
+                    horizontal: leftRightMargin, vertical: topBottomPadding),
                 child: Column(
                   children: [
                     const AddressBar(),
@@ -41,7 +40,6 @@ class HomeScreen extends StatelessWidget {
                     SearchTextField(
                       hintText: "Search Product's",
                       textcontroller: myController,
-
                       suffixicon: InkWell(
                           onTap: () {
                             FocusScopeNode currentFocus =
@@ -49,15 +47,13 @@ class HomeScreen extends StatelessWidget {
                             if (!currentFocus.hasPrimaryFocus) {
                               currentFocus.unfocus();
                             }
-                            if(myController.text.isNotEmpty){
+                            if (myController.text.isNotEmpty) {
                               context.read<SearchProductsBloc>().add(
                                   SearchAllProducts(
                                       searchTerm: myController.text));
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) =>
-                                  const SearchScreen()));
+                                  builder: (context) => const SearchScreen()));
                             }
-
                           },
                           child: const Icon(Icons.search)),
                     ),
@@ -75,7 +71,9 @@ class HomeScreen extends StatelessWidget {
                         child: CarouselSlider(
                           state.homeModel.data!.banners!,
                         )),
-                    const SizedBox(height: 14,),
+                    const SizedBox(
+                      height: 14,
+                    ),
                     TodayDealsSection(state.homeModel.data!.deals!),
                   ],
                 ),

@@ -58,85 +58,89 @@ class SearchScreen extends StatelessWidget {
                 } else if (state is SearchProductsLoaded) {
                   return Expanded(
                     child: SingleChildScrollView(
-                      child: (state.getSearchProductsList.data!.brands!.isEmpty &&
-                          state.getSearchProductsList.data!.searchResults!
-                              .isEmpty &&
-                          state.getSearchProductsList.data!.categories!
-                              .isEmpty)
-                          ? Center(
-                          child: Text("No results found!",
-                              style:
-                              Theme.of(context).textTheme.headingMedium))
-                          : Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              (state.getSearchProductsList.data!
-                                  .categories!.isEmpty)
-                                  ? const SizedBox()
-                                  : Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
-                                children: [
-                                  Text("Category",
+                      child:
+                          (state.getSearchProductsList.data!.brands!.isEmpty &&
+                                  state.getSearchProductsList.data!
+                                      .searchResults!.isEmpty &&
+                                  state.getSearchProductsList.data!.categories!
+                                      .isEmpty)
+                              ? Center(
+                                  child: Text("No results found!",
                                       style: Theme.of(context)
                                           .textTheme
-                                          .textLarger),
-                                  const SizedBox(
-                                    height: xxxSmallestSpacing,
-                                  ),
-                                  HorizontalCategoryList(
-                                    data: state
-                                        .getSearchProductsList
-                                        .data!
-                                        .categories!,
-                                  ),
-                                  const SizedBox(
-                                    height: smallerSpacing,
-                                  ),
-                                ],
-                              ),
-                              (state.getSearchProductsList.data!.brands!
-                                  .isEmpty)
-                                  ? const SizedBox()
-                                  : Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
-                                children: [
-                                  Text("Brands",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .textLarger),
-                                  const SizedBox(height: 12,),
-                                  HorizontalBrandList(state
-                                      .getSearchProductsList
-                                      .data!
-                                      .brands!),
-                                  const SizedBox(
-                                    height: smallerSpacing,
-                                  ),
-                                ],
-                              ),
-                              (state.getSearchProductsList.data!
-                                  .searchResults!.isEmpty)
-                                  ? const SizedBox()
-                                  : Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Product's",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .textLarger,
-                                  ),
-                                  SearchProductList(state
-                                      .getSearchProductsList
-                                      .data!
-                                      .searchResults!)
-                                ],
-                              )
-                            ],
-                          ),
+                                          .headingMedium))
+                              : Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    (state.getSearchProductsList.data!
+                                            .categories!.isEmpty)
+                                        ? const SizedBox()
+                                        : Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text("Category",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .textLarger),
+                                              const SizedBox(
+                                                height: xxxSmallestSpacing,
+                                              ),
+                                              HorizontalCategoryList(
+                                                data: state
+                                                    .getSearchProductsList
+                                                    .data!
+                                                    .categories!,
+                                              ),
+                                              const SizedBox(
+                                                height: smallerSpacing,
+                                              ),
+                                            ],
+                                          ),
+                                    (state.getSearchProductsList.data!.brands!
+                                            .isEmpty)
+                                        ? const SizedBox()
+                                        : Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text("Brands",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .textLarger),
+                                              const SizedBox(
+                                                height: 12,
+                                              ),
+                                              HorizontalBrandList(state
+                                                  .getSearchProductsList
+                                                  .data!
+                                                  .brands!),
+                                              const SizedBox(
+                                                height: smallerSpacing,
+                                              ),
+                                            ],
+                                          ),
+                                    (state.getSearchProductsList.data!
+                                            .searchResults!.isEmpty)
+                                        ? const SizedBox()
+                                        : Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Product's",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .textLarger,
+                                              ),
+                                              SearchProductList(state
+                                                  .getSearchProductsList
+                                                  .data!
+                                                  .searchResults!)
+                                            ],
+                                          )
+                                  ],
+                                ),
                     ),
                   );
                 }
