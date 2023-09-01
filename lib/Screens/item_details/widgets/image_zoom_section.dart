@@ -32,12 +32,7 @@ class _ImageZoomSectionState extends State<ImageZoomSection> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const SizedBox(
-            height: 40,
-          ),
-          SizedBox(
-            height: 400,
-            width: 400,
+          Expanded(
             child: PageView.builder(
                 itemCount: widget.imageListOne.length,
                 pageSnapping: true,
@@ -62,7 +57,7 @@ class _ImageZoomSectionState extends State<ImageZoomSection> {
                           borderRadius: BorderRadius.circular(15),
                           child: Image.network(
                             widget.imageListOne[index].toString(),
-                            fit: BoxFit.fill,
+                            fit: BoxFit.fitWidth,
                           ),
                         ),
                       ),
