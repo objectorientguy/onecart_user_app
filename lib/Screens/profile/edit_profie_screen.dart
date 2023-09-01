@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
+import '../../widgets/text_field_widget.dart';
 import 'edit_field_screen.dart';
 
 class EditProfileScreen extends StatelessWidget {
   static const routeName = 'EditProfileScreen';
+
   const EditProfileScreen({Key? key}) : super(key: key);
 
   @override
@@ -22,28 +25,11 @@ class EditProfileScreen extends StatelessWidget {
 
     nameController.value = const TextEditingValue(text: 'John Doe');
     emailController.value = const TextEditingValue(text: 'johndoe@gmail.com');
-    phoneController.value = const TextEditingValue(text: '+91-99999-88888');
+    phoneController.value = const TextEditingValue(text: '9259946808');
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Edit Profile',
-            style: Theme.of(context).textTheme.headingMedium),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new,
-              color: AppColor.black,
-            )),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.more_vert,
-                color: AppColor.black,
-              ))
-        ],
+      appBar: const GenericAppBar(
+        title: 'Edit Profile',
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -54,7 +40,10 @@ class EditProfileScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('User Information',
-                  style: Theme.of(context).textTheme.headingMedium),
+                  style: Theme.of(context)
+                      .textTheme
+                      .xLarge
+                      .copyWith(fontWeight: FontWeight.w600)),
               const SizedBox(height: smallestSpacing),
               TextField(
                 controller: nameController,
@@ -120,39 +109,27 @@ class EditProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: smallSpacing),
               Text('Change Password',
-                  style: Theme.of(context).textTheme.headingMedium),
+                  style: Theme.of(context)
+                      .textTheme
+                      .xLarge
+                      .copyWith(fontWeight: FontWeight.w600)),
               const SizedBox(height: smallestSpacing),
-              TextField(
+              TextFieldWidget(
                 controller: oldPasswordController,
-                decoration: InputDecoration(
-                  hintText: 'Current Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-                    borderSide: const BorderSide(),
-                  ),
-                ),
+                onTextFieldChanged: (String textField) {},
+                hintText: 'Current Password',
               ),
               const SizedBox(height: xxxTinierSpacing),
-              TextField(
+              TextFieldWidget(
                 controller: newPasswordController,
-                decoration: InputDecoration(
-                  hintText: 'New Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-                    borderSide: const BorderSide(),
-                  ),
-                ),
+                onTextFieldChanged: (String textField) {},
+                hintText: 'New Password',
               ),
               const SizedBox(height: xxxTinierSpacing),
-              TextField(
+              TextFieldWidget(
+                onTextFieldChanged: (String textField) {},
                 controller: newPasswordConfirmController,
-                decoration: InputDecoration(
-                  hintText: 'Repeat Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-                    borderSide: const BorderSide(),
-                  ),
-                ),
+                hintText: 'Repeat Password',
               ),
               const SizedBox(height: smallSpacing),
             ],

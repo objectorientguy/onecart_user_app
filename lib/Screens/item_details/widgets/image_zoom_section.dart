@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/image_carousel_slider.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
+import 'package:onecart_user_app/configs/app_color.dart';
+import 'package:zoom_widget/zoom_widget.dart';
 
 class ImageZoomSection extends StatefulWidget {
   static const routeName = 'ImageZoomSection';
@@ -30,12 +32,7 @@ class _ImageZoomSectionState extends State<ImageZoomSection> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const SizedBox(
-            height: 40,
-          ),
-          SizedBox(
-            height: 400,
-            width: 400,
+          Expanded(
             child: PageView.builder(
                 itemCount: widget.imageListOne.length,
                 pageSnapping: true,
@@ -48,14 +45,20 @@ class _ImageZoomSectionState extends State<ImageZoomSection> {
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {},
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      margin: const EdgeInsets.all(8),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Image.network(
-                          widget.imageListOne[index].toString(),
-                          fit: BoxFit.fill,
+                    child: Zoom(
+                      opacityScrollBars: 0,
+                      colorScrollBars: Colors.transparent,
+                      backgroundColor: AppColor.transparent,
+                      initTotalZoomOut: true,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        margin: const EdgeInsets.all(8),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            widget.imageListOne[index].toString(),
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
                       ),
                     ),

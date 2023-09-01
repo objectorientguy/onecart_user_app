@@ -16,89 +16,114 @@ class OrdersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<GetAllOrdersBloc>().add(GetAllOrders());
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Orders", style: Theme.of(context).textTheme.headingMedium),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: leftRightMargin, vertical: topBottomPadding),
-        child: BlocBuilder<GetAllOrdersBloc, OrdersStates>(
-          builder: (context, state) {
-            if (state is GetAllOrdersLoading) {
-              return const Column(
-                children: [
-                  SizedBox(
-                    height: 200,
-                  ),
-                  Center(child: CircularProgressIndicator()),
-                ],
-              );
-            } else if (state is GetAllOrdersLoaded) {
-              return ListView.separated(
-                  physics: const BouncingScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: state.getAllOrdersListModel.data!.length,
-                  separatorBuilder: (context, index) => const Divider(
-                        height: smallestSpacing,
-                        thickness: 2,
-                      ),
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: xxxTinierSpacing),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(
-                              context, OrdersDetailsScreen.routeName,
-                              arguments:
-                                  state.getAllOrdersListModel.data![index]);
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: const BoxDecoration(
-                                        color: AppColor.primaryLighter,
-                                        shape: BoxShape.circle),
-                                    child: const Icon(
-                                      Icons.shopping_bag_outlined,
-                                      color: AppColor.primary,
-                                    )),
-                                const SizedBox(
-                                  width: xxxTinySpacing,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                        state.getAllOrdersListModel.data![index]
-                                            .orderId
-                                            .toString(),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headingTiny),
-                                    const SizedBox(height: xxxTiniestSpacing),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Ordered On: ',
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          title:
+              Text("Orders", style: Theme.of(context).textTheme.headingMedium),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+              horizontal: leftRightMargin, vertical: topBottomPadding),
+          child: BlocBuilder<GetAllOrdersBloc, OrdersStates>(
+            builder: (context, state) {
+              if (state is GetAllOrdersLoading) {
+                return const Column(
+                  children: [
+                    SizedBox(
+                      height: 200,
+                    ),
+                    Center(child: CircularProgressIndicator()),
+                  ],
+                );
+              } else if (state is GetAllOrdersLoaded) {
+                return ListView.separated(
+                    physics: const BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: state.getAllOrdersListModel.data!.length,
+                    separatorBuilder: (context, index) => const Divider(
+                          height: smallestSpacing,
+                          thickness: 2,
+                        ),
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: xxxTinierSpacing),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, OrdersDetailsScreen.routeName,
+                                arguments:
+                                    state.getAllOrdersListModel.data![index]);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                      height: 40,
+                                      width: 40,
+                                      decoration: const BoxDecoration(
+                                          color: AppColor.primaryLighter,
+                                          shape: BoxShape.circle),
+                                      child: const Icon(
+                                        Icons.shopping_bag_outlined,
+                                        color: AppColor.primary,
+                                      )),
+                                  const SizedBox(
+                                    width: xxxTinySpacing,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                          state.getAllOrdersListModel
+                                              .data![index].orderId
+                                              .toString(),
                                           style: Theme.of(context)
                                               .textTheme
-                                              .subHeadingLarge,
-                                        ),
-                                        SizedBox(
-                                          child: Text(
-                                            DateFormat('MMM dd y')
-                                                .format(state
-                                                    .getAllOrdersListModel
-                                                    .data![index]
-                                                    .orderPlaced!)
+                                              .headingTiny),
+                                      const SizedBox(height: xxxTiniestSpacing),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Ordered On: ',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subHeadingLarge,
+                                          ),
+                                          SizedBox(
+                                            child: Text(
+                                              DateFormat('MMM dd y')
+                                                  .format(state
+                                                      .getAllOrdersListModel
+                                                      .data![index]
+                                                      .orderPlaced!)
+                                                  .toString(),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .subHeadingLarge
+                                                  .copyWith(
+                                                      color: AppColor.primary),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Items: ',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subHeadingLarge,
+                                          ),
+                                          Text(
+                                            state.getAllOrdersListModel
+                                                .data![index].itemCount
                                                 .toString(),
                                             style: Theme.of(context)
                                                 .textTheme
@@ -106,80 +131,61 @@ class OrdersScreen extends StatelessWidget {
                                                 .copyWith(
                                                     color: AppColor.primary),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Items: ',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .subHeadingLarge,
-                                        ),
-                                        Text(
-                                          state.getAllOrdersListModel
-                                              .data![index].itemCount
-                                              .toString(),
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .subHeadingLarge
-                                              .copyWith(
-                                                  color: AppColor.primary),
-                                        ),
-                                        const SizedBox(width: xxxTinierSpacing),
-                                        Text(
-                                          'Total Price: ',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .subHeadingLarge,
-                                        ),
-                                        Text(
-                                          '₹${state.getAllOrdersListModel.data![index].totalPrice.toString()}',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .subHeadingLarge
-                                              .copyWith(
-                                                  color: AppColor.primary),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            const Center(
-                              child: Icon(
-                                Icons.keyboard_arrow_right,
-                                color: AppColor.primary,
+                                          const SizedBox(
+                                              width: xxxTinierSpacing),
+                                          Text(
+                                            'Total Price: ',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subHeadingLarge,
+                                          ),
+                                          Text(
+                                            '₹${state.getAllOrdersListModel.data![index].totalPrice.toString()}',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subHeadingLarge
+                                                .copyWith(
+                                                    color: AppColor.primary),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                            ),
-                            // Container(
-                            //     padding: const EdgeInsets.symmetric(
-                            //         horizontal: 2, vertical: 2),
-                            //     decoration: BoxDecoration(
-                            //       border: Border.all(
-                            //           color: Colors.green, width: 1.0),
-                            //       borderRadius: BorderRadius.circular(20),
-                            //     ),
-                            //     child: const Center(
-                            //       child: Icon(
-                            //         Icons.keyboard_arrow_right,
-                            //         color: AppColor.primary,
-                            //       ),
-                            //     )),
-                          ],
+                              const Center(
+                                child: Icon(
+                                  Icons.keyboard_arrow_right,
+                                  color: AppColor.primary,
+                                ),
+                              ),
+                              // Container(
+                              //     padding: const EdgeInsets.symmetric(
+                              //         horizontal: 2, vertical: 2),
+                              //     decoration: BoxDecoration(
+                              //       border: Border.all(
+                              //           color: Colors.green, width: 1.0),
+                              //       borderRadius: BorderRadius.circular(20),
+                              //     ),
+                              //     child: const Center(
+                              //       child: Icon(
+                              //         Icons.keyboard_arrow_right,
+                              //         color: AppColor.primary,
+                              //       ),
+                              //     )),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  });
-            }
-            if (state is GetAllOrdersError) {
-              return Container();
-            } else {
-              return const SizedBox();
-            }
-          },
+                      );
+                    });
+              }
+              if (state is GetAllOrdersError) {
+                return Container();
+              } else {
+                return const SizedBox();
+              }
+            },
+          ),
         ),
       ),
     );

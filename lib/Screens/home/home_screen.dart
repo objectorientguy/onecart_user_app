@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:onecart_user_app/Screens/home/widgets/horizontal_category_list.dart';
 import 'package:onecart_user_app/Screens/home/widgets/search_screen.dart';
 import 'package:onecart_user_app/Screens/home/widgets/todays_deals_section.dart';
@@ -29,55 +28,55 @@ class HomeScreen extends StatelessWidget {
           } else if (state is GetHomeDetailsLoaded) {
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: leftRightMargin,
-                        vertical: topBottomPadding),
-                    child: Column(
-                      children: [
-                        const AddressBar(),
-                        const SizedBox(
-                          height: xxxSmallerSpacing,
-                        ),
-                        SearchTextField(
-                          hintText: "Search Product's",
-                          textcontroller: myController,
-                          suffixicon: InkWell(
-                              onTap: () {
-                                FocusScopeNode currentFocus =
-                                    FocusScope.of(context);
-                                if (!currentFocus.hasPrimaryFocus) {
-                                  currentFocus.unfocus();
-                                }
-                                if (myController.text.isNotEmpty) {
-                                  context.read<SearchProductsBloc>().add(
-                                      SearchAllProducts(
-                                          searchTerm: myController.text));
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SearchScreen()));
-                                }
-                              },
-                              child: const Icon(Icons.search)),
-                        ),
-                      ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: leftRightMargin, vertical: topBottomPadding),
+                child: Column(
+                  children: [
+                    const AddressBar(),
+                    const SizedBox(
+                      height: xxxSmallerSpacing,
                     ),
-                  ),
-                  HorizontalCategoryList(
-                    data: state.homeModel.data!.categories!,
-                  ),
-                  const SizedBox(
-                    height: tiniestSpacing,
-                  ),
-                  SizedBox(
-                      height: MediaQuery.of(context).size.width * 0.55,
-                      child: CarouselSlider(
-                        state.homeModel.data!.banners!,
-                      )),
-                  TodayDealsSection(state.homeModel.data!.deals!),
-                ],
+                    SearchTextField(
+                      hintText: "Search Product's",
+                      textcontroller: myController,
+                      suffixicon: InkWell(
+                          onTap: () {
+                            FocusScopeNode currentFocus =
+                                FocusScope.of(context);
+                            if (!currentFocus.hasPrimaryFocus) {
+                              currentFocus.unfocus();
+                            }
+                            if (myController.text.isNotEmpty) {
+                              context.read<SearchProductsBloc>().add(
+                                  SearchAllProducts(
+                                      searchTerm: myController.text));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const SearchScreen()));
+                            }
+                          },
+                          child: const Icon(Icons.search)),
+                    ),
+                    const SizedBox(
+                      height: tinySpacing,
+                    ),
+                    HorizontalCategoryList(
+                      data: state.homeModel.data!.categories!,
+                    ),
+                    const SizedBox(
+                      height: tiniestSpacing,
+                    ),
+                    SizedBox(
+                        height: MediaQuery.of(context).size.width * 0.55,
+                        child: CarouselSlider(
+                          state.homeModel.data!.banners!,
+                        )),
+                    const SizedBox(
+                      height: 14,
+                    ),
+                    TodayDealsSection(state.homeModel.data!.deals!),
+                  ],
+                ),
               ),
             );
           }

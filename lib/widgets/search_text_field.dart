@@ -14,20 +14,17 @@ class SearchTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: TextField(
-            controller: textcontroller,
-            decoration: InputDecoration(
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                hintText: hintText,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(),
-                ),
-                suffixIcon: suffixicon),
-          ),
+        TextField(
+          controller: textcontroller,
+          decoration: InputDecoration(
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+              hintText: hintText,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: const BorderSide(),
+              ),
+              suffixIcon: suffixicon),
         )
       ],
     );
