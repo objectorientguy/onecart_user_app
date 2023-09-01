@@ -18,11 +18,6 @@ class HorizontalBrandList extends StatelessWidget {
         shrinkWrap: true,
         itemCount: data.length,
         itemBuilder: (context, index) {
-          if (index == 0 || index == 11) {
-            return const SizedBox(
-              width: xxxTinierSpacing,
-            );
-          }
           return SizedBox(
             width: kHorizontalCategoryListItemWidth * 1.2,
             child: InkWell(

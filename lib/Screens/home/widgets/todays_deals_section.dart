@@ -19,44 +19,40 @@ class TodayDealsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenwidth = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: leftRightMargin, vertical: topBottomPadding),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Today's Deals",
-            style: Theme.of(context).textTheme.headingTiny,
-          ),
-          const SizedBox(
-            height: xxTinySpacing,
-          ),
-          ListView.separated(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: data.length,
-            itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, ItemDetailsScreen.routeName,
-                      arguments: data[index]);
-                },
-                child: ProductTileWidget(
-                  screenwidth: screenwidth,
-                  data: data,
-                  index: index,
-                ),
-              );
-            },
-            separatorBuilder: (context, index) {
-              return const Divider(
-                height: xxxSmallSpacing,
-              );
-            },
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Today's Deals",
+          style: Theme.of(context).textTheme.headingTiny,
+        ),
+        const SizedBox(
+          height: xxTinySpacing,
+        ),
+        ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: data.length,
+          itemBuilder: (context, index) {
+            return InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, ItemDetailsScreen.routeName,
+                    arguments: data[index]);
+              },
+              child: ProductTileWidget(
+                screenwidth: screenwidth,
+                data: data,
+                index: index,
+              ),
+            );
+          },
+          separatorBuilder: (context, index) {
+            return const Divider(
+              height: xxxSmallSpacing,
+            );
+          },
+        ),
+      ],
     );
   }
 }

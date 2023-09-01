@@ -28,12 +28,12 @@ class SearchScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: SearchTextField(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SearchTextField(
               hintText: "Search Product's",
               textcontroller: myController,
               suffixicon: InkWell(
@@ -48,34 +48,26 @@ class SearchScreen extends StatelessWidget {
                   },
                   child: const Icon(Icons.search)),
             ),
-          ),
-          const SizedBox(
-            height: xMediumSpacing,
-          ),
-          BlocBuilder<SearchProductsBloc, SearchProductStates>(
-            builder: (context, state) {
-              if (state is SearchProductsLoading) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (state is SearchProductsLoaded) {
-                return Expanded(
-                  child: SingleChildScrollView(
-                    child: (state.getSearchProductsList.data!.brands!.isEmpty &&
-                        state.getSearchProductsList.data!.searchResults!
-                            .isEmpty &&
-                        state.getSearchProductsList.data!.categories!
-                            .isEmpty)
-                        ? Center(
-                        child: Text("No results found!",
-                            style:
-                            Theme.of(context).textTheme.headingMedium))
-                        : Column(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: leftRightMargin,
-                              vertical: topBottomPadding),
-                          child: Column(
+            const SizedBox(
+              height: xMediumSpacing,
+            ),
+            BlocBuilder<SearchProductsBloc, SearchProductStates>(
+              builder: (context, state) {
+                if (state is SearchProductsLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state is SearchProductsLoaded) {
+                  return Expanded(
+                    child: SingleChildScrollView(
+                      child: (state.getSearchProductsList.data!.brands!.isEmpty &&
+                          state.getSearchProductsList.data!.searchResults!
+                              .isEmpty &&
+                          state.getSearchProductsList.data!.categories!
+                              .isEmpty)
+                          ? Center(
+                          child: Text("No results found!",
+                              style:
+                              Theme.of(context).textTheme.headingMedium))
+                          : Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               (state.getSearchProductsList.data!
@@ -88,7 +80,7 @@ class SearchScreen extends StatelessWidget {
                                   Text("Category",
                                       style: Theme.of(context)
                                           .textTheme
-                                          .headingLarge),
+                                          .textLarger),
                                   const SizedBox(
                                     height: xxxSmallestSpacing,
                                   ),
@@ -113,7 +105,8 @@ class SearchScreen extends StatelessWidget {
                                   Text("Brands",
                                       style: Theme.of(context)
                                           .textTheme
-                                          .headingLarge),
+                                          .textLarger),
+                                  const SizedBox(height: 12,),
                                   HorizontalBrandList(state
                                       .getSearchProductsList
                                       .data!
@@ -134,7 +127,7 @@ class SearchScreen extends StatelessWidget {
                                     "Product's",
                                     style: Theme.of(context)
                                         .textTheme
-                                        .headingLarge,
+                                        .textLarger,
                                   ),
                                   SearchProductList(state
                                       .getSearchProductsList
@@ -144,20 +137,18 @@ class SearchScreen extends StatelessWidget {
                               )
                             ],
                           ),
-                        ),
-                      ],
                     ),
-                  ),
-                );
-              }
-              if (state is SearchProductsError) {
-                return Container();
-              } else {
-                return const SizedBox();
-              }
-            },
-          )
-        ],
+                  );
+                }
+                if (state is SearchProductsError) {
+                  return Container();
+                } else {
+                  return const SizedBox();
+                }
+              },
+            )
+          ],
+        ),
       ),
     );
   }
