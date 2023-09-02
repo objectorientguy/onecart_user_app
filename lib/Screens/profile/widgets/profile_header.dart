@@ -16,12 +16,8 @@ class ProfileHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: xxTinierSpacing),
-          child:
-              Text('Account', style: Theme.of(context).textTheme.headingMedium),
-        ),
-        const SizedBox(height: largerSpacing),
+        Text('Account', style: Theme.of(context).textTheme.headingMedium),
+        const SizedBox(height: xxSmallSpacing),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -29,21 +25,21 @@ class ProfileHeader extends StatelessWidget {
               children: [
                 CircleAvatar(
                   backgroundColor: AppColor.primary,
-                  radius: kCircleAvatarRadius * 1.1,
+                  radius: kCircleAvatarRadius * 1,
                   child: Text('JD',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headingLarge
-                          .copyWith(color: AppColor.white)),
+                      style: Theme.of(context).textTheme.headingMedium.copyWith(
+                          color: AppColor.white, fontWeight: FontWeight.w500)),
                 ),
                 const SizedBox(
                   width: xxxTinySpacing,
                 ),
-                Text('John Doe',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headingLarge
-                        .copyWith(color: AppColor.black))
+                Text(
+                  'John Doe',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headingLarge
+                      .copyWith(color: AppColor.black),
+                )
               ],
             ),
             InkWell(
@@ -54,7 +50,7 @@ class ProfileHeader extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.green, width: 1.0),
+                    border: Border.all(color: AppColor.primary, width: 0.3),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: const Text(
@@ -64,13 +60,13 @@ class ProfileHeader extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: xxSmallerSpacing),
+        const SizedBox(height: xxSmallestSpacing),
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
               color: AppColor.primaryLight,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColor.lightGrey)),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: AppColor.primary, width: 0.3)),
           child: Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: leftRightMargin, vertical: topBottomPadding),

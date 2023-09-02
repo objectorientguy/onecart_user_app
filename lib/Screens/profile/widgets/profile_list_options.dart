@@ -39,13 +39,16 @@ class ProfileOptionsList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Address',
-                          style: Theme.of(context).textTheme.headingSmall),
+                          style: Theme.of(context)
+                              .textTheme
+                              .textLarge
+                              .copyWith(fontWeight: FontWeight.w700)),
                       const SizedBox(
                         height: xxTiniestSpacing,
                       ),
                       SizedBox(
                         child: Text(
-                          'Manage and Add new Addresses',
+                          'Manage and add new Address',
                           style: Theme.of(context).textTheme.subHeadingMedium,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -56,7 +59,10 @@ class ProfileOptionsList extends StatelessWidget {
               ),
               const Row(
                 children: [
-                  Icon(Icons.arrow_forward_ios),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 20,
+                  ),
                   SizedBox(
                     width: xxxTinierSpacing,
                   )
@@ -65,7 +71,9 @@ class ProfileOptionsList extends StatelessWidget {
             ],
           ),
         ),
-        const Divider(height: 40, thickness: 0.3),
+        const Divider(
+          height: 30,
+        ),
         InkWell(
           onTap: () {
             // Navigator.pushNamed(
@@ -91,7 +99,10 @@ class ProfileOptionsList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Favorite items',
-                          style: Theme.of(context).textTheme.headingSmall),
+                          style: Theme.of(context)
+                              .textTheme
+                              .textLarge
+                              .copyWith(fontWeight: FontWeight.w700)),
                       const SizedBox(
                         height: xxTiniestSpacing,
                       ),
@@ -108,7 +119,7 @@ class ProfileOptionsList extends StatelessWidget {
               ),
               const Row(
                 children: [
-                  Icon(Icons.arrow_forward_ios),
+                  Icon(Icons.arrow_forward_ios, size: 20),
                   SizedBox(
                     width: xxxTinierSpacing,
                   )
@@ -117,7 +128,7 @@ class ProfileOptionsList extends StatelessWidget {
             ],
           ),
         ),
-        const Divider(height: 40, thickness: 0.3),
+        const Divider(height: 30, thickness: 0.3),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -136,7 +147,10 @@ class ProfileOptionsList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Help',
-                        style: Theme.of(context).textTheme.headingSmall),
+                        style: Theme.of(context)
+                            .textTheme
+                            .textLarge
+                            .copyWith(fontWeight: FontWeight.w700)),
                     const SizedBox(
                       height: xxTiniestSpacing,
                     ),
@@ -153,7 +167,7 @@ class ProfileOptionsList extends StatelessWidget {
             ),
             const Row(
               children: [
-                Icon(Icons.arrow_forward_ios),
+                Icon(Icons.arrow_forward_ios, size: 20),
                 SizedBox(
                   width: xxxTinierSpacing,
                 )
@@ -161,7 +175,7 @@ class ProfileOptionsList extends StatelessWidget {
             )
           ],
         ),
-        const Divider(height: 40, thickness: 0.3),
+        const Divider(height: 30, thickness: 0.3),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -180,7 +194,10 @@ class ProfileOptionsList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Settings',
-                        style: Theme.of(context).textTheme.headingSmall),
+                        style: Theme.of(context)
+                            .textTheme
+                            .textLarge
+                            .copyWith(fontWeight: FontWeight.w700)),
                     const SizedBox(
                       height: xxTiniestSpacing,
                     ),
@@ -197,7 +214,7 @@ class ProfileOptionsList extends StatelessWidget {
             ),
             const Row(
               children: [
-                Icon(Icons.arrow_forward_ios),
+                Icon(Icons.arrow_forward_ios, size: 20),
                 SizedBox(
                   width: xxxTinierSpacing,
                 )
