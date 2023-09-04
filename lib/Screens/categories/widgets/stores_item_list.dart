@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/home/home_model.dart';
 import '../../home/widgets/product_tile_widget.dart';
@@ -20,7 +21,7 @@ class StoreItemList extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
         child: Column(
           children: [
-            const SizedBox(height: 40),
+            const SizedBox(height: kSizedBoxHeightSmall),
             ListView.separated(
               physics: const BouncingScrollPhysics(),
               shrinkWrap: true,

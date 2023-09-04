@@ -29,7 +29,7 @@ class ItemDetailsScreen extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(
-            horizontal: leftRightMargin, vertical: 12),
+            horizontal: leftRightMargin, vertical: tinierSpacing),
         child: CustomElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, CartScreen.routeName,
@@ -53,7 +53,7 @@ class ItemDetailsScreen extends StatelessWidget {
                     Text('SEE CART'),
                     Icon(
                       Icons.arrow_forward_ios,
-                      size: 20,
+                      size: xxxSmallestSpacing,
                     )
                   ],
                 )

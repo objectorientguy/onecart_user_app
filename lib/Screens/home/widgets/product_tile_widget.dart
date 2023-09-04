@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_color.dart';
+import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/home/home_model.dart';
 
@@ -28,9 +29,7 @@ class ProductTileWidget extends StatelessWidget {
             height: MediaQuery.of(context).size.width * 0.24,
             width: MediaQuery.of(context).size.width * 0.28,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              // image: DecorationImage(
-              //     image: NetworkImage(data[index].image![0].toString()))
+              borderRadius: BorderRadius.circular(kBorderRadiusSmall),
             ),
             child: Image.network(
               data[index].image![0].toString(),
@@ -105,7 +104,8 @@ class ProductTileWidget extends StatelessWidget {
                                 color: AppColor.grey,
                               ),
                               color: AppColor.primaryLight,
-                              borderRadius: BorderRadius.circular(15)),
+                              borderRadius: BorderRadius.circular(
+                                  kGeneralBorderRadiusMedium)),
                           padding: const EdgeInsets.symmetric(
                               vertical: xxTiniestSpacing,
                               horizontal: xxxTinierSpacing),
@@ -121,7 +121,6 @@ class ProductTileWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                    //SizedBox(width: xxxTinierSpacing,),
                     TextButton(
                       onPressed: () {},
                       style: TextButton.styleFrom(
@@ -131,7 +130,8 @@ class ProductTileWidget extends StatelessWidget {
                             vertical: tiniestSpacing),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
+                            borderRadius:
+                                BorderRadius.circular(kBorderRadiusSmallest)),
                         backgroundColor: AppColor.primary,
                       ),
                       child: Text('ADD',

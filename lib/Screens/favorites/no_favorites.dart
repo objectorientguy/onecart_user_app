@@ -44,8 +44,8 @@ class NoFavoritesScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).popUntil((route) => route.isFirst);
               },
-              buttonHeight: 50,
-              buttonWidth: 200,
+              buttonHeight: kTextboxHeightSmallest,
+              buttonWidth: kSuccessImageHeight,
               child: Text(
                 'GO BACK',
                 style: Theme.of(context).textTheme.textButtonLarger,

@@ -43,7 +43,7 @@ class CartHeader extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(leftRightMargin),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(kGeneralBorderRadius),
               color: AppColor.skyBlue,
             ),
             child: Column(
@@ -72,7 +72,8 @@ class CartHeader extends StatelessWidget {
                             color: AppColor.grey,
                           ),
                           color: AppColor.primaryLight,
-                          borderRadius: BorderRadius.circular(15)),
+                          borderRadius: BorderRadius.circular(
+                              kGeneralBorderRadiusMedium)),
                       padding: const EdgeInsets.symmetric(
                           vertical: xxTiniestSpacing,
                           horizontal: xxTinierSpacing),

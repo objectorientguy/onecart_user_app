@@ -15,7 +15,6 @@ class AddressForm extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
-          // controller: titleController,
           onChanged: (value) {
             saveAddress['address_type'] = value;
             log('onChanged=========>${saveAddress['address_type'].toString()}');
@@ -34,7 +33,6 @@ class AddressForm extends StatelessWidget {
           onChanged: (value) {
             saveAddress['address_name'] = value;
           },
-          //controller: addressController,
           initialValue: saveAddress['address_name'],
           decoration: InputDecoration(
             hintText: 'Address',
@@ -46,17 +44,9 @@ class AddressForm extends StatelessWidget {
         ),
         const SizedBox(height: xxxTinierSpacing),
         TextFormField(
-          //       validator: (value) {
-          //  if (data.widgetKey == "MOB_NO" && value.isNotEmpty &&
-          // !RegExp(r'^[0-9]{10}$').hasMatch(value)) {
-          // return "Please enter a valid 10-digit contact number";
-          // }
-          // return null;
-          // },
           onChanged: (value) {
             saveAddress['phone_no'] = value;
           },
-          // controller: phoneController,
           initialValue: saveAddress['phone_no'].toString(),
           decoration: InputDecoration(
             hintText: 'Phone Number',
@@ -68,7 +58,6 @@ class AddressForm extends StatelessWidget {
         ),
         const SizedBox(height: xxxTinierSpacing),
         TextFormField(
-          // controller: stateController,
           onChanged: (value) {
             saveAddress['state'] = value;
           },
@@ -86,7 +75,6 @@ class AddressForm extends StatelessWidget {
           children: [
             Expanded(
                 child: TextFormField(
-              // controller: cityController,
               onChanged: (value) {
                 saveAddress['city'] = value;
               },
@@ -102,7 +90,6 @@ class AddressForm extends StatelessWidget {
             const SizedBox(width: xxxTinierSpacing),
             Expanded(
                 child: TextFormField(
-              // controller: pinController,
               onChanged: (value) {
                 saveAddress['pincode'] = value;
               },

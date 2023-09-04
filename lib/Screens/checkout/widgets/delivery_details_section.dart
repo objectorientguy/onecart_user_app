@@ -71,15 +71,15 @@ class DeliveryDetailsSection extends StatelessWidget {
                 ],
               ),
               Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: xxTinierSpacing, vertical: xxxTinierSpacing),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.green, width: 1.0),
-                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: AppColor.primary, width: 1.0),
+                    borderRadius: BorderRadius.circular(kBottomNavBarRadius),
                   ),
-                  child: const Text(
+                  child: Text(
                     'CHANGE',
-                    style: TextStyle(color: AppColor.primary, fontSize: 14),
+                    style: Theme.of(context).textTheme.textButtonSmall,
                   )),
             ],
           ),
@@ -98,10 +98,11 @@ class DeliveryDetailsSection extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: tiniestSpacing),
                     child: Container(
-                      height: 40,
-                      width: 40,
+                      height: kSizedBoxHeightSmall,
+                      width: kSizedBoxHeightSmall,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius:
+                              BorderRadius.circular(kGeneralBorderRadius),
                           image: const DecorationImage(
                               fit: BoxFit.fitHeight,
                               image: AssetImage('assets/dunzo.png'))),
@@ -128,15 +129,15 @@ class DeliveryDetailsSection extends StatelessWidget {
                 ],
               ),
               Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: xxTinierSpacing, vertical: xxxTinierSpacing),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.green, width: 1.0),
-                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: AppColor.primary, width: 1.0),
+                    borderRadius: BorderRadius.circular(kBottomNavBarRadius),
                   ),
-                  child: const Text(
+                  child: Text(
                     'CHANGE',
-                    style: TextStyle(color: AppColor.primary, fontSize: 14),
+                    style: Theme.of(context).textTheme.textButtonSmall,
                   )),
             ],
           )

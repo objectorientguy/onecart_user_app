@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../configs/app_color.dart';
+import '../../../configs/app_dimensions.dart';
+import '../../../configs/app_spacing.dart';
 import 'image_zoom_section.dart';
 
 class ImageCarouselSlider extends StatefulWidget {
@@ -30,11 +32,11 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
     return Column(
       children: [
         const SizedBox(
-          height: 40,
+          height: kSizedBoxHeightSmall,
         ),
         SizedBox(
-          height: 200,
-          width: 200,
+          height: kSuccessImageHeight,
+          width: kSuccessImageHeight,
           child: PageView.builder(
               itemCount: widget.imageList.length,
               pageSnapping: true,
@@ -52,9 +54,10 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    margin: const EdgeInsets.all(8),
+                    margin: const EdgeInsets.all(kBorderRadiusSmallest),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius:
+                          BorderRadius.circular(kGeneralBorderRadiusMedium),
                       child: Image.network(
                         widget.imageList[index].toString(),
                         fit: BoxFit.fill,
@@ -64,7 +67,9 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                 );
               }),
         ),
-        const SizedBox(height: 20,),
+        const SizedBox(
+          height: xxxSmallestSpacing,
+        ),
         Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(widget.imageList.length, (index) {
@@ -72,17 +77,17 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                 return const Icon(
                   Icons.circle,
                   color: AppColor.primary,
-                  size: 12,
+                  size: kIconSize,
                 );
               }
               return const Icon(
                 Icons.circle,
                 color: AppColor.grey,
-                size: 10,
+                size: kIconSizeSmall,
               );
             })),
         const SizedBox(
-          height: 20,
+          height: xxxSmallestSpacing,
         ),
       ],
     );

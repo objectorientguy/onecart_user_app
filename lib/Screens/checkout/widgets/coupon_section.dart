@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_color.dart';
+import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
 class CouponSection extends StatelessWidget {
@@ -21,7 +22,7 @@ class CouponSection extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: tiniestSpacing),
                 child: CircleAvatar(
-                  radius: 17,
+                  radius: kGeneralBorderRadiusMedium,
                   backgroundImage: AssetImage('assets/percentDiscount.png'),
                 ),
               ),
@@ -48,7 +49,7 @@ class CouponSection extends StatelessWidget {
           const Icon(
             Icons.arrow_forward_ios_outlined,
             color: AppColor.primary,
-            size: 20,
+            size: xxxSmallestSpacing,
           )
         ],
       ),

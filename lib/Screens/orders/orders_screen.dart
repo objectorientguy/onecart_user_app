@@ -3,11 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
+import 'package:onecart_user_app/widgets/order_tile.dart';
 import '../../blocs/orders/orders_bloc.dart';
 import '../../blocs/orders/orders_events.dart';
 import '../../blocs/orders/orders_states.dart';
-import '../../configs/app_color.dart';
 import 'order_details_screen.dart';
 
 class OrdersScreen extends StatelessWidget {
@@ -54,121 +53,19 @@ class OrdersScreen extends StatelessWidget {
                               arguments:
                                   state.getAllOrdersListModel.data![index]);
                         },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: const BoxDecoration(
-                                        color: AppColor.primaryLighter,
-                                        shape: BoxShape.circle),
-                                    child: const Icon(
-                                      Icons.shopping_bag_outlined,
-                                      color: AppColor.primary,
-                                    )),
-                                const SizedBox(
-                                  width: xxxTinySpacing,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                        state.getAllOrdersListModel.data![index]
-                                            .orderId
-                                            .toString(),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headingTiny),
-                                    const SizedBox(height: xxxTiniestSpacing),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Ordered On: ',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .subHeadingLarge,
-                                        ),
-                                        SizedBox(
-                                          child: Text(
-                                            DateFormat('MMM dd y')
-                                                .format(state
-                                                    .getAllOrdersListModel
-                                                    .data![index]
-                                                    .orderPlaced!)
-                                                .toString(),
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .subHeadingLarge
-                                                .copyWith(
-                                                    color: AppColor.primary),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Items: ',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .subHeadingLarge,
-                                        ),
-                                        Text(
-                                          state.getAllOrdersListModel
-                                              .data![index].itemCount
-                                              .toString(),
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .subHeadingLarge
-                                              .copyWith(
-                                                  color: AppColor.primary),
-                                        ),
-                                        const SizedBox(width: xxxTinierSpacing),
-                                        Text(
-                                          'Total Price: ',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .subHeadingLarge,
-                                        ),
-                                        Text(
-                                          '₹${state.getAllOrdersListModel.data![index].totalPrice.toString()}',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .subHeadingLarge
-                                              .copyWith(
-                                                  color: AppColor.primary),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            const Center(
-                              child: Icon(
-                                Icons.keyboard_arrow_right,
-                                color: AppColor.primary,
-                              ),
-                            ),
-                            // Container(
-                            //     padding: const EdgeInsets.symmetric(
-                            //         horizontal: 2, vertical: 2),
-                            //     decoration: BoxDecoration(
-                            //       border: Border.all(
-                            //           color: Colors.green, width: 1.0),
-                            //       borderRadius: BorderRadius.circular(20),
-                            //     ),
-                            //     child: const Center(
-                            //       child: Icon(
-                            //         Icons.keyboard_arrow_right,
-                            //         color: AppColor.primary,
-                            //       ),
-                            //     )),
-                          ],
+                        child: OrderTile(
+                          dateTime: DateFormat('MMM dd y')
+                              .format(state.getAllOrdersListModel.data![index]
+                                  .orderPlaced!)
+                              .toString(),
+                          orderID: state
+                              .getAllOrdersListModel.data![index].orderId
+                              .toString(),
+                          countItem: state
+                              .getAllOrdersListModel.data![index].itemCount
+                              .toString(),
+                          priceTotal:
+                              '₹${state.getAllOrdersListModel.data![index].totalPrice.toString()}',
                         ),
                       ),
                     );

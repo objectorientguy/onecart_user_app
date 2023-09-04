@@ -6,6 +6,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../blocs/varient_bloc/varient_bloc.dart';
 import '../../../blocs/varient_bloc/varient_events.dart';
 import '../../../configs/app_color.dart';
+import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/item_details/item_details_model.dart';
 import '../../varient/select_varient_screen.dart';
@@ -44,14 +45,14 @@ class ItemDetailsSection extends StatelessWidget {
                   horizontal: tinierSpacing, vertical: tinierSpacing),
               decoration: BoxDecoration(
                 border: Border.all(color: AppColor.primaryMedium, width: 1),
-                borderRadius: BorderRadius.circular(8.0),
+                borderRadius: BorderRadius.circular(kBorderRadiusSmallest),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: 20,
+                    height: xxxSmallestSpacing,
                     child: Text(itemData.weight.toString(),
                         style: Theme.of(context)
                             .textTheme
@@ -59,7 +60,7 @@ class ItemDetailsSection extends StatelessWidget {
                             .copyWith(fontWeight: FontWeight.w600)),
                   ),
                   const Icon(Icons.arrow_forward_ios,
-                      color: AppColor.primary, size: 20)
+                      color: AppColor.primary, size: xxxSmallestSpacing)
                 ],
               ),
             ),
@@ -73,17 +74,17 @@ class ItemDetailsSection extends StatelessWidget {
                     filledStar: Icon(
                       Icons.star,
                       color: Colors.amber,
-                      size: 20,
+                      size: xxxSmallestSpacing,
                     ),
                     unfilledStar: Icon(
                       Icons.star_border,
                       color: Colors.amber,
-                      size: 20,
+                      size: xxxSmallestSpacing,
                     ),
                     halfFilledStar: Icon(
                       Icons.star_half,
                       color: Colors.amber,
-                      size: 20,
+                      size: xxxSmallestSpacing,
                     ),
                     value: 2.5),
                 const SizedBox(width: xxxTinierSpacing),
@@ -91,12 +92,12 @@ class ItemDetailsSection extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .textButtonSmall
-                        .copyWith(fontSize: 15)),
+                        .copyWith(fontSize: xxxTinySpacing)),
                 const SizedBox(width: xxxTinierSpacing),
                 const Icon(
                   Icons.arrow_forward_ios,
                   color: AppColor.primary,
-                  size: 16,
+                  size: xxTinySpacing,
                 )
               ],
             ),
@@ -110,7 +111,7 @@ class ItemDetailsSection extends StatelessWidget {
                 icon: const Icon(
                   Icons.favorite_border_outlined,
                   color: AppColor.primary,
-                  size: 22,
+                  size: xxSmallestSpacing,
                 ),
               ),
               TextButton(
@@ -121,7 +122,8 @@ class ItemDetailsSection extends StatelessWidget {
                       horizontal: xxTinySpacing, vertical: xxTinierSpacing),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
+                      borderRadius:
+                          BorderRadius.circular(kBorderRadiusSmallest)),
                   backgroundColor: AppColor.primary,
                 ),
                 child: Text('ADD TO CART',
@@ -151,7 +153,8 @@ class ItemDetailsSection extends StatelessWidget {
                       color: AppColor.grey,
                     ),
                     color: AppColor.primaryLight,
-                    borderRadius: BorderRadius.circular(15)),
+                    borderRadius:
+                        BorderRadius.circular(kGeneralBorderRadiusMedium)),
                 padding: const EdgeInsets.symmetric(
                     vertical: xxTiniestSpacing, horizontal: xxTinierSpacing),
                 child: Center(

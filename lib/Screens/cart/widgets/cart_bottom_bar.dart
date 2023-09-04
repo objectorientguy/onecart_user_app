@@ -50,7 +50,8 @@ class CartBottomBar extends StatelessWidget {
                                   color: AppColor.grey,
                                 ),
                                 color: AppColor.primaryLight,
-                                borderRadius: BorderRadius.circular(15)),
+                                borderRadius: BorderRadius.circular(
+                                    kGeneralBorderRadiusMedium)),
                             padding: const EdgeInsets.symmetric(
                                 vertical: xxTiniestSpacing,
                                 horizontal: xxTinierSpacing),

@@ -45,7 +45,7 @@ class SelectVariantScreen extends StatelessWidget {
                   return const Column(
                     children: [
                       SizedBox(
-                        height: 200,
+                        height: kSuccessImageHeight,
                       ),
                       Center(child: CircularProgressIndicator()),
                     ],
@@ -57,19 +57,19 @@ class SelectVariantScreen extends StatelessWidget {
                         Row(
                           children: [
                             const SizedBox(
-                              width: 16,
+                              width: xxTinySpacing,
                             ),
                             CachedNetworkImage(
                               imageUrl: dataone.image![0],
                               errorWidget: (context, url, error) =>
                                   const Center(
                                       child: SizedBox(
-                                          width: 40,
+                                          width: kSizedBoxHeightSmall,
                                           child: Text(
                                             'No image',
                                             textAlign: TextAlign.center,
                                           ))),
-                              height: 40,
+                              height: kSizedBoxHeightSmall,
                             ),
                             const SizedBox(
                               width: xxxTinierSpacing,
@@ -99,7 +99,8 @@ class SelectVariantScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                       border:
                                           Border.all(color: AppColor.lightGrey),
-                                      borderRadius: BorderRadius.circular(12)),
+                                      borderRadius: BorderRadius.circular(
+                                          kGeneralBorderRadius)),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -110,13 +111,13 @@ class SelectVariantScreen extends StatelessWidget {
                                         errorWidget: (context, url, error) =>
                                             const Center(
                                                 child: SizedBox(
-                                                    width: 40,
+                                                    width: kSizedBoxHeightSmall,
                                                     child: Text(
                                                       'No image',
                                                       textAlign:
                                                           TextAlign.center,
                                                     ))),
-                                        height: 40,
+                                        height: kSizedBoxHeightSmall,
                                       ),
                                       Column(
                                         crossAxisAlignment:
@@ -165,7 +166,7 @@ class SelectVariantScreen extends StatelessWidget {
                                                         AppColor.primaryLight,
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            15)),
+                                                            kGeneralBorderRadiusMedium)),
                                                 padding:
                                                     const EdgeInsets.symmetric(
                                                         vertical:
@@ -205,7 +206,8 @@ class SelectVariantScreen extends StatelessWidget {
                                               MaterialTapTargetSize.shrinkWrap,
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
-                                                  BorderRadius.circular(12)),
+                                                  BorderRadius.circular(
+                                                      kGeneralBorderRadius)),
                                           backgroundColor: AppColor.primary,
                                         ),
                                         child: Text('SELECT',

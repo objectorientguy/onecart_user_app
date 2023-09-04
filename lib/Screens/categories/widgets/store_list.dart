@@ -32,7 +32,7 @@ class StoreList extends StatelessWidget {
                 blurStyle: BlurStyle.normal,
                 color: AppColor.lightGrey,
                 spreadRadius: kZero,
-                blurRadius: 10,
+                blurRadius: kIconSizeSmall,
               ),
             ]),
             child: Column(

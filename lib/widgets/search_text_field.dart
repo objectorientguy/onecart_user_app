@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../configs/app_dimensions.dart';
+import '../configs/app_spacing.dart';
+
 class SearchTextField extends StatelessWidget {
   final String hintText;
   final Widget suffixicon;
@@ -17,11 +20,11 @@ class SearchTextField extends StatelessWidget {
         TextField(
           controller: textcontroller,
           decoration: InputDecoration(
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+              contentPadding: const EdgeInsets.symmetric(
+                  horizontal: smallerSpacing, vertical: tiniestSpacing),
               hintText: hintText,
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(kGeneralBorderRadius),
                 borderSide: const BorderSide(),
               ),
               suffixIcon: suffixicon),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
+import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/checkout_model/checkout_model.dart';
 
@@ -30,7 +31,8 @@ class BillSection extends StatelessWidget {
                         color: AppColor.grey,
                       ),
                       color: AppColor.primaryLight,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius:
+                          BorderRadius.circular(kGeneralBorderRadiusMedium)),
                   padding: const EdgeInsets.symmetric(
                       vertical: xxTiniestSpacing, horizontal: tinierSpacing),
                   child: Center(
@@ -92,7 +94,8 @@ class BillSection extends StatelessWidget {
                             color: AppColor.grey,
                           ),
                           color: AppColor.primaryLight,
-                          borderRadius: BorderRadius.circular(15)),
+                          borderRadius: BorderRadius.circular(
+                              kGeneralBorderRadiusMedium)),
                       padding: const EdgeInsets.symmetric(
                           vertical: xxxTiniestSpacing,
                           horizontal: tinierSpacing),

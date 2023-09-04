@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_color.dart';
+import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
 class PaymentDetailsSection extends StatelessWidget {
@@ -26,7 +27,7 @@ class PaymentDetailsSection extends StatelessWidget {
                 horizontal: xxxTinierSpacing, vertical: topBottomPadding),
             decoration: BoxDecoration(
                 border: Border.all(color: AppColor.lightGrey),
-                borderRadius: BorderRadius.circular(12)),
+                borderRadius: BorderRadius.circular(kGeneralBorderRadius)),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,10 +39,11 @@ class PaymentDetailsSection extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: tiniestSpacing),
                       child: Container(
-                        height: 40,
-                        width: 40,
+                        height: kSizedBoxHeightSmall,
+                        width: kSizedBoxHeightSmall,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius:
+                                BorderRadius.circular(kGeneralBorderRadius),
                             image: const DecorationImage(
                                 fit: BoxFit.fitHeight,
                                 image: AssetImage('assets/hdfc.png'))),
@@ -83,7 +85,7 @@ class PaymentDetailsSection extends StatelessWidget {
                 const Icon(
                   Icons.keyboard_arrow_down_outlined,
                   color: AppColor.primary,
-                  size: 26,
+                  size: xxxSmallerSpacing,
                 )
               ],
             ),
