@@ -5,7 +5,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
-import '../../widgets/text_field_widget.dart';
+
 import 'edit_field_screen.dart';
 
 class EditProfileScreen extends StatelessWidget {
@@ -18,10 +18,6 @@ class EditProfileScreen extends StatelessWidget {
     TextEditingController nameController = TextEditingController();
     TextEditingController emailController = TextEditingController();
     TextEditingController phoneController = TextEditingController();
-    TextEditingController oldPasswordController = TextEditingController();
-    TextEditingController newPasswordController = TextEditingController();
-    TextEditingController newPasswordConfirmController =
-        TextEditingController();
 
     nameController.value = const TextEditingValue(text: 'John Doe');
     emailController.value = const TextEditingValue(text: 'johndoe@gmail.com');
@@ -107,31 +103,6 @@ class EditProfileScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: smallSpacing),
-              Text('Change Password',
-                  style: Theme.of(context)
-                      .textTheme
-                      .xLarge
-                      .copyWith(fontWeight: FontWeight.w600)),
-              const SizedBox(height: smallestSpacing),
-              TextFieldWidget(
-                controller: oldPasswordController,
-                onTextFieldChanged: (String textField) {},
-                hintText: 'Current Password',
-              ),
-              const SizedBox(height: xxxTinierSpacing),
-              TextFieldWidget(
-                controller: newPasswordController,
-                onTextFieldChanged: (String textField) {},
-                hintText: 'New Password',
-              ),
-              const SizedBox(height: xxxTinierSpacing),
-              TextFieldWidget(
-                onTextFieldChanged: (String textField) {},
-                controller: newPasswordConfirmController,
-                hintText: 'Repeat Password',
-              ),
-              const SizedBox(height: smallSpacing),
             ],
           ),
         ),

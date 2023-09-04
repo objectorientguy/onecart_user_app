@@ -38,7 +38,7 @@ class ProfileOptionsListTwo extends StatelessWidget {
       ),
       const ProfileListWidget(
         title: 'Sign Out',
-        description: 'Legal Information',
+        description: 'Sign out from account',
         icon: Icons.logout_rounded,
       ),
       const SizedBox(height: xxSmallerSpacing),
