@@ -23,3 +23,5 @@ const double kTextboxHeightSmallest = 50.0;
 const double kTextboxHeightSmall = 100.0;
 const double kIconSize = 12.0;
 const double kBorderRadiusSmall = 10.0;
+const double kIconHeight = 35.0;
+const double kIconWidth = 40.0;
