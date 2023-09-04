@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/profile/widgets/profile_header.dart';
 import 'package:onecart_user_app/Screens/profile/widgets/profile_list_options.dart';
+import 'package:onecart_user_app/Screens/profile/widgets/profile_list_options_two.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
-import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_dimensions.dart';
 
@@ -53,71 +53,11 @@ class ProfileScreen extends StatelessWidget {
                       spreadRadius: kZero,
                       blurRadius: kShadowBlurRadius),
                 ]),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: leftRightMargin, vertical: topBottomPadding),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Icon(
-                                  Icons.info,
-                                  color: AppColor.primary,
-                                  size: kLocationIconSize,
-                                ),
-                                const SizedBox(
-                                  width: xxTinierSpacing,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('About Us',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .textLarge
-                                            .copyWith(
-                                                fontWeight: FontWeight.w700)),
-                                    const SizedBox(
-                                      height: xxTiniestSpacing,
-                                    ),
-                                    SizedBox(
-                                      child: Text(
-                                        'Legal Information',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .subHeadingMedium,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                            const Row(
-                              children: [
-                                Icon(
-                                  Icons.arrow_forward_ios,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: xxxTinierSpacing,
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                        const SizedBox(height: xxSmallerSpacing),
-                        Text(
-                          'App Version 1.8.0',
-                          style: Theme.of(context).textTheme.subHeadingMedium,
-                        ),
-                      ]),
-                ),
+                child: const Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: leftRightMargin,
+                        vertical: topBottomPadding),
+                    child: ProfileOptionsListTwo()),
               ),
             ],
           ),
