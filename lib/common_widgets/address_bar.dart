@@ -97,7 +97,7 @@ class _AddressBarState extends State<AddressBar> {
           ),
           Padding(
             padding: const EdgeInsets.only(
-              left: xxSmallerSpacing,
+              left: kCircleAvatarRadius,
             ),
             child: SizedBox(
               //width: MediaQuery.of(context).size.width * 0.6,
