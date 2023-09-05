@@ -28,55 +28,64 @@ class HomeScreen extends StatelessWidget {
           } else if (state is GetHomeDetailsLoaded) {
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: leftRightMargin, vertical: topBottomPadding),
-                child: Column(
-                  children: [
-                    const AddressBar(),
-                    const SizedBox(
-                      height: xxxSmallerSpacing,
-                    ),
-                    SearchTextField(
-                      hintText: "Search Product's",
-                      textcontroller: myController,
-                      prefixicon: InkWell(
-                          onTap: () {
-                            FocusScopeNode currentFocus =
+              child: Column(
+                children: [
+                  Padding(
+                    padding:  const EdgeInsets.symmetric(
+                        horizontal: leftRightMargin, vertical: topBottomPadding),
+                    child: Column(
+                      children: [
+                        const AddressBar(),
+                        const SizedBox(
+                          height: xxxSmallerSpacing,
+                        ),
+                        SearchTextField(
+                          hintText: "Search Product's",
+                          textcontroller: myController,
+                          prefixicon: InkWell(
+                              onTap: () {
+                                FocusScopeNode currentFocus =
                                 FocusScope.of(context);
-                            if (!currentFocus.hasPrimaryFocus) {
-                              currentFocus.unfocus();
-                            }
-                            if (myController.text.isNotEmpty) {
-                              context.read<SearchProductsBloc>().add(
-                                  SearchAllProducts(
-                                      searchTerm: myController.text));
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const SearchScreen()));
-                            }
-                          },
-                          child: const Icon(Icons.search_sharp)),
+                                if (!currentFocus.hasPrimaryFocus) {
+                                  currentFocus.unfocus();
+                                }
+                                if (myController.text.isNotEmpty) {
+                                  context.read<SearchProductsBloc>().add(
+                                      SearchAllProducts(
+                                          searchTerm: myController.text));
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => const SearchScreen()));
+                                }
+                              },
+                              child: const Icon(Icons.search_sharp)),
+                        ),
+                        const SizedBox(
+                          height: tinySpacing,
+                        ),
+                        HorizontalCategoryList(
+                          data: state.homeModel.data!.categories!,
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      height: tinySpacing,
-                    ),
-                    HorizontalCategoryList(
-                      data: state.homeModel.data!.categories!,
-                    ),
-                    const SizedBox(
-                      height: tiniestSpacing,
-                    ),
-                    SizedBox(
-                        height: MediaQuery.of(context).size.width * 0.55,
-                        child: CarouselSlider(
-                          state.homeModel.data!.banners!,
-                        )),
-                    const SizedBox(
-                      height: 14,
-                    ),
-                    TodayDealsSection(state.homeModel.data!.deals!),
-                  ],
-                ),
+                  ),
+                  const SizedBox(
+                    height: xxTiniestSpacing,
+                  ),
+                  SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.55,
+                      child: CarouselSlider(
+                        state.homeModel.data!.banners!,
+                      )),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: leftRightMargin, vertical: topBottomPadding),
+                    child:
+                        TodayDealsSection(state.homeModel.data!.deals!),
+                  ),
+                ],
               ),
             );
           }

@@ -42,17 +42,16 @@ class HorizontalCategoryList extends StatelessWidget {
                     height: kHorizontalCategoryListItemWidth,
                     width: kHorizontalCategoryListItemWidth,
                     decoration: BoxDecoration(
+                      color: Colors.red,
                       image: DecorationImage(
-                          fit: BoxFit.fitHeight,
-                          // alignment: Alignment.center,
-                          // fit: BoxFit.fill,
+                          // fit: BoxFit.scaleDown,
                           image: NetworkImage(
                               data[index].categoryImage!,
                           )),
                       shape: BoxShape.circle,
                     ),
                   ),
-                  SizedBox(height: xxxTinierSpacing,),
+                  SizedBox(height: tiniestSpacing,),
                   SizedBox(
                     width: kHorizontalCategoryListItemWidth * 1.2,
                     child: Text(
