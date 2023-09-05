@@ -7,6 +7,7 @@ ThemeData appTheme = ThemeData(
   colorScheme: colorScheme,
   appBarTheme: appBarTheme,
   bottomNavigationBarTheme: bottomNavigationBarTheme,
+  fontFamily: 'Poppins',
 );
 
 ColorScheme colorScheme = const ColorScheme.light(
