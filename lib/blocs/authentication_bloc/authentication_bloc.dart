@@ -6,46 +6,34 @@ import 'authentication_states.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationStates> {
-  static String verify="";
+  // static String verify="";
   FirebaseAuth auth = FirebaseAuth.instance;
   AuthenticationStates get initialState => LoginLoaded();
   AuthenticationBloc() : super(LoginLoaded()) {
+    on<LoadSignUpScreen>(_loadSignUpScreen);
+    on<LoadLoginScreen>(_loadLoginScreen);
     on<GetOtp>(_getOtp);
+    on<OtpReceivedOnPhone>(_otpReceivedOnPhone);
     on<VerifyOtp>(_onVerifyOtp);
     on<OtpVerificationError>(_onOtpVerificationError);
   }
 
+  _loadLoginScreen(
+      LoadLoginScreen event, Emitter<AuthenticationStates> emit) async {
+    emit(LoginLoaded());
+  }
 
-  // FutureOr<void> _authenticatedUser(
-  //     AuthenticatedUser event, Emitter<AuthenticationStates> emit) async {
-  //   try {
-  //     _customerCache.setIsLoggedIn(true);
-  //     var loggedin = await _customerCache.getIsLoggedIn(CacheKeys.isLoggedIn);
-  //     log("loggedin==========>$loggedin");
-  //     emit(UserAuthenticated());
-  //   } catch (e) {
-  //     log("error=========>$e");
-  //   }
+  _loadSignUpScreen(
+      LoadSignUpScreen event, Emitter<AuthenticationStates> emit) async {
+    emit(SignUpLoaded());
+  }
 
-    // AuthenticateUserModel authenticateUserModel =
-    //     await _authenticationRepository.authenticateUser();
-  // }}
+  _otpReceivedOnPhone(
+      OtpReceivedOnPhone event, Emitter<AuthenticationStates> emit) async {
+    emit(OtpReceived(
+        verificationId: event.verificationId));
+  }
 
-  // _loadLoginScreen(
-  //     LoadLoginScreen event, Emitter<AuthenticationStates> emit) async {
-  //   emit(LoginLoaded());
-  // }
-  //
-  // _loadSignUpScreen(
-  //     LoadSignUpScreen event, Emitter<AuthenticationStates> emit) async {
-  //   emit(SignUpLoaded());
-  // }
-  //
-  // _otpReceivedOnPhone(
-  //     OtpReceivedOnPhone event, Emitter<AuthenticationStates> emit) async {
-  //   emit(OtpReceived(
-  //       verificationId: event.verificationId));
-  // }
 
   FutureOr<void> _getOtp(
       GetOtp event, Emitter<AuthenticationStates> emit) async {
@@ -57,7 +45,7 @@ class AuthenticationBloc
         verificationFailed: (FirebaseAuthException e) {},
         codeSent: (String verificationId, int? resendToken) {
          add(OtpReceivedOnPhone(
-           verify: verificationId,
+           verificationId: verificationId,
                    ));
         },
         codeAutoRetrievalTimeout: (String verificationId) {},
@@ -70,15 +58,14 @@ class AuthenticationBloc
   FutureOr<void> _onVerifyOtp(
       VerifyOtp event, Emitter<AuthenticationStates> emit) async {
     try {
-
       emit(OtpLoading());
-      PhoneAuthCredential credential=PhoneAuthProvider.credential(verificationId:verify, smsCode: event.otpCode);
-      await auth.signInWithCredential(credential);
+      // PhoneAuthCredential credential=PhoneAuthProvider.credential(verificationId:verify, smsCode: event.otpCode);
+      // await auth.signInWithCredential(credential);
       // PhoneAuthCredential credential = PhoneAuthProvider.credential(
       //   verificationId: event.verificationId,
       //   smsCode: event.otpCode,
       // );
-      // add(OtpVerified(credential: credential));
+      emit(PhoneOtpVerified());
     } catch (e) {
       emit(PhoneAuthError(error: e.toString()));
     }

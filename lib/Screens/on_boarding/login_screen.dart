@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/on_boarding/signup_screen.dart';
+import 'package:onecart_user_app/blocs/authentication_bloc/authentication_states.dart';
+import 'package:onecart_user_app/common_widgets/progress_bar.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
@@ -179,27 +181,35 @@ class _LogInScreenState extends State<LogInScreen> {
               (isSigninScreen)
                   ? SizedBox(
                       width: kTextboxWidth,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (phoneNumber.length == 10) {
-                            context.read<AuthenticationBloc>().add(
-                                GetOtp(phoneNumber: '+91 $phoneNumber'));
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MyVerify()));
-
-                          } else {
-                            log("error logging in!");
+                      child: BlocListener<AuthenticationBloc,AuthenticationStates>(
+                        listener: (context,state){
+                          if(state is OtpLoading){
+                            return  ProgressBar.show(context);
                           }
-
+                          if(state is OtpReceived){
+                            ProgressBar.dismiss(context);
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  MyVerify(verificationIdOne: state.verificationId,)));
+                          }
                         },
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(
-                                double.maxFinite, kElevatedButtonHeight),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    kGeneralBorderRadius))),
-                        child: Text(
-                          'Sign in',
-                          style: Theme.of(context).textTheme.textButtonLarger,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (phoneNumber.length == 10) {
+                              context.read<AuthenticationBloc>().add(
+                                  GetOtp(phoneNumber: '+91 $phoneNumber'));
+                            } else {
+                              log("error logging in!");
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                              minimumSize: const Size(
+                                  double.maxFinite, kElevatedButtonHeight),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      kGeneralBorderRadius))),
+                          child: Text(
+                            'Sign in',
+                            style: Theme.of(context).textTheme.textButtonLarger,
+                          ),
                         ),
                       ),
                     )

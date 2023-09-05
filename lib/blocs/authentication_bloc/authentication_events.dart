@@ -24,15 +24,15 @@ class GetOtp extends AuthenticationEvent {
 }
 
 class OtpReceivedOnPhone extends AuthenticationEvent {
-  final String verify;
+  final String verificationId;
   // final int? token;
   // final String userName;
 
   OtpReceivedOnPhone(
-      {required this.verify});
+      {required this.verificationId});
 
   @override
-  List<Object> get props => [verify];
+  List<Object> get props => [verificationId];
 }
 
 class VerifyOtp extends AuthenticationEvent {

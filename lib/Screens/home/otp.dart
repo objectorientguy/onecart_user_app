@@ -1,18 +1,19 @@
-import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/root/root_screen.dart';
+import 'package:onecart_user_app/blocs/authentication_bloc/authentication_states.dart';
+import 'package:onecart_user_app/common_widgets/progress_bar.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../blocs/authentication_bloc/authentication_bloc.dart';
 import '../../blocs/authentication_bloc/authentication_events.dart';
 
 class MyVerify extends StatefulWidget {
-  final String verificationIdOne="";
+  final String verificationIdOne;
 
-  const MyVerify({Key? key}) : super(key: key);
+  const MyVerify({Key? key, required this.verificationIdOne}) : super(key: key);
 
   @override
   State<MyVerify> createState() => _MyVerifyState();
@@ -47,7 +48,6 @@ class _MyVerifyState extends State<MyVerify> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
               const SizedBox(
                 height: 25,
               ),
@@ -81,25 +81,28 @@ class _MyVerifyState extends State<MyVerify> {
               SizedBox(
                 width: double.infinity,
                 height: 45,
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                    onPressed: () async {
-                      try{
-                        context.read<AuthenticationBloc>().add(VerifyOtp(
-                          otpCode: otpCode,
-                          verificationId: widget.verificationIdOne,
-                        ));
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RootScreen()));
+                child: BlocListener<AuthenticationBloc,AuthenticationStates>(
+                  listener: (context,state){
+                    if(state is OtpLoading){
+                      return ProgressBar.show(context);
+                    }
+                    if(state is PhoneOtpVerified){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RootScreen()));
+                    }
+                  },
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10))),
+                      onPressed: () async {
+                          context.read<AuthenticationBloc>().add(VerifyOtp(
+                            otpCode: otpCode,
+                            verificationId: widget.verificationIdOne,
+                          ));
 
-                      }
-                      catch(e){
-                        log("Wrong OTP");
-
-                      }
-                    },
-                    child: const Text("Verify Phone Number")),
+                      },
+                      child: const Text("Verify Phone Number")),
+                ),
               ),
               Row(
                 children: [
