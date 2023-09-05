@@ -60,6 +60,7 @@ class _RootScreenState extends State<RootScreen> {
               topLeft: Radius.circular(kBottomNavBarRadius),
               topRight: Radius.circular(kBottomNavBarRadius)),
           child: BottomNavigationBar(
+            unselectedItemColor: AppColor.lightestGrey,
             enableFeedback: true,
             type: BottomNavigationBarType.fixed,
             currentIndex: _selectedIndex,
