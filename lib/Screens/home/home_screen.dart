@@ -5,6 +5,7 @@ import 'package:onecart_user_app/Screens/home/widgets/search_screen.dart';
 import 'package:onecart_user_app/Screens/home/widgets/todays_deals_section.dart';
 import 'package:onecart_user_app/common_widgets/address_bar.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/home/home_bloc.dart';
 import '../../blocs/home/home_events.dart';
 import '../../blocs/home/home_states.dart';
@@ -28,55 +29,76 @@ class HomeScreen extends StatelessWidget {
           } else if (state is GetHomeDetailsLoaded) {
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: leftRightMargin, vertical: topBottomPadding),
-                child: Column(
-                  children: [
-                    const AddressBar(),
-                    const SizedBox(
-                      height: xxxSmallerSpacing,
-                    ),
-                    SearchTextField(
-                      hintText: "Search Product's",
-                      textcontroller: myController,
-                      suffixicon: InkWell(
-                          onTap: () {
-                            FocusScopeNode currentFocus =
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding:  const EdgeInsets.symmetric(
+                        horizontal: leftRightMargin, vertical: topBottomPadding),
+                    child: Column(
+                      children: [
+                        const AddressBar(),
+                        const SizedBox(
+                          height: xxxSmallerSpacing,
+                        ),
+                        SearchTextField(
+                          hintText: "Search for groceries",
+                          textcontroller: myController,
+                          prefixicon: InkWell(
+                              onTap: () {
+                                FocusScopeNode currentFocus =
                                 FocusScope.of(context);
-                            if (!currentFocus.hasPrimaryFocus) {
-                              currentFocus.unfocus();
-                            }
-                            if (myController.text.isNotEmpty) {
-                              context.read<SearchProductsBloc>().add(
-                                  SearchAllProducts(
-                                      searchTerm: myController.text));
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const SearchScreen()));
-                            }
-                          },
-                          child: const Icon(Icons.search)),
+                                if (!currentFocus.hasPrimaryFocus) {
+                                  currentFocus.unfocus();
+                                }
+                                if (myController.text.isNotEmpty) {
+                                  context.read<SearchProductsBloc>().add(
+                                      SearchAllProducts(
+                                          searchTerm: myController.text));
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => const SearchScreen()));
+                                }
+                              },
+                              child: const Icon(Icons.search_sharp)),
+                        ),
+                        const SizedBox(
+                          height: tinySpacing,
+                        ),
+                        HorizontalCategoryList(
+                          data: state.homeModel.data!.categories!,
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      height: tinySpacing,
+                  ),
+                  const SizedBox(
+                    height: xxTiniestSpacing,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: smallestSpacing),
+                    child: Text(
+                      "Popular Shops",
+                      style: Theme.of(context).textTheme.headingTiny,
                     ),
-                    HorizontalCategoryList(
-                      data: state.homeModel.data!.categories!,
-                    ),
-                    const SizedBox(
-                      height: tiniestSpacing,
-                    ),
-                    SizedBox(
-                        height: MediaQuery.of(context).size.width * 0.55,
-                        child: CarouselSlider(
-                          state.homeModel.data!.banners!,
-                        )),
-                    const SizedBox(
-                      height: 14,
-                    ),
-                    TodayDealsSection(state.homeModel.data!.deals!),
-                  ],
-                ),
+                  ),
+                  const SizedBox(
+                    height: xxxSmallestSpacing,
+                  ),
+                  SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.55,
+                      child: CarouselSlider(
+                        state.homeModel.data!.banners!,
+                      )),
+                  const SizedBox(
+                    height: xxxTinySpacing,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: leftRightMargin, vertical: topBottomPadding),
+                    child:
+                        TodayDealsSection(state.homeModel.data!.deals!),
+                  ),
+                ],
               ),
             );
           }
