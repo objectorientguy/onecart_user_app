@@ -54,7 +54,7 @@ class _AddressBarState extends State<AddressBar> {
     }
     Placemark place = placemark[0];
     address =
-        '${place.street}, ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
+        ' ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
     setState(() {});
   }
 
@@ -97,7 +97,7 @@ class _AddressBarState extends State<AddressBar> {
           ),
           Padding(
             padding: const EdgeInsets.only(
-              left: xxSmallerSpacing,
+              left: xxxSmallerSpacing,
             ),
             child: SizedBox(
               //width: MediaQuery.of(context).size.width * 0.6,
