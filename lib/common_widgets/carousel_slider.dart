@@ -21,7 +21,8 @@ class _CarouselSliderState extends State<CarouselSlider> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(viewportFraction: 1);
+    _pageController = PageController(viewportFraction: 0.9,initialPage: 0,
+    );
   }
 
   @override

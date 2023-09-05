@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                     SearchTextField(
                       hintText: "Search Product's",
                       textcontroller: myController,
-                      suffixicon: InkWell(
+                      prefixicon: InkWell(
                           onTap: () {
                             FocusScopeNode currentFocus =
                                 FocusScope.of(context);
@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                                   builder: (context) => const SearchScreen()));
                             }
                           },
-                          child: const Icon(Icons.search)),
+                          child: const Icon(Icons.search_sharp)),
                     ),
                     const SizedBox(
                       height: tinySpacing,

@@ -36,7 +36,7 @@ class SearchScreen extends StatelessWidget {
             SearchTextField(
               hintText: "Search Product's",
               textcontroller: myController,
-              suffixicon: InkWell(
+              prefixicon: InkWell(
                   onTap: () {
                     FocusScopeNode currentFocus = FocusScope.of(context);
                     if (!currentFocus.hasPrimaryFocus) {
