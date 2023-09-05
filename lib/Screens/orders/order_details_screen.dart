@@ -5,6 +5,7 @@ import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_color.dart';
+import '../../configs/app_dimensions.dart';
 import '../../data/models/orders/get_all_orders_model.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
@@ -16,11 +17,33 @@ class OrdersDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List orderData = [
-      {'title': 'Order Placed', 'status': 'done'},
-      {'title': 'Confirmation of Order', 'status': 'done'},
-      {'title': 'Order Shipped', 'status': 'current'},
-      {'title': 'Out for Delivery', 'date': 'Pending', 'status': 'pending'},
-      {'title': 'To be Delivered', 'date': 'Pending', 'status': 'pending'}
+      {
+        'title': 'Order Placed',
+        'status': 'done',
+        'image': 'assets/order_placed.png'
+      },
+      {
+        'title': 'Confirmation of Order',
+        'status': 'done',
+        'image': 'assets/confirmation.png'
+      },
+      {
+        'title': 'Order Shipped',
+        'status': 'current',
+        'image': 'assets/order_shipped.png'
+      },
+      {
+        'title': 'Out for Delivery',
+        'date': 'Pending',
+        'status': 'pending',
+        'image': 'assets/pending.png'
+      },
+      {
+        'title': 'To be Delivered',
+        'date': 'Pending',
+        'status': 'pending',
+        'image': 'assets/pending.png'
+      }
     ];
     return Scaffold(
       appBar: const GenericAppBar(
@@ -111,8 +134,13 @@ class OrdersDetailsScreen extends StatelessWidget {
                         children: [
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              const SizedBox(width: xMediumSpacing),
+                              Image.asset(
+                                orderData[index]['image'],
+                                width: kIconWidth,
+                                height: kIconHeight,
+                              ),
                               const SizedBox(
                                 width: xxxTinySpacing,
                               ),

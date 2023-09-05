@@ -67,7 +67,7 @@ class ItemDetailsSection extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-                horizontal: tiniestSpacing, vertical: xxxSmallestSpacing),
+                horizontal: 0, vertical: xxxSmallestSpacing),
             child: Row(
               children: [
                 const StarDisplayWidget(

@@ -45,6 +45,8 @@ dependencies:
   intl: ^0.18.1
   favorite_button: ^0.0.4
   zoom_widget: ^2.0.1
+  geolocator:
+  geocoding:
 
 dev_dependencies:
   flutter_test:
