@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/home/widgets/product_tile_widget_body.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_color.dart';
+import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/home/home_model.dart';
 
@@ -25,12 +27,10 @@ class ProductTileWidget extends StatelessWidget {
       children: [
         Center(
           child: Container(
-            height: MediaQuery.of(context).size.width * 0.24,
-            width: MediaQuery.of(context).size.width * 0.28,
+            height: MediaQuery.of(context).size.width * 0.23,
+            width: MediaQuery.of(context).size.width * 0.23,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              // image: DecorationImage(
-              //     image: NetworkImage(data[index].image![0].toString()))
+              borderRadius: BorderRadius.circular(kBorderRadiusSmall),
             ),
             child: Image.network(
               data[index].image![0].toString(),
@@ -45,108 +45,49 @@ class ProductTileWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                width: screenwidth * 0.65,
-                child: Text(
-                  data[index].productName!,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headingTiny
-                      .copyWith(fontWeight: FontWeight.w600),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: screenwidth * 0.40,
+                    child: Text(
+                      data[index].productName!,
+                      style: Theme.of(context)
+                          .textTheme
+                          .subHeadingMedium
+                          .copyWith(
+                              fontWeight: FontWeight.w500,
+                              color: AppColor.black),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: false,
+                    ),
+                  ),
+                  const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('4.2'),
+                      SizedBox(
+                        width: xxxTiniestSpacing,
+                      ),
+                      Icon(
+                        Icons.star,
+                        size: kStarIcon,
+                        color: Colors.amber,
+                      )
+                    ],
+                  )
+                ],
               ),
               const SizedBox(
                 height: tiniestSpacing,
               ),
-              SizedBox(
-                width: screenwidth * 0.65,
-                child: Text(
-                  data[index].details!,
-                  style: Theme.of(context).textTheme.xxGSmall,
-                  maxLines: 2,
-                ),
-              ),
-              const SizedBox(
-                height: xxxTinierSpacing,
-              ),
-              SizedBox(
-                width: screenwidth * 0.60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          '₹ ${data[index].discountedCost!.toString()}',
-                          style: Theme.of(context)
-                              .textTheme
-                              .textMediumx
-                              .copyWith(
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColor.black),
-                        ),
-                        const SizedBox(
-                          width: tiniestSpacing,
-                        ),
-                        Text(
-                          '₹ ${data[index].price!.toString()}',
-                          style: Theme.of(context).textTheme.xxGSmall.copyWith(
-                              color: AppColor.grey,
-                              decoration: TextDecoration.lineThrough),
-                        ),
-                        const SizedBox(
-                          width: tiniestSpacing,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: AppColor.primary,
-                              ),
-                              color: AppColor.primaryLight,
-                              borderRadius: BorderRadius.circular(15)),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: xxTiniestSpacing,
-                              horizontal: xxxTinierSpacing),
-                          child: Center(
-                            child: Text('${data[index].discount!} % off',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .xxxSmall
-                                    .copyWith(
-                                        color: AppColor.primary,
-                                        fontWeight: FontWeight.w500)),
-                          ),
-                        ),
-                      ],
-                    ),
-                    //SizedBox(width: xxxTinierSpacing,),
-                    SizedBox(
-                      height: 30,
-                      width: 50,
-                      child: TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          minimumSize: Size.zero,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: tinierSpacing,
-                              vertical: tiniestSpacing),
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          backgroundColor: AppColor.primary,
-                        ),
-                        child: Text('ADD',
-                            style: Theme.of(context)
-                                .textTheme
-                                .xxGSmall
-                                .copyWith(color: AppColor.white)),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              ProductTileWidgetBody(
+                screenwidth: screenwidth,
+                data: data,
+                index: index,
+              )
             ],
           ),
         )
