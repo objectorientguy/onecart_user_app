@@ -44,9 +44,8 @@ class HorizontalCategoryList extends StatelessWidget {
                     height: kHorizontalCategoryListItemWidth,
                     width: kHorizontalCategoryListItemWidth,
                     decoration: BoxDecoration(
-                      color: AppColor.mediumlightestGrey,
+                      color: AppColor.mediumLightestGrey,
                       image: DecorationImage(
-                          // fit: BoxFit.scaleDown,
                           image: NetworkImage(
                               data[index].categoryImage!,
                           )),
@@ -57,12 +56,11 @@ class HorizontalCategoryList extends StatelessWidget {
                   SizedBox(
                     width: kHorizontalCategoryListItemWidth * 1.2,
                     child: Text(
-                      data[index].categoryName!.toString().toUpperCase(),
+                      data[index].categoryName!,
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.categoryText,
-
+                      style: Theme.of(context).textTheme.xxxTinier,
                     ),
                   )
                 ],
