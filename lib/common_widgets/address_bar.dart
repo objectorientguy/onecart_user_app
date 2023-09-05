@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -17,7 +18,7 @@ class AddressBar extends StatefulWidget {
 
 class _AddressBarState extends State<AddressBar> {
   String location = 'Null, Press Button';
-  String address = 'Akshay Nagar';
+  String address = 'Akshay Nagar 1st Block 1st Cross, Rammurthy nagar...';
 
   Future<Position> getCurrentPosition() async {
     bool serviceEnabled;
@@ -38,7 +39,6 @@ class _AddressBarState extends State<AddressBar> {
     }
 
     if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
@@ -46,90 +46,70 @@ class _AddressBarState extends State<AddressBar> {
         desiredAccuracy: LocationAccuracy.high);
   }
 
-  Future<void> GetAddressFromLatLong(Position position) async {
-    List<Placemark> placemarks =
+  Future<void> getAddressFromLatLong(Position position) async {
+    List<Placemark> placemark =
         await placemarkFromCoordinates(position.latitude, position.longitude);
-    print(placemarks);
-    Placemark place = placemarks[0];
+    if (kDebugMode) {
+      print(placemark);
+    }
+    Placemark place = placemark[0];
     address =
         '${place.street}, ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
     setState(() {});
   }
 
-  // void getCurrentPosition() async{
-  //   LocationPermission permission = await Geolocator.checkPermission();
-  //
-  //   if(permission == LocationPermission.denied ||
-  //   permission == LocationPermission.deniedForever)
-  //     {
-  //       print("Permission Not Given");
-  //       LocationPermission asked = await Geolocator.requestPermission();
-  //     }
-  //   else {
-  //     Position currentPosition = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
-  //   print("Longitude: " +currentPosition.longitude.toString());
-  //   // print("Latitude:" +currentPosition.latitude.toString());
-  //     print("Fetch location");
-  //
-  //
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            const Icon(
-              Icons.location_on,
-              color: AppColor.primary,
-              size: kLocationIconSize,
-            ),
-            const SizedBox(
-              width: xxTiniestSpacing,
-            ),
-            TextButton(
-                onPressed: () async {
-                  Position position = await getCurrentPosition();
-                  location =
-                      'Lat: ${position.latitude} , Long: ${position.longitude}';
-                  GetAddressFromLatLong(position);
-                  // getCurrentPosition();
-                },
-                child: Text('Home',
-                    style: Theme.of(context).textTheme.headingTiny)),
-            const SizedBox(
-              width: xxxTiniestSpacing,
-            ),
-            const Center(
+    return InkWell(
+      onTap: () async {
+        Position position = await getCurrentPosition();
+        location = 'Lat: ${position.latitude} , Long: ${position.longitude}';
+        getAddressFromLatLong(position);
+        // getCurrentPosition();
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(
+                Icons.location_on,
+                color: AppColor.primary,
+                size: kLocationIconSize,
+              ),
+              const SizedBox(
+                width: xxxTiniestSpacing,
+              ),
+              Text('Home', style: Theme.of(context).textTheme.headingTiny),
+              const SizedBox(
+                width: xxxTiniestSpacing,
+              ),
+              const Center(
                 heightFactor: kLocationIconHeightFactor,
                 child: Icon(
                   Icons.keyboard_arrow_down_outlined,
                   color: AppColor.primary,
                   size: kLocationIconSize,
-                ))
-          ],
-        ),
-        const SizedBox(
-          height: xxTiniestSpacing,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(
-            left: xxSmallerSpacing,
+                ),
+              ),
+            ],
           ),
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.8,
-            child: Text(
-              '${address}',
-              style: Theme.of(context).textTheme.subHeadingMedium,
-              overflow: TextOverflow.ellipsis,
+          Padding(
+            padding: const EdgeInsets.only(
+              left: kCircleAvatarRadius,
+            ),
+            child: SizedBox(
+              //width: MediaQuery.of(context).size.width * 0.6,
+              child: Text(
+                address,
+                style: Theme.of(context).textTheme.subHeadingMedium,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ),
-        )
-      ],
+        ],
+      ),
     );
   }
 }
