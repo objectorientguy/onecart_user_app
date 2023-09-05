@@ -31,3 +31,4 @@ const double kBorderDiscount = 15.0;
 const double kAddRadius = 8.0;
 const double kAddButtonWidth = 85.0;
 const double kAddButtonHeight = 35.0;
+const double kCounterIcon = 16.0;

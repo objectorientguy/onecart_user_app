@@ -5,8 +5,9 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/home/home_model.dart';
+import 'counter_widget.dart';
 
-class ProductTileWidgetBody extends StatelessWidget {
+class ProductTileWidgetBody extends StatefulWidget {
   const ProductTileWidgetBody({
     super.key,
     required this.screenwidth,
@@ -19,6 +20,11 @@ class ProductTileWidgetBody extends StatelessWidget {
   final int index;
 
   @override
+  State<ProductTileWidgetBody> createState() => _ProductTileWidgetBodyState();
+}
+
+class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
+  @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,7 +33,7 @@ class ProductTileWidgetBody extends StatelessWidget {
         Row(
           children: [
             Text(
-              '₹ ${data[index].discountedCost!.toString()}',
+              '₹ ${widget.data[widget.index].discountedCost!.toString()}',
               style: Theme.of(context)
                   .textTheme
                   .textMediumx
@@ -37,7 +43,7 @@ class ProductTileWidgetBody extends StatelessWidget {
               width: tiniestSpacing,
             ),
             Text(
-              '₹ ${data[index].price!.toString()}',
+              '₹ ${widget.data[widget.index].price!.toString()}',
               style: Theme.of(context).textTheme.xxGSmall.copyWith(
                   color: AppColor.grey, decoration: TextDecoration.lineThrough),
             ),
@@ -54,34 +60,14 @@ class ProductTileWidgetBody extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                   vertical: xxTiniestSpacing, horizontal: xxxTinierSpacing),
               child: Center(
-                child: Text('${data[index].discount!} % off',
+                child: Text('${widget.data[widget.index].discount!} % off',
                     style: Theme.of(context).textTheme.xxxSmall.copyWith(
                         color: AppColor.primary, fontWeight: FontWeight.w500)),
               ),
             ),
           ],
         ),
-        SizedBox(
-          height: kAddButtonHeight,
-          width: kAddButtonWidth,
-          child: TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              minimumSize: Size.zero,
-              padding: const EdgeInsets.symmetric(
-                  horizontal: tinierSpacing, vertical: tiniestSpacing),
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(kAddRadius)),
-              backgroundColor: AppColor.primary,
-            ),
-            child: Text('ADD',
-                style: Theme.of(context)
-                    .textTheme
-                    .xxGSmall
-                    .copyWith(color: AppColor.white)),
-          ),
-        )
+        const CounterScreen(),
       ],
     );
   }
