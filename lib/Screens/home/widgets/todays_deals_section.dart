@@ -22,9 +22,12 @@ class TodayDealsSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Today's Deals",
-          style: Theme.of(context).textTheme.headingTiny,
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Text(
+            "Today's Deals",
+            style: Theme.of(context).textTheme.headingTiny,
+          ),
         ),
         const SizedBox(
           height: xxTinySpacing,
