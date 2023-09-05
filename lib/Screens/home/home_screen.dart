@@ -5,6 +5,7 @@ import 'package:onecart_user_app/Screens/home/widgets/search_screen.dart';
 import 'package:onecart_user_app/Screens/home/widgets/todays_deals_section.dart';
 import 'package:onecart_user_app/common_widgets/address_bar.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/home/home_bloc.dart';
 import '../../blocs/home/home_events.dart';
 import '../../blocs/home/home_states.dart';
@@ -29,6 +30,7 @@ class HomeScreen extends StatelessWidget {
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding:  const EdgeInsets.symmetric(
@@ -71,13 +73,24 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: xxTiniestSpacing,
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: smallestSpacing),
+                    child: Text(
+                      "Popular Shops",
+                      style: Theme.of(context).textTheme.headingTiny,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: xxxSmallestSpacing,
+                  ),
                   SizedBox(
                       height: MediaQuery.of(context).size.width * 0.55,
                       child: CarouselSlider(
                         state.homeModel.data!.banners!,
                       )),
                   const SizedBox(
-                    height: 14,
+                    height: xxxTinySpacing,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(

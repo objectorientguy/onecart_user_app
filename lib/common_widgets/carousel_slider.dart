@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/data/models/home/home_model.dart';
 
+import '../configs/app_dimensions.dart';
+import '../configs/app_spacing.dart';
+
 class CarouselSlider extends StatefulWidget {
   static const routeName = 'HorizontalCategoryList';
 
@@ -34,10 +37,9 @@ class _CarouselSliderState extends State<CarouselSlider> {
         onPageChanged: (page) {},
         itemBuilder: (context, pagePosition) {
           return Container(
-            width: MediaQuery.of(context).size.width * 0.9,
-            margin: const EdgeInsets.all(8),
+            margin: const EdgeInsets.only(right: tinySpacing, bottom:xxxTinierSpacing),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(kGlobalBorderRadius),
               child: Image.network(
                 widget.data[pagePosition].bannerImage!,
                 fit: BoxFit.fill,

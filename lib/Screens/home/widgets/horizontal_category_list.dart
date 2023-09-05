@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/get_product_bloc/get_product_bloc.dart';
 import 'package:onecart_user_app/blocs/get_product_bloc/get_product_events.dart';
+import 'package:onecart_user_app/configs/app_color.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../categories/category_item_screen.dart';
@@ -42,7 +44,7 @@ class HorizontalCategoryList extends StatelessWidget {
                     height: kHorizontalCategoryListItemWidth,
                     width: kHorizontalCategoryListItemWidth,
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: AppColor.mediumlightestGrey,
                       image: DecorationImage(
                           // fit: BoxFit.scaleDown,
                           image: NetworkImage(
@@ -51,7 +53,7 @@ class HorizontalCategoryList extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                   ),
-                  SizedBox(height: tiniestSpacing,),
+                  const SizedBox(height: tiniestSpacing,),
                   SizedBox(
                     width: kHorizontalCategoryListItemWidth * 1.2,
                     child: Text(
@@ -59,7 +61,7 @@ class HorizontalCategoryList extends StatelessWidget {
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      style: Theme.of(context).textTheme.categoryText,
 
                     ),
                   )
