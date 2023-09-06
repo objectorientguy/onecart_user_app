@@ -1,3 +1,4 @@
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/image_carousel_slider.dart';
@@ -10,6 +11,7 @@ import '../../blocs/item_details_bloc/item_details_bloc.dart';
 import '../../blocs/item_details_bloc/item_details_events.dart';
 import '../../blocs/item_details_bloc/item_details_states.dart';
 
+import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 import '../cart/cart_screen.dart';
@@ -29,7 +31,7 @@ class ItemDetailsScreen extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(
-            horizontal: leftRightMargin, vertical: 12),
+            horizontal: leftRightMargin, vertical: tinierSpacing),
         child: CustomElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, CartScreen.routeName,
@@ -53,14 +55,25 @@ class ItemDetailsScreen extends StatelessWidget {
                     Text('SEE CART'),
                     Icon(
                       Icons.arrow_forward_ios,
-                      size: 20,
+                      size: kForwardIconSize,
                     )
                   ],
                 )
               ],
             )),
       ),
-      appBar: const GenericAppBar(),
+      appBar: GenericAppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: leftRightMargin),
+            child: FavoriteButton(
+              valueChanged: () {},
+              iconSize: kFavouriteButton,
+              iconColor: AppColor.primary,
+            ),
+          ),
+        ],
+      ),
       body: BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
         builder: (context, state) {
           if (state is ItemDetailsLoading) {

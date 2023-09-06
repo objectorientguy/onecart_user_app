@@ -6,7 +6,15 @@ import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
 class CounterScreen extends StatefulWidget {
-  const CounterScreen({super.key});
+  final double? height;
+  final double? width;
+  final String title;
+
+  const CounterScreen(
+      {super.key,
+      this.height = kAddButtonHeight,
+      this.width = kAddButtonWidth,
+      this.title = 'ADD'});
 
   @override
   State<CounterScreen> createState() => _CounterScreenState();
@@ -35,8 +43,8 @@ class _CounterScreenState extends State<CounterScreen> {
   Widget build(BuildContext context) {
     return Visibility(
       replacement: SizedBox(
-        height: kAddButtonHeight,
-        width: kAddButtonWidth,
+        height: widget.height,
+        width: widget.width,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -80,8 +88,8 @@ class _CounterScreenState extends State<CounterScreen> {
       ),
       visible: isVisible,
       child: SizedBox(
-        height: kAddButtonHeight,
-        width: kAddButtonWidth,
+        height: widget.height,
+        width: widget.width,
         child: TextButton(
           onPressed: () {
             _incrementCount();
@@ -98,7 +106,7 @@ class _CounterScreenState extends State<CounterScreen> {
                 borderRadius: BorderRadius.circular(kAddRadius)),
             backgroundColor: AppColor.primary,
           ),
-          child: Text('ADD',
+          child: Text(widget.title,
               style: Theme.of(context)
                   .textTheme
                   .xxGSmall

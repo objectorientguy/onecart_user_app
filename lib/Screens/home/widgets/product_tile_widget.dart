@@ -19,42 +19,29 @@ class ProductTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Row(
+    return Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Center(
-            child: Card(
-              elevation: kCardElevation,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(kBorderRadiusSmall)),
-              child: Padding(
-                padding: const EdgeInsets.all(tiniestSpacing),
-                child: Container(
-                  height: MediaQuery.of(context).size.width * 0.23,
-                  width: MediaQuery.of(context).size.width * 0.23,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(kBorderRadiusSmall),
-                  ),
-                  child: Image.network(
-                    data[index].image![0].toString(),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: xxxTinierSpacing,
-          ),
+              child: Card(
+                margin: EdgeInsets.zero,
+                  elevation: kCardElevation,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(kBorderRadiusSmall)),
+                  child: Padding(
+                      padding: const EdgeInsets.all(tiniestSpacing),
+                      child: Container(
+                          height: MediaQuery.of(context).size.width * 0.24,
+                          width: MediaQuery.of(context).size.width * 0.23,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.circular(kBorderRadiusSmall)),
+                          child: Image.network(data[index].image![0].toString(),
+                              fit: BoxFit.fill))))),
+          const SizedBox(width: xxxTinierSpacing),
           ProductTileWidgetBody(
-            screenwidth: screenwidth,
-            data: data,
-            index: index,
-          ),
-        ],
-      ),
-    );
+              screenwidth: screenwidth, data: data, index: index)
+        ]);
   }
 }
