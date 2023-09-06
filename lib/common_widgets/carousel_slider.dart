@@ -24,7 +24,9 @@ class _CarouselSliderState extends State<CarouselSlider> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(viewportFraction: 0.9,initialPage: 0,
+    _pageController = PageController(
+      viewportFraction: 0.9,
+      initialPage: 0,
     );
   }
 
@@ -37,7 +39,8 @@ class _CarouselSliderState extends State<CarouselSlider> {
         onPageChanged: (page) {},
         itemBuilder: (context, pagePosition) {
           return Container(
-            margin: const EdgeInsets.only(right: tinySpacing, bottom:xxxTinierSpacing),
+            margin: const EdgeInsets.only(
+                right: tinySpacing, bottom: xxxTinierSpacing),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(kGlobalBorderRadius),
               child: Image.network(

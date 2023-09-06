@@ -47,12 +47,14 @@ class HorizontalCategoryList extends StatelessWidget {
                       color: AppColor.mediumLightestGrey,
                       image: DecorationImage(
                           image: NetworkImage(
-                              data[index].categoryImage!,
-                          )),
+                        data[index].categoryImage!,
+                      )),
                       shape: BoxShape.circle,
                     ),
                   ),
-                  const SizedBox(height: tiniestSpacing,),
+                  const SizedBox(
+                    height: tiniestSpacing,
+                  ),
                   SizedBox(
                     width: kHorizontalCategoryListItemWidth * 1.2,
                     child: Text(
