@@ -73,11 +73,11 @@ extension AppTextTheme on TextTheme {
     return const TextStyle(
         fontSize: 15, fontWeight: FontWeight.w400, color: AppColor.grey);
   }
-
   TextStyle get xxTinier {
     return const TextStyle(
         fontSize: 16, fontWeight: FontWeight.w400, color: AppColor.grey);
   }
+
 
   TextStyle get subHeadingLargex {
     return const TextStyle(
@@ -128,11 +128,11 @@ extension AppTextTheme on TextTheme {
     return const TextStyle(
         fontSize: 13, fontWeight: FontWeight.w300, color: AppColor.grey);
   }
-
   TextStyle get xxxTinier {
     return const TextStyle(
-        fontSize: 14, fontWeight: FontWeight.w500, color: AppColor.mediumBlack);
+        fontSize: 14, fontWeight: FontWeight.w500 ,color: AppColor.mediumBlack);
   }
+
 
   TextStyle get textSmall {
     return const TextStyle(
