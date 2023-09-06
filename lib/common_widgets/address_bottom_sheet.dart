@@ -179,20 +179,31 @@ class AddressBottomSheet extends StatelessWidget {
                                                         .addressDetails[index]);
                                               },
                                               child: Container(
-                                                width: 70,
+                                                  width: kBottomNavBarHeightX,
                                                   decoration: BoxDecoration(
                                                       border: Border.all(
                                                         color: AppColor.primary,
                                                       ),
-                                                      color: AppColor.primaryLight,
-                                                      borderRadius: BorderRadius.circular(kBorderDiscount)),
-                                                  padding: const EdgeInsets.symmetric(
-                                                      vertical: xxTiniestSpacing, horizontal: xxxTinierSpacing),
+                                                      color:
+                                                          AppColor.primaryLight,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              kBorderDiscount)),
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      vertical:
+                                                          xxTiniestSpacing,
+                                                      horizontal:
+                                                          xxxTinierSpacing),
                                                   child: const Center(
                                                     child: Text(
                                                       'EDIT',
-                                                      style: TextStyle(color: AppColor.primary, fontSize: xxxTinySpacing),
-                                                  ),
+                                                      style: TextStyle(
+                                                          color:
+                                                              AppColor.primary,
+                                                          fontSize:
+                                                              xxxTinySpacing),
+                                                    ),
                                                   )),
                                             ),
                                           ],

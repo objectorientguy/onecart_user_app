@@ -55,38 +55,31 @@ class AddressScreen extends StatelessWidget {
                     return ListView.separated(
                         physics: const BouncingScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount:
-                        state.fetchAddressModel.data!.length,
-                        separatorBuilder: (context, index) =>
-                        const Divider(
-                          height: smallestSpacing,
-                          thickness: xxxTiniestSpacing,
-                        ),
+                        itemCount: state.fetchAddressModel.data!.length,
+                        separatorBuilder: (context, index) => const Divider(
+                              height: smallestSpacing,
+                              thickness: xxxTiniestSpacing,
+                            ),
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: xxxTinierSpacing),
                             child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  crossAxisAlignment:
-                                  CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
                                         height: xMediumSpacing,
                                         width: xMediumSpacing,
                                         decoration: const BoxDecoration(
-                                            color: AppColor
-                                                .primaryLighter,
+                                            color: AppColor.primaryLighter,
                                             shape: BoxShape.circle),
                                         child: const Icon(
-                                          Icons
-                                              .location_on_outlined,
+                                          Icons.location_on_outlined,
                                           size: smallestSpacing,
                                           color: AppColor.primary,
                                         )),
@@ -95,32 +88,25 @@ class AddressScreen extends StatelessWidget {
                                     ),
                                     Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           children: [
                                             Text(
-                                                state
-                                                    .fetchAddressModel
-                                                    .data![index]
-                                                    .addressType
+                                                state.fetchAddressModel
+                                                    .data![index].addressType
                                                     .toString(),
-                                                style: Theme.of(
-                                                    context)
+                                                style: Theme.of(context)
                                                     .textTheme
                                                     .headingTiny),
                                             const SizedBox(
-                                                width:
-                                                xxTinierSpacing),
+                                                width: xxTinierSpacing),
                                           ],
                                         ),
                                         const SizedBox(
-                                            height:
-                                            xxxTiniestSpacing),
+                                            height: xxxTiniestSpacing),
                                         Text(
-                                          state
-                                              .fetchAddressModel
-                                              .data![index]
+                                          state.fetchAddressModel.data![index]
                                               .addressName
                                               .toString(),
                                           style: Theme.of(context)
@@ -128,8 +114,8 @@ class AddressScreen extends StatelessWidget {
                                               .xxGSmall,
                                         ),
                                         Text(
-                                          state.fetchAddressModel
-                                              .data![index].phoneNo
+                                          state.fetchAddressModel.data![index]
+                                              .phoneNo
                                               .toString(),
                                           style: Theme.of(context)
                                               .textTheme
@@ -141,25 +127,28 @@ class AddressScreen extends StatelessWidget {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    Navigator.pushNamed(context,
-                                        EditAddressScreen.routeName,
-                                        arguments: state
-                                            .addressDetails[index]);
+                                    Navigator.pushNamed(
+                                        context, EditAddressScreen.routeName,
+                                        arguments: state.addressDetails[index]);
                                   },
                                   child: Container(
-                                      width: 70,
+                                      width: kBottomNavBarHeightX,
                                       decoration: BoxDecoration(
                                           border: Border.all(
                                             color: AppColor.primary,
                                           ),
                                           color: AppColor.primaryLight,
-                                          borderRadius: BorderRadius.circular(kBorderDiscount)),
+                                          borderRadius: BorderRadius.circular(
+                                              kBorderDiscount)),
                                       padding: const EdgeInsets.symmetric(
-                                          vertical: xxTiniestSpacing, horizontal: xxxTinierSpacing),
+                                          vertical: xxTiniestSpacing,
+                                          horizontal: xxxTinierSpacing),
                                       child: const Center(
                                         child: Text(
                                           'EDIT',
-                                          style: TextStyle(color: AppColor.primary, fontSize: xxxTinySpacing),
+                                          style: TextStyle(
+                                              color: AppColor.primary,
+                                              fontSize: xxxTinySpacing),
                                         ),
                                       )),
                                 ),
