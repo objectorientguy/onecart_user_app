@@ -27,7 +27,7 @@ class AddressScreen extends StatelessWidget {
         title: 'My Addresses',
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(xxxTinySpacing),
         child: CustomElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, AddAddressScreen.routeName,
@@ -46,7 +46,7 @@ class AddressScreen extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(xxTinierSpacing),
               child: BlocBuilder<AddressBloc, AddressStates>(
                 builder: (context, state) {
                   if (state is FetchAddressLoading) {
@@ -55,30 +55,39 @@ class AddressScreen extends StatelessWidget {
                     return ListView.separated(
                         physics: const BouncingScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: state.fetchAddressModel.data!.length,
-                        separatorBuilder: (context, index) => const Divider(
-                              height: smallestSpacing,
-                              thickness: 2,
-                            ),
+                        itemCount:
+                        state.fetchAddressModel.data!.length,
+                        separatorBuilder: (context, index) =>
+                        const Divider(
+                          height: smallestSpacing,
+                          thickness: xxxTiniestSpacing,
+                        ),
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: xxxTinierSpacing),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment:
+                              MainAxisAlignment.spaceBetween,
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                        height: 40,
-                                        width: 40,
+                                        height: xMediumSpacing,
+                                        width: xMediumSpacing,
                                         decoration: const BoxDecoration(
-                                            color: AppColor.primaryLighter,
+                                            color: AppColor
+                                                .primaryLighter,
                                             shape: BoxShape.circle),
                                         child: const Icon(
-                                          Icons.location_on_outlined,
+                                          Icons
+                                              .location_on_outlined,
+                                          size: smallestSpacing,
                                           color: AppColor.primary,
                                         )),
                                     const SizedBox(
@@ -86,38 +95,45 @@ class AddressScreen extends StatelessWidget {
                                     ),
                                     Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           children: [
                                             Text(
-                                                state.fetchAddressModel
-                                                    .data![index].addressType
+                                                state
+                                                    .fetchAddressModel
+                                                    .data![index]
+                                                    .addressType
                                                     .toString(),
-                                                style: Theme.of(context)
+                                                style: Theme.of(
+                                                    context)
                                                     .textTheme
                                                     .headingTiny),
                                             const SizedBox(
-                                                width: xxTinierSpacing),
+                                                width:
+                                                xxTinierSpacing),
                                           ],
                                         ),
                                         const SizedBox(
-                                            height: xxxTiniestSpacing),
+                                            height:
+                                            xxxTiniestSpacing),
                                         Text(
-                                          state.fetchAddressModel.data![index]
+                                          state
+                                              .fetchAddressModel
+                                              .data![index]
                                               .addressName
                                               .toString(),
                                           style: Theme.of(context)
                                               .textTheme
-                                              .subHeadingLargex,
+                                              .xxGSmall,
                                         ),
                                         Text(
-                                          state.fetchAddressModel.data![index]
-                                              .phoneNo
+                                          state.fetchAddressModel
+                                              .data![index].phoneNo
                                               .toString(),
                                           style: Theme.of(context)
                                               .textTheme
-                                              .textMediumx,
+                                              .xxGSmall,
                                         ),
                                       ],
                                     ),
@@ -125,23 +141,26 @@ class AddressScreen extends StatelessWidget {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    Navigator.pushNamed(
-                                        context, EditAddressScreen.routeName,
-                                        arguments: state.addressDetails[index]);
+                                    Navigator.pushNamed(context,
+                                        EditAddressScreen.routeName,
+                                        arguments: state
+                                            .addressDetails[index]);
                                   },
                                   child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 7),
+                                      width: 70,
                                       decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Colors.green, width: 1.0),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: const Text(
-                                        'EDIT',
-                                        style: TextStyle(
+                                          border: Border.all(
                                             color: AppColor.primary,
-                                            fontSize: 14),
+                                          ),
+                                          color: AppColor.primaryLight,
+                                          borderRadius: BorderRadius.circular(kBorderDiscount)),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: xxTiniestSpacing, horizontal: xxxTinierSpacing),
+                                      child: const Center(
+                                        child: Text(
+                                          'EDIT',
+                                          style: TextStyle(color: AppColor.primary, fontSize: xxxTinySpacing),
+                                        ),
                                       )),
                                 ),
                               ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../Screens/address/add_address_screen.dart';
 import '../Screens/address/edit_address_screen.dart';
 import '../blocs/address_bloc/address_bloc.dart';
@@ -120,6 +119,7 @@ class AddressBottomSheet extends StatelessWidget {
                                                     child: const Icon(
                                                       Icons
                                                           .location_on_outlined,
+                                                      size: smallestSpacing,
                                                       color: AppColor.primary,
                                                     )),
                                                 const SizedBox(
@@ -157,7 +157,7 @@ class AddressBottomSheet extends StatelessWidget {
                                                           .toString(),
                                                       style: Theme.of(context)
                                                           .textTheme
-                                                          .subHeadingLargex,
+                                                          .xxGSmall,
                                                     ),
                                                     Text(
                                                       state.fetchAddressModel
@@ -165,7 +165,7 @@ class AddressBottomSheet extends StatelessWidget {
                                                           .toString(),
                                                       style: Theme.of(context)
                                                           .textTheme
-                                                          .textMediumx,
+                                                          .xxGSmall,
                                                     ),
                                                   ],
                                                 ),
@@ -179,27 +179,21 @@ class AddressBottomSheet extends StatelessWidget {
                                                         .addressDetails[index]);
                                               },
                                               child: Container(
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal:
-                                                          xxTinierSpacing,
-                                                      vertical:
-                                                          xxxTinierSpacing),
+                                                width: 70,
                                                   decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color: Colors.green,
-                                                        width: spacingTinier),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            xxxSmallestSpacing),
+                                                      border: Border.all(
+                                                        color: AppColor.primary,
+                                                      ),
+                                                      color: AppColor.primaryLight,
+                                                      borderRadius: BorderRadius.circular(kBorderDiscount)),
+                                                  padding: const EdgeInsets.symmetric(
+                                                      vertical: xxTiniestSpacing, horizontal: xxxTinierSpacing),
+                                                  child: const Center(
+                                                    child: Text(
+                                                      'EDIT',
+                                                      style: TextStyle(color: AppColor.primary, fontSize: xxxTinySpacing),
                                                   ),
-                                                  child: Text('EDIT',
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .xSmall
-                                                          .copyWith(
-                                                              color: AppColor
-                                                                  .primary))),
+                                                  )),
                                             ),
                                           ],
                                         ),
