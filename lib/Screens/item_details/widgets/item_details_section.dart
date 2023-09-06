@@ -43,7 +43,8 @@ class ItemDetailsSection extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                   horizontal: tinierSpacing, vertical: tinierSpacing),
               decoration: BoxDecoration(
-                border: Border.all(color: AppColor.lightestGrey, width: 0.5),
+                border: Border.all(
+                    color: AppColor.lightestGrey, width: kBorderWidth),
                 borderRadius: BorderRadius.circular(kAddRadius),
               ),
               child: Row(

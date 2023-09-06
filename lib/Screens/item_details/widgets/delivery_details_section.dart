@@ -29,8 +29,9 @@ class DeliverDetailsSection extends StatelessWidget {
             width: kHorizontalCategoryListHeight,
             height: kHorizontalCategoryListHeight,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColor.lightestGrey, width: 0.3),
+              borderRadius: BorderRadius.circular(kGeneralBorderRadius),
+              border: Border.all(
+                  color: AppColor.lightestGrey, width: kButtonBorderWidth),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -38,8 +39,8 @@ class DeliverDetailsSection extends StatelessWidget {
                 Expanded(
                     child: Center(
                         child: Container(
-                            height: 40,
-                            width: 40,
+                            height: kCacheImageHeight,
+                            width: kCacheImageWidth,
                             decoration: const BoxDecoration(
                                 color: AppColor.primaryLighter,
                                 shape: BoxShape.circle),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../configs/app_color.dart';
+import '../../../configs/app_dimensions.dart';
+import '../../../configs/app_spacing.dart';
 import 'image_zoom_section.dart';
 
 class ImageCarouselSlider extends StatefulWidget {
@@ -30,11 +32,11 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
     return Column(
       children: [
         const SizedBox(
-          height: 40,
+          height: xMediumSpacing,
         ),
         SizedBox(
-          height: 200,
-          width: 200,
+          height: kSizedBoxInfinite,
+          width: kSizedBoxInfinite,
           child: PageView.builder(
               itemCount: widget.imageList.length,
               pageSnapping: true,
@@ -52,9 +54,9 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    margin: const EdgeInsets.all(8),
+                    margin: const EdgeInsets.all(xxxTinierSpacing),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(kBorderDiscount),
                       child: Image.network(
                         widget.imageList[index].toString(),
                         fit: BoxFit.fill,
@@ -65,7 +67,7 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
               }),
         ),
         const SizedBox(
-          height: 20,
+          height: xxxSmallestSpacing,
         ),
         Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -76,10 +78,10 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                     Icon(
                       Icons.circle,
                       color: AppColor.paleBlack,
-                      size: 7,
+                      size: kDotSize,
                     ),
                     SizedBox(
-                      width: 4,
+                      width: xxTiniestSpacing,
                     )
                   ],
                 );
@@ -89,16 +91,16 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                   Icon(
                     Icons.circle,
                     color: AppColor.paleGrey,
-                    size: 7,
+                    size: kDotSize,
                   ),
                   SizedBox(
-                    width: 4,
+                    width: xxTiniestSpacing,
                   )
                 ],
               );
             })),
         const SizedBox(
-          height: 20,
+          height: xxxSmallestSpacing,
         ),
       ],
     );

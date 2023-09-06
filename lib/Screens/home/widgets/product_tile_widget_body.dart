@@ -65,10 +65,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
           ),
           Text(
             widget.data[widget.index].weight.toString(),
-            style: Theme.of(context)
-                .textTheme
-                .textButtonSmall
-                .copyWith(fontWeight: FontWeight.w400, fontSize: 11),
+            style: Theme.of(context).textTheme.textButtonxxSmall,
           ),
           const SizedBox(
             height: xxxTinierSpacing,

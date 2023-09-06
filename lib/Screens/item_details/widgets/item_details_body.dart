@@ -42,10 +42,7 @@ class ItemDetailsBody extends StatelessWidget {
                   value: 2.5),
               const SizedBox(width: xxxTinierSpacing),
               Text('5 Ratings',
-                  style: Theme.of(context)
-                      .textTheme
-                      .textButtonSmall
-                      .copyWith(fontSize: 13, fontWeight: FontWeight.w500)),
+                  style: Theme.of(context).textTheme.textButtonxSmall),
               const SizedBox(width: xxxTinierSpacing),
               const Icon(
                 Icons.arrow_forward_ios,

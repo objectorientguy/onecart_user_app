@@ -154,6 +154,16 @@ extension AppTextTheme on TextTheme {
         fontSize: 12, fontWeight: FontWeight.w700, color: AppColor.primary);
   }
 
+  TextStyle get textButtonxSmall {
+    return const TextStyle(
+        fontSize: 13, fontWeight: FontWeight.w500, color: AppColor.primary);
+  }
+
+  TextStyle get textButtonxxSmall {
+    return const TextStyle(
+        fontSize: 11, fontWeight: FontWeight.w400, color: AppColor.primary);
+  }
+
   TextStyle get medium {
     return const TextStyle(
         fontSize: 16, fontWeight: FontWeight.w500, color: AppColor.black);
