@@ -28,7 +28,8 @@ class AddressBottomSheet extends StatelessWidget {
                       topLeft: Radius.circular(smallCardCurve)),
                   boxShadow: [
                     BoxShadow(
-                        color: AppColor.lightBlack,  blurRadius: xxTiniestSpacing)
+                        color: AppColor.lightBlack,
+                        blurRadius: xxTiniestSpacing)
                   ]),
               child: ClipRRect(
                   borderRadius: const BorderRadius.only(
@@ -180,8 +181,10 @@ class AddressBottomSheet extends StatelessWidget {
                                               child: Container(
                                                   padding: const EdgeInsets
                                                           .symmetric(
-                                                      horizontal: xxTinierSpacing,
-                                                      vertical: xxxTinierSpacing),
+                                                      horizontal:
+                                                          xxTinierSpacing,
+                                                      vertical:
+                                                          xxxTinierSpacing),
                                                   decoration: BoxDecoration(
                                                     border: Border.all(
                                                         color: Colors.green,
@@ -190,10 +193,13 @@ class AddressBottomSheet extends StatelessWidget {
                                                         BorderRadius.circular(
                                                             xxxSmallestSpacing),
                                                   ),
-                                                  child:  Text(
-                                                    'EDIT',
-                                                    style: Theme.of(context).textTheme.xSmall.copyWith(color: AppColor.primary)
-                                                  )),
+                                                  child: Text('EDIT',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .xSmall
+                                                          .copyWith(
+                                                              color: AppColor
+                                                                  .primary))),
                                             ),
                                           ],
                                         ),
