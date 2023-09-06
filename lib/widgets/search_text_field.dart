@@ -26,14 +26,12 @@ class SearchTextField extends StatelessWidget {
             hintStyle: Theme.of(context).textTheme.xxTinier,
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(kSearchBarBorderRadius),
-                borderSide: const BorderSide(color: AppColor.lighterGrey)
-            ),
+                borderSide: const BorderSide(color: AppColor.lighterGrey)),
             prefixIcon: prefixicon,
-              contentPadding:
-                   const EdgeInsets.symmetric(horizontal: smallerSpacing, vertical: tiniestSpacing),
-              hintText: hintText,
-              ),
-
+            contentPadding: const EdgeInsets.symmetric(
+                horizontal: smallerSpacing, vertical: tiniestSpacing),
+            hintText: hintText,
+          ),
         )
       ],
     );

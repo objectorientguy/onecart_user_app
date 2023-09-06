@@ -33,8 +33,9 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding:  const EdgeInsets.symmetric(
-                        horizontal: leftRightMargin, vertical: topBottomPadding),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: leftRightMargin,
+                        vertical: topBottomPadding),
                     child: Column(
                       children: [
                         const AddressBar(),
@@ -47,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                           prefixicon: InkWell(
                               onTap: () {
                                 FocusScopeNode currentFocus =
-                                FocusScope.of(context);
+                                    FocusScope.of(context);
                                 if (!currentFocus.hasPrimaryFocus) {
                                   currentFocus.unfocus();
                                 }
@@ -56,7 +57,8 @@ class HomeScreen extends StatelessWidget {
                                       SearchAllProducts(
                                           searchTerm: myController.text));
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => const SearchScreen()));
+                                      builder: (context) =>
+                                          const SearchScreen()));
                                 }
                               },
                               child: const Icon(Icons.search_sharp)),
@@ -74,8 +76,8 @@ class HomeScreen extends StatelessWidget {
                     height: xxTiniestSpacing,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: smallestSpacing),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: smallestSpacing),
                     child: Text(
                       "Popular Shops",
                       style: Theme.of(context).textTheme.headingTiny,
@@ -94,9 +96,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: leftRightMargin, vertical: topBottomPadding),
-                    child:
-                        TodayDealsSection(state.homeModel.data!.deals!),
+                        horizontal: leftRightMargin,
+                        vertical: topBottomPadding),
+                    child: TodayDealsSection(state.homeModel.data!.deals!),
                   ),
                 ],
               ),

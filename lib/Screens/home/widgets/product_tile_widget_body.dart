@@ -5,8 +5,9 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/home/home_model.dart';
+import 'counter_widget.dart';
 
-class ProductTileWidgetBody extends StatelessWidget {
+class ProductTileWidgetBody extends StatefulWidget {
   const ProductTileWidgetBody({
     super.key,
     required this.screenwidth,
@@ -19,70 +20,107 @@ class ProductTileWidgetBody extends StatelessWidget {
   final int index;
 
   @override
+  State<ProductTileWidgetBody> createState() => _ProductTileWidgetBodyState();
+}
+
+class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
+  @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Row(
-          children: [
-            Text(
-              '₹ ${data[index].discountedCost!.toString()}',
-              style: Theme.of(context)
-                  .textTheme
-                  .textMediumx
-                  .copyWith(fontWeight: FontWeight.w500, color: AppColor.black),
-            ),
-            const SizedBox(
-              width: tiniestSpacing,
-            ),
-            Text(
-              '₹ ${data[index].price!.toString()}',
-              style: Theme.of(context).textTheme.xxGSmall.copyWith(
-                  color: AppColor.grey, decoration: TextDecoration.lineThrough),
-            ),
-            const SizedBox(
-              width: tiniestSpacing,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  border: Border.all(
-                    color: AppColor.primary,
-                  ),
-                  color: AppColor.primaryLight,
-                  borderRadius: BorderRadius.circular(kBorderDiscount)),
-              padding: const EdgeInsets.symmetric(
-                  vertical: xxTiniestSpacing, horizontal: xxxTinierSpacing),
-              child: Center(
-                child: Text('${data[index].discount!} % off',
-                    style: Theme.of(context).textTheme.xxxSmall.copyWith(
-                        color: AppColor.primary, fontWeight: FontWeight.w500)),
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                height: kSizedBoxHeight,
+                width: widget.screenwidth * 0.40,
+                child: Text(
+                  widget.data[widget.index].productName!,
+                  style: Theme.of(context).textTheme.subHeadingMedium.copyWith(
+                      fontWeight: FontWeight.w500, color: AppColor.black),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
+                ),
               ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: kAddButtonHeight,
-          width: kAddButtonWidth,
-          child: TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              minimumSize: Size.zero,
-              padding: const EdgeInsets.symmetric(
-                  horizontal: tinierSpacing, vertical: tiniestSpacing),
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(kAddRadius)),
-              backgroundColor: AppColor.primary,
-            ),
-            child: Text('ADD',
-                style: Theme.of(context)
-                    .textTheme
-                    .xxGSmall
-                    .copyWith(color: AppColor.white)),
+              const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('4.2'),
+                  SizedBox(
+                    width: xxxTiniestSpacing,
+                  ),
+                  Icon(
+                    Icons.star,
+                    size: kStarIcon,
+                    color: Colors.amber,
+                  )
+                ],
+              )
+            ],
           ),
-        )
-      ],
+          const SizedBox(
+            height: xxSmallestSpacing,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        '₹${widget.data[widget.index].discountedCost!.toString()}',
+                        style: Theme.of(context).textTheme.textMediumx.copyWith(
+                            fontWeight: FontWeight.w500, color: AppColor.black),
+                      ),
+                      const SizedBox(
+                        width: tiniestSpacing,
+                      ),
+                      Text(
+                        '₹${widget.data[widget.index].price!.toString()}',
+                        style: Theme.of(context).textTheme.xxGSmall.copyWith(
+                              color: AppColor.grey,
+                              decoration: TextDecoration.lineThrough,
+                            ),
+                      ),
+                      const SizedBox(
+                        width: tiniestSpacing,
+                      ),
+                    ],
+                  ),
+                  Container(
+                    width: kContainerWidth,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: AppColor.primary,
+                        ),
+                        color: AppColor.primaryLight,
+                        borderRadius: BorderRadius.circular(kBorderDiscount)),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: xxxTiniestSpacing,
+                        horizontal: xxxTiniestSpacing),
+                    child: Center(
+                      child: Text(
+                          '${widget.data[widget.index].discount!} % off',
+                          style: Theme.of(context).textTheme.xxxSmall.copyWith(
+                              color: AppColor.primary,
+                              fontWeight: FontWeight.w500)),
+                    ),
+                  ),
+                ],
+              ),
+              const CounterScreen(),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
