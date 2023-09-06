@@ -169,6 +169,11 @@ extension AppTextTheme on TextTheme {
         fontSize: 16, fontWeight: FontWeight.w500, color: AppColor.black);
   }
 
+  TextStyle get xmedium {
+    return const TextStyle(
+        fontSize: 15, fontWeight: FontWeight.w500, color: AppColor.black);
+  }
+
   TextStyle get mediumLarge {
     return const TextStyle(
         fontSize: 18, fontWeight: FontWeight.w500, color: AppColor.black);
