@@ -19,6 +19,7 @@ class GenericAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      actions: actions,
       title: Text(title, style: Theme.of(context).textTheme.xLarge),
       leading: InkWell(
         onTap: () {

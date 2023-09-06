@@ -21,7 +21,7 @@ class SelectVariantScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const GenericAppBar(title: 'Select Variant'),
+        appBar: const GenericAppBar(),
         bottomNavigationBar: BottomAppBar(
           child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -45,7 +45,7 @@ class SelectVariantScreen extends StatelessWidget {
                   return const Column(
                     children: [
                       SizedBox(
-                        height: 200,
+                        height: kSizedBoxInfinite,
                       ),
                       Center(child: CircularProgressIndicator()),
                     ],
@@ -57,19 +57,19 @@ class SelectVariantScreen extends StatelessWidget {
                         Row(
                           children: [
                             const SizedBox(
-                              width: 16,
+                              width: xxTinySpacing,
                             ),
                             CachedNetworkImage(
                               imageUrl: dataone.image![0],
                               errorWidget: (context, url, error) =>
                                   const Center(
                                       child: SizedBox(
-                                          width: 40,
+                                          width: kCacheImageWidth,
                                           child: Text(
                                             'No image',
                                             textAlign: TextAlign.center,
                                           ))),
-                              height: 40,
+                              height: xxLargeSpacing,
                             ),
                             const SizedBox(
                               width: xxxTinierSpacing,
@@ -78,9 +78,7 @@ class SelectVariantScreen extends StatelessWidget {
                                 child: Text(dataone.productName.toString(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .headingSmallx
-                                        .copyWith(
-                                            fontWeight: FontWeight.w700))),
+                                        .mediumLarge)),
                           ],
                         ),
                         const SizedBox(height: tinySpacing),
@@ -110,13 +108,13 @@ class SelectVariantScreen extends StatelessWidget {
                                         errorWidget: (context, url, error) =>
                                             const Center(
                                                 child: SizedBox(
-                                                    width: 40,
+                                                    width: kCacheImageWidth,
                                                     child: Text(
                                                       'No image',
                                                       textAlign:
                                                           TextAlign.center,
                                                     ))),
-                                        height: 40,
+                                        height: kCacheImageHeight,
                                       ),
                                       Column(
                                         crossAxisAlignment:
@@ -165,7 +163,7 @@ class SelectVariantScreen extends StatelessWidget {
                                                         AppColor.primaryLight,
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            15)),
+                                                            kDiscountRadius)),
                                                 padding:
                                                     const EdgeInsets.symmetric(
                                                         vertical:
@@ -205,7 +203,8 @@ class SelectVariantScreen extends StatelessWidget {
                                               MaterialTapTargetSize.shrinkWrap,
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
-                                                  BorderRadius.circular(12)),
+                                                  BorderRadius.circular(
+                                                      kGeneralBorderRadius)),
                                           backgroundColor: AppColor.primary,
                                         ),
                                         child: Text('SELECT',

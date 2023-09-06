@@ -23,14 +23,14 @@ class TodayDealsSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 10),
+          padding: const EdgeInsets.only(left: xxTinierSpacing),
           child: Text(
             "Today's Deals",
             style: Theme.of(context).textTheme.headingTiny,
           ),
         ),
         const SizedBox(
-          height: xxTinySpacing,
+          height: xxxSmallestSpacing,
         ),
         ListView.separated(
           physics: const NeverScrollableScrollPhysics(),
