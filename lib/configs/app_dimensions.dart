@@ -37,3 +37,11 @@ const double kCounterIcon = 16.0;
 const double kContainerWidth = 50.0;
 const double kSizedBoxHeight = 36.0;
 const double kCardElevation = 3.0;
+const double kForwardIconSize = 18.0;
+const double kForwardIconSizeSmall = 14.0;
+
+const double kVarientBoxHeight = 25.0;
+const double kDiscountRadius = 15.0;
+const double kStarIconSize = 20.0;
+const double kCartButtonHeight = 40.0;
+const double kCartButtonWidth = 110.0;
