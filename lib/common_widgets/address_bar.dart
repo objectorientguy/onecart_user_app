@@ -1,11 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import '../blocs/address_bloc/address_bloc.dart';
+import '../blocs/address_bloc/address_event.dart';
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
+import 'address_bottom__sheet.dart';
 
 class AddressBar extends StatefulWidget {
   const AddressBar({
@@ -29,7 +33,6 @@ class _AddressBarState extends State<AddressBar> {
       await Geolocator.openLocationSettings();
       return Future.error('Location services are disabled.');
     }
-
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
@@ -37,7 +40,6 @@ class _AddressBarState extends State<AddressBar> {
         return Future.error('Location permissions are denied');
       }
     }
-
     if (permission == LocationPermission.deniedForever) {
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
@@ -60,7 +62,20 @@ class _AddressBarState extends State<AddressBar> {
 
   @override
   Widget build(BuildContext context) {
+    context.read<AddressBloc>().add(FetchAddress());
+
     return InkWell(
+      onDoubleTap: () {
+        Scaffold.of(context).showBottomSheet<void>(
+            elevation: 10,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(smallCardCurve),
+                    topLeft: Radius.circular(smallCardCurve))),
+            (BuildContext context) {
+          return const AddressBottomSheet();
+        });
+      },
       onTap: () async {
         Position position = await getCurrentPosition();
         location = 'Lat: ${position.latitude} , Long: ${position.longitude}';

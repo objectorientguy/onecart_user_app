@@ -1,5 +1,8 @@
 const double kZero = 0.0;
 const double kBottomNavBarIconSize = 26.0;
+const double spacingTinier = 1;
+const double smallCardCurve = 25;
+const double kBottomBarWidth = 130;
 const double kBottomNavBarHeight = 90.0;
 const double kBottomNavBarHeightX = 70.0;
 const double kBottomNavBarRadius = 20.0;
