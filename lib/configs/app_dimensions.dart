@@ -41,6 +41,7 @@ const double kForwardIconSize = 18.0;
 const double kForwardIconSizeSmall = 14.0;
 
 const double kVarientBoxHeight = 25.0;
+const double kProductSizedBox = 95.0;
 const double kDiscountRadius = 15.0;
 const double kStarIconSize = 20.0;
 const double kCartButtonHeight = 40.0;
