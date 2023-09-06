@@ -36,3 +36,4 @@ const double kAddButtonHeight = 35.0;
 const double kCounterIcon = 16.0;
 const double kContainerWidth = 50.0;
 const double kSizedBoxHeight = 36.0;
+const double kCardElevation = 3.0;

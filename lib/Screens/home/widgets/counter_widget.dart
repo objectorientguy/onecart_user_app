@@ -41,7 +41,7 @@ class _CounterScreenState extends State<CounterScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton(
-              onPressed: _incrementCount,
+              onPressed: _decrementCount,
               style: TextButton.styleFrom(
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -50,7 +50,7 @@ class _CounterScreenState extends State<CounterScreen> {
                   ),
                   side: const BorderSide(color: AppColor.primary)),
               child: const Icon(
-                Icons.add,
+                Icons.remove,
                 size: kCounterIcon,
               ),
             ),
@@ -62,7 +62,7 @@ class _CounterScreenState extends State<CounterScreen> {
                   .copyWith(fontWeight: FontWeight.w500, color: AppColor.black),
             ),
             TextButton(
-              onPressed: _decrementCount,
+              onPressed: _incrementCount,
               style: TextButton.styleFrom(
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -71,7 +71,7 @@ class _CounterScreenState extends State<CounterScreen> {
                   ),
                   side: const BorderSide(color: AppColor.primary)),
               child: const Icon(
-                Icons.remove,
+                Icons.add,
                 size: kCounterIcon,
               ),
             ),

@@ -26,7 +26,7 @@ class ProductTileWidget extends StatelessWidget {
         children: [
           Center(
             child: Card(
-              elevation: 3,
+              elevation: kCardElevation,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(kBorderRadiusSmall)),
               child: Padding(
