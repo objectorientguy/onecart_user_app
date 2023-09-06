@@ -67,7 +67,7 @@ class _AddressBarState extends State<AddressBar> {
     return InkWell(
       onDoubleTap: () {
         Scaffold.of(context).showBottomSheet<void>(
-            elevation: 10,
+            elevation: xxTinierSpacing,
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(smallCardCurve),
@@ -115,7 +115,6 @@ class _AddressBarState extends State<AddressBar> {
               left: kCircleAvatarRadius,
             ),
             child: SizedBox(
-              //width: MediaQuery.of(context).size.width * 0.6,
               child: Text(
                 address,
                 style: Theme.of(context).textTheme.subHeadingMedium,

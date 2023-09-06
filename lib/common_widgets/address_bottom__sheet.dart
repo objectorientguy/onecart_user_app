@@ -21,21 +21,21 @@ class AddressBottomSheet extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         } else if (state is FetchAddressLoaded) {
           return Container(
-              height: 350,
+              height: kBottomSheetHeight,
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(smallCardCurve),
                       topLeft: Radius.circular(smallCardCurve)),
                   boxShadow: [
                     BoxShadow(
-                        color: Colors.black12, spreadRadius: 0, blurRadius: 4)
+                        color: AppColor.lightBlack,  blurRadius: xxTiniestSpacing)
                   ]),
               child: ClipRRect(
                   borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(smallCardCurve),
                       topLeft: Radius.circular(smallCardCurve)),
                   child: BottomAppBar(
-                    elevation: 8,
+                    elevation: xxxTinierSpacing,
                     child: Padding(
                         padding: const EdgeInsets.only(
                             left: topBottomPadding,
@@ -71,7 +71,7 @@ class AddressBottomSheet extends StatelessWidget {
                                     const SizedBox(width: kBottomBarWidth),
                                     const Icon(
                                       Icons.arrow_forward_ios_outlined,
-                                      size: 20,
+                                      size: xxxSmallestSpacing,
                                     ),
                                   ]),
                               const Divider(height: xxxSmallerSpacing),
@@ -92,7 +92,7 @@ class AddressBottomSheet extends StatelessWidget {
                                     separatorBuilder: (context, index) =>
                                         const Divider(
                                           height: smallestSpacing,
-                                          thickness: 2,
+                                          thickness: xxxTiniestSpacing,
                                         ),
                                     itemBuilder: (context, index) {
                                       return Padding(
@@ -110,8 +110,8 @@ class AddressBottomSheet extends StatelessWidget {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                    height: 40,
-                                                    width: 40,
+                                                    height: xMediumSpacing,
+                                                    width: xMediumSpacing,
                                                     decoration: const BoxDecoration(
                                                         color: AppColor
                                                             .primaryLighter,
@@ -180,21 +180,19 @@ class AddressBottomSheet extends StatelessWidget {
                                               child: Container(
                                                   padding: const EdgeInsets
                                                           .symmetric(
-                                                      horizontal: 8,
-                                                      vertical: 7),
+                                                      horizontal: xxTinierSpacing,
+                                                      vertical: xxxTinierSpacing),
                                                   decoration: BoxDecoration(
                                                     border: Border.all(
                                                         color: Colors.green,
-                                                        width: 1.0),
+                                                        width: spacingTinier),
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            20),
+                                                            xxxSmallestSpacing),
                                                   ),
-                                                  child: const Text(
+                                                  child:  Text(
                                                     'EDIT',
-                                                    style: TextStyle(
-                                                        color: AppColor.primary,
-                                                        fontSize: 14),
+                                                    style: Theme.of(context).textTheme.xSmall.copyWith(color: AppColor.primary)
                                                   )),
                                             ),
                                           ],
