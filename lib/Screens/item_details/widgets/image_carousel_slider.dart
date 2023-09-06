@@ -75,11 +75,11 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                   children: [
                     Icon(
                       Icons.circle,
-                      color: AppColor.black,
+                      color: AppColor.paleBlack,
                       size: 7,
                     ),
                     SizedBox(
-                      width: 2,
+                      width: 4,
                     )
                   ],
                 );
@@ -88,11 +88,11 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                 children: [
                   Icon(
                     Icons.circle,
-                    color: AppColor.grey,
+                    color: AppColor.paleGrey,
                     size: 7,
                   ),
                   SizedBox(
-                    width: 2,
+                    width: 4,
                   )
                 ],
               );

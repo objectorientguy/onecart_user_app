@@ -1,4 +1,3 @@
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,7 +51,7 @@ class ItemDetailsSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: 20,
+                    height: 25,
                     child: Text(itemData.weight.toString(),
                         style: Theme.of(context)
                             .textTheme
@@ -104,13 +103,8 @@ class ItemDetailsSection extends StatelessWidget {
           ),
           const SizedBox(height: xxxTiniestSpacing),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              FavoriteButton(
-                valueChanged: () {},
-                iconSize: 35,
-                iconColor: AppColor.primary,
-              ),
               TextButton(
                 onPressed: () {},
                 style: TextButton.styleFrom(
@@ -163,6 +157,9 @@ class ItemDetailsSection extends StatelessWidget {
           ),
           const SizedBox(height: xxxTinySpacing),
           SizedBox(child: Text(itemData.description.toString())),
+          const Row(
+            children: [],
+          )
         ],
       ),
     );
