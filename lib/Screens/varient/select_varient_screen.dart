@@ -21,7 +21,7 @@ class SelectVariantScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const GenericAppBar(title: 'Select Variant'),
+        appBar: const GenericAppBar(),
         bottomNavigationBar: BottomAppBar(
           child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -69,7 +69,7 @@ class SelectVariantScreen extends StatelessWidget {
                                             'No image',
                                             textAlign: TextAlign.center,
                                           ))),
-                              height: 40,
+                              height: 50,
                             ),
                             const SizedBox(
                               width: xxxTinierSpacing,
@@ -78,9 +78,7 @@ class SelectVariantScreen extends StatelessWidget {
                                 child: Text(dataone.productName.toString(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .headingSmallx
-                                        .copyWith(
-                                            fontWeight: FontWeight.w700))),
+                                        .mediumLarge)),
                           ],
                         ),
                         const SizedBox(height: tinySpacing),
