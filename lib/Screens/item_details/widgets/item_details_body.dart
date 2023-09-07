@@ -1,3 +1,4 @@
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/home/widgets/counter_widget.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/star_widget.dart';
@@ -22,33 +23,43 @@ class ItemDetailsBody extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
               horizontal: kZero, vertical: xxxSmallestSpacing),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const StarDisplayWidget(
-                  filledStar: Icon(
-                    Icons.star,
-                    color: Colors.amber,
-                    size: kStarIconSize,
-                  ),
-                  unfilledStar: Icon(
-                    Icons.star_border,
-                    color: Colors.amber,
-                    size: kStarIconSize,
-                  ),
-                  halfFilledStar: Icon(
-                    Icons.star_half,
-                    color: Colors.amber,
-                    size: kStarIconSize,
-                  ),
-                  value: 2.5),
-              const SizedBox(width: xxxTinierSpacing),
-              Text('5 Ratings',
-                  style: Theme.of(context).textTheme.textButtonxSmall),
-              const SizedBox(width: xxxTinierSpacing),
-              const Icon(
-                Icons.arrow_forward_ios,
-                color: AppColor.primary,
-                size: kForwardIconSizeSmall,
-              )
+              Row(
+                children: [
+                  const StarDisplayWidget(
+                      filledStar: Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                        size: kStarIconSize,
+                      ),
+                      unfilledStar: Icon(
+                        Icons.star_border,
+                        color: Colors.amber,
+                        size: kStarIconSize,
+                      ),
+                      halfFilledStar: Icon(
+                        Icons.star_half,
+                        color: Colors.amber,
+                        size: kStarIconSize,
+                      ),
+                      value: 2.5),
+                  const SizedBox(width: xxxTinierSpacing),
+                  Text('5 Ratings',
+                      style: Theme.of(context).textTheme.textButtonxSmall),
+                  const SizedBox(width: xxxTinierSpacing),
+                  const Icon(
+                    Icons.arrow_forward_ios,
+                    color: AppColor.primary,
+                    size: kForwardIconSizeSmall,
+                  )
+                ],
+              ),
+              FavoriteButton(
+                valueChanged: () {},
+                iconSize: kFavouriteButton,
+                //iconColor: AppColor.primary,
+              ),
             ],
           ),
         ),
