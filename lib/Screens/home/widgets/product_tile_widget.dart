@@ -25,7 +25,7 @@ class ProductTileWidget extends StatelessWidget {
         children: [
           Center(
               child: Card(
-                margin: EdgeInsets.zero,
+                  margin: EdgeInsets.zero,
                   elevation: kCardElevation,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(kBorderRadiusSmall)),
@@ -39,7 +39,7 @@ class ProductTileWidget extends StatelessWidget {
                                   BorderRadius.circular(kBorderRadiusSmall)),
                           child: Image.network(data[index].image![0].toString(),
                               fit: BoxFit.fill))))),
-          const SizedBox(width: xxxTinierSpacing),
+          const SizedBox(width: tinierSpacing),
           ProductTileWidgetBody(
               screenwidth: screenwidth, data: data, index: index)
         ]);

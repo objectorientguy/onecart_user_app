@@ -30,7 +30,7 @@ class TodayDealsSection extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: xxTinySpacing,
+          height: xxxSmallestSpacing,
         ),
         ListView.separated(
           physics: const NeverScrollableScrollPhysics(),
