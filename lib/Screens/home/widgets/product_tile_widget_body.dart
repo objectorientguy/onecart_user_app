@@ -94,6 +94,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                             TextDecoration.lineThrough)),
                             const SizedBox(width: tiniestSpacing)
                           ]),
+                          const SizedBox(height: xxxTiniestSpacing),
                           Container(
                               width: kContainerWidth,
                               decoration: BoxDecoration(

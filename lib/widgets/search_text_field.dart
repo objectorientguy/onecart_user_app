@@ -31,7 +31,7 @@ class SearchTextField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(kSearchBarBorderRadius),
                 borderSide: const BorderSide(color: AppColor.primary)),
             prefixIcon: prefixicon,
-            contentPadding:  const EdgeInsets.symmetric(
+            contentPadding: const EdgeInsets.symmetric(
                 horizontal: smallerSpacing, vertical: tiniestSpacing),
             hintText: hintText,
           ),
