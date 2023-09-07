@@ -4,12 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-import '../blocs/address_bloc/address_bloc.dart';
-import '../blocs/address_bloc/address_event.dart';
-import '../configs/app_color.dart';
-import '../configs/app_dimensions.dart';
-import '../configs/app_spacing.dart';
-import 'address_bottom_sheet.dart';
+import '../../../blocs/address_bloc/address_bloc.dart';
+import '../../../blocs/address_bloc/address_event.dart';
+import '../../../common_widgets/address_bottom_sheet.dart';
+import '../../../configs/app_color.dart';
+import '../../../configs/app_dimensions.dart';
+import '../../../configs/app_spacing.dart';
 
 class AddressBar extends StatefulWidget {
   const AddressBar({
@@ -68,6 +68,7 @@ class _AddressBarState extends State<AddressBar> {
       onDoubleTap: () {
         Scaffold.of(context).showBottomSheet<void>(
             elevation: xxTinierSpacing,
+            backgroundColor: Colors.grey,
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(smallCardCurve),

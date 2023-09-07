@@ -9,12 +9,14 @@ class GenericAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.title = '',
       this.leading,
       this.actions,
+      this.style,
       this.centerTitle = true})
       : super(key: key);
   final bool? centerTitle;
   final String title;
   final Widget? leading;
   final List<Widget>? actions;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {

@@ -9,11 +9,13 @@ class SearchTextField extends StatelessWidget {
   final String hintText;
   final Widget prefixicon;
   final TextEditingController textcontroller;
+  final TextStyle? hintStyle;
   const SearchTextField(
       {super.key,
       required this.hintText,
       required this.prefixicon,
-      required this.textcontroller});
+      required this.textcontroller,
+      this.hintStyle});
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +24,20 @@ class SearchTextField extends StatelessWidget {
         TextField(
           controller: textcontroller,
           decoration: InputDecoration(
-            prefixIconColor: AppColor.darkGrey,
-            hintStyle: Theme.of(context).textTheme.xxTinier,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(kSearchBarBorderRadius),
-                borderSide: const BorderSide(color: AppColor.lighterGrey)),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(kSearchBarBorderRadius),
-                borderSide: const BorderSide(color: AppColor.primary)),
-            prefixIcon: prefixicon,
-            contentPadding: const EdgeInsets.symmetric(
-                horizontal: smallerSpacing, vertical: tiniestSpacing),
-            hintText: hintText,
-          ),
+              prefixIconColor: AppColor.darkGrey,
+              hintStyle: Theme.of(context).textTheme.xxTinier,
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(kSearchBarBorderRadius),
+                  borderSide: const BorderSide(color: AppColor.lighterGrey)),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(kSearchBarBorderRadius),
+                  borderSide: const BorderSide(color: AppColor.primary)),
+              prefixIcon: prefixicon,
+              contentPadding: const EdgeInsets.symmetric(
+                  horizontal: smallerSpacing, vertical: tiniestSpacing),
+              hintText: hintText,
+              fillColor: AppColor.white,
+              filled: true),
         )
       ],
     );
