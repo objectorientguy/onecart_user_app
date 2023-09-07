@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/get_product_bloc/get_product_events.dart';
 import 'package:onecart_user_app/blocs/get_product_bloc/get_product_states.dart';
@@ -29,4 +28,5 @@ class GetProductBloc extends Bloc<GetProduct, GetProductStates> {
     //   emit(FetchProductError(message: e.toString()));
     // }
   }
+
 }

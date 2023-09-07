@@ -6,14 +6,19 @@ import '../../item_details/item_details_screen.dart';
 
 class StoreItemList extends StatelessWidget {
   final List<Deal> storedata;
+  final bool toShow;
 
   const StoreItemList({
     super.key,
     required this.storedata,
+    required this.toShow,
   });
 
   @override
   Widget build(BuildContext context) {
+    storedata.sort((a, b) => a.price!.compareTo(b.price!));
+
+
     double screenwidth = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       child: Padding(

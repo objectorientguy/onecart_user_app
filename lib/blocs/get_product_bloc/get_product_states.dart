@@ -17,3 +17,4 @@ class FetchProductError extends GetProductStates {
 
   FetchProductError({required this.message});
 }
+

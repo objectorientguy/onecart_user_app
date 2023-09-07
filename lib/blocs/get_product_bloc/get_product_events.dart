@@ -5,3 +5,8 @@ class FetchProduct extends GetProduct {
 
   FetchProduct({required this.cateId});
 }
+
+class SortByPrice extends GetProduct{
+  final bool sortPrice;
+  SortByPrice({required this.sortPrice});
+}
