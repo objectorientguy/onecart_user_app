@@ -69,9 +69,19 @@ extension AppTextTheme on TextTheme {
         fontSize: 15, fontWeight: FontWeight.w400, color: AppColor.black);
   }
 
+  TextStyle get headingxTiny {
+    return const TextStyle(
+        fontSize: 13, fontWeight: FontWeight.w500, color: AppColor.black);
+  }
+
   TextStyle get subHeadingLarge {
     return const TextStyle(
         fontSize: 15, fontWeight: FontWeight.w400, color: AppColor.grey);
+  }
+
+  TextStyle get subHeadingxLarge {
+    return const TextStyle(
+        fontSize: 12, fontWeight: FontWeight.w400, color: AppColor.grey);
   }
 
   TextStyle get xxTinier {
@@ -92,6 +102,11 @@ extension AppTextTheme on TextTheme {
   TextStyle get subHeadingMedium {
     return const TextStyle(
         fontSize: 13, fontWeight: FontWeight.w400, color: AppColor.grey);
+  }
+
+  TextStyle get subHeadingxMedium {
+    return const TextStyle(
+        fontSize: 11, fontWeight: FontWeight.w400, color: AppColor.grey);
   }
 
   TextStyle get subHeadingSmall {
@@ -139,6 +154,11 @@ extension AppTextTheme on TextTheme {
         fontSize: 10, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
   }
 
+  TextStyle get textxSmall {
+    return const TextStyle(
+        fontSize: 9, fontWeight: FontWeight.w600, color: AppColor.primary);
+  }
+
   TextStyle get textButtonLarge {
     return const TextStyle(
         fontSize: 14, fontWeight: FontWeight.w400, color: AppColor.white);
@@ -176,7 +196,7 @@ extension AppTextTheme on TextTheme {
 
   TextStyle get mediumLarge {
     return const TextStyle(
-        fontSize: 18, fontWeight: FontWeight.w500, color: AppColor.black);
+        fontSize: 19, fontWeight: FontWeight.w500, color: AppColor.black);
   }
 
   TextStyle get xLarge {
