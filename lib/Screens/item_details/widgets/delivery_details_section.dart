@@ -12,52 +12,52 @@ class DeliverDetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List deliveryData = [
+      {'title': '7 day return'},
+      {'title': 'Same day shipping'},
+      {'title': 'Cancellable'},
+    ];
     return SizedBox(
       height: kHorizontalCategoryListHeight,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
-        itemCount: 5,
+        itemCount: deliveryData.length,
         itemBuilder: (context, index) {
-          if (index == 0 || index == 4) {
-            return const SizedBox();
-          }
           return Container(
             padding: const EdgeInsets.all(leftRightMargin),
             width: kHorizontalCategoryListHeight,
             height: kHorizontalCategoryListHeight,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColor.primaryMedium, width: 1),
+              borderRadius: BorderRadius.circular(kGeneralBorderRadius),
+              border: Border.all(
+                  color: AppColor.lightestGrey, width: kButtonBorderWidth),
             ),
-            child: Center(
-              child: Column(
-                children: [
-                  Expanded(
-                      child: Center(
-                          child: Container(
-                              height: 40,
-                              width: 40,
-                              decoration: const BoxDecoration(
-                                  color: AppColor.primaryLighter,
-                                  shape: BoxShape.circle),
-                              child: const Icon(
-                                Icons.local_shipping_outlined,
-                                color: AppColor.primary,
-                              )))),
-                  const SizedBox(height: tinierSpacing),
-                  SizedBox(
-                      width: kHorizontalCategoryListItemWidth,
-                      child: Text(
-                        'Same Day Delivery',
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .textMedium
-                            .copyWith(color: AppColor.primary),
-                      ))
-                ],
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                    child: Center(
+                        child: Container(
+                            height: kCacheImageHeight,
+                            width: kCacheImageWidth,
+                            decoration: const BoxDecoration(
+                                color: AppColor.primaryLighter,
+                                shape: BoxShape.circle),
+                            child: const Icon(
+                              Icons.local_shipping_outlined,
+                              color: AppColor.primary,
+                            )))),
+                const SizedBox(height: tinierSpacing),
+                SizedBox(
+                    width: kHorizontalCategoryListItemWidth,
+                    child: Text(
+                      deliveryData[index]['title'],
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.textMediumx.copyWith(
+                          color: AppColor.primary, fontWeight: FontWeight.w400),
+                    ))
+              ],
             ),
           );
         },

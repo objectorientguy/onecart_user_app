@@ -72,123 +72,131 @@ class Data {
 
 class PromotinalBanner {
   final dynamic description;
+  final bool? isActive;
+  final int? bannerId;
+  final String? bannerImage;
   final String? discount;
   final String? tAc;
-  final String? bannerImage;
-  final int? bannerId;
-  final bool? isActive;
 
   PromotinalBanner({
     this.description,
+    this.isActive,
+    this.bannerId,
+    this.bannerImage,
     this.discount,
     this.tAc,
-    this.bannerImage,
-    this.bannerId,
-    this.isActive,
   });
 
   factory PromotinalBanner.fromJson(Map<String, dynamic> json) =>
       PromotinalBanner(
         description: json["description"],
+        isActive: json["isActive"],
+        bannerId: json["banner_id"],
+        bannerImage: json["banner_image"],
         discount: json["discount"],
         tAc: json["tAc"],
-        bannerImage: json["banner_image"],
-        bannerId: json["banner_id"],
-        isActive: json["isActive"],
       );
 
   Map<String, dynamic> toJson() => {
         "description": description,
+        "isActive": isActive,
+        "banner_id": bannerId,
+        "banner_image": bannerImage,
         "discount": discount,
         "tAc": tAc,
-        "banner_image": bannerImage,
-        "banner_id": bannerId,
-        "isActive": isActive,
       };
 }
 
 class Category {
-  final String? categoryName;
   final String? categoryImage;
+  final String? categoryName;
   final int? categoryId;
 
   Category({
-    this.categoryName,
     this.categoryImage,
+    this.categoryName,
     this.categoryId,
   });
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
-        categoryName: json["category_name"],
         categoryImage: json["category_image"],
+        categoryName: json["category_name"],
         categoryId: json["category_id"],
       );
 
   Map<String, dynamic> toJson() => {
-        "category_name": categoryName,
         "category_image": categoryImage,
+        "category_name": categoryName,
         "category_id": categoryId,
       };
 }
 
 class Deal {
-  final int? categoryId;
+  final int? productId;
   final String? productName;
+  final bool? deal;
+  final double? price;
+  final double? discountedCost;
+  final String? description;
+  final String? companyName;
+  final int? categoryId;
+  final int? brandId;
   final List<String>? image;
   final int? itemCount;
   final int? discount;
   final String? details;
-  final String? companyName;
-  final int? productId;
-  final String? brandName;
-  final bool? deal;
-  final double? price;
-  final double? discountedCost;
+  final String? weight;
 
   Deal({
-    this.categoryId,
+    this.productId,
     this.productName,
+    this.deal,
+    this.price,
+    this.discountedCost,
+    this.description,
+    this.companyName,
+    this.categoryId,
+    this.brandId,
     this.image,
     this.itemCount,
     this.discount,
     this.details,
-    this.companyName,
-    this.productId,
-    this.brandName,
-    this.deal,
-    this.price,
-    this.discountedCost,
+    this.weight,
   });
 
   factory Deal.fromJson(Map<String, dynamic> json) => Deal(
-        categoryId: json["category_id"],
+        productId: json["product_id"],
         productName: json["product_name"],
+        deal: json["deal"],
+        price: json["price"],
+        discountedCost: json["discounted_cost"],
+        description: json["description"],
+        companyName: json["company_name"],
+        categoryId: json["category_id"],
+        brandId: json["brand_id"],
         image: json["image"] == null
             ? []
             : List<String>.from(json["image"]!.map((x) => x)),
         itemCount: json["item_count"],
         discount: json["discount"],
         details: json["details"],
-        companyName: json["company_name"],
-        productId: json["product_id"],
-        brandName: json["brand_name"],
-        deal: json["deal"],
-        price: json["price"],
-        discountedCost: json["discounted_cost"],
+        weight: json["weight"],
       );
 
   Map<String, dynamic> toJson() => {
-        "category_id": categoryId,
+        "product_id": productId,
         "product_name": productName,
+        "deal": deal,
+        "price": price,
+        "discounted_cost": discountedCost,
+        "description": description,
+        "company_name": companyName,
+        "category_id": categoryId,
+        "brand_id": brandId,
         "image": image == null ? [] : List<dynamic>.from(image!.map((x) => x)),
         "item_count": itemCount,
         "discount": discount,
         "details": details,
-        "company_name": companyName,
-        "product_id": productId,
-        "brand_name": brandName,
-        "deal": deal,
-        "price": price,
-        "discounted_cost": discountedCost,
+        "weight": weight,
       };
 }
