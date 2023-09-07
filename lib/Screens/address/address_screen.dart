@@ -27,7 +27,7 @@ class AddressScreen extends StatelessWidget {
         title: 'My Addresses',
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(xxxTinySpacing),
         child: CustomElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, AddAddressScreen.routeName,
@@ -46,7 +46,7 @@ class AddressScreen extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(xxTinierSpacing),
               child: BlocBuilder<AddressBloc, AddressStates>(
                 builder: (context, state) {
                   if (state is FetchAddressLoading) {
@@ -58,7 +58,7 @@ class AddressScreen extends StatelessWidget {
                         itemCount: state.fetchAddressModel.data!.length,
                         separatorBuilder: (context, index) => const Divider(
                               height: smallestSpacing,
-                              thickness: 2,
+                              thickness: xxxTiniestSpacing,
                             ),
                         itemBuilder: (context, index) {
                           return Padding(
@@ -66,19 +66,21 @@ class AddressScreen extends StatelessWidget {
                                 horizontal: xxxTinierSpacing),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                        height: 40,
-                                        width: 40,
+                                        height: xMediumSpacing,
+                                        width: xMediumSpacing,
                                         decoration: const BoxDecoration(
                                             color: AppColor.primaryLighter,
                                             shape: BoxShape.circle),
                                         child: const Icon(
                                           Icons.location_on_outlined,
+                                          size: smallestSpacing,
                                           color: AppColor.primary,
                                         )),
                                     const SizedBox(
@@ -109,7 +111,7 @@ class AddressScreen extends StatelessWidget {
                                               .toString(),
                                           style: Theme.of(context)
                                               .textTheme
-                                              .subHeadingLargex,
+                                              .xxGSmall,
                                         ),
                                         Text(
                                           state.fetchAddressModel.data![index]
@@ -117,7 +119,7 @@ class AddressScreen extends StatelessWidget {
                                               .toString(),
                                           style: Theme.of(context)
                                               .textTheme
-                                              .textMediumx,
+                                              .xxGSmall,
                                         ),
                                       ],
                                     ),
@@ -130,18 +132,24 @@ class AddressScreen extends StatelessWidget {
                                         arguments: state.addressDetails[index]);
                                   },
                                   child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 7),
+                                      width: kBottomNavBarHeightX,
                                       decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Colors.green, width: 1.0),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: const Text(
-                                        'EDIT',
-                                        style: TextStyle(
+                                          border: Border.all(
                                             color: AppColor.primary,
-                                            fontSize: 14),
+                                          ),
+                                          color: AppColor.primaryLight,
+                                          borderRadius: BorderRadius.circular(
+                                              kBorderDiscount)),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: xxTiniestSpacing,
+                                          horizontal: xxxTinierSpacing),
+                                      child: const Center(
+                                        child: Text(
+                                          'EDIT',
+                                          style: TextStyle(
+                                              color: AppColor.primary,
+                                              fontSize: xxxTinySpacing),
+                                        ),
                                       )),
                                 ),
                               ],
