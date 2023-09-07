@@ -58,3 +58,5 @@ const double kBorderWidth = 0.5;
 const double kButtonBorderWidth = 0.3;
 const double kFavouriteButton = 35.0;
 const double kDotSize = 7.0;
+const double kIconSizeSmall = 20.0;
+const double kCategoryAppBarElevation = 4.0;
