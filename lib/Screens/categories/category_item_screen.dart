@@ -24,7 +24,7 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
     bool price = false;
     return Scaffold(
         appBar: AppBar(
-          elevation: 4,
+          elevation: kCategoryAppBarElevation,
           leading: InkWell(
               child: const Icon(
                 Icons.arrow_back,
@@ -42,11 +42,11 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                     Text(state.getProductByIdModel.category!.categoryName!,
                         style: const TextStyle(color: Colors.black)),
                     Row(children: [
-                      Container(
-                        child:
-                            Image.asset('assets/filter-filled-tool-symbol.png'),
+                      SizedBox(
                         height: kIconSizeSmall,
                         width: kIconSizeSmall,
+                        child:
+                            Image.asset('assets/filter-filled-tool-symbol.png'),
                       ),
                       const SizedBox(width: smallestSpacing),
                       InkWell(
@@ -56,11 +56,11 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                                 categoryModel: state.getProductByIdModel,
                                 productsList: state.productsList));
                           },
-                          child: Container(
-                              child:
-                                  Image.asset('assets/up-and-down-arrow.png'),
+                          child: SizedBox(
                               height: kIconSizeSmall,
-                              width: kIconSizeSmall))
+                              width: kIconSizeSmall,
+                              child:
+                                  Image.asset('assets/up-and-down-arrow.png')))
                     ])
                   ]);
             }
