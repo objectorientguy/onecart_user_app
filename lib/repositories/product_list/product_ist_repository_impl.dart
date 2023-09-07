@@ -10,5 +10,4 @@ class ProductsRepositoryImpl extends ProductsRepository {
         .get("https://oneart.onrender.com/products/categories/$categoryId");
     return GetProductByIdModel.fromJson(response);
   }
-
 }

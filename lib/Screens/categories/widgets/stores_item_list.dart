@@ -16,42 +16,33 @@ class StoreItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    storedata.sort((a, b) => a.price!.compareTo(b.price!));
-
-
-    double screenwidth = MediaQuery.of(context).size.width;
+    double screenWidth = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
-        child: Column(
-          children: [
-            const SizedBox(height: 40),
-            ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: storedata.length,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, ItemDetailsScreen.routeName,
-                        arguments: storedata[index]);
+        child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
+            child: Column(children: [
+              const SizedBox(height: xMediumSpacing),
+              ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: storedata.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, ItemDetailsScreen.routeName,
+                              arguments: storedata[index]);
+                        },
+                        child: ProductTileWidget(
+                            screenwidth: screenWidth,
+                            data: storedata,
+                            index: index));
                   },
-                  child: ProductTileWidget(
-                    screenwidth: screenwidth,
-                    data: storedata,
-                    index: index,
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) {
-                return const Divider(
-                  height: xxxSmallSpacing,
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-    );
+                  separatorBuilder: (context, index) {
+                    return const Divider(
+                      height: xxxSmallSpacing,
+                    );
+                  })
+            ])));
   }
 }
