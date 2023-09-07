@@ -20,7 +20,7 @@ class SelectVarientBody extends StatelessWidget {
             shrinkWrap: true,
             itemCount: selectVarientListModel.data!.length,
             separatorBuilder: (context, index) =>
-                const SizedBox(height: xxxTinySpacing),
+                const SizedBox(height: tinySpacing),
             itemBuilder: (context, index) {
               return Container(
                   padding: const EdgeInsets.symmetric(
@@ -29,8 +29,7 @@ class SelectVarientBody extends StatelessWidget {
                       color: AppColor.white,
                       border: Border.all(
                           color: AppColor.lightestGrey, width: kBorderWidth),
-                      borderRadius:
-                          BorderRadius.circular(kGeneralBorderRadius)),
+                      borderRadius: BorderRadius.circular(kAddRadius)),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -40,27 +39,29 @@ class SelectVarientBody extends StatelessWidget {
                               Text(
                                   selectVarientListModel.data![index].weight
                                       .toString(),
-                                  style:
-                                      Theme.of(context).textTheme.headingxTiny),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headingxxTiny),
                               const SizedBox(height: xxxTiniestSpacing),
                               Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       '₹${selectVarientListModel.data![index].discountedCost.toString()}',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subHeadingxLarge,
+                                          .subHeadingxxLarge,
                                     ),
                                     const SizedBox(width: xxxTinierSpacing),
                                     Text(
                                         '₹${selectVarientListModel.data![index].variantPrice.toString()}',
                                         style: Theme.of(context)
                                             .textTheme
-                                            .subHeadingxMedium
+                                            .subHeadingxxMedium
                                             .copyWith(
-                                                decoration: TextDecoration
-                                                    .lineThrough)),
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                            )),
                                     const SizedBox(width: xxxTinierSpacing),
                                     Container(
                                         decoration: BoxDecoration(
@@ -87,8 +88,8 @@ class SelectVarientBody extends StatelessWidget {
                           style: TextButton.styleFrom(
                             minimumSize: Size.zero,
                             padding: const EdgeInsets.symmetric(
-                                horizontal: tinierSpacing,
-                                vertical: xxTiniestSpacing),
+                                horizontal: xxxTinySpacing,
+                                vertical: tiniestSpacing),
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             shape: RoundedRectangleBorder(
                                 borderRadius:
@@ -97,7 +98,7 @@ class SelectVarientBody extends StatelessWidget {
                           ),
                           child: Text('SELECT',
                               style:
-                                  Theme.of(context).textTheme.textButtonLarge),
+                                  Theme.of(context).textTheme.textButtonxLarge),
                         )
                       ]));
             }));

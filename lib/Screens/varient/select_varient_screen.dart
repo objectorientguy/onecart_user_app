@@ -76,7 +76,7 @@ class SelectVariantScreen extends StatelessWidget {
                                     ))),
                             height: xxLargeSpacing),
                         const SizedBox(
-                          width: xxxTinierSpacing,
+                          width: tinierSpacing,
                         ),
                         Flexible(
                             child: Text(dataone.productName.toString(),
