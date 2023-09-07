@@ -18,7 +18,7 @@ const double kHorizontalCategoryListHeight = 135.0;
 const double kHorizontalCategoryListItemWidth = 80.0;
 const double kNavToolbarHeight = 80.0;
 const double kElevatedButtonHeight = 60.0;
-const double kElevatedButtonHeightSmall = 55.0;
+const double kElevatedButtonHeightSmall = 50.0;
 const double kGeneralBorderRadius = 12.0;
 const double kGlobalBorderRadius = 10.0;
 const double kSearchBarBorderRadius = 23.0;
@@ -42,7 +42,7 @@ const double kCounterIcon = 16.0;
 const double kContainerWidth = 50.0;
 const double kSizedBoxHeight = 36.0;
 const double kCardElevation = 3.0;
-const double kForwardIconSize = 18.0;
+const double kForwardIconSize = 22.0;
 const double kForwardIconSizeSmall = 14.0;
 
 const double kVarientBoxHeight = 25.0;

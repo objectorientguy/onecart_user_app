@@ -36,8 +36,20 @@ class ItemDetailsSection extends StatelessWidget {
               context
                   .read<SelectVarientBloc>()
                   .add(GetAllVarients(itemData.productId!));
-              Navigator.pushNamed(context, SelectVariantScreen.routeName,
-                  arguments: itemData);
+              showModalBottomSheet(
+                  backgroundColor: AppColor.blue,
+                  isScrollControlled: true,
+                  useSafeArea: true,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(smallCardCurve),
+                          topLeft: Radius.circular(smallCardCurve))),
+                  context: context,
+                  builder: (BuildContext context) {
+                    return SelectVariantScreen(
+                      dataone: itemData,
+                    );
+                  });
             },
             child: Container(
               padding: const EdgeInsets.symmetric(
@@ -59,7 +71,7 @@ class ItemDetailsSection extends StatelessWidget {
                             .headingTiny
                             .copyWith(fontWeight: FontWeight.w500)),
                   ),
-                  const Icon(Icons.arrow_forward_ios,
+                  const Icon(Icons.keyboard_arrow_down,
                       color: AppColor.primary, size: kForwardIconSize)
                 ],
               ),
