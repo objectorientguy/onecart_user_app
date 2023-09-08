@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: smallestSpacing),
                     child: Text(
                       "Popular Shops",
-                      style: Theme.of(context).textTheme.headingTiny,
+                      style: Theme.of(context).textTheme.xxxTinier,
                     ),
                   ),
                   const SizedBox(

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/categories/widgets/stores_item_list.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/get_product_bloc/get_product_bloc.dart';
 import '../../blocs/get_product_bloc/get_product_events.dart';
 import '../../blocs/get_product_bloc/get_product_states.dart';
+import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 
@@ -39,14 +41,24 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
               return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(state.getProductByIdModel.category!.categoryName!,
-                        style: const TextStyle(color: Colors.black)),
+                    SizedBox(
+                      width: kSizedBoxInfinite,
+                      child: Text(
+                        state.getProductByIdModel.category!.categoryName!,
+                        style: Theme.of(context)
+                            .textTheme
+                            .subHeadingMedium
+                            .copyWith(
+                                fontWeight: FontWeight.w500,
+                                color: AppColor.black),
+                        maxLines: 1,
+                        overflow: TextOverflow.fade,
+                      ),
+                    ),
                     Row(children: [
-                      SizedBox(
-                        height: kIconSizeSmall,
-                        width: kIconSizeSmall,
-                        child:
-                            Image.asset('assets/filter-filled-tool-symbol.png'),
+                      const Icon(
+                        Icons.filter_alt,
+                        color: AppColor.grey,
                       ),
                       const SizedBox(width: smallestSpacing),
                       InkWell(
@@ -56,11 +68,10 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                                 categoryModel: state.getProductByIdModel,
                                 productsList: state.productsList));
                           },
-                          child: SizedBox(
-                              height: kIconSizeSmall,
-                              width: kIconSizeSmall,
-                              child:
-                                  Image.asset('assets/up-and-down-arrow.png')))
+                          child: const Icon(
+                            Icons.swap_vert_outlined,
+                            color: AppColor.grey,
+                          ))
                     ])
                   ]);
             }
