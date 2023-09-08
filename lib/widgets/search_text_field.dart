@@ -25,7 +25,9 @@ class SearchTextField extends StatelessWidget {
           controller: textcontroller,
           decoration: InputDecoration(
               prefixIconColor: AppColor.darkGrey,
-              hintStyle: Theme.of(context).textTheme.xxTinier,
+              hintStyle: (hintStyle == null)
+                  ? Theme.of(context).textTheme.xxTinier
+                  : hintStyle,
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(kSearchBarBorderRadius),
                   borderSide: const BorderSide(color: AppColor.lighterGrey)),

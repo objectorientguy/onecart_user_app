@@ -22,7 +22,6 @@ class AppColor {
   static const Color mediumLightestGrey = Color(0xfff5f4f9);
   static const Color lighterGrey = Color(0xFFE9EAEC);
   static const Color lightGrey = Color(0xFFCCCCCC);
-  static const Color palewhite = Color(0xFFfafbfc);
   static const Color transparent = Color(0x00000000);
   static const Color red = Color(0xFFB71C1C);
   static const Color lighterRed = Color(0xFFF15060);

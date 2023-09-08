@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onecart_user_app/Screens/address/widget/current_location.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../widgets/search_text_field.dart';
 import '../Screens/address/add_address_screen.dart';
@@ -8,7 +9,6 @@ import '../../../blocs/address_bloc/address_states.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../Screens/address/widget/current_location.dart';
 
 class AddressBottomSheet extends StatelessWidget {
   const AddressBottomSheet({super.key});
@@ -21,55 +21,46 @@ class AddressBottomSheet extends StatelessWidget {
         if (state is FetchAddressLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is FetchAddressLoaded) {
-          return Container(
-              decoration: const BoxDecoration(
-                  color: AppColor.palewhite,
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(smallCardCurve),
-                      topLeft: Radius.circular(smallCardCurve)),
-                  boxShadow: [
-                    BoxShadow(
-                        color: AppColor.lightBlack,
-                        blurRadius: xxTiniestSpacing)
-                  ]),
-              child: Padding(
-                padding: const EdgeInsets.only(top: topBottomPadding),
-                child: BottomAppBar(
-                  //  elevation: xxxTinierSpacing,
-                  child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: topBottomPadding,
-                          right: topBottomPadding,
-                          //bottom: topBottomPadding,
-                          top: topBottomPadding),
-                      child: Column(
-                          mainAxisSize: MainAxisSize.min,
+          return BottomAppBar(
+            child: Padding(
+                padding: const EdgeInsets.only(
+                    left: xxTinySpacing,
+                    right: topBottomPadding,
+                    top: topBottomPadding),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: topBottomPadding),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.keyboard_arrow_down_outlined),
+                          const SizedBox(width: xxTinySpacing),
+                          Text("Select a location",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .xxTinier
+                                  .copyWith(fontWeight: FontWeight.w600)),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: xxxTinySpacing),
+                    SearchTextField(
+                        hintText: 'Search for area,street name..',
+                        hintStyle: Theme.of(context).textTheme.xxxTinier,
+                        prefixicon: const Icon(
+                          Icons.search,
+                          color: AppColor.lighterRed,
+                        ),
+                        textcontroller: myController),
+                    const SizedBox(height: xxTinierSpacing),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Row(
-                              children: [
-                                const Icon(Icons.keyboard_arrow_down_outlined),
-                                const SizedBox(width: xxTinySpacing),
-                                Text("Select a location",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .xxTinier
-                                        .copyWith(fontWeight: FontWeight.w600)),
-                              ],
-                            ),
-                            const SizedBox(height: xxxTinySpacing),
-
-                            SearchTextField(
-                                hintText: 'Search for area,street name..',
-                                prefixicon: const Icon(
-                                  Icons.search,
-                                  color: AppColor.red,
-                                ),
-                                textcontroller: myController),
-                            const SizedBox(height: xxTinierSpacing),
                             Card(
-                              // elevation: xxTiniestSpacing,
                               shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(smallCardCurve),
@@ -90,7 +81,7 @@ class AddressBottomSheet extends StatelessWidget {
                                         children: [
                                           const Icon(
                                             Icons.add,
-                                            color: AppColor.red,
+                                            color: AppColor.lighterRed,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -105,7 +96,7 @@ class AddressBottomSheet extends StatelessWidget {
                                                   .xxSmall
                                                   .copyWith(
                                                       color:
-                                                          AppColor.red,
+                                                          AppColor.lighterRed,
                                                       fontWeight:
                                                           FontWeight.w600),
                                             ),
@@ -126,7 +117,7 @@ class AddressBottomSheet extends StatelessWidget {
                                       children: [
                                         const Icon(
                                           Icons.my_location,
-                                          color: AppColor.red,
+                                          color: AppColor.lighterRed,
                                         ),
                                         const SizedBox(width: xxTiniestSpacing),
                                         Column(
@@ -137,9 +128,10 @@ class AddressBottomSheet extends StatelessWidget {
                                           children: [
                                             InkWell(
                                               onTap: () {
-                                                Navigator.pushNamed(context,
-                                                    CurrentLocation.routeName,
-                                                    arguments: false);
+                                                Navigator.pushNamed(
+                                                  context,
+                                                  CurrentLocation.routeName,
+                                                );
                                               },
                                               child: Text(
                                                 'Use Your Current Location',
@@ -148,7 +140,7 @@ class AddressBottomSheet extends StatelessWidget {
                                                     .xxSmall
                                                     .copyWith(
                                                         color:
-                                                            AppColor.red,
+                                                            AppColor.lighterRed,
                                                         fontWeight:
                                                             FontWeight.w600),
                                               ),
@@ -167,7 +159,7 @@ class AddressBottomSheet extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        const SizedBox(width: 50),
+                                        const SizedBox(width: xxLargeSpacing),
                                         const Icon(
                                           Icons.arrow_forward_ios_outlined,
                                           size: xxTinySpacing,
@@ -187,121 +179,85 @@ class AddressBottomSheet extends StatelessWidget {
                             const SizedBox(
                               height: tiniestSpacing,
                             ),
-                            Expanded(
-                              child: Card(
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                        topLeft:
-                                            Radius.circular(smallCardCurve),
-                                        topRight:
-                                            Radius.circular(smallCardCurve),
-                                        bottomLeft:
-                                            Radius.circular(smallCardCurve),
-                                        bottomRight:
-                                            Radius.circular(smallCardCurve))),
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.all(xxTinierSpacing),
-                                  child: ListView.separated(
-                                      shrinkWrap: true,
-                                      itemCount:
-                                          state.fetchAddressModel.data!.length,
-                                      separatorBuilder: (context, index) =>
-                                          const Divider(
-                                            height: smallestSpacing,
-                                          ),
-                                      itemBuilder: (context, index) {
-                                        return Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: xxxTinierSpacing),
-                                          child: Row(
+                            Padding(
+                              padding: const EdgeInsets.all(tiniestSpacing),
+                              child: ListView.separated(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount:
+                                      state.fetchAddressModel.data!.length,
+                                  separatorBuilder: (context, index) =>
+                                      const Divider(
+                                        height: smallestSpacing,
+                                      ),
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: xxTiniestSpacing),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
-                                            mainAxisSize: MainAxisSize.min,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                      height: xMediumSpacing,
-                                                      width: xMediumSpacing,
-                                                      decoration:
-                                                          const BoxDecoration(),
-                                                      child: const Icon(
-                                                        Icons.home_outlined,
-                                                        size: smallestSpacing,
-                                                        color: AppColor
-                                                            .mediumBlack,
-                                                      )
-                                                      // child: Image(image: AssetImage('assets/home.png'),
-                                                      //     fit: BoxFit.fill),
-                                                      ),
-                                                ],
-                                              ),
+                                              Container(
+                                                  height: xMediumSpacing,
+                                                  width: xMediumSpacing,
+                                                  decoration:
+                                                      const BoxDecoration(),
+                                                  child: const Icon(
+                                                    Icons.home_outlined,
+                                                    size: smallestSpacing,
+                                                    color: AppColor.mediumBlack,
+                                                  )),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            width: xxTinierSpacing,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                  state.fetchAddressModel
+                                                      .data![index].addressType
+                                                      .toString(),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .headingTiny),
                                               const SizedBox(
-                                                width: xxxTinySpacing,
-                                              ),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                      state
-                                                          .fetchAddressModel
-                                                          .data![index]
-                                                          .addressType
-                                                          .toString(),
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .headingTiny),
-                                                  const SizedBox(
-                                                      width: xxTinierSpacing),
-                                                  const SizedBox(
-                                                      height:
-                                                          xxxTiniestSpacing),
-                                                  Text(
-                                                    state
-                                                        .fetchAddressModel
-                                                        .data![index]
-                                                        .addressName
-                                                        .toString(),
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .xxGSmall,
-                                                  ),
-                                                  // Row(
-                                                  //   crossAxisAlignment: CrossAxisAlignment.start,
-                                                  //   children: [
-                                                  //     Image.asset('assets/dots.png'),
-                                                  //     Image.asset('assets/share.png'),
-                                                  //   ],
-                                                  // ),
-                                                ],
+                                                  width: xxTinierSpacing),
+                                              const SizedBox(
+                                                  height: xxxTiniestSpacing),
+                                              Text(
+                                                state.fetchAddressModel
+                                                    .data![index].addressName
+                                                    .toString(),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .xxGSmall,
                                               ),
                                             ],
                                           ),
-                                        );
-                                      }),
-                                ),
-                              ),
+                                        ],
+                                      ),
+                                    );
+                                  }),
                             ),
-                            // Row(
-                            //   children: [
-                            //     Image.asset('assets/three-dots.png'),
-                            //     SizedBox(width: xxTinierSpacing),
-                            //     Image.asset('assets/arrow-forward.png',fit: BoxFit.fill),
-                            //   ],
-                            // ),
                             Text("Recent location",
                                 style: Theme.of(context).textTheme.headingTiny),
                             const SizedBox(height: xxxTinierSpacing),
                             Card(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: xxxTinierSpacing),
+                                padding: const EdgeInsets.all(xxTinierSpacing),
                                 child: Row(
                                   children: [
                                     Row(
@@ -324,14 +280,11 @@ class AddressBottomSheet extends StatelessWidget {
                                                   Icons.home_outlined,
                                                   size: smallestSpacing,
                                                   color: AppColor.mediumBlack,
-                                                )
-                                                // child: Image(image: AssetImage('assets/home.png'),
-                                                //     fit: BoxFit.fill),
-                                                ),
+                                                )),
                                           ],
                                         ),
                                         const SizedBox(
-                                          width: xxxTinySpacing,
+                                          width: xxTinierSpacing,
                                         ),
                                         Column(
                                           crossAxisAlignment:
@@ -364,9 +317,13 @@ class AddressBottomSheet extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ])),
-                ),
-              ));
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+          );
         }
         if (state is FetchAddressError) {
           return Container();
