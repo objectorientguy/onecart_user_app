@@ -17,6 +17,7 @@ class CurrentLocation extends StatelessWidget {
     final myController = TextEditingController();
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: GenericAppBar(
         title: "Confirm delivery location",
         style: Theme.of(context)
