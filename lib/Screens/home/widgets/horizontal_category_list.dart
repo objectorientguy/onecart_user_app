@@ -46,7 +46,7 @@ class HorizontalCategoryList extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColor.mediumLightestGrey,
                       image: DecorationImage(
-                          fit: BoxFit.fill,
+                        fit: BoxFit.fill,
                           image: NetworkImage(
                             data[index].categoryImage!,
                           )),

@@ -13,6 +13,8 @@ import '../Screens/item_details/widgets/image_zoom_section.dart';
 import '../Screens/orders/order_details_screen.dart';
 import '../Screens/profile/edit_field_screen.dart';
 import '../Screens/profile/edit_profie_screen.dart';
+import '../Screens/profile/widgets/privacy_policy_screen.dart';
+import '../Screens/profile/widgets/terms_and_conditions_screen.dart';
 import '../Screens/root/root_screen.dart';
 import '../Screens/varient/select_varient_screen.dart';
 import '../data/models/item_details/item_details_model.dart';
@@ -38,6 +40,13 @@ class AppRoutes {
             dataone: settings.arguments as ItemDetailsData));
       case AddressScreen.routeName:
         return _createRoute(AddressScreen());
+
+      case TermsOfServiceScreen.routeName:
+        return _createRoute(const TermsOfServiceScreen());
+
+      case PrivacyPolicyScreen.routeName:
+        return _createRoute(const PrivacyPolicyScreen());
+
       case OrderSuccessScreen.routeName:
         return _createRoute(const OrderSuccessScreen());
       case NoFavoritesScreen.routeName:

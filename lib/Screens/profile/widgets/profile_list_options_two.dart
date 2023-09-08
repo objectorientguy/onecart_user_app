@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/profile/widgets/privacy_policy_screen.dart';
 import 'package:onecart_user_app/Screens/profile/widgets/profile_list_widget.dart';
+import 'package:onecart_user_app/Screens/profile/widgets/terms_and_conditions_screen.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
 class ProfileOptionsListTwo extends StatelessWidget {
@@ -18,23 +21,39 @@ class ProfileOptionsListTwo extends StatelessWidget {
         icon: Icons.info,
       ),
       const Divider(
-        height: 30,
+        height: kDivider,
       ),
-      const ProfileListWidget(
-        title: 'Terms and Conditions',
-        description: 'Legal Information',
-        icon: Icons.indeterminate_check_box,
+      InkWell(
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            TermsOfServiceScreen.routeName,
+          );
+        },
+        child: const ProfileListWidget(
+          title: 'Terms and Conditions',
+          description: 'Legal Information',
+          icon: Icons.indeterminate_check_box,
+        ),
       ),
       const Divider(
-        height: 30,
+        height: kDivider,
       ),
-      const ProfileListWidget(
-        title: 'Privacy Policy',
-        description: 'Legal Information',
-        icon: Icons.privacy_tip,
+      InkWell(
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            PrivacyPolicyScreen.routeName,
+          );
+        },
+        child: const ProfileListWidget(
+          title: 'Privacy Policy',
+          description: 'Legal Information',
+          icon: Icons.privacy_tip,
+        ),
       ),
       const Divider(
-        height: 30,
+        height: kDivider,
       ),
       const ProfileListWidget(
         title: 'Sign Out',
