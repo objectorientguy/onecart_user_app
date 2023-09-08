@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/common_widgets/custom_elevated_button.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_color.dart';
+import '../../configs/app_dimensions.dart';
 import '../../data/models/orders/get_all_orders_model.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
@@ -28,25 +30,63 @@ class OrdersDetailsScreen extends StatelessWidget {
         'status': '29 August 2022',
       },
       {
-        'title': 'Out for Delivery',
-        'date': 'Pending',
-        'status': 'pending',
-        'image': 'assets/pending.png'
+        'title': 'Product Total',
+        'status': '₹ 583.00',
       },
       {
-        'title': 'To be Delivered',
-        'date': 'Pending',
-        'status': 'pending',
-        'image': 'assets/pending.png'
+        'title': 'Order Amount',
+        'status': '₹ 583.00 (3 items)',
+      },
+      {
+        'title': 'Delivery Fee',
+        'status': 'Free',
+      },
+      {
+        'title': 'Invoice Number',
+        'status': 'TFM5114558845610',
+      },
+      {
+        'title': 'Invoice Amount',
+        'status': '₹ 575.00',
       }
     ];
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: AppColor.lighterGrey,
       appBar: const GenericAppBar(
         title: 'Order Details',
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: CustomElevatedButton(
+                  onPressed: () {},
+                  buttonHeight: kElevatedButtonHeightSmall,
+                  buttonWidth: double.maxFinite,
+                  child: const Text('Need Help'),
+                ),
+              ),
+              const SizedBox(
+                width: 4,
+              ),
+              Expanded(
+                child: CustomElevatedButton(
+                  onPressed: () {},
+                  buttonHeight: kElevatedButtonHeightSmall,
+                  buttonWidth: double.maxFinite,
+                  child: const Text('Reorder'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             Padding(
@@ -56,63 +96,93 @@ class OrdersDetailsScreen extends StatelessWidget {
                 children: [
                   Container(
                     width: 400,
-                    decoration:
-                    const BoxDecoration(color: AppColor.white),
-                    child:  Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: topBottomPadding, vertical: xxTinySpacing),
+                    decoration: const BoxDecoration(color: AppColor.white),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: topBottomPadding,
+                          vertical: xxTinySpacing),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Order Status', style: Theme.of(context).textTheme.textLarge.copyWith(fontWeight: FontWeight.w600)),
+                            Text('Order Status',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .textLarge
+                                    .copyWith(fontWeight: FontWeight.w600)),
                             Text('Delivered on Aug 29',
-                            style: Theme.of(context).textTheme.headingSmall.copyWith(fontWeight: FontWeight.w600)),
-                            SizedBox(height: xxxSmallestSpacing,),
-
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headingSmall
+                                    .copyWith(fontWeight: FontWeight.w600)),
+                            const SizedBox(
+                              height: xxxSmallestSpacing,
+                            ),
                           ]),
                     ),
                   ),
-                  Container(
-                    height: 250,
-                    decoration:
-                    const BoxDecoration(color: AppColor.white),
-                   child: Padding(
-                     padding: const EdgeInsets.all(topBottomPadding),
-                     child: Row(
-                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                       children: [
-                         Text('Track Order', style: Theme.of(context).textTheme.headingSmall,),
-                         Icon(Icons.keyboard_arrow_down),
-                       ],
-                     ),
-                   ),
+                  const SizedBox(height: xxSmallerSpacing),
+                  Theme(
+                    data: Theme.of(context)
+                        .copyWith(dividerColor: AppColor.transparent),
+                    child: ExpansionTile(
+                      backgroundColor: AppColor.white,
+                      collapsedBackgroundColor: AppColor.white,
+                      title: Text('Order Details',
+                          style: Theme.of(context).textTheme.headingSmall),
+                      children: [
+                        const SizedBox(height: tinierSpacing),
+                        ListView.separated(
+                            physics: const BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: 8,
+                            separatorBuilder: (context, index) => const Divider(
+                                  color: AppColor.grey,
+                                ),
+                            itemBuilder: (context, index) {
+                              return SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: topBottomPadding,
+                                      vertical: 2),
+                                  child: Row(
+                                    // crossAxisAlignment:
+                                    //     CrossAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        flex: 5,
+                                        child: Text(
+                                          orderData[index]['title'],
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headingTiny
+                                              .copyWith(
+                                                  color: AppColor.darkerGrey),
+                                        ),
+                                      ),
+                                      //SizedBox(width: 30),
+                                      Expanded(
+                                        flex: 5,
+                                        child: Text(orderData[index]['status'],
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headingTiny
+                                                .copyWith(
+                                                    fontWeight:
+                                                        FontWeight.w500)),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            })
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: xxSmallerSpacing,
                   ),
-                  Container(
-                    height: 600,
-                    decoration: const BoxDecoration(color: AppColor.white),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ExpansionTile(
-                        title: Text('Order Details', style: Theme.of(context).textTheme.headingSmall),
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text('Name', style: Theme.of(context).textTheme.xxGSmall),
-                              Text('Ayushi Chintawar', style: Theme.of(context).textTheme.xxGSmall.copyWith(color: AppColor.black)),
-
-                            ],
-                          ),
-                          Divider(),
-                        ],
-
-                      ),
-                    ),
-                  ),
-              ],
+                ],
               ),
             ),
           ],
