@@ -39,7 +39,7 @@ class ProductTileWidget extends StatelessWidget {
                                   BorderRadius.circular(kBorderRadiusSmall)),
                           child: Image.network(data[index].image![0].toString(),
                               fit: BoxFit.fill))))),
-          const SizedBox(width: tinierSpacing),
+          const SizedBox(width: xxxTinySpacing),
           ProductTileWidgetBody(
               screenwidth: screenwidth, data: data, index: index)
         ]);

@@ -48,8 +48,8 @@ class HorizontalCategoryList extends StatelessWidget {
                       image: DecorationImage(
                         fit: BoxFit.fill,
                           image: NetworkImage(
-                        data[index].categoryImage!,
-                      )),
+                            data[index].categoryImage!,
+                          )),
                       shape: BoxShape.circle,
                     ),
                   ),

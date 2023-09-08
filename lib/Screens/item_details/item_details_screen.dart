@@ -1,20 +1,17 @@
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/image_carousel_slider.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/item_details_section.dart';
 
-import 'package:onecart_user_app/common_widgets/custom_elevated_button.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
-import 'package:onecart_user_app/configs/app_theme.dart';
+
 import '../../blocs/item_details_bloc/item_details_bloc.dart';
 import '../../blocs/item_details_bloc/item_details_events.dart';
 import '../../blocs/item_details_bloc/item_details_states.dart';
 
 import '../../configs/app_color.dart';
-import '../../configs/app_dimensions.dart';
+
 import '../../configs/app_spacing.dart';
-import '../cart/cart_screen.dart';
 
 class ItemDetailsScreen extends StatelessWidget {
   static const routeName = 'ItemDetailsScreen';
@@ -29,49 +26,17 @@ class ItemDetailsScreen extends StatelessWidget {
         .read<ItemDetailsBloc>()
         .add(FetchItemDetails(itemDetails.productId!));
     return Scaffold(
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: leftRightMargin, vertical: tinierSpacing),
-        child: CustomElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, CartScreen.routeName,
-                  arguments: false);
-            },
-            buttonHeight: kElevatedButtonHeightSmall,
-            buttonWidth: double.maxFinite,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Text('₹8900 ',
-                        style: Theme.of(context).textTheme.textButtonLarger),
-                    Text('| 23 ITEMS',
-                        style: Theme.of(context).textTheme.textButtonLarge)
-                  ],
-                ),
-                const Row(
-                  children: [
-                    Text('SEE CART'),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      size: kForwardIconSize,
-                    )
-                  ],
-                )
-              ],
-            )),
-      ),
       appBar: GenericAppBar(
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: leftRightMargin),
-            child: FavoriteButton(
-              valueChanged: () {},
-              iconSize: kFavouriteButton,
-              iconColor: AppColor.primary,
-            ),
-          ),
+              padding: const EdgeInsets.only(right: leftRightMargin),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.share,
+                  color: AppColor.lightestGrey,
+                ),
+              )),
         ],
       ),
       body: BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
