@@ -48,6 +48,7 @@ dependencies:
   geolocator:
   geocoding:
   share_plus: ^6.0.1
+  another_stepper: ^1.2.2
 
 
 dev_dependencies:
