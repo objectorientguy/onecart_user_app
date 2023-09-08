@@ -54,7 +54,7 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                         overflow: TextOverflow.fade,),
                     ),
                     Row(children: [
-                      Icon(Icons.filter_alt,color: AppColor.grey,),
+                      const Icon(Icons.filter_alt,color: AppColor.grey,),
                       const SizedBox(width: smallestSpacing),
                       InkWell(
                           onTap: () {
@@ -63,7 +63,7 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                                 categoryModel: state.getProductByIdModel,
                                 productsList: state.productsList));
                           },
-                          child: Icon(Icons.swap_vert_outlined,color: AppColor.grey,))
+                          child: const Icon(Icons.swap_vert_outlined,color: AppColor.grey,))
                     ])
                   ]);
             }
