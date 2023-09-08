@@ -114,6 +114,16 @@ extension AppTextTheme on TextTheme {
         fontSize: 13, fontWeight: FontWeight.w400, color: AppColor.grey);
   }
 
+  TextStyle get orderDetailsHeadingRed {
+    return const TextStyle(
+        fontSize: 17, fontWeight: FontWeight.w600, color: AppColor.brightRed);
+  }
+
+  TextStyle get orderDetailsDeliveryStatus {
+    return const TextStyle(
+        fontSize: 13, fontWeight: FontWeight.w600, color: AppColor.lightGrey);
+  }
+
   TextStyle get subHeadingxMedium {
     return const TextStyle(
         fontSize: 11, fontWeight: FontWeight.w400, color: AppColor.grey);

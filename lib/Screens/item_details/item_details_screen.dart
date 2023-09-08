@@ -4,6 +4,7 @@ import 'package:onecart_user_app/Screens/item_details/widgets/image_carousel_sli
 import 'package:onecart_user_app/Screens/item_details/widgets/item_details_section.dart';
 
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../blocs/item_details_bloc/item_details_bloc.dart';
 import '../../blocs/item_details_bloc/item_details_events.dart';
@@ -31,7 +32,9 @@ class ItemDetailsScreen extends StatelessWidget {
           Padding(
               padding: const EdgeInsets.only(right: leftRightMargin),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Share.share('https://onecart-8ac19.web.app');
+                },
                 icon: const Icon(
                   Icons.share,
                   color: AppColor.lightestGrey,

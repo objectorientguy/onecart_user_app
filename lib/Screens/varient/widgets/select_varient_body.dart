@@ -81,7 +81,7 @@ class SelectVarientBody extends StatelessWidget {
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .textxSmall)))
-                                  ])
+                                  ]),
                             ]),
                         TextButton(
                           onPressed: () {},
