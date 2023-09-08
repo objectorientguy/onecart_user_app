@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/address/widget/current_location.dart';
 import 'package:onecart_user_app/data/models/address_model/address_model.dart';
 import '../Screens/address/add_address_screen.dart';
 import '../Screens/address/address_screen.dart';
@@ -67,6 +68,8 @@ class AppRoutes {
         ));
       case AddAddressScreen.routeName:
         return _createRoute(AddAddressScreen());
+      case CurrentLocation.routeName:
+        return _createRoute(const CurrentLocation());
       case RootScreen.routeName:
         return _createRoute(const RootScreen());
       default:
