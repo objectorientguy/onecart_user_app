@@ -48,7 +48,7 @@ dependencies:
   geolocator:
   geocoding:
   location: ^5.0.3
-
+geolocator_web: ^2.1.6
 
 dev_dependencies:
   flutter_test:

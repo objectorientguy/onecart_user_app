@@ -45,6 +45,7 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
     }
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
+
   }
 
   Future<void> getAddressFromLatLong(Position position) async {
