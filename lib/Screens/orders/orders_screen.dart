@@ -128,14 +128,18 @@ class OrdersScreen extends StatelessWidget {
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .orderDetailsHeadingRed,
+                                                maxLines: 2,
                                               )
-                                            : Text(orderData[index]['title'],
+                                            : Text(
+                                                orderData[index]['title'],
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .orderDetailsHeadingRed
                                                     .copyWith(
                                                       color: AppColor.darkGrey,
-                                                    )),
+                                                    ),
+                                                maxLines: 2,
+                                              ),
                                         (orderData[index]['title'] ==
                                                 "Delivered")
                                             ? Text(
