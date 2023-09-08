@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/orders/orders_bloc.dart';
@@ -8,6 +7,7 @@ import '../../blocs/orders/orders_events.dart';
 import '../../blocs/orders/orders_states.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
+import 'order_details_screen.dart';
 
 class OrdersScreen extends StatelessWidget {
   const OrdersScreen({Key? key}) : super(key: key);
@@ -48,9 +48,12 @@ class OrdersScreen extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        appBar: const GenericAppBar(
-          title: "My Orders",
-          actions: [
+        appBar: AppBar(
+          title: Text(
+            "My Orders",
+            style: Theme.of(context).textTheme.mediumLarge,
+          ),
+          actions: const [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: smallestSpacing),
               child: Row(
@@ -71,77 +74,105 @@ class OrdersScreen extends StatelessWidget {
             if (state is GetAllOrdersLoading) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is GetAllOrdersLoaded) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: leftRightMargin, vertical: topBottomPadding),
-                child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: orderData.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: xxxTinierSpacing,
-                            vertical: xxxTinierSpacing),
-                        child: Container(
-                          width: kSizedBoxInfinite,
-                          height: kSizedBoxHeightLarge,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: AppColor.lightGrey),
-                            borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.symmetric(horizontal: xxxTinierSpacing),
-                                    child: SizedBox(
-                                        height: kTextboxHeightSmallest,
-                                        width: kTextboxHeightSmallest,
-                                        child:
-                                            Image.asset(orderData[index]['image'])),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      (orderData[index]['title'] == "Returned" ||
-                                          orderData[index]['title'] ==
-                                              "Cancelled by Operations")
-                                          ? Text(
-                                        orderData[index]['title'],
-                                        style: Theme.of(context).textTheme.orderDetailsHeadingRed,
-                                      )
-                                          : Text(orderData[index]['title'],
-                                          style: Theme.of(context).textTheme.orderDetailsHeadingRed.copyWith(color: AppColor.darkGrey,)),
-                                      (orderData[index]['title'] == "Delivered")
-                                          ? Text(orderData[index]['deliveryDate'],
-                                          style: Theme.of(context).textTheme.orderDetailsDeliveryStatus)
-                                          : const SizedBox(),
-                                      Text(
-                                          "${orderData[index]['category']} (${orderData[index]['quantity']} items)",
-                                          style: Theme.of(context).textTheme.orderDetailsDeliveryStatus.copyWith(color: AppColor.darkGrey)),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: tinierSpacing),
-                                child: Row(
+              return InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const OrdersDetailsScreen()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: leftRightMargin, vertical: topBottomPadding),
+                  child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: orderData.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: xxxTinierSpacing,
+                              vertical: xxxTinierSpacing),
+                          child: Container(
+                            width: kSizedBoxInfinite,
+                            height: kSizedBoxHeightLarge,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: AppColor.lightGrey),
+                              borderRadius:
+                                  BorderRadius.circular(kGeneralBorderRadius),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
                                   children: [
-                                    Icon(Icons.arrow_forward_ios_rounded,color: AppColor.grey,size: kCounterIcon),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: xxxTinierSpacing),
+                                      child: SizedBox(
+                                          height: kTextboxHeightSmallest,
+                                          width: kTextboxHeightSmallest,
+                                          child: Image.asset(
+                                              orderData[index]['image'])),
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        (orderData[index]['title'] ==
+                                                    "Returned" ||
+                                                orderData[index]['title'] ==
+                                                    "Cancelled by Operations")
+                                            ? Text(
+                                                orderData[index]['title'],
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .orderDetailsHeadingRed,
+                                              )
+                                            : Text(orderData[index]['title'],
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .orderDetailsHeadingRed
+                                                    .copyWith(
+                                                      color: AppColor.darkGrey,
+                                                    )),
+                                        (orderData[index]['title'] ==
+                                                "Delivered")
+                                            ? Text(
+                                                orderData[index]
+                                                    ['deliveryDate'],
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .orderDetailsDeliveryStatus)
+                                            : const SizedBox(),
+                                        Text(
+                                            "${orderData[index]['category']} (${orderData[index]['quantity']} items)",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .orderDetailsDeliveryStatus
+                                                .copyWith(
+                                                    color: AppColor.darkGrey)),
+                                      ],
+                                    ),
                                   ],
                                 ),
-                              )
-
-                            ],
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: tinierSpacing),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.arrow_forward_ios_rounded,
+                                          color: AppColor.grey,
+                                          size: kCounterIcon),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      }),
+                ),
               );
             }
             if (state is GetAllOrdersError) {

@@ -43,18 +43,23 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                   children: [
                     SizedBox(
                       width: kSizedBoxInfinite,
-                      child: Text(state.getProductByIdModel.category!.categoryName!,
+                      child: Text(
+                        state.getProductByIdModel.category!.categoryName!,
                         style: Theme.of(context)
                             .textTheme
                             .subHeadingMedium
                             .copyWith(
-                            fontWeight: FontWeight.w500,
-                            color: AppColor.black),
+                                fontWeight: FontWeight.w500,
+                                color: AppColor.black),
                         maxLines: 1,
-                        overflow: TextOverflow.fade,),
+                        overflow: TextOverflow.fade,
+                      ),
                     ),
                     Row(children: [
-                      const Icon(Icons.filter_alt,color: AppColor.grey,),
+                      const Icon(
+                        Icons.filter_alt,
+                        color: AppColor.grey,
+                      ),
                       const SizedBox(width: smallestSpacing),
                       InkWell(
                           onTap: () {
@@ -63,7 +68,10 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                                 categoryModel: state.getProductByIdModel,
                                 productsList: state.productsList));
                           },
-                          child: const Icon(Icons.swap_vert_outlined,color: AppColor.grey,))
+                          child: const Icon(
+                            Icons.swap_vert_outlined,
+                            color: AppColor.grey,
+                          ))
                     ])
                   ]);
             }
