@@ -11,7 +11,6 @@ import '../../configs/app_dimensions.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
   static const routeName = 'OrdersDetailsScreen';
-  // final OrderDatum data;
 
   const OrdersDetailsScreen({Key? key}) : super(key: key);
 
