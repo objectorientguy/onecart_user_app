@@ -68,7 +68,7 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
         Position position = await getCurrentPosition();
         location = 'Lat: ${position.latitude} , Long: ${position.longitude}';
         getAddressFromLatLong(position);
-        // getCurrentPosition();
+
       },
       child: Container(
           height: kAddressContainerWidth,
