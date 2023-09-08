@@ -17,9 +17,11 @@ class FetchCurrentLocation extends StatefulWidget {
 }
 
 class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
+
   String location = 'Null, Press Button';
   String addressHalf = 'Tatya Nagar,';
   String addressFull = ' Deo Nagar Nagpur';
+
 
   Future<Position> getCurrentPosition() async {
     bool serviceEnabled;
