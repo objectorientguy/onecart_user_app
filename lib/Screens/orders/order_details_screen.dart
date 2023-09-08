@@ -8,13 +8,11 @@ import 'package:onecart_user_app/configs/app_spacing.dart';
 import '../../configs/app_color.dart';
 
 import '../../configs/app_dimensions.dart';
-import '../../data/models/orders/get_all_orders_model.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
   static const routeName = 'OrdersDetailsScreen';
-  final OrderDatum data;
 
-  const OrdersDetailsScreen({Key? key, required this.data}) : super(key: key);
+  const OrdersDetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

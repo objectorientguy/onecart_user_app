@@ -54,6 +54,7 @@ const double kCartButtonWidth = 110.0;
 const double kCacheImageHeight = 40.0;
 const double kCacheImageWidth = 40.0;
 const double kSizedBoxInfinite = 200.0;
+const double kSizedBoxHeightLarge = 90.0;
 const double kBorderWidth = 0.5;
 const double kButtonBorderWidth = 0.3;
 const double kFavouriteButton = 35.0;
