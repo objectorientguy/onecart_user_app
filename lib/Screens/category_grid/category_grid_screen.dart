@@ -6,7 +6,7 @@ import '../../blocs/categories_bloc/categories_events.dart';
 import '../../blocs/categories_bloc/categories_states.dart';
 import '../../blocs/get_product_bloc/get_product_bloc.dart';
 import '../../blocs/get_product_bloc/get_product_events.dart';
-import '../../common_widgets/address_bar.dart';
+import '../address/widget/address_bar.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 

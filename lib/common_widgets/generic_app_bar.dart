@@ -10,20 +10,25 @@ class GenericAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.leading,
       this.actions,
       this.centerTitle = true,
-      this.backgroundColor})
+      this.backgroundColor,
+      this.style})
       : super(key: key);
   final bool? centerTitle;
   final String title;
   final Widget? leading;
   final Color? backgroundColor;
   final List<Widget>? actions;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: backgroundColor,
       actions: actions,
-      title: Text(title, style: Theme.of(context).textTheme.mediumLarge),
+      title: Text(title,
+          style: (style == null)
+              ? Theme.of(context).textTheme.mediumLarge
+              : style),
       leading: (leading == null)
           ? InkWell(
               onTap: () {
