@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_color.dart';
-import '../../configs/app_dimensions.dart';
 import '../../data/models/orders/get_all_orders_model.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
@@ -18,19 +16,16 @@ class OrdersDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List orderData = [
       {
-        'title': 'Order Placed',
-        'status': 'done',
-        'image': 'assets/order_placed.png'
+        'title': 'Name',
+        'status': 'Ayushi Chintawar',
       },
       {
-        'title': 'Confirmation of Order',
-        'status': 'done',
-        'image': 'assets/confirmation.png'
+        'title': 'Order Number',
+        'status': '1661587456982A266',
       },
       {
-        'title': 'Order Shipped',
-        'status': 'current',
-        'image': 'assets/order_shipped.png'
+        'title': 'Order Date',
+        'status': '29 August 2022',
       },
       {
         'title': 'Out for Delivery',
@@ -45,162 +40,84 @@ class OrdersDetailsScreen extends StatelessWidget {
         'image': 'assets/pending.png'
       }
     ];
-    return Scaffold(
+    return  Scaffold(
+      backgroundColor: AppColor.lighterGrey,
       appBar: const GenericAppBar(
         title: 'Order Details',
       ),
-      body: Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: leftRightMargin, vertical: topBottomPadding),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: xxxTinierSpacing),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                            height: 40,
-                            width: 40,
-                            decoration: const BoxDecoration(
-                                color: AppColor.primaryLighter,
-                                shape: BoxShape.circle),
-                            child: const Icon(
-                              Icons.shopping_bag_outlined,
-                              color: AppColor.primary,
-                            )),
-                        const SizedBox(
-                          width: xxxTinySpacing,
-                        ),
-                        Column(
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 400,
+                    decoration:
+                    const BoxDecoration(color: AppColor.white),
+                    child:  Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: topBottomPadding, vertical: xxTinySpacing),
+                      child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(data.orderId.toString(),
-                                style: Theme.of(context).textTheme.headingTiny),
-                            const SizedBox(height: xxxTiniestSpacing),
-                            Row(
-                              children: [
-                                Text(
-                                  'Items: ',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subHeadingLarge,
-                                ),
-                                Text(
-                                  data.itemCount.toString(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subHeadingLarge
-                                      .copyWith(color: AppColor.primary),
-                                ),
-                                const SizedBox(width: xxxTinierSpacing),
-                                Text(
-                                  'Total Price: ',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subHeadingLarge,
-                                ),
-                                Text(
-                                  ' ₹${data.totalPrice.toString()}',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subHeadingLarge
-                                      .copyWith(color: AppColor.primary),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
+                            Text('Order Status', style: Theme.of(context).textTheme.textLarge.copyWith(fontWeight: FontWeight.w600)),
+                            Text('Delivered on Aug 29',
+                            style: Theme.of(context).textTheme.headingSmall.copyWith(fontWeight: FontWeight.w600)),
+                            SizedBox(height: xxxSmallestSpacing,),
+
+                          ]),
                     ),
-                  ],
-                ),
-                const SizedBox(height: tinierSpacing),
-                ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: 5,
-                    separatorBuilder: (context, index) => const Divider(
-                          height: smallestSpacing,
-                        ),
-                    itemBuilder: (context, index) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                  ),
+                  Container(
+                    height: 250,
+                    decoration:
+                    const BoxDecoration(color: AppColor.white),
+                   child: Padding(
+                     padding: const EdgeInsets.all(topBottomPadding),
+                     child: Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                       children: [
+                         Text('Track Order', style: Theme.of(context).textTheme.headingSmall,),
+                         Icon(Icons.keyboard_arrow_down),
+                       ],
+                     ),
+                   ),
+                  ),
+                  const SizedBox(
+                    height: xxSmallerSpacing,
+                  ),
+                  Container(
+                    height: 600,
+                    decoration: const BoxDecoration(color: AppColor.white),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ExpansionTile(
+                        title: Text('Order Details', style: Theme.of(context).textTheme.headingSmall),
                         children: [
                           Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Image.asset(
-                                orderData[index]['image'],
-                                width: kIconWidth,
-                                height: kIconHeight,
-                              ),
-                              const SizedBox(
-                                width: xxxTinySpacing,
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(orderData[index]['title'],
-                                          style: (orderData[index]['status'] !=
-                                                  'pending')
-                                              ? Theme.of(context)
-                                                  .textTheme
-                                                  .textMedium
-                                              : Theme.of(context)
-                                                  .textTheme
-                                                  .textMedium
-                                                  .copyWith(
-                                                      color: AppColor.grey)),
-                                      const SizedBox(width: xxxTinierSpacing),
-                                      (orderData[index]['status'] != 'pending')
-                                          ? const Icon(
-                                              Icons.check,
-                                              color: AppColor.primary,
-                                              size: 15,
-                                            )
-                                          : const SizedBox()
-                                    ],
-                                  ),
-                                  const SizedBox(height: xxxTiniestSpacing),
-                                  Text(
-                                    (orderData[index]['status'] != 'pending')
-                                        ? DateFormat('MMM dd y hh:mm a')
-                                            .format(data.orderPlaced!)
-                                            .toString()
-                                        : 'Pending',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subHeadingMedium,
-                                  ),
-                                ],
-                              ),
+                              Text('Name', style: Theme.of(context).textTheme.xxGSmall),
+                              Text('Ayushi Chintawar', style: Theme.of(context).textTheme.xxGSmall.copyWith(color: AppColor.black)),
+
                             ],
                           ),
-                          (orderData[index]['status'] == 'current')
-                              ? Text(
-                                  'Check My Package',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .xxSmall
-                                      .copyWith(color: AppColor.primary),
-                                )
-                              : const SizedBox()
+                          Divider(),
                         ],
-                      );
-                    })
+
+                      ),
+                    ),
+                  ),
               ],
+              ),
             ),
-          )),
+          ],
+        ),
+      ),
     );
   }
 }
