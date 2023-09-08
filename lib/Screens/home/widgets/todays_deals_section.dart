@@ -26,7 +26,7 @@ class TodayDealsSection extends StatelessWidget {
           padding: const EdgeInsets.only(left: xxTinierSpacing),
           child: Text(
             "Today's Deals",
-            style: Theme.of(context).textTheme.headingTiny,
+            style: Theme.of(context).textTheme.xxxTinier,
           ),
         ),
         const SizedBox(
