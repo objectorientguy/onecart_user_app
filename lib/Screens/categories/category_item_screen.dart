@@ -42,7 +42,7 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: 200,
+                      width: kSizedBoxInfinite,
                       child: Text(state.getProductByIdModel.category!.categoryName!,
                         style: Theme.of(context)
                             .textTheme
