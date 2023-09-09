@@ -51,7 +51,10 @@ class OrdersScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             "My Orders",
-            style: Theme.of(context).textTheme.mediumLarge,
+            style: Theme.of(context)
+                .textTheme
+                .smallGrey
+                .copyWith(color: AppColor.black),
           ),
           actions: const [
             Padding(
@@ -95,7 +98,7 @@ class OrdersScreen extends StatelessWidget {
                             width: kSizedBoxInfinite,
                             height: kSizedBoxHeightLarge,
                             decoration: BoxDecoration(
-                              border: Border.all(color: AppColor.lightGrey),
+                              border: Border.all(color: AppColor.lightestGrey),
                               borderRadius:
                                   BorderRadius.circular(kGeneralBorderRadius),
                             ),

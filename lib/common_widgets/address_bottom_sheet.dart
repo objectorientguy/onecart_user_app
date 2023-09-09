@@ -34,7 +34,11 @@ class AddressBottomSheet extends StatelessWidget {
                       padding: const EdgeInsets.only(top: topBottomPadding),
                       child: Row(
                         children: [
-                          const Icon(Icons.keyboard_arrow_down_outlined),
+                          InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Icon(Icons.close_rounded)),
                           const SizedBox(width: xxTinySpacing),
                           Text("Select a location",
                               style: Theme.of(context)
@@ -70,7 +74,7 @@ class AddressBottomSheet extends StatelessWidget {
                                       bottomRight:
                                           Radius.circular(smallCardCurve))),
                               child: Padding(
-                                padding: const EdgeInsets.all(xxxTinierSpacing),
+                                padding: const EdgeInsets.all(tinierSpacing),
                                 child: Column(
                                   children: [
                                     Row(
@@ -179,79 +183,76 @@ class AddressBottomSheet extends StatelessWidget {
                             const SizedBox(
                               height: tiniestSpacing,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(tiniestSpacing),
-                              child: ListView.separated(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemCount:
-                                      state.fetchAddressModel.data!.length,
-                                  separatorBuilder: (context, index) =>
-                                      const Divider(
-                                        height: smallestSpacing,
-                                      ),
-                                  itemBuilder: (context, index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: xxTiniestSpacing),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                  height: xMediumSpacing,
-                                                  width: xMediumSpacing,
-                                                  decoration:
-                                                      const BoxDecoration(),
-                                                  child: const Icon(
-                                                    Icons.home_outlined,
-                                                    size: smallestSpacing,
-                                                    color: AppColor.mediumBlack,
-                                                  )),
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            width: xxTinierSpacing,
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                  state.fetchAddressModel
-                                                      .data![index].addressType
-                                                      .toString(),
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headingTiny),
-                                              const SizedBox(
-                                                  width: xxTinierSpacing),
-                                              const SizedBox(
-                                                  height: xxxTiniestSpacing),
-                                              Text(
+                            ListView.separated(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: state.fetchAddressModel.data!.length,
+                                separatorBuilder: (context, index) =>
+                                    const Divider(
+                                      height: smallestSpacing,
+                                    ),
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: xxTiniestSpacing),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                                height: xMediumSpacing,
+                                                width: xMediumSpacing,
+                                                decoration:
+                                                    const BoxDecoration(),
+                                                child: const Icon(
+                                                  Icons.home_outlined,
+                                                  size: smallestSpacing,
+                                                  color: AppColor.mediumBlack,
+                                                )),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          width: xxTinierSpacing,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
                                                 state.fetchAddressModel
-                                                    .data![index].addressName
+                                                    .data![index].addressType
                                                     .toString(),
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .xxGSmall,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }),
-                            ),
+                                                    .headingTiny),
+                                            const SizedBox(
+                                                width: xxTinierSpacing),
+                                            const SizedBox(
+                                                height: xxxTiniestSpacing),
+                                            Text(
+                                              state.fetchAddressModel
+                                                  .data![index].addressName
+                                                  .toString(),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .xxGSmall,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }),
+                            const SizedBox(height: tinySpacing),
                             Text("Recent location",
                                 style: Theme.of(context).textTheme.headingTiny),
                             const SizedBox(height: xxxTinierSpacing),

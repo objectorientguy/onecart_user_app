@@ -25,7 +25,7 @@ class OrdersDetailsScreen extends StatelessWidget {
       },
       {
         'title': 'Order Number',
-        'status': '1661587456982A266',
+        'status': '1661587456982A2',
       },
       {
         'title': 'Order Date',
@@ -45,7 +45,7 @@ class OrdersDetailsScreen extends StatelessWidget {
       },
       {
         'title': 'Invoice Number',
-        'status': 'TFM5114558845610',
+        'status': 'TFM511455884510',
       },
       {
         'title': 'Invoice Amount',
@@ -99,7 +99,7 @@ class OrdersDetailsScreen extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(xxxTinierSpacing),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,7 +113,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                width: 4,
+                width: xxTiniestSpacing,
               ),
               Expanded(
                 child: CustomElevatedButton(
@@ -131,120 +131,120 @@ class OrdersDetailsScreen extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         child: Padding(
             padding: const EdgeInsets.symmetric(
-                horizontal: leftRightMargin, vertical: topBottomPadding),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: xxxTinierSpacing),
-              child: Column(
-                children: [
-                  Container(
-                    width: 400,
-                    decoration: const BoxDecoration(color: AppColor.white),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: topBottomPadding,
-                          vertical: xxTinySpacing),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Order Status',
-                                style: Theme.of(context).textTheme.textLarge),
-                            Text('Delivered on Aug 29',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headingTiny
-                                    .copyWith(fontWeight: FontWeight.w600)),
-                            const SizedBox(
-                              height: xxxSmallestSpacing,
-                            ),
-                          ]),
-                    ),
+                horizontal: xxxTinierSpacing, vertical: tinierSpacing),
+            child: Column(
+              children: [
+                Container(
+                  width: kOrderContainerWidth,
+                  decoration: const BoxDecoration(color: AppColor.white),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: tinySpacing),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Order Status',
+                              style: Theme.of(context).textTheme.textLarge),
+                          Text('Delivered on Aug 29',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headingTiny
+                                  .copyWith(fontWeight: FontWeight.w600)),
+                          const SizedBox(
+                            height: xxTinierSpacing,
+                          ),
+                        ]),
                   ),
-                  Theme(
-                    data: Theme.of(context)
-                        .copyWith(dividerColor: AppColor.transparent),
-                    child: ExpansionTile(
-                      title: Text('Order Details',
-                          style: Theme.of(context).textTheme.headingTiny),
-                      trailing: const Icon(Icons.keyboard_arrow_down),
-                      children: [
-                        AnotherStepper(
-                          stepperList: stepperData,
-                          stepperDirection: Axis.vertical,
-                          iconWidth: kCacheImageWidth,
-                          iconHeight: kCacheImageHeight,
-                          activeBarColor: AppColor.primary,
-                          inActiveBarColor: Colors.grey,
-                          verticalGap: xxxSmallestSpacing,
-                          activeIndex: 1,
-                          barThickness: kStepper,
-                        ),
-                      ],
-                    ),
+                ),
+                Theme(
+                  data: Theme.of(context)
+                      .copyWith(dividerColor: AppColor.transparent),
+                  child: ExpansionTile(
+                    initiallyExpanded: true,
+                    title: Text('Order Details',
+                        style: Theme.of(context).textTheme.headingTiny),
+                    trailing: const Icon(Icons.keyboard_arrow_down),
+                    children: [
+                      AnotherStepper(
+                        stepperList: stepperData,
+                        stepperDirection: Axis.vertical,
+                        iconWidth: kCacheImageWidth,
+                        iconHeight: kCacheImageHeight,
+                        activeBarColor: AppColor.primary,
+                        inActiveBarColor: Colors.grey,
+                        verticalGap: xxxSmallestSpacing,
+                        activeIndex: 1,
+                        barThickness: kStepper,
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: xxSmallerSpacing),
-                  Theme(
-                    data: Theme.of(context)
-                        .copyWith(dividerColor: AppColor.transparent),
-                    child: ExpansionTile(
-                      backgroundColor: AppColor.white,
-                      collapsedBackgroundColor: AppColor.white,
-                      title: Text('Order Details',
-                          style: Theme.of(context).textTheme.headingTiny),
-                      children: [
-                        const SizedBox(height: tinierSpacing),
-                        ListView.separated(
-                            physics: const BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: 8,
-                            separatorBuilder: (context, index) => const Divider(
-                                  color: AppColor.grey,
-                                ),
-                            itemBuilder: (context, index) {
-                              return SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.8,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: topBottomPadding,
-                                      vertical: 2),
-                                  child: Row(
-                                    // crossAxisAlignment:
-                                    //     CrossAxisAlignment.start,
-                                    children: [
-                                      Expanded(
-                                        flex: 5,
-                                        child: Text(
-                                          orderData[index]['title'],
+                ),
+                const SizedBox(height: xxTinierSpacing),
+                Theme(
+                  data: Theme.of(context)
+                      .copyWith(dividerColor: AppColor.transparent),
+                  child: ExpansionTile(
+                    initiallyExpanded: true,
+                    backgroundColor: AppColor.white,
+                    collapsedBackgroundColor: AppColor.white,
+                    title: Text('Order Details',
+                        style: Theme.of(context).textTheme.headingTiny),
+                    trailing: const Icon(Icons.keyboard_arrow_down),
+                    children: [
+                      const SizedBox(height: tinierSpacing),
+                      ListView.separated(
+                          physics: const BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: 8,
+                          separatorBuilder: (context, index) => const Divider(
+                                color: AppColor.grey,
+                              ),
+                          itemBuilder: (context, index) {
+                            return SizedBox(
+                              width: MediaQuery.of(context).size.width *
+                                  kMediaQuerrySize,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: topBottomPadding,
+                                    vertical: xxxTiniestSpacing),
+                                child: Row(
+                                  // crossAxisAlignment:
+                                  //     CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      flex: 5,
+                                      child: Text(
+                                        orderData[index]['title'],
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headingTiny
+                                            .copyWith(
+                                                color: AppColor.darkGrey,
+                                                fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                    //SizedBox(width: 30),
+                                    Expanded(
+                                      flex: 5,
+                                      child: Text(orderData[index]['status'],
                                           style: Theme.of(context)
                                               .textTheme
                                               .headingTiny
                                               .copyWith(
-                                                  color: AppColor.darkerGrey),
-                                        ),
-                                      ),
-                                      //SizedBox(width: 30),
-                                      Expanded(
-                                        flex: 5,
-                                        child: Text(orderData[index]['status'],
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headingTiny
-                                                .copyWith(
-                                                    fontWeight:
-                                                        FontWeight.w500)),
-                                      ),
-                                    ],
-                                  ),
+                                                  fontWeight: FontWeight.w500)),
+                                    ),
+                                  ],
                                 ),
-                              );
-                            })
-                      ],
-                    ),
+                              ),
+                            );
+                          })
+                    ],
                   ),
-                  const SizedBox(
-                    height: xxSmallerSpacing,
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(
+                  height: xxSmallerSpacing,
+                ),
+              ],
             )),
       ),
     );

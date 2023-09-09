@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -17,11 +17,9 @@ class FetchCurrentLocation extends StatefulWidget {
 }
 
 class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
-
   String location = 'Null, Press Button';
   String addressHalf = 'Tatya Nagar,';
   String addressFull = ' Deo Nagar Nagpur';
-
 
   Future<Position> getCurrentPosition() async {
     bool serviceEnabled;
@@ -45,7 +43,6 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
     }
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-
   }
 
   Future<void> getAddressFromLatLong(Position position) async {
@@ -68,7 +65,6 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
         Position position = await getCurrentPosition();
         location = 'Lat: ${position.latitude} , Long: ${position.longitude}';
         getAddressFromLatLong(position);
-
       },
       child: Container(
           height: kAddressContainerWidth,
