@@ -6,9 +6,9 @@ import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
 
 class OderDetailScreenCardTwo extends StatelessWidget {
-  List orderData = [];
+  final List orderData;
 
-  OderDetailScreenCardTwo({super.key, required this.orderData});
+  const OderDetailScreenCardTwo({super.key, required this.orderData});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +19,8 @@ class OderDetailScreenCardTwo extends StatelessWidget {
       child: ExpansionTile(
           initiallyExpanded: true,
           backgroundColor: AppColor.white,
-          title: Text('Order Details',
-              style: Theme.of(context).textTheme.headingTiny),
+          title:
+              Text('Order Details', style: Theme.of(context).textTheme.xxTiny),
           trailing: const Icon(Icons.keyboard_arrow_down),
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(kBorderDiscount))),
@@ -46,7 +46,7 @@ class OderDetailScreenCardTwo extends StatelessWidget {
                                 child: Text(orderData[index]['title'],
                                     style: Theme.of(context)
                                         .textTheme
-                                        .headingTiny
+                                        .tinier
                                         .copyWith(
                                             color: AppColor.darkGrey,
                                             fontWeight: FontWeight.w400))),
@@ -55,7 +55,7 @@ class OderDetailScreenCardTwo extends StatelessWidget {
                               child: Text(orderData[index]['status'],
                                   style: Theme.of(context)
                                       .textTheme
-                                      .headingTiny
+                                      .tinier
                                       .copyWith(fontWeight: FontWeight.w500)),
                             )
                           ])));

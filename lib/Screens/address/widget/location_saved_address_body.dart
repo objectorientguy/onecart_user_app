@@ -52,18 +52,22 @@ class LocationSavedAddressBody extends StatelessWidget {
                               Text(addressData[index].addressType.toString(),
                                   style: Theme.of(context)
                                       .textTheme
-                                      .textMedium
+                                      .xTinier
                                       .copyWith(fontWeight: FontWeight.w500)),
                               const SizedBox(width: xxTinierSpacing),
                               const SizedBox(height: xxxTiniestSpacing),
                               Text(addressData[index].addressName.toString(),
-                                  style: Theme.of(context).textTheme.xxGSmall)
+                                  style: Theme.of(context).textTheme.xxxTinier)
                             ])
                       ]),
                 ));
           }),
       const SizedBox(height: tinySpacing),
-      Text("Recent location", style: Theme.of(context).textTheme.headingTiny),
+      Text("Recent location",
+          style: Theme.of(context)
+              .textTheme
+              .tinier
+              .copyWith(color: Colors.black, fontWeight: FontWeight.w500)),
       const SizedBox(height: xxxTinierSpacing),
       Card(
           child: Padding(
@@ -89,11 +93,11 @@ class LocationSavedAddressBody extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(addressData[0].addressType.toString(),
-                                style: Theme.of(context).textTheme.headingTiny),
+                                style: Theme.of(context).textTheme.tinier),
                             const SizedBox(width: xxTinierSpacing),
                             const SizedBox(height: xxxTiniestSpacing),
                             Text(addressData[0].addressName.toString(),
-                                style: Theme.of(context).textTheme.xxGSmall)
+                                style: Theme.of(context).textTheme.tiniest)
                           ])
                     ])
               ])))

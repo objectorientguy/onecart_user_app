@@ -77,17 +77,14 @@ class OrdersDetailsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Order Status',
-                          style: Theme.of(context).textTheme.textLarge.copyWith(
+                          style: Theme.of(context).textTheme.xxTiny.copyWith(
                               color: AppColor.black,
                               fontWeight: FontWeight.w500)),
                       const SizedBox(height: xxxTinierSpacing),
                       Text('Delivered on Aug 29',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headingTiny
-                              .copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColor.primary)),
+                          style: Theme.of(context).textTheme.tinier.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: AppColor.primary)),
                       const SizedBox(height: xxxSmallestSpacing),
                       Theme(
                           data: Theme.of(context)

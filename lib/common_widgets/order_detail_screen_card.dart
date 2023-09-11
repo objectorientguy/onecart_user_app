@@ -21,8 +21,8 @@ class OderDetailScreenCardOne extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(kBorderDiscount))),
           backgroundColor: AppColor.white,
           initiallyExpanded: true,
-          title: Text('Order Details',
-              style: Theme.of(context).textTheme.headingTiny),
+          title:
+              Text('Order Details', style: Theme.of(context).textTheme.xxTiny),
           trailing: const Icon(Icons.keyboard_arrow_down),
           children: const [StepperWidget()]),
     );

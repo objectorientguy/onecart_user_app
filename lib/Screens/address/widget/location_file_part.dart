@@ -38,7 +38,7 @@ class LocationCardTile extends StatelessWidget {
                     },
                     child: Text(
                       'Add New Address',
-                      style: Theme.of(context).textTheme.xxSmall.copyWith(
+                      style: Theme.of(context).textTheme.xTinier.copyWith(
                           color: AppColor.lighterRed,
                           fontWeight: FontWeight.w600),
                     ),
@@ -72,7 +72,7 @@ class LocationCardTile extends StatelessWidget {
                       },
                       child: Text(
                         'Use Your Current Location',
-                        style: Theme.of(context).textTheme.xxSmall.copyWith(
+                        style: Theme.of(context).textTheme.xTinier.copyWith(
                             color: AppColor.lighterRed,
                             fontWeight: FontWeight.w600),
                       ),
@@ -85,7 +85,7 @@ class LocationCardTile extends StatelessWidget {
                       'Tatya Tope Nagar, Deo,Nagpur',
                       style: Theme.of(context)
                           .textTheme
-                          .xxGSmall
+                          .xxxTinier
                           .copyWith(color: AppColor.black),
                     ),
                   ],

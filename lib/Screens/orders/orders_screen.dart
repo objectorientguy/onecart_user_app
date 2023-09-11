@@ -98,7 +98,7 @@ class OrdersScreen extends StatelessWidget {
                             width: kSizedBoxInfinite,
                             height: kSizedBoxHeightLarge,
                             decoration: BoxDecoration(
-                              border: Border.all(color: AppColor.lightestGrey),
+                              border: Border.all(color: AppColor.lightGrey),
                               borderRadius:
                                   BorderRadius.circular(kGeneralBorderRadius),
                             ),
@@ -130,27 +130,14 @@ class OrdersScreen extends StatelessWidget {
                                                 orderData[index]['title'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .orderDetailsHeadingRed,
-                                                maxLines: 2,
-                                                    .tinier
-                                                    .copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color:
-                                                            AppColor.brightRed),
+                                                    .xxTinier,
                                               )
-                                            : Text(
-                                                orderData[index]['title'],
+                                            : Text(orderData[index]['title'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .tinier
+                                                    .xxTinier
                                                     .copyWith(
                                                       color: AppColor.darkGrey,
-                                                    ),
-                                                maxLines: 2,
-                                              ),
-                                                      fontWeight:
-                                                          FontWeight.w600,
                                                     )),
                                         (orderData[index]['title'] ==
                                                 "Delivered")
@@ -159,12 +146,7 @@ class OrdersScreen extends StatelessWidget {
                                                     ['deliveryDate'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .xxTinier
-                                                    .copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color:
-                                                            AppColor.lightGrey))
+                                                    .xxTinier)
                                             : const SizedBox(),
                                         Text(
                                             "${orderData[index]['category']} (${orderData[index]['quantity']} items)",
@@ -172,9 +154,7 @@ class OrdersScreen extends StatelessWidget {
                                                 .textTheme
                                                 .xxTinier
                                                 .copyWith(
-                                                    color: AppColor.darkGrey,
-                                                    fontWeight:
-                                                        FontWeight.w600)),
+                                                    color: AppColor.darkGrey)),
                                       ],
                                     ),
                                   ],
