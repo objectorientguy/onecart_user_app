@@ -29,7 +29,11 @@ class ProfileFooter extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('About', style: Theme.of(context).textTheme.headingSmall),
+                Text('About',
+                    style: Theme.of(context)
+                        .textTheme
+                        .tiny
+                        .copyWith(fontWeight: FontWeight.w700)),
                 const Icon(Icons.arrow_forward_ios)
               ],
             ),

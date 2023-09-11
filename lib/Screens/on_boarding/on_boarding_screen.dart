@@ -63,10 +63,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
                           child: Text(
                             itemUrl.description,
                             textAlign: TextAlign.center,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headingSmall
-                                .copyWith(
+                            style: Theme.of(context).textTheme.tiny.copyWith(
                                   fontWeight: FontWeight.w600,
                                   color: AppColor.mediumBlack,
                                 ),
@@ -104,15 +101,18 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
                           children: [
                             Text(
                               "Let's get started",
-                              style: Theme.of(context).textTheme.small.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColor.white),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .xxxTiny
+                                  .copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColor.white),
                             ),
                             const Icon(Icons.navigate_next)
                           ],
                         )
                       : Text('Next',
-                          style: Theme.of(context).textTheme.small.copyWith(
+                          style: Theme.of(context).textTheme.xxxTiny.copyWith(
                               fontWeight: FontWeight.w600,
                               color: AppColor.white)),
                 ),

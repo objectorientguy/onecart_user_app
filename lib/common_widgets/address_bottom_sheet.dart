@@ -93,7 +93,7 @@ class AddressBottomSheet extends StatelessWidget {
                                               'Add New Address',
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .xxSmall
+                                                  .xxxTinier
                                                   .copyWith(
                                                       color:
                                                           AppColor.lighterRed,
@@ -137,7 +137,7 @@ class AddressBottomSheet extends StatelessWidget {
                                                 'Use Your Current Location',
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .xxSmall
+                                                    .xxxTinier
                                                     .copyWith(
                                                         color:
                                                             AppColor.lighterRed,
@@ -153,7 +153,7 @@ class AddressBottomSheet extends StatelessWidget {
                                               'Tatya Tope Nagar, Deo,Nagpur',
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .xxGSmall
+                                                  .xxxTinier
                                                   .copyWith(
                                                       color: AppColor.black),
                                             ),
@@ -175,7 +175,9 @@ class AddressBottomSheet extends StatelessWidget {
                                 style: Theme.of(context)
                                     .textTheme
                                     .xxTinier
-                                    .copyWith(color: Colors.black)),
+                                    .copyWith(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w500)),
                             const SizedBox(
                               height: tiniestSpacing,
                             ),
@@ -232,7 +234,7 @@ class AddressBottomSheet extends StatelessWidget {
                                                       .toString(),
                                                   style: Theme.of(context)
                                                       .textTheme
-                                                      .headingTiny),
+                                                      .tinier),
                                               const SizedBox(
                                                   width: xxTinierSpacing),
                                               const SizedBox(
@@ -243,7 +245,9 @@ class AddressBottomSheet extends StatelessWidget {
                                                     .toString(),
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .xxGSmall,
+                                                    .xxxTinier
+                                                    .copyWith(
+                                                        color: AppColor.grey),
                                               ),
                                             ],
                                           ),
@@ -253,7 +257,7 @@ class AddressBottomSheet extends StatelessWidget {
                                   }),
                             ),
                             Text("Recent location",
-                                style: Theme.of(context).textTheme.headingTiny),
+                                style: Theme.of(context).textTheme.tinier),
                             const SizedBox(height: xxxTinierSpacing),
                             Card(
                               child: Padding(
@@ -296,7 +300,7 @@ class AddressBottomSheet extends StatelessWidget {
                                                     .toString(),
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .headingTiny),
+                                                    .tinier),
                                             const SizedBox(
                                                 width: xxTinierSpacing),
                                             const SizedBox(
@@ -307,7 +311,9 @@ class AddressBottomSheet extends StatelessWidget {
                                                   .toString(),
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .xxGSmall,
+                                                  .xxxTinier
+                                                  .copyWith(
+                                                      color: AppColor.grey),
                                             ),
                                           ],
                                         ),

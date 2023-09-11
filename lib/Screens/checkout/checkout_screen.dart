@@ -42,7 +42,8 @@ class CheckoutScreen extends StatelessWidget {
                 buttonHeight: kElevatedButtonHeightSmall,
                 child: Text(
                   'PAY AND CHECKOUT',
-                  style: Theme.of(context).textTheme.textButtonLarger,
+                  style: Theme.of(context).textTheme.xxTiny.copyWith(
+                      fontWeight: FontWeight.w600, color: AppColor.white),
                 )),
           ),
         ),

@@ -22,7 +22,10 @@ class PrivacyPolicyScreen extends StatelessWidget {
             children: [
               Text(
                 'Privacy Policy',
-                style: Theme.of(context).textTheme.headingMedium,
+                style: Theme.of(context)
+                    .textTheme
+                    .small
+                    .copyWith(fontWeight: FontWeight.w700),
               ),
               const SizedBox(
                 height: xxxSmallSpacing,

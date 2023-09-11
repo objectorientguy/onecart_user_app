@@ -51,7 +51,10 @@ class OrdersScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             "My Orders",
-            style: Theme.of(context).textTheme.mediumLarge,
+            style: Theme.of(context)
+                .textTheme
+                .tiny
+                .copyWith(fontWeight: FontWeight.w500),
           ),
           actions: const [
             Padding(
@@ -127,14 +130,21 @@ class OrdersScreen extends StatelessWidget {
                                                 orderData[index]['title'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .orderDetailsHeadingRed,
+                                                    .tinier
+                                                    .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color:
+                                                            AppColor.brightRed),
                                               )
                                             : Text(orderData[index]['title'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .orderDetailsHeadingRed
+                                                    .tinier
                                                     .copyWith(
                                                       color: AppColor.darkGrey,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                     )),
                                         (orderData[index]['title'] ==
                                                 "Delivered")
@@ -143,15 +153,22 @@ class OrdersScreen extends StatelessWidget {
                                                     ['deliveryDate'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .orderDetailsDeliveryStatus)
+                                                    .xxTinier
+                                                    .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color:
+                                                            AppColor.lightGrey))
                                             : const SizedBox(),
                                         Text(
                                             "${orderData[index]['category']} (${orderData[index]['quantity']} items)",
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .orderDetailsDeliveryStatus
+                                                .xxTinier
                                                 .copyWith(
-                                                    color: AppColor.darkGrey)),
+                                                    color: AppColor.darkGrey,
+                                                    fontWeight:
+                                                        FontWeight.w600)),
                                       ],
                                     ),
                                   ],

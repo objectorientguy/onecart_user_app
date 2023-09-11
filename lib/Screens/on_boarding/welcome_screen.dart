@@ -9,6 +9,7 @@ import '../../configs/app_dimensions.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +36,14 @@ class WelcomeScreen extends StatelessWidget {
               Image.asset('assets/welcome.png'),
               const SizedBox(height: xxxTinierSpacing),
               Text('Welcome back!',
-                  style: Theme.of(context).textTheme.headingMedium),
+                  style: Theme.of(context).textTheme.xxxTiny.copyWith(
+                      fontWeight: FontWeight.w700, color: AppColor.grey)),
               const SizedBox(height: xxxTinierSpacing),
               Text('Are you ready for shopping today?',
-                  style: Theme.of(context).textTheme.smallGrey),
+                  style: Theme.of(context)
+                      .textTheme
+                      .xxTiny
+                      .copyWith(color: AppColor.darkerGrey)),
               const SizedBox(height: xxxSmallestSpacing),
               ElevatedButton(
                 onPressed: () {
@@ -53,7 +58,8 @@ class WelcomeScreen extends StatelessWidget {
                             BorderRadius.circular(kGeneralBorderRadius))),
                 child: Text(
                   'Go shopping now',
-                  style: Theme.of(context).textTheme.textButtonLarger,
+                  style: Theme.of(context).textTheme.xxTiny.copyWith(
+                      fontWeight: FontWeight.w600, color: AppColor.white),
                 ),
               ),
             ],

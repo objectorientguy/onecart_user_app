@@ -3,6 +3,7 @@ import 'package:onecart_user_app/Screens/home/widgets/product_tile_widget.dart';
 
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/home/home_model.dart';
 import '../../item_details/item_details_screen.dart';
@@ -26,7 +27,8 @@ class TodayDealsSection extends StatelessWidget {
           padding: const EdgeInsets.only(left: xxTinierSpacing),
           child: Text(
             "Today's Deals",
-            style: Theme.of(context).textTheme.xxxTinier,
+            style: Theme.of(context).textTheme.xTinier.copyWith(
+                color: AppColor.mediumBlack, fontWeight: FontWeight.w500),
           ),
         ),
         const SizedBox(

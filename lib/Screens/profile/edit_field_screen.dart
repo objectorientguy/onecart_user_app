@@ -9,6 +9,7 @@ import '../../configs/app_dimensions.dart';
 class EditFieldScreen extends StatelessWidget {
   static const routeName = 'EditFieldScreen';
   final String fieldData;
+
   const EditFieldScreen({Key? key, required this.fieldData}) : super(key: key);
 
   @override
@@ -19,7 +20,11 @@ class EditFieldScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit', style: Theme.of(context).textTheme.headingMedium),
+        title: Text('Edit',
+            style: Theme.of(context)
+                .textTheme
+                .xxxTiny
+                .copyWith(fontWeight: FontWeight.w700, color: AppColor.grey)),
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -46,7 +51,8 @@ class EditFieldScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Edit Information',
-                  style: Theme.of(context).textTheme.headingMedium),
+                  style: Theme.of(context).textTheme.xxxTiny.copyWith(
+                      fontWeight: FontWeight.w700, color: AppColor.grey)),
               const SizedBox(height: smallestSpacing),
               TextField(
                 controller: fieldController,
@@ -66,7 +72,8 @@ class EditFieldScreen extends StatelessWidget {
                   buttonHeight: 50,
                   child: Text(
                     'SAVE',
-                    style: Theme.of(context).textTheme.textButtonLarger,
+                    style: Theme.of(context).textTheme.xxTiny.copyWith(
+                        fontWeight: FontWeight.w600, color: AppColor.white),
                   ))
             ],
           ),

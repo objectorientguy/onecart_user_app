@@ -44,7 +44,7 @@ class AddressBar extends StatelessWidget {
               const SizedBox(
                 width: xxxTiniestSpacing,
               ),
-              Text('Home', style: Theme.of(context).textTheme.headingTiny),
+              Text('Home', style: Theme.of(context).textTheme.tinier),
               const SizedBox(
                 width: xxxTiniestSpacing,
               ),
@@ -65,7 +65,10 @@ class AddressBar extends StatelessWidget {
             child: SizedBox(
               child: Text(
                 'Akshay Nagar 1st Block 1st Cross, Rammurthy nagar...',
-                style: Theme.of(context).textTheme.subHeadingMedium,
+                style: Theme.of(context)
+                    .textTheme
+                    .xxTinier
+                    .copyWith(color: AppColor.grey),
                 overflow: TextOverflow.ellipsis,
               ),
             ),

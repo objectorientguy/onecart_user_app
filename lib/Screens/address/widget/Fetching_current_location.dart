@@ -17,11 +17,9 @@ class FetchCurrentLocation extends StatefulWidget {
 }
 
 class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
-
   String location = 'Null, Press Button';
   String addressHalf = 'Tatya Nagar,';
   String addressFull = ' Deo Nagar Nagpur';
-
 
   Future<Position> getCurrentPosition() async {
     bool serviceEnabled;
@@ -45,7 +43,6 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
     }
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-
   }
 
   Future<void> getAddressFromLatLong(Position position) async {
@@ -68,7 +65,6 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
         Position position = await getCurrentPosition();
         location = 'Lat: ${position.latitude} , Long: ${position.longitude}';
         getAddressFromLatLong(position);
-
       },
       child: Container(
           height: kAddressContainerWidth,
@@ -102,9 +98,12 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
                         children: [
                           Text(
                             'Use Your Current Location',
-                            style: Theme.of(context).textTheme.xxSmall.copyWith(
-                                color: AppColor.lighterRed,
-                                fontWeight: FontWeight.w600),
+                            style: Theme.of(context)
+                                .textTheme
+                                .xxxTinier
+                                .copyWith(
+                                    color: AppColor.lighterRed,
+                                    fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -127,9 +126,10 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
                       children: [
                         Text(
                           addressHalf,
-                          style: Theme.of(context).textTheme.xmedium.copyWith(
-                              color: AppColor.black,
-                              fontWeight: FontWeight.w600),
+                          style: Theme.of(context)
+                              .textTheme
+                              .tinier
+                              .copyWith(fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(
                           height: xxTiniestSpacing,
@@ -138,7 +138,7 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
                           addressFull,
                           style: Theme.of(context)
                               .textTheme
-                              .xxGSmall
+                              .xxxTinier
                               .copyWith(color: AppColor.black),
                         ),
                       ],

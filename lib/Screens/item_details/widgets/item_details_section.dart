@@ -29,7 +29,10 @@ class ItemDetailsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(itemData.productName.toString(),
-              style: Theme.of(context).textTheme.mediumLarge),
+              style: Theme.of(context)
+                  .textTheme
+                  .tiny
+                  .copyWith(fontWeight: FontWeight.w500)),
           const SizedBox(height: tinySpacing),
           InkWell(
             onTap: () {
@@ -68,7 +71,7 @@ class ItemDetailsSection extends StatelessWidget {
                     child: Text(itemData.weight.toString(),
                         style: Theme.of(context)
                             .textTheme
-                            .headingTiny
+                            .tinier
                             .copyWith(fontWeight: FontWeight.w500)),
                   ),
                   const Icon(Icons.keyboard_arrow_down,

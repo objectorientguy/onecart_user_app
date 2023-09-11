@@ -27,7 +27,10 @@ class CartHeader extends StatelessWidget {
                 width: xxTinierSpacing,
               ),
               Text('BRP Foods Agro Store',
-                  style: Theme.of(context).textTheme.headingSmall),
+                  style: Theme.of(context)
+                      .textTheme
+                      .tiny
+                      .copyWith(fontWeight: FontWeight.w700)),
               const SizedBox(
                 width: xxxTinySpacing,
               ),
@@ -50,7 +53,10 @@ class CartHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Subtotal',
-                    style: Theme.of(context).textTheme.subHeadingLarge),
+                    style: Theme.of(context)
+                        .textTheme
+                        .tinier
+                        .copyWith(color: AppColor.grey)),
                 const SizedBox(height: xxxTinierSpacing),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -58,11 +64,18 @@ class CartHeader extends StatelessWidget {
                     Text('₹',
                         style: Theme.of(context)
                             .textTheme
-                            .headingLarge
+                            .xxMedium
                             .copyWith(fontWeight: FontWeight.w100)),
                     Text('2,199',
-                        style: Theme.of(context).textTheme.headingLarge),
-                    Text('.43', style: Theme.of(context).textTheme.textLarge),
+                        style: Theme.of(context)
+                            .textTheme
+                            .xxMedium
+                            .copyWith(fontWeight: FontWeight.w700)),
+                    Text('.43',
+                        style: Theme.of(context)
+                            .textTheme
+                            .xxTiny
+                            .copyWith(color: AppColor.mediumBlack)),
                     const SizedBox(
                       width: xxxTinierSpacing,
                     ),

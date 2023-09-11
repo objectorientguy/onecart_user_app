@@ -19,7 +19,10 @@ class DeliveryDetailsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Deliver To',
-              style: Theme.of(context).textTheme.subHeadingLarge),
+              style: Theme.of(context)
+                  .textTheme
+                  .tinier
+                  .copyWith(color: AppColor.grey)),
           const SizedBox(
             height: tinierSpacing,
           ),
@@ -43,7 +46,7 @@ class DeliveryDetailsSection extends StatelessWidget {
                       Row(
                         children: [
                           Text('Home',
-                              style: Theme.of(context).textTheme.headingTiny),
+                              style: Theme.of(context).textTheme.tinier),
                           const SizedBox(
                             width: xxxTiniestSpacing,
                           ),
@@ -63,7 +66,10 @@ class DeliveryDetailsSection extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.55,
                         child: Text(
                           'Akshya Nagar 1st Block 1st Cross, Ramamurthy Nagar, Nagpur-440009',
-                          style: Theme.of(context).textTheme.subHeadingMedium,
+                          style: Theme.of(context)
+                              .textTheme
+                              .xxTinier
+                              .copyWith(color: AppColor.grey),
                         ),
                       )
                     ],
@@ -85,7 +91,10 @@ class DeliveryDetailsSection extends StatelessWidget {
           ),
           const Divider(height: smallerSpacing, thickness: 0.3),
           Text('Delivery Partner',
-              style: Theme.of(context).textTheme.subHeadingLarge),
+              style: Theme.of(context)
+                  .textTheme
+                  .tinier
+                  .copyWith(color: AppColor.grey)),
           const SizedBox(
             height: tinierSpacing,
           ),
@@ -114,13 +123,19 @@ class DeliveryDetailsSection extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Dunzo',
-                          style: Theme.of(context).textTheme.textLarge),
+                          style: Theme.of(context)
+                              .textTheme
+                              .xxTiny
+                              .copyWith(color: AppColor.mediumBlack)),
                       const SizedBox(
                         height: xxTiniestSpacing,
                       ),
                       Text(
                         '10-20 mins',
-                        style: Theme.of(context).textTheme.subHeadingMedium,
+                        style: Theme.of(context)
+                            .textTheme
+                            .xxTinier
+                            .copyWith(color: AppColor.grey),
                         overflow: TextOverflow.ellipsis,
                       )
                     ],

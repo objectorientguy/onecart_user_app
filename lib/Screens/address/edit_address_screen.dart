@@ -8,6 +8,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/address_bloc/address_states.dart';
 import '../../common_widgets/custom_elevated_button.dart';
 import '../../common_widgets/generic_app_bar.dart';
+import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 import '../../data/models/address_model/address_model.dart';
@@ -83,7 +84,8 @@ class EditAddressScreen extends StatelessWidget {
                     buttonHeight: kElevatedButtonHeight,
                     child: Text(
                       'SAVE',
-                      style: Theme.of(context).textTheme.textButtonLarger,
+                      style: Theme.of(context).textTheme.xxTiny.copyWith(
+                          fontWeight: FontWeight.w600, color: AppColor.white),
                     )),
               ),
             ],

@@ -34,240 +34,148 @@ AppBarTheme appBarTheme = const AppBarTheme(
 );
 
 extension AppTextTheme on TextTheme {
-  TextStyle get headingLargest {
+  TextStyle get xxxTiniest {
     return const TextStyle(
-        fontSize: 36, fontWeight: FontWeight.bold, color: AppColor.black);
+        fontSize: 8, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get headingLarger {
+  TextStyle get xxTiniest {
     return const TextStyle(
-        fontSize: 30, fontWeight: FontWeight.bold, color: AppColor.black);
+        fontSize: 9, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get headingLarge {
+  TextStyle get xTiniest {
     return const TextStyle(
-        fontSize: 25, fontWeight: FontWeight.w700, color: AppColor.black);
+        fontSize: 10, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get headingMedium {
+  TextStyle get tiniest {
     return const TextStyle(
-        fontSize: 23, fontWeight: FontWeight.w700, color: AppColor.black);
-  }
-
-  TextStyle get headingSmall {
-    return const TextStyle(
-        fontSize: 19, fontWeight: FontWeight.w700, color: AppColor.black);
-  }
-
-  TextStyle get headingSmallx {
-    return const TextStyle(
-        fontSize: 17, fontWeight: FontWeight.w500, color: AppColor.black);
-  }
-
-  TextStyle get headingTiny {
-    return const TextStyle(
-        fontSize: 15, fontWeight: FontWeight.w400, color: AppColor.black);
-  }
-
-  TextStyle get headingxTiny {
-    return const TextStyle(
-        fontSize: 13, fontWeight: FontWeight.w500, color: AppColor.black);
-  }
-
-  TextStyle get headingxxTiny {
-    return const TextStyle(
-        fontSize: 12.5, fontWeight: FontWeight.w600, color: AppColor.black);
-  }
-
-  TextStyle get subHeadingLarge {
-    return const TextStyle(
-        fontSize: 15, fontWeight: FontWeight.w400, color: AppColor.grey);
-  }
-
-  TextStyle get subHeadingxLarge {
-    return const TextStyle(
-        fontSize: 12, fontWeight: FontWeight.w400, color: AppColor.grey);
-  }
-
-  TextStyle get subHeadingxxLarge {
-    return const TextStyle(
-        fontSize: 12, fontWeight: FontWeight.w500, color: AppColor.darkestGrey);
-  }
-
-  TextStyle get xxTinier {
-    return const TextStyle(
-        fontSize: 16, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
-  }
-
-  TextStyle get subHeadingLargex {
-    return const TextStyle(
-        fontSize: 15, fontWeight: FontWeight.w300, color: AppColor.grey);
-  }
-
-  TextStyle get subHeadingLarger {
-    return const TextStyle(
-        fontSize: 17, fontWeight: FontWeight.w400, color: AppColor.grey);
-  }
-
-  TextStyle get subHeadingMedium {
-    return const TextStyle(
-        fontSize: 13, fontWeight: FontWeight.w400, color: AppColor.grey);
-  }
-
-  TextStyle get orderDetailsHeadingRed {
-    return const TextStyle(
-        fontSize: 17, fontWeight: FontWeight.w600, color: AppColor.brightRed);
-  }
-
-  TextStyle get orderDetailsDeliveryStatus {
-    return const TextStyle(
-        fontSize: 13, fontWeight: FontWeight.w600, color: AppColor.lightGrey);
-  }
-
-  TextStyle get subHeadingxMedium {
-    return const TextStyle(
-        fontSize: 11, fontWeight: FontWeight.w400, color: AppColor.grey);
-  }
-
-  TextStyle get subHeadingxxMedium {
-    return const TextStyle(
-        fontSize: 11, fontWeight: FontWeight.w500, color: AppColor.darkestGrey);
-  }
-
-  TextStyle get subHeadingSmall {
-    return const TextStyle(
-        fontSize: 10, fontWeight: FontWeight.w400, color: AppColor.grey);
-  }
-
-  TextStyle get xsubHeadingSmall {
-    return const TextStyle(
-        fontSize: 8, fontWeight: FontWeight.w400, color: AppColor.grey);
-  }
-
-  TextStyle get textLarger {
-    return const TextStyle(
-        fontSize: 19, fontWeight: FontWeight.w700, color: AppColor.mediumBlack);
-  }
-
-  TextStyle get textLarge {
-    return const TextStyle(
-        fontSize: 17, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
-  }
-
-  TextStyle get textMedium {
-    return const TextStyle(
-        fontSize: 14, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
-  }
-
-  TextStyle get xtextMedium {
-    return const TextStyle(
-        fontSize: 14, fontWeight: FontWeight.w500, color: AppColor.mediumBlack);
-  }
-
-  TextStyle get textMediumx {
-    return const TextStyle(
-        fontSize: 13, fontWeight: FontWeight.w300, color: AppColor.grey);
+        fontSize: 11, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
   TextStyle get xxxTinier {
     return const TextStyle(
-        fontSize: 14, fontWeight: FontWeight.w500, color: AppColor.mediumBlack);
+        fontSize: 12, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get textSmall {
+  TextStyle get xxTinier {
     return const TextStyle(
-        fontSize: 10, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
+        fontSize: 13, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get textxSmall {
+  TextStyle get xTinier {
     return const TextStyle(
-        fontSize: 9, fontWeight: FontWeight.w600, color: AppColor.primary);
+        fontSize: 14, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get textButtonLarge {
+  TextStyle get tinier {
     return const TextStyle(
-        fontSize: 14, fontWeight: FontWeight.w400, color: AppColor.white);
+        fontSize: 15, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get textButtonxLarge {
+  TextStyle get xxxTiny {
     return const TextStyle(
-        fontSize: 13, fontWeight: FontWeight.w400, color: AppColor.white);
+        fontSize: 16, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get textButtonLarger {
+  TextStyle get xxTiny {
     return const TextStyle(
-        fontSize: 17, fontWeight: FontWeight.w600, color: AppColor.white);
+        fontSize: 17, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get textButtonSmall {
+  TextStyle get xTiny {
     return const TextStyle(
-        fontSize: 12, fontWeight: FontWeight.w700, color: AppColor.primary);
+        fontSize: 18, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get textButtonxSmall {
+  TextStyle get tiny {
     return const TextStyle(
-        fontSize: 13, fontWeight: FontWeight.w500, color: AppColor.primary);
+        fontSize: 19, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get textButtonxxSmall {
+  TextStyle get xxxSmall {
     return const TextStyle(
-        fontSize: 11, fontWeight: FontWeight.w400, color: AppColor.primary);
-  }
-
-  TextStyle get medium {
-    return const TextStyle(
-        fontSize: 16, fontWeight: FontWeight.w500, color: AppColor.black);
-  }
-
-  TextStyle get xmedium {
-    return const TextStyle(
-        fontSize: 15, fontWeight: FontWeight.w500, color: AppColor.black);
-  }
-
-  TextStyle get mediumLarge {
-    return const TextStyle(
-        fontSize: 19, fontWeight: FontWeight.w500, color: AppColor.black);
-  }
-
-  TextStyle get xLarge {
-    return const TextStyle(fontSize: 22, color: AppColor.mediumBlack);
-  }
-
-  TextStyle get xxLarge {
-    return const TextStyle(fontSize: 24, color: AppColor.mediumBlack);
-  }
-
-  TextStyle get large {
-    return const TextStyle(fontSize: 20, color: AppColor.mediumBlack);
-  }
-
-  TextStyle get small {
-    return const TextStyle(fontSize: 16, color: AppColor.grey);
-  }
-
-  TextStyle get xSmall {
-    return const TextStyle(
-        fontSize: 14, color: AppColor.mediumBlack, fontWeight: FontWeight.w400);
+        fontSize: 20, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
   TextStyle get xxSmall {
     return const TextStyle(
-        fontSize: 12, color: AppColor.mediumBlack, fontWeight: FontWeight.w400);
+        fontSize: 21, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get xxGSmall {
-    return const TextStyle(fontSize: 12, color: AppColor.grey);
+  TextStyle get xSmall {
+    return const TextStyle(
+        fontSize: 22, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get xxxSmall {
-    return const TextStyle(fontSize: 8, color: AppColor.white);
+  TextStyle get small {
+    return const TextStyle(
+        fontSize: 23, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get smallRed {
-    return const TextStyle(fontSize: 15, color: AppColor.red);
+  TextStyle get xxxMedium {
+    return const TextStyle(
+        fontSize: 24, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
-  TextStyle get smallGrey {
-    return const TextStyle(fontSize: 17, color: AppColor.darkerGrey);
+  TextStyle get xxMedium {
+    return const TextStyle(
+        fontSize: 25, color: AppColor.black, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get xMedium {
+    return const TextStyle(
+        fontSize: 26, color: AppColor.black, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get medium {
+    return const TextStyle(
+        fontSize: 27, color: AppColor.black, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get xxxLarge {
+    return const TextStyle(
+        fontSize: 28, color: AppColor.black, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get xxLarge {
+    return const TextStyle(
+        fontSize: 29, color: AppColor.black, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get xLarge {
+    return const TextStyle(
+        fontSize: 30, color: AppColor.black, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get large {
+    return const TextStyle(
+        fontSize: 31, color: AppColor.black, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get xxxTextSmall {
+    return const TextStyle(
+        fontSize: 32, color: AppColor.black, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get xxTextSmall {
+    return const TextStyle(
+        fontSize: 33, color: AppColor.black, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get xTextSmall {
+    return const TextStyle(
+        fontSize: 34, color: AppColor.black, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get textSmall {
+    return const TextStyle(
+        fontSize: 35, color: AppColor.black, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get xxxTextMedium {
+    return const TextStyle(
+        fontSize: 36, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 }

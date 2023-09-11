@@ -16,7 +16,11 @@ class ProfileHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Account', style: Theme.of(context).textTheme.headingMedium),
+        Text('Account',
+            style: Theme.of(context)
+                .textTheme
+                .xxxTiny
+                .copyWith(fontWeight: FontWeight.w700, color: AppColor.grey)),
         const SizedBox(height: xxSmallSpacing),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,7 +31,7 @@ class ProfileHeader extends StatelessWidget {
                   backgroundColor: AppColor.primary,
                   radius: kCircleAvatarRadius * 1,
                   child: Text('JD',
-                      style: Theme.of(context).textTheme.headingMedium.copyWith(
+                      style: Theme.of(context).textTheme.xxxTiny.copyWith(
                           color: AppColor.white, fontWeight: FontWeight.w500)),
                 ),
                 const SizedBox(
@@ -37,8 +41,8 @@ class ProfileHeader extends StatelessWidget {
                   'John Doe',
                   style: Theme.of(context)
                       .textTheme
-                      .headingLarge
-                      .copyWith(color: AppColor.black),
+                      .xxMedium
+                      .copyWith(fontWeight: FontWeight.w700),
                 )
               ],
             ),
@@ -74,34 +78,28 @@ class ProfileHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Phone number',
-                    style: Theme.of(context)
-                        .textTheme
-                        .subHeadingLarge
-                        .copyWith(fontWeight: FontWeight.w500)),
+                    style: Theme.of(context).textTheme.tinier.copyWith(
+                        fontWeight: FontWeight.w500, color: AppColor.grey)),
                 const SizedBox(
                   height: xxTiniestSpacing,
                 ),
                 Text('+91-99999-88888',
-                    style: Theme.of(context)
-                        .textTheme
-                        .textLarge
-                        .copyWith(fontWeight: FontWeight.w500)),
+                    style: Theme.of(context).textTheme.xxTiny.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: AppColor.mediumBlack)),
                 const SizedBox(
                   height: xxxTinySpacing,
                 ),
                 Text('Email ID',
-                    style: Theme.of(context)
-                        .textTheme
-                        .subHeadingLarge
-                        .copyWith(fontWeight: FontWeight.w500)),
+                    style: Theme.of(context).textTheme.tinier.copyWith(
+                        fontWeight: FontWeight.w500, color: AppColor.grey)),
                 const SizedBox(
                   height: xxTiniestSpacing,
                 ),
                 Text('johndoe@gmail.com',
-                    style: Theme.of(context)
-                        .textTheme
-                        .textLarge
-                        .copyWith(fontWeight: FontWeight.w500)),
+                    style: Theme.of(context).textTheme.xxTiny.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: AppColor.mediumBlack)),
               ],
             ),
           ),

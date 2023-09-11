@@ -3,6 +3,7 @@ import 'package:onecart_user_app/common_widgets/custom_elevated_button.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 
 class OrderSuccessScreen extends StatelessWidget {
@@ -27,7 +28,10 @@ class OrderSuccessScreen extends StatelessWidget {
                 )),
             const SizedBox(height: tinySpacing),
             Text('Congratulations !',
-                style: Theme.of(context).textTheme.headingLarge),
+                style: Theme.of(context)
+                    .textTheme
+                    .xxMedium
+                    .copyWith(fontWeight: FontWeight.w700)),
             const SizedBox(
               height: xxTinySpacing,
             ),
@@ -36,7 +40,10 @@ class OrderSuccessScreen extends StatelessWidget {
                 child: Text(
                   'Your Order Has Been Delivered Successfully.',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.subHeadingLarger,
+                  style: Theme.of(context)
+                      .textTheme
+                      .xxTiny
+                      .copyWith(color: AppColor.grey),
                 )),
             const SizedBox(
               height: smallerSpacing,
@@ -49,7 +56,8 @@ class OrderSuccessScreen extends StatelessWidget {
               buttonHeight: kElevatedButtonHeightSmall,
               child: Text(
                 'BACK TO HOME',
-                style: Theme.of(context).textTheme.textButtonLarger,
+                style: Theme.of(context).textTheme.xxTiny.copyWith(
+                    fontWeight: FontWeight.w600, color: AppColor.white),
               ),
             )
           ],
