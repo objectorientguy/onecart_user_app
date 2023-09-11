@@ -4,6 +4,7 @@ import 'package:onecart_user_app/Screens/profile/widgets/profile_list_widget.dar
 import 'package:onecart_user_app/Screens/profile/widgets/terms_and_conditions_screen.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
@@ -63,7 +64,8 @@ class ProfileOptionsListTwo extends StatelessWidget {
       const SizedBox(height: xxSmallerSpacing),
       Text(
         'App Version 1.8.0',
-        style: Theme.of(context).textTheme.subHeadingMedium,
+        style:
+            Theme.of(context).textTheme.xxTinier.copyWith(color: AppColor.grey),
       ),
     ]);
   }

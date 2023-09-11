@@ -33,17 +33,19 @@ class ProfileListWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(title,
-                    style: Theme.of(context)
-                        .textTheme
-                        .textLarge
-                        .copyWith(fontWeight: FontWeight.w700)),
+                    style: Theme.of(context).textTheme.xxTiny.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: AppColor.mediumBlack)),
                 const SizedBox(
                   height: xxTiniestSpacing,
                 ),
                 SizedBox(
                   child: Text(
                     description,
-                    style: Theme.of(context).textTheme.subHeadingMedium,
+                    style: Theme.of(context)
+                        .textTheme
+                        .xxTinier
+                        .copyWith(color: AppColor.grey),
                     overflow: TextOverflow.ellipsis,
                   ),
                 )

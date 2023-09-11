@@ -54,8 +54,9 @@ class DeliverDetailsSection extends StatelessWidget {
                     child: Text(
                       deliveryData[index]['title'],
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.textMediumx.copyWith(
-                          color: AppColor.primary, fontWeight: FontWeight.w400),
+                      style: Theme.of(context).textTheme.xxTinier.copyWith(
+                            color: AppColor.primary,
+                          ),
                     ))
               ],
             ),

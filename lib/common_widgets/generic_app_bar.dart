@@ -27,7 +27,10 @@ class GenericAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: actions,
       title: Text(title,
           style: (style == null)
-              ? Theme.of(context).textTheme.mediumLarge
+              ? Theme.of(context)
+                  .textTheme
+                  .tiny
+                  .copyWith(fontWeight: FontWeight.w500)
               : style),
       leading: (leading == null)
           ? InkWell(

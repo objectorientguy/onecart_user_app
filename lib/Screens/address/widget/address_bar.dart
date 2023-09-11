@@ -57,6 +57,64 @@ class AddressBar extends StatelessWidget {
           ),
         ),
       ],
+    return InkWell(
+      onTap: () {
+        Scaffold.of(context).showBottomSheet<void>(
+            elevation: xxTinierSpacing,
+            backgroundColor: Colors.grey,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(smallCardCurve),
+                    topLeft: Radius.circular(smallCardCurve))),
+            (BuildContext context) {
+          return const AddressBottomSheet();
+        });
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(
+                Icons.location_on,
+                color: AppColor.primary,
+                size: kLocationIconSize,
+              ),
+              const SizedBox(
+                width: xxxTiniestSpacing,
+              ),
+              Text('Home', style: Theme.of(context).textTheme.tinier),
+              const SizedBox(
+                width: xxxTiniestSpacing,
+              ),
+              const Center(
+                heightFactor: kLocationIconHeightFactor,
+                child: Icon(
+                  Icons.keyboard_arrow_down_outlined,
+                  color: AppColor.primary,
+                  size: kLocationIconSize,
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: kCircleAvatarRadius,
+            ),
+            child: SizedBox(
+              child: Text(
+                'Akshay Nagar 1st Block 1st Cross, Rammurthy nagar...',
+                style: Theme.of(context)
+                    .textTheme
+                    .xxTinier
+                    .copyWith(color: AppColor.grey),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

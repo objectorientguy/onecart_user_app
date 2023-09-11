@@ -45,7 +45,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                 .replaceAll('\n', ""),
                             style: Theme.of(context)
                                 .textTheme
-                                .subHeadingMedium
+                                .xxTinier
                                 .copyWith(
                                     fontWeight: FontWeight.w500,
                                     color: AppColor.black),
@@ -64,7 +64,10 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                   widget.data[widget.index].weight
                       .toString()
                       .replaceAll("\n", " "),
-                  style: Theme.of(context).textTheme.textButtonxxSmall),
+                  style: Theme.of(context)
+                      .textTheme
+                      .tiniest
+                      .copyWith(color: AppColor.primary)),
               const SizedBox(height: xxxTiniestSpacing),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,7 +81,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                 '₹${widget.data[widget.index].discountedCost!.toString()}',
                                 style: Theme.of(context)
                                     .textTheme
-                                    .textMediumx
+                                    .xxTinier
                                     .copyWith(
                                         fontWeight: FontWeight.w500,
                                         color: AppColor.black)),
@@ -87,7 +90,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                 '₹${widget.data[widget.index].price!.toString()}',
                                 style: Theme.of(context)
                                     .textTheme
-                                    .xxGSmall
+                                    .xxxTinier
                                     .copyWith(
                                         color: AppColor.grey,
                                         decoration:
@@ -110,7 +113,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                       '${widget.data[widget.index].discount!} % off',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .xxxSmall
+                                          .xxxTiniest
                                           .copyWith(
                                               color: AppColor.primary,
                                               fontWeight: FontWeight.w500))))

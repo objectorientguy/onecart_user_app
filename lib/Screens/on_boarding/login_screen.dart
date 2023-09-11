@@ -48,9 +48,15 @@ class _LogInScreenState extends State<LogInScreen> {
               const SizedBox(height: xxxSmallestSpacing),
               (isSigninScreen)
                   ? Text('Login to your account',
-                      style: Theme.of(context).textTheme.headingLarger)
+                      style: Theme.of(context)
+                          .textTheme
+                          .xLarge
+                          .copyWith(fontWeight: FontWeight.bold))
                   : Text('Create your account',
-                      style: Theme.of(context).textTheme.headingLarger),
+                      style: Theme.of(context)
+                          .textTheme
+                          .xLarge
+                          .copyWith(fontWeight: FontWeight.bold)),
               const SizedBox(height: xxxSmallestSpacing),
               Visibility(
                 visible: showWrongEmail,
@@ -65,7 +71,10 @@ class _LogInScreenState extends State<LogInScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text('  Email address is incorrect',
-                            style: Theme.of(context).textTheme.smallRed),
+                            style: Theme.of(context)
+                                .textTheme
+                                .tinier
+                                .copyWith(color: AppColor.red)),
                         IconButton(
                             onPressed: () {
                               setState(() {
@@ -92,7 +101,10 @@ class _LogInScreenState extends State<LogInScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text('  Password is incorrect',
-                            style: Theme.of(context).textTheme.smallRed),
+                            style: Theme.of(context)
+                                .textTheme
+                                .tinier
+                                .copyWith(color: AppColor.red)),
                         IconButton(
                             onPressed: () {
                               setState(() {
@@ -208,7 +220,9 @@ class _LogInScreenState extends State<LogInScreen> {
                                     kGeneralBorderRadius))),
                         child: Text(
                           'Sign in',
-                          style: Theme.of(context).textTheme.textButtonLarger,
+                          style: Theme.of(context).textTheme.xxTiny.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: AppColor.white),
                         ),
                       ),
                     )
@@ -231,7 +245,9 @@ class _LogInScreenState extends State<LogInScreen> {
                                     kGeneralBorderRadius))),
                         child: Text(
                           'Sign up',
-                          style: Theme.of(context).textTheme.textButtonLarger,
+                          style: Theme.of(context).textTheme.xxTiny.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: AppColor.white),
                         ),
                       ),
                     ),

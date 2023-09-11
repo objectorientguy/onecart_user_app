@@ -37,7 +37,10 @@ class AddressScreen extends StatelessWidget {
             buttonWidth: double.maxFinite,
             child: Text(
               'Add New Address',
-              style: Theme.of(context).textTheme.textButtonLarger,
+              style: Theme.of(context)
+                  .textTheme
+                  .xxTiny
+                  .copyWith(fontWeight: FontWeight.w600, color: AppColor.white),
             )),
       ),
       body: SingleChildScrollView(
@@ -97,7 +100,7 @@ class AddressScreen extends StatelessWidget {
                                                     .toString(),
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .headingTiny),
+                                                    .tinier),
                                             const SizedBox(
                                                 width: xxTinierSpacing),
                                           ],
@@ -110,7 +113,8 @@ class AddressScreen extends StatelessWidget {
                                               .toString(),
                                           style: Theme.of(context)
                                               .textTheme
-                                              .xxGSmall,
+                                              .xxxTinier
+                                              .copyWith(color: AppColor.grey),
                                         ),
                                         Text(
                                           state.fetchAddressModel.data![index]
@@ -118,7 +122,8 @@ class AddressScreen extends StatelessWidget {
                                               .toString(),
                                           style: Theme.of(context)
                                               .textTheme
-                                              .xxGSmall,
+                                              .xxxTinier
+                                              .copyWith(color: AppColor.grey),
                                         ),
                                       ],
                                     ),

@@ -98,9 +98,12 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
                         children: [
                           Text(
                             'Use Your Current Location',
-                            style: Theme.of(context).textTheme.xxSmall.copyWith(
-                                color: AppColor.lighterRed,
-                                fontWeight: FontWeight.w600),
+                            style: Theme.of(context)
+                                .textTheme
+                                .xxxTinier
+                                .copyWith(
+                                    color: AppColor.lighterRed,
+                                    fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -123,9 +126,10 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
                       children: [
                         Text(
                           addressHalf,
-                          style: Theme.of(context).textTheme.xmedium.copyWith(
-                              color: AppColor.black,
-                              fontWeight: FontWeight.w600),
+                          style: Theme.of(context)
+                              .textTheme
+                              .tinier
+                              .copyWith(fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(
                           height: xxTiniestSpacing,
@@ -134,7 +138,7 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
                           addressFull,
                           style: Theme.of(context)
                               .textTheme
-                              .xxGSmall
+                              .xxxTinier
                               .copyWith(color: AppColor.black),
                         ),
                       ],

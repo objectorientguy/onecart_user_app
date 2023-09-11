@@ -53,15 +53,19 @@ class StoreList extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('BRP Foods Agro Store',
-                                style:
-                                    Theme.of(context).textTheme.headingSmall),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .tiny
+                                    .copyWith(fontWeight: FontWeight.w700)),
                             const SizedBox(
                               height: xxTiniestSpacing,
                             ),
                             Text(
                               '35-40 mins · Free Delivery',
-                              style:
-                                  Theme.of(context).textTheme.subHeadingMedium,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .xxTinier
+                                  .copyWith(color: AppColor.grey),
                               overflow: TextOverflow.ellipsis,
                             )
                           ],

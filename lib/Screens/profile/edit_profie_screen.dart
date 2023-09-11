@@ -57,7 +57,7 @@ class EditProfileScreen extends StatelessWidget {
                         child: Text('Edit',
                             style: Theme.of(context)
                                 .textTheme
-                                .textLarge
+                                .xxTiny
                                 .copyWith(color: AppColor.primary))),
                   ),
                   border: OutlineInputBorder(
@@ -94,7 +94,7 @@ class EditProfileScreen extends StatelessWidget {
                         child: Text('Edit',
                             style: Theme.of(context)
                                 .textTheme
-                                .textLarge
+                                .xxTiny
                                 .copyWith(color: AppColor.primary))),
                   ),
                   border: OutlineInputBorder(

@@ -26,7 +26,10 @@ class SearchTextField extends StatelessWidget {
           decoration: InputDecoration(
               prefixIconColor: AppColor.darkGrey,
               hintStyle: (hintStyle == null)
-                  ? Theme.of(context).textTheme.xxTinier
+                  ? Theme.of(context)
+                      .textTheme
+                      .xxxTiny
+                      .copyWith(color: AppColor.mediumBlack)
                   : hintStyle,
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(kSearchBarBorderRadius),

@@ -6,6 +6,7 @@ import '../../../data/models/checkout_model/checkout_model.dart';
 
 class BillSection extends StatelessWidget {
   final CheckoutData checkoutData;
+
   const BillSection({super.key, required this.checkoutData});
 
   @override
@@ -22,7 +23,10 @@ class BillSection extends StatelessWidget {
             Row(
               children: [
                 Text('Bill Details',
-                    style: Theme.of(context).textTheme.headingSmall),
+                    style: Theme.of(context)
+                        .textTheme
+                        .tiny
+                        .copyWith(fontWeight: FontWeight.w700)),
                 const SizedBox(width: xxxTinierSpacing),
                 Container(
                   decoration: BoxDecoration(
@@ -48,11 +52,15 @@ class BillSection extends StatelessWidget {
               children: [
                 Text(
                   'Cart Total',
-                  style: Theme.of(context).textTheme.subHeadingLarger,
+                  style: Theme.of(context)
+                      .textTheme
+                      .xxTiny
+                      .copyWith(color: AppColor.grey),
                 ),
                 Text(
                   checkoutData.cartTotal.toString(),
-                  style: Theme.of(context).textTheme.textLarger,
+                  style: Theme.of(context).textTheme.tiny.copyWith(
+                      fontWeight: FontWeight.w700, color: AppColor.mediumBlack),
                 )
               ],
             ),
@@ -62,14 +70,15 @@ class BillSection extends StatelessWidget {
               children: [
                 Text(
                   'Discount',
-                  style: Theme.of(context).textTheme.subHeadingLarger,
+                  style: Theme.of(context)
+                      .textTheme
+                      .xxTiny
+                      .copyWith(color: AppColor.grey),
                 ),
                 Text(
                   checkoutData.discountSum.toString(),
-                  style: Theme.of(context)
-                      .textTheme
-                      .textLarger
-                      .copyWith(color: AppColor.primary),
+                  style: Theme.of(context).textTheme.tiny.copyWith(
+                      color: AppColor.primary, fontWeight: FontWeight.w700),
                 )
               ],
             ),
@@ -81,7 +90,10 @@ class BillSection extends StatelessWidget {
                   children: [
                     Text(
                       'Coupon Applied',
-                      style: Theme.of(context).textTheme.subHeadingLarger,
+                      style: Theme.of(context)
+                          .textTheme
+                          .xxTiny
+                          .copyWith(color: AppColor.grey),
                     ),
                     const SizedBox(
                       width: xxxTinierSpacing,
@@ -110,10 +122,8 @@ class BillSection extends StatelessWidget {
                 ),
                 Text(
                   '-₹300',
-                  style: Theme.of(context)
-                      .textTheme
-                      .textLarger
-                      .copyWith(color: AppColor.primary),
+                  style: Theme.of(context).textTheme.tiny.copyWith(
+                      color: AppColor.primary, fontWeight: FontWeight.w700),
                 )
               ],
             ),
@@ -123,11 +133,15 @@ class BillSection extends StatelessWidget {
               children: [
                 Text(
                   'Delivery Charges',
-                  style: Theme.of(context).textTheme.subHeadingLarger,
+                  style: Theme.of(context)
+                      .textTheme
+                      .xxTiny
+                      .copyWith(color: AppColor.grey),
                 ),
                 Text(
                   checkoutData.deliveryCharges.toString(),
-                  style: Theme.of(context).textTheme.textLarger,
+                  style: Theme.of(context).textTheme.tiny.copyWith(
+                      fontWeight: FontWeight.w700, color: AppColor.mediumBlack),
                 )
               ],
             ),
@@ -137,7 +151,10 @@ class BillSection extends StatelessWidget {
               children: [
                 Text(
                   'Total',
-                  style: Theme.of(context).textTheme.subHeadingLarger,
+                  style: Theme.of(context)
+                      .textTheme
+                      .xxTiny
+                      .copyWith(color: AppColor.grey),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -145,12 +162,18 @@ class BillSection extends StatelessWidget {
                     Text('₹',
                         style: Theme.of(context)
                             .textTheme
-                            .headingLarge
+                            .xxMedium
                             .copyWith(fontWeight: FontWeight.w100)),
                     Text(pointAfterArr[0],
-                        style: Theme.of(context).textTheme.headingLarge),
+                        style: Theme.of(context)
+                            .textTheme
+                            .xxMedium
+                            .copyWith(fontWeight: FontWeight.w700)),
                     Text(".${pointAfterArr[1]}",
-                        style: Theme.of(context).textTheme.textLarge),
+                        style: Theme.of(context)
+                            .textTheme
+                            .xxTiny
+                            .copyWith(color: AppColor.mediumBlack)),
                   ],
                 )
               ],

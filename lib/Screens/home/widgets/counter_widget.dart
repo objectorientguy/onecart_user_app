@@ -66,7 +66,7 @@ class _CounterScreenState extends State<CounterScreen> {
               '$_count',
               style: Theme.of(context)
                   .textTheme
-                  .textMediumx
+                  .xxTinier
                   .copyWith(fontWeight: FontWeight.w500, color: AppColor.black),
             ),
             TextButton(
@@ -109,7 +109,7 @@ class _CounterScreenState extends State<CounterScreen> {
           child: Text(widget.title,
               style: Theme.of(context)
                   .textTheme
-                  .xxGSmall
+                  .xxxTinier
                   .copyWith(color: AppColor.white)),
         ),
       ),

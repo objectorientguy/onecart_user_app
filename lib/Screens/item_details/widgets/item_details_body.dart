@@ -46,7 +46,9 @@ class ItemDetailsBody extends StatelessWidget {
                       value: 2.5),
                   const SizedBox(width: xxxTinierSpacing),
                   Text('5 Ratings',
-                      style: Theme.of(context).textTheme.textButtonxSmall),
+                      style: Theme.of(context).textTheme.xxTinier.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: AppColor.primary)),
                   const SizedBox(width: xxxTinierSpacing),
                   const Icon(
                     Icons.arrow_forward_ios,
@@ -73,16 +75,15 @@ class ItemDetailsBody extends StatelessWidget {
                   '₹${itemData.discountedCost.toString()}',
                   style: Theme.of(context)
                       .textTheme
-                      .medium
+                      .xxxTiny
                       .copyWith(fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(width: xxxTinierSpacing),
                 Text(
                   '₹${itemData.price.toString()}',
-                  style: Theme.of(context)
-                      .textTheme
-                      .subHeadingLarge
-                      .copyWith(decoration: TextDecoration.lineThrough),
+                  style: Theme.of(context).textTheme.tinier.copyWith(
+                      decoration: TextDecoration.lineThrough,
+                      color: AppColor.grey),
                 ),
                 const SizedBox(width: xxxTinierSpacing),
                 Container(
@@ -96,7 +97,7 @@ class ItemDetailsBody extends StatelessWidget {
                       vertical: xxTiniestSpacing, horizontal: xxTinierSpacing),
                   child: Center(
                     child: Text('${itemData.discount.toString()}%OFF',
-                        style: Theme.of(context).textTheme.textSmall.copyWith(
+                        style: Theme.of(context).textTheme.xTiniest.copyWith(
                             color: AppColor.primary,
                             fontWeight: FontWeight.w600)),
                   ),
@@ -111,10 +112,18 @@ class ItemDetailsBody extends StatelessWidget {
           ],
         ),
         const SizedBox(height: xxxTinySpacing),
-        Text('Product Details', style: Theme.of(context).textTheme.xmedium),
+        Text('Product Details',
+            style: Theme.of(context)
+                .textTheme
+                .tinier
+                .copyWith(fontWeight: FontWeight.w500)),
         SizedBox(child: Text(itemData.details.toString())),
         const SizedBox(height: xxxTinySpacing),
-        Text('Description', style: Theme.of(context).textTheme.xmedium),
+        Text('Description',
+            style: Theme.of(context)
+                .textTheme
+                .tinier
+                .copyWith(fontWeight: FontWeight.w500)),
         SizedBox(child: Text(itemData.description.toString())),
         const SizedBox(height: xxxTinySpacing),
       ],

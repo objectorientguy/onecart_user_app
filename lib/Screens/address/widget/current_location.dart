@@ -22,7 +22,7 @@ class CurrentLocation extends StatelessWidget {
         title: "Confirm delivery location",
         style: Theme.of(context)
             .textTheme
-            .smallGrey
+            .xxTiny
             .copyWith(color: AppColor.black, fontWeight: FontWeight.w400),
       ),
       bottomNavigationBar: const FetchCurrentLocation(),

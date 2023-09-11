@@ -80,6 +80,315 @@ class AddressBottomSheet extends StatelessWidget {
                   ),
                 ],
               ));
+          return BottomAppBar(
+            child: Padding(
+                padding: const EdgeInsets.only(
+                    left: xxTinySpacing,
+                    right: topBottomPadding,
+                    top: topBottomPadding),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: topBottomPadding),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.keyboard_arrow_down_outlined),
+                          const SizedBox(width: xxTinySpacing),
+                          Text("Select a location",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .xxTinier
+                                  .copyWith(fontWeight: FontWeight.w600)),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: xxxTinySpacing),
+                    SearchTextField(
+                        hintText: 'Search for area,street name..',
+                        hintStyle: Theme.of(context).textTheme.xxxTinier,
+                        prefixicon: const Icon(
+                          Icons.search,
+                          color: AppColor.lighterRed,
+                        ),
+                        textcontroller: myController),
+                    const SizedBox(height: xxTinierSpacing),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Card(
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(smallCardCurve),
+                                      topRight: Radius.circular(smallCardCurve),
+                                      bottomLeft:
+                                          Radius.circular(smallCardCurve),
+                                      bottomRight:
+                                          Radius.circular(smallCardCurve))),
+                              child: Padding(
+                                padding: const EdgeInsets.all(xxxTinierSpacing),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          const Icon(
+                                            Icons.add,
+                                            color: AppColor.lighterRed,
+                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              Navigator.pushNamed(context,
+                                                  AddAddressScreen.routeName,
+                                                  arguments: false);
+                                            },
+                                            child: Text(
+                                              'Add New Address',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .xxxTinier
+                                                  .copyWith(
+                                                      color:
+                                                          AppColor.lighterRed,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                              width: kBottomBarWidth),
+                                          const Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            size: xxTinySpacing,
+                                          ),
+                                        ]),
+                                    const Divider(height: xxxSmallestSpacing),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Icon(
+                                          Icons.my_location,
+                                          color: AppColor.lighterRed,
+                                        ),
+                                        const SizedBox(width: xxTiniestSpacing),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            InkWell(
+                                              onTap: () {
+                                                Navigator.pushNamed(
+                                                  context,
+                                                  CurrentLocation.routeName,
+                                                );
+                                              },
+                                              child: Text(
+                                                'Use Your Current Location',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .xxxTinier
+                                                    .copyWith(
+                                                        color:
+                                                            AppColor.lighterRed,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: xxTiniestSpacing,
+                                              width: xxxTinierSpacing,
+                                            ),
+                                            Text(
+                                              'Tatya Tope Nagar, Deo,Nagpur',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .xxxTinier
+                                                  .copyWith(
+                                                      color: AppColor.black),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(width: xxLargeSpacing),
+                                        const Icon(
+                                          Icons.arrow_forward_ios_outlined,
+                                          size: xxTinySpacing,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: tinySpacing),
+                            Text("Saved Address",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .xxTinier
+                                    .copyWith(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w500)),
+                            const SizedBox(
+                              height: tiniestSpacing,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(tiniestSpacing),
+                              child: ListView.separated(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount:
+                                      state.fetchAddressModel.data!.length,
+                                  separatorBuilder: (context, index) =>
+                                      const Divider(
+                                        height: smallestSpacing,
+                                      ),
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: xxTiniestSpacing),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                  height: xMediumSpacing,
+                                                  width: xMediumSpacing,
+                                                  decoration:
+                                                      const BoxDecoration(),
+                                                  child: const Icon(
+                                                    Icons.home_outlined,
+                                                    size: smallestSpacing,
+                                                    color: AppColor.mediumBlack,
+                                                  )),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            width: xxTinierSpacing,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                  state.fetchAddressModel
+                                                      .data![index].addressType
+                                                      .toString(),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .tinier),
+                                              const SizedBox(
+                                                  width: xxTinierSpacing),
+                                              const SizedBox(
+                                                  height: xxxTiniestSpacing),
+                                              Text(
+                                                state.fetchAddressModel
+                                                    .data![index].addressName
+                                                    .toString(),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .xxxTinier
+                                                    .copyWith(
+                                                        color: AppColor.grey),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                            ),
+                            Text("Recent location",
+                                style: Theme.of(context).textTheme.tinier),
+                            const SizedBox(height: xxxTinierSpacing),
+                            Card(
+                              child: Padding(
+                                padding: const EdgeInsets.all(xxTinierSpacing),
+                                child: Row(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                                height: xMediumSpacing,
+                                                width: xMediumSpacing,
+                                                decoration:
+                                                    const BoxDecoration(),
+                                                child: const Icon(
+                                                  Icons.home_outlined,
+                                                  size: smallestSpacing,
+                                                  color: AppColor.mediumBlack,
+                                                )),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          width: xxTinierSpacing,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                                state.fetchAddressModel.data![0]
+                                                    .addressType
+                                                    .toString(),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .tinier),
+                                            const SizedBox(
+                                                width: xxTinierSpacing),
+                                            const SizedBox(
+                                                height: xxxTiniestSpacing),
+                                            Text(
+                                              state.fetchAddressModel.data![0]
+                                                  .addressName
+                                                  .toString(),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .xxxTinier
+                                                  .copyWith(
+                                                      color: AppColor.grey),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+          );
         }
         if (state is FetchAddressError) {
           return Container();

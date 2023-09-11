@@ -22,7 +22,10 @@ class TermsOfServiceScreen extends StatelessWidget {
             children: [
               Text(
                 'Terms of Service',
-                style: Theme.of(context).textTheme.headingMedium,
+                style: Theme.of(context)
+                    .textTheme
+                    .small
+                    .copyWith(fontWeight: FontWeight.w700),
               ),
               const SizedBox(
                 height: tinySpacing,

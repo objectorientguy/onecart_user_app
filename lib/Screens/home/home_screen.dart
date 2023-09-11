@@ -4,6 +4,7 @@ import 'package:onecart_user_app/Screens/home/widgets/horizontal_category_list.d
 import 'package:onecart_user_app/Screens/home/widgets/search_screen.dart';
 import 'package:onecart_user_app/Screens/home/widgets/todays_deals_section.dart';
 import 'package:onecart_user_app/Screens/address/widget/address_bar.dart';
+import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/home/home_bloc.dart';
@@ -95,7 +96,9 @@ class HomeScreen extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: smallestSpacing),
                     child: Text(
                       "Popular Shops",
-                      style: Theme.of(context).textTheme.xxxTinier,
+                      style: Theme.of(context).textTheme.xTinier.copyWith(
+                          color: AppColor.mediumBlack,
+                          fontWeight: FontWeight.w500),
                     ),
                   ),
                   const SizedBox(

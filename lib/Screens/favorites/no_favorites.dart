@@ -3,6 +3,7 @@ import 'package:onecart_user_app/common_widgets/custom_elevated_button.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 
 class NoFavoritesScreen extends StatelessWidget {
@@ -26,7 +27,11 @@ class NoFavoritesScreen extends StatelessWidget {
                   fit: BoxFit.fitHeight,
                 )),
             const SizedBox(height: tinySpacing),
-            Text('Sorry', style: Theme.of(context).textTheme.headingLarge),
+            Text('Sorry',
+                style: Theme.of(context)
+                    .textTheme
+                    .xxMedium
+                    .copyWith(fontWeight: FontWeight.w700)),
             const SizedBox(
               height: xxTinySpacing,
             ),
@@ -35,7 +40,10 @@ class NoFavoritesScreen extends StatelessWidget {
                 child: Text(
                   'Your Favorites List is empty, Try to Explore New Items',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.subHeadingLarger,
+                  style: Theme.of(context)
+                      .textTheme
+                      .xxTiny
+                      .copyWith(color: AppColor.grey),
                 )),
             const SizedBox(
               height: smallerSpacing,
@@ -48,7 +56,8 @@ class NoFavoritesScreen extends StatelessWidget {
               buttonWidth: 200,
               child: Text(
                 'GO BACK',
-                style: Theme.of(context).textTheme.textButtonLarger,
+                style: Theme.of(context).textTheme.xxTiny.copyWith(
+                    fontWeight: FontWeight.w600, color: AppColor.white),
               ),
             )
           ],

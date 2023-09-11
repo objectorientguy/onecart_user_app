@@ -45,12 +45,8 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                       width: kSizedBoxInfinite,
                       child: Text(
                         state.getProductByIdModel.category!.categoryName!,
-                        style: Theme.of(context)
-                            .textTheme
-                            .subHeadingMedium
-                            .copyWith(
-                                fontWeight: FontWeight.w500,
-                                color: AppColor.black),
+                        style: Theme.of(context).textTheme.xxTinier.copyWith(
+                            fontWeight: FontWeight.w500, color: AppColor.black),
                         maxLines: 1,
                         overflow: TextOverflow.fade,
                       ),

@@ -63,7 +63,9 @@ class HorizontalCategoryList extends StatelessWidget {
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.xxxTinier,
+                      style: Theme.of(context).textTheme.xTinier.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: AppColor.mediumBlack),
                     ),
                   )
                 ],

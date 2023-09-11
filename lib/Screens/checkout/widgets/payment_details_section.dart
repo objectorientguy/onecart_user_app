@@ -17,7 +17,11 @@ class PaymentDetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Pay Using', style: Theme.of(context).textTheme.subHeadingLarge),
+          Text('Pay Using',
+              style: Theme.of(context)
+                  .textTheme
+                  .tinier
+                  .copyWith(color: AppColor.grey)),
           const SizedBox(
             height: tinierSpacing,
           ),
@@ -54,13 +58,19 @@ class PaymentDetailsSection extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('HDFC Credit Card',
-                            style: Theme.of(context).textTheme.headingSmallx),
+                            style: Theme.of(context)
+                                .textTheme
+                                .xxTiny
+                                .copyWith(fontWeight: FontWeight.w500)),
                         const SizedBox(
                           height: xxTinySpacing,
                         ),
                         Text(
                           'Platinum  5241 XXXX XXXX 0321',
-                          style: Theme.of(context).textTheme.subHeadingMedium,
+                          style: Theme.of(context)
+                              .textTheme
+                              .xxTinier
+                              .copyWith(color: AppColor.grey),
                         ),
                         const SizedBox(
                           height: xxTinySpacing,
@@ -68,12 +78,17 @@ class PaymentDetailsSection extends StatelessWidget {
                         Row(
                           children: [
                             Text('Available Limit',
-                                style: Theme.of(context).textTheme.headingTiny),
+                                style: Theme.of(context).textTheme.tinier),
                             const SizedBox(
                               width: xxxTinySpacing,
                             ),
                             Text('₹84,321',
-                                style: Theme.of(context).textTheme.xtextMedium)
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .xTinier
+                                    .copyWith(
+                                        fontWeight: FontWeight.w500,
+                                        color: AppColor.mediumBlack))
                           ],
                         )
                       ],

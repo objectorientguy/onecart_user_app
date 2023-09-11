@@ -183,7 +183,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 BorderRadius.circular(kGeneralBorderRadius))),
                     child: Text(
                       'Continue',
-                      style: Theme.of(context).textTheme.textButtonLarger,
+                      style: Theme.of(context).textTheme.xxTiny.copyWith(
+                          fontWeight: FontWeight.w600, color: AppColor.white),
                     ),
                   ), //continue
                 ])),

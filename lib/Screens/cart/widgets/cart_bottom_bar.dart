@@ -27,7 +27,10 @@ class CartBottomBar extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Subtotal',
-                          style: Theme.of(context).textTheme.subHeadingLarge),
+                          style: Theme.of(context)
+                              .textTheme
+                              .tinier
+                              .copyWith(color: AppColor.grey)),
                       const SizedBox(height: xxxTinierSpacing),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -35,12 +38,18 @@ class CartBottomBar extends StatelessWidget {
                           Text('₹',
                               style: Theme.of(context)
                                   .textTheme
-                                  .headingLarge
+                                  .xxMedium
                                   .copyWith(fontWeight: FontWeight.w100)),
                           Text('2,199',
-                              style: Theme.of(context).textTheme.headingLarge),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .xxMedium
+                                  .copyWith(fontWeight: FontWeight.w700)),
                           Text('.43',
-                              style: Theme.of(context).textTheme.textLarge),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .xxTiny
+                                  .copyWith(color: AppColor.mediumBlack)),
                           const SizedBox(
                             width: xxxTinierSpacing,
                           ),
@@ -80,7 +89,8 @@ class CartBottomBar extends StatelessWidget {
                   buttonWidth: double.maxFinite,
                   child: Text(
                     'PROCEED TO PAYMENT',
-                    style: Theme.of(context).textTheme.textButtonLarger,
+                    style: Theme.of(context).textTheme.xxTiny.copyWith(
+                        fontWeight: FontWeight.w600, color: AppColor.white),
                   ))
             ],
           )),

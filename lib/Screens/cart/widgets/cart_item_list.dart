@@ -34,7 +34,10 @@ class CartItemList extends StatelessWidget {
                   children: [
                     Text(
                       'Lays American Style Creame and Onion Potato Chips',
-                      style: Theme.of(context).textTheme.textLarge,
+                      style: Theme.of(context)
+                          .textTheme
+                          .xxTiny
+                          .copyWith(color: AppColor.mediumBlack),
                     ),
                     const SizedBox(
                       height: tinySpacing,
@@ -46,7 +49,7 @@ class CartItemList extends StatelessWidget {
                           children: [
                             Text(
                               '₹300',
-                              style: Theme.of(context).textTheme.headingTiny,
+                              style: Theme.of(context).textTheme.tinier,
                             ),
                             const SizedBox(
                               width: xxxTinierSpacing,
@@ -55,9 +58,10 @@ class CartItemList extends StatelessWidget {
                               '₹300',
                               style: Theme.of(context)
                                   .textTheme
-                                  .subHeadingSmall
+                                  .xTiniest
                                   .copyWith(
-                                      decoration: TextDecoration.lineThrough),
+                                      decoration: TextDecoration.lineThrough,
+                                      color: AppColor.grey),
                             ),
                             const SizedBox(
                               width: xxxTinierSpacing,
@@ -107,7 +111,7 @@ class CartItemList extends StatelessWidget {
                               child: Text('1',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .textMedium
+                                      .xTinier
                                       .copyWith(color: AppColor.primary)),
                             ),
                             Container(
