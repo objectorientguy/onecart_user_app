@@ -12,6 +12,7 @@ class AppColor {
   static const Color palewhite = Color(0xFFfafbfc);
   static const Color lightestwhite = Color(0xFFf2faf2);
   static const Color darkestGrey = Color(0xFF707070);
+  static const Color paleGreen = Color(0xFFe8f7f0);
 
   static const Color white = Color(0xFFffffff);
   static const Color skyBlue = Color(0xFFEBF5FF);
