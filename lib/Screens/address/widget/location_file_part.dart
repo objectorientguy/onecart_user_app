@@ -12,24 +12,20 @@ class LocationCardTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Card(
+    return Card(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(smallCardCurve),
               topRight: Radius.circular(smallCardCurve),
-              bottomLeft:
-              Radius.circular(smallCardCurve),
-              bottomRight:
-              Radius.circular(smallCardCurve))),
+              bottomLeft: Radius.circular(smallCardCurve),
+              bottomRight: Radius.circular(smallCardCurve))),
       child: Padding(
         padding: const EdgeInsets.all(tinierSpacing),
         child: Column(
           children: [
             Row(
-                mainAxisAlignment:
-                MainAxisAlignment.start,
-                crossAxisAlignment:
-                CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Icon(
                     Icons.add,
@@ -37,24 +33,17 @@ class LocationCardTile extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context,
-                          AddAddressScreen.routeName,
+                      Navigator.pushNamed(context, AddAddressScreen.routeName,
                           arguments: false);
                     },
                     child: Text(
                       'Add New Address',
-                      style: Theme.of(context)
-                          .textTheme
-                          .xxSmall
-                          .copyWith(
-                          color:
-                          AppColor.lighterRed,
-                          fontWeight:
-                          FontWeight.w600),
+                      style: Theme.of(context).textTheme.xxSmall.copyWith(
+                          color: AppColor.lighterRed,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
-                  const SizedBox(
-                      width: kBottomBarWidth),
+                  const SizedBox(width: kBottomBarWidth),
                   const Icon(
                     Icons.arrow_forward_ios_outlined,
                     size: xxTinySpacing,
@@ -62,10 +51,8 @@ class LocationCardTile extends StatelessWidget {
                 ]),
             const Divider(height: xxxSmallestSpacing),
             Row(
-              mainAxisAlignment:
-              MainAxisAlignment.start,
-              crossAxisAlignment:
-              CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Icon(
                   Icons.my_location,
@@ -73,10 +60,8 @@ class LocationCardTile extends StatelessWidget {
                 ),
                 const SizedBox(width: xxTiniestSpacing),
                 Column(
-                  mainAxisAlignment:
-                  MainAxisAlignment.start,
-                  crossAxisAlignment:
-                  CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
                       onTap: () {
@@ -87,14 +72,9 @@ class LocationCardTile extends StatelessWidget {
                       },
                       child: Text(
                         'Use Your Current Location',
-                        style: Theme.of(context)
-                            .textTheme
-                            .xxSmall
-                            .copyWith(
-                            color:
-                            AppColor.lighterRed,
-                            fontWeight:
-                            FontWeight.w600),
+                        style: Theme.of(context).textTheme.xxSmall.copyWith(
+                            color: AppColor.lighterRed,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                     const SizedBox(
@@ -106,8 +86,7 @@ class LocationCardTile extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .xxGSmall
-                          .copyWith(
-                          color: AppColor.black),
+                          .copyWith(color: AppColor.black),
                     ),
                   ],
                 ),
