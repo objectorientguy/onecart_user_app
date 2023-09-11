@@ -5,7 +5,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../widgets/search_text_field.dart';
-import 'Fetching_current_location.dart';
+import 'fetching_current_location.dart';
 
 class CurrentLocation extends StatelessWidget {
   static const routeName = 'CurrentLocation';

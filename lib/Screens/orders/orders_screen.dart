@@ -130,21 +130,14 @@ class OrdersScreen extends StatelessWidget {
                                                 orderData[index]['title'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .tinier
-                                                    .copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color:
-                                                            AppColor.brightRed),
+                                                    .xxTinier,
                                               )
                                             : Text(orderData[index]['title'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .tinier
+                                                    .xxTinier
                                                     .copyWith(
                                                       color: AppColor.darkGrey,
-                                                      fontWeight:
-                                                          FontWeight.w600,
                                                     )),
                                         (orderData[index]['title'] ==
                                                 "Delivered")
@@ -153,12 +146,7 @@ class OrdersScreen extends StatelessWidget {
                                                     ['deliveryDate'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .xxTinier
-                                                    .copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color:
-                                                            AppColor.lightGrey))
+                                                    .xxTinier)
                                             : const SizedBox(),
                                         Text(
                                             "${orderData[index]['category']} (${orderData[index]['quantity']} items)",
@@ -166,9 +154,7 @@ class OrdersScreen extends StatelessWidget {
                                                 .textTheme
                                                 .xxTinier
                                                 .copyWith(
-                                                    color: AppColor.darkGrey,
-                                                    fontWeight:
-                                                        FontWeight.w600)),
+                                                    color: AppColor.darkGrey)),
                                       ],
                                     ),
                                   ],

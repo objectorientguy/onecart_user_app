@@ -25,7 +25,6 @@ class EditAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var  _formKey;
     Map saveAddress = {
       'address_type': addressDataMap.addressType,
       'address_name': addressDataMap.addressName,
@@ -75,9 +74,6 @@ class EditAddressScreen extends StatelessWidget {
                             addressId: addressDataMap.addressId!));
                       }
                       const SnackBar(content: Text('Enter the Data'));
-                      // ScaffoldMessenger.of(context).showSnackBar(
-                      //   const SnackBar(content: Text('Enter the Data')),
-                      // );
                       log(saveAddress.toString());
                     },
                     buttonWidth: double.maxFinite,

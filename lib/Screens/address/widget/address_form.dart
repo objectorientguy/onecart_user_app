@@ -5,9 +5,10 @@ import '../../../configs/app_spacing.dart';
 
 class AddressForm extends StatelessWidget {
   final Map saveAddress;
-  final formKey;
+  final GlobalKey<FormState> formKey;
 
-  const AddressForm({super.key, required this.saveAddress, this.formKey});
+  const AddressForm(
+      {super.key, required this.saveAddress, required this.formKey});
 
   @override
   Widget build(BuildContext context) {
