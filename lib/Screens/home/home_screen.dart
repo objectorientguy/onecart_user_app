@@ -11,7 +11,9 @@ import '../../blocs/home/home_events.dart';
 import '../../blocs/home/home_states.dart';
 import '../../blocs/search_product_bloc/search_product_bloc.dart';
 import '../../blocs/search_product_bloc/search_product_events.dart';
+import '../../common_widgets/address_bottom_sheet.dart';
 import '../../common_widgets/carousel_slider.dart';
+import '../../configs/app_dimensions.dart';
 import '../../widgets/search_text_field.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -38,7 +40,23 @@ class HomeScreen extends StatelessWidget {
                         vertical: topBottomPadding),
                     child: Column(
                       children: [
-                        const AddressBar(),
+                        InkWell(
+                            onTap: () {
+                              showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  isDismissible: true,
+                                  context: context,
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(
+                                          topRight:
+                                              Radius.circular(smallCardCurve),
+                                          topLeft:
+                                              Radius.circular(smallCardCurve))),
+                                  builder: (BuildContext context) {
+                                    return const AddressBottomSheet();
+                                  });
+                            },
+                            child: const AddressBar()),
                         const SizedBox(
                           height: xxxSmallerSpacing,
                         ),

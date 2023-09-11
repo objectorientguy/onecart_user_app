@@ -24,7 +24,6 @@ class EditAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var  _formKey;
     Map saveAddress = {
       'address_type': addressDataMap.addressType,
       'address_name': addressDataMap.addressName,

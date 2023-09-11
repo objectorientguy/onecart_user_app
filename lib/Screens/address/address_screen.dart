@@ -32,7 +32,6 @@ class AddressScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, AddAddressScreen.routeName,
                   arguments: false);
-              //arguments: state.addressDetails[index]);
             },
             buttonHeight: kElevatedButtonHeightSmall,
             buttonWidth: double.maxFinite,
