@@ -96,7 +96,7 @@ extension AppTextTheme on TextTheme {
 
   TextStyle get xxTinier {
     return const TextStyle(
-        fontSize: 16, fontWeight: FontWeight.w400, color: AppColor.grey);
+        fontSize: 16, fontWeight: FontWeight.w400, color: AppColor.mediumBlack);
   }
 
   TextStyle get subHeadingLargex {
@@ -112,6 +112,16 @@ extension AppTextTheme on TextTheme {
   TextStyle get subHeadingMedium {
     return const TextStyle(
         fontSize: 13, fontWeight: FontWeight.w400, color: AppColor.grey);
+  }
+
+  TextStyle get orderDetailsHeadingRed {
+    return const TextStyle(
+        fontSize: 17, fontWeight: FontWeight.w600, color: AppColor.brightRed);
+  }
+
+  TextStyle get orderDetailsDeliveryStatus {
+    return const TextStyle(
+        fontSize: 13, fontWeight: FontWeight.w600, color: AppColor.lightGrey);
   }
 
   TextStyle get subHeadingxMedium {
@@ -241,7 +251,8 @@ extension AppTextTheme on TextTheme {
   }
 
   TextStyle get xxSmall {
-    return const TextStyle(fontSize: 12, color: AppColor.mediumBlack);
+    return const TextStyle(
+        fontSize: 12, color: AppColor.mediumBlack, fontWeight: FontWeight.w400);
   }
 
   TextStyle get xxGSmall {
