@@ -37,7 +37,7 @@ class ItemDetailsScreen extends StatelessWidget {
                 },
                 icon: const Icon(
                   Icons.share,
-                  color: AppColor.lightestGrey,
+                  color: AppColor.primary,
                 ),
               )),
         ],

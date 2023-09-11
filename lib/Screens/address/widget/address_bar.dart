@@ -16,19 +16,21 @@ class AddressBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<AddressBloc>().add(FetchAddress());
-
     return InkWell(
       onTap: () {
-        Scaffold.of(context).showBottomSheet<void>(
+        showModalBottomSheet(
+            isScrollControlled: true,
+            isDismissible: true,
             elevation: xxTinierSpacing,
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.white,
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(smallCardCurve),
                     topLeft: Radius.circular(smallCardCurve))),
-            (BuildContext context) {
-          return const AddressBottomSheet();
-        });
+            context: context,
+            builder: (BuildContext context) {
+              return const AddressBottomSheet();
+            });
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
