@@ -74,9 +74,6 @@ class EditAddressScreen extends StatelessWidget {
                             addressId: addressDataMap.addressId!));
                       }
                       const SnackBar(content: Text('Enter the Data'));
-                      // ScaffoldMessenger.of(context).showSnackBar(
-                      //   const SnackBar(content: Text('Enter the Data')),
-                      // );
                       log(saveAddress.toString());
                     },
                     buttonWidth: double.maxFinite,

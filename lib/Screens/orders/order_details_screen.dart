@@ -195,7 +195,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                       ListView.separated(
                           physics: const BouncingScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: 8,
+                          itemCount: orderData.length,
                           separatorBuilder: (context, index) => const Divider(
                                 color: AppColor.grey,
                               ),
@@ -208,8 +208,6 @@ class OrdersDetailsScreen extends StatelessWidget {
                                     horizontal: topBottomPadding,
                                     vertical: xxxTiniestSpacing),
                                 child: Row(
-                                  // crossAxisAlignment:
-                                  //     CrossAxisAlignment.start,
                                   children: [
                                     Expanded(
                                       flex: 5,
@@ -223,7 +221,6 @@ class OrdersDetailsScreen extends StatelessWidget {
                                                 fontWeight: FontWeight.w400),
                                       ),
                                     ),
-                                    //SizedBox(width: 30),
                                     Expanded(
                                       flex: 5,
                                       child: Text(orderData[index]['status'],
