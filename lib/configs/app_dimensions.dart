@@ -58,6 +58,7 @@ const double kCacheImageHeight = 40.0;
 const double kCacheImageWidth = 40.0;
 const double kSizedBoxInfinite = 200.0;
 const double kOrderContainerWidth = 400.0;
+const double kOrderContainerHeight = 370.0;
 const double kSizedBoxHeightLarge = 90.0;
 const double kBorderWidth = 0.5;
 const double kButtonBorderWidth = 0.3;

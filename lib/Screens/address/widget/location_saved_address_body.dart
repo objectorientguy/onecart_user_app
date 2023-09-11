@@ -79,7 +79,6 @@ class LocationSavedAddressBody extends StatelessWidget {
                           children: [
                             Container(
                                 height: xMediumSpacing,
-                                width: xMediumSpacing,
                                 decoration: const BoxDecoration(),
                                 child: const Icon(Icons.home_outlined,
                                     size: smallestSpacing,
