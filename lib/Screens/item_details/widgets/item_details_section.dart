@@ -83,7 +83,8 @@ class ItemDetailsSection extends StatelessWidget {
           ItemDetailsBody(
             itemData: itemData,
           ),
-          const DeliverDetailsSection()
+          const DeliverDetailsSection(),
+          const SizedBox(height: xxxSmallestSpacing)
         ],
       ),
     );

@@ -13,12 +13,12 @@ class DeliverDetailsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List deliveryData = [
-      {'title': '7 day return'},
-      {'title': 'Same day shipping'},
-      {'title': 'Cancellable'},
+      {'title': '7 day returns', 'image': 'assets/return.png'},
+      {'title': 'Same day shipping', 'image': 'assets/time.png'},
+      {'title': 'Cancellable', 'image': 'assets/cancellation.png'},
     ];
     return SizedBox(
-      height: kHorizontalCategoryListHeight,
+      height: kDeliveryBox,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
@@ -27,11 +27,11 @@ class DeliverDetailsSection extends StatelessWidget {
           return Container(
             padding: const EdgeInsets.all(leftRightMargin),
             width: kHorizontalCategoryListHeight,
-            height: kHorizontalCategoryListHeight,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-              border: Border.all(
-                  color: AppColor.lightestGrey, width: kButtonBorderWidth),
+              //color: AppColor.paleGreen,
+              borderRadius: BorderRadius.circular(kDelivery),
+              border:
+                  Border.all(color: AppColor.primary, width: kDeliveryWidth),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -40,24 +40,21 @@ class DeliverDetailsSection extends StatelessWidget {
                     child: Center(
                         child: Container(
                             height: kCacheImageHeight,
-                            width: kCacheImageWidth,
-                            decoration: const BoxDecoration(
-                                color: AppColor.primaryLighter,
-                                shape: BoxShape.circle),
-                            child: const Icon(
-                              Icons.local_shipping_outlined,
+                            decoration:
+                                const BoxDecoration(shape: BoxShape.circle),
+                            child: Image.asset(
+                              deliveryData[index]['image'],
                               color: AppColor.primary,
+                              height: kImage,
                             )))),
-                const SizedBox(height: tinierSpacing),
                 SizedBox(
-                    width: kHorizontalCategoryListItemWidth,
                     child: Text(
-                      deliveryData[index]['title'],
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.xxTinier.copyWith(
-                            color: AppColor.primary,
-                          ),
-                    ))
+                  deliveryData[index]['title'],
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.xxTinier.copyWith(
+                        color: AppColor.primary,
+                      ),
+                )),
               ],
             ),
           );
