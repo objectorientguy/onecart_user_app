@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onecart_user_app/Screens/orders/widgets/my_orders_list_tile.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/orders/orders_bloc.dart';
 import '../../blocs/orders/orders_events.dart';
 import '../../blocs/orders/orders_states.dart';
 import '../../configs/app_color.dart';
-import '../../configs/app_dimensions.dart';
 import 'order_details_screen.dart';
 
 class OrdersScreen extends StatelessWidget {
@@ -74,155 +74,54 @@ class OrdersScreen extends StatelessWidget {
     ];
     context.read<GetAllOrdersBloc>().add(GetAllOrders());
     return WillPopScope(
-      onWillPop: () async => false,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: xxTinierSpacing),
-            child: Text(
-              "My Orders",
-              style: Theme.of(context)
-                  .textTheme
-                  .tiny
-                  .copyWith(fontWeight: FontWeight.w500),
-            ),
-          ),
-          actions: const [
-            Icon(Icons.tune_outlined, color: AppColor.primary),
-            SizedBox(width: smallestSpacing)
-          ],
-        ),
-        body: BlocBuilder<GetAllOrdersBloc, OrdersStates>(
-          builder: (context, state) {
-            if (state is GetAllOrdersLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is GetAllOrdersLoaded) {
-              return InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const OrdersDetailsScreen()));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: xxxTinierSpacing,
-                      right: xxxTinierSpacing,
-                      top: xxxTinierSpacing),
-                  child: ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: orderData.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(
-                              left: xxxTinierSpacing,
-                              right: xxxTinierSpacing,
-                              top: xxxTinySpacing),
-                          child: Container(
-                            width: kSizedBoxInfinite,
-                            height: kSizedBoxHeightLarge,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: AppColor.lightGrey),
-                              borderRadius:
-                                  BorderRadius.circular(kSearchBarBorderRadius),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: xxxTinierSpacing),
-                                      child: SizedBox(
-                                          height: kTextboxHeightSmallest,
-                                          width: kTextboxHeightSmallest,
-                                          child: Image.asset(
-                                              orderData[index]['image'])),
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        (orderData[index]['title'] ==
-                                                    "Returned" ||
-                                                orderData[index]['title'] ==
-                                                    "Cancelled by Operations")
-                                            ? Text(
-                                                orderData[index]['title'],
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .xxTiny
-                                                    .copyWith(
-                                                        color:
-                                                            AppColor.brightRed,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                              )
-                                            : Text(orderData[index]['title'],
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .xxTiny
-                                                    .copyWith(
-                                                        color:
-                                                            AppColor.darkGrey,
-                                                        fontWeight:
-                                                            FontWeight.w600)),
-                                        (orderData[index]['title'] ==
-                                                "Delivered")
-                                            ? Text(
-                                                orderData[index]
-                                                    ['deliveryDate'],
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .xTinier
-                                                    .copyWith(
-                                                        color:
-                                                            AppColor.lightGrey,
-                                                        fontWeight:
-                                                            FontWeight.w500))
-                                            : const SizedBox(),
-                                        Text(
-                                            "${orderData[index]['category']} (${orderData[index]['quantity']} items)",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .xTinier
-                                                .copyWith(
-                                                    color: AppColor.darkGrey,
-                                                    fontWeight:
-                                                        FontWeight.w500)),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: tinierSpacing),
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.arrow_forward_ios_rounded,
-                                          color: AppColor.grey,
-                                          size: kCounterIcon),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        );
-                      }),
+        onWillPop: () async => false,
+        child: Scaffold(
+            appBar: AppBar(
+              title: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: xxTinierSpacing),
+                child: Text(
+                  "My Orders",
+                  style: Theme.of(context)
+                      .textTheme
+                      .tiny
+                      .copyWith(fontWeight: FontWeight.w500),
                 ),
-              );
-            }
-            if (state is GetAllOrdersError) {
-              return Container();
-            } else {
-              return const SizedBox();
-            }
-          },
-        ),
-      ),
-    );
+              ),
+              actions: const [
+                Icon(Icons.tune_outlined, color: AppColor.primary),
+                SizedBox(width: smallestSpacing)
+              ],
+            ),
+            body: BlocBuilder<GetAllOrdersBloc, OrdersStates>(
+                builder: (context, state) {
+              if (state is GetAllOrdersLoading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state is GetAllOrdersLoaded) {
+                return InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const OrdersDetailsScreen()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: xxxTinierSpacing,
+                          right: xxxTinierSpacing,
+                          top: xxxTinierSpacing),
+                      child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: orderData.length,
+                          itemBuilder: (context, index) {
+                            return OrderTile(orderData: orderData, idx: index);
+                          }),
+                    ));
+              }
+              if (state is GetAllOrdersError) {
+                return Container();
+              } else {
+                return const SizedBox();
+              }
+            })));
   }
 }
