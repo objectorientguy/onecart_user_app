@@ -39,7 +39,7 @@ class BillSection extends StatelessWidget {
                       vertical: xxTiniestSpacing, horizontal: tinierSpacing),
                   child: Center(
                     child: Text(checkoutData.cartItemCount.toString(),
-                        style: Theme.of(context).textTheme.textSmall.copyWith(
+                        style: Theme.of(context).textTheme.tiniest.copyWith(
                             color: AppColor.primary,
                             fontWeight: FontWeight.w700)),
                   ),
@@ -110,12 +110,9 @@ class BillSection extends StatelessWidget {
                           horizontal: tinierSpacing),
                       child: Center(
                         child: Text('PAYTM TREATS',
-                            style: Theme.of(context)
-                                .textTheme
-                                .textSmall
-                                .copyWith(
-                                    color: AppColor.primary,
-                                    fontWeight: FontWeight.w700)),
+                            style: Theme.of(context).textTheme.tiniest.copyWith(
+                                color: AppColor.primary,
+                                fontWeight: FontWeight.w700)),
                       ),
                     )
                   ],

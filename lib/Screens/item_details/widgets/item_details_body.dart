@@ -1,4 +1,3 @@
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/home/widgets/counter_widget.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/star_widget.dart';
@@ -56,11 +55,6 @@ class ItemDetailsBody extends StatelessWidget {
                     size: kForwardIconSizeSmall,
                   )
                 ],
-              ),
-              FavoriteButton(
-                valueChanged: () {},
-                iconSize: kFavouriteButton,
-                //iconColor: AppColor.primary,
               ),
             ],
           ),

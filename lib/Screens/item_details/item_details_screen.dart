@@ -1,3 +1,4 @@
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/image_carousel_slider.dart';
@@ -12,6 +13,7 @@ import '../../blocs/item_details_bloc/item_details_states.dart';
 
 import '../../configs/app_color.dart';
 
+import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 
 class ItemDetailsScreen extends StatelessWidget {
@@ -29,6 +31,10 @@ class ItemDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: GenericAppBar(
         actions: [
+          FavoriteButton(
+            valueChanged: () {},
+            iconSize: kFavouriteButton,
+          ),
           Padding(
               padding: const EdgeInsets.only(right: leftRightMargin),
               child: IconButton(
