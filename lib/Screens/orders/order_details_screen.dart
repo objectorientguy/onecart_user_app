@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/common_widgets/oder_detail_screen_card_two.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
@@ -51,17 +50,29 @@ class OrdersDetailsScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-        appBar: GenericAppBar(title: 'Order Details', actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: xxTinierSpacing),
-            child: TextButton(
-                onPressed: () {},
-                child: const Text('Help',
-                    style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: AppColor.darkGrey))),
-          )
-        ]),
+        appBar: AppBar(
+            leading: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: const Icon(
+                Icons.arrow_back,
+                color: AppColor.black,
+              ),
+            ),
+            title: Text('Order Details',
+                style: Theme.of(context).textTheme.xxTiny),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: xxTinierSpacing),
+                child: TextButton(
+                    onPressed: () {},
+                    child: const Text('Help',
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: AppColor.darkGrey))),
+              )
+            ]),
         bottomNavigationBar: BottomAppBar(
             elevation: kZero,
             child: Padding(
