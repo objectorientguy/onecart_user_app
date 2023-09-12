@@ -3,6 +3,8 @@ import 'app_color.dart';
 import 'app_dimensions.dart';
 
 ThemeData appTheme = ThemeData(
+  splashColor: AppColor.transparent,
+  highlightColor: AppColor.transparent,
   scaffoldBackgroundColor: AppColor.white,
   colorScheme: colorScheme,
   appBarTheme: appBarTheme,

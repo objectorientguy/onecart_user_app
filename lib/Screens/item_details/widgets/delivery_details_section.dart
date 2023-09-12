@@ -18,7 +18,7 @@ class DeliverDetailsSection extends StatelessWidget {
       {'title': 'Cancellable', 'image': 'assets/cancellation.png'},
     ];
     return SizedBox(
-      height: kDeliveryBox,
+      height: kGeneralBox,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
