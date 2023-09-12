@@ -6,8 +6,8 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
-class RatingScreen extends StatelessWidget {
-  const RatingScreen({super.key});
+class RatingWidget extends StatelessWidget {
+  const RatingWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

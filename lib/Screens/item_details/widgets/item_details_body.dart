@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:onecart_user_app/Screens/item_details/widgets/rating_screen.dart';
+import 'package:onecart_user_app/Screens/item_details/widgets/rating_widget.dart';
 
 import 'package:onecart_user_app/configs/app_theme.dart';
 
@@ -73,7 +73,7 @@ class ItemDetailsBody extends StatelessWidget {
             ),
           ),
         ),
-        const RatingScreen(),
+        const RatingWidget(),
         Text('Product Details',
             style: Theme.of(context)
                 .textTheme
