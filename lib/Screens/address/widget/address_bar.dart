@@ -65,12 +65,10 @@ class AddressBar extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.81,
                       child: Text(
                         'Akshay Nagar 1st Block 1st Cross, Rammurthy nagar',
-                        style: Theme.of(context)
-                            .textTheme
-                            .xxTinier
-                            .copyWith(color: AppColor.grey),
+                        style: Theme.of(context).textTheme.xxTinier.copyWith(
+                            color: AppColor.grey,
+                            overflow: TextOverflow.ellipsis),
                         maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],
