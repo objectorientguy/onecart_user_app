@@ -69,26 +69,27 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
           height: kAddressContainerWidth,
           decoration: const BoxDecoration(),
           child: Padding(
-            padding: const EdgeInsets.all(tinierSpacing),
+            padding: const EdgeInsets.all(xxTinierSpacing),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   width: kLocationContainerWidth,
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: AppColor.lighterRed,
+                        color: AppColor.primary,
                       ),
                       color: AppColor.white,
                       borderRadius: BorderRadius.circular(kBorderDiscount)),
                   padding: const EdgeInsets.symmetric(
-                      vertical: xxTinierSpacing, horizontal: xxTinierSpacing),
+                      vertical: tiniestSpacing, horizontal: xxxTinierSpacing),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const Icon(
                         Icons.my_location,
-                        color: AppColor.lighterRed,
+                        color: AppColor.primary,
                       ),
                       const SizedBox(width: xxTinierSpacing),
                       Column(
@@ -101,7 +102,7 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
                                 .textTheme
                                 .xxxTinier
                                 .copyWith(
-                                    color: AppColor.lighterRed,
+                                    color: AppColor.primary,
                                     fontWeight: FontWeight.w600),
                           ),
                         ],
@@ -117,8 +118,10 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
                   children: [
                     const Icon(
                       Icons.location_on,
-                      color: AppColor.lighterRed,
+                      size: smallerSpacing,
+                      color: AppColor.primary,
                     ),
+                    const SizedBox(width: tiniestSpacing),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,10 +148,10 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
                   ],
                 ),
                 const SizedBox(
-                  height: smallerSpacing,
+                  height: smallestSpacing,
                 ),
                 CustomElevatedButton(
-                  backgroundColor: AppColor.lighterRed,
+                  backgroundColor: AppColor.primary,
                   onPressed: () {},
                   buttonWidth: double.maxFinite,
                   buttonHeight: kElevatedButtonHeightSmall,

@@ -5,9 +5,7 @@ import 'package:onecart_user_app/Screens/varient/widgets/select_varient_body.dar
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../blocs/varient_bloc/varient_bloc.dart';
-
 import '../../blocs/varient_bloc/varient_states.dart';
-
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';

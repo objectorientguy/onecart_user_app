@@ -27,6 +27,7 @@ class CurrentLocation extends StatelessWidget {
       ),
       bottomNavigationBar: const FetchCurrentLocation(),
       body: Stack(
+        fit: StackFit.expand,
         children: [
           Image.asset(
             'assets/Zomato Map.jpg',
@@ -36,10 +37,13 @@ class CurrentLocation extends StatelessWidget {
             padding: const EdgeInsets.all(tinierSpacing),
             child: SearchTextField(
                 hintText: 'Search for area,street name..',
-                hintStyle: Theme.of(context).textTheme.xxxTinier,
+                hintStyle: Theme.of(context)
+                    .textTheme
+                    .xxxTinier
+                    .copyWith(fontWeight: FontWeight.w300),
                 prefixicon: const Icon(
                   Icons.search,
-                  color: AppColor.lighterRed,
+                  color: AppColor.primary,
                 ),
                 textcontroller: myController),
           ),

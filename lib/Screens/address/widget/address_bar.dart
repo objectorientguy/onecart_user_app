@@ -23,10 +23,6 @@ class AddressBar extends StatelessWidget {
             isDismissible: true,
             elevation: xxTinierSpacing,
             backgroundColor: Colors.white,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(smallCardCurve),
-                    topLeft: Radius.circular(smallCardCurve))),
             context: context,
             builder: (BuildContext context) {
               return const AddressBottomSheet();
