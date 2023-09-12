@@ -32,93 +32,96 @@ class HomeScreen extends StatelessWidget {
           } else if (state is GetHomeDetailsLoaded) {
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: leftRightMargin,
-                    ),
-                    child: Column(
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  isDismissible: true,
-                                  context: context,
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(
-                                          topRight:
-                                              Radius.circular(smallCardCurve),
-                                          topLeft:
-                                              Radius.circular(smallCardCurve))),
-                                  builder: (BuildContext context) {
-                                    return const AddressBottomSheet();
-                                  });
-                            },
-                            child: const AddressBar()),
-                        const SizedBox(
-                          height: xxxSmallerSpacing,
-                        ),
-                        SearchTextField(
-                          hintText: "Search for groceries",
-                          textcontroller: myController,
-                          prefixicon: InkWell(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: topBottomPadding),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: leftRightMargin),
+                      child: Column(
+                        children: [
+                          InkWell(
                               onTap: () {
-                                FocusScopeNode currentFocus =
-                                    FocusScope.of(context);
-                                if (!currentFocus.hasPrimaryFocus) {
-                                  currentFocus.unfocus();
-                                }
-                                if (myController.text.isNotEmpty) {
-                                  context.read<SearchProductsBloc>().add(
-                                      SearchAllProducts(
-                                          searchTerm: myController.text));
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SearchScreen()));
-                                }
+                                showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    isDismissible: true,
+                                    context: context,
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                            topRight:
+                                                Radius.circular(smallCardCurve),
+                                            topLeft: Radius.circular(
+                                                smallCardCurve))),
+                                    builder: (BuildContext context) {
+                                      return const AddressBottomSheet();
+                                    });
                               },
-                              child: const Icon(Icons.search_sharp)),
-                        ),
-                        const SizedBox(
-                          height: tinySpacing,
-                        ),
-                        HorizontalCategoryList(
-                          data: state.homeModel.data!.categories!,
-                        ),
-                      ],
+                              child: const AddressBar()),
+                          const SizedBox(
+                            height: xxxSmallerSpacing,
+                          ),
+                          SearchTextField(
+                            hintText: "Search for groceries",
+                            textcontroller: myController,
+                            prefixicon: InkWell(
+                                onTap: () {
+                                  FocusScopeNode currentFocus =
+                                      FocusScope.of(context);
+                                  if (!currentFocus.hasPrimaryFocus) {
+                                    currentFocus.unfocus();
+                                  }
+                                  if (myController.text.isNotEmpty) {
+                                    context.read<SearchProductsBloc>().add(
+                                        SearchAllProducts(
+                                            searchTerm: myController.text));
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const SearchScreen()));
+                                  }
+                                },
+                                child: const Icon(Icons.search_sharp)),
+                          ),
+                          const SizedBox(
+                            height: tinySpacing,
+                          ),
+                          HorizontalCategoryList(
+                            data: state.homeModel.data!.categories!,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: smallestSpacing),
-                    child: Text(
-                      "Popular Shops",
-                      style: Theme.of(context).textTheme.xTinier.copyWith(
-                          color: AppColor.mediumBlack,
-                          fontWeight: FontWeight.w500),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: smallestSpacing),
+                      child: Text(
+                        "Popular Shops",
+                        style: Theme.of(context).textTheme.xTinier.copyWith(
+                            color: AppColor.mediumBlack,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: xxxSmallestSpacing,
-                  ),
-                  SizedBox(
-                      height: MediaQuery.of(context).size.width * 0.55,
-                      child: CarouselSlider(
-                        state.homeModel.data!.banners!,
-                      )),
-                  const SizedBox(
-                    height: xxxTinySpacing,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: leftRightMargin,
-                        vertical: topBottomPadding),
-                    child: TodayDealsSection(state.homeModel.data!.deals!),
-                  ),
-                ],
+                    const SizedBox(
+                      height: xxxSmallestSpacing,
+                    ),
+                    SizedBox(
+                        height: MediaQuery.of(context).size.width * 0.55,
+                        child: CarouselSlider(
+                          state.homeModel.data!.banners!,
+                        )),
+                    const SizedBox(
+                      height: xxxTinySpacing,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: leftRightMargin,
+                          vertical: topBottomPadding),
+                      child: TodayDealsSection(state.homeModel.data!.deals!),
+                    ),
+                  ],
+                ),
               ),
             );
           }
