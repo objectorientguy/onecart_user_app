@@ -112,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                           state.homeModel.data!.banners!,
                         )),
                     const SizedBox(
-                      height: xxxTinySpacing,
+                      height: smallestSpacing,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
