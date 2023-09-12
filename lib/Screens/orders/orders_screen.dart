@@ -43,33 +43,53 @@ class OrdersScreen extends StatelessWidget {
         'category': 'Dairy Product',
         'quantity': 20
       },
+      {
+        'title': 'Delivered',
+        'deliveryDate': 'Delivered,Jun 12',
+        'image': 'assets/imgC4.png',
+        'category': 'Groceries',
+        'quantity': 12
+      },
+      {
+        'title': 'Delivered',
+        'deliveryDate': 'Delivered,Jun 12',
+        'image': 'assets/imgC4.png',
+        'category': 'Groceries',
+        'quantity': 12
+      },
+      {
+        'title': 'Delivered',
+        'deliveryDate': 'Delivered,Jun 12',
+        'image': 'assets/imgC4.png',
+        'category': 'Groceries',
+        'quantity': 12
+      },
+      {
+        'title': 'Delivered',
+        'deliveryDate': 'Delivered,Jun 12',
+        'image': 'assets/imgC4.png',
+        'category': 'Groceries',
+        'quantity': 12
+      },
     ];
     context.read<GetAllOrdersBloc>().add(GetAllOrders());
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            "My Orders",
-            style: Theme.of(context)
-                .textTheme
-                .tiny
-                .copyWith(fontWeight: FontWeight.w500),
+          title: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: xxTinierSpacing),
+            child: Text(
+              "My Orders",
+              style: Theme.of(context)
+                  .textTheme
+                  .tiny
+                  .copyWith(fontWeight: FontWeight.w500),
+            ),
           ),
           actions: const [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: smallestSpacing),
-              child: Row(
-                children: [
-                  Icon(Icons.tune_outlined, color: AppColor.black),
-                  SizedBox(width: smallestSpacing),
-                  Icon(
-                    Icons.shopping_cart_rounded,
-                    color: AppColor.black,
-                  )
-                ],
-              ),
-            )
+            Icon(Icons.tune_outlined, color: AppColor.primary),
+            SizedBox(width: smallestSpacing)
           ],
         ),
         body: BlocBuilder<GetAllOrdersBloc, OrdersStates>(
@@ -83,24 +103,27 @@ class OrdersScreen extends StatelessWidget {
                       builder: (context) => const OrdersDetailsScreen()));
                 },
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: leftRightMargin, vertical: topBottomPadding),
+                  padding: const EdgeInsets.only(
+                      left: xxxTinierSpacing,
+                      right: xxxTinierSpacing,
+                      top: xxxTinierSpacing),
                   child: ListView.builder(
                       physics: const BouncingScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: orderData.length,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: xxxTinierSpacing,
-                              vertical: xxxTinierSpacing),
+                          padding: const EdgeInsets.only(
+                              left: xxxTinierSpacing,
+                              right: xxxTinierSpacing,
+                              top: xxxTinySpacing),
                           child: Container(
                             width: kSizedBoxInfinite,
                             height: kSizedBoxHeightLarge,
                             decoration: BoxDecoration(
                               border: Border.all(color: AppColor.lightGrey),
                               borderRadius:
-                                  BorderRadius.circular(kGeneralBorderRadius),
+                                  BorderRadius.circular(kSearchBarBorderRadius),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -130,15 +153,22 @@ class OrdersScreen extends StatelessWidget {
                                                 orderData[index]['title'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .xxTinier,
+                                                    .xxTiny
+                                                    .copyWith(
+                                                        color:
+                                                            AppColor.brightRed,
+                                                        fontWeight:
+                                                            FontWeight.w600),
                                               )
                                             : Text(orderData[index]['title'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .xxTinier
+                                                    .xxTiny
                                                     .copyWith(
-                                                      color: AppColor.darkGrey,
-                                                    )),
+                                                        color:
+                                                            AppColor.darkGrey,
+                                                        fontWeight:
+                                                            FontWeight.w600)),
                                         (orderData[index]['title'] ==
                                                 "Delivered")
                                             ? Text(
@@ -146,15 +176,22 @@ class OrdersScreen extends StatelessWidget {
                                                     ['deliveryDate'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .xxTinier)
+                                                    .xTinier
+                                                    .copyWith(
+                                                        color:
+                                                            AppColor.lightGrey,
+                                                        fontWeight:
+                                                            FontWeight.w500))
                                             : const SizedBox(),
                                         Text(
                                             "${orderData[index]['category']} (${orderData[index]['quantity']} items)",
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .xxTinier
+                                                .xTinier
                                                 .copyWith(
-                                                    color: AppColor.darkGrey)),
+                                                    color: AppColor.darkGrey,
+                                                    fontWeight:
+                                                        FontWeight.w500)),
                                       ],
                                     ),
                                   ],

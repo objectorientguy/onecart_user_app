@@ -37,8 +37,8 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: leftRightMargin,
-                        vertical: topBottomPadding),
+                      horizontal: leftRightMargin,
+                    ),
                     child: Column(
                       children: [
                         InkWell(
