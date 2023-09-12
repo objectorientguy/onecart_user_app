@@ -4,6 +4,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
+import '../configs/app_spacing.dart';
 
 class OderDetailScreenCardOne extends StatelessWidget {
   const OderDetailScreenCardOne({
@@ -24,7 +25,12 @@ class OderDetailScreenCardOne extends StatelessWidget {
           title:
               Text('Order Details', style: Theme.of(context).textTheme.xxTiny),
           trailing: const Icon(Icons.keyboard_arrow_down),
-          children: const [StepperWidget()]),
+          children: const [
+            Padding(
+              padding: EdgeInsets.only(left: tinierSpacing),
+              child: StepperWidget(),
+            )
+          ]),
     );
   }
 }

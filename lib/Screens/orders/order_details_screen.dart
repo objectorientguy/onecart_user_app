@@ -99,12 +99,12 @@ class OrdersDetailsScreen extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: xxxSmallestSpacing, vertical: tinierSpacing),
+                    horizontal: xxTinySpacing, vertical: tinierSpacing),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: xxTinierSpacing),
+                        padding: const EdgeInsets.only(left: 6),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
