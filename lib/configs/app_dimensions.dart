@@ -75,3 +75,4 @@ const double kGeneralBox = 120.0;
 const double kDeliveryWidth = 1.3;
 const double kSizedBoxFrequent = 250;
 const double kContainerElevation = 1.5;
+const double kCardHeightItem = 80;

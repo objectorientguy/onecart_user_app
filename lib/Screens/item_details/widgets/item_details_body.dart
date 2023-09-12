@@ -98,7 +98,7 @@ class ItemDetailsBody extends StatelessWidget {
                 .tinier
                 .copyWith(fontWeight: FontWeight.w500)),
         const SizedBox(
-          height: tiniestSpacing,
+          height: xxTinierSpacing,
         ),
         const FrequentlyBoughtItems()
       ],

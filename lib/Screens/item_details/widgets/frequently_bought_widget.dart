@@ -30,8 +30,7 @@ class FrequentlyBoughtItems extends StatelessWidget {
                       alignment: Alignment.topRight,
                       children: [
                         Container(
-                            height: MediaQuery.of(context).size.width * 0.24,
-                            width: MediaQuery.of(context).size.width * 0.23,
+                            height: kCardHeightItem,
                             decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.circular(kBorderRadiusSmall)),
