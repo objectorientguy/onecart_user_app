@@ -14,7 +14,7 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
-          padding: const EdgeInsets.only(left: 4),
+          padding: const EdgeInsets.only(left: xxTiniestSpacing),
           child: Text(
             "Your Cart",
             style: Theme.of(context)
