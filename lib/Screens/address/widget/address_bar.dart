@@ -62,9 +62,9 @@ class AddressBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SizedBox(
-                      width: kSuccessDescriptionWidth,
+                      width: MediaQuery.of(context).size.width * 0.81,
                       child: Text(
-                        'Akshay Nagar 1st Block 1st Cross, Rammurthy nagar...',
+                        'Akshay Nagar 1st Block 1st Cross, Rammurthy nagar',
                         style: Theme.of(context)
                             .textTheme
                             .xxTinier
