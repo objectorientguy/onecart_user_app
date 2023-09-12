@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/orders/orders_screen.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
+import '../cart/cart_screen.dart';
 import '../category_grid/category_grid_screen.dart';
 import '../home/home_screen.dart';
 import '../profile/profile_screen.dart';
@@ -36,7 +37,8 @@ class _RootScreenState extends State<RootScreen> {
     const HomeScreen(),
     const CategoryGridScreen(),
     const OrdersScreen(),
-    const ProfileScreen()
+    const CartScreen(),
+    const ProfileScreen(),
   ];
 
   @override
@@ -73,7 +75,12 @@ class _RootScreenState extends State<RootScreen> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.my_library_books), label: 'Orders'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: 'Account')
+                  icon: Icon(
+                    Icons.shopping_cart_rounded,
+                  ),
+                  label: 'Cart'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person), label: 'Account'),
             ],
           ),
         ),

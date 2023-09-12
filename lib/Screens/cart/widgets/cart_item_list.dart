@@ -36,7 +36,7 @@ class CartItemList extends StatelessWidget {
                       'Lays American Style Creame and Onion Potato Chips',
                       style: Theme.of(context)
                           .textTheme
-                          .xxTiny
+                          .tinier
                           .copyWith(color: AppColor.mediumBlack),
                     ),
                     const SizedBox(
@@ -80,7 +80,7 @@ class CartItemList extends StatelessWidget {
                                 child: Text('40% OFF',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .textSmall
+                                        .xTiniest
                                         .copyWith(
                                             color: AppColor.primary,
                                             fontWeight: FontWeight.w700)),
