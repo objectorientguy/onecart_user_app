@@ -23,56 +23,57 @@ class AddressBar extends StatelessWidget {
             isDismissible: true,
             elevation: xxTinierSpacing,
             backgroundColor: Colors.white,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(smallCardCurve),
-                    topLeft: Radius.circular(smallCardCurve))),
             context: context,
             builder: (BuildContext context) {
               return const AddressBottomSheet();
             });
       },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Icon(
-                Icons.location_on,
-                color: AppColor.primary,
-                size: kLocationIconSize,
-              ),
-              const SizedBox(
-                width: xxxTiniestSpacing,
-              ),
-              Text('Home', style: Theme.of(context).textTheme.tinier),
-              const SizedBox(
-                width: xxxTiniestSpacing,
-              ),
-              const Center(
-                heightFactor: kLocationIconHeightFactor,
-                child: Icon(
-                  Icons.keyboard_arrow_down_outlined,
-                  color: AppColor.primary,
-                  size: kLocationIconSize,
-                ),
-              ),
-            ],
+          const Icon(
+            Icons.location_on,
+            color: AppColor.primary,
+            size: kLocationIconSize,
           ),
           Padding(
-            padding: const EdgeInsets.only(
-              left: kCircleAvatarRadius,
-            ),
-            child: SizedBox(
-              child: Text(
-                'Akshay Nagar 1st Block 1st Cross, Rammurthy nagar...',
-                style: Theme.of(context)
-                    .textTheme
-                    .xxTinier
-                    .copyWith(color: AppColor.grey),
-                overflow: TextOverflow.ellipsis,
-              ),
+            padding: const EdgeInsets.symmetric(horizontal: xxxTinierSpacing),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text('Home', style: Theme.of(context).textTheme.tinier),
+                    const SizedBox(
+                      width: xxxTiniestSpacing,
+                    ),
+                    const Center(
+                      heightFactor: kLocationIconHeightFactor,
+                      child: Icon(
+                        Icons.keyboard_arrow_down_outlined,
+                        color: AppColor.primary,
+                        size: kLocationIconSize,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.81,
+                      child: Text(
+                        'Akshay Nagar 1st Block 1st Cross, Rammurthy nagar',
+                        style: Theme.of(context).textTheme.xxTinier.copyWith(
+                            color: AppColor.grey,
+                            overflow: TextOverflow.ellipsis),
+                        maxLines: 1,
+                      ),
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
         ],

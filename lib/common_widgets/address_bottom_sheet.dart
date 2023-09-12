@@ -22,9 +22,10 @@ class AddressBottomSheet extends StatelessWidget {
         } else if (state is FetchAddressLoaded) {
           return Padding(
               padding: const EdgeInsets.only(
-                  left: xxTinySpacing,
-                  right: topBottomPadding,
-                  top: topBottomPadding),
+                left: xxTinySpacing,
+                top: tinierSpacing,
+                right: topBottomPadding,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -49,10 +50,13 @@ class AddressBottomSheet extends StatelessWidget {
                   const SizedBox(height: xxxTinySpacing),
                   SearchTextField(
                       hintText: 'Search for area,street name..',
-                      hintStyle: Theme.of(context).textTheme.tinier,
+                      hintStyle: Theme.of(context)
+                          .textTheme
+                          .xxxTinier
+                          .copyWith(fontWeight: FontWeight.w300),
                       prefixicon: const Icon(
                         Icons.search,
-                        color: AppColor.lighterRed,
+                        color: AppColor.primary,
                       ),
                       textcontroller: myController),
                   const SizedBox(height: xxTinierSpacing),

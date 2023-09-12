@@ -26,40 +26,43 @@ class OderDetailScreenCardTwo extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(kBorderDiscount))),
           children: [
             const SizedBox(height: tinierSpacing),
-            ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: orderData.length,
-                separatorBuilder: (context, index) =>
-                    const Divider(color: AppColor.grey),
-                itemBuilder: (context, index) {
-                  return SizedBox(
-                      width:
-                          MediaQuery.of(context).size.width * kMediaQuerrySize,
-                      child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: topBottomPadding,
-                              vertical: xxxTiniestSpacing),
-                          child: Row(children: [
-                            Expanded(
+            Padding(
+              padding: const EdgeInsets.only(left: kZero),
+              child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: orderData.length,
+                  separatorBuilder: (context, index) =>
+                      const Divider(color: AppColor.grey),
+                  itemBuilder: (context, index) {
+                    return SizedBox(
+                        width: MediaQuery.of(context).size.width *
+                            kMediaQuerrySize,
+                        child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: topBottomPadding,
+                                vertical: xxxTiniestSpacing),
+                            child: Row(children: [
+                              Expanded(
+                                  flex: 5,
+                                  child: Text(orderData[index]['title'],
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .tinier
+                                          .copyWith(
+                                              color: AppColor.darkGrey,
+                                              fontWeight: FontWeight.w400))),
+                              Expanded(
                                 flex: 5,
-                                child: Text(orderData[index]['title'],
+                                child: Text(orderData[index]['status'],
                                     style: Theme.of(context)
                                         .textTheme
                                         .tinier
-                                        .copyWith(
-                                            color: AppColor.darkGrey,
-                                            fontWeight: FontWeight.w400))),
-                            Expanded(
-                              flex: 5,
-                              child: Text(orderData[index]['status'],
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .tinier
-                                      .copyWith(fontWeight: FontWeight.w500)),
-                            )
-                          ])));
-                })
+                                        .copyWith(fontWeight: FontWeight.w500)),
+                              )
+                            ])));
+                  }),
+            )
           ]),
     );
   }

@@ -36,7 +36,6 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
         ),
         SizedBox(
           height: kSizedBoxInfinite,
-          width: kSizedBoxInfinite,
           child: PageView.builder(
               itemCount: widget.imageList.length,
               pageSnapping: true,
@@ -59,7 +58,6 @@ class _ImageCarouselSliderState extends State<ImageCarouselSlider> {
                       borderRadius: BorderRadius.circular(kBorderDiscount),
                       child: Image.network(
                         widget.imageList[index].toString(),
-                        fit: BoxFit.fill,
                       ),
                     ),
                   ),

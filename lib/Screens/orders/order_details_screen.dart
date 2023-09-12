@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/common_widgets/oder_detail_screen_card_two.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
@@ -51,41 +50,83 @@ class OrdersDetailsScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-        appBar: GenericAppBar(title: 'Order Details', actions: [
-          TextButton(
-              onPressed: () {},
-              child: const Text('Help',
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: AppColor.darkGrey)))
-        ]),
+        appBar: AppBar(
+            leading: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: const Icon(
+                Icons.arrow_back,
+                color: AppColor.black,
+              ),
+            ),
+            title: Text('Order Details',
+                style: Theme.of(context).textTheme.xxTiny),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: xxTinierSpacing),
+                child: TextButton(
+                    onPressed: () {},
+                    child: const Text('Help',
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: AppColor.darkGrey))),
+              )
+            ]),
         bottomNavigationBar: BottomAppBar(
+            elevation: kZero,
             child: Padding(
-                padding: const EdgeInsets.all(xxxTinierSpacing),
-                child: Expanded(
-                    child: CustomElevatedButton(
+              padding: const EdgeInsets.all(xxxTinySpacing),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Center(
+                        child: TextButton(
+                            onPressed: () {},
+                            child: const Text('Get invoice',
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: AppColor.mediumBlack)))),
+                    CustomElevatedButton(
                         onPressed: () {},
                         buttonHeight: kElevatedButtonHeightSmall,
                         buttonWidth: double.maxFinite,
-                        child: const Text('Reorder'))))),
+                        child: const Text('Reorder'))
+                  ]),
+            )),
         body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: xxxSmallestSpacing, vertical: tinierSpacing),
+                    horizontal: xxTinySpacing, vertical: tinierSpacing),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Order Status',
-                          style: Theme.of(context).textTheme.xxTiny.copyWith(
-                              color: AppColor.black,
-                              fontWeight: FontWeight.w500)),
-                      const SizedBox(height: xxxTinierSpacing),
-                      Text('Delivered on Aug 29',
-                          style: Theme.of(context).textTheme.tinier.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: AppColor.primary)),
-                      const SizedBox(height: xxxSmallestSpacing),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 6),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Order Status',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .xxTiny
+                                    .copyWith(
+                                        color: AppColor.black,
+                                        fontWeight: FontWeight.w500)),
+                            const SizedBox(height: xxxTinierSpacing),
+                            Text('Delivered on Aug 29',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .tinier
+                                    .copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: AppColor.primary)),
+                            const SizedBox(height: xxxSmallestSpacing),
+                          ],
+                        ),
+                      ),
                       Theme(
                           data: Theme.of(context)
                               .copyWith(dividerColor: AppColor.transparent),
@@ -97,14 +138,6 @@ class OrdersDetailsScreen extends StatelessWidget {
                           child: OderDetailScreenCardTwo(
                             orderData: orderData,
                           )),
-                      const SizedBox(height: kOrderContainerHeight),
-                      Center(
-                          child: TextButton(
-                              onPressed: () {},
-                              child: const Text('Get invoice',
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: AppColor.mediumBlack))))
                     ]))));
   }
 }
