@@ -59,21 +59,22 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () async {
-        Position position = await getCurrentPosition();
-        location = 'Lat: ${position.latitude} , Long: ${position.longitude}';
-        getAddressFromLatLong(position);
-      },
-      child: Container(
-          height: kAddressContainerWidth,
-          decoration: const BoxDecoration(),
-          child: Padding(
-            padding: const EdgeInsets.all(xxTinierSpacing),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
+    return Container(
+        height: kAddressContainerWidth,
+        decoration: const BoxDecoration(),
+        child: Padding(
+          padding: const EdgeInsets.all(xxTinierSpacing),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () async {
+                  Position position = await getCurrentPosition();
+                  location =
+                      'Lat: ${position.latitude} , Long: ${position.longitude}';
+                  getAddressFromLatLong(position);
+                },
+                child: Container(
                   width: kLocationContainerWidth,
                   decoration: BoxDecoration(
                       border: Border.all(
@@ -110,56 +111,56 @@ class _FetchCurrentLocationState extends State<FetchCurrentLocation> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: xxxSmallestSpacing,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Icon(
-                      Icons.location_on,
-                      size: smallerSpacing,
-                      color: AppColor.primary,
-                    ),
-                    const SizedBox(width: tiniestSpacing),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          addressHalf,
-                          style: Theme.of(context)
-                              .textTheme
-                              .tinier
-                              .copyWith(fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(
-                          height: xxTiniestSpacing,
-                        ),
-                        Text(
-                          addressFull,
-                          style: Theme.of(context)
-                              .textTheme
-                              .xxxTinier
-                              .copyWith(color: AppColor.black),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: smallestSpacing,
-                ),
-                CustomElevatedButton(
-                  backgroundColor: AppColor.primary,
-                  onPressed: () {},
-                  buttonWidth: double.maxFinite,
-                  buttonHeight: kElevatedButtonHeightSmall,
-                  child: const Text("Enter Complete Address"),
-                ),
-              ],
-            ),
-          )),
-    );
+              ),
+              const SizedBox(
+                height: xxxSmallestSpacing,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(
+                    Icons.location_on,
+                    size: smallerSpacing,
+                    color: AppColor.primary,
+                  ),
+                  const SizedBox(width: tiniestSpacing),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        addressHalf,
+                        style: Theme.of(context)
+                            .textTheme
+                            .tinier
+                            .copyWith(fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(
+                        height: xxTiniestSpacing,
+                      ),
+                      Text(
+                        addressFull,
+                        style: Theme.of(context)
+                            .textTheme
+                            .xxxTinier
+                            .copyWith(color: AppColor.black),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: smallestSpacing,
+              ),
+              CustomElevatedButton(
+                backgroundColor: AppColor.primary,
+                onPressed: () {},
+                buttonWidth: double.maxFinite,
+                buttonHeight: kElevatedButtonHeightSmall,
+                child: const Text("Enter Complete Address"),
+              ),
+            ],
+          ),
+        ));
   }
 }

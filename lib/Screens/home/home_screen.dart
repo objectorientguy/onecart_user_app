@@ -64,6 +64,10 @@ class HomeScreen extends StatelessWidget {
                           ),
                           SearchTextField(
                             hintText: "Search for groceries",
+                            hintStyle: Theme.of(context)
+                                .textTheme
+                                .xTinier
+                                .copyWith(fontWeight: FontWeight.w300),
                             textcontroller: myController,
                             prefixicon: InkWell(
                                 onTap: () {

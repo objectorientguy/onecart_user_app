@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../blocs/categories_bloc/categories_bloc.dart';
 import '../../blocs/categories_bloc/categories_events.dart';
@@ -38,6 +39,10 @@ class CategoryGridScreen extends StatelessWidget {
                   ),
                   SearchTextField(
                     hintText: 'Search Categories',
+                    hintStyle: Theme.of(context)
+                        .textTheme
+                        .xTinier
+                        .copyWith(fontWeight: FontWeight.w300),
                     prefixicon: const Icon(Icons.search),
                     textcontroller: myControllerone,
                   ),

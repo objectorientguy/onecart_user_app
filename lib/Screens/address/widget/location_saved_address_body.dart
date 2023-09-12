@@ -100,7 +100,8 @@ class LocationSavedAddressBody extends StatelessWidget {
                                 style: Theme.of(context).textTheme.tiniest)
                           ])
                     ])
-              ])))
+              ]))),
+      const SizedBox(height: xxxTinierSpacing),
     ]);
   }
 }

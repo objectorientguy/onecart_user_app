@@ -37,7 +37,7 @@ class AddressBar extends StatelessWidget {
             size: kLocationIconSize,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: xxxTinierSpacing),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

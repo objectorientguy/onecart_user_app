@@ -53,7 +53,7 @@ class OrdersDetailsScreen extends StatelessWidget {
     return Scaffold(
         appBar: GenericAppBar(title: 'Order Details', actions: [
           Padding(
-            padding: const EdgeInsets.only(right: xxxTinySpacing),
+            padding: const EdgeInsets.only(right: xxTinierSpacing),
             child: TextButton(
                 onPressed: () {},
                 child: const Text('Help',

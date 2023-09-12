@@ -50,7 +50,7 @@ class OrderTile extends StatelessWidget {
                                   orderData[idx]['title'],
                                   style: Theme.of(context)
                                       .textTheme
-                                      .xxTiny
+                                      .tinier
                                       .copyWith(
                                           color: AppColor.brightRed,
                                           fontWeight: FontWeight.w600),
@@ -58,7 +58,7 @@ class OrderTile extends StatelessWidget {
                               : Text(orderData[idx]['title'],
                                   style: Theme.of(context)
                                       .textTheme
-                                      .xxTiny
+                                      .tinier
                                       .copyWith(
                                           color: AppColor.darkGrey,
                                           fontWeight: FontWeight.w600)),
@@ -66,7 +66,7 @@ class OrderTile extends StatelessWidget {
                               ? Text(orderData[idx]['deliveryDate'],
                                   style: Theme.of(context)
                                       .textTheme
-                                      .xTinier
+                                      .xxxTinier
                                       .copyWith(
                                           color: AppColor.lightGrey,
                                           fontWeight: FontWeight.w500))
@@ -75,7 +75,7 @@ class OrderTile extends StatelessWidget {
                               "${orderData[idx]['category']} (${orderData[idx]['quantity']} items)",
                               style: Theme.of(context)
                                   .textTheme
-                                  .xTinier
+                                  .xxxTinier
                                   .copyWith(
                                       color: AppColor.darkGrey,
                                       fontWeight: FontWeight.w500)),
