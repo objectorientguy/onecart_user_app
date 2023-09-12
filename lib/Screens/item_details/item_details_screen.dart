@@ -35,6 +35,9 @@ class ItemDetailsScreen extends StatelessWidget {
             valueChanged: () {},
             iconSize: kFavouriteButton,
           ),
+          const SizedBox(
+            width: xxxTinierSpacing,
+          ),
           Padding(
               padding: const EdgeInsets.only(right: leftRightMargin),
               child: IconButton(
