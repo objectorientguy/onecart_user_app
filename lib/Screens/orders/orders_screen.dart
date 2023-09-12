@@ -98,24 +98,25 @@ class OrdersScreen extends StatelessWidget {
               if (state is GetAllOrdersLoading) {
                 return const Center(child: CircularProgressIndicator());
               } else if (state is GetAllOrdersLoaded) {
-                return InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const OrdersDetailsScreen()));
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: xxxTinierSpacing,
-                          right: xxxTinierSpacing,
-                          top: xxxTinierSpacing),
-                      child: ListView.builder(
-                          physics: const BouncingScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: orderData.length,
-                          itemBuilder: (context, index) {
-                            return OrderTile(orderData: orderData, idx: index);
-                          }),
-                    ));
+                return Padding(
+                  padding: const EdgeInsets.only(
+                      left: xxxTinierSpacing,
+                      right: xxxTinierSpacing,
+                      top: xxxTinierSpacing),
+                  child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: orderData.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      const OrdersDetailsScreen()));
+                            },
+                            child: OrderTile(orderData: orderData, idx: index));
+                      }),
+                );
               }
               if (state is GetAllOrdersError) {
                 return Container();

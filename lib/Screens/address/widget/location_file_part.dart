@@ -14,89 +14,97 @@ class LocationCardTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(smallCardCurve),
-              topRight: Radius.circular(smallCardCurve),
-              bottomLeft: Radius.circular(smallCardCurve),
-              bottomRight: Radius.circular(smallCardCurve))),
+          borderRadius: BorderRadius.all(Radius.circular(smallCardCurve))),
       child: Padding(
         padding: const EdgeInsets.all(tinierSpacing),
         child: Column(
           children: [
-            Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, AddAddressScreen.routeName,
+                    arguments: false);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(
-                    Icons.add,
-                    color: AppColor.lighterRed,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, AddAddressScreen.routeName,
-                          arguments: false);
-                    },
-                    child: Text(
+                  Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                    const Icon(
+                      Icons.add,
+                      color: AppColor.primary,
+                    ),
+                    const SizedBox(width: xxTinierSpacing),
+                    Text(
                       'Add New Address',
                       style: Theme.of(context).textTheme.xTinier.copyWith(
-                          color: AppColor.lighterRed,
-                          fontWeight: FontWeight.w600),
+                          color: AppColor.primary, fontWeight: FontWeight.w600),
                     ),
-                  ),
-                  const SizedBox(width: kBottomBarWidth),
-                  const Icon(
-                    Icons.arrow_forward_ios_outlined,
-                    size: xxTinySpacing,
-                  ),
-                ]),
-            const Divider(height: xxxSmallestSpacing),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Icon(
-                  Icons.my_location,
-                  color: AppColor.lighterRed,
-                ),
-                const SizedBox(width: xxTiniestSpacing),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          CurrentLocation.routeName,
-                        );
-                      },
-                      child: Text(
-                        'Use Your Current Location',
-                        style: Theme.of(context).textTheme.xTinier.copyWith(
-                            color: AppColor.lighterRed,
-                            fontWeight: FontWeight.w600),
+                  ]),
+                  const Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: xxTinySpacing,
                       ),
-                    ),
-                    const SizedBox(
-                      height: xxTiniestSpacing,
-                      width: xxxTinierSpacing,
-                    ),
-                    Text(
-                      'Tatya Tope Nagar, Deo,Nagpur',
-                      style: Theme.of(context)
-                          .textTheme
-                          .xxxTinier
-                          .copyWith(color: AppColor.black),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: xxLargeSpacing),
-                const Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  size: xxTinySpacing,
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
+            const Divider(height: xxSmallestSpacing),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  CurrentLocation.routeName,
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Icon(
+                        Icons.my_location,
+                        color: AppColor.primary,
+                      ),
+                      const SizedBox(width: xxTinierSpacing),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Use Your Current Location',
+                            style: Theme.of(context).textTheme.xTinier.copyWith(
+                                color: AppColor.primary,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(
+                            height: xxTiniestSpacing,
+                            width: xxxTinierSpacing,
+                          ),
+                          Text(
+                            'Tatya Tope Nagar, Deo,Nagpur',
+                            style: Theme.of(context)
+                                .textTheme
+                                .xxxTinier
+                                .copyWith(color: AppColor.black),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: xxTinySpacing,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

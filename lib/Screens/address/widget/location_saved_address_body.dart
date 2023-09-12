@@ -85,7 +85,7 @@ class LocationSavedAddressBody extends StatelessWidget {
                                 height: xMediumSpacing,
                                 decoration: const BoxDecoration(),
                                 child: const Icon(Icons.home_outlined,
-                                    size: smallestSpacing,
+                                    size: xxxSmallestSpacing,
                                     color: AppColor.mediumBlack))
                           ]),
                       const SizedBox(width: xxTinierSpacing),
@@ -100,7 +100,8 @@ class LocationSavedAddressBody extends StatelessWidget {
                                 style: Theme.of(context).textTheme.tiniest)
                           ])
                     ])
-              ])))
+              ]))),
+      const SizedBox(height: xxxTinierSpacing),
     ]);
   }
 }

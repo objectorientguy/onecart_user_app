@@ -68,9 +68,9 @@ class ProfileHeader extends StatelessWidget {
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
-              color: AppColor.primaryLight,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppColor.primary, width: 0.3)),
+            color: AppColor.primaryLight,
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: leftRightMargin, vertical: topBottomPadding),
