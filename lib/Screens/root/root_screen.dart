@@ -37,8 +37,8 @@ class _RootScreenState extends State<RootScreen> {
     const HomeScreen(),
     const CategoryGridScreen(),
     const OrdersScreen(),
-    const CartScreen(),
     const ProfileScreen(),
+    const CartScreen(),
   ];
 
   @override
@@ -75,12 +75,12 @@ class _RootScreenState extends State<RootScreen> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.my_library_books), label: 'Orders'),
               BottomNavigationBarItem(
+                  icon: Icon(Icons.person), label: 'Account'),
+              BottomNavigationBarItem(
                   icon: Icon(
                     Icons.shopping_cart_rounded,
                   ),
                   label: 'Cart'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: 'Account'),
             ],
           ),
         ),
