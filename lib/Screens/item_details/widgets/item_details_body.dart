@@ -11,8 +11,10 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/item_details/item_details_model.dart';
+
 import '../../varient/select_varient_screen.dart';
 import 'delivery_details_section.dart';
+import 'frequently_bought_widget.dart';
 import 'item_details_price.dart';
 
 class ItemDetailsBody extends StatelessWidget {
@@ -90,6 +92,15 @@ class ItemDetailsBody extends StatelessWidget {
                 .copyWith(fontWeight: FontWeight.w500)),
         SizedBox(child: Text(itemData.description.toString())),
         const SizedBox(height: xxxTinySpacing),
+        Text('Frequently Bought Together',
+            style: Theme.of(context)
+                .textTheme
+                .tinier
+                .copyWith(fontWeight: FontWeight.w500)),
+        const SizedBox(
+          height: tiniestSpacing,
+        ),
+        const FrequentlyBoughtItems()
       ],
     );
   }
