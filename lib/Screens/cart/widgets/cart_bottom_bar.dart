@@ -67,7 +67,7 @@ class CartBottomBar extends StatelessWidget {
                               child: Text('3 ITEMS',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .textSmall
+                                      .tinier
                                       .copyWith(
                                           color: AppColor.primary,
                                           fontWeight: FontWeight.w700)),
