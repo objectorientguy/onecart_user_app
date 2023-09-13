@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/orders/widgets/item_orders_expansiontile.dart';
+import 'package:onecart_user_app/Screens/orders/widgets/order_details_bottom_appbar.dart';
 import 'package:onecart_user_app/common_widgets/oder_detail_screen_card_two.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-import '../../common_widgets/custom_elevated_button.dart';
 import '../../common_widgets/order_detail_screen_card.dart';
 import '../../configs/app_color.dart';
-import '../../configs/app_dimensions.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
   static const routeName = 'OrdersDetailsScreen';
@@ -73,28 +73,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                             color: AppColor.darkGrey))),
               )
             ]),
-        bottomNavigationBar: BottomAppBar(
-            elevation: kZero,
-            child: Padding(
-              padding: const EdgeInsets.all(xxxTinySpacing),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Center(
-                        child: TextButton(
-                            onPressed: () {},
-                            child: const Text('Get invoice',
-                                style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: AppColor.mediumBlack)))),
-                    CustomElevatedButton(
-                        onPressed: () {},
-                        buttonHeight: kElevatedButtonHeightSmall,
-                        buttonWidth: double.maxFinite,
-                        child: const Text('Reorder'))
-                  ]),
-            )),
+        bottomNavigationBar: const OrderDetailsBottomAppBar(),
         body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Padding(
@@ -104,7 +83,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 6),
+                        padding: const EdgeInsets.only(left: tiniestSpacing),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -130,14 +109,19 @@ class OrdersDetailsScreen extends StatelessWidget {
                       Theme(
                           data: Theme.of(context)
                               .copyWith(dividerColor: AppColor.transparent),
-                          child: const OderDetailScreenCardOne()),
+                          child: const OrderTrackingExpansionTile()),
                       const SizedBox(height: xxTinierSpacing),
                       Theme(
                           data: Theme.of(context)
                               .copyWith(dividerColor: AppColor.transparent),
-                          child: OderDetailScreenCardTwo(
+                          child: OderDetailExpansionTile(
                             orderData: orderData,
                           )),
+                      const SizedBox(height: xxTinierSpacing),
+                      Theme(
+                          data: Theme.of(context)
+                              .copyWith(dividerColor: AppColor.transparent),
+                          child: const ItemOrderedExpansionTile()),
                     ]))));
   }
 }

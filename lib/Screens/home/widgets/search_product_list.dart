@@ -14,7 +14,6 @@ class SearchProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenwidth = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -32,9 +31,8 @@ class SearchProductList extends StatelessWidget {
                     arguments: data[index]);
               },
               child: ProductTileWidget(
-                screenwidth: screenwidth,
-                data: data,
-                index: index,
+                ratingShow: true,
+                data: data[index],
               ),
             );
           },

@@ -6,16 +6,15 @@ import '../../../configs/app_spacing.dart';
 import '../../../data/models/home/home_model.dart';
 
 class ProductTileWidget extends StatelessWidget {
+  final bool ratingShow;
+
   const ProductTileWidget({
     super.key,
-    required this.screenwidth,
     required this.data,
-    required this.index,
+    this.ratingShow = true,
   });
 
-  final double screenwidth;
-  final List<Deal> data;
-  final int index;
+  final Deal data;
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +36,12 @@ class ProductTileWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.circular(kBorderRadiusSmall)),
-                          child: Image.network(data[index].image![0].toString(),
+                          child: Image.network(data.image![0].toString(),
                               fit: BoxFit.fill))))),
           const SizedBox(width: xxxTinySpacing),
-          ProductTileWidgetBody(
-              screenwidth: screenwidth, data: data, index: index)
+          Expanded(
+            child: ProductTileWidgetBody(data: data, ratingShow: ratingShow),
+          )
         ]);
   }
 }
