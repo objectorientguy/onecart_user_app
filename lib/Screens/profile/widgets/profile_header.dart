@@ -49,15 +49,19 @@ class ProfileHeader extends StatelessWidget {
               Navigator.pushNamed(context, EditProfileScreen.routeName);
             },
             child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: xxTinierSpacing, vertical: tiniestSpacing),
                 decoration: BoxDecoration(
-                  border: Border.all(color: AppColor.primary, width: 0.3),
-                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: AppColor.primary, width: kFeatureDivider),
+                  borderRadius: BorderRadius.circular(kEditRadius),
                 ),
-                child: const Text(
+                child: Text(
                   'EDIT',
-                  style: TextStyle(color: AppColor.primary, fontSize: 14),
+                  style: Theme.of(context)
+                      .textTheme
+                      .xTinier
+                      .copyWith(color: AppColor.primary),
                 )),
           ),
         ],
@@ -67,7 +71,7 @@ class ProfileHeader extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColor.primaryLight,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(kGlobalBorderRadius),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(
