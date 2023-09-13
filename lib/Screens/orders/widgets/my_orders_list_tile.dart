@@ -50,23 +50,25 @@ class OrderTile extends StatelessWidget {
                                   orderData[idx]['title'],
                                   style: Theme.of(context)
                                       .textTheme
-                                      .tinier
+                                      .xxTinier
                                       .copyWith(
-                                          color: AppColor.brightRed,
-                                          fontWeight: FontWeight.w600),
+                                          fontWeight: FontWeight.w500,
+                                          color: AppColor.black),
                                 )
-                              : Text(orderData[idx]['title'],
+                              : Text(
+                                  orderData[idx]['title'],
                                   style: Theme.of(context)
                                       .textTheme
-                                      .tinier
+                                      .xxTinier
                                       .copyWith(
-                                          color: AppColor.darkGrey,
-                                          fontWeight: FontWeight.w600)),
+                                          fontWeight: FontWeight.w500,
+                                          color: AppColor.darkGrey),
+                                ),
                           (orderData[idx]['title'] == "Delivered")
                               ? Text(orderData[idx]['deliveryDate'],
                                   style: Theme.of(context)
                                       .textTheme
-                                      .xxxTinier
+                                      .tiniest
                                       .copyWith(
                                           color: AppColor.lightGrey,
                                           fontWeight: FontWeight.w500))
