@@ -6,8 +6,8 @@ import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
 
-class OderDetailScreenCardOne extends StatelessWidget {
-  const OderDetailScreenCardOne({
+class OrderTrackingExpansionTile extends StatelessWidget {
+  const OrderTrackingExpansionTile({
     super.key,
   });
 
@@ -23,7 +23,7 @@ class OderDetailScreenCardOne extends StatelessWidget {
           backgroundColor: AppColor.white,
           initiallyExpanded: true,
           title:
-              Text('Order Details', style: Theme.of(context).textTheme.xxTiny),
+              Text('Order Tracking', style: Theme.of(context).textTheme.xxTiny),
           trailing: const Icon(Icons.keyboard_arrow_down),
           children: const [
             Padding(
