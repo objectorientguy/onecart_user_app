@@ -44,7 +44,8 @@ class ItemOrderedExpansionTile extends StatelessWidget {
                 ),
               ),
             );
-          })),
+          })
+      ),
     );
   }
 }
