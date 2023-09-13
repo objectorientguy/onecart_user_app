@@ -53,7 +53,7 @@ class OrderTile extends StatelessWidget {
                                       .xxTinier
                                       .copyWith(
                                           fontWeight: FontWeight.w500,
-                                          color: AppColor.black),
+                                          color: AppColor.brightRed),
                                 )
                               : Text(
                                   orderData[idx]['title'],
