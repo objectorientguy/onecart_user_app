@@ -36,7 +36,7 @@ class ItemOrderedExpansionTile extends StatelessWidget {
                 data: Deal(
                   productName:
                       'Lays American Style Creame and Onion Potato Chips',
-                  image: ['assets/img_2.png'],
+                  image: ['image: assets/img_2.png'],
                   discountedCost: 400,
                   price: 300,
                   weight: 166.toString(),
