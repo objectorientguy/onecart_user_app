@@ -89,7 +89,7 @@ class OrdersScreen extends StatelessWidget {
                 ),
               ),
               actions: const [
-                Icon(Icons.tune_outlined, color: AppColor.primary),
+                Icon(Icons.filter_alt, color: AppColor.primary),
                 SizedBox(width: smallestSpacing)
               ],
             ),

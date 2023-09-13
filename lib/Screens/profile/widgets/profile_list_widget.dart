@@ -32,10 +32,11 @@ class ProfileListWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title,
-                    style: Theme.of(context).textTheme.xxTiny.copyWith(
-                        fontWeight: FontWeight.w700,
-                        color: AppColor.mediumBlack)),
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.xTinier.copyWith(
+                      color: AppColor.mediumBlack, fontWeight: FontWeight.w600),
+                ),
                 const SizedBox(
                   height: xxTiniestSpacing,
                 ),
