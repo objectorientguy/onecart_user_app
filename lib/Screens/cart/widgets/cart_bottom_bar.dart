@@ -17,83 +17,77 @@ class CartBottomBar extends StatelessWidget {
     return BottomAppBar(
       child: Padding(
           padding: const EdgeInsets.all(leftRightMargin),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Subtotal',
-                          style: Theme.of(context)
-                              .textTheme
-                              .tinier
-                              .copyWith(color: AppColor.grey)),
-                      const SizedBox(height: xxxTinierSpacing),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    const Icon(
+                      Icons.location_on,
+                      size: smallerSpacing,
+                      color: AppColor.primary,
+                    ),
+                    const SizedBox(width: tiniestSpacing),
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('₹',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .xxMedium
-                                  .copyWith(fontWeight: FontWeight.w100)),
-                          Text('2,199',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .xxMedium
-                                  .copyWith(fontWeight: FontWeight.w700)),
-                          Text('.43',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .xxTiny
-                                  .copyWith(color: AppColor.mediumBlack)),
+                          Text(
+                            'Office',
+                            style: Theme.of(context)
+                                .textTheme
+                                .tinier
+                                .copyWith(fontWeight: FontWeight.w600),
+                          ),
                           const SizedBox(
-                            width: xxxTinierSpacing,
+                            height: xxTiniestSpacing,
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: AppColor.grey,
-                                ),
-                                color: AppColor.primaryLight,
-                                borderRadius: BorderRadius.circular(15)),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: xxTiniestSpacing,
-                                horizontal: xxTinierSpacing),
-                            child: Center(
-                              child: Text('3 ITEMS',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .tinier
-                                      .copyWith(
-                                          color: AppColor.primary,
-                                          fontWeight: FontWeight.w700)),
+                          SizedBox(
+                            width: kSizedBoxInfinite,
+                            child: Text(
+                              'Akshya Nagar 1 st Block 1 st Cross',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .xxxTinier
+                                  .copyWith(color: AppColor.black),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(height: tinierSpacing),
-              CustomElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, CheckoutScreen.routeName,
-                        arguments: false);
-                  },
-                  buttonHeight: kElevatedButtonHeightSmall,
-                  buttonWidth: double.maxFinite,
-                  child: Text(
-                    'PROCEED TO PAYMENT',
-                    style: Theme.of(context).textTheme.xxTiny.copyWith(
-                        fontWeight: FontWeight.w600, color: AppColor.white),
-                  ))
-            ],
-          )),
+                          )
+                        ])
+                  ]),
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: AppColor.primary,
+                        ),
+                        borderRadius: BorderRadius.circular(kBigRadius)),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: xxTiniestSpacing,
+                        horizontal: xxTinierSpacing),
+                    child: Center(
+                      child: Text('CHANGE',
+                          style: Theme.of(context).textTheme.tinier.copyWith(
+                              color: AppColor.primary,
+                              fontWeight: FontWeight.w500)),
+                    ),
+                  )
+                ]),
+            const SizedBox(height: tinierSpacing),
+            CustomElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, CheckoutScreen.routeName,
+                      arguments: false);
+                },
+                buttonHeight: kElevatedButtonHeightSmall,
+                buttonWidth: double.maxFinite,
+                child: Text(
+                  'PAY AND CHECKOUT',
+                  style: Theme.of(context).textTheme.xxTiny.copyWith(
+                      fontWeight: FontWeight.w600, color: AppColor.white),
+                ))
+          ])),
     );
   }
 }

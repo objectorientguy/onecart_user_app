@@ -78,3 +78,4 @@ const double kContainerElevation = 1.5;
 const double kCardHeightItem = 80.0;
 const double kFeatureDivider = 0.3;
 const double kEditRadius = 20.0;
+const double kBigRadius = 15.0;

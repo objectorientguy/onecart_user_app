@@ -21,10 +21,13 @@ class ProfileListWidget extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(
-              icon,
-              color: AppColor.primary,
-              size: kLocationIconSize,
+            Padding(
+              padding: const EdgeInsets.only(top: xxxTiniestSpacing),
+              child: Icon(
+                icon,
+                color: AppColor.primary,
+                size: kLocationIconSize,
+              ),
             ),
             const SizedBox(
               width: xxTinierSpacing,
@@ -58,7 +61,7 @@ class ProfileListWidget extends StatelessWidget {
           children: [
             Icon(
               Icons.arrow_forward_ios,
-              size: 20,
+              size: kIconSizeSmall,
             ),
             SizedBox(
               width: xxxTinierSpacing,

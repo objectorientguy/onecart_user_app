@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/profile/widgets/profile_list_widget.dart';
 
+import '../../../configs/app_dimensions.dart';
 import '../../address/address_screen.dart';
 
 class ProfileOptionsList extends StatelessWidget {
@@ -26,20 +27,20 @@ class ProfileOptionsList extends StatelessWidget {
           ),
         ),
         const Divider(
-          height: 30,
+          height: kDivider,
         ),
         const ProfileListWidget(
           title: 'Favorite items',
           description: 'All your handpicked items at one place',
           icon: Icons.favorite,
         ),
-        const Divider(height: 30, thickness: 0.3),
+        const Divider(height: kDivider, thickness: kFeatureDivider),
         const ProfileListWidget(
           title: 'Help',
           description: 'Find answers to all your queries here',
           icon: Icons.help,
         ),
-        const Divider(height: 30, thickness: 0.3),
+        const Divider(height: kDivider, thickness: kFeatureDivider),
         const ProfileListWidget(
           title: 'Settings',
           description: 'Manage notifications and permissions',
