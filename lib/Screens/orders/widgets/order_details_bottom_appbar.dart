@@ -15,7 +15,7 @@ class OrderDetailsBottomAppBar extends StatelessWidget {
     return BottomAppBar(
         elevation: kZero,
         child: Padding(
-          padding: const EdgeInsets.all(xxxTinySpacing),
+          padding: const EdgeInsets.all(xxTinySpacing),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               mainAxisSize: MainAxisSize.min,

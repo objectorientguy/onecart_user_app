@@ -10,8 +10,7 @@ import '../../configs/app_color.dart';
 class OrdersDetailsScreen extends StatelessWidget {
   static const routeName = 'OrdersDetailsScreen';
 
-  const OrdersDetailsScreen({Key? key})
-      : super(key: key);
+  const OrdersDetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +83,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 6),
+                        padding: const EdgeInsets.only(left: tiniestSpacing),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -122,8 +121,7 @@ class OrdersDetailsScreen extends StatelessWidget {
                       Theme(
                           data: Theme.of(context)
                               .copyWith(dividerColor: AppColor.transparent),
-                          child:  ItemOrderedExpansionTile(orderdetaildata: [],
-                          )),
+                          child: const ItemOrderedExpansionTile()),
                     ]))));
   }
 }
