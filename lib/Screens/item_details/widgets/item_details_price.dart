@@ -9,6 +9,7 @@ import '../../home/widgets/counter_widget.dart';
 
 class ItemDetailsPrice extends StatelessWidget {
   final ItemDetailsData itemData;
+
   const ItemDetailsPrice({super.key, required this.itemData});
 
   @override
@@ -34,11 +35,8 @@ class ItemDetailsPrice extends StatelessWidget {
             const SizedBox(width: xxxTinierSpacing),
             Container(
               decoration: BoxDecoration(
-                  border: Border.all(
-                    color: AppColor.lightestGrey,
-                  ),
                   color: AppColor.primaryLight,
-                  borderRadius: BorderRadius.circular(kDiscountRadius)),
+                  borderRadius: BorderRadius.circular(kBorderDiscount)),
               padding: const EdgeInsets.symmetric(
                   vertical: xxTiniestSpacing, horizontal: xxTinierSpacing),
               child: Center(

@@ -1,5 +1,3 @@
-import 'package:favorite_button/favorite_button.dart';
-
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
@@ -26,25 +24,13 @@ class FrequentlyBoughtItems extends StatelessWidget {
               child: Column(children: [
                 Padding(
                     padding: const EdgeInsets.all(tiniestSpacing),
-                    child: Stack(
-                      alignment: Alignment.topRight,
-                      children: [
-                        Container(
-                            height: kCardHeightItem,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.circular(kBorderRadiusSmall)),
-                            child: Image.asset('assets/img_2.png',
-                                fit: BoxFit.fill)),
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: FavoriteButton(
-                            valueChanged: () {},
-                            iconSize: kFavouriteButton,
-                          ),
-                        ),
-                      ],
-                    )),
+                    child: Container(
+                        height: kCardHeightItem,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(kBorderRadiusSmall)),
+                        child:
+                            Image.asset('assets/img_2.png', fit: BoxFit.fill))),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: leftRightMargin, vertical: xxTiniestSpacing),
@@ -86,7 +72,6 @@ class FrequentlyBoughtItems extends StatelessWidget {
                           Container(
                               width: kContainerWidth,
                               decoration: BoxDecoration(
-                                  border: Border.all(color: AppColor.primary),
                                   color: AppColor.primaryLight,
                                   borderRadius:
                                       BorderRadius.circular(kBorderDiscount)),
