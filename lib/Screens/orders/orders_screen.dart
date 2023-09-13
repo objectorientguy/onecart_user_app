@@ -112,7 +112,7 @@ class OrdersScreen extends StatelessWidget {
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
-                                      const OrdersDetailsScreen()));
+                                       const OrdersDetailsScreen()));
                             },
                             child: OrderTile(orderData: orderData, idx: index));
                       }),
