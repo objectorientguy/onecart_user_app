@@ -101,7 +101,6 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                           Container(
                               width: kContainerWidth,
                               decoration: BoxDecoration(
-                                  border: Border.all(color: AppColor.primary),
                                   color: AppColor.primaryLight,
                                   borderRadius:
                                       BorderRadius.circular(kBorderDiscount)),
