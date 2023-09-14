@@ -6,11 +6,12 @@ import '../../../configs/app_spacing.dart';
 import '../../../data/models/general_data_model/general_category_data.dart';
 
 class ProductTileWidget extends StatelessWidget {
+  final bool ratingShow;
+
   const ProductTileWidget({
     super.key,
-    required this.screenwidth,
     required this.data,
-    required this.index,
+    this.ratingShow = true,
   });
 
   final double screenwidth;
@@ -40,8 +41,9 @@ class ProductTileWidget extends StatelessWidget {
                           child: Image.network(data[index].variants[0].image.toString(),
                               fit: BoxFit.fill))))),
           const SizedBox(width: xxxTinySpacing),
-          ProductTileWidgetBody(
-              screenwidth: screenwidth, data: data, index: index)
+          Expanded(
+            child: ProductTileWidgetBody(data: data, ratingShow: ratingShow),
+          )
         ]);
   }
 }

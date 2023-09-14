@@ -5,10 +5,10 @@ import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
 
-class OderDetailScreenCardTwo extends StatelessWidget {
+class OderDetailExpansionTile extends StatelessWidget {
   final List orderData;
 
-  const OderDetailScreenCardTwo({super.key, required this.orderData});
+  const OderDetailExpansionTile({super.key, required this.orderData});
 
   @override
   Widget build(BuildContext context) {

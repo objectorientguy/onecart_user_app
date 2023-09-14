@@ -8,6 +8,7 @@ import '../../configs/app_dimensions.dart';
 
 class OrderSuccessScreen extends StatelessWidget {
   static const routeName = 'OrderSuccessScreen';
+
   const OrderSuccessScreen({Key? key}) : super(key: key);
 
   @override

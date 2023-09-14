@@ -8,11 +8,12 @@ import '../../../configs/app_spacing.dart';
 import 'counter_widget.dart';
 
 class ProductTileWidgetBody extends StatefulWidget {
+  final bool ratingShow;
+
   const ProductTileWidgetBody({
     super.key,
-    required this.screenwidth,
     required this.data,
-    required this.index,
+    this.ratingShow = true,
   });
 
   final double screenwidth;

@@ -16,7 +16,6 @@ class StoreItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
@@ -34,9 +33,9 @@ class StoreItemList extends StatelessWidget {
                               arguments: storedata[index]);
                         },
                         child: ProductTileWidget(
-                            screenwidth: screenWidth,
-                            data: storedata,
-                            index: index));
+                          ratingShow: true,
+                          data: storedata[index],
+                        ));
                   },
                   separatorBuilder: (context, index) {
                     return const Divider(

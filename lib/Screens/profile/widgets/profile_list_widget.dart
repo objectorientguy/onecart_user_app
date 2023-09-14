@@ -21,10 +21,13 @@ class ProfileListWidget extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(
-              icon,
-              color: AppColor.primary,
-              size: kLocationIconSize,
+            Padding(
+              padding: const EdgeInsets.only(top: xxxTiniestSpacing),
+              child: Icon(
+                icon,
+                color: AppColor.primary,
+                size: kLocationIconSize,
+              ),
             ),
             const SizedBox(
               width: xxTinierSpacing,
@@ -32,10 +35,11 @@ class ProfileListWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title,
-                    style: Theme.of(context).textTheme.xxTiny.copyWith(
-                        fontWeight: FontWeight.w700,
-                        color: AppColor.mediumBlack)),
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.xTinier.copyWith(
+                      color: AppColor.mediumBlack, fontWeight: FontWeight.w600),
+                ),
                 const SizedBox(
                   height: xxTiniestSpacing,
                 ),
@@ -57,7 +61,7 @@ class ProfileListWidget extends StatelessWidget {
           children: [
             Icon(
               Icons.arrow_forward_ios,
-              size: 20,
+              size: kIconSizeSmall,
             ),
             SizedBox(
               width: xxxTinierSpacing,
