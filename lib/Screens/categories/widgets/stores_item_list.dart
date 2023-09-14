@@ -34,7 +34,7 @@ class StoreItemList extends StatelessWidget {
                         },
                         child: ProductTileWidget(
                           ratingShow: true,
-                          data: storedata[index],
+                          data: storedata, index: index,
                         ));
                   },
                   separatorBuilder: (context, index) {

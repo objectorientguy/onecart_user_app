@@ -32,7 +32,7 @@ class SearchProductList extends StatelessWidget {
               },
               child: ProductTileWidget(
                 ratingShow: true,
-                data: data[index],
+                data: data, index: index,
               ),
             );
           },

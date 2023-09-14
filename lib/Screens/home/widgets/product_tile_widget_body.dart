@@ -13,10 +13,9 @@ class ProductTileWidgetBody extends StatefulWidget {
   const ProductTileWidgetBody({
     super.key,
     required this.data,
-    this.ratingShow = true,
+    this.ratingShow = true, required this.index,
   });
 
-  final double screenwidth;
   final List<Product> data;
   final int index;
 
@@ -39,7 +38,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                        width: widget.screenwidth * 0.40,
+                        width: MediaQuery.of(context).size.width * 0.40,
                         child: Text(
                             widget.data[widget.index].productName
                                 .toString()

@@ -11,10 +11,9 @@ class ProductTileWidget extends StatelessWidget {
   const ProductTileWidget({
     super.key,
     required this.data,
-    this.ratingShow = true,
+    this.ratingShow = true, required this.index,
   });
 
-  final double screenwidth;
   final List<Product> data;
   final int index;
 
@@ -42,7 +41,7 @@ class ProductTileWidget extends StatelessWidget {
                               fit: BoxFit.fill))))),
           const SizedBox(width: xxxTinySpacing),
           Expanded(
-            child: ProductTileWidgetBody(data: data, ratingShow: ratingShow),
+            child: ProductTileWidgetBody(data: data, ratingShow: ratingShow, index: index,),
           )
         ]);
   }
