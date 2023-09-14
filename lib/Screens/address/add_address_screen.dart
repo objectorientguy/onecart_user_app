@@ -22,7 +22,6 @@ class AddAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var _formKey;
     Map addAddress = {
       'address_type': "",
       'address_name': "",
@@ -35,7 +34,7 @@ class AddAddressScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: const GenericAppBar(
-        title: 'Add Address',
+        title: 'Add New Address',
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -75,7 +74,6 @@ class AddAddressScreen extends StatelessWidget {
                             .add(AddAddress(addAddress: addAddress));
                       }
                       const SnackBar(content: Text('Enter the Data'));
-                      // log('addAddress=================>${_formKey.currentState?.validate()}');
                     },
                     buttonWidth: double.maxFinite,
                     buttonHeight: kElevatedButtonHeight,

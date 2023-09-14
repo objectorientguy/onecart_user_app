@@ -1,5 +1,8 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/address/widget/textfield_widget.dart';
+import 'package:onecart_user_app/configs/app_color.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
@@ -16,26 +19,28 @@ class AddressForm extends StatelessWidget {
       key: formKey,
       child: Column(
         children: <Widget>[
-          TextFormField(
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter Address';
-              }
-              return null;
-            },
-            onChanged: (value) {
-              saveAddress['address_type'] = value;
-              log('onChanged=========>${saveAddress['address_type'].toString()}');
-            },
-            initialValue: saveAddress['address_type'],
-            decoration: InputDecoration(
-              hintText: 'Title',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(kGeneralBorderRadius),
-                borderSide: const BorderSide(),
-              ),
-            ),
-          ),
+           Text('Address (House No.,Building.Street,Area)*', style: Theme.of(context).textTheme.xxxTinier.copyWith(color: AppColor.grey)),
+         // CustomTextField(textcontroller: null,)
+          // TextFormField(
+          //   validator: (value) {
+          //     if (value == null || value.isEmpty) {
+          //       return 'Please enter Address';
+          //     }
+          //     return null;
+          //   },
+          //   onChanged: (value) {
+          //     saveAddress['address_type'] = value;
+          //     log('onChanged=========>${saveAddress['address_type'].toString()}');
+          //   },
+          //   initialValue: saveAddress['address_type'],
+          //   decoration: InputDecoration(
+          //     hintText: 'Title',
+          //     border: OutlineInputBorder(
+          //       borderRadius: BorderRadius.circular(kVarientBoxHeight),
+          //       borderSide: const BorderSide(color: AppColor.primary),
+          //     ),
+          //   ),
+          // ),
           const SizedBox(height: xxxTinierSpacing),
           TextFormField(
             validator: (value) {
@@ -62,7 +67,6 @@ class AddressForm extends StatelessWidget {
           TextFormField(
             keyboardType: TextInputType.phone,
             validator: (value) {
-              // if (value == null || value.isEmpty) {
               if (value == null || value.isEmpty) {
                 return 'Please enter contact number';
               } else if (!RegExp(r'^[0-9]{10}$').hasMatch(value)) {

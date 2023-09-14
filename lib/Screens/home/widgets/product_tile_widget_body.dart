@@ -9,11 +9,12 @@ import 'counter_widget.dart';
 
 class ProductTileWidgetBody extends StatefulWidget {
   final bool ratingShow;
+  final bool addButtonVisible;
 
   const ProductTileWidgetBody({
     super.key,
     required this.data,
-    this.ratingShow = true,
+    this.ratingShow = true, this.addButtonVisible = true,
   });
 
   final Deal data;
@@ -108,7 +109,9 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                             color: AppColor.primary,
                                             fontWeight: FontWeight.w500))))
                       ]),
-                  const CounterScreen()
+                  Visibility(
+                      visible: widget.addButtonVisible == true,
+                      child: const CounterScreen()),
                 ])
           ]),
     );

@@ -32,6 +32,7 @@ class ItemOrderedExpansionTile extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.all(tinierSpacing),
               child: ProductTileWidget(
+                addButtonVisible: false,
                 ratingShow: false,
                 data: Deal(
                   productName:
