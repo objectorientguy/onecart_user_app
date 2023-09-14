@@ -3,7 +3,7 @@ import 'package:onecart_user_app/Screens/home/widgets/product_tile_widget_body.d
 
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/home/home_model.dart';
+import '../../../data/models/general_data_model/general_category_data.dart';
 
 class ProductTileWidget extends StatelessWidget {
   const ProductTileWidget({
@@ -14,7 +14,7 @@ class ProductTileWidget extends StatelessWidget {
   });
 
   final double screenwidth;
-  final List<Deal> data;
+  final List<Product> data;
   final int index;
 
   @override
@@ -37,7 +37,7 @@ class ProductTileWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.circular(kBorderRadiusSmall)),
-                          child: Image.network(data[index].image![0].toString(),
+                          child: Image.network(data[index].variants[0].image.toString(),
                               fit: BoxFit.fill))))),
           const SizedBox(width: xxxTinySpacing),
           ProductTileWidgetBody(

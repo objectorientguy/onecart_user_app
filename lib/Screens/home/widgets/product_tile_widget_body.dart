@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import 'package:onecart_user_app/data/models/general_data_model/general_category_data.dart';
 
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/home/home_model.dart';
 import 'counter_widget.dart';
 
 class ProductTileWidgetBody extends StatefulWidget {
@@ -16,7 +16,7 @@ class ProductTileWidgetBody extends StatefulWidget {
   });
 
   final double screenwidth;
-  final List<Deal> data;
+  final List<Product> data;
   final int index;
 
   @override
@@ -61,7 +61,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                         ])
                   ]),
               Text(
-                  widget.data[widget.index].weight
+                  widget.data[widget.index].variants[widget.index].quantity
                       .toString()
                       .replaceAll("\n", " "),
                   style: Theme.of(context)
@@ -78,7 +78,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                         children: [
                           Row(children: [
                             Text(
-                                '₹${widget.data[widget.index].discountedCost!.toString()}',
+                                '₹${widget.data[widget.index].variants[widget.index].discountedCost}',
                                 style: Theme.of(context)
                                     .textTheme
                                     .xxTinier
@@ -87,7 +87,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                         color: AppColor.black)),
                             const SizedBox(width: tiniestSpacing),
                             Text(
-                                '₹${widget.data[widget.index].price!.toString()}',
+                                '₹${widget.data[widget.index].variants[widget.index].variantCost}',
                                 style: Theme.of(context)
                                     .textTheme
                                     .xxxTinier
@@ -109,7 +109,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                   horizontal: xxxTiniestSpacing),
                               child: Center(
                                   child: Text(
-                                      '${widget.data[widget.index].discount!} % off',
+                                      '${widget.data[widget.index].variants[widget.index].discount} % off',
                                       style: Theme.of(context)
                                           .textTheme
                                           .xxxTiniest

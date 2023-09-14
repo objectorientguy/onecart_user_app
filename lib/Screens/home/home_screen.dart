@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/home/widgets/horizontal_category_list.dart';
 import 'package:onecart_user_app/Screens/home/widgets/search_screen.dart';
-import 'package:onecart_user_app/Screens/home/widgets/todays_deals_section.dart';
 import 'package:onecart_user_app/Screens/address/widget/address_bar.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
@@ -118,12 +117,12 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: smallestSpacing,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: leftRightMargin,
-                          vertical: topBottomPadding),
-                      child: TodayDealsSection(state.homeModel.data!.deals!),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(
+                    //       horizontal: leftRightMargin,
+                    //       vertical: topBottomPadding),
+                    //   child: TodayDealsSection(state.homeModel.data!.deals!),
+                    // ),
                   ],
                 ),
               ),
