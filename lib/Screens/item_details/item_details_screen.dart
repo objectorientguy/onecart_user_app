@@ -43,9 +43,6 @@ class ItemDetailsScreen extends StatelessWidget {
                   color: AppColor.primary,
                 ),
               )),
-          // const SizedBox(
-          //   width: xxxTinierSpacing,
-          // ),
           const Padding(
               padding: EdgeInsets.only(
                   right: leftRightMargin, top: topBottomPadding),
