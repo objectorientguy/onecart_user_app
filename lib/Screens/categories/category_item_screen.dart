@@ -42,7 +42,7 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                     SizedBox(
                       width: kSizedBoxInfinite,
                       child: Text(
-                        state.getProductByIdModel.category!.categoryName!,
+                        "",
                         style: Theme.of(context).textTheme.xxTinier.copyWith(
                             fontWeight: FontWeight.w500, color: AppColor.black),
                         maxLines: 1,

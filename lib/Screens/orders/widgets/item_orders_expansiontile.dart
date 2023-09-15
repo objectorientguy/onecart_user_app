@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/Screens/home/widgets/product_tile_widget.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-import 'package:onecart_user_app/data/models/home/home_model.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:onecart_user_app/data/models/home/home_model.dart';
 
+import '../../data/models/general_data_model/general_category_data.dart';
 import '../../data/models/get_product/get_product_model.dart';
 
 abstract class GetProduct extends Equatable {

@@ -6,7 +6,6 @@ import 'package:onecart_user_app/configs/app_color.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../categories/category_item_screen.dart';
 
 class HorizontalCategoryList extends StatelessWidget {
   static const routeName = 'HorizontalCategoryList';
