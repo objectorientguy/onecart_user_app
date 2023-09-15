@@ -19,6 +19,7 @@ import '../Screens/profile/widgets/terms_and_conditions_screen.dart';
 import '../Screens/root/root_screen.dart';
 import '../Screens/varient/select_varient_screen.dart';
 import '../data/models/general_data_model/general_category_data.dart';
+import '../data/models/item_details/item_details_model.dart';
 
 class AppRoutes {
   static Route onGenerateRoutes(RouteSettings settings) {
@@ -36,8 +37,8 @@ class AppRoutes {
       case CheckoutScreen.routeName:
         return _createRoute(const CheckoutScreen());
       case SelectVariantScreen.routeName:
-        return _createRoute(
-            SelectVariantScreen(dataone: settings.arguments as Product));
+        return _createRoute(SelectVariantScreen(
+            productDetailsModel: settings.arguments as ProductDetailsModel));
       case AddressScreen.routeName:
         return _createRoute(AddressScreen());
 

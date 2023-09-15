@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
-import 'package:onecart_user_app/data/models/varient/select_varient_model.dart';
-
+import '../../../blocs/item_details_bloc/item_details_bloc.dart';
+import '../../../blocs/item_details_bloc/item_details_events.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/item_details/item_details_model.dart';
 
 class SelectVarientBody extends StatelessWidget {
-  final SelectVarientListModel selectVarientListModel;
+  final ProductDetailsModel productDetailsModel;
 
-  const SelectVarientBody({super.key, required this.selectVarientListModel});
+  const SelectVarientBody({super.key, required this.productDetailsModel});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class SelectVarientBody extends StatelessWidget {
         child: ListView.separated(
             physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
-            itemCount: selectVarientListModel.data!.length,
+            itemCount: productDetailsModel.data.productData.variants.length,
             separatorBuilder: (context, index) =>
                 const SizedBox(height: tinySpacing),
             itemBuilder: (context, index) {
@@ -37,7 +39,8 @@ class SelectVarientBody extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                  selectVarientListModel.data![index].weight
+                                  productDetailsModel
+                                      .data.productData.variants[0].quantity
                                       .toString(),
                                   style: Theme.of(context)
                                       .textTheme
@@ -50,7 +53,7 @@ class SelectVarientBody extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '₹${selectVarientListModel.data![index].discountedCost.toString()}',
+                                      '₹${productDetailsModel.data.productData.variants[0].discountedCost.toString()}',
                                       style: Theme.of(context)
                                           .textTheme
                                           .xxxTinier
@@ -60,7 +63,7 @@ class SelectVarientBody extends StatelessWidget {
                                     ),
                                     const SizedBox(width: xxxTinierSpacing),
                                     Text(
-                                        '₹${selectVarientListModel.data![index].variantPrice.toString()}',
+                                        '₹${productDetailsModel.data.productData.variants[0].variantCost.toString()}',
                                         style: Theme.of(context)
                                             .textTheme
                                             .tiniest
@@ -84,7 +87,7 @@ class SelectVarientBody extends StatelessWidget {
                                             horizontal: xxxTinierSpacing),
                                         child: Center(
                                             child: Text(
-                                                '${selectVarientListModel.data![index].discount.toString()} OFF',
+                                                '${productDetailsModel.data.productData.variants[0].discount.toString()} OFF',
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .xxTiniest
@@ -96,7 +99,13 @@ class SelectVarientBody extends StatelessWidget {
                                   ]),
                             ]),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.read<ItemDetailsBloc>().add(
+                                ChangeVariantIndex(
+                                    variantIndex: index,
+                                    productDetailsModel: productDetailsModel));
+                            Navigator.pop(context);
+                          },
                           style: TextButton.styleFrom(
                             minimumSize: Size.zero,
                             padding: const EdgeInsets.symmetric(

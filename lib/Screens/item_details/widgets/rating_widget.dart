@@ -7,7 +7,9 @@ import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
 class RatingWidget extends StatelessWidget {
-  const RatingWidget({super.key});
+  final int itemData;
+
+  const RatingWidget({super.key, required this.itemData});
 
   @override
   Widget build(BuildContext context) {
@@ -19,25 +21,25 @@ class RatingWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              const StarDisplayWidget(
-                  filledStar: Icon(
+              StarDisplayWidget(
+                  filledStar: const Icon(
                     Icons.star,
                     color: Colors.amber,
                     size: kStarIconSize,
                   ),
-                  unfilledStar: Icon(
+                  unfilledStar: const Icon(
                     Icons.star_border,
                     color: Colors.amber,
                     size: kStarIconSize,
                   ),
-                  halfFilledStar: Icon(
+                  halfFilledStar: const Icon(
                     Icons.star_half,
                     color: Colors.amber,
                     size: kStarIconSize,
                   ),
-                  value: 2.5),
+                  value: itemData.toDouble()),
               const SizedBox(width: xxxTinierSpacing),
-              Text('5 Ratings',
+              Text('${itemData.toString()} Ratings',
                   style: Theme.of(context).textTheme.xxTinier.copyWith(
                       fontWeight: FontWeight.w500, color: AppColor.primary)),
               const SizedBox(width: xxxTinierSpacing),

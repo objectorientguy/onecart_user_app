@@ -24,7 +24,6 @@ class ProductTileWidgetBody extends StatefulWidget {
 }
 
 class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
-
   @override
   Widget build(BuildContext context) {
     int variantIndex = VariantIndexUtil().getVariantIndex(widget.data);
@@ -51,7 +50,6 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           softWrap: false)),
-
                   Visibility(
                       visible: widget.ratingShow == true,
                       child: const Row(

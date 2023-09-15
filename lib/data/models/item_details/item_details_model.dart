@@ -1,105 +1,86 @@
 import 'dart:convert';
 
-ItemDetailsModel itemDetailsModelFromJson(String str) =>
-    ItemDetailsModel.fromJson(json.decode(str));
+import '../general_data_model/general_category_data.dart';
 
-String itemDetailsModelToJson(ItemDetailsModel data) =>
+ProductDetailsModel productDetailsModelFromJson(String str) =>
+    ProductDetailsModel.fromJson(json.decode(str));
+
+String productDetailsModelToJson(ProductDetailsModel data) =>
     json.encode(data.toJson());
 
-class ItemDetailsModel {
-  final int? status;
-  final String? message;
-  final ItemDetailsData? data;
+class ProductDetailsModel {
+  final int status;
+  final String message;
+  final ProductDetailsData data;
 
-  ItemDetailsModel({
-    this.status,
-    this.message,
-    this.data,
+  ProductDetailsModel({
+    required this.status,
+    required this.message,
+    required this.data,
   });
 
-  factory ItemDetailsModel.fromJson(Map<String, dynamic> json) =>
-      ItemDetailsModel(
+  factory ProductDetailsModel.fromJson(Map<String, dynamic> json) =>
+      ProductDetailsModel(
         status: json["status"],
         message: json["message"],
-        data: json["data"] == null
-            ? null
-            : ItemDetailsData.fromJson(json["data"]),
+        data: ProductDetailsData.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
-        "data": data?.toJson(),
+        "data": data.toJson(),
       };
 }
 
-class ItemDetailsData {
-  final String? companyName;
-  final int? categoryId;
-  final int? brandId;
-  final List<String>? image;
-  final int? itemCount;
-  final int? discount;
-  final String? details;
-  final String? weight;
-  final int? productId;
-  final String? productName;
-  final bool? deal;
-  final double? price;
-  final double? discountedCost;
-  final String? description;
+class ProductDetailsData {
+  final Product productData;
+  final List<Feature> feature;
+  final List<dynamic> recommendedProducts;
 
-  ItemDetailsData({
-    this.companyName,
-    this.categoryId,
-    this.brandId,
-    this.image,
-    this.itemCount,
-    this.discount,
-    this.details,
-    this.weight,
-    this.productId,
-    this.productName,
-    this.deal,
-    this.price,
-    this.discountedCost,
-    this.description,
+  ProductDetailsData({
+    required this.productData,
+    required this.feature,
+    required this.recommendedProducts,
   });
 
-  factory ItemDetailsData.fromJson(Map<String, dynamic> json) =>
-      ItemDetailsData(
-        companyName: json["company_name"],
-        categoryId: json["category_id"],
-        brandId: json["brand_id"],
-        image: json["image"] == null
-            ? []
-            : List<String>.from(json["image"]!.map((x) => x)),
-        itemCount: json["item_count"],
-        discount: json["discount"],
-        details: json["details"],
-        weight: json["weight"],
-        productId: json["product_id"],
-        productName: json["product_name"],
-        deal: json["deal"],
-        price: json["price"],
-        discountedCost: json["discounted_cost"],
-        description: json["description"],
+  factory ProductDetailsData.fromJson(Map<String, dynamic> json) =>
+      ProductDetailsData(
+        productData: Product.fromJson(json["product_data"]),
+        feature:
+            List<Feature>.from(json["feature"].map((x) => Feature.fromJson(x))),
+        recommendedProducts:
+            List<dynamic>.from(json["recommended_products"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
-        "company_name": companyName,
-        "category_id": categoryId,
-        "brand_id": brandId,
-        "image": image == null ? [] : List<dynamic>.from(image!.map((x) => x)),
-        "item_count": itemCount,
-        "discount": discount,
-        "details": details,
-        "weight": weight,
-        "product_id": productId,
-        "product_name": productName,
-        "deal": deal,
-        "price": price,
-        "discounted_cost": discountedCost,
-        "description": description,
+        "product_data": productData.toJson(),
+        "feature": List<dynamic>.from(feature.map((x) => x.toJson())),
+        "recommended_products":
+            List<dynamic>.from(recommendedProducts.map((x) => x)),
+      };
+}
+
+class Feature {
+  final List<String> featureImage;
+  final int shopId;
+  final int featureId;
+
+  Feature({
+    required this.featureImage,
+    required this.shopId,
+    required this.featureId,
+  });
+
+  factory Feature.fromJson(Map<String, dynamic> json) => Feature(
+        featureImage: List<String>.from(json["feature_image"].map((x) => x)),
+        shopId: json["shop_id"],
+        featureId: json["feature_id"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "feature_image": List<dynamic>.from(featureImage.map((x) => x)),
+        "shop_id": shopId,
+        "feature_id": featureId,
       };
 }
