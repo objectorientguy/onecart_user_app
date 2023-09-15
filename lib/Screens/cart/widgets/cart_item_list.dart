@@ -20,15 +20,12 @@ class CartItemList extends StatelessWidget {
               padding: const EdgeInsets.all(tinierSpacing),
               child: ProductTileWidget(
                 ratingShow: false,
-                data: Deal(
-                  productName:
-                      'Lays American Style Creame and Onion Potato Chips',
-                  image: ['image: assets/img_2.png'],
-                  discountedCost: 400,
-                  price: 300,
-                  weight: 166.toString(),
-                  discount: 40,
-                ),
+                data: TodaySDeal(
+                    productName:
+                        'Lays American Style Creame and Onion Potato Chips',
+                    productId: 72,
+                    details: 'Premium',
+                    variants: []),
               ),
             );
           }),

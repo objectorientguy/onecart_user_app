@@ -20,7 +20,7 @@ class FetchProductLoaded extends GetProductStates {
 
 class FilterPriceLoaded extends GetProductStates {
   final GetProductByIdModel getProductByIdModel;
-  final List<Deal> productsList;
+  final List<TodaySDeal> productsList;
   final bool? sortedValue;
 
   FilterPriceLoaded(

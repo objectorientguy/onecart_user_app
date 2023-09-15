@@ -78,9 +78,9 @@ class CategoryGridScreen extends StatelessWidget {
                                     cateId: state.getAllCategoriesListModel
                                         .data![index].categoryId!));
                                 Navigator.pushNamed(
-                                    context, CategoryItemScreen.routeName,
-                                    arguments: state.getAllCategoriesListModel
-                                        .data![index]);
+                                  context,
+                                  CategoryItemScreen.routeName,
+                                );
                               },
                               child: Column(
                                 children: [

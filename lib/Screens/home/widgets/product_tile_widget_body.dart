@@ -16,7 +16,7 @@ class ProductTileWidgetBody extends StatefulWidget {
     this.ratingShow = true,
   });
 
-  final Deal data;
+  final TodaySDeal data;
 
   @override
   State<ProductTileWidgetBody> createState() => _ProductTileWidgetBodyState();
@@ -58,7 +58,10 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                 size: kStarIcon, color: Colors.amber)
                           ]))
                 ]),
-            Text(widget.data.weight.toString().replaceAll("\n", " "),
+            Text(
+                widget.data.variants[0].quantity
+                    .toString()
+                    .replaceAll("\n", " "),
                 style: Theme.of(context)
                     .textTheme
                     .tiniest
@@ -72,7 +75,8 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(children: [
-                          Text('₹${widget.data.discountedCost!.toString()}',
+                          Text(
+                              '₹${widget.data.variants[0].discountedCost.toString()}',
                               style: Theme.of(context)
                                   .textTheme
                                   .xxTinier
@@ -80,7 +84,8 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                       fontWeight: FontWeight.w500,
                                       color: AppColor.black)),
                           const SizedBox(width: tiniestSpacing),
-                          Text('₹${widget.data.price!.toString()}',
+                          Text(
+                              '₹${widget.data.variants[0].variantCost.toString()}',
                               style: Theme.of(context)
                                   .textTheme
                                   .xxxTinier
@@ -100,7 +105,8 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                 vertical: xxxTiniestSpacing,
                                 horizontal: xxxTiniestSpacing),
                             child: Center(
-                                child: Text('${widget.data.discount!} % off',
+                                child: Text(
+                                    '${widget.data.variants[0].discount} % off',
                                     style: Theme.of(context)
                                         .textTheme
                                         .xxxTiniest

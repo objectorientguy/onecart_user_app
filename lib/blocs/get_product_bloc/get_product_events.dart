@@ -17,7 +17,7 @@ class FetchProduct extends GetProduct {
 class SortByPrice extends GetProduct {
   final bool? sortPrice;
   final GetProductByIdModel categoryModel;
-  final List<Deal> productsList;
+  final List<TodaySDeal> productsList;
 
   SortByPrice(
       {required this.productsList,

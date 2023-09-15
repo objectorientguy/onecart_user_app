@@ -9,11 +9,11 @@ import '../../blocs/varient_bloc/varient_states.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
-import '../../data/models/item_details/item_details_model.dart';
+import '../../data/models/home/home_model.dart';
 
 class SelectVariantScreen extends StatelessWidget {
   static const routeName = 'SelectVariantScreen';
-  final ItemDetailsData dataone;
+  final TodaySDeal dataone;
 
   const SelectVariantScreen({super.key, required this.dataone});
 
@@ -50,7 +50,7 @@ class SelectVariantScreen extends StatelessWidget {
                     children: [
                       Row(children: [
                         CachedNetworkImage(
-                            imageUrl: dataone.image![0],
+                            imageUrl: dataone.variants[0].image[0],
                             errorWidget: (context, url, error) => const Center(
                                 child: SizedBox(
                                     width: kCacheImageWidth,

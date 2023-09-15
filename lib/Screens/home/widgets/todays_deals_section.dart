@@ -10,7 +10,7 @@ import '../../item_details/item_details_screen.dart';
 
 class TodayDealsSection extends StatelessWidget {
   static const routeName = 'TodayDealsSection';
-  final List<Deal> data;
+  final List<TodaySDeal> data;
 
   const TodayDealsSection(
     this.data, {

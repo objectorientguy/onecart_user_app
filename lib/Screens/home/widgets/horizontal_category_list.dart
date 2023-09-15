@@ -35,8 +35,10 @@ class HorizontalCategoryList extends StatelessWidget {
                 context
                     .read<GetProductBloc>()
                     .add(FetchProduct(cateId: data[index].categoryId!));
-                Navigator.pushNamed(context, CategoryItemScreen.routeName,
-                    arguments: data[index]);
+                Navigator.pushNamed(
+                  context,
+                  CategoryItemScreen.routeName,
+                );
               },
               child: Column(
                 children: [

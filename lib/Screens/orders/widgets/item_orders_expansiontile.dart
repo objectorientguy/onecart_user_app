@@ -33,19 +33,16 @@ class ItemOrderedExpansionTile extends StatelessWidget {
               padding: const EdgeInsets.all(tinierSpacing),
               child: ProductTileWidget(
                 ratingShow: false,
-                data: Deal(
+                data: TodaySDeal(
                   productName:
                       'Lays American Style Creame and Onion Potato Chips',
-                  image: ['image: assets/img_2.png'],
-                  discountedCost: 400,
-                  price: 300,
-                  weight: 166.toString(),
-                  discount: 40,
+                  productId: 70,
+                  details: 'Premium',
+                  variants: [],
                 ),
               ),
             );
-          })
-      ),
+          })),
     );
   }
 }

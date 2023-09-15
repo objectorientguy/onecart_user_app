@@ -14,7 +14,7 @@ class ProductTileWidget extends StatelessWidget {
     this.ratingShow = true,
   });
 
-  final Deal data;
+  final TodaySDeal data;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,8 @@ class ProductTileWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.circular(kBorderRadiusSmall)),
-                          child: Image.network(data.image![0].toString(),
+                          child: Image.network(
+                              data.variants[0].image[0].toString(),
                               fit: BoxFit.fill))))),
           const SizedBox(width: xxxTinySpacing),
           Expanded(
