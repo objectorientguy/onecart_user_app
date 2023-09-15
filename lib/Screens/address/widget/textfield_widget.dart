@@ -1,43 +1,81 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/configs/app_theme.dart';
+import 'package:onecart_user_app/configs/app_color.dart';
 
-import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
-class CustomTextField extends StatelessWidget {
+typedef TextFieldCallBack = Function(String textField);
 
-  final TextEditingController textcontroller;
-  final TextStyle? hintStyle;
-  const CustomTextField ({super.key,
-  required this.textcontroller,
-  this.hintStyle});
+class TextFieldWidget extends StatelessWidget {
+  final int? maxLines;
+  final TextInputAction? textInputAction;
+  final int? maxLength;
+  final TextInputType? textInputType;
+  final String? hintText;
+  final String? getText;
+  final bool? firstCall;
+  final TextFieldCallBack onTextFieldChanged;
+  final bool? readOnly;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final Widget? suffix;
+  final String? initialValue;
+  final TextInputType? keyboardType;
+  final EdgeInsetsGeometry? contentPadding;
+
+  const TextFieldWidget(
+      {Key? key,
+      this.maxLines,
+      this.textInputAction,
+      this.maxLength,
+      this.textInputType,
+      this.hintText,
+      this.getText,
+      this.firstCall,
+      required this.onTextFieldChanged,
+      this.readOnly = false,
+      this.controller,
+      this.validator,
+      this.suffix,
+      this.initialValue,
+      this.keyboardType,
+      this.contentPadding})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextField(
-          controller: textcontroller,
+        TextFormField(
+          validator: validator,
+          readOnly: readOnly!,
+          controller: controller,
+          initialValue: initialValue,
+          onChanged: (value) {
+            onTextFieldChanged(value);
+          },
+          textInputAction: textInputAction,
+          maxLines: maxLines,
+          maxLength: maxLength,
+          keyboardType: keyboardType,
+          textAlign: TextAlign.start,
           decoration: InputDecoration(
-              hintStyle: Theme.of(context)
-                  .textTheme
-                  .xxxTiny
-                  .copyWith(color: AppColor.mediumBlack),
-              enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(kSearchBarBorderRadius),
-                  borderSide: const BorderSide(color: AppColor.lighterGrey)),
-              focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(kSearchBarBorderRadius),
-                  borderSide: const BorderSide(color: AppColor.primary)),
-              prefixIcon: prefixicon,
-              contentPadding: const EdgeInsets.symmetric(
-                  horizontal: smallerSpacing, vertical: tiniestSpacing),
-              hintText: hintText,
-              fillColor: AppColor.white,
-              filled: true),
-        )
+            contentPadding: const EdgeInsets.symmetric(
+                horizontal: tinierSpacing, vertical: tinierSpacing),
+            isDense: true,
+            suffix: suffix,
+            counterText: "",
+            enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: AppColor.primary),
+                borderRadius: BorderRadius.circular(smallCardCurve)),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(kArrowIconSize),
+              borderSide: const BorderSide(color: AppColor.primary),
+            ),
+            hintText: hintText,
+          ),
+        ),
       ],
     );
   }

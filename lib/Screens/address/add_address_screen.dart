@@ -36,6 +36,27 @@ class AddAddressScreen extends StatelessWidget {
       appBar: const GenericAppBar(
         title: 'Add New Address',
       ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(tinierSpacing),
+        child: CustomElevatedButton(
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                context
+                    .read<AddressBloc>()
+                    .add(AddAddress(addAddress: addAddress));
+              }
+              const SnackBar(content: Text('Enter the Data'));
+            },
+            buttonWidth: double.maxFinite,
+            buttonHeight: kElevatedButtonHeight,
+            child: Text(
+              'SAVE',
+              style: Theme.of(context)
+                  .textTheme
+                  .xxTiny
+                  .copyWith(fontWeight: FontWeight.w600, color: AppColor.white),
+            )),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
             horizontal: leftRightMargin, vertical: topBottomPadding),
@@ -49,40 +70,24 @@ class AddAddressScreen extends StatelessWidget {
               ),
               const SizedBox(height: smallSpacing),
               BlocListener<AddressBloc, AddressStates>(
-                listener: (BuildContext context, state) {
-                  if (state is AddAddressLoading) {
-                    ProgressBar.show(context);
-                  } else if (state is AddAddressLoaded) {
-                    ProgressBar.dismiss(context);
-                    Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("New Address Added")));
-                    context.read<AddressBloc>().add(FetchAddress());
-                  }
-                  if (state is AddAddressError) {
-                    ProgressBar.dismiss(context);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Something went wrong")));
-                    const SizedBox();
-                  }
-                },
-                child: CustomElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        context
-                            .read<AddressBloc>()
-                            .add(AddAddress(addAddress: addAddress));
-                      }
-                      const SnackBar(content: Text('Enter the Data'));
-                    },
-                    buttonWidth: double.maxFinite,
-                    buttonHeight: kElevatedButtonHeight,
-                    child: Text(
-                      'SAVE',
-                      style: Theme.of(context).textTheme.xxTiny.copyWith(
-                          fontWeight: FontWeight.w600, color: AppColor.white),
-                    )),
-              ),
+                  listener: (BuildContext context, state) {
+                    if (state is AddAddressLoading) {
+                      ProgressBar.show(context);
+                    } else if (state is AddAddressLoaded) {
+                      ProgressBar.dismiss(context);
+                      Navigator.pop(context);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("New Address Added")));
+                      context.read<AddressBloc>().add(FetchAddress());
+                    }
+                    if (state is AddAddressError) {
+                      ProgressBar.dismiss(context);
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("Something went wrong")));
+                      const SizedBox();
+                    }
+                  },
+                  child: const SizedBox()),
             ],
           ),
         ),

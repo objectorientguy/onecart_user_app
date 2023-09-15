@@ -12,7 +12,8 @@ class ProductTileWidget extends StatelessWidget {
   const ProductTileWidget({
     super.key,
     required this.data,
-    this.ratingShow = true,  this.addButtonVisible = true,
+    this.ratingShow = true,
+    this.addButtonVisible = true,
   });
 
   final Deal data;
@@ -41,7 +42,11 @@ class ProductTileWidget extends StatelessWidget {
                               fit: BoxFit.fill))))),
           const SizedBox(width: xxxTinySpacing),
           Expanded(
-            child: ProductTileWidgetBody(data: data, ratingShow: ratingShow, addButtonVisible: addButtonVisible,),
+            child: ProductTileWidgetBody(
+              data: data,
+              ratingShow: ratingShow,
+              addButtonVisible: addButtonVisible,
+            ),
           )
         ]);
   }

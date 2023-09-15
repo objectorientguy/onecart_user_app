@@ -40,6 +40,28 @@ class EditAddressScreen extends StatelessWidget {
       appBar: const GenericAppBar(
         title: 'Edit Address',
       ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(tinierSpacing),
+        child: CustomElevatedButton(
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                context.read<AddressBloc>().add(EditAddress(
+                    saveAddress: saveAddress,
+                    addressId: addressDataMap.addressId!));
+              }
+              const SnackBar(content: Text('Enter the Data'));
+              log(saveAddress.toString());
+            },
+            buttonWidth: double.maxFinite,
+            buttonHeight: kElevatedButtonHeight,
+            child: Text(
+              'SAVE',
+              style: Theme.of(context)
+                  .textTheme
+                  .xxTiny
+                  .copyWith(fontWeight: FontWeight.w600, color: AppColor.white),
+            )),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
             horizontal: leftRightMargin, vertical: topBottomPadding),
@@ -53,37 +75,20 @@ class EditAddressScreen extends StatelessWidget {
               ),
               const SizedBox(height: smallSpacing),
               BlocListener<AddressBloc, AddressStates>(
-                listener: (BuildContext context, state) {
-                  if (state is EditAddressLoading) {
-                    const Center(child: CircularProgressIndicator());
-                  } else if (state is EditAddressLoaded) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Address Saved")));
-                    Navigator.pop(context);
-                    context.read<AddressBloc>().add(FetchAddress());
-                  }
-                  if (state is EditAddressError) {
-                    const SizedBox();
-                  }
-                },
-                child: CustomElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        context.read<AddressBloc>().add(EditAddress(
-                            saveAddress: saveAddress,
-                            addressId: addressDataMap.addressId!));
-                      }
-                      const SnackBar(content: Text('Enter the Data'));
-                      log(saveAddress.toString());
-                    },
-                    buttonWidth: double.maxFinite,
-                    buttonHeight: kElevatedButtonHeight,
-                    child: Text(
-                      'SAVE',
-                      style: Theme.of(context).textTheme.xxTiny.copyWith(
-                          fontWeight: FontWeight.w600, color: AppColor.white),
-                    )),
-              ),
+                  listener: (BuildContext context, state) {
+                    if (state is EditAddressLoading) {
+                      const Center(child: CircularProgressIndicator());
+                    } else if (state is EditAddressLoaded) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Address Saved")));
+                      Navigator.pop(context);
+                      context.read<AddressBloc>().add(FetchAddress());
+                    }
+                    if (state is EditAddressError) {
+                      const SizedBox();
+                    }
+                  },
+                  child: const SizedBox()),
             ],
           ),
         ),

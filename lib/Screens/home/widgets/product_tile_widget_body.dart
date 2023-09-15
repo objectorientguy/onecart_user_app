@@ -14,7 +14,8 @@ class ProductTileWidgetBody extends StatefulWidget {
   const ProductTileWidgetBody({
     super.key,
     required this.data,
-    this.ratingShow = true, this.addButtonVisible = true,
+    this.ratingShow = true,
+    this.addButtonVisible = true,
   });
 
   final Deal data;
