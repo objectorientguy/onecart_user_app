@@ -1,13 +1,13 @@
 import '../data/models/general_data_model/general_category_data.dart';
 
-class VarientIndexUtil {
-  int getVarientIndex(Product product) {
-    int varientIndex = 0;
+class VariantIndexUtil {
+  int getVariantIndex(Product product) {
+    int variantIndex = 0;
     for (var item in product.variants) {
       if (item.count == 0) {
-        varientIndex++;
+        variantIndex++;
       } else {
-        return varientIndex;
+        return variantIndex;
       }
     }
     return 0;

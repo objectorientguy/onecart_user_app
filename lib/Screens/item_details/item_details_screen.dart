@@ -59,8 +59,8 @@ class ItemDetailsScreen extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            const ImageCarouselSlider(
-              imageList: [],
+            ImageCarouselSlider(
+              imageList: itemDetails.variants[0].image,
             ),
             ItemDetailsSection(itemData: itemDetails),
           ],

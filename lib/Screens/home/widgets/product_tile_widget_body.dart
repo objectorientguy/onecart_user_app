@@ -5,6 +5,7 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/general_data_model/general_category_data.dart';
+import '../../../utils/varient_index_util.dart';
 import 'counter_widget.dart';
 
 class ProductTileWidgetBody extends StatefulWidget {
@@ -23,8 +24,11 @@ class ProductTileWidgetBody extends StatefulWidget {
 }
 
 class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
+
   @override
   Widget build(BuildContext context) {
+    int variantIndex = VariantIndexUtil().getVariantIndex(widget.data);
+
     return SizedBox(
       height: kProductSizedBox,
       child: Column(
@@ -47,6 +51,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           softWrap: false)),
+
                   Visibility(
                       visible: widget.ratingShow == true,
                       child: const Row(
@@ -59,7 +64,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                           ]))
                 ]),
             Text(
-                widget.data.variants[0].quantity
+                widget.data.variants[variantIndex].quantity
                     .toString()
                     .replaceAll("\n", " "),
                 style: Theme.of(context)
