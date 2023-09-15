@@ -15,7 +15,7 @@ import 'package:badges/badges.dart' as badges;
 
 class ItemDetailsScreen extends StatelessWidget {
   static const routeName = 'ItemDetailsScreen';
-  final TodaySDeal itemDetails;
+  final Product itemDetails;
 
   const ItemDetailsScreen({Key? key, required this.itemDetails})
       : super(key: key);

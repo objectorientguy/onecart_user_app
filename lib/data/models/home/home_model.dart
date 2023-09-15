@@ -35,7 +35,7 @@ class HomeModel {
 class Data {
   final List<Category> categories;
   final List<PopularShop> popularShops;
-  final List<TodaySDeal> todaySDeals;
+  final List<Product> todaySDeals;
 
   Data({
     required this.categories,
@@ -54,8 +54,8 @@ class Data {
                 json["popular shops"].map((x) => PopularShop.fromJson(x))),
         todaySDeals: json["today's deals"] == null
             ? []
-            : List<TodaySDeal>.from(
-                json["today's deals"].map((x) => TodaySDeal.fromJson(x))),
+            : List<Product>.from(
+                json["today's deals"].map((x) => Product.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -114,20 +114,20 @@ class PopularShop {
       };
 }
 
-class TodaySDeal {
+class Product {
   final int productId;
   final String productName;
   final String details;
   final List<Variant> variants;
 
-  TodaySDeal({
+  Product({
     required this.productId,
     required this.productName,
     required this.details,
     required this.variants,
   });
 
-  factory TodaySDeal.fromJson(Map<String, dynamic> json) => TodaySDeal(
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
         productId: json["product_id"],
         productName: json["product_name"],
         details: json["details"],

@@ -38,7 +38,7 @@ class SearchProductModel {
 class SearchProductData {
   final List<Category>? categories;
   final List<Brand>? brands;
-  final List<TodaySDeal>? searchResults;
+  final List<Product>? searchResults;
 
   SearchProductData({
     this.categories,
@@ -57,8 +57,8 @@ class SearchProductData {
             : List<Brand>.from(json["Brands"]!.map((x) => Brand.fromJson(x))),
         searchResults: json["search_results"] == null
             ? []
-            : List<TodaySDeal>.from(
-                json["search_results"]!.map((x) => TodaySDeal.fromJson(x))),
+            : List<Product>.from(
+                json["search_results"]!.map((x) => Product.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {

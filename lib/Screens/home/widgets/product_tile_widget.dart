@@ -14,7 +14,7 @@ class ProductTileWidget extends StatelessWidget {
     this.ratingShow = true,
   });
 
-  final TodaySDeal data;
+  final Product data;
 
   @override
   Widget build(BuildContext context) {

@@ -13,7 +13,7 @@ import '../../data/models/home/home_model.dart';
 
 class SelectVariantScreen extends StatelessWidget {
   static const routeName = 'SelectVariantScreen';
-  final TodaySDeal dataone;
+  final Product dataone;
 
   const SelectVariantScreen({super.key, required this.dataone});
 

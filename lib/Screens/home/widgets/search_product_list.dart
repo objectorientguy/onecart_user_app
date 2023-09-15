@@ -5,7 +5,7 @@ import '../../../data/models/home/home_model.dart';
 import '../../item_details/item_details_screen.dart';
 
 class SearchProductList extends StatelessWidget {
-  final List<TodaySDeal> data;
+  final List<Product> data;
 
   const SearchProductList(
     this.data, {

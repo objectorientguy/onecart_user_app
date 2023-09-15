@@ -5,7 +5,7 @@ import '../../home/widgets/product_tile_widget.dart';
 import '../../item_details/item_details_screen.dart';
 
 class StoreItemList extends StatelessWidget {
-  final List<TodaySDeal> storedata;
+  final List<Product> storedata;
   final bool toShow;
 
   const StoreItemList({

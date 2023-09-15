@@ -33,7 +33,7 @@ class ItemOrderedExpansionTile extends StatelessWidget {
               padding: const EdgeInsets.all(tinierSpacing),
               child: ProductTileWidget(
                 ratingShow: false,
-                data: TodaySDeal(
+                data: Product(
                   productName:
                       'Lays American Style Creame and Onion Potato Chips',
                   productId: 70,

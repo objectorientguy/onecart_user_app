@@ -8,7 +8,7 @@ import '../../../data/models/home/home_model.dart';
 import '../../home/widgets/counter_widget.dart';
 
 class ItemDetailsPrice extends StatelessWidget {
-  final TodaySDeal itemData;
+  final Product itemData;
 
   const ItemDetailsPrice({super.key, required this.itemData});
 

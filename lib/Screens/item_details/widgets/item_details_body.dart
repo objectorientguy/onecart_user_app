@@ -15,7 +15,7 @@ import 'frequently_bought_widget.dart';
 import 'item_details_price.dart';
 
 class ItemDetailsBody extends StatelessWidget {
-  final TodaySDeal itemData;
+  final Product itemData;
 
   const ItemDetailsBody({super.key, required this.itemData});
 

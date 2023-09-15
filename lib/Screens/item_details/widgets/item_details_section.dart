@@ -8,7 +8,7 @@ import '../../../data/models/home/home_model.dart';
 import 'item_details_body.dart';
 
 class ItemDetailsSection extends StatelessWidget {
-  final TodaySDeal itemData;
+  final Product itemData;
 
   const ItemDetailsSection({
     required this.itemData,

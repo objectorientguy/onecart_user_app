@@ -16,7 +16,7 @@ class GetProductByIdModel {
   final int? status;
   final String? message;
   final CategoryHeader? category;
-  final List<TodaySDeal>? data;
+  final List<Product>? data;
 
   GetProductByIdModel({
     this.status,
@@ -34,8 +34,8 @@ class GetProductByIdModel {
             : CategoryHeader.fromJson(json["category"]),
         data: json["data"] == null
             ? []
-            : List<TodaySDeal>.from(
-                json["data"]!.map((x) => TodaySDeal.fromJson(x))),
+            : List<Product>.from(
+                json["data"]!.map((x) => Product.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {

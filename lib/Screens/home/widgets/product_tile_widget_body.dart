@@ -16,7 +16,7 @@ class ProductTileWidgetBody extends StatefulWidget {
     this.ratingShow = true,
   });
 
-  final TodaySDeal data;
+  final Product data;
 
   @override
   State<ProductTileWidgetBody> createState() => _ProductTileWidgetBodyState();

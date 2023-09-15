@@ -29,7 +29,7 @@ class AppRoutes {
             ));
       case ItemDetailsScreen.routeName:
         return _createRoute(ItemDetailsScreen(
-          itemDetails: settings.arguments as TodaySDeal,
+          itemDetails: settings.arguments as Product,
         ));
       case CartScreen.routeName:
         return _createRoute(const CartScreen());
@@ -37,7 +37,7 @@ class AppRoutes {
         return _createRoute(const CheckoutScreen());
       case SelectVariantScreen.routeName:
         return _createRoute(
-            SelectVariantScreen(dataone: settings.arguments as TodaySDeal));
+            SelectVariantScreen(dataone: settings.arguments as Product));
       case AddressScreen.routeName:
         return _createRoute(AddressScreen());
 
