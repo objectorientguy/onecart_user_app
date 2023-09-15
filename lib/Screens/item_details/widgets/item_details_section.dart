@@ -9,10 +9,12 @@ import 'item_details_body.dart';
 
 class ItemDetailsSection extends StatelessWidget {
   final ProductDetailsModel productDetailsModel;
+  final int variantIndex;
 
   const ItemDetailsSection({
     required this.productDetailsModel,
     super.key,
+    required this.variantIndex,
   });
 
   @override
@@ -30,6 +32,7 @@ class ItemDetailsSection extends StatelessWidget {
           const SizedBox(height: tinySpacing),
           ItemDetailsBody(
             productDetailsModel: productDetailsModel,
+            variantIndex: variantIndex,
           ),
           const SizedBox(height: xxxSmallestSpacing)
         ],

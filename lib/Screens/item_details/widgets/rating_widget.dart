@@ -8,8 +8,10 @@ import '../../../configs/app_spacing.dart';
 
 class RatingWidget extends StatelessWidget {
   final int itemData;
+  final int variantIndex;
 
-  const RatingWidget({super.key, required this.itemData});
+
+  const RatingWidget({super.key, required this.itemData, required this.variantIndex});
 
   @override
   Widget build(BuildContext context) {

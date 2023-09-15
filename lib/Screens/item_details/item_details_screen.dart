@@ -75,7 +75,7 @@ class ItemDetailsScreen extends StatelessWidget {
                       .variants[state.variantIndex].image,
                 ),
                 ItemDetailsSection(
-                  productDetailsModel: state.productDetailsModel,
+                  productDetailsModel: state.productDetailsModel, variantIndex: state.variantIndex,
                 )
               ]));
         }

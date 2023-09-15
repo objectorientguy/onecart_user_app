@@ -16,14 +16,19 @@ import 'item_details_price.dart';
 
 class ItemDetailsBody extends StatelessWidget {
   final ProductDetailsModel productDetailsModel;
+  final int variantIndex;
 
-  const ItemDetailsBody({super.key, required this.productDetailsModel});
+  const ItemDetailsBody(
+      {super.key,
+      required this.productDetailsModel,
+      required this.variantIndex});
 
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       ItemDetailsPrice(
         productDetailsModel: productDetailsModel,
+        variantIndex: variantIndex,
       ),
       const SizedBox(height: tinierSpacing),
       InkWell(
@@ -72,7 +77,10 @@ class ItemDetailsBody extends StatelessWidget {
         ),
       ),
       RatingWidget(
-          itemData: productDetailsModel.data.productData.variants[0].ratings),
+        itemData:
+            productDetailsModel.data.productData.variants[variantIndex].ratings,
+        variantIndex: variantIndex,
+      ),
       Text('Product Details',
           style: Theme.of(context)
               .textTheme
@@ -94,7 +102,7 @@ class ItemDetailsBody extends StatelessWidget {
       ),
       SizedBox(
           child: Text(productDetailsModel
-              .data.productData.variants[0].description
+              .data.productData.variants[variantIndex].description
               .toString())),
       const SizedBox(height: xxxTinierSpacing),
       const Divider(thickness: kFeatureDivider),
