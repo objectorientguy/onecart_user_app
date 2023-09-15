@@ -11,6 +11,7 @@ import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 import '../../data/models/home/home_model.dart';
+import 'package:badges/badges.dart' as badges;
 
 class ItemDetailsScreen extends StatelessWidget {
   static const routeName = 'ItemDetailsScreen';
@@ -39,6 +40,19 @@ class ItemDetailsScreen extends StatelessWidget {
                 },
                 icon: const Icon(
                   Icons.share,
+                  color: AppColor.primary,
+                ),
+              )),
+          // const SizedBox(
+          //   width: xxxTinierSpacing,
+          // ),
+          const Padding(
+              padding: EdgeInsets.only(
+                  right: leftRightMargin, top: topBottomPadding),
+              child: badges.Badge(
+                badgeContent: Text('2'),
+                child: Icon(
+                  Icons.shopping_cart_sharp,
                   color: AppColor.primary,
                 ),
               )),

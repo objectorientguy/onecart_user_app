@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/cart/widgets/cart_bottom_bar.dart';
 import 'package:onecart_user_app/Screens/cart/widgets/cart_header.dart';
 import 'package:onecart_user_app/Screens/cart/widgets/cart_item_list.dart';
+import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
-import 'package:onecart_user_app/configs/app_theme.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = 'CartScreen';
@@ -12,21 +12,12 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Padding(
-            padding: const EdgeInsets.only(left: xxTiniestSpacing),
-            child: Text(
-              "Your Cart",
-              style: Theme.of(context)
-                  .textTheme
-                  .tiny
-                  .copyWith(fontWeight: FontWeight.w500),
-            ),
-          ),
+    return const Scaffold(
+        appBar: GenericAppBar(
+          title: 'Your Cart',
         ),
-        bottomNavigationBar: const CartBottomBar(),
-        body: const Padding(
+        bottomNavigationBar: CartBottomBar(),
+        body: Padding(
           padding: EdgeInsets.symmetric(
               horizontal: leftRightMargin, vertical: xxxTinierSpacing),
           child: Column(children: [
