@@ -11,11 +11,10 @@ class ProductTileWidget extends StatelessWidget {
   const ProductTileWidget({
     super.key,
     required this.data,
-    this.ratingShow = true, required this.index,
+    this.ratingShow = true,
   });
 
-  final List<Product> data;
-  final int index;
+  final Product data;
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +36,12 @@ class ProductTileWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.circular(kBorderRadiusSmall)),
-                          child: Image.network(data[index].variants[0].image.toString(),
+                          child: Image.network(
+                              data.variants[0].image[0].toString(),
                               fit: BoxFit.fill))))),
           const SizedBox(width: xxxTinySpacing),
           Expanded(
-            child: ProductTileWidgetBody(data: data, ratingShow: ratingShow, index: index,),
+            child: ProductTileWidgetBody(data: data, ratingShow: ratingShow),
           )
         ]);
   }

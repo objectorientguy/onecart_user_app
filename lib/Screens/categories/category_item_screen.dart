@@ -11,10 +11,8 @@ import '../../configs/app_spacing.dart';
 
 class CategoryItemScreen extends StatefulWidget {
   static const routeName = 'CategoryItemScreen';
-  final dynamic categoryDetails;
 
-  const CategoryItemScreen({Key? key, required this.categoryDetails})
-      : super(key: key);
+  const CategoryItemScreen({Key? key}) : super(key: key);
 
   @override
   State<CategoryItemScreen> createState() => _CategoryItemScreenState();

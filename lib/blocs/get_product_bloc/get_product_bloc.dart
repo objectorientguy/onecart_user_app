@@ -37,14 +37,16 @@ class GetProductBloc extends Bloc<GetProduct, GetProductStates> {
   FutureOr<void> _priceFilter(
       SortByPrice event, Emitter<GetProductStates> emit) async {
     List<Product> sortedProducts = List.from(event.productsList);
-    int passedIndex=VarientIndexUtil().getVarientIndex(event.productsList[0]);
+    int passedIndex = VariantIndexUtil().getVariantIndex(event.productsList[0]);
 
     if (event.sortPrice == null) {
       null;
     } else if (event.sortPrice == true) {
-      sortedProducts.sort((a, b) => b.variants[passedIndex].discountedCost.compareTo(a.variants[passedIndex].discountedCost));
+      sortedProducts.sort((a, b) => b.variants[passedIndex].discountedCost
+          .compareTo(a.variants[passedIndex].discountedCost));
     } else {
-      sortedProducts.sort((a, b) => a.variants[passedIndex].discountedCost.compareTo(b.variants[passedIndex].discountedCost));
+      sortedProducts.sort((a, b) => a.variants[passedIndex].discountedCost
+          .compareTo(b.variants[passedIndex].discountedCost));
     }
     emit(FilterPriceLoaded(
         getProductByIdModel: event.categoryModel,

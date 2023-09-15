@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/item_details/item_details_model.dart';
+import '../../../data/models/general_data_model/general_category_data.dart';
 
 import 'item_details_body.dart';
 
 class ItemDetailsSection extends StatelessWidget {
-  final ItemDetailsData itemData;
+  final Product itemData;
 
   const ItemDetailsSection({
     required this.itemData,
@@ -22,7 +22,7 @@ class ItemDetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(itemData.productName.toString(),
+          Text(itemData.productName,
               style: Theme.of(context)
                   .textTheme
                   .tiny

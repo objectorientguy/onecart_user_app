@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:onecart_user_app/data/models/home/home_model.dart';
+import '../general_data_model/general_category_data.dart';
 
 SearchProductModel searchProductModelFromJson(String str) =>
     SearchProductModel.fromJson(json.decode(str));
@@ -38,7 +38,7 @@ class SearchProductModel {
 class SearchProductData {
   final List<Category>? categories;
   final List<Brand>? brands;
-  final List<Deal>? searchResults;
+  final List<Product>? searchResults;
 
   SearchProductData({
     this.categories,
@@ -57,8 +57,8 @@ class SearchProductData {
             : List<Brand>.from(json["Brands"]!.map((x) => Brand.fromJson(x))),
         searchResults: json["search_results"] == null
             ? []
-            : List<Deal>.from(
-                json["search_results"]!.map((x) => Deal.fromJson(x))),
+            : List<Product>.from(
+                json["search_results"]!.map((x) => Product.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {

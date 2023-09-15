@@ -4,11 +4,11 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/item_details/item_details_model.dart';
+import '../../../data/models/general_data_model/general_category_data.dart';
 import '../../home/widgets/counter_widget.dart';
 
 class ItemDetailsPrice extends StatelessWidget {
-  final ItemDetailsData itemData;
+  final Product itemData;
 
   const ItemDetailsPrice({super.key, required this.itemData});
 
@@ -20,7 +20,7 @@ class ItemDetailsPrice extends StatelessWidget {
         Row(
           children: [
             Text(
-              '₹${itemData.discountedCost.toString()}',
+              '₹${itemData.variants[0].discountedCost.toString()}',
               style: Theme.of(context)
                   .textTheme
                   .xxxTiny
@@ -28,7 +28,7 @@ class ItemDetailsPrice extends StatelessWidget {
             ),
             const SizedBox(width: xxxTinierSpacing),
             Text(
-              '₹${itemData.price.toString()}',
+              '₹${itemData.variants[0].variantCost.toString()}',
               style: Theme.of(context).textTheme.tinier.copyWith(
                   decoration: TextDecoration.lineThrough, color: AppColor.grey),
             ),
@@ -40,7 +40,7 @@ class ItemDetailsPrice extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                   vertical: xxTiniestSpacing, horizontal: xxTinierSpacing),
               child: Center(
-                child: Text('${itemData.discount.toString()}%OFF',
+                child: Text('${itemData.variants[0].discount.toString()}%OFF',
                     style: Theme.of(context).textTheme.xTiniest.copyWith(
                         color: AppColor.primary, fontWeight: FontWeight.w600)),
               ),
