@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/home/widgets/horizontal_brand_list.dart';
-import 'package:onecart_user_app/Screens/home/widgets/search_product_list.dart';
 import 'package:onecart_user_app/blocs/search_product_bloc/search_product_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../blocs/search_product_bloc/search_product_events.dart';
@@ -149,10 +148,10 @@ class SearchScreen extends StatelessWidget {
                                                     color:
                                                         AppColor.mediumBlack),
                                           ),
-                                          SearchProductList(state
-                                              .getSearchProductsList
-                                              .data!
-                                              .searchResults!)
+                                          // SearchProductList(state
+                                          //     .getSearchProductsList
+                                          //     .data!
+                                          //     .searchResults!)
                                         ],
                                       )
                               ],

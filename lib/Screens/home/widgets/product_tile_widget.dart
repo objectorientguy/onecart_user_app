@@ -3,7 +3,7 @@ import 'package:onecart_user_app/Screens/home/widgets/product_tile_widget_body.d
 
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/home/home_model.dart';
+import '../../../data/models/general_data_model/general_category_data.dart';
 
 class ProductTileWidget extends StatelessWidget {
   final bool ratingShow;
@@ -11,10 +11,11 @@ class ProductTileWidget extends StatelessWidget {
   const ProductTileWidget({
     super.key,
     required this.data,
-    this.ratingShow = true,
+    this.ratingShow = true, required this.index,
   });
 
-  final Deal data;
+  final List<Product> data;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +37,11 @@ class ProductTileWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.circular(kBorderRadiusSmall)),
-                          child: Image.network(data.image![0].toString(),
+                          child: Image.network(data[index].variants[0].image.toString(),
                               fit: BoxFit.fill))))),
           const SizedBox(width: xxxTinySpacing),
           Expanded(
-            child: ProductTileWidgetBody(data: data, ratingShow: ratingShow),
+            child: ProductTileWidgetBody(data: data, ratingShow: ratingShow, index: index,),
           )
         ]);
   }
