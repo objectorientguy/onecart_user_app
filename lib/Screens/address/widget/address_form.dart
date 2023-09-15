@@ -136,7 +136,7 @@ class AddressForm extends StatelessWidget {
                     .xxxTinier
                     .copyWith(color: AppColor.grey)),
             const SizedBox(height: xxTinierSpacing),
-            const AddressFilterChipWidget(),
+             AddressFilterChipWidget(saveAddressMap: saveAddress),
             const SizedBox(height: xxxTinierSpacing),
             Text('Name*',
                 style: Theme.of(context)

@@ -29,7 +29,7 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
       List fetchAddressData = [];
       GetAllAddressModel fetchAddressModel =
           await _addressRepository.fetchAddress();
-      fetchAddressData = fetchAddressModel.data!;
+      fetchAddressData = fetchAddressModel.data;
       emit(FetchAddressLoaded(
         fetchAddressModel: fetchAddressModel,
         addressDetails: fetchAddressData,

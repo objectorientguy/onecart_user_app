@@ -54,7 +54,7 @@ class AddressScreen extends StatelessWidget {
                           return ListView.separated(
                               physics: const BouncingScrollPhysics(),
                               shrinkWrap: true,
-                              itemCount: state.fetchAddressModel.data!.length,
+                              itemCount: state.fetchAddressModel.data.length,
                               separatorBuilder: (context, index) =>
                               const SizedBox(height: 6),
                               itemBuilder: (context, index) {
@@ -93,7 +93,7 @@ class AddressScreen extends StatelessWidget {
                                                           Text(
                                                               state
                                                                   .fetchAddressModel
-                                                                  .data![index]
+                                                                  .data[index]
                                                                   .addressType
                                                                   .toString(),
                                                               style: Theme.of(context)
@@ -124,7 +124,7 @@ class AddressScreen extends StatelessWidget {
                                                             Text(
                                                                 state
                                                                     .fetchAddressModel
-                                                                    .data![index]
+                                                                    .data[index]
                                                                     .addressName
                                                                     .toString(),
                                                                 style: Theme.of(context)
@@ -135,7 +135,7 @@ class AddressScreen extends StatelessWidget {
                                                                         .grey)),
                                                             Text(
                                                                 state.fetchAddressModel
-                                                                    .data![index].phoneNo
+                                                                    .data[index].phoneNo
                                                                     .toString(),
                                                                 style: Theme.of(context)
                                                                     .textTheme

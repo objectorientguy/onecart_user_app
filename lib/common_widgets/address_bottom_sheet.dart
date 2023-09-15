@@ -79,7 +79,7 @@ class AddressBottomSheet extends StatelessWidget {
                             height: xxxTinySpacing,
                           ),
                           LocationSavedAddressBody(
-                              addressData: state.fetchAddressModel.data!),
+                              addressData: state.fetchAddressModel.data),
                         ],
                       ),
                     ),
