@@ -10,7 +10,7 @@ import '../../configs/app_color.dart';
 
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
-import '../../data/models/home/home_model.dart';
+import '../../data/models/general_data_model/general_category_data.dart';
 import 'package:badges/badges.dart' as badges;
 
 class ItemDetailsScreen extends StatelessWidget {

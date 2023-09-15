@@ -12,18 +12,21 @@ class Product {
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-    productId: json["product_id"],
-    productName: json["product_name"],
-    details: json["details"],
-    variants: json["variants"]==null?[]:List<Variant>.from(json["variants"].map((x) => Variant.fromJson(x))),
-  );
+        productId: json["product_id"],
+        productName: json["product_name"],
+        details: json["details"],
+        variants: json["variants"] == null
+            ? []
+            : List<Variant>.from(
+                json["variants"].map((x) => Variant.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "product_id": productId,
-    "product_name": productName,
-    "details": details,
-    "variants": List<dynamic>.from(variants.map((x) => x.toJson())),
-  };
+        "product_id": productId,
+        "product_name": productName,
+        "details": details,
+        "variants": List<dynamic>.from(variants.map((x) => x.toJson())),
+      };
 }
 
 class Variant {
@@ -52,28 +55,28 @@ class Variant {
   });
 
   factory Variant.fromJson(Map<String, dynamic> json) => Variant(
-    variantId: json["variant_id"],
-    variantCost: json["variant_cost"],
-    count: json["count"],
-    brandName: json["brand_name"],
-    discountedCost: json["discounted_cost"],
-    discount: json["discount"],
-    quantity: json["quantity"],
-    description: json["description"],
-    image: List<String>.from(json["image"].map((x) => x)),
-    ratings: json["ratings"],
-  );
+        variantId: json["variant_id"],
+        variantCost: json["variant_cost"],
+        count: json["count"],
+        brandName: json["brand_name"],
+        discountedCost: json["discounted_cost"],
+        discount: json["discount"],
+        quantity: json["quantity"],
+        description: json["description"],
+        image: List<String>.from(json["image"].map((x) => x)),
+        ratings: json["ratings"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "variant_id": variantId,
-    "variant_cost": variantCost,
-    "count": count,
-    "brand_name": brandName,
-    "discounted_cost": discountedCost,
-    "discount": discount,
-    "quantity": quantity,
-    "description": description,
-    "image": List<dynamic>.from(image.map((x) => x)),
-    "ratings": ratings,
-  };
+        "variant_id": variantId,
+        "variant_cost": variantCost,
+        "count": count,
+        "brand_name": brandName,
+        "discounted_cost": discountedCost,
+        "discount": discount,
+        "quantity": quantity,
+        "description": description,
+        "image": List<dynamic>.from(image.map((x) => x)),
+        "ratings": ratings,
+      };
 }

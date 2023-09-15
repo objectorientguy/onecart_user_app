@@ -9,7 +9,7 @@ import '../../blocs/varient_bloc/varient_states.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
-import '../../data/models/home/home_model.dart';
+import '../../data/models/general_data_model/general_category_data.dart';
 
 class SelectVariantScreen extends StatelessWidget {
   static const routeName = 'SelectVariantScreen';

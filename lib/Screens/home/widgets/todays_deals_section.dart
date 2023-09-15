@@ -45,7 +45,7 @@ class TodayDealsSection extends StatelessWidget {
               },
               child: ProductTileWidget(
                 ratingShow: true,
-                data: data, index: index,
+                data: data[index],
               ),
             );
           },

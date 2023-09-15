@@ -4,7 +4,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/home/home_model.dart';
+import '../../../data/models/general_data_model/general_category_data.dart';
 import '../../home/widgets/counter_widget.dart';
 
 class ItemDetailsPrice extends StatelessWidget {

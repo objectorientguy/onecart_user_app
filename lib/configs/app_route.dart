@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/address/widget/current_location.dart';
 import 'package:onecart_user_app/data/models/address_model/address_model.dart';
-import 'package:onecart_user_app/data/models/home/home_model.dart';
 import '../Screens/address/add_address_screen.dart';
 import '../Screens/address/address_screen.dart';
 import '../Screens/address/edit_address_screen.dart';
@@ -19,6 +18,7 @@ import '../Screens/profile/widgets/privacy_policy_screen.dart';
 import '../Screens/profile/widgets/terms_and_conditions_screen.dart';
 import '../Screens/root/root_screen.dart';
 import '../Screens/varient/select_varient_screen.dart';
+import '../data/models/general_data_model/general_category_data.dart';
 
 class AppRoutes {
   static Route onGenerateRoutes(RouteSettings settings) {

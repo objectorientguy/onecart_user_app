@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:onecart_user_app/data/models/home/home_model.dart';
+import '../general_data_model/general_category_data.dart';
 
 SearchProductModel searchProductModelFromJson(String str) =>
     SearchProductModel.fromJson(json.decode(str));

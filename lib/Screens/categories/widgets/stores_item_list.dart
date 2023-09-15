@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/data/models/general_data_model/general_category_data.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/general_data_model/general_category_data.dart';
 import '../../home/widgets/product_tile_widget.dart';
 import '../../item_details/item_details_screen.dart';
 
@@ -34,7 +34,7 @@ class StoreItemList extends StatelessWidget {
                         },
                         child: ProductTileWidget(
                           ratingShow: true,
-                          data: storedata, index: index,
+                          data: storedata[index],
                         ));
                   },
                   separatorBuilder: (context, index) {
