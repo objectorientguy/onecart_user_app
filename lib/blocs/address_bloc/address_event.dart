@@ -15,3 +15,9 @@ class AddAddress extends AddressEvents {
 
   AddAddress({required this.addAddress});
 }
+
+class DeleteAddress extends AddressEvents {
+  //final Map addAddress;
+  // final int addressId;
+
+}

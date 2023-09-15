@@ -102,9 +102,12 @@ class AddressScreen extends StatelessWidget {
                                                                   .copyWith(
                                                                   color: AppColor
                                                                       .primary)),
-                                                          Spacer(),
+                                                          const Spacer(),
                                                           InkWell(
-                                                              child: Icon(Icons.close,
+                                                            onTap: (){
+
+                                                            },
+                                                              child: const Icon(Icons.close,
                                                                   color:
                                                                   AppColor.primary))
                                                         ]),
@@ -132,7 +135,7 @@ class AddressScreen extends StatelessWidget {
                                                                         .grey)),
                                                             Text(
                                                                 state.fetchAddressModel
-                                                                    .data![index].city
+                                                                    .data![index].phoneNo
                                                                     .toString(),
                                                                 style: Theme.of(context)
                                                                     .textTheme
@@ -184,7 +187,6 @@ class AddressScreen extends StatelessWidget {
                                             ])));
                               });
                         }
-
                         if (state is FetchAddressError) {
                           return Container();
                         } else {

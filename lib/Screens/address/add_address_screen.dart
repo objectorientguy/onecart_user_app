@@ -26,7 +26,7 @@ class AddAddressScreen extends StatelessWidget {
       'address_type': "",
       'address_name': "",
       'user_contact': "9898989898",
-      'phone_no': "",
+      'phone_no': "9898989898",
       'city': "",
       'state': "",
       'pincode': "",

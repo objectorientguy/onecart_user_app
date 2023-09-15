@@ -25,9 +25,24 @@ class AddressRepositoryImpl implements AddressRepository {
 
   @override
   Future<AddAddressModel> addAddress(Map addAddress, userId) async {
-    final response = await DioClient().post(
-        "https://oneart.onrender.com/addAddress?user_contact=9898989898",
-        addAddress);
-    return AddAddressModel.fromJson(response);
+    final response = {
+      "status": "200",
+      "message": "New address created!",
+      "data": {
+        "user_contact": 9898989898,
+        "address_id": 42,
+        "address_name": "Testing Edit Address",
+        "city": "Pune",
+        "pincode": 123456,
+        "address_type": "Home",
+        "phone_no": 8989898989,
+        "state": "maharshtra",
+        "name": "akash"
+      }
+    };
+    // await DioClient().post(
+    //     "https://oneart.onrender.com/addAddress?user_contact=9898989898",
+    //     addAddress);
+     return AddAddressModel.fromJson(response);
   }
 }
