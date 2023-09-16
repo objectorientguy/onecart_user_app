@@ -7,22 +7,29 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/general_data_model/general_category_data.dart';
 
+import '../../../data/models/item_details/item_details_model.dart';
 import '../../varient/select_varient_screen.dart';
 import 'delivery_details_section.dart';
 import 'frequently_bought_widget.dart';
 import 'item_details_price.dart';
 
 class ItemDetailsBody extends StatelessWidget {
-  final Product itemData;
+  final ProductDetailsModel productDetailsModel;
+  final int variantIndex;
 
-  const ItemDetailsBody({super.key, required this.itemData});
+  const ItemDetailsBody(
+      {super.key,
+      required this.productDetailsModel,
+      required this.variantIndex});
 
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      ItemDetailsPrice(itemData: itemData),
+      ItemDetailsPrice(
+        productDetailsModel: productDetailsModel,
+        variantIndex: variantIndex,
+      ),
       const SizedBox(height: tinierSpacing),
       InkWell(
         onTap: () {
@@ -37,7 +44,8 @@ class ItemDetailsBody extends StatelessWidget {
               context: context,
               builder: (BuildContext context) {
                 return SelectVariantScreen(
-                  dataone: itemData,
+                  productDetailsModel: productDetailsModel,
+                  variantIndex: variantIndex,
                 );
               });
         },
@@ -55,7 +63,10 @@ class ItemDetailsBody extends StatelessWidget {
             children: [
               SizedBox(
                 height: kVarientBoxHeight,
-                child: Text(itemData.variants[0].quantity.toString(),
+                child: Text(
+                    productDetailsModel
+                        .data.productData.variants[variantIndex].quantity
+                        .toString(),
                     style: Theme.of(context)
                         .textTheme
                         .tinier
@@ -67,7 +78,11 @@ class ItemDetailsBody extends StatelessWidget {
           ),
         ),
       ),
-      const RatingWidget(),
+      RatingWidget(
+        itemData:
+            productDetailsModel.data.productData.variants[variantIndex].ratings,
+        variantIndex: variantIndex,
+      ),
       Text('Product Details',
           style: Theme.of(context)
               .textTheme
@@ -76,7 +91,8 @@ class ItemDetailsBody extends StatelessWidget {
       const SizedBox(
         height: tiniestSpacing,
       ),
-      SizedBox(child: Text(itemData.details.toString())),
+      SizedBox(
+          child: Text(productDetailsModel.data.productData.details.toString())),
       const SizedBox(height: xxxTinySpacing),
       Text('Product Description',
           style: Theme.of(context)
@@ -86,11 +102,16 @@ class ItemDetailsBody extends StatelessWidget {
       const SizedBox(
         height: tiniestSpacing,
       ),
-      SizedBox(child: Text(itemData.variants[0].description.toString())),
+      SizedBox(
+          child: Text(productDetailsModel
+              .data.productData.variants[variantIndex].description
+              .toString())),
       const SizedBox(height: xxxTinierSpacing),
       const Divider(thickness: kFeatureDivider),
       const SizedBox(height: xxTiniestSpacing),
-      const DeliverDetailsSection(),
+      DeliverDetailsSection(
+        productDetailsModel: productDetailsModel,
+      ),
       const SizedBox(height: xxTiniestSpacing),
       const Divider(thickness: kFeatureDivider),
       const SizedBox(height: xxxTinierSpacing),

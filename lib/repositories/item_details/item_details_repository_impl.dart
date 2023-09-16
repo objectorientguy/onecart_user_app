@@ -2,12 +2,12 @@ import '../../data/models/item_details/item_details_model.dart';
 import '../../utils/dio_client.dart';
 import 'item_details_repository.dart';
 
-class ItemDetailsRepositoryImpl implements ItemDetailsRepository {
+class ProductDetailsRepositoryImpl implements ProductDetailsRepository {
   @override
-  Future<ItemDetailsModel> getItemDetails(int prodId) async {
-    final response =
-        await DioClient().get("https://oneart.onrender.com/products/$prodId");
+  Future<ProductDetailsModel> getProductDetails(int prodId) async {
+    final response = await DioClient()
+        .get("https://oneart.onrender.com/getProductVariants/$prodId");
 
-    return ItemDetailsModel.fromJson(response);
+    return ProductDetailsModel.fromJson(response);
   }
 }
