@@ -11,8 +11,12 @@ import '../../../data/models/item_details/item_details_model.dart';
 
 class SelectVarientBody extends StatelessWidget {
   final ProductDetailsModel productDetailsModel;
+  final int variantIndex;
 
-  const SelectVarientBody({super.key, required this.productDetailsModel});
+  const SelectVarientBody(
+      {super.key,
+      required this.productDetailsModel,
+      required this.variantIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +44,7 @@ class SelectVarientBody extends StatelessWidget {
                             children: [
                               Text(
                                   productDetailsModel
-                                      .data.productData.variants[0].quantity
+                                      .data.productData.variants[index].quantity
                                       .toString(),
                                   style: Theme.of(context)
                                       .textTheme
@@ -53,7 +57,7 @@ class SelectVarientBody extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '₹${productDetailsModel.data.productData.variants[0].discountedCost.toString()}',
+                                      '₹${productDetailsModel.data.productData.variants[index].discountedCost.toString()}',
                                       style: Theme.of(context)
                                           .textTheme
                                           .xxxTinier
@@ -63,7 +67,7 @@ class SelectVarientBody extends StatelessWidget {
                                     ),
                                     const SizedBox(width: xxxTinierSpacing),
                                     Text(
-                                        '₹${productDetailsModel.data.productData.variants[0].variantCost.toString()}',
+                                        '₹${productDetailsModel.data.productData.variants[index].variantCost.toString()}',
                                         style: Theme.of(context)
                                             .textTheme
                                             .tiniest
@@ -87,7 +91,7 @@ class SelectVarientBody extends StatelessWidget {
                                             horizontal: xxxTinierSpacing),
                                         child: Center(
                                             child: Text(
-                                                '${productDetailsModel.data.productData.variants[0].discount.toString()} OFF',
+                                                '${productDetailsModel.data.productData.variants[index].discount.toString()} %OFF',
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .xxTiniest

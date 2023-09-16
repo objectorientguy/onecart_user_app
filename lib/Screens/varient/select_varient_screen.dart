@@ -11,8 +11,12 @@ import '../../data/models/item_details/item_details_model.dart';
 class SelectVariantScreen extends StatelessWidget {
   static const routeName = 'SelectVariantScreen';
   final ProductDetailsModel productDetailsModel;
+  final int variantIndex;
 
-  const SelectVariantScreen({super.key, required this.productDetailsModel});
+  const SelectVariantScreen(
+      {super.key,
+      required this.productDetailsModel,
+      required this.variantIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,7 @@ class SelectVariantScreen extends StatelessWidget {
               Row(children: [
                 CachedNetworkImage(
                     imageUrl: productDetailsModel
-                        .data.productData.variants[0].image[0],
+                        .data.productData.variants[variantIndex].image[0],
                     errorWidget: (context, url, error) => const Center(
                         child: SizedBox(
                             width: kCacheImageWidth,
@@ -61,6 +65,7 @@ class SelectVariantScreen extends StatelessWidget {
               const SizedBox(height: tinySpacing),
               SelectVarientBody(
                 productDetailsModel: productDetailsModel,
+                variantIndex: variantIndex,
               )
             ])));
   }

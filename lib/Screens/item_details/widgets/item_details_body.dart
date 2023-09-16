@@ -45,6 +45,7 @@ class ItemDetailsBody extends StatelessWidget {
               builder: (BuildContext context) {
                 return SelectVariantScreen(
                   productDetailsModel: productDetailsModel,
+                  variantIndex: variantIndex,
                 );
               });
         },
@@ -63,7 +64,8 @@ class ItemDetailsBody extends StatelessWidget {
               SizedBox(
                 height: kVarientBoxHeight,
                 child: Text(
-                    productDetailsModel.data.productData.variants[0].quantity
+                    productDetailsModel
+                        .data.productData.variants[variantIndex].quantity
                         .toString(),
                     style: Theme.of(context)
                         .textTheme

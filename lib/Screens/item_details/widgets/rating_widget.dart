@@ -10,8 +10,8 @@ class RatingWidget extends StatelessWidget {
   final int itemData;
   final int variantIndex;
 
-
-  const RatingWidget({super.key, required this.itemData, required this.variantIndex});
+  const RatingWidget(
+      {super.key, required this.itemData, required this.variantIndex});
 
   @override
   Widget build(BuildContext context) {
