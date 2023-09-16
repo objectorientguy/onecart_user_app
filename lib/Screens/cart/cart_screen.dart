@@ -1,31 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/cart/widgets/cart_bottom_bar.dart';
 import 'package:onecart_user_app/Screens/cart/widgets/cart_header.dart';
+import 'package:onecart_user_app/Screens/cart/widgets/cart_item_list.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
+
+import '../../blocs/view_cart_bloc/view_cart_bloc.dart';
+import '../../blocs/view_cart_bloc/view_cart_events.dart';
+import '../../blocs/view_cart_bloc/view_cart_states.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = 'CartScreen';
 
-  const CartScreen({Key? key}) : super(key: key);
+  const CartScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        appBar: GenericAppBar(
-          title: 'Your Cart',
-        ),
-        bottomNavigationBar: CartBottomBar(),
-        body: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: leftRightMargin, vertical: xxxTinierSpacing),
-          child: Column(children: [
-            CartHeader(),
-            SizedBox(
-              height: xxxSmallestSpacing,
-            ),
-            //CartItemList()
-          ]),
-        ));
+    context.read<GetAllCartItemsBloc>().add(GetAllCartItems());
+    return Scaffold(
+      appBar: const GenericAppBar(
+        title: 'Your Cart',
+      ),
+      bottomNavigationBar: const CartBottomBar(),
+      body: BlocBuilder<GetAllCartItemsBloc, ViewCartStates>(
+          builder: (context, state) {
+        if (state is GetAllCartItemsLoading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is GetAllCartItemsLoaded) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: leftRightMargin, vertical: xxxTinierSpacing),
+            child: Column(children: [
+              const CartHeader(),
+              Center(
+                  child: Text(state.viewCartModel.data[0].product.productName
+                      .toString())),
+              const SizedBox(
+                height: xxxSmallestSpacing,
+              ),
+              CartItemList(
+                cartDetails: state.viewCartModel.data[0],
+              )
+            ]),
+          );
+        }
+        if (state is GetAllCartItemsError) {
+          return Container();
+        } else {
+          return const SizedBox();
+        }
+      }),
+    );
   }
 }

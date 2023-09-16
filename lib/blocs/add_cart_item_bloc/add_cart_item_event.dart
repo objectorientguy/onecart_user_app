@@ -1,3 +1,3 @@
 abstract class AddToCartEvents {}
 
-class FetchItems extends AddToCartEvents {}
+class FetchCartItems extends AddToCartEvents {}

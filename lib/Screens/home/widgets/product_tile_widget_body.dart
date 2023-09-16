@@ -39,7 +39,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.40,
+                      width: kProductTileTitleWidth,
                       child: Text(
                           widget.data.productName
                               .toString()
@@ -61,14 +61,20 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                 size: kStarIcon, color: Colors.amber)
                           ]))
                 ]),
-            Text(
+            SizedBox(
+              width: kProductTileTitleWidth,
+              child: Text(
                 widget.data.variants[variantIndex].quantity
                     .toString()
                     .replaceAll("\n", " "),
                 style: Theme.of(context)
                     .textTheme
                     .tiniest
-                    .copyWith(color: AppColor.primary)),
+                    .copyWith(color: AppColor.primary),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
             const SizedBox(height: xxxTiniestSpacing),
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

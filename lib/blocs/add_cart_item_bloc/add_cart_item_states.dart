@@ -6,24 +6,17 @@ class AddItemInitial extends AddItemsToCartStates {}
 
 class AddItemLoading extends AddItemsToCartStates {}
 
+class AddItemLoaded extends AddItemsToCartStates {
+  final AddToCartModel addToTheCartModel;
+
+  final Map cartItemDetails;
+
+  AddItemLoaded(
+      {required this.addToTheCartModel, required this.cartItemDetails});
+}
+
 class AddItemsError extends AddItemsToCartStates {
   final String message;
 
   AddItemsError({required this.message});
-}
-
-class AddItemLoaded extends AddItemsToCartStates {
-  final AddToCartModel addToTheCartModel;
-
-  final List addressDetails;
-  AddItemLoaded(
-      {required this.addToTheCartModel, required this.addressDetails});
-
-  // final EditAddressModel editAddressModel;
-  //
-  // final Map saveAddress;
-  // EditAddressLoaded(
-  //     {required this.saveAddress,
-  //       required this.editAddressModel,
-  //       required addressId});
 }

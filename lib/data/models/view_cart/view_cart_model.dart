@@ -8,7 +8,7 @@ String viewCartModelToJson(ViewCartModel data) => json.encode(data.toJson());
 class ViewCartModel {
   final int status;
   final String message;
-  final List<Datum> data;
+  final List<CartDetailsModel> data;
 
   ViewCartModel({
     required this.status,
@@ -21,7 +21,8 @@ class ViewCartModel {
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+            : List<CartDetailsModel>.from(
+                json["data"].map((x) => CartDetailsModel.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -31,20 +32,21 @@ class ViewCartModel {
       };
 }
 
-class Datum {
+class CartDetailsModel {
   final int cartItemId;
-  final Product product;
+  final CartProduct product;
   final Variant variant;
 
-  Datum({
+  CartDetailsModel({
     required this.cartItemId,
     required this.product,
     required this.variant,
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory CartDetailsModel.fromJson(Map<String, dynamic> json) =>
+      CartDetailsModel(
         cartItemId: json["cartItemId"],
-        product: Product.fromJson(json["product"]),
+        product: CartProduct.fromJson(json["product"]),
         variant: Variant.fromJson(json["variant"]),
       );
 
@@ -55,20 +57,20 @@ class Datum {
       };
 }
 
-class Product {
+class CartProduct {
   final int brandId;
   final int productId;
   final String productName;
   final String details;
 
-  Product({
+  CartProduct({
     required this.brandId,
     required this.productId,
     required this.productName,
     required this.details,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) => Product(
+  factory CartProduct.fromJson(Map<String, dynamic> json) => CartProduct(
         brandId: json["brand_id"],
         productId: json["product_id"],
         productName: json["product_name"],
@@ -89,9 +91,9 @@ class Variant {
   final int discount;
   final String description;
   final int ratings;
-  final int variantCost;
+  final double variantCost;
   final int variantId;
-  final int discountedCost;
+  final double discountedCost;
   final String quantity;
   final List<String> image;
   final int productId;
