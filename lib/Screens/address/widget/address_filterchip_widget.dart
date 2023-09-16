@@ -1,8 +1,8 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
+import '../../../configs/app_spacing.dart';
 
 class AddressFilterChipWidget extends StatefulWidget {
   final Map saveAddressMap;
@@ -17,16 +17,17 @@ class AddressFilterChipWidget extends StatefulWidget {
 class _AddressFilterChipWidgetState extends State<AddressFilterChipWidget> {
   bool isSelected = false;
   String? selectedType;
-  List addressTypeList = [
-   'Home',
-     'Work',
-      'Other'
 
+  List addressType = [
+    'Home',
+    'Work',
+    'Other',
   ];
 
   singleSelect(item) {
     setState(() {
-      selectedType=item;
+      selectedType = item;
+      widget.saveAddressMap['address_type']= item;
     });
   }
 
@@ -38,85 +39,34 @@ class _AddressFilterChipWidgetState extends State<AddressFilterChipWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: [
-        for (var item in addressTypeList)
-          FilterChip(
-              label: Row(
-                children: [
-                  Text(item,
-                      style: Theme.of(context)
-                          .textTheme
-                          .tinier
-                          .copyWith(color: AppColor.grey)),
-                ],
-              ),
-              // showCheckmark: false,
-              shape: const StadiumBorder(
-                  side: BorderSide(color: AppColor.primary)),
-              backgroundColor: selectedType == item
-                  ? AppColor.primaryLight
-                  : AppColor.white,
-             // labelPadding: const EdgeInsets.all(xxTiniestSpacing),
-              // selected: addressType.contains(selectedType),
-              // selectedColor: AppColor.primaryLight,
-              onSelected: (bool value) {
+    return Wrap(children: [
+      for (var item in addressType)
+        Padding(
+            padding: const EdgeInsets.all(xxTiniestSpacing),
+            child: FilterChip(
+                label: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.home, color: AppColor.grey),
+                    Text(item,
+                        style: Theme.of(context)
+                            .textTheme
+                            .tinier
+                            .copyWith(color: AppColor.grey)),
+                  ],
+                ),
+                shape: const StadiumBorder(
+                    side: BorderSide(color: AppColor.primary)),
+                backgroundColor: selectedType == item
+                    ? AppColor.primaryLight
+                    : AppColor.white,
+                labelPadding: const EdgeInsets.all(xxTiniestSpacing),
+                selectedColor: AppColor.primary,
+                onSelected: (bool value) {
                   singleSelect(item);
-                log('onTap===============>$selectedType');
-              }),
-        // const SizedBox(
-        //   width: tiniestSpacing,
-        // ),
-        // FilterChip(
-        //     label: Row(
-        //       children: [
-        //         const Icon(Icons.laptop_chromebook, color: AppColor.grey),
-        //         const SizedBox(width: xxTiniestSpacing),
-        //         Text('Work',
-        //             style: Theme
-        //                 .of(context)
-        //                 .textTheme
-        //                 .xxxTinier
-        //                 .copyWith(color: AppColor.grey)),
-        //       ],
-        //     ),
-        //     showCheckmark: false,
-        //     shape: const StadiumBorder(
-        //         side: BorderSide(color: AppColor.primary)),
-        //     backgroundColor: AppColor.white,
-        //     labelPadding: const EdgeInsets.all(xxTiniestSpacing),
-        //     selected: isSelectedWork,
-        //     selectedColor: AppColor.primaryLight,
-        //     onSelected: (bool value) {
-        //       setState(() {
-        //         isSelectedWork = !isSelectedWork;
-        //       });
-        //     }),
-        // const SizedBox(width: tiniestSpacing),
-        // FilterChip(
-        //     label: Row(children: [
-        //       const Icon(Icons.location_on, color: AppColor.grey),
-        //       const SizedBox(width: xxTiniestSpacing),
-        //       Text('Others',
-        //           style: Theme
-        //               .of(context)
-        //               .textTheme
-        //               .xxxTinier
-        //               .copyWith(color: AppColor.grey))
-        //     ]),
-        //     showCheckmark: false,
-        //     shape: const StadiumBorder(
-        //         side: BorderSide(color: AppColor.primary)),
-        //     backgroundColor: AppColor.white,
-        //     labelPadding: const EdgeInsets.all(xxTiniestSpacing),
-        //     selected: isSelectedOther,
-        //     selectedColor: AppColor.primaryLight,
-        //     onSelected: (bool value) {
-        //       setState(() {
-        //         isSelectedOther = !isSelectedOther;
-        //       });
-        //     }),
-      ],
-    );
+                  log('onTap===============>$selectedType');
+                }))
+    ]);
   }
 }

@@ -12,6 +12,7 @@ import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 import '../../data/models/address_model/address_model.dart';
+import '../../widgets/progress_bar.dart';
 
 class EditAddressScreen extends StatelessWidget {
   static const routeName = 'EditAddressScreen';
@@ -82,8 +83,10 @@ class EditAddressScreen extends StatelessWidget {
                           context.read<AddressBloc>().add(FetchAddress());
                         }
                         if (state is EditAddressError) {
-                          const SizedBox();
-                        }
+                          ProgressBar.dismiss(context);
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text("Something went wrong")));
+                                                }
                       },
                       child: const SizedBox())
                 ]))));

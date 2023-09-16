@@ -30,6 +30,7 @@ class AddAddressScreen extends StatelessWidget {
       'city': "",
       'state': "",
       'pincode': "",
+      "name": "",
     };
 
     return Scaffold(

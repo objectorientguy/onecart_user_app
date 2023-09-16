@@ -13,7 +13,6 @@ import '../../data/models/address_model/edit_address_model.dart';
 
 class AddressBloc extends Bloc<AddressEvents, AddressStates> {
   final AddressRepository _addressRepository = getIt<AddressRepository>();
-//final CustomerCache _customerCache=getIt<CustomerCache>();
   AddressStates get initialState => AddressInitial();
 
   AddressBloc() : super(AddressInitial()) {
@@ -45,7 +44,7 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
     try {
       EditAddressModel editAddress = await _addressRepository.editAddress(
           event.saveAddress, event.addressId);
-      log('group');
+      log('address get====================>${event.saveAddress}');
       emit(EditAddressLoaded(
         editAddressModel: editAddress,
         saveAddress: {},
@@ -60,10 +59,9 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
       AddAddress event, Emitter<AddressStates> emit) async {
     emit(AddAddressLoading());
     // try {
-    // String userId= _customerCache.g
     log('address post===========>${event.addAddress}');
     AddAddressModel addAddress =
-        await _addressRepository.addAddress(event.addAddress, '');
+        await _addressRepository.addAddress(event.addAddress, 9898989898);
     emit(AddAddressLoaded(
       addAddressModel: addAddress,
       addAddress: {},
@@ -72,22 +70,4 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
     //    emit(AddAddressError(message: e.toString()));
     // }
   }
-
-  // FutureOr<void> _editAddress(
-  //     EditAddress event, Emitter<AddressStates> emit) async {
-  //   emit(EditAddressLoading());
-  //   try {
-  //     EditAddressModel editAddress = await _addressRepository.editAddress(
-  //         event.saveAddress, event.addressId);
-  //     log('group');
-  //     emit(EditAddressLoaded(
-  //       editAddressModel: editAddress,
-  //       saveAddress: {},
-  //       addressId: [],
-  //     ));
-  //   } catch (e) {
-  //     emit(EditAddressError(message: e.toString()));
-  //   }
-  // }
-
 }
