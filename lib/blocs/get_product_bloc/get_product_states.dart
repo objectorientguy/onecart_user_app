@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import '../../data/models/general_data_model/general_category_data.dart';
 import '../../data/models/get_product/get_product_model.dart';
-import '../../data/models/home/home_model.dart';
 
 abstract class GetProductStates extends Equatable {
   @override
@@ -20,7 +20,7 @@ class FetchProductLoaded extends GetProductStates {
 
 class FilterPriceLoaded extends GetProductStates {
   final GetProductByIdModel getProductByIdModel;
-  final List<Deal> productsList;
+  final List<Product> productsList;
   final bool? sortedValue;
 
   FilterPriceLoaded(

@@ -5,12 +5,12 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_color.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/home/home_model.dart';
+import '../../../data/models/general_data_model/general_category_data.dart';
 import '../../item_details/item_details_screen.dart';
 
 class TodayDealsSection extends StatelessWidget {
   static const routeName = 'TodayDealsSection';
-  final List<Deal> data;
+  final List<Product> data;
 
   const TodayDealsSection(
     this.data, {

@@ -8,9 +8,13 @@ import '../../../data/models/item_details/item_details_model.dart';
 import '../../home/widgets/counter_widget.dart';
 
 class ItemDetailsPrice extends StatelessWidget {
-  final ItemDetailsData itemData;
+  final ProductDetailsModel productDetailsModel;
+  final int variantIndex;
 
-  const ItemDetailsPrice({super.key, required this.itemData});
+  const ItemDetailsPrice(
+      {super.key,
+      required this.productDetailsModel,
+      required this.variantIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ class ItemDetailsPrice extends StatelessWidget {
         Row(
           children: [
             Text(
-              '₹${itemData.discountedCost.toString()}',
+              '₹${productDetailsModel.data.productData.variants[variantIndex].discountedCost.toString()}',
               style: Theme.of(context)
                   .textTheme
                   .xxxTiny
@@ -28,7 +32,7 @@ class ItemDetailsPrice extends StatelessWidget {
             ),
             const SizedBox(width: xxxTinierSpacing),
             Text(
-              '₹${itemData.price.toString()}',
+              '₹${productDetailsModel.data.productData.variants[variantIndex].variantCost.toString()}',
               style: Theme.of(context).textTheme.tinier.copyWith(
                   decoration: TextDecoration.lineThrough, color: AppColor.grey),
             ),
@@ -40,7 +44,8 @@ class ItemDetailsPrice extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                   vertical: xxTiniestSpacing, horizontal: xxTinierSpacing),
               child: Center(
-                child: Text('${itemData.discount.toString()}%OFF',
+                child: Text(
+                    '${productDetailsModel.data.productData.variants[variantIndex].discount.toString()}%OFF',
                     style: Theme.of(context).textTheme.xTiniest.copyWith(
                         color: AppColor.primary, fontWeight: FontWeight.w600)),
               ),

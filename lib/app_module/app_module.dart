@@ -36,8 +36,8 @@ configurableDependencies() {
   getIt.registerLazySingleton<AddressRepository>(() => AddressRepositoryImpl());
   getIt.registerLazySingleton<ProductsRepository>(
       () => ProductsRepositoryImpl());
-  getIt.registerLazySingleton<ItemDetailsRepository>(
-      () => ItemDetailsRepositoryImpl());
+  getIt.registerLazySingleton<ProductDetailsRepository>(
+      () => ProductDetailsRepositoryImpl());
   getIt.registerLazySingleton<CategoriesRepository>(
       () => CategoriesRepositoryImpl());
   getIt.registerLazySingleton<SelectVarientRepository>(

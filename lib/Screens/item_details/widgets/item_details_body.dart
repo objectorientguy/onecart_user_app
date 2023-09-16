@@ -1,37 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:onecart_user_app/Screens/item_details/widgets/rating_widget.dart';
 
 import 'package:onecart_user_app/configs/app_theme.dart';
 
-import '../../../blocs/varient_bloc/varient_bloc.dart';
-import '../../../blocs/varient_bloc/varient_events.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/item_details/item_details_model.dart';
 
+import '../../../data/models/item_details/item_details_model.dart';
 import '../../varient/select_varient_screen.dart';
 import 'delivery_details_section.dart';
 import 'frequently_bought_widget.dart';
 import 'item_details_price.dart';
 
 class ItemDetailsBody extends StatelessWidget {
-  final ItemDetailsData itemData;
+  final ProductDetailsModel productDetailsModel;
+  final int variantIndex;
 
-  const ItemDetailsBody({super.key, required this.itemData});
+  const ItemDetailsBody(
+      {super.key,
+      required this.productDetailsModel,
+      required this.variantIndex});
 
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      ItemDetailsPrice(itemData: itemData),
+      ItemDetailsPrice(
+        productDetailsModel: productDetailsModel,
+        variantIndex: variantIndex,
+      ),
       const SizedBox(height: tinierSpacing),
       InkWell(
         onTap: () {
-          context
-              .read<SelectVarientBloc>()
-              .add(GetAllVarients(itemData.productId!));
           showModalBottomSheet(
               backgroundColor: AppColor.blue,
               isScrollControlled: true,
@@ -43,7 +44,8 @@ class ItemDetailsBody extends StatelessWidget {
               context: context,
               builder: (BuildContext context) {
                 return SelectVariantScreen(
-                  dataone: itemData,
+                  productDetailsModel: productDetailsModel,
+                  variantIndex: variantIndex,
                 );
               });
         },
@@ -61,7 +63,10 @@ class ItemDetailsBody extends StatelessWidget {
             children: [
               SizedBox(
                 height: kVarientBoxHeight,
-                child: Text(itemData.weight.toString(),
+                child: Text(
+                    productDetailsModel
+                        .data.productData.variants[variantIndex].quantity
+                        .toString(),
                     style: Theme.of(context)
                         .textTheme
                         .tinier
@@ -73,24 +78,40 @@ class ItemDetailsBody extends StatelessWidget {
           ),
         ),
       ),
-      const RatingWidget(),
+      RatingWidget(
+        itemData:
+            productDetailsModel.data.productData.variants[variantIndex].ratings,
+        variantIndex: variantIndex,
+      ),
       Text('Product Details',
           style: Theme.of(context)
               .textTheme
               .tinier
               .copyWith(fontWeight: FontWeight.w500)),
-      SizedBox(child: Text(itemData.details.toString())),
+      const SizedBox(
+        height: tiniestSpacing,
+      ),
+      SizedBox(
+          child: Text(productDetailsModel.data.productData.details.toString())),
       const SizedBox(height: xxxTinySpacing),
       Text('Product Description',
           style: Theme.of(context)
               .textTheme
               .tinier
               .copyWith(fontWeight: FontWeight.w500)),
-      SizedBox(child: Text(itemData.description.toString())),
+      const SizedBox(
+        height: tiniestSpacing,
+      ),
+      SizedBox(
+          child: Text(productDetailsModel
+              .data.productData.variants[variantIndex].description
+              .toString())),
       const SizedBox(height: xxxTinierSpacing),
       const Divider(thickness: kFeatureDivider),
       const SizedBox(height: xxTiniestSpacing),
-      const DeliverDetailsSection(),
+      DeliverDetailsSection(
+        productDetailsModel: productDetailsModel,
+      ),
       const SizedBox(height: xxTiniestSpacing),
       const Divider(thickness: kFeatureDivider),
       const SizedBox(height: xxxTinierSpacing),

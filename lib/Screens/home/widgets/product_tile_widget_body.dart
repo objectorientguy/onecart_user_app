@@ -4,7 +4,8 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/home/home_model.dart';
+import '../../../data/models/general_data_model/general_category_data.dart';
+import '../../../utils/varient_index_util.dart';
 import 'counter_widget.dart';
 
 class ProductTileWidgetBody extends StatefulWidget {
@@ -18,7 +19,7 @@ class ProductTileWidgetBody extends StatefulWidget {
     this.addButtonVisible = true,
   });
 
-  final Deal data;
+  final Product data;
 
   @override
   State<ProductTileWidgetBody> createState() => _ProductTileWidgetBodyState();
@@ -27,6 +28,8 @@ class ProductTileWidgetBody extends StatefulWidget {
 class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
   @override
   Widget build(BuildContext context) {
+    int variantIndex = VariantIndexUtil().getVariantIndex(widget.data);
+
     return SizedBox(
       height: kProductSizedBox,
       child: Column(
@@ -60,7 +63,10 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                 size: kStarIcon, color: Colors.amber)
                           ]))
                 ]),
-            Text(widget.data.weight.toString().replaceAll("\n", " "),
+            Text(
+                widget.data.variants[variantIndex].quantity
+                    .toString()
+                    .replaceAll("\n", " "),
                 style: Theme.of(context)
                     .textTheme
                     .tiniest
@@ -74,7 +80,8 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(children: [
-                          Text('₹${widget.data.discountedCost!.toString()}',
+                          Text(
+                              '₹${widget.data.variants[0].discountedCost.toString()}',
                               style: Theme.of(context)
                                   .textTheme
                                   .xxTinier
@@ -82,7 +89,8 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                       fontWeight: FontWeight.w500,
                                       color: AppColor.black)),
                           const SizedBox(width: tiniestSpacing),
-                          Text('₹${widget.data.price!.toString()}',
+                          Text(
+                              '₹${widget.data.variants[0].variantCost.toString()}',
                               style: Theme.of(context)
                                   .textTheme
                                   .xxxTinier
@@ -102,7 +110,8 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                 vertical: xxxTiniestSpacing,
                                 horizontal: xxxTiniestSpacing),
                             child: Center(
-                                child: Text('${widget.data.discount!} % off',
+                                child: Text(
+                                    '${widget.data.variants[0].discount} % off',
                                     style: Theme.of(context)
                                         .textTheme
                                         .xxxTiniest

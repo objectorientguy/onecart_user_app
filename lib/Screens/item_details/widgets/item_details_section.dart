@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/item_details/item_details_model.dart';
 
+import '../../../data/models/item_details/item_details_model.dart';
 import 'item_details_body.dart';
 
 class ItemDetailsSection extends StatelessWidget {
-  final ItemDetailsData itemData;
+  final ProductDetailsModel productDetailsModel;
+  final int variantIndex;
 
   const ItemDetailsSection({
-    required this.itemData,
+    required this.productDetailsModel,
     super.key,
+    required this.variantIndex,
   });
 
   @override
@@ -22,14 +24,15 @@ class ItemDetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(itemData.productName.toString(),
+          Text(productDetailsModel.data.productData.productName,
               style: Theme.of(context)
                   .textTheme
                   .tiny
                   .copyWith(fontWeight: FontWeight.w500)),
           const SizedBox(height: tinySpacing),
           ItemDetailsBody(
-            itemData: itemData,
+            productDetailsModel: productDetailsModel,
+            variantIndex: variantIndex,
           ),
           const SizedBox(height: xxxSmallestSpacing)
         ],

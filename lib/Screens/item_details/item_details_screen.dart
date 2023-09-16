@@ -10,15 +10,16 @@ import 'package:share_plus/share_plus.dart';
 import '../../blocs/item_details_bloc/item_details_bloc.dart';
 import '../../blocs/item_details_bloc/item_details_events.dart';
 import '../../blocs/item_details_bloc/item_details_states.dart';
-
 import '../../configs/app_color.dart';
 
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
+import '../../data/models/general_data_model/general_category_data.dart';
+import 'package:badges/badges.dart' as badges;
 
 class ItemDetailsScreen extends StatelessWidget {
   static const routeName = 'ItemDetailsScreen';
-  final dynamic itemDetails;
+  final Product itemDetails;
 
   const ItemDetailsScreen({Key? key, required this.itemDetails})
       : super(key: key);
@@ -27,7 +28,7 @@ class ItemDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     context
         .read<ItemDetailsBloc>()
-        .add(FetchItemDetails(itemDetails.productId!));
+        .add(FetchItemDetails(itemDetails.productId));
     return Scaffold(
       appBar: GenericAppBar(
         actions: [
@@ -49,32 +50,42 @@ class ItemDetailsScreen extends StatelessWidget {
                   color: AppColor.primary,
                 ),
               )),
+          const Padding(
+              padding: EdgeInsets.only(
+                  right: leftRightMargin, top: topBottomPadding),
+              child: badges.Badge(
+                badgeContent: Text('2'),
+                child: Icon(
+                  Icons.shopping_cart_sharp,
+                  color: AppColor.primary,
+                ),
+              )),
         ],
       ),
       body: BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
-        builder: (context, state) {
-          if (state is ItemDetailsLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is ItemDetailsLoaded) {
-            return SingleChildScrollView(
+          builder: (context, state) {
+        if (state is ItemDetailsLoading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is ItemDetailsLoaded) {
+          return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  ImageCarouselSlider(
-                    imageList: state.itemDetailsModel.data!.image!,
-                  ),
-                  ItemDetailsSection(itemData: state.itemDetailsModel.data!),
-                ],
-              ),
-            );
-          }
-          if (state is ItemDetailsError) {
-            return Container();
-          } else {
-            return const SizedBox();
-          }
-        },
-      ),
+              child: Column(children: [
+                ImageCarouselSlider(
+                  imageList: state.productDetailsModel.data.productData
+                      .variants[state.variantIndex].image,
+                ),
+                ItemDetailsSection(
+                  productDetailsModel: state.productDetailsModel,
+                  variantIndex: state.variantIndex,
+                )
+              ]));
+        }
+        if (state is ItemDetailsError) {
+          return Container();
+        } else {
+          return const SizedBox();
+        }
+      }),
     );
   }
 }

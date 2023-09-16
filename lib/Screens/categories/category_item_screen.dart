@@ -11,10 +11,8 @@ import '../../configs/app_spacing.dart';
 
 class CategoryItemScreen extends StatefulWidget {
   static const routeName = 'CategoryItemScreen';
-  final dynamic categoryDetails;
 
-  const CategoryItemScreen({Key? key, required this.categoryDetails})
-      : super(key: key);
+  const CategoryItemScreen({Key? key}) : super(key: key);
 
   @override
   State<CategoryItemScreen> createState() => _CategoryItemScreenState();
@@ -44,7 +42,7 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                     SizedBox(
                       width: kSizedBoxInfinite,
                       child: Text(
-                        state.getProductByIdModel.category!.categoryName!,
+                        "",
                         style: Theme.of(context).textTheme.xxTinier.copyWith(
                             fontWeight: FontWeight.w500, color: AppColor.black),
                         maxLines: 1,
