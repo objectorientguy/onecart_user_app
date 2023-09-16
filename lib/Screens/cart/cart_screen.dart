@@ -35,9 +35,6 @@ class CartScreen extends StatelessWidget {
                 horizontal: leftRightMargin, vertical: xxxTinierSpacing),
             child: Column(children: [
               const CartHeader(),
-              Center(
-                  child: Text(state.viewCartModel.data[0].product.productName
-                      .toString())),
               const SizedBox(
                 height: xxxSmallestSpacing,
               ),
