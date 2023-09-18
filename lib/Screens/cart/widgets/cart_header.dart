@@ -4,10 +4,14 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/view_cart/view_cart_model.dart';
 
 class CartHeader extends StatelessWidget {
+  final CartDetailsData cartDetails;
+
   const CartHeader({
     super.key,
+    required this.cartDetails,
   });
 
   @override
@@ -29,7 +33,7 @@ class CartHeader extends StatelessWidget {
                       .textTheme
                       .xxMedium
                       .copyWith(fontWeight: FontWeight.w100)),
-              Text('2,199',
+              Text(cartDetails.totalPrice.toString(),
                   style: Theme.of(context)
                       .textTheme
                       .xxMedium
@@ -52,7 +56,7 @@ class CartHeader extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                     vertical: xxTiniestSpacing, horizontal: xxTinierSpacing),
                 child: Center(
-                  child: Text('3 ITEMS',
+                  child: Text(cartDetails.cartItemCount.toString(),
                       style: Theme.of(context).textTheme.xxTinier.copyWith(
                           color: AppColor.primary,
                           fontWeight: FontWeight.w500)),

@@ -14,7 +14,7 @@ class CartTileWidget extends StatelessWidget {
     this.ratingShow = true,
   });
 
-  final CartDetailsData data;
+  final CartItem data;
 
   @override
   Widget build(BuildContext context) {

@@ -74,7 +74,10 @@ class ItemDetailsPrice extends StatelessWidget {
               const SizedBox();
             }
           },
-          child: const CounterScreen(
+          child: CounterScreen(
+            prodId: productDetailsModel.data.productData.productId,
+            variantId: productDetailsModel
+                .data.productData.variants[variantIndex].variantId,
             height: kCartButtonHeight,
             width: kCartButtonWidth,
             title: 'ADD TO CART',

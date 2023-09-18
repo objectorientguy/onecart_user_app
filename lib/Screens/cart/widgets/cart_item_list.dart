@@ -5,7 +5,7 @@ import '../../../data/models/view_cart/view_cart_model.dart';
 import 'cart_tile.dart';
 
 class CartItemList extends StatelessWidget {
-  final List<CartDetailsData> cartDetails;
+  final List<CartItem> cartDetails;
 
   const CartItemList({
     super.key,

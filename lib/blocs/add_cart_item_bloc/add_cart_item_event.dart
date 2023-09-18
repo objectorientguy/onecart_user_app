@@ -1,9 +1,12 @@
-import '../../data/models/add_cart_items/add_cart_items_model.dart';
-
 abstract class AddToCartEvents {}
 
 class AddItemsToCart extends AddToCartEvents {
-  final CartData data;
+  final int prodId;
+  final int variantId;
+  final int count;
 
-  AddItemsToCart({required this.data});
+  //final CartData data;
+
+  AddItemsToCart(
+      {required this.prodId, required this.variantId, required this.count});
 }
