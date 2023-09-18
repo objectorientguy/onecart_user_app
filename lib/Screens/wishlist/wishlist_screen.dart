@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/orders/widgets/order_placed_tile.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 
 import '../../configs/app_color.dart';
@@ -46,6 +47,20 @@ class WishlistScreen extends StatelessWidget {
                 },
               ),
             ),
+            const SizedBox(
+              height: xxxSmallestSpacing,
+            ),
+            Expanded(
+              child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    return const OrderPlacedTile();
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const SizedBox(
+                        height: xxxSmallestSpacing,
+                      ),
+                  itemCount: 8),
+            )
           ],
         ),
       ),
