@@ -22,7 +22,7 @@ class WishlistScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 35,
+              height: kImage,
               child: ListView.separated(
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
@@ -45,27 +45,6 @@ class WishlistScreen extends StatelessWidget {
                   );
                 },
               ),
-            ),
-            ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              itemCount: 8,
-              itemBuilder: (context, index) {
-                return Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: AppColor.primary),
-                      borderRadius: BorderRadius.circular(kEditRadius)),
-                  padding: const EdgeInsets.symmetric(
-                      vertical: tiniestSpacing, horizontal: xxxSmallestSpacing),
-                  child: const Text('Fruits'),
-                );
-              },
-              separatorBuilder: (context, index) {
-                return const SizedBox(
-                  width: tiniestSpacing,
-                );
-              },
             ),
           ],
         ),
