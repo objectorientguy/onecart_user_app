@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../blocs/add_cart_item_bloc/add_cart_item_bloc.dart';
-import '../../../blocs/add_cart_item_bloc/add_cart_item_event.dart';
 import '../../../blocs/add_cart_item_bloc/add_cart_item_states.dart';
 
 import '../../../configs/app_color.dart';
@@ -67,7 +66,6 @@ class ItemDetailsPrice extends StatelessWidget {
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text("Item added to cart")));
-              context.read<AddToCartBloc>().add(AddItemsToCart());
             }
             if (state is AddItemsError) {
               ProgressBar.dismiss(context);

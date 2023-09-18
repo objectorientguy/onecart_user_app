@@ -26,7 +26,7 @@ class OrderTile extends StatelessWidget {
             width: kSizedBoxInfinite,
             height: kSizedBoxHeightLarge,
             decoration: BoxDecoration(
-                border: Border.all(color: AppColor.lightGrey),
+                color: AppColor.paleFaintGrey,
                 borderRadius: BorderRadius.circular(kSearchBarBorderRadius)),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,11 +34,14 @@ class OrderTile extends StatelessWidget {
                   Row(children: [
                     Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: xxxTinierSpacing),
+                            horizontal: tinierSpacing),
                         child: SizedBox(
-                            height: kTextboxHeightSmallest,
-                            width: kTextboxHeightSmallest,
+                            height: kImageHeight,
+                            width: kImageWidth,
                             child: Image.asset(orderData[idx]['image']))),
+                    const SizedBox(
+                      width: xxxTinierSpacing,
+                    ),
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -52,8 +55,8 @@ class OrderTile extends StatelessWidget {
                                       .textTheme
                                       .xxTinier
                                       .copyWith(
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColor.brightRed),
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                 )
                               : Text(
                                   orderData[idx]['title'],
@@ -61,8 +64,8 @@ class OrderTile extends StatelessWidget {
                                       .textTheme
                                       .xxTinier
                                       .copyWith(
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColor.darkGrey),
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                 ),
                           (orderData[idx]['title'] == "Delivered")
                               ? Text(orderData[idx]['deliveryDate'],
@@ -87,7 +90,7 @@ class OrderTile extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: tinierSpacing),
                       child: Row(children: [
                         Icon(Icons.arrow_forward_ios_rounded,
-                            color: AppColor.grey, size: kCounterIcon),
+                            color: AppColor.primary, size: kCounterIcon),
                       ]))
                 ])));
   }

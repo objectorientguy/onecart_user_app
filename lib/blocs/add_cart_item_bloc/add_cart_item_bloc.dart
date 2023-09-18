@@ -24,7 +24,11 @@ class AddToCartBloc extends Bloc<AddToCartEvents, AddItemsToCartStates> {
     try {
       AddToCartModel addToCartModel =
           await _addToCartRepository.addItemsToCart();
-      Map cartDetails = {"product_id": 3, "variant_id": 2, "count": 5};
+      Map cartDetails = {
+        "product_id": event.data.productId,
+        "variant_id": event.data.variantId,
+        "count": event.data.count,
+      };
       emit(AddItemLoaded(
           addToTheCartModel: addToCartModel, cartItemDetails: cartDetails));
     } catch (e) {
