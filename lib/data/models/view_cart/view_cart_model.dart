@@ -8,7 +8,7 @@ String viewCartModelToJson(ViewCartModel data) => json.encode(data.toJson());
 class ViewCartModel {
   final int status;
   final String message;
-  final List<CartDetailsModel> data;
+  final List<CartDetailsData> data;
 
   ViewCartModel({
     required this.status,
@@ -21,8 +21,8 @@ class ViewCartModel {
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<CartDetailsModel>.from(
-                json["data"].map((x) => CartDetailsModel.fromJson(x))),
+            : List<CartDetailsData>.from(
+                json["data"].map((x) => CartDetailsData.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -32,19 +32,19 @@ class ViewCartModel {
       };
 }
 
-class CartDetailsModel {
+class CartDetailsData {
   final int cartItemId;
   final CartProduct product;
   final Variant variant;
 
-  CartDetailsModel({
+  CartDetailsData({
     required this.cartItemId,
     required this.product,
     required this.variant,
   });
 
-  factory CartDetailsModel.fromJson(Map<String, dynamic> json) =>
-      CartDetailsModel(
+  factory CartDetailsData.fromJson(Map<String, dynamic> json) =>
+      CartDetailsData(
         cartItemId: json["cartItemId"],
         product: CartProduct.fromJson(json["product"]),
         variant: Variant.fromJson(json["variant"]),

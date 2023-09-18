@@ -5,7 +5,7 @@ import '../../../data/models/view_cart/view_cart_model.dart';
 import 'cart_tile.dart';
 
 class CartItemList extends StatelessWidget {
-  final CartDetailsModel cartDetails;
+  final List<CartDetailsData> cartDetails;
 
   const CartItemList({
     super.key,
@@ -17,21 +17,22 @@ class CartItemList extends StatelessWidget {
     return Expanded(
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: List.generate(8, (index) {
-            return Column(
-              children: [
-                CartTileWidget(
-                  data: cartDetails,
-                ),
-                const SizedBox(
-                  height: xxTinySpacing,
-                )
-              ],
-            );
-            //ProductTileWidget(data: cartDetails);
-          }),
-        ),
+        child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: cartDetails.length,
+            itemBuilder: (context, index) {
+              return Column(
+                children: [
+                  CartTileWidget(
+                    data: cartDetails[index],
+                  ),
+                  const SizedBox(
+                    height: xxTinySpacing,
+                  )
+                ],
+              );
+            }),
       ),
     );
   }

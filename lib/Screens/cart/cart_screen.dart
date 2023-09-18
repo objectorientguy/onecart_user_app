@@ -39,7 +39,7 @@ class CartScreen extends StatelessWidget {
                 height: xxxSmallestSpacing,
               ),
               CartItemList(
-                cartDetails: state.viewCartModel.data[0],
+                cartDetails: state.viewCartModel.data,
               )
             ]),
           );

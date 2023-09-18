@@ -14,7 +14,7 @@ class CartTileWidget extends StatelessWidget {
     this.ratingShow = true,
   });
 
-  final CartDetailsModel data;
+  final CartDetailsData data;
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +36,14 @@ class CartTileWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.circular(kBorderRadiusSmall)),
-                          child: Image.network(data.variant.image[0].toString(),
+                          child: Image.network(data.variant.image.toString(),
                               fit: BoxFit.fill))))),
           const SizedBox(width: xxxTinySpacing),
           Expanded(
-            child: CartTileWidgetBody(data: data, ratingShow: ratingShow),
+            child: CartTileWidgetBody(
+              data: data,
+              ratingShow: ratingShow,
+            ),
           )
         ]);
   }

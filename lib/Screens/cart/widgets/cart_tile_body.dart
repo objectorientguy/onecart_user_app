@@ -16,7 +16,7 @@ class CartTileWidgetBody extends StatefulWidget {
     this.ratingShow = true,
   });
 
-  final CartDetailsModel data;
+  final CartDetailsData data;
 
   @override
   State<CartTileWidgetBody> createState() => _ProductTileWidgetBodyState();
