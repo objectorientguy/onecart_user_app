@@ -1,0 +1,23 @@
+{
+  "emulators": {
+    "hosting": {
+      "port": 5000,
+      "host": "0.0.0.0"
+    }
+  },
+  "hosting": {
+    "site": "one-cart-admin",
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
