@@ -10,11 +10,12 @@ class CounterScreen extends StatefulWidget {
   final double? width;
   final String title;
 
-  const CounterScreen(
-      {super.key,
-      this.height = kAddButtonHeight,
-      this.width = kAddButtonWidth,
-      this.title = 'ADD'});
+  const CounterScreen({
+    super.key,
+    this.height = kAddButtonHeight,
+    this.width = kAddButtonWidth,
+    this.title = 'ADD',
+  });
 
   @override
   State<CounterScreen> createState() => _CounterScreenState();
@@ -92,6 +93,7 @@ class _CounterScreenState extends State<CounterScreen> {
         width: widget.width,
         child: TextButton(
           onPressed: () {
+            //context.read<AddToCartBloc>().add(AddItemsToCart(data: null));
             _incrementCount();
             setState(() {
               isVisible = !isVisible;
