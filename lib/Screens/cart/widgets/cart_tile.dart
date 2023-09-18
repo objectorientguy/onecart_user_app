@@ -36,7 +36,7 @@ class CartTileWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.circular(kBorderRadiusSmall)),
-                          child: Image.network(data.variant.image.toString(),
+                          child: Image.network(data.variant.image[0].toString(),
                               fit: BoxFit.fill))))),
           const SizedBox(width: xxxTinySpacing),
           Expanded(

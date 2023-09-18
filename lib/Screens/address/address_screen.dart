@@ -58,105 +58,166 @@ class AddressScreen extends StatelessWidget {
                         physics: const BouncingScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: state.fetchAddressModel.data!.length,
-                        separatorBuilder: (context, index) => const Divider(
+                        separatorBuilder: (context, index) => const SizedBox(
                               height: smallestSpacing,
-                              thickness: xxxTiniestSpacing,
                             ),
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: xxxTinierSpacing),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: AppColor.primaryLight,
+                                  borderRadius:
+                                      BorderRadius.circular(smallCardCurve)),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: xxTinierSpacing,
+                                  horizontal: xxTinierSpacing),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                        height: xMediumSpacing,
-                                        width: xMediumSpacing,
-                                        decoration: const BoxDecoration(
-                                            color: AppColor.primaryLighter,
-                                            shape: BoxShape.circle),
-                                        child: const Icon(
-                                          Icons.location_on_outlined,
-                                          size: smallestSpacing,
-                                          color: AppColor.primary,
-                                        )),
-                                    const SizedBox(
-                                      width: xxxTinySpacing,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                                state.fetchAddressModel
-                                                    .data![index].addressType
-                                                    .toString(),
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .tinier),
-                                            const SizedBox(
-                                                width: xxTinierSpacing),
-                                          ],
-                                        ),
-                                        const SizedBox(
-                                            height: xxxTiniestSpacing),
-                                        Text(
-                                          state.fetchAddressModel.data![index]
-                                              .addressName
-                                              .toString(),
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .xxxTinier
-                                              .copyWith(color: AppColor.grey),
-                                        ),
-                                        Text(
-                                          state.fetchAddressModel.data![index]
-                                              .phoneNo
-                                              .toString(),
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .xxxTinier
-                                              .copyWith(color: AppColor.grey),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                        context, EditAddressScreen.routeName,
-                                        arguments: state.addressDetails[index]);
-                                  },
-                                  child: Container(
-                                      width: kBottomNavBarHeightX,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: AppColor.primary,
-                                          ),
-                                          color: AppColor.primaryLight,
-                                          borderRadius: BorderRadius.circular(
-                                              kBorderDiscount)),
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: xxTiniestSpacing,
-                                          horizontal: xxxTinierSpacing),
-                                      child: const Center(
-                                        child: Text(
-                                          'EDIT',
-                                          style: TextStyle(
-                                              color: AppColor.primary,
-                                              fontSize: xxxTinySpacing),
-                                        ),
-                                      )),
-                                ),
-                              ],
+                                    Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Icon(
+                                                      (state
+                                                                  .fetchAddressModel
+                                                                  .data![index]
+                                                                  .addressType
+                                                                  .toString() ==
+                                                              'Work')
+                                                          ? (Icons.laptop)
+                                                          : (Icons.home_sharp),
+                                                      size: kIconSizeSmall,
+                                                      color: AppColor.primary,
+                                                    ),
+                                                    const SizedBox(
+                                                      width: xxxTinierSpacing,
+                                                    ),
+                                                    Text(
+                                                      state
+                                                          .fetchAddressModel
+                                                          .data![index]
+                                                          .addressType
+                                                          .toString(),
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .tinier
+                                                          .copyWith(
+                                                              color: AppColor
+                                                                  .primary),
+                                                      maxLines: 2,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  height: xxTiniestSpacing,
+                                                ),
+                                                Row(children: [
+                                                  Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(
+                                                              width:
+                                                                  kAddressTileWidth,
+                                                              child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    state
+                                                                        .fetchAddressModel
+                                                                        .data![
+                                                                            index]
+                                                                        .addressName
+                                                                        .toString(),
+                                                                    style: Theme.of(
+                                                                            context)
+                                                                        .textTheme
+                                                                        .xxxTinier
+                                                                        .copyWith(
+                                                                            color:
+                                                                                AppColor.grey),
+                                                                  ),
+                                                                  Text(
+                                                                    state
+                                                                        .fetchAddressModel
+                                                                        .data![
+                                                                            index]
+                                                                        .phoneNo
+                                                                        .toString(),
+                                                                    style: Theme.of(
+                                                                            context)
+                                                                        .textTheme
+                                                                        .xxxTinier
+                                                                        .copyWith(
+                                                                            color:
+                                                                                AppColor.grey),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            InkWell(
+                                                              onTap: () {
+                                                                Navigator.pushNamed(
+                                                                    context,
+                                                                    EditAddressScreen
+                                                                        .routeName,
+                                                                    arguments: state
+                                                                            .addressDetails[
+                                                                        index]);
+                                                              },
+                                                              child: Container(
+                                                                  width:
+                                                                      kBottomNavBarHeightX,
+                                                                  decoration: BoxDecoration(
+                                                                      color: AppColor
+                                                                          .primary,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              kAddRadius)),
+                                                                  padding: const EdgeInsets
+                                                                      .symmetric(
+                                                                      vertical:
+                                                                          tiniestSpacing,
+                                                                      horizontal:
+                                                                          xxTiniestSpacing),
+                                                                  child:
+                                                                      const Center(
+                                                                    child: Text(
+                                                                      'Edit',
+                                                                      style: TextStyle(
+                                                                          color: AppColor
+                                                                              .white,
+                                                                          fontSize:
+                                                                              xxxTinySpacing),
+                                                                    ),
+                                                                  )),
+                                                            ),
+                                                          ],
+                                                        )
+                                                      ])
+                                                ])
+                                              ])
+                                        ])
+                                  ]),
                             ),
                           );
                         });
