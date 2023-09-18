@@ -9,6 +9,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Screens/root/root_screen.dart';
 import 'app_module/app_module.dart';
+import 'blocs/add_cart_item_bloc/add_cart_item_bloc.dart';
 import 'blocs/address_bloc/address_bloc.dart';
 import 'blocs/get_product_bloc/get_product_bloc.dart';
 import 'blocs/categories_bloc/categories_bloc.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(lazy: false, create: (context) => GetAllCartItemsBloc()),
         BlocProvider(lazy: false, create: (context) => CheckoutBloc()),
         BlocProvider(lazy: false, create: (context) => SearchProductsBloc()),
+        BlocProvider(lazy: false, create: (context) => AddToCartBloc()),
         BlocProvider(
             lazy: false,
             create: (context) => OnBoardingBloc()..add(CheckLoggedIn())),

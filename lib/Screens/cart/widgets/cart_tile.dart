@@ -31,8 +31,8 @@ class CartTileWidget extends StatelessWidget {
                   child: Padding(
                       padding: const EdgeInsets.all(tiniestSpacing),
                       child: Container(
-                          height: MediaQuery.of(context).size.width * 0.24,
-                          width: MediaQuery.of(context).size.width * 0.23,
+                          height: kCardHeightItem,
+                          width: kCardHeightItem,
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.circular(kBorderRadiusSmall)),

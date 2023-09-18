@@ -4,8 +4,9 @@ import 'add_cart_item_repository.dart';
 
 class AddToCartRepositoryImpl implements AddToCartRepository {
   Future<AddToCartModel> addToCart(Map cartdetails) async {
-    final response = await DioClient()
-        .post("https://oneart.onrender.com/add_to_cart/1", cartdetails);
+    final response = await DioClient().post(
+        "https://oneart.onrender.com/add_to_cart?customer_contact=9898989898",
+        cartdetails);
 
     return AddToCartModel.fromJson(response);
   }

@@ -14,23 +14,17 @@ class AddToCartBloc extends Bloc<AddToCartEvents, AddItemsToCartStates> {
   AddItemsToCartStates get initialState => AddItemInitial();
 
   AddToCartBloc() : super(AddItemInitial()) {
-    on<FetchCartItems>(_addItemsToCart);
+    on<AddItemsToCart>(_addItemsToCart);
   }
 
   FutureOr<void> _addItemsToCart(
-      FetchCartItems event, Emitter<AddItemsToCartStates> emit) async {
+      AddItemsToCart event, Emitter<AddItemsToCartStates> emit) async {
     emit(AddItemLoading());
 
     try {
       AddToCartModel addToCartModel =
           await _addToCartRepository.addItemsToCart();
-      Map cartDetails = {
-        "cartItem_id": 15,
-        "count": 5,
-        "cart_id": 1,
-        "product_id": 3,
-        "variant_id": 1
-      };
+      Map cartDetails = {"product_id": 3, "variant_id": 2, "count": 5};
       emit(AddItemLoaded(
           addToTheCartModel: addToCartModel, cartItemDetails: cartDetails));
     } catch (e) {
