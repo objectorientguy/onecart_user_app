@@ -21,8 +21,7 @@ class GetAllCartItemsBloc extends Bloc<GetAllCartItems, ViewCartStates> {
       GetAllCartItems event, Emitter<ViewCartStates> emit) async {
     emit(GetAllCartItemsLoading());
     try {
-      ViewCartModel viewCartModel =
-          await _viewCartRepository.getAllCartItems(event.cartItemId);
+      ViewCartModel viewCartModel = await _viewCartRepository.getAllCartItems();
 
       emit(GetAllCartItemsLoaded(viewCartModel: viewCartModel));
     } catch (e) {

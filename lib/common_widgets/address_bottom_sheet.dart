@@ -20,72 +20,74 @@ class AddressBottomSheet extends StatelessWidget {
         if (state is FetchAddressLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is FetchAddressLoaded) {
-          return Padding(
-              padding: const EdgeInsets.only(
-                left: xxTinySpacing,
-                top: tinierSpacing,
-                right: topBottomPadding,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: topBottomPadding),
-                    child: Row(
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Icon(Icons.close_rounded)),
-                        const SizedBox(width: xxTinySpacing),
-                        Text("Select a location",
-                            style: Theme.of(context)
-                                .textTheme
-                                .tinier
-                                .copyWith(fontWeight: FontWeight.w600)),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: xxxTinySpacing),
-                  SearchTextField(
-                      hintText: 'Search for area,street name..',
-                      hintStyle: Theme.of(context)
-                          .textTheme
-                          .xxxTinier
-                          .copyWith(fontWeight: FontWeight.w300),
-                      prefixicon: const Icon(
-                        Icons.search,
-                        color: AppColor.primary,
-                      ),
-                      textcontroller: myController),
-                  const SizedBox(height: xxTinierSpacing),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+          return SafeArea(
+            child: Padding(
+                padding: const EdgeInsets.only(
+                  left: xxTinySpacing,
+                  top: tinierSpacing,
+                  right: topBottomPadding,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: topBottomPadding),
+                      child: Row(
                         children: [
-                          const LocationCardTile(),
-                          const SizedBox(height: tinySpacing),
-                          Text("Saved Address",
+                          InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Icon(Icons.close_rounded)),
+                          const SizedBox(width: xxTinySpacing),
+                          Text("Select a location",
                               style: Theme.of(context)
                                   .textTheme
                                   .tinier
-                                  .copyWith(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500)),
-                          const SizedBox(
-                            height: xxxTinySpacing,
-                          ),
-                          LocationSavedAddressBody(
-                              addressData: state.fetchAddressModel.data!),
+                                  .copyWith(fontWeight: FontWeight.w600)),
                         ],
                       ),
                     ),
-                  ),
-                ],
-              ));
+                    const SizedBox(height: xxxTinySpacing),
+                    SearchTextField(
+                        hintText: 'Search for area,street name..',
+                        hintStyle: Theme.of(context)
+                            .textTheme
+                            .xxxTinier
+                            .copyWith(fontWeight: FontWeight.w300),
+                        prefixicon: const Icon(
+                          Icons.search,
+                          color: AppColor.primary,
+                        ),
+                        textcontroller: myController),
+                    const SizedBox(height: xxTinierSpacing),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const LocationCardTile(),
+                            const SizedBox(height: tinySpacing),
+                            Text("Saved Address",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .tinier
+                                    .copyWith(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w500)),
+                            const SizedBox(
+                              height: xxxTinySpacing,
+                            ),
+                            LocationSavedAddressBody(
+                                addressData: state.fetchAddressModel.data!),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+          );
         }
         if (state is FetchAddressError) {
           return Container();

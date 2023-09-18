@@ -79,3 +79,5 @@ const double kCardHeightItem = 80.0;
 const double kFeatureDivider = 0.3;
 const double kEditRadius = 20.0;
 const double kBigRadius = 15.0;
+const double kProductTileTitleWidth = 135.0;
+const double kAddressTileWidth = 230.0;

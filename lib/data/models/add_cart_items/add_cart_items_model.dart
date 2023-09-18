@@ -6,58 +6,57 @@ AddToCartModel addToCartModelFromJson(String str) =>
 String addToCartModelToJson(AddToCartModel data) => json.encode(data.toJson());
 
 class AddToCartModel {
-  final String? status;
-  final String? message;
-  final AddToCartData? data;
+  final int status;
+  final String message;
+  final Data data;
 
   AddToCartModel({
-    this.status,
-    this.message,
-    this.data,
+    required this.status,
+    required this.message,
+    required this.data,
   });
 
   factory AddToCartModel.fromJson(Map<String, dynamic> json) => AddToCartModel(
         status: json["status"],
         message: json["message"],
-        data:
-            json["data"] == null ? null : AddToCartData.fromJson(json["data"]),
+        data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
-        "data": data?.toJson(),
+        "data": data.toJson(),
       };
 }
 
-class AddToCartData {
-  final int? cartId;
-  final int? cartItemId;
-  final int? productId;
-  final int? variantId;
-  final int? itemCount;
+class Data {
+  final int cartItemId;
+  final int count;
+  final int cartId;
+  final int productId;
+  final int variantId;
 
-  AddToCartData({
-    this.cartId,
-    this.cartItemId,
-    this.productId,
-    this.variantId,
-    this.itemCount,
+  Data({
+    required this.cartItemId,
+    required this.count,
+    required this.cartId,
+    required this.productId,
+    required this.variantId,
   });
 
-  factory AddToCartData.fromJson(Map<String, dynamic> json) => AddToCartData(
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+        cartItemId: json["cartItem_id"],
+        count: json["count"],
         cartId: json["cart_id"],
-        cartItemId: json["cartItemId"],
         productId: json["product_id"],
         variantId: json["variant_id"],
-        itemCount: json["item_count"],
       );
 
   Map<String, dynamic> toJson() => {
+        "cartItem_id": cartItemId,
+        "count": count,
         "cart_id": cartId,
-        "cartItemId": cartItemId,
         "product_id": productId,
         "variant_id": variantId,
-        "item_count": itemCount,
       };
 }
