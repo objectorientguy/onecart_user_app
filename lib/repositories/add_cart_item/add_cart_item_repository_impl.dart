@@ -10,9 +10,4 @@ class AddToCartRepositoryImpl implements AddToCartRepository {
 
     return AddToCartModel.fromJson(response);
   }
-
-  @override
-  Future<AddToCartModel> addItemsToCart() {
-    throw UnimplementedError();
-  }
 }

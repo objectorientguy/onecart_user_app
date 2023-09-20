@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/profile/widgets/profile_list_widget.dart';
+import 'package:onecart_user_app/Screens/wishlist/wishlist_screen.dart';
 
 import '../../../configs/app_dimensions.dart';
 import '../../address/address_screen.dart';
@@ -29,10 +30,16 @@ class ProfileOptionsList extends StatelessWidget {
         const Divider(
           height: kDivider,
         ),
-        const ProfileListWidget(
-          title: 'Favorite items',
-          description: 'All your handpicked items at one place',
-          icon: Icons.favorite,
+        InkWell(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const WishlistScreen()));
+          },
+          child: const ProfileListWidget(
+            title: 'Favorite items',
+            description: 'All your handpicked items at one place',
+            icon: Icons.favorite,
+          ),
         ),
         const Divider(height: kDivider, thickness: kFeatureDivider),
         const ProfileListWidget(

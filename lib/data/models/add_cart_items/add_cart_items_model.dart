@@ -8,7 +8,7 @@ String addToCartModelToJson(AddToCartModel data) => json.encode(data.toJson());
 class AddToCartModel {
   final int status;
   final String message;
-  final Data data;
+  final CartData data;
 
   AddToCartModel({
     required this.status,
@@ -19,7 +19,7 @@ class AddToCartModel {
   factory AddToCartModel.fromJson(Map<String, dynamic> json) => AddToCartModel(
         status: json["status"],
         message: json["message"],
-        data: Data.fromJson(json["data"]),
+        data: CartData.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -29,14 +29,14 @@ class AddToCartModel {
       };
 }
 
-class Data {
+class CartData {
   final int cartItemId;
   final int count;
   final int cartId;
   final int productId;
   final int variantId;
 
-  Data({
+  CartData({
     required this.cartItemId,
     required this.count,
     required this.cartId,
@@ -44,7 +44,7 @@ class Data {
     required this.variantId,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory CartData.fromJson(Map<String, dynamic> json) => CartData(
         cartItemId: json["cartItem_id"],
         count: json["count"],
         cartId: json["cart_id"],

@@ -22,11 +22,20 @@ class AddToCartBloc extends Bloc<AddToCartEvents, AddItemsToCartStates> {
     emit(AddItemLoading());
 
     try {
+      Map cartDetails = {
+        "product_id": event.prodId,
+        "variant_id": event.variantId,
+        "count": event.count,
+      };
       AddToCartModel addToCartModel =
-          await _addToCartRepository.addItemsToCart();
-      Map cartDetails = {"product_id": 3, "variant_id": 2, "count": 5};
-      emit(AddItemLoaded(
-          addToTheCartModel: addToCartModel, cartItemDetails: cartDetails));
+          await _addToCartRepository.addToCart(cartDetails);
+
+      if (addToCartModel.status == 200) {
+        emit(AddItemLoaded(
+            addToTheCartModel: addToCartModel, cartItemDetails: cartDetails));
+      } else {
+        emit(AddItemsError(message: addToCartModel.message));
+      }
     } catch (e) {
       emit(AddItemsError(message: e.toString()));
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/orders/widgets/item_orders_expansiontile.dart';
 import 'package:onecart_user_app/Screens/orders/widgets/order_details_bottom_appbar.dart';
 import 'package:onecart_user_app/common_widgets/oder_detail_screen_card_two.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
@@ -117,10 +118,10 @@ class OrdersDetailsScreen extends StatelessWidget {
                             orderData: orderData,
                           )),
                       const SizedBox(height: xxTinierSpacing),
-                      // Theme(
-                      //     data: Theme.of(context)
-                      //         .copyWith(dividerColor: AppColor.transparent),
-                      //     child: const ItemOrderedExpansionTile()),
+                      Theme(
+                          data: Theme.of(context)
+                              .copyWith(dividerColor: AppColor.transparent),
+                          child: const ItemOrderedExpansionTile()),
                     ]))));
   }
 }

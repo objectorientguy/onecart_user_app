@@ -34,12 +34,14 @@ class CartScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
                 horizontal: leftRightMargin, vertical: xxxTinierSpacing),
             child: Column(children: [
-              const CartHeader(),
+              CartHeader(
+                cartDetails: state.viewCartModel.data,
+              ),
               const SizedBox(
                 height: xxxSmallestSpacing,
               ),
               CartItemList(
-                cartDetails: state.viewCartModel.data,
+                cartDetails: state.viewCartModel.data.cartItems,
               )
             ]),
           );

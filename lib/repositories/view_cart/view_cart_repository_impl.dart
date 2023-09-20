@@ -7,7 +7,7 @@ class ViewCartRepositoryImpl implements ViewCartRepository {
   @override
   Future<ViewCartModel> getAllCartItems() async {
     final response = await DioClient()
-        .get("https://oneart.onrender.com/getProductswithCartId/1");
+        .get("https://oneart.onrender.com/your_cart/9898989898");
     return ViewCartModel.fromJson(response);
   }
 }
