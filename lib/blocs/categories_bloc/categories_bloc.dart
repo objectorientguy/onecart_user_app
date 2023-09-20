@@ -24,6 +24,7 @@ class GetAllCategoriesBloc extends Bloc<CategoriesEvent, CategoriesStates> {
     try {
       GetAllCategoriesListModel getAllCategoriesListModel =
           await _categoriesRepository.getAllCategories();
+
       emit(GetAllCategoriesLoaded(
           getAllCategoriesListModel: getAllCategoriesListModel));
     } catch (e) {
