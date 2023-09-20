@@ -1,14 +1,16 @@
 import 'package:another_stepper/dto/stepper_data.dart';
 import 'package:another_stepper/widgets/another_stepper.dart';
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/data/models/orders/order_details_model.dart';
 
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
 
 class StepperWidget extends StatelessWidget {
+  final Tracking trackingData;
   const StepperWidget({
-    super.key,
+    super.key, required this.trackingData,
   });
 
   @override
@@ -16,7 +18,7 @@ class StepperWidget extends StatelessWidget {
     List<StepperData> stepperData = [
       StepperData(
         title: StepperText(
-          "Ordered",
+          trackingData.ordered.toString(),
         ),
         subtitle: StepperText("Mon,29 Aug 11:59 AM"),
         iconWidget: Container(
@@ -31,7 +33,7 @@ class StepperWidget extends StatelessWidget {
       ),
       StepperData(
           title: StepperText(
-            "Under Process",
+      trackingData.underProcess.toString(),
             textStyle: const TextStyle(
               color: Colors.grey,
             ),
@@ -40,7 +42,7 @@ class StepperWidget extends StatelessWidget {
           iconWidget: Image.asset('assets/order_placed.png')),
       StepperData(
           title: StepperText(
-            "Shipped",
+            trackingData.shipped.toString(),
             textStyle: const TextStyle(
               color: Colors.grey,
             ),
@@ -48,7 +50,7 @@ class StepperWidget extends StatelessWidget {
           subtitle: StepperText("Mon,29 Aug 11:59 AM"),
           iconWidget: Image.asset('assets/order_shipped.png')),
       StepperData(
-          title: StepperText("Delivered",
+          title: StepperText(trackingData.delivered.toString(),
               textStyle: const TextStyle(color: Colors.grey)),
           subtitle: StepperText("Mon,29 Aug 11:59 AM"),
           iconWidget: Image.asset('assets/confirmation.png')),

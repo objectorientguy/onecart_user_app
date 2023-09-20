@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/orders/widgets/my_orders_list_tile.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../blocs/orderdetails/order_details_states.dart';
+import '../../blocs/orderdetails/orders_details_bloc.dart';
 import '../../configs/app_color.dart';
 import 'order_details_screen.dart';
 
@@ -11,6 +14,8 @@ class OrdersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //context.read<GetAllOrdersDetailsBloc>().add(GetAllOrdersDetails());
+
     List orderData = [
       {
         'title': 'Order Placed',
@@ -68,23 +73,35 @@ class OrdersScreen extends StatelessWidget {
                 SizedBox(width: smallestSpacing)
               ],
             ),
-            body: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: xxxTinierSpacing,
-              ),
-              child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: orderData.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  const OrdersDetailsScreen()));
-                        },
-                        child: OrderTile(orderData: orderData, idx: index));
-                  }),
-            )));
+            body: BlocBuilder<GetAllOrdersDetailsBloc, OrdersDetailsStates>(
+                builder: (context, state) {
+                  if (state is GetAllOrdersDetailsLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is GetAllOrdersDetailsLoaded) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: xxxTinierSpacing,
+                      ),
+                      child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: orderData.length,
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                       OrdersDetailsScreen( data: state.getOrdersDetailsModel.data)));
+                                },
+                                child: OrderTile(orderData: orderData, idx: index));
+                          }));
+                  }
+                  if (state is GetAllOrdersDetailsError) {
+                    return Container();
+                  } else {
+                    return const SizedBox();
+                  }
+                })
+            ));
   }
 }

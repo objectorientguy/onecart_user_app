@@ -36,7 +36,7 @@ class _RootScreenState extends State<RootScreen> {
   static final List _widgetOptions = [
     const HomeScreen(),
     const CategoryGridScreen(),
-    const OrdersScreen(),
+     const OrdersScreen(),
     const ProfileScreen(),
     const CartScreen(),
   ];

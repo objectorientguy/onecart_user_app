@@ -1,53 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/orders/widgets/item_orders_expansiontile.dart';
 import 'package:onecart_user_app/Screens/orders/widgets/order_details_bottom_appbar.dart';
 import 'package:onecart_user_app/common_widgets/oder_detail_screen_card_two.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import '../../blocs/orderdetails/order_details_states.dart';
+import '../../blocs/orderdetails/orders_details_bloc.dart';
 import '../../common_widgets/order_detail_screen_card.dart';
 import '../../configs/app_color.dart';
+import '../../data/models/orders/order_details_model.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
   static const routeName = 'OrdersDetailsScreen';
+  final OrderData data;
 
-  const OrdersDetailsScreen({Key? key}) : super(key: key);
+  const OrdersDetailsScreen({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List orderData = [
-      {
-        'title': 'Name',
-        'status': 'Ayushi Chintawar',
-      },
-      {
-        'title': 'Order Number',
-        'status': '1661587456982A2',
-      },
-      {
-        'title': 'Order Date',
-        'status': '29 August 2022',
-      },
-      {
-        'title': 'Product Total',
-        'status': '₹ 583.00',
-      },
-      {
-        'title': 'Order Amount',
-        'status': '₹ 583.00 (3 items)',
-      },
-      {
-        'title': 'Delivery Fee',
-        'status': 'Free',
-      },
-      {
-        'title': 'Invoice Number',
-        'status': 'TFM511455884510',
-      },
-      {
-        'title': 'Invoice Amount',
-        'status': '₹ 575.00',
-      }
-    ];
+    // List orderData = [
+    //   {
+    //     'title': 'Name',
+    //     'status': 'Ayushi Chintawar',
+    //   },
+    //   {
+    //     'title': 'Order Number',
+    //     'status': '1661587456982A2',
+    //   },
+    //   {
+    //     'title': 'Order Date',
+    //     'status': '29 August 2022',
+    //   },
+    //   {
+    //     'title': 'Product Total',
+    //     'status': '₹ 583.00',
+    //   },
+    //   {
+    //     'title': 'Order Amount',
+    //     'status': '₹ 583.00 (3 items)',
+    //   },
+    //   {
+    //     'title': 'Delivery Fee',
+    //     'status': 'Free',
+    //   },
+    //   {
+    //     'title': 'Invoice Number',
+    //     'status': 'TFM511455884510',
+    //   },
+    //   {
+    //     'title': 'Invoice Amount',
+    //     'status': '₹ 575.00',
+    //   }
+    // ];
 
     return Scaffold(
         appBar: AppBar(
@@ -74,54 +79,67 @@ class OrdersDetailsScreen extends StatelessWidget {
               )
             ]),
         bottomNavigationBar: const OrderDetailsBottomAppBar(),
-        body: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: xxTinySpacing, vertical: tinierSpacing),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: tiniestSpacing),
+        body: BlocBuilder<GetAllOrdersDetailsBloc, OrdersDetailsStates>(
+            builder: (context, state) {
+              if (state is GetAllOrdersDetailsLoading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state is GetAllOrdersDetailsLoaded) {
+                return SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: xxTinySpacing, vertical: tinierSpacing),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Order Status',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .xxTiny
-                                    .copyWith(
-                                        color: AppColor.black,
-                                        fontWeight: FontWeight.w500)),
-                            const SizedBox(height: xxxTinierSpacing),
-                            Text('Delivered on Aug 29',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .tinier
-                                    .copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        color: AppColor.primary)),
-                            const SizedBox(height: xxxSmallestSpacing),
-                          ],
-                        ),
-                      ),
-                      Theme(
-                          data: Theme.of(context)
-                              .copyWith(dividerColor: AppColor.transparent),
-                          child: const OrderTrackingExpansionTile()),
-                      const SizedBox(height: xxTinierSpacing),
-                      Theme(
-                          data: Theme.of(context)
-                              .copyWith(dividerColor: AppColor.transparent),
-                          child: OderDetailExpansionTile(
-                            orderData: orderData,
-                          )),
-                      const SizedBox(height: xxTinierSpacing),
-                      Theme(
-                          data: Theme.of(context)
-                              .copyWith(dividerColor: AppColor.transparent),
-                          child: const ItemOrderedExpansionTile()),
-                    ]))));
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: tiniestSpacing),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Order Status',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .xxTiny
+                                            .copyWith(
+                                            color: AppColor.black,
+                                            fontWeight: FontWeight.w500)),
+                                    const SizedBox(height: xxxTinierSpacing),
+                                    Text('Delivered on Aug 29',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .tinier
+                                            .copyWith(
+                                            fontWeight: FontWeight.w600,
+                                            color: AppColor.primary)),
+                                    const SizedBox(height: xxxSmallestSpacing),
+                                  ],
+                                ),
+                              ),
+                              Theme(
+                                  data: Theme.of(context)
+                                      .copyWith(dividerColor: AppColor.transparent),
+                                  child:  OrderTrackingExpansionTile(data: state.getOrdersDetailsModel.data)),
+                              const SizedBox(height: xxTinierSpacing),
+                              Theme(
+                                  data: Theme.of(context)
+                                      .copyWith(dividerColor: AppColor.transparent),
+                                  child: OderDetailExpansionTile(data: state.getOrdersDetailsModel.data,
+                                   // orderData: orderData,
+                                  )),
+                              const SizedBox(height: xxTinierSpacing),
+                              Theme(
+                                  data: Theme.of(context)
+                                      .copyWith(dividerColor: AppColor.transparent),
+                                  child: const ItemOrderedExpansionTile()),
+                            ])));
+              }
+              if (state is GetAllOrdersDetailsError) {
+                return Container();
+              } else {
+                return const SizedBox();
+              }
+            })
+    );
   }
 }
