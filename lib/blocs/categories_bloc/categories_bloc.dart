@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/categories_bloc/categories_events.dart';
@@ -25,7 +24,6 @@ class GetAllCategoriesBloc extends Bloc<CategoriesEvent, CategoriesStates> {
     try {
       GetAllCategoriesListModel getAllCategoriesListModel =
           await _categoriesRepository.getAllCategories();
-      log(getAllCategoriesListModel.data.toString());
       emit(GetAllCategoriesLoaded(
           getAllCategoriesListModel: getAllCategoriesListModel));
     } catch (e) {
