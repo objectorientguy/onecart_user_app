@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/wishlist/widgets/gridview_widget.dart';
 import 'package:onecart_user_app/Screens/wishlist/widgets/horizontal_wishlist_category.dart';
-import 'package:onecart_user_app/Screens/wishlist/widgets/listview_widget.dart';
+import 'package:onecart_user_app/Screens/wishlist/widgets/list_view_widget.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 
 import '../../configs/app_color.dart';
