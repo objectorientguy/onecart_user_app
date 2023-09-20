@@ -27,7 +27,7 @@ class ItemOrderedExpansionTile extends StatelessWidget {
               Text('Item Ordered', style: Theme.of(context).textTheme.xxTiny),
           trailing: const Icon(Icons.keyboard_arrow_down),
           children: List.generate(3, (index) {
-            return const OrderPlacedTile();
+            return const OrderPlacedTile(title: 'Add Review');
           })),
     );
   }
