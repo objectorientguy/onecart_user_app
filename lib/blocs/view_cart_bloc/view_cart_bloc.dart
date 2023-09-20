@@ -20,12 +20,12 @@ class GetAllCartItemsBloc extends Bloc<GetAllCartItems, ViewCartStates> {
   FutureOr<void> _getAllCartItems(
       GetAllCartItems event, Emitter<ViewCartStates> emit) async {
     emit(GetAllCartItemsLoading());
-    //try {
-    ViewCartModel viewCartModel = await _viewCartRepository.getAllCartItems();
+    try {
+      ViewCartModel viewCartModel = await _viewCartRepository.getAllCartItems();
 
-    emit(GetAllCartItemsLoaded(viewCartModel: viewCartModel));
-    // } catch (e) {
-    //   emit(GetAllCartItemsError(message: e.toString()));
-    // }
+      emit(GetAllCartItemsLoaded(viewCartModel: viewCartModel));
+    } catch (e) {
+      emit(GetAllCartItemsError(message: e.toString()));
+    }
   }
 }

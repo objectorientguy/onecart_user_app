@@ -48,7 +48,6 @@ class OrdersScreen extends StatelessWidget {
         'quantity': 12
       },
     ];
-    //context.read<GetAllOrdersBloc>().add(GetAllOrders());
     return WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
