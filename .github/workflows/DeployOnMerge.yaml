@@ -1,0 +1,46 @@
+name: Deploy to Firebase Hosting on PR
+'on':
+  pull_request:
+    branches:
+      - dev
+  workflow_dispatch:
+
+  push:
+    branches:
+      - dev
+
+
+jobs:
+  build_and_preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Setup Flutter environment
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Run Flutter dependencies
+        run: flutter pub get
+
+      - name: Check for formatting in the code
+        run: dart format --set-exit-if-changed .
+
+      - name: Analyze Static code
+        run: flutter analyze .
+
+      - name: Build Web app
+        run: flutter build web --release --web-renderer canvaskit --no-tree-shake-icons
+
+      - name: Deploy Web App
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ONECART_8AC19 }}'
+          projectId: onecart-8ac19
+          channelId: live

@@ -2,6 +2,8 @@ import 'package:get_it/get_it.dart';
 import 'package:onecart_user_app/repositories/search_products/search_products_repository_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../repositories/add_cart_item/add_cart_item_repository.dart';
+import '../repositories/add_cart_item/add_cart_item_repository_impl.dart';
 import '../repositories/address_repo/address_repository.dart';
 import '../repositories/address_repo/address_repository_impl.dart';
 import '../repositories/authentication/authentication_repository.dart';
@@ -46,6 +48,10 @@ configurableDependencies() {
       () => ViewCartRepositoryImpl());
   getIt.registerLazySingleton<SearchProductsRepository>(
       () => SearchProductsRepositoryImpl());
+
+  getIt.registerLazySingleton<AddToCartRepository>(
+      () => AddToCartRepositoryImpl());
+
   getIt.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl());
   getIt.registerLazySingleton<CustomerCache>(
       () => CustomerCache(sharedPreferences: getIt<SharedPreferences>()));

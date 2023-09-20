@@ -5,9 +5,9 @@ import '../../utils/dio_client.dart';
 
 class ViewCartRepositoryImpl implements ViewCartRepository {
   @override
-  Future<ViewCartModel> getAllCartItems(int cartId) async {
+  Future<ViewCartModel> getAllCartItems() async {
     final response = await DioClient()
-        .get("https://oneart.onrender.com/getProductswithCartId/$cartId");
+        .get("https://oneart.onrender.com/your_cart/9898989898");
     return ViewCartModel.fromJson(response);
   }
 }

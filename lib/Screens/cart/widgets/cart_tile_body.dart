@@ -4,32 +4,27 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/general_data_model/general_category_data.dart';
-import '../../../utils/varient_index_util.dart';
-import 'counter_widget.dart';
+import '../../../data/models/view_cart/view_cart_model.dart';
+import '../../home/widgets/counter_widget.dart';
 
-class ProductTileWidgetBody extends StatefulWidget {
+class CartTileWidgetBody extends StatefulWidget {
   final bool ratingShow;
-  final bool addButtonVisible;
 
-  const ProductTileWidgetBody({
+  const CartTileWidgetBody({
     super.key,
     required this.data,
     this.ratingShow = true,
-    this.addButtonVisible = true,
   });
 
-  final Product data;
+  final CartItem data;
 
   @override
-  State<ProductTileWidgetBody> createState() => _ProductTileWidgetBodyState();
+  State<CartTileWidgetBody> createState() => _ProductTileWidgetBodyState();
 }
 
-class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
+class _ProductTileWidgetBodyState extends State<CartTileWidgetBody> {
   @override
   Widget build(BuildContext context) {
-    int variantIndex = VariantIndexUtil().getVariantIndex(widget.data);
-
     return SizedBox(
       height: kProductSizedBox,
       child: Column(
@@ -43,7 +38,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                   SizedBox(
                       width: kProductTileTitleWidth,
                       child: Text(
-                          widget.data.productName
+                          widget.data.product.productName
                               .toString()
                               .replaceAll('\n', ""),
                           style: Theme.of(context).textTheme.xxTinier.copyWith(
@@ -66,9 +61,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
             SizedBox(
               width: kProductTileTitleWidth,
               child: Text(
-                widget.data.variants[variantIndex].quantity
-                    .toString()
-                    .replaceAll("\n", " "),
+                widget.data.variant.quantity.toString().replaceAll("\n", " "),
                 style: Theme.of(context)
                     .textTheme
                     .tiniest
@@ -87,7 +80,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                       children: [
                         Row(children: [
                           Text(
-                              '₹${widget.data.variants[0].discountedCost.toString()}',
+                              '₹${widget.data.variant.discountedCost.toString()}',
                               style: Theme.of(context)
                                   .textTheme
                                   .xxTinier
@@ -95,8 +88,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                       fontWeight: FontWeight.w500,
                                       color: AppColor.black)),
                           const SizedBox(width: tiniestSpacing),
-                          Text(
-                              '₹${widget.data.variants[0].variantCost.toString()}',
+                          Text('₹${widget.data.variant.variantCost.toString()}',
                               style: Theme.of(context)
                                   .textTheme
                                   .xxxTinier
@@ -117,7 +109,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                 horizontal: xxxTiniestSpacing),
                             child: Center(
                                 child: Text(
-                                    '${widget.data.variants[0].discount} % off',
+                                    '${widget.data.variant.discount} % off',
                                     style: Theme.of(context)
                                         .textTheme
                                         .xxxTiniest
@@ -125,9 +117,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                             color: AppColor.primary,
                                             fontWeight: FontWeight.w500))))
                       ]),
-                  Visibility(
-                      visible: widget.addButtonVisible == true,
-                      child: const CounterScreen()),
+                  const CounterScreen()
                 ])
           ]),
     );

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../../blocs/add_cart_item_bloc/add_cart_item_bloc.dart';
+import '../../../blocs/add_cart_item_bloc/add_cart_item_event.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
@@ -9,12 +12,17 @@ class CounterScreen extends StatefulWidget {
   final double? height;
   final double? width;
   final String title;
+  final int? prodId;
+  final int? variantId;
 
-  const CounterScreen(
-      {super.key,
-      this.height = kAddButtonHeight,
-      this.width = kAddButtonWidth,
-      this.title = 'ADD'});
+  const CounterScreen({
+    super.key,
+    this.height = kAddButtonHeight,
+    this.width = kAddButtonWidth,
+    this.title = 'ADD',
+    this.prodId,
+    this.variantId,
+  });
 
   @override
   State<CounterScreen> createState() => _CounterScreenState();
@@ -92,6 +100,10 @@ class _CounterScreenState extends State<CounterScreen> {
         width: widget.width,
         child: TextButton(
           onPressed: () {
+            context.read<AddToCartBloc>().add(AddItemsToCart(
+                prodId: widget.prodId!,
+                variantId: widget.variantId!,
+                count: _count));
             _incrementCount();
             setState(() {
               isVisible = !isVisible;

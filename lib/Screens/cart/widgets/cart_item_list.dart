@@ -1,33 +1,39 @@
-// import 'package:flutter/material.dart';
-//
-// import '../../../configs/app_spacing.dart';
-// import '../../../data/models/general_data_model/general_category_data.dart';
-// import '../../../data/models/home/home_model.dart';
-// import '../../home/widgets/product_tile_widget.dart';
-//
-// class CartItemList extends StatelessWidget {
-//   const CartItemList({
-//     super.key,
-//   });
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Expanded(
-//       child: SingleChildScrollView(
-//         physics: const BouncingScrollPhysics(),
-//         child: Column(
-//           children: List.generate(3, (index) {
-//             return Padding(
-//               padding: const EdgeInsets.all(tinierSpacing),
-//               child: ProductTileWidget(
-//                 ratingShow: false,
-//                 data: Product(
-//                      index: 2, productId: null, productName: '', details: '', variants: [],
-//               ),
-//             );
-//           }),
-//         ),
-//       ),
-//     );
-//   }
-// }
+import 'package:flutter/material.dart';
+
+import '../../../configs/app_spacing.dart';
+import '../../../data/models/view_cart/view_cart_model.dart';
+import 'cart_tile.dart';
+
+class CartItemList extends StatelessWidget {
+  final List<CartItem> cartDetails;
+
+  const CartItemList({
+    super.key,
+    required this.cartDetails,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: cartDetails.length,
+            itemBuilder: (context, index) {
+              return Column(
+                children: [
+                  CartTileWidget(
+                    data: cartDetails[index],
+                  ),
+                  const SizedBox(
+                    height: xxTinySpacing,
+                  )
+                ],
+              );
+            }),
+      ),
+    );
+  }
+}
