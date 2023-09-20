@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
@@ -27,7 +26,7 @@ class _AddressFilterChipWidgetState extends State<AddressFilterChipWidget> {
   singleSelect(item) {
     setState(() {
       selectedType = item;
-      widget.saveAddressMap['address_type']= item;
+      widget.saveAddressMap['address_type'] = item;
     });
   }
 
@@ -65,7 +64,6 @@ class _AddressFilterChipWidgetState extends State<AddressFilterChipWidget> {
                 selectedColor: AppColor.primary,
                 onSelected: (bool value) {
                   singleSelect(item);
-                  log('onTap===============>$selectedType');
                 }))
     ]);
   }

@@ -15,5 +15,4 @@ class AddAddress extends AddressEvents {
   AddAddress({required this.addAddress});
 }
 
-class DeleteAddress extends AddressEvents {
-}
+class DeleteAddress extends AddressEvents {}

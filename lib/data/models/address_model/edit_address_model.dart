@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-EditAddressModel editAddressModelFromJson(String str) => EditAddressModel.fromJson(json.decode(str));
+EditAddressModel editAddressModelFromJson(String str) =>
+    EditAddressModel.fromJson(json.decode(str));
 
-String editAddressModelToJson(EditAddressModel data) => json.encode(data.toJson());
+String editAddressModelToJson(EditAddressModel data) =>
+    json.encode(data.toJson());
 
 class EditAddressModel {
   List<Detail> detail;
@@ -15,13 +17,15 @@ class EditAddressModel {
     required this.detail,
   });
 
-  factory EditAddressModel.fromJson(Map<String, dynamic> json) => EditAddressModel(
-    detail: List<Detail>.from(json["detail"].map((x) => Detail.fromJson(x))),
-  );
+  factory EditAddressModel.fromJson(Map<String, dynamic> json) =>
+      EditAddressModel(
+        detail:
+            List<Detail>.from(json["detail"].map((x) => Detail.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "detail": List<dynamic>.from(detail.map((x) => x.toJson())),
-  };
+        "detail": List<dynamic>.from(detail.map((x) => x.toJson())),
+      };
 }
 
 class Detail {
@@ -40,20 +44,20 @@ class Detail {
   });
 
   factory Detail.fromJson(Map<String, dynamic> json) => Detail(
-    type: json["type"],
-    loc: List<String>.from(json["loc"].map((x) => x)),
-    msg: json["msg"],
-    input: Input.fromJson(json["input"]),
-    url: json["url"],
-  );
+        type: json["type"],
+        loc: List<String>.from(json["loc"].map((x) => x)),
+        msg: json["msg"],
+        input: Input.fromJson(json["input"]),
+        url: json["url"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "type": type,
-    "loc": List<dynamic>.from(loc.map((x) => x)),
-    "msg": msg,
-    "input": input.toJson(),
-    "url": url,
-  };
+        "type": type,
+        "loc": List<dynamic>.from(loc.map((x) => x)),
+        "msg": msg,
+        "input": input.toJson(),
+        "url": url,
+      };
 }
 
 class Input {
@@ -76,22 +80,22 @@ class Input {
   });
 
   factory Input.fromJson(Map<String, dynamic> json) => Input(
-    userContact: json["user_contact"],
-    addressType: json["address_type"],
-    addressName: json["address_name"],
-    phoneNo: json["phone_no"],
-    city: json["city"],
-    state: json["state"],
-    pincode: json["pincode"],
-  );
+        userContact: json["user_contact"],
+        addressType: json["address_type"],
+        addressName: json["address_name"],
+        phoneNo: json["phone_no"],
+        city: json["city"],
+        state: json["state"],
+        pincode: json["pincode"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "user_contact": userContact,
-    "address_type": addressType,
-    "address_name": addressName,
-    "phone_no": phoneNo,
-    "city": city,
-    "state": state,
-    "pincode": pincode,
-  };
+        "user_contact": userContact,
+        "address_type": addressType,
+        "address_name": addressName,
+        "phone_no": phoneNo,
+        "city": city,
+        "state": state,
+        "pincode": pincode,
+      };
 }

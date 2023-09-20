@@ -9,16 +9,14 @@ import 'address_repository.dart';
 class AddressRepositoryImpl implements AddressRepository {
   @override
   Future<GetAllAddressModel> fetchAddress() async {
-    final response =
-    await DioClient()
+    final response = await DioClient()
         .get("https://oneart.onrender.com/getAllAddresses?userId=9898989898");
-  return GetAllAddressModel.fromJson(response);
-   }
+    return GetAllAddressModel.fromJson(response);
+  }
 
   @override
-  Future<EditAddressModel> editAddress(Map saveAddress,int addressId) async {
-    final response =
-    await DioClient().put(
+  Future<EditAddressModel> editAddress(Map saveAddress, int addressId) async {
+    final response = await DioClient().put(
         "https://oneart.onrender.com/editAddress?addressId=$addressId",
         saveAddress);
     log('response=========>$response');
@@ -26,11 +24,10 @@ class AddressRepositoryImpl implements AddressRepository {
   }
 
   @override
-  Future<AddAddressModel> addAddress(Map addAddress,int userId) async {
-    final response =
-    await DioClient().post(
+  Future<AddAddressModel> addAddress(Map addAddress, int userId) async {
+    final response = await DioClient().post(
         "https://oneart.onrender.com/addAddress?user_contact=9898989898",
         addAddress);
-     return AddAddressModel.fromJson(response);
+    return AddAddressModel.fromJson(response);
   }
 }

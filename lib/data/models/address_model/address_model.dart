@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-GetAllAddressModel getAllAddressModelFromJson(String str) => GetAllAddressModel.fromJson(json.decode(str));
+GetAllAddressModel getAllAddressModelFromJson(String str) =>
+    GetAllAddressModel.fromJson(json.decode(str));
 
-String getAllAddressModelToJson(GetAllAddressModel data) => json.encode(data.toJson());
+String getAllAddressModelToJson(GetAllAddressModel data) =>
+    json.encode(data.toJson());
 
 class GetAllAddressModel {
   String status;
@@ -19,17 +21,19 @@ class GetAllAddressModel {
     required this.data,
   });
 
-  factory GetAllAddressModel.fromJson(Map<String, dynamic> json) => GetAllAddressModel(
-    status: json["status"],
-    message: json["message"],
-    data: List<AddressDatum>.from(json["data"].map((x) => AddressDatum.fromJson(x))),
-  );
+  factory GetAllAddressModel.fromJson(Map<String, dynamic> json) =>
+      GetAllAddressModel(
+        status: json["status"],
+        message: json["message"],
+        data: List<AddressDatum>.from(
+            json["data"].map((x) => AddressDatum.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    "message": message,
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
-  };
+        "status": status,
+        "message": message,
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+      };
 }
 
 class AddressDatum {
@@ -56,26 +60,26 @@ class AddressDatum {
   });
 
   factory AddressDatum.fromJson(Map<String, dynamic> json) => AddressDatum(
-    userContact: json["user_contact"],
-    addressName: json["address_name"],
-    addressType: json["address_type"],
-    city: json["city"],
-    pincode: json["pincode"],
-    addressId: json["address_id"],
-    phoneNo: json["phone_no"],
-    state: json["state"],
-    name: json["name"],
-  );
+        userContact: json["user_contact"],
+        addressName: json["address_name"],
+        addressType: json["address_type"],
+        city: json["city"],
+        pincode: json["pincode"],
+        addressId: json["address_id"],
+        phoneNo: json["phone_no"],
+        state: json["state"],
+        name: json["name"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "user_contact": userContact,
-    "address_name": addressName,
-    "address_type": addressType,
-    "city": city,
-    "pincode": pincode,
-    "address_id": addressId,
-    "phone_no": phoneNo,
-    "state": state,
-    "name": name,
-  };
+        "user_contact": userContact,
+        "address_name": addressName,
+        "address_type": addressType,
+        "city": city,
+        "pincode": pincode,
+        "address_id": addressId,
+        "phone_no": phoneNo,
+        "state": state,
+        "name": name,
+      };
 }

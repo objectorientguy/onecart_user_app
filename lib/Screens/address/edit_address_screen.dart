@@ -42,25 +42,22 @@ class EditAddressScreen extends StatelessWidget {
           title: 'Edit Address',
         ),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(tinierSpacing),
-          child: CustomElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  context.read<AddressBloc>().add(EditAddress(
-                      saveAddress: saveAddress,
-                      addressId: addressDataMap.addressId));
-                }
-                const SnackBar(content: Text('Enter the Data'));
-                log(saveAddress.toString());
-              },
-              buttonWidth: double.maxFinite,
-              buttonHeight: kElevatedButtonHeight,
-              child: Text(
-                'SAVE',
-                style: Theme.of(context).textTheme.xxTiny.copyWith(
-                    fontWeight: FontWeight.w600, color: AppColor.white)
-              ))
-        ),
+            padding: const EdgeInsets.all(tinierSpacing),
+            child: CustomElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    context.read<AddressBloc>().add(EditAddress(
+                        saveAddress: saveAddress,
+                        addressId: addressDataMap.addressId));
+                  }
+                  const SnackBar(content: Text('Enter the Data'));
+                  log(saveAddress.toString());
+                },
+                buttonWidth: double.maxFinite,
+                buttonHeight: kElevatedButtonHeight,
+                child: Text('SAVE',
+                    style: Theme.of(context).textTheme.xxTiny.copyWith(
+                        fontWeight: FontWeight.w600, color: AppColor.white)))),
         body: Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: leftRightMargin, vertical: topBottomPadding),
@@ -84,9 +81,10 @@ class EditAddressScreen extends StatelessWidget {
                         }
                         if (state is EditAddressError) {
                           ProgressBar.dismiss(context);
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                              content: Text("Something went wrong")));
-                                                }
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text("Something went wrong")));
+                        }
                       },
                       child: const SizedBox())
                 ]))));

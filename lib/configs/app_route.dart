@@ -70,7 +70,7 @@ class AppRoutes {
         ));
       case AddAddressScreen.routeName:
         return _createRoute(AddAddressScreen());
-        case AddAddressMapScreen.routeName:
+      case AddAddressMapScreen.routeName:
         return _createRoute(const AddAddressMapScreen());
       case CurrentLocation.routeName:
         return _createRoute(const CurrentLocation());

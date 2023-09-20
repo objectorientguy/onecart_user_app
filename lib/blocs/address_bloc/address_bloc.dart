@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/app_module/app_module.dart';
 import 'package:onecart_user_app/blocs/address_bloc/address_event.dart';
@@ -44,7 +42,6 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
     try {
       EditAddressModel editAddress = await _addressRepository.editAddress(
           event.saveAddress, event.addressId);
-      log('address get====================>${event.saveAddress}');
       emit(EditAddressLoaded(
         editAddressModel: editAddress,
         saveAddress: {},
@@ -58,16 +55,15 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
   FutureOr<void> _addAddress(
       AddAddress event, Emitter<AddressStates> emit) async {
     emit(AddAddressLoading());
-    // try {
-    log('address post===========>${event.addAddress}');
-    AddAddressModel addAddress =
-        await _addressRepository.addAddress(event.addAddress, 9898989898);
-    emit(AddAddressLoaded(
-      addAddressModel: addAddress,
-      addAddress: {},
-    ));
-    // } catch (e) {
-    //    emit(AddAddressError(message: e.toString()));
-    // }
+    try {
+      AddAddressModel addAddress =
+          await _addressRepository.addAddress(event.addAddress, 9898989898);
+      emit(AddAddressLoaded(
+        addAddressModel: addAddress,
+        addAddress: {},
+      ));
+    } catch (e) {
+      emit(AddAddressError(message: e.toString()));
+    }
   }
 }

@@ -57,7 +57,7 @@ class AddressScreen extends StatelessWidget {
                     return ListView.separated(
                         physics: const BouncingScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: state.fetchAddressModel.data!.length,
+                        itemCount: state.fetchAddressModel.data.length,
                         separatorBuilder: (context, index) => const SizedBox(
                               height: smallestSpacing,
                             ),
@@ -92,7 +92,7 @@ class AddressScreen extends StatelessWidget {
                                                     Icon(
                                                       (state
                                                                   .fetchAddressModel
-                                                                  .data![index]
+                                                                  .data[index]
                                                                   .addressType
                                                                   .toString() ==
                                                               'Work')
@@ -107,7 +107,7 @@ class AddressScreen extends StatelessWidget {
                                                     Text(
                                                       state
                                                           .fetchAddressModel
-                                                          .data![index]
+                                                          .data[index]
                                                           .addressType
                                                           .toString(),
                                                       style: Theme.of(context)
@@ -144,7 +144,7 @@ class AddressScreen extends StatelessWidget {
                                                                   Text(
                                                                     state
                                                                         .fetchAddressModel
-                                                                        .data![
+                                                                        .data[
                                                                             index]
                                                                         .addressName
                                                                         .toString(),
@@ -159,7 +159,7 @@ class AddressScreen extends StatelessWidget {
                                                                   Text(
                                                                     state
                                                                         .fetchAddressModel
-                                                                        .data![
+                                                                        .data[
                                                                             index]
                                                                         .phoneNo
                                                                         .toString(),
@@ -194,7 +194,7 @@ class AddressScreen extends StatelessWidget {
                                                                           BorderRadius.circular(
                                                                               kAddRadius)),
                                                                   padding: const EdgeInsets
-                                                                      .symmetric(
+                                                                          .symmetric(
                                                                       vertical:
                                                                           tiniestSpacing,
                                                                       horizontal:

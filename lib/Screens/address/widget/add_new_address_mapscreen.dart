@@ -17,8 +17,7 @@ class AddAddressMapScreen extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: GestureDetector(
-          child: AddAddressScreen()),
+      bottomNavigationBar: GestureDetector(child: AddAddressScreen()),
       body: Stack(
         fit: StackFit.expand,
         children: [
