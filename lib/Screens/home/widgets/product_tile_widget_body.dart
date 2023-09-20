@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../../blocs/add_cart_item_bloc/add_cart_item_bloc.dart';
+import '../../../blocs/add_cart_item_bloc/add_cart_item_states.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/general_data_model/general_category_data.dart';
 import '../../../utils/varient_index_util.dart';
+import '../../../widgets/progress_bar.dart';
 import 'counter_widget.dart';
 
 class ProductTileWidgetBody extends StatefulWidget {
@@ -123,7 +127,30 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                             color: AppColor.primary,
                                             fontWeight: FontWeight.w500))))
                       ]),
-                  const CounterScreen()
+                  BlocListener<AddToCartBloc, AddItemsToCartStates>(
+                    listener: (BuildContext context, state) {
+                      if (state is AddItemLoading) {
+                        ProgressBar.show(context);
+                      } else if (state is AddItemLoaded) {
+                        ProgressBar.dismiss(context);
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("Item added to cart")));
+                      }
+                      if (state is AddItemsError) {
+                        ProgressBar.dismiss(context);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("Something went wrong")));
+                        const SizedBox();
+                      }
+                    },
+                    child: CounterScreen(
+                      prodId: widget.data.productId,
+                      variantId: widget.data.variants[0].variantId,
+                    ),
+                  ),
                 ])
           ]),
     );
