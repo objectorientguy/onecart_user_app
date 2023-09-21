@@ -19,9 +19,9 @@ class SelectShops extends StatelessWidget {
     ];
 
     List shopBrandData = [
-      {"image": "assets/haldirams.png"},
-      {"image": "assets/burger.png"},
-      {"image": "assets/beans.jpeg"},
+      {"image": "assets/shop1.png"},
+      {"image": "assets/shop2.png"},
+      {"image": "assets/shop3.png"},
     ];
     return Scaffold(
       body: SafeArea(
@@ -99,12 +99,11 @@ class SelectShops extends StatelessWidget {
                                 BorderRadius.circular(kGeneralBorderRadius),
                             child: Image.asset(
                               shopBrandData[index]['image'],
-                              width: kGeneralBox,
                             ));
                       },
                       separatorBuilder: (context, index) {
                         return const SizedBox(
-                          width: tiniestSpacing,
+                          width: xxTinySpacing,
                         );
                       },
                     ),
