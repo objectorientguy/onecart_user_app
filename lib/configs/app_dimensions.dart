@@ -89,3 +89,4 @@ const double kHeight = 80.0;
 const double kThickness = 1.0;
 const double kShopBox = 100.0;
 const double kShopExplore = 150.0;
+const double kUserAvatar = 15.0;

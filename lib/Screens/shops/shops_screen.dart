@@ -30,6 +30,36 @@ class SelectShops extends StatelessWidget {
                 horizontal: leftRightMargin, vertical: topBottomPadding),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Image.asset('assets/app_logo.png'),
+                      const SizedBox(
+                        width: xxTinierSpacing,
+                      ),
+                      Text(
+                        'OneCart',
+                        style: Theme.of(context).textTheme.xTiny.copyWith(
+                            color: AppColor.mediumBlack,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                  const CircleAvatar(
+                    radius: kUserAvatar,
+                    backgroundColor: AppColor.lighterGrey,
+                    child: Icon(
+                      Icons.person,
+                      color: AppColor.primary,
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: smallestSpacing,
+              ),
               Text(
                 "POPULAR SHOPS NEAR YOU",
                 style: Theme.of(context).textTheme.xTinier.copyWith(
