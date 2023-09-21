@@ -68,7 +68,7 @@ class CategoryGridScreen extends StatelessWidget {
                                 crossAxisCount: 3, childAspectRatio: 0.9),
                         physics: const BouncingScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: state.getAllCategoriesListModel.data!.length,
+                        itemCount: state.getAllCategoriesListModel.data.length,
                         itemBuilder: (context, index) {
                           return SizedBox(
                             width: kHorizontalCategoryListItemWidth,
@@ -76,7 +76,7 @@ class CategoryGridScreen extends StatelessWidget {
                               onTap: () {
                                 context.read<GetProductBloc>().add(FetchProduct(
                                     cateId: state.getAllCategoriesListModel
-                                        .data![index].categoryId!));
+                                        .data[index].categoryId!));
                                 Navigator.pushNamed(
                                   context,
                                   CategoryItemScreen.routeName,
@@ -91,7 +91,7 @@ class CategoryGridScreen extends StatelessWidget {
                                       image: DecorationImage(
                                           image: NetworkImage(state
                                               .getAllCategoriesListModel
-                                              .data![index]
+                                              .data[index]
                                               .categoryImage!)),
                                       shape: BoxShape.circle,
                                     ),
@@ -102,7 +102,7 @@ class CategoryGridScreen extends StatelessWidget {
                                         kHorizontalCategoryListItemWidth * 1.3,
                                     child: Text(
                                       state.getAllCategoriesListModel
-                                          .data![index].categoryName
+                                          .data[index].categoryName
                                           .toString(),
                                       textAlign: TextAlign.center,
                                     ),

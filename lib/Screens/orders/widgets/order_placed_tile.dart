@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../../common_widgets/button_widget.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
 class OrderPlacedTile extends StatelessWidget {
-  const OrderPlacedTile({super.key});
+  final String title;
+
+  const OrderPlacedTile({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Row(
+    return Container(
+      decoration: BoxDecoration(
+          color: AppColor.paleFaintGrey,
+          borderRadius: BorderRadius.circular(smallCardCurve)),
+      padding: const EdgeInsets.symmetric(
+          vertical: xxxTinierSpacing, horizontal: xxxSmallestSpacing),
+      child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -38,10 +46,9 @@ class OrderPlacedTile extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            SizedBox(
-                                width: kSizedBoxWidth,
+                            Expanded(
                                 child: Text(
-                                    'Lays American Style Cream and Onion Potato Chips ',
+                                    'Lays American Style Cream and Onion Potato Chips  ',
                                     style: Theme.of(context)
                                         .textTheme
                                         .xxTinier
@@ -78,37 +85,14 @@ class OrderPlacedTile extends StatelessWidget {
                                         color: AppColor.lightestGrey)),
                           ],
                         ),
-                        SizedBox(
-                          height: kImage,
-                          child: TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                              minimumSize: Size.zero,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: tinierSpacing,
-                                  vertical: tiniestSpacing),
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(kAddRadius)),
-                              backgroundColor: AppColor.primary,
-                            ),
-                            child: Text('Add Review',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .xxxTinier
-                                    .copyWith(color: AppColor.white)),
-                          ),
-                        )
+                        ButtonWidget(
+                          title: title,
+                        ),
                       ])
                     ]),
               ),
             )
           ]),
-      const Divider(
-        thickness: kThickness,
-        color: AppColor.primary,
-      )
-    ]);
+    );
   }
 }
