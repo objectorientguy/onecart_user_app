@@ -6,7 +6,7 @@
     }
   },
   "hosting": {
-    "site": "one-cart-admin",
+    "site": "onecart-8ac19",
     "public": "build/web",
     "ignore": [
       "firebase.json",
