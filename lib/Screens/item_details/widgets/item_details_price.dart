@@ -9,6 +9,7 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/item_details/item_details_model.dart';
+import '../../../utils/snackbar_util.dart';
 import '../../../widgets/progress_bar.dart';
 import '../../home/widgets/counter_widget.dart';
 
@@ -63,14 +64,12 @@ class ItemDetailsPrice extends StatelessWidget {
               ProgressBar.show(context);
             } else if (state is AddItemLoaded) {
               ProgressBar.dismiss(context);
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Item added to cart")));
             }
             if (state is AddItemsError) {
               ProgressBar.dismiss(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Something went wrong")));
+
+              showCustomSnackBar(context, state.message);
+
               const SizedBox();
             }
           },
