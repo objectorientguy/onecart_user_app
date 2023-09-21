@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/address/widget/textfield_widget.dart';
 import 'package:onecart_user_app/configs/app_color.dart';
@@ -42,7 +41,6 @@ class AddressForm extends StatelessWidget {
                       initialValue: saveAddress['address_name'],
                       onTextFieldChanged: (value) {
                         saveAddress['address_name'] = value;
-                        log('onChanged=========>${saveAddress['address_name'].toString()}');
                       }),
                   const SizedBox(height: xxxTinierSpacing),
                   Row(children: [
@@ -136,9 +134,17 @@ class AddressForm extends StatelessWidget {
                           .xxxTinier
                           .copyWith(color: AppColor.grey)),
                   const SizedBox(height: xxTinierSpacing),
-                  TextFieldWidget(onTextFieldChanged: (value) {
-                    saveAddress['name'] = value;
-                  })
+                  TextFieldWidget(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter Name';
+                        }
+                        return null;
+                      },
+                      onTextFieldChanged: (value) {
+                        saveAddress['name'] = value;
+                      },
+                      initialValue: saveAddress['name'])
                 ])));
   }
 }

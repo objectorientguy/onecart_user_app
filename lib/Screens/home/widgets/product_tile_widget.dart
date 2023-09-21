@@ -46,7 +46,6 @@ class ProductTileWidget extends StatelessWidget {
             child: ProductTileWidgetBody(
               data: data,
               ratingShow: ratingShow,
-              addButtonVisible: addButtonVisible,
             ),
           )
         ]);
