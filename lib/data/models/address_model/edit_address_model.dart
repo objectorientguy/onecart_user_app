@@ -11,91 +11,74 @@ String editAddressModelToJson(EditAddressModel data) =>
     json.encode(data.toJson());
 
 class EditAddressModel {
-  List<Detail> detail;
+  final String status;
+  final String message;
+  final Data data;
 
   EditAddressModel({
-    required this.detail,
+    required this.status,
+    required this.message,
+    required this.data,
   });
 
   factory EditAddressModel.fromJson(Map<String, dynamic> json) =>
       EditAddressModel(
-        detail:
-            List<Detail>.from(json["detail"].map((x) => Detail.fromJson(x))),
+        status: json["status"],
+        message: json["message"],
+        data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "detail": List<dynamic>.from(detail.map((x) => x.toJson())),
+        "status": status,
+        "message": message,
+        "data": data.toJson(),
       };
 }
 
-class Detail {
-  String type;
-  List<String> loc;
-  String msg;
-  Input input;
-  String url;
+class Data {
+  final int addressId;
+  final int phoneNo;
+  final String state;
+  final String name;
+  final int userContact;
+  final String addressName;
+  final String addressType;
+  final String city;
+  final int pincode;
 
-  Detail({
-    required this.type,
-    required this.loc,
-    required this.msg,
-    required this.input,
-    required this.url,
-  });
-
-  factory Detail.fromJson(Map<String, dynamic> json) => Detail(
-        type: json["type"],
-        loc: List<String>.from(json["loc"].map((x) => x)),
-        msg: json["msg"],
-        input: Input.fromJson(json["input"]),
-        url: json["url"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "type": type,
-        "loc": List<dynamic>.from(loc.map((x) => x)),
-        "msg": msg,
-        "input": input.toJson(),
-        "url": url,
-      };
-}
-
-class Input {
-  String userContact;
-  String addressType;
-  String addressName;
-  int phoneNo;
-  String city;
-  String state;
-  int pincode;
-
-  Input({
-    required this.userContact,
-    required this.addressType,
-    required this.addressName,
+  Data({
+    required this.addressId,
     required this.phoneNo,
-    required this.city,
     required this.state,
+    required this.name,
+    required this.userContact,
+    required this.addressName,
+    required this.addressType,
+    required this.city,
     required this.pincode,
   });
 
-  factory Input.fromJson(Map<String, dynamic> json) => Input(
-        userContact: json["user_contact"],
-        addressType: json["address_type"],
-        addressName: json["address_name"],
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+        addressId: json["address_id"],
         phoneNo: json["phone_no"],
-        city: json["city"],
         state: json["state"],
+        name: json["name"],
+        userContact: json["user_contact"],
+        addressName: json["address_name"],
+        addressType: json["address_type"],
+        city: json["city"],
         pincode: json["pincode"],
       );
 
   Map<String, dynamic> toJson() => {
-        "user_contact": userContact,
-        "address_type": addressType,
-        "address_name": addressName,
+        "address_id": addressId,
         "phone_no": phoneNo,
-        "city": city,
         "state": state,
+        "name": name,
+        "user_contact": userContact,
+        "address_name": addressName,
+        "address_type": addressType,
+        "city": city,
         "pincode": pincode,
       };
 }
