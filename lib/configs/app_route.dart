@@ -41,7 +41,7 @@ class AppRoutes {
           variantIndex: settings.arguments as int,
         ));
       case AddressScreen.routeName:
-        return _createRoute(AddressScreen());
+        return _createRoute(const AddressScreen());
 
       case TermsOfServiceScreen.routeName:
         return _createRoute(const TermsOfServiceScreen());

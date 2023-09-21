@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import '../../data/models/address_model/add_address_model.dart';
 import '../../data/models/address_model/address_model.dart';
 import '../../data/models/address_model/edit_address_model.dart';
@@ -19,7 +17,6 @@ class AddressRepositoryImpl implements AddressRepository {
     final response = await DioClient().put(
         "https://oneart.onrender.com/editAddress?addressId=$addressId",
         saveAddress);
-    log('response=========>$response');
     return EditAddressModel.fromJson(response);
   }
 
