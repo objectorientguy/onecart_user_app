@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/root/root_screen.dart';
 import 'package:onecart_user_app/Screens/shops/widgets/explore_shops_widget.dart';
 import 'package:onecart_user_app/Screens/shops/widgets/popular_shops_slider.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
@@ -86,26 +87,32 @@ class SelectShops extends StatelessWidget {
                   const SizedBox(
                     height: smallestSpacing,
                   ),
-                  SizedBox(
-                    height: kShopBox,
-                    child: ListView.separated(
-                      physics: const BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      itemCount: shopBrandData.length,
-                      itemBuilder: (context, index) {
-                        return ClipRRect(
-                            borderRadius:
-                                BorderRadius.circular(kGeneralBorderRadius),
-                            child: Image.asset(
-                              shopBrandData[index]['image'],
-                            ));
-                      },
-                      separatorBuilder: (context, index) {
-                        return const SizedBox(
-                          width: xxTinySpacing,
-                        );
-                      },
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const RootScreen()));
+                    },
+                    child: SizedBox(
+                      height: kShopBox,
+                      child: ListView.separated(
+                        physics: const BouncingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemCount: shopBrandData.length,
+                        itemBuilder: (context, index) {
+                          return ClipRRect(
+                              borderRadius:
+                                  BorderRadius.circular(kGeneralBorderRadius),
+                              child: Image.asset(
+                                shopBrandData[index]['image'],
+                              ));
+                        },
+                        separatorBuilder: (context, index) {
+                          return const SizedBox(
+                            width: xxTinySpacing,
+                          );
+                        },
+                      ),
                     ),
                   ),
                   const SizedBox(
