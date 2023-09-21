@@ -38,7 +38,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
         'title': 'Staples',
       },
       {
-        'title': ' Stationaries',
+        'title': 'Stationaries',
       },
       {
         'title': 'Beverages',
