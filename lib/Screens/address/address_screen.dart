@@ -61,7 +61,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                         decoration: BoxDecoration(
                                             color: selectedAddressIndex == index
                                                 ? AppColor.primaryLight
-                                                : AppColor.lighterGrey,
+                                                : AppColor.paleFaintGrey,
                                             borderRadius: BorderRadius.circular(
                                                 smallCardCurve)),
                                         padding: const EdgeInsets.symmetric(

@@ -88,7 +88,9 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    StoreItemList(storedata: state.productsList, toShow: price)
+                    Expanded(
+                        child: StoreItemList(
+                            storedata: state.productsList, toShow: price))
                   ]);
             } else {
               return const Text('No data found');
