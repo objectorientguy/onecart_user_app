@@ -24,6 +24,7 @@ const double kGeneralBorderRadius = 12.0;
 const double kGlobalBorderRadius = 10.0;
 const double kSearchBarBorderRadius = 23.0;
 const double kSuccessImageHeight = 200.0;
+const double kAddressTextFieldwidth = 150.0;
 const double kSuccessDescriptionWidth = 250.0;
 const double kLocationContainerWidth = 220.0;
 const double kAddressContainerWidth = 210.0;

@@ -22,20 +22,41 @@ class AddAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var _formKey;
     Map addAddress = {
       'address_type': "",
       'address_name': "",
       'user_contact': "9898989898",
-      'phone_no': "",
+      'phone_no': "9898989898",
       'city': "",
       'state': "",
       'pincode': "",
+      "name": "",
     };
 
     return Scaffold(
       appBar: const GenericAppBar(
-        title: 'Add Address',
+        title: 'Add New Address',
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(tinierSpacing),
+        child: CustomElevatedButton(
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                context
+                    .read<AddressBloc>()
+                    .add(AddAddress(addAddress: addAddress));
+              }
+              const SnackBar(content: Text('Enter the Data'));
+            },
+            buttonWidth: double.maxFinite,
+            buttonHeight: kElevatedButtonHeight,
+            child: Text(
+              'SAVE',
+              style: Theme.of(context)
+                  .textTheme
+                  .xxTiny
+                  .copyWith(fontWeight: FontWeight.w600, color: AppColor.white),
+            )),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -50,41 +71,24 @@ class AddAddressScreen extends StatelessWidget {
               ),
               const SizedBox(height: smallSpacing),
               BlocListener<AddressBloc, AddressStates>(
-                listener: (BuildContext context, state) {
-                  if (state is AddAddressLoading) {
-                    ProgressBar.show(context);
-                  } else if (state is AddAddressLoaded) {
-                    ProgressBar.dismiss(context);
-                    Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("New Address Added")));
-                    context.read<AddressBloc>().add(FetchAddress());
-                  }
-                  if (state is AddAddressError) {
-                    ProgressBar.dismiss(context);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Something went wrong")));
-                    const SizedBox();
-                  }
-                },
-                child: CustomElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        context
-                            .read<AddressBloc>()
-                            .add(AddAddress(addAddress: addAddress));
-                      }
-                      const SnackBar(content: Text('Enter the Data'));
-                      // log('addAddress=================>${_formKey.currentState?.validate()}');
-                    },
-                    buttonWidth: double.maxFinite,
-                    buttonHeight: kElevatedButtonHeight,
-                    child: Text(
-                      'SAVE',
-                      style: Theme.of(context).textTheme.xxTiny.copyWith(
-                          fontWeight: FontWeight.w600, color: AppColor.white),
-                    )),
-              ),
+                  listener: (BuildContext context, state) {
+                    if (state is AddAddressLoading) {
+                      ProgressBar.show(context);
+                    } else if (state is AddAddressLoaded) {
+                      ProgressBar.dismiss(context);
+                      Navigator.pop(context);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("New Address Added")));
+                      context.read<AddressBloc>().add(FetchAddress());
+                    }
+                    if (state is AddAddressError) {
+                      ProgressBar.dismiss(context);
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("Something went wrong")));
+                      const SizedBox();
+                    }
+                  },
+                  child: const SizedBox()),
             ],
           ),
         ),

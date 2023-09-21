@@ -11,7 +11,8 @@ class EditAddress extends AddressEvents {
 
 class AddAddress extends AddressEvents {
   final Map addAddress;
-  // final int addressId;
 
   AddAddress({required this.addAddress});
 }
+
+class DeleteAddress extends AddressEvents {}

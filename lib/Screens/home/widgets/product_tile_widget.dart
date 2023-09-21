@@ -7,11 +7,13 @@ import '../../../data/models/general_data_model/general_category_data.dart';
 
 class ProductTileWidget extends StatelessWidget {
   final bool ratingShow;
+  final bool addButtonVisible;
 
   const ProductTileWidget({
     super.key,
     required this.data,
     this.ratingShow = true,
+    this.addButtonVisible = true,
   });
 
   final Product data;
@@ -41,7 +43,10 @@ class ProductTileWidget extends StatelessWidget {
                               fit: BoxFit.fill))))),
           const SizedBox(width: xxxTinySpacing),
           Expanded(
-            child: ProductTileWidgetBody(data: data, ratingShow: ratingShow),
+            child: ProductTileWidgetBody(
+              data: data,
+              ratingShow: ratingShow,
+            ),
           )
         ]);
   }

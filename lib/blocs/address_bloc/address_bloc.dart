@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/app_module/app_module.dart';
 import 'package:onecart_user_app/blocs/address_bloc/address_event.dart';
@@ -13,7 +11,6 @@ import '../../data/models/address_model/edit_address_model.dart';
 
 class AddressBloc extends Bloc<AddressEvents, AddressStates> {
   final AddressRepository _addressRepository = getIt<AddressRepository>();
-//final CustomerCache _customerCache=getIt<CustomerCache>();
   AddressStates get initialState => AddressInitial();
 
   AddressBloc() : super(AddressInitial()) {
@@ -29,7 +26,7 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
       List fetchAddressData = [];
       GetAllAddressModel fetchAddressModel =
           await _addressRepository.fetchAddress();
-      fetchAddressData = fetchAddressModel.data!;
+      fetchAddressData = fetchAddressModel.data;
       emit(FetchAddressLoaded(
         fetchAddressModel: fetchAddressModel,
         addressDetails: fetchAddressData,
@@ -45,7 +42,6 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
     try {
       EditAddressModel editAddress = await _addressRepository.editAddress(
           event.saveAddress, event.addressId);
-      log('group');
       emit(EditAddressLoaded(
         editAddressModel: editAddress,
         saveAddress: {},
@@ -59,16 +55,15 @@ class AddressBloc extends Bloc<AddressEvents, AddressStates> {
   FutureOr<void> _addAddress(
       AddAddress event, Emitter<AddressStates> emit) async {
     emit(AddAddressLoading());
-    // try {
-    // String userId= _customerCache.g
-    AddAddressModel addAddress =
-        await _addressRepository.addAddress(event.addAddress, '');
-    emit(AddAddressLoaded(
-      addAddressModel: addAddress,
-      addAddress: {},
-    ));
-    // } catch (e) {
-    //   emit(AddAddressError(message: e.toString()));
-    // }
+    try {
+      AddAddressModel addAddress =
+          await _addressRepository.addAddress(event.addAddress, 9898989898);
+      emit(AddAddressLoaded(
+        addAddressModel: addAddress,
+        addAddress: {},
+      ));
+    } catch (e) {
+      emit(AddAddressError(message: e.toString()));
+    }
   }
 }
