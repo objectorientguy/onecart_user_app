@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
+
+import '../configs/app_color.dart';
+import '../configs/app_dimensions.dart';
+import '../configs/app_spacing.dart';
+
+class ButtonWidget extends StatelessWidget {
+  final String title;
+  const ButtonWidget({super.key, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: kImage,
+      child: TextButton(
+        onPressed: () {},
+        style: TextButton.styleFrom(
+          minimumSize: Size.zero,
+          padding: const EdgeInsets.symmetric(
+              horizontal: tinierSpacing, vertical: tiniestSpacing),
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(kAddRadius)),
+          backgroundColor: AppColor.primary,
+        ),
+        child: Text(title,
+            style: Theme.of(context)
+                .textTheme
+                .xxxTinier
+                .copyWith(color: AppColor.white)),
+      ),
+    );
+  }
+}

@@ -13,12 +13,12 @@ String getAllCategoriesListModelToJson(GetAllCategoriesListModel data) =>
 class GetAllCategoriesListModel {
   final int? status;
   final String? message;
-  final List<CategoryDatum>? data;
+  final List<CategoryDatum> data;
 
   GetAllCategoriesListModel({
-    this.status,
-    this.message,
-    this.data,
+    required this.status,
+    required this.message,
+    required this.data,
   });
 
   factory GetAllCategoriesListModel.fromJson(Map<String, dynamic> json) =>
@@ -34,9 +34,7 @@ class GetAllCategoriesListModel {
   Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
-        "data": data == null
-            ? []
-            : List<dynamic>.from(data!.map((x) => x.toJson())),
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
       };
 }
 
