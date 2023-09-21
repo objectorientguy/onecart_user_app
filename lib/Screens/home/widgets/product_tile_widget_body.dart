@@ -148,7 +148,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                     },
                     child: CounterScreen(
                       prodId: widget.data.productId,
-                      variantId: widget.data.variants[0].variantId,
+                      variantId: widget.data.variants[variantIndex].variantId,
                     ),
                   ),
                 ])

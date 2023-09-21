@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
-import '../../../blocs/add_cart_item_bloc/add_cart_item_bloc.dart';
-import '../../../blocs/add_cart_item_bloc/add_cart_item_states.dart';
 
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/item_details/item_details_model.dart';
-import '../../../widgets/progress_bar.dart';
 import '../../home/widgets/counter_widget.dart';
 
 class ItemDetailsPrice extends StatelessWidget {
@@ -57,31 +52,13 @@ class ItemDetailsPrice extends StatelessWidget {
             ),
           ],
         ),
-        BlocListener<AddToCartBloc, AddItemsToCartStates>(
-          listener: (BuildContext context, state) {
-            if (state is AddItemLoading) {
-              ProgressBar.show(context);
-            } else if (state is AddItemLoaded) {
-              ProgressBar.dismiss(context);
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Item added to cart")));
-            }
-            if (state is AddItemsError) {
-              ProgressBar.dismiss(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Something went wrong")));
-              const SizedBox();
-            }
-          },
-          child: CounterScreen(
-            prodId: productDetailsModel.data.productData.productId,
-            variantId: productDetailsModel
-                .data.productData.variants[variantIndex].variantId,
-            height: kCartButtonHeight,
-            width: kCartButtonWidth,
-            title: 'ADD TO CART',
-          ),
+        CounterScreen(
+          prodId: productDetailsModel.data.productData.productId,
+          variantId: productDetailsModel
+              .data.productData.variants[variantIndex].variantId,
+          height: kCartButtonHeight,
+          width: kCartButtonWidth,
+          title: 'ADD TO CART',
         ),
       ],
     );
