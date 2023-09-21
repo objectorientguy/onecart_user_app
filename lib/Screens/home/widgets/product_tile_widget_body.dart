@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../../../blocs/add_cart_item_bloc/add_cart_item_bloc.dart';
 import '../../../blocs/add_cart_item_bloc/add_cart_item_states.dart';
 import '../../../configs/app_color.dart';
@@ -134,15 +133,12 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                         ProgressBar.show(context);
                       } else if (state is AddItemLoaded) {
                         ProgressBar.dismiss(context);
-
                         showCustomSnackBar(
                             context, state.addToTheCartModel.message);
                       }
                       if (state is AddItemsError) {
                         ProgressBar.dismiss(context);
-
                         showCustomSnackBar(context, state.message);
-
                         const SizedBox();
                       }
                     },
