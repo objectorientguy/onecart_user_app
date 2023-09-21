@@ -8,6 +8,7 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/general_data_model/general_category_data.dart';
+import '../../../utils/snackbar_util.dart';
 import '../../../utils/varient_index_util.dart';
 import '../../../widgets/progress_bar.dart';
 import 'counter_widget.dart';
@@ -89,7 +90,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                       children: [
                         Row(children: [
                           Text(
-                              '₹${widget.data.variants[0].discountedCost.toString()}',
+                              '₹${widget.data.variants[variantIndex].discountedCost.toString()}',
                               style: Theme.of(context)
                                   .textTheme
                                   .xxTinier
@@ -98,7 +99,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                       color: AppColor.black)),
                           const SizedBox(width: tiniestSpacing),
                           Text(
-                              '₹${widget.data.variants[0].variantCost.toString()}',
+                              '₹${widget.data.variants[variantIndex].variantCost.toString()}',
                               style: Theme.of(context)
                                   .textTheme
                                   .xxxTinier
@@ -119,7 +120,7 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                                 horizontal: xxxTiniestSpacing),
                             child: Center(
                                 child: Text(
-                                    '${widget.data.variants[0].discount} % off',
+                                    '${widget.data.variants[variantIndex].discount} % off',
                                     style: Theme.of(context)
                                         .textTheme
                                         .xxxTiniest
@@ -134,15 +135,14 @@ class _ProductTileWidgetBodyState extends State<ProductTileWidgetBody> {
                       } else if (state is AddItemLoaded) {
                         ProgressBar.dismiss(context);
 
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text("Item added to cart")));
+                        showCustomSnackBar(
+                            context, state.addToTheCartModel.message);
                       }
                       if (state is AddItemsError) {
                         ProgressBar.dismiss(context);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text("Something went wrong")));
+
+                        showCustomSnackBar(context, state.message);
+
                         const SizedBox();
                       }
                     },
