@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/shops/widgets/explore_shops_widget.dart';
+import 'package:onecart_user_app/Screens/shops/widgets/popular_shops_slider.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../configs/app_color.dart';
@@ -58,6 +59,14 @@ class SelectShops extends StatelessWidget {
                   )
                 ],
               ),
+              const SizedBox(
+                height: smallestSpacing,
+              ),
+              SizedBox(
+                  height: kSizedBoxWidth,
+                  child: PopularShopsSlider(
+                    data: shopData,
+                  )),
               const SizedBox(
                 height: smallestSpacing,
               ),
