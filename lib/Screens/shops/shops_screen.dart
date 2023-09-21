@@ -27,12 +27,15 @@ class SelectShops extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: leftRightMargin, vertical: topBottomPadding),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Row(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                left: leftRightMargin,
+                right: leftRightMargin,
+                top: topBottomPadding,
+              ),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
@@ -59,64 +62,75 @@ class SelectShops extends StatelessWidget {
                   )
                 ],
               ),
-              const SizedBox(
-                height: smallestSpacing,
+            ),
+            const SizedBox(
+              height: smallestSpacing,
+            ),
+            PopularShopsSlider(
+              data: shopData,
+            ),
+            const SizedBox(
+              height: smallestSpacing,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "POPULAR SHOPS NEAR YOU",
+                    style: Theme.of(context).textTheme.xTinier.copyWith(
+                        color: AppColor.mediumBlack,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(
+                    height: smallestSpacing,
+                  ),
+                  SizedBox(
+                    height: kShopBox,
+                    child: ListView.separated(
+                      physics: const BouncingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemCount: shopBrandData.length,
+                      itemBuilder: (context, index) {
+                        return ClipRRect(
+                            borderRadius:
+                                BorderRadius.circular(kGeneralBorderRadius),
+                            child: Image.asset(
+                              shopBrandData[index]['image'],
+                              width: kGeneralBox,
+                            ));
+                      },
+                      separatorBuilder: (context, index) {
+                        return const SizedBox(
+                          width: tiniestSpacing,
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(
+                    height: xxxSmallestSpacing,
+                  ),
+                  Text(
+                    "EXPLORE SHOPS",
+                    style: Theme.of(context).textTheme.xTinier.copyWith(
+                        color: AppColor.mediumBlack,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(
+                    height: smallestSpacing,
+                  ),
+                  ExploreShops(
+                    shopData: shopData,
+                  ),
+                  const SizedBox(
+                    height: smallestSpacing,
+                  ),
+                ],
               ),
-              SizedBox(
-                  height: kSizedBoxWidth,
-                  child: PopularShopsSlider(
-                    data: shopData,
-                  )),
-              const SizedBox(
-                height: smallestSpacing,
-              ),
-              Text(
-                "POPULAR SHOPS NEAR YOU",
-                style: Theme.of(context).textTheme.xTinier.copyWith(
-                    color: AppColor.mediumBlack, fontWeight: FontWeight.w500),
-              ),
-              const SizedBox(
-                height: smallestSpacing,
-              ),
-              SizedBox(
-                height: kShopBox,
-                child: ListView.separated(
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: shopBrandData.length,
-                  itemBuilder: (context, index) {
-                    return ClipRRect(
-                        borderRadius:
-                            BorderRadius.circular(kGeneralBorderRadius),
-                        child: Image.asset(
-                          shopBrandData[index]['image'],
-                          width: kGeneralBox,
-                        ));
-                  },
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(
-                      width: tiniestSpacing,
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(
-                height: xxxSmallestSpacing,
-              ),
-              Text(
-                "EXPLORE SHOPS",
-                style: Theme.of(context).textTheme.xTinier.copyWith(
-                    color: AppColor.mediumBlack, fontWeight: FontWeight.w500),
-              ),
-              const SizedBox(
-                height: smallestSpacing,
-              ),
-              ExploreShops(
-                shopData: shopData,
-              ),
-            ]),
-          ),
+            )
+          ]),
         ),
       ),
     );
