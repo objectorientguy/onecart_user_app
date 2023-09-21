@@ -11,75 +11,75 @@ String getAllAddressModelToJson(GetAllAddressModel data) =>
     json.encode(data.toJson());
 
 class GetAllAddressModel {
-  final String? status;
-  final String? message;
-  final List<AddressDatum>? data;
+  String status;
+  String message;
+  List<AddressDatum> data;
 
   GetAllAddressModel({
-    this.status,
-    this.message,
-    this.data,
+    required this.status,
+    required this.message,
+    required this.data,
   });
 
   factory GetAllAddressModel.fromJson(Map<String, dynamic> json) =>
       GetAllAddressModel(
         status: json["status"],
         message: json["message"],
-        data: json["data"] == null
-            ? []
-            : List<AddressDatum>.from(
-                json["data"]!.map((x) => AddressDatum.fromJson(x))),
+        data: List<AddressDatum>.from(
+            json["data"].map((x) => AddressDatum.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
-        "data": data == null
-            ? []
-            : List<dynamic>.from(data!.map((x) => x.toJson())),
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
       };
 }
 
 class AddressDatum {
-  final int? userContact;
-  final String? addressName;
-  final int? addressId;
-  final String? city;
-  final int? pincode;
-  final String? addressType;
-  final int? phoneNo;
-  final String? state;
+  int userContact;
+  String addressName;
+  String addressType;
+  String city;
+  int pincode;
+  int addressId;
+  int phoneNo;
+  String state;
+  String? name;
 
   AddressDatum({
-    this.userContact,
-    this.addressName,
-    this.addressId,
-    this.city,
-    this.pincode,
-    this.addressType,
-    this.phoneNo,
-    this.state,
+    required this.userContact,
+    required this.addressName,
+    required this.addressType,
+    required this.city,
+    required this.pincode,
+    required this.addressId,
+    required this.phoneNo,
+    required this.state,
+    required this.name,
   });
 
   factory AddressDatum.fromJson(Map<String, dynamic> json) => AddressDatum(
         userContact: json["user_contact"],
         addressName: json["address_name"],
-        addressId: json["address_id"],
+        addressType: json["address_type"],
         city: json["city"],
         pincode: json["pincode"],
-        addressType: json["address_type"],
+        addressId: json["address_id"],
         phoneNo: json["phone_no"],
         state: json["state"],
+        name: json["name"],
       );
 
   Map<String, dynamic> toJson() => {
         "user_contact": userContact,
         "address_name": addressName,
-        "address_id": addressId,
+        "address_type": addressType,
         "city": city,
         "pincode": pincode,
-        "address_type": addressType,
+        "address_id": addressId,
         "phone_no": phoneNo,
         "state": state,
+        "name": name,
       };
 }

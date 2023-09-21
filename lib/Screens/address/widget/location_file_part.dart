@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../add_address_screen.dart';
+import 'add_new_address_mapscreen.dart';
 import 'current_location.dart';
 
 class LocationCardTile extends StatelessWidget {
@@ -21,7 +20,7 @@ class LocationCardTile extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, AddAddressScreen.routeName,
+                Navigator.pushNamed(context, AddAddressMapScreen.routeName,
                     arguments: false);
               },
               child: Row(

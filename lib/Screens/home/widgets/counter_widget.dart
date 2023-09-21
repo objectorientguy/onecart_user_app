@@ -78,7 +78,13 @@ class _CounterScreenState extends State<CounterScreen> {
                   .copyWith(fontWeight: FontWeight.w500, color: AppColor.black),
             ),
             TextButton(
-              onPressed: _incrementCount,
+              onPressed: () {
+                context.read<AddToCartBloc>().add(AddItemsToCart(
+                    prodId: widget.prodId!,
+                    variantId: widget.variantId!,
+                    count: _count));
+                _incrementCount();
+              },
               style: TextButton.styleFrom(
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,

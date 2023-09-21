@@ -82,12 +82,19 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
             return const Center(child: CircularProgressIndicator());
           } else if (state is FilterPriceLoaded) {
             price = state.sortedValue ?? false;
-            return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  StoreItemList(storedata: state.productsList, toShow: price)
-                ]);
+
+            if (state.getProductByIdModel.products.isNotEmpty) {
+              return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                        child: StoreItemList(
+                            storedata: state.productsList, toShow: price))
+                  ]);
+            } else {
+              return const Text('No data found');
+            }
           }
           if (state is FetchProductError) {
             return Container();

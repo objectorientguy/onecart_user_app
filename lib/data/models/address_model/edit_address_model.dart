@@ -11,70 +11,74 @@ String editAddressModelToJson(EditAddressModel data) =>
     json.encode(data.toJson());
 
 class EditAddressModel {
-  final String? status;
-  final String? message;
-  final Data? data;
+  final String status;
+  final String message;
+  final Data data;
 
   EditAddressModel({
-    this.status,
-    this.message,
-    this.data,
+    required this.status,
+    required this.message,
+    required this.data,
   });
 
   factory EditAddressModel.fromJson(Map<String, dynamic> json) =>
       EditAddressModel(
         status: json["status"],
         message: json["message"],
-        data: json["data"] == null ? null : Data.fromJson(json["data"]),
+        data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
-        "data": data?.toJson(),
+        "data": data.toJson(),
       };
 }
 
 class Data {
-  final int? userContact;
-  final String? addressName;
-  final int? addressId;
-  final String? city;
-  final int? pincode;
-  final String? addressType;
-  final int? phoneNo;
-  final String? state;
+  final int addressId;
+  final int phoneNo;
+  final String state;
+  final String name;
+  final int userContact;
+  final String addressName;
+  final String addressType;
+  final String city;
+  final int pincode;
 
   Data({
-    this.userContact,
-    this.addressName,
-    this.addressId,
-    this.city,
-    this.pincode,
-    this.addressType,
-    this.phoneNo,
-    this.state,
+    required this.addressId,
+    required this.phoneNo,
+    required this.state,
+    required this.name,
+    required this.userContact,
+    required this.addressName,
+    required this.addressType,
+    required this.city,
+    required this.pincode,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        userContact: json["user_contact"],
-        addressName: json["address_name"],
         addressId: json["address_id"],
-        city: json["city"],
-        pincode: json["pincode"],
-        addressType: json["address_type"],
         phoneNo: json["phone_no"],
         state: json["state"],
+        name: json["name"],
+        userContact: json["user_contact"],
+        addressName: json["address_name"],
+        addressType: json["address_type"],
+        city: json["city"],
+        pincode: json["pincode"],
       );
 
   Map<String, dynamic> toJson() => {
-        "user_contact": userContact,
-        "address_name": addressName,
         "address_id": addressId,
-        "city": city,
-        "pincode": pincode,
-        "address_type": addressType,
         "phone_no": phoneNo,
         "state": state,
+        "name": name,
+        "user_contact": userContact,
+        "address_name": addressName,
+        "address_type": addressType,
+        "city": city,
+        "pincode": pincode,
       };
 }

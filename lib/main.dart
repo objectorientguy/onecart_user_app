@@ -7,7 +7,7 @@ import 'package:onecart_user_app/blocs/onboarding_bloc/onboarding_bloc.dart';
 import 'package:onecart_user_app/configs/app_route.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Screens/root/root_screen.dart';
+import 'Screens/shops/shops_screen.dart';
 import 'app_module/app_module.dart';
 import 'blocs/add_cart_item_bloc/add_cart_item_bloc.dart';
 import 'blocs/address_bloc/address_bloc.dart';
@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: appTheme,
           onGenerateRoute: AppRoutes.onGenerateRoutes,
-          home: const RootScreen(),
+          home: const SelectShops(),
         ),
       ),
     );

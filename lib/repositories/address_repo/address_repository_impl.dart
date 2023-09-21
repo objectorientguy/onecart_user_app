@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import '../../data/models/address_model/add_address_model.dart';
 import '../../data/models/address_model/address_model.dart';
 import '../../data/models/address_model/edit_address_model.dart';
@@ -15,16 +13,15 @@ class AddressRepositoryImpl implements AddressRepository {
   }
 
   @override
-  Future<EditAddressModel> editAddress(Map saveAddress, addressId) async {
+  Future<EditAddressModel> editAddress(Map saveAddress, int addressId) async {
     final response = await DioClient().put(
         "https://oneart.onrender.com/editAddress?addressId=$addressId",
         saveAddress);
-    log('response=========>$response');
     return EditAddressModel.fromJson(response);
   }
 
   @override
-  Future<AddAddressModel> addAddress(Map addAddress, userId) async {
+  Future<AddAddressModel> addAddress(Map addAddress, int userId) async {
     final response = await DioClient().post(
         "https://oneart.onrender.com/addAddress?user_contact=9898989898",
         addAddress);
