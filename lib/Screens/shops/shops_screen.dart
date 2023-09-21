@@ -15,6 +15,12 @@ class SelectShops extends StatelessWidget {
       {"image": "assets/Slide2.JPG"},
       {"image": "assets/Slide3.JPG"},
     ];
+
+    List shopBrandData = [
+      {"image": "assets/haldirams.png"},
+      {"image": "assets/burger.png"},
+      {"image": "assets/beans.jpeg"},
+    ];
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -28,6 +34,32 @@ class SelectShops extends StatelessWidget {
                 "POPULAR SHOPS NEAR YOU",
                 style: Theme.of(context).textTheme.xTinier.copyWith(
                     color: AppColor.mediumBlack, fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(
+                height: smallestSpacing,
+              ),
+              SizedBox(
+                height: kShopBox,
+                child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: shopBrandData.length,
+                  itemBuilder: (context, index) {
+                    return ClipRRect(
+                        borderRadius:
+                            BorderRadius.circular(kGeneralBorderRadius),
+                        child: Image.asset(
+                          shopBrandData[index]['image'],
+                          width: kGeneralBox,
+                        ));
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      width: tiniestSpacing,
+                    );
+                  },
+                ),
               ),
               const SizedBox(
                 height: xxxSmallestSpacing,
@@ -46,7 +78,7 @@ class SelectShops extends StatelessWidget {
                   itemCount: shopData.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      height: 150,
+                      height: kShopExplore,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage(shopData[index]['image']),
@@ -55,6 +87,17 @@ class SelectShops extends StatelessWidget {
                           borderRadius:
                               BorderRadius.circular(kGeneralBorderRadius),
                           color: Colors.redAccent),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: leftRightMargin,
+                            vertical: topBottomPadding),
+                        child: Text(
+                          ' Get\n 50% OFF\n on your favourite items',
+                          style: Theme.of(context).textTheme.xSmall.copyWith(
+                              color: AppColor.white,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) {
