@@ -23,7 +23,7 @@ class _CarouselSliderState extends State<PopularShopsSlider> {
   void initState() {
     super.initState();
     _pageController = PageController(
-      viewportFraction: 0.9,
+      viewportFraction: 1,
       initialPage: 0,
     );
   }

@@ -7,6 +7,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
+import '../profile/profile_screen.dart';
 
 class SelectShops extends StatelessWidget {
   const SelectShops({super.key});
@@ -51,7 +52,10 @@ class SelectShops extends StatelessWidget {
                     ],
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const ProfileScreen()));
+                    },
                     child: const CircleAvatar(
                       radius: kUserAvatar,
                       backgroundColor: AppColor.lighterGrey,
