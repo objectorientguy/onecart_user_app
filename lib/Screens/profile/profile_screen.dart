@@ -12,54 +12,57 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              Container(
-                decoration:
-                    const BoxDecoration(color: AppColor.white, boxShadow: [
-                  BoxShadow(
-                      blurStyle: BlurStyle.solid,
-                      color: AppColor.lightGrey,
-                      spreadRadius: kZero,
-                      blurRadius: kShadowBlurRadius),
-                ]),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: leftRightMargin, vertical: topBottomPadding),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        ProfileHeader(),
-                        SizedBox(height: mediumSpacing),
-                        ProfileOptionsList(),
-                        SizedBox(height: tinierSpacing),
-                      ]),
-                ),
-              ),
-              const SizedBox(
-                height: xxSmallerSpacing,
-              ),
-              Container(
-                decoration:
-                    const BoxDecoration(color: AppColor.white, boxShadow: [
-                  BoxShadow(
-                      blurStyle: BlurStyle.solid,
-                      color: AppColor.lightGrey,
-                      spreadRadius: kZero,
-                      blurRadius: kShadowBlurRadius),
-                ]),
-                child: const Padding(
+    return Scaffold(
+      body: WillPopScope(
+        onWillPop: () async => false,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                Container(
+                  decoration:
+                      const BoxDecoration(color: AppColor.white, boxShadow: [
+                    BoxShadow(
+                        blurStyle: BlurStyle.solid,
+                        color: AppColor.lightGrey,
+                        spreadRadius: kZero,
+                        blurRadius: kShadowBlurRadius),
+                  ]),
+                  child: const Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: leftRightMargin,
                         vertical: topBottomPadding),
-                    child: ProfileOptionsListTwo()),
-              ),
-            ],
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          ProfileHeader(),
+                          SizedBox(height: mediumSpacing),
+                          ProfileOptionsList(),
+                          SizedBox(height: tinierSpacing),
+                        ]),
+                  ),
+                ),
+                const SizedBox(
+                  height: xxSmallerSpacing,
+                ),
+                Container(
+                  decoration:
+                      const BoxDecoration(color: AppColor.white, boxShadow: [
+                    BoxShadow(
+                        blurStyle: BlurStyle.solid,
+                        color: AppColor.lightGrey,
+                        spreadRadius: kZero,
+                        blurRadius: kShadowBlurRadius),
+                  ]),
+                  child: const Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: leftRightMargin,
+                          vertical: topBottomPadding),
+                      child: ProfileOptionsListTwo()),
+                ),
+              ],
+            ),
           ),
         ),
       ),

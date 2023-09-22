@@ -87,6 +87,7 @@ class OrderPlacedTile extends StatelessWidget {
                         ),
                         ButtonWidget(
                           title: title,
+                          showRatingScreen: true,
                         ),
                       ])
                     ]),

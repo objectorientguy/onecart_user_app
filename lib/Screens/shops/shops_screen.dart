@@ -7,6 +7,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
+import '../profile/profile_screen.dart';
 
 class SelectShops extends StatelessWidget {
   const SelectShops({super.key});
@@ -28,15 +29,12 @@ class SelectShops extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                left: leftRightMargin,
-                right: leftRightMargin,
-                top: topBottomPadding,
-              ),
-              child: Row(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: leftRightMargin, vertical: topBottomPadding),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
@@ -53,29 +51,32 @@ class SelectShops extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const CircleAvatar(
-                    radius: kUserAvatar,
-                    backgroundColor: AppColor.lighterGrey,
-                    child: Icon(
-                      Icons.person,
-                      color: AppColor.primary,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const ProfileScreen()));
+                    },
+                    child: const CircleAvatar(
+                      radius: kUserAvatar,
+                      backgroundColor: AppColor.lighterGrey,
+                      child: Icon(
+                        Icons.person,
+                        color: AppColor.primary,
+                      ),
                     ),
                   )
                 ],
               ),
-            ),
-            const SizedBox(
-              height: smallestSpacing,
-            ),
-            PopularShopsSlider(
-              data: shopData,
-            ),
-            const SizedBox(
-              height: smallestSpacing,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: leftRightMargin),
-              child: Column(
+              const SizedBox(
+                height: smallestSpacing,
+              ),
+              PopularShopsSlider(
+                data: shopData,
+              ),
+              const SizedBox(
+                height: smallestSpacing,
+              ),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -134,9 +135,9 @@ class SelectShops extends StatelessWidget {
                     height: smallestSpacing,
                   ),
                 ],
-              ),
-            )
-          ]),
+              )
+            ]),
+          ),
         ),
       ),
     );
