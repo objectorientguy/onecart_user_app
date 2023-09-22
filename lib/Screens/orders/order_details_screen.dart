@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/orders/widgets/item_orders_expansiontile.dart';
 import 'package:onecart_user_app/Screens/orders/widgets/order_details_bottom_appbar.dart';
 import 'package:onecart_user_app/common_widgets/oder_detail_screen_card_two.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import '../../blocs/order_details_/order_detail_bloc.dart';
+import '../../blocs/order_details_/order_detail_states.dart';
+import '../../blocs/order_details_/order_details_event.dart';
 import '../../common_widgets/order_detail_screen_card.dart';
 import '../../configs/app_color.dart';
 
@@ -14,6 +18,8 @@ class OrdersDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    context.read<GetAllOrderDetailsBloc>().add(GetAllOrderDetails());
     List orderData = [
       {
         'title': 'Name',
@@ -74,54 +80,79 @@ class OrdersDetailsScreen extends StatelessWidget {
               )
             ]),
         bottomNavigationBar: const OrderDetailsBottomAppBar(),
-        body: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: xxTinySpacing, vertical: tinierSpacing),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: tiniestSpacing),
+        body: BlocBuilder<GetAllOrderDetailsBloc, OrdersDetailsStates>(
+            builder: (context, state) {
+              if (state is GetAllOrdersDetailsLoading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state is GetAllOrdersDetailsLoaded) {
+                return  SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: xxTinySpacing, vertical: tinierSpacing),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Order Status',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .xxTiny
-                                    .copyWith(
-                                        color: AppColor.black,
-                                        fontWeight: FontWeight.w500)),
-                            const SizedBox(height: xxxTinierSpacing),
-                            Text('Delivered on Aug 29',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .tinier
-                                    .copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        color: AppColor.primary)),
-                            const SizedBox(height: xxxSmallestSpacing),
-                          ],
-                        ),
-                      ),
-                      Theme(
-                          data: Theme.of(context)
-                              .copyWith(dividerColor: AppColor.transparent),
-                          child: const OrderTrackingExpansionTile()),
-                      const SizedBox(height: xxTinierSpacing),
-                      Theme(
-                          data: Theme.of(context)
-                              .copyWith(dividerColor: AppColor.transparent),
-                          child: OderDetailExpansionTile(
-                            orderData: orderData,
-                          )),
-                      const SizedBox(height: xxTinierSpacing),
-                      Theme(
-                          data: Theme.of(context)
-                              .copyWith(dividerColor: AppColor.transparent),
-                          child: const ItemOrderedExpansionTile()),
-                    ]))));
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: tiniestSpacing),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Order Status',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .xxTiny
+                                            .copyWith(
+                                            color: AppColor.black,
+                                            fontWeight: FontWeight.w500)),
+                                    const SizedBox(height: xxxTinierSpacing),
+                                    Text('Delivered on Aug 29',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .tinier
+                                            .copyWith(
+                                            fontWeight: FontWeight.w600,
+                                            color: AppColor.primary)),
+                                    const SizedBox(height: xxxSmallestSpacing),
+                                  ],
+                                ),
+                              ),
+                              Theme(
+                                  data: Theme.of(context)
+                                      .copyWith(dividerColor: AppColor.transparent),
+                                  child: const OrderTrackingExpansionTile()),
+                              const SizedBox(height: xxTinierSpacing),
+                              Theme(
+                                  data: Theme.of(context)
+                                      .copyWith(dividerColor: AppColor.transparent),
+                                  child: OderDetailExpansionTile(
+                                    orderData: orderData,
+                                  )),
+                              const SizedBox(height: xxTinierSpacing),
+                              Theme(
+                                  data: Theme.of(context)
+                                      .copyWith(dividerColor: AppColor.transparent),
+                                  child: const ItemOrderedExpansionTile()),
+                            ])));
+              }
+              if (state is GetAllOrdersDetailsError) {
+                return Container();
+              } else {
+                return const SizedBox();
+              }
+            })
+
+
+
+
+
+
+
+
+
+
+
+
+       );
   }
 }
