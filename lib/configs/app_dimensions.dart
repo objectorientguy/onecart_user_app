@@ -96,3 +96,4 @@ const double kShopBox = 100.0;
 const double kShopExplore = 150.0;
 const double kUserAvatar = 15.0;
 const double kAvatar = 10.0;
+const double kBackArrow = 18.0;

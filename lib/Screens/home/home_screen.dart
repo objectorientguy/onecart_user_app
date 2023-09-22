@@ -62,6 +62,38 @@ class HomeScreen extends StatelessWidget {
                           const SizedBox(
                             height: xxxSmallerSpacing,
                           ),
+                          Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Padding(
+                                  padding:
+                                      EdgeInsets.only(left: xxTiniestSpacing),
+                                  child: Icon(
+                                    Icons.arrow_back_ios,
+                                    size: kBackArrow,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: tiniestSpacing,
+                              ),
+                              Text(
+                                "Haldirams",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .xTiny
+                                    .copyWith(
+                                        color: AppColor.mediumBlack,
+                                        fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: xxxSmallerSpacing,
+                          ),
                           SearchTextField(
                             hintText: "Search for groceries",
                             hintStyle: Theme.of(context)
