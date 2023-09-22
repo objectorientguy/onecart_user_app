@@ -11,6 +11,8 @@ import 'package:share_plus/share_plus.dart';
 import '../../blocs/item_details_bloc/item_details_bloc.dart';
 import '../../blocs/item_details_bloc/item_details_events.dart';
 import '../../blocs/item_details_bloc/item_details_states.dart';
+import '../../blocs/wishlist_bloc/wishlist_bloc.dart';
+import '../../blocs/wishlist_bloc/wishlist_events.dart';
 import '../../configs/app_color.dart';
 
 import '../../configs/app_dimensions.dart';
@@ -33,7 +35,14 @@ class ItemDetailsScreen extends StatelessWidget {
       appBar: GenericAppBar(
         actions: [
           FavoriteButton(
-            valueChanged: () {},
+            valueChanged: () {
+              context.read<WishlistBloc>().add(AddWishlist(
+                    productId: itemDetails.productId,
+                    variantId: itemDetails.variants[0].variantId,
+                    shopId: 2,
+                    userId: 9898989898,
+                  ));
+            },
             iconSize: kFavouriteButton,
           ),
           const SizedBox(
