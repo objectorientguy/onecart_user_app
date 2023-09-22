@@ -5,9 +5,12 @@ import '../../../common_widgets/button_widget.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/wishlist/view_wishlist_model.dart';
 
 class GridViewScreen extends StatelessWidget {
-  const GridViewScreen({super.key});
+  final List<WishlistData> wishlistData;
+
+  const GridViewScreen({super.key, required this.wishlistData});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class GridViewScreen extends StatelessWidget {
             childAspectRatio: 0.68),
         physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
-        itemCount: 8,
+        itemCount: wishlistData.length,
         itemBuilder: (context, index) {
           return Container(
             decoration: BoxDecoration(
@@ -44,8 +47,7 @@ class GridViewScreen extends StatelessWidget {
                               child: Image.asset('assets/img_2.png',
                                   fit: BoxFit.fill))),
                       SizedBox(
-                          child: Text(
-                              'Lays American Style Cream and Onion Potato Chips ',
+                          child: Text(wishlistData[index].productName,
                               style: Theme.of(context)
                                   .textTheme
                                   .xxTinier
@@ -60,7 +62,7 @@ class GridViewScreen extends StatelessWidget {
                       ),
                       SizedBox(
                         child: Text(
-                          '196 gm',
+                          wishlistData[index].quantity,
                           style: Theme.of(context)
                               .textTheme
                               .tiniest
@@ -70,7 +72,7 @@ class GridViewScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: xxxTiniestSpacing),
-                      Text('₹29',
+                      Text(wishlistData[index].discountedCost.toString(),
                           style: Theme.of(context).textTheme.xxTinier.copyWith(
                               fontWeight: FontWeight.w500,
                               color: AppColor.lightestGrey)),

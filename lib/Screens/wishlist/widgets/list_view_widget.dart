@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/wishlist/view_wishlist_model.dart';
 import '../../orders/widgets/order_placed_tile.dart';
 
 class ListViewScreen extends StatelessWidget {
-  const ListViewScreen({super.key});
+  final List<WishlistData> wishlistData;
+
+  const ListViewScreen({super.key, required this.wishlistData});
 
   @override
   Widget build(BuildContext context) {
