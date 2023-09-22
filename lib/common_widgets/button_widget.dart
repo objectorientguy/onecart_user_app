@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../Screens/ratings/ratings_screen.dart';
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String title;
-  const ButtonWidget({super.key, required this.title});
+  final bool showRatingScreen;
+  const ButtonWidget(
+      {super.key, required this.title, required this.showRatingScreen});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: kImage,
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          if (showRatingScreen == true) {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const AddRatingsScreen()));
+          }
+        },
         style: TextButton.styleFrom(
           minimumSize: Size.zero,
           padding: const EdgeInsets.symmetric(

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/Screens/profile/widgets/profile_list_widget.dart';
-import 'package:onecart_user_app/Screens/shops/shops_screen.dart';
 import 'package:onecart_user_app/Screens/wishlist/wishlist_screen.dart';
 
 import '../../../configs/app_dimensions.dart';
 import '../../address/address_screen.dart';
-import '../../ratings/ratings_screen.dart';
 
 class ProfileOptionsList extends StatelessWidget {
   const ProfileOptionsList({
@@ -44,28 +42,16 @@ class ProfileOptionsList extends StatelessWidget {
           ),
         ),
         const Divider(height: kDivider, thickness: kFeatureDivider),
-        InkWell(
-          onTap: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const SelectShops()));
-          },
-          child: const ProfileListWidget(
-            title: 'Help',
-            description: 'Find answers to all your queries here',
-            icon: Icons.help,
-          ),
+        const ProfileListWidget(
+          title: 'Help',
+          description: 'Find answers to all your queries here',
+          icon: Icons.help,
         ),
         const Divider(height: kDivider, thickness: kFeatureDivider),
-        InkWell(
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const AddRatingsScreen()));
-          },
-          child: const ProfileListWidget(
-            title: 'Settings',
-            description: 'Manage notifications and permissions',
-            icon: Icons.settings,
-          ),
+        const ProfileListWidget(
+          title: 'Settings',
+          description: 'Manage notifications and permissions',
+          icon: Icons.settings,
         ),
       ],
     );

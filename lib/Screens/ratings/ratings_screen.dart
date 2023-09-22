@@ -9,8 +9,21 @@ import '../../configs/app_dimensions.dart';
 import '../../widgets/text_field_widget.dart';
 import '../item_details/widgets/star_widget.dart';
 
-class AddRatingsScreen extends StatelessWidget {
+class AddRatingsScreen extends StatefulWidget {
   const AddRatingsScreen({super.key});
+
+  @override
+  State<AddRatingsScreen> createState() => _AddRatingsScreenState();
+}
+
+class _AddRatingsScreenState extends State<AddRatingsScreen> {
+  bool isExpanded = false;
+
+  void toggleTextVisibility() {
+    setState(() {
+      isExpanded = !isExpanded;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,9 +85,11 @@ class AddRatingsScreen extends StatelessWidget {
               children: [
                 ButtonWidget(
                   title: 'Cancel',
+                  showRatingScreen: false,
                 ),
                 ButtonWidget(
                   title: 'Post',
+                  showRatingScreen: false,
                 ),
               ],
             ),
@@ -106,6 +121,7 @@ class AddRatingsScreen extends StatelessWidget {
                             vertical: xxTinierSpacing,
                             horizontal: xxTinierSpacing),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -159,16 +175,23 @@ class AddRatingsScreen extends StatelessWidget {
                               height: 8,
                             ),
                             Text(
-                              '“I got a pair of boots from store '
-                              'X and I’m very satisfied. They are high-quality '
-                              'and worth the money. The store also offered'
-                              ' free shipping at that price so that’s a plus!”',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .tiniest
-                                  .copyWith(
-                                      color: AppColor.mediumBlack,
-                                      fontWeight: FontWeight.w600),
+                                '“I got a pair of boots from store '
+                                'X and I’m very satisfied. They are high-quality '
+                                'and worth the money. The store also offered'
+                                ' free shipping at that price so that’s a plus!”',
+                                maxLines: isExpanded ? null : 2,
+                                style: Theme.of(context).textTheme.tiniest),
+                            GestureDetector(
+                              onTap: toggleTextVisibility,
+                              child: Text(
+                                isExpanded ? 'Read Less' : 'Read More...',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .tiniest
+                                    .copyWith(
+                                        color: AppColor.primary,
+                                        fontWeight: FontWeight.w500),
+                              ),
                             ),
                           ],
                         ));

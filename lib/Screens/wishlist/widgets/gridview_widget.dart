@@ -75,7 +75,10 @@ class GridViewScreen extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                               color: AppColor.lightestGrey)),
                       const SizedBox(height: xxTiniestSpacing),
-                      const ButtonWidget(title: 'Add to Cart')
+                      const ButtonWidget(
+                        title: 'Add to Cart',
+                        showRatingScreen: false,
+                      )
                     ]),
                 const Icon(Icons.close,
                     size: kIconSizeSmall, color: AppColor.grey)
