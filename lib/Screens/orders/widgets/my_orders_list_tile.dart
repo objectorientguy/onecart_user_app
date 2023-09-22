@@ -3,17 +3,16 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/orders/get_all_orders_model.dart';
 
 class OrderTile extends StatelessWidget {
-  final int idx;
+  final List<Order> orderList;
 
   const OrderTile({
     super.key,
-    required this.orderData,
-    required this.idx,
+     required this.orderList
   });
 
-  final List orderData;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,7 @@ class OrderTile extends StatelessWidget {
                         child: SizedBox(
                             height: kImageHeight,
                             width: kImageWidth,
-                            child: Image.asset(orderData[idx]['image']))),
+                            child: Image.network(orderList[0].image))),
                     const SizedBox(
                       width: xxxTinierSpacing,
                     ),
@@ -46,11 +45,11 @@ class OrderTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          (orderData[idx]['title'] == "Returned" ||
-                                  orderData[idx]['title'] ==
+                          (orderList[0].orderStatus  == "Returned" ||
+                              orderList[0].orderStatus  ==
                                       "Cancelled by Operations")
                               ? Text(
-                                  orderData[idx]['title'],
+                            orderList[0].orderStatus,
                                   style: Theme.of(context)
                                       .textTheme
                                       .xxTinier
@@ -59,7 +58,7 @@ class OrderTile extends StatelessWidget {
                                       ),
                                 )
                               : Text(
-                                  orderData[idx]['title'],
+                            orderList[0].orderStatus ,
                                   style: Theme.of(context)
                                       .textTheme
                                       .xxTinier
@@ -67,8 +66,8 @@ class OrderTile extends StatelessWidget {
                                         fontWeight: FontWeight.w500,
                                       ),
                                 ),
-                          (orderData[idx]['title'] == "Delivered")
-                              ? Text(orderData[idx]['deliveryDate'],
+                          (orderList[0].orderStatus == "Delivered")
+                              ? Text(('Aug 1 2023'),
                                   style: Theme.of(context)
                                       .textTheme
                                       .tiniest
@@ -77,7 +76,7 @@ class OrderTile extends StatelessWidget {
                                           fontWeight: FontWeight.w500))
                               : const SizedBox(),
                           Text(
-                              "${orderData[idx]['category']} (${orderData[idx]['quantity']} items)",
+                              "${orderList[0].category} (${orderList[0].itemCount} items)",
                               style: Theme.of(context)
                                   .textTheme
                                   .xxxTinier

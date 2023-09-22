@@ -6,7 +6,7 @@ class OrdersRepositoryImpl implements OrdersRepository {
   @override
   Future<GetAllOrdersListModel> getAllOrders() async {
     final response =
-        await DioClient().get("https://oneart.onrender.com/getOrders");
+        await DioClient().get("https://oneart.onrender.com/orderlist?customer_contact=9898989898");
     return GetAllOrdersListModel.fromJson(response);
   }
 }
