@@ -18,6 +18,6 @@ class ListViewScreen extends StatelessWidget {
         separatorBuilder: (BuildContext context, int index) => const SizedBox(
               height: xxxSmallestSpacing,
             ),
-        itemCount: 8);
+        itemCount: wishlistData.length);
   }
 }
