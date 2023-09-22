@@ -5,6 +5,7 @@ import 'package:onecart_user_app/Screens/wishlist/wishlist_screen.dart';
 
 import '../../../configs/app_dimensions.dart';
 import '../../address/address_screen.dart';
+import '../../ratings/ratings_screen.dart';
 
 class ProfileOptionsList extends StatelessWidget {
   const ProfileOptionsList({
@@ -55,10 +56,16 @@ class ProfileOptionsList extends StatelessWidget {
           ),
         ),
         const Divider(height: kDivider, thickness: kFeatureDivider),
-        const ProfileListWidget(
-          title: 'Settings',
-          description: 'Manage notifications and permissions',
-          icon: Icons.settings,
+        InkWell(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const AddRatingsScreen()));
+          },
+          child: const ProfileListWidget(
+            title: 'Settings',
+            description: 'Manage notifications and permissions',
+            icon: Icons.settings,
+          ),
         ),
       ],
     );
