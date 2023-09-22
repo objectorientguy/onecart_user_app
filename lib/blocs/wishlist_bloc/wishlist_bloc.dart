@@ -9,14 +9,13 @@ import '../../data/models/wishlist/add_wishlist_model.dart';
 import '../../data/models/wishlist/view_wishlist_model.dart';
 import '../../repositories/wishlist/wishlist_repository.dart';
 
-class GetAllWishlistItemsBloc
-    extends Bloc<GetAllWishlistItems, WishlistStates> {
+class WishlistBloc extends Bloc<GetAllWishlistItems, WishlistStates> {
   final ViewWishlistRepository _wishlistRepository =
       getIt<ViewWishlistRepository>();
 
   WishlistStates get initialState => GetAllWishlistItemsInitial();
 
-  GetAllWishlistItemsBloc() : super(GetAllWishlistItemsInitial()) {
+  WishlistBloc() : super(GetAllWishlistItemsInitial()) {
     on<GetAllWishlistItems>(_getAllWishlistItems);
     //on<AddWishlist>(_addItemsToWishlist);
   }

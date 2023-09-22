@@ -59,8 +59,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(lazy: false, create: (context) => CheckoutBloc()),
         BlocProvider(lazy: false, create: (context) => SearchProductsBloc()),
         BlocProvider(lazy: false, create: (context) => AddToCartBloc()),
-        BlocProvider(
-            lazy: false, create: (context) => GetAllWishlistItemsBloc()),
+        BlocProvider(lazy: false, create: (context) => WishlistBloc()),
         BlocProvider(
             lazy: false,
             create: (context) => OnBoardingBloc()..add(CheckLoggedIn())),

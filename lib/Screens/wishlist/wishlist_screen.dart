@@ -31,7 +31,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<GetAllWishlistItemsBloc>().add(GetAllWishlistItems());
+    context.read<WishlistBloc>().add(GetAllWishlistItems());
 
     List wishlistData = [
       {
@@ -79,8 +79,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
           const SizedBox(
             height: xxxSmallestSpacing,
           ),
-          BlocBuilder<GetAllWishlistItemsBloc, WishlistStates>(
-              builder: (context, state) {
+          BlocBuilder<WishlistBloc, WishlistStates>(builder: (context, state) {
             if (state is GetAllWishListItemsLoading) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is GetAllWishlistItemsLoaded) {
