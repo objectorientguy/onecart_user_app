@@ -26,6 +26,8 @@ import '../repositories/varient/varient_repository.dart';
 import '../repositories/varient/varient_repository_impl.dart';
 import '../repositories/view_cart/view_cart_repository.dart';
 import '../repositories/view_cart/view_cart_repository_impl.dart';
+import '../repositories/wishlist/wishlist_repository.dart';
+import '../repositories/wishlist/wishlist_repository_impl.dart';
 import '../utils/shared_pref.dart';
 
 final getIt = GetIt.instance;
@@ -38,6 +40,9 @@ configurableDependencies() {
   getIt.registerLazySingleton<AddressRepository>(() => AddressRepositoryImpl());
   getIt.registerLazySingleton<ProductsRepository>(
       () => ProductsRepositoryImpl());
+  getIt.registerLazySingleton<ViewWishlistRepository>(
+      () => ViewWishlistRepositoryImpl());
+
   getIt.registerLazySingleton<ProductDetailsRepository>(
       () => ProductDetailsRepositoryImpl());
   getIt.registerLazySingleton<CategoriesRepository>(
