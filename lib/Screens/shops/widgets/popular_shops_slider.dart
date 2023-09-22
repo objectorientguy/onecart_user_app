@@ -23,7 +23,7 @@ class _CarouselSliderState extends State<PopularShopsSlider> {
   void initState() {
     super.initState();
     _pageController = PageController(
-      viewportFraction: 1,
+      viewportFraction: 0.9,
       initialPage: 0,
     );
   }
@@ -45,7 +45,7 @@ class _CarouselSliderState extends State<PopularShopsSlider> {
               },
               itemBuilder: (context, pagePosition) {
                 return ClipRRect(
-                  borderRadius: BorderRadius.circular(kZero),
+                  borderRadius: BorderRadius.circular(kGlobalBorderRadius),
                   child: Image.asset(
                     widget.data[pagePosition]['image'].toString(),
                     fit: BoxFit.fill,
