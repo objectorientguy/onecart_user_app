@@ -43,6 +43,10 @@ const double kAddRadius = 8.0;
 const double kAddButtonWidth = 85.0;
 const double kAddButtonHeight = 35.0;
 const double kCounterIcon = 16.0;
+const double kRatingIcon = 16.0;
+const double kAvatarRadius = 10.0;
+
+const double kRatingIconBig = 65.0;
 const double kContainerWidth = 50.0;
 const double kSizedBoxHeight = 36.0;
 const double kCardElevation = 3.0;
@@ -91,3 +95,4 @@ const double kThickness = 1.0;
 const double kShopBox = 100.0;
 const double kShopExplore = 150.0;
 const double kUserAvatar = 15.0;
+const double kAvatar = 10.0;

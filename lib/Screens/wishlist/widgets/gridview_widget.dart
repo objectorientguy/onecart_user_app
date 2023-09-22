@@ -77,7 +77,6 @@ class GridViewScreen extends StatelessWidget {
                       const SizedBox(height: xxTiniestSpacing),
                       const ButtonWidget(
                         title: 'Add to Cart',
-                        showRatingScreen: false,
                       )
                     ]),
                 const Icon(Icons.close,
