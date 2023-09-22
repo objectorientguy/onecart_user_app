@@ -1,3 +1,4 @@
+
 abstract class WishlistEvent {}
 
 class GetAllWishlistItems extends WishlistEvent {}
@@ -15,3 +16,4 @@ class AddWishlist extends WishlistEvent {
     required this.userId,
   });
 }
+

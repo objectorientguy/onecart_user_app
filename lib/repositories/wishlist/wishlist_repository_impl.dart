@@ -1,7 +1,9 @@
 import 'package:onecart_user_app/repositories/wishlist/wishlist_repository.dart';
+
 import 'package:onecart_user_app/utils/dio_client.dart';
 
 import '../../data/models/wishlist/add_wishlist_model.dart';
+
 import '../../data/models/wishlist/view_wishlist_model.dart';
 
 class ViewWishlistRepositoryImpl implements ViewWishlistRepository {
@@ -36,6 +38,7 @@ class ViewWishlistRepositoryImpl implements ViewWishlistRepository {
     return WishlistModel.fromJson(response);
   }
 
+
   @override
   Future<AddWishlistModel> addWishlistItems(Map wishlistDetails) async {
     final response = await DioClient().get(
@@ -43,4 +46,5 @@ class ViewWishlistRepositoryImpl implements ViewWishlistRepository {
         wishlistDetails);
     return AddWishlistModel.fromJson(response);
   }
+
 }

@@ -5,6 +5,7 @@ import 'package:onecart_user_app/blocs/wishlist_bloc/wishlist_events.dart';
 import 'package:onecart_user_app/blocs/wishlist_bloc/wishlist_states.dart';
 
 import '../../app_module/app_module.dart';
+
 import '../../data/models/wishlist/add_wishlist_model.dart';
 import '../../data/models/wishlist/view_wishlist_model.dart';
 import '../../repositories/wishlist/wishlist_repository.dart';
@@ -58,5 +59,6 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
     } catch (e) {
       emit(AddWishlistError(message: e.toString()));
     }
+
   }
 }

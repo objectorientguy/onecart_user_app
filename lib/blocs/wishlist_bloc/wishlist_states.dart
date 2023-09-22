@@ -1,3 +1,4 @@
+
 import '../../data/models/wishlist/add_wishlist_model.dart';
 import '../../data/models/wishlist/view_wishlist_model.dart';
 
@@ -8,16 +9,20 @@ class GetAllWishlistItemsInitial extends WishlistStates {}
 class GetAllWishListItemsLoading extends WishlistStates {}
 
 class GetAllWishlistItemsLoaded extends WishlistStates {
+
   final WishlistModel wishlistModel;
 
   GetAllWishlistItemsLoaded({required this.wishlistModel});
 }
 
+
 class GetAllWishListItemsError extends WishlistStates {
+
   final String message;
 
   GetAllWishListItemsError({required this.message});
 }
+
 
 class AddWishlistLoading extends WishlistStates {}
 
@@ -34,3 +39,4 @@ class AddWishlistError extends WishlistStates {
 
   AddWishlistError({required this.message});
 }
+
