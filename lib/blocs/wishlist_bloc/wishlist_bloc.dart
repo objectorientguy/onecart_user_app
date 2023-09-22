@@ -9,7 +9,7 @@ import '../../data/models/wishlist/add_wishlist_model.dart';
 import '../../data/models/wishlist/view_wishlist_model.dart';
 import '../../repositories/wishlist/wishlist_repository.dart';
 
-class WishlistBloc extends Bloc<GetAllWishlistItems, WishlistStates> {
+class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
   final ViewWishlistRepository _wishlistRepository =
       getIt<ViewWishlistRepository>();
 
@@ -17,7 +17,7 @@ class WishlistBloc extends Bloc<GetAllWishlistItems, WishlistStates> {
 
   WishlistBloc() : super(GetAllWishlistItemsInitial()) {
     on<GetAllWishlistItems>(_getAllWishlistItems);
-    //on<AddWishlist>(_addItemsToWishlist);
+    on<AddWishlist>(_addItemsToWishlist);
   }
 
   FutureOr<void> _getAllWishlistItems(
