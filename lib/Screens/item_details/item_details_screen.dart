@@ -82,7 +82,7 @@ class ItemDetailsScreen extends StatelessWidget {
                       return const Center(child: CircularProgressIndicator());
                     } else if (state is ItemDetailsLoaded) {
                       return Positioned(
-                        left: 25,
+                        left: smallestSpacing,
                         child: Container(
                           height: kContainerHeight,
                           width: kSmallWidth,

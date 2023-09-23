@@ -50,10 +50,8 @@ class SelectVarientBody extends StatelessWidget {
                                       .toString(),
                                   style: Theme.of(context)
                                       .textTheme
-                                      .xxxTinier
-                                      .copyWith(
-                                          fontSize: 12.5,
-                                          fontWeight: FontWeight.w600),
+                                      .mTinier
+                                      .copyWith(fontWeight: FontWeight.w600),
                                 ),
                               ),
                               const SizedBox(height: xxxTiniestSpacing),

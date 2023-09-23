@@ -34,7 +34,7 @@ class GridViewScreen extends StatelessWidget {
                   horizontal: xxTinierSpacing, vertical: xxTiniestSpacing),
               child: Stack(alignment: Alignment.topRight, children: [
                 Positioned(
-                  right: 20,
+                  right: xxxSmallestSpacing,
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
