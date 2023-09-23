@@ -62,15 +62,18 @@ class ItemDetailsBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
+                width: kSizedWidth,
                 height: kVarientBoxHeight,
                 child: Text(
-                    productDetailsModel
-                        .data.productData.variants[variantIndex].quantity
-                        .toString(),
-                    style: Theme.of(context)
-                        .textTheme
-                        .tinier
-                        .copyWith(fontWeight: FontWeight.w500)),
+                  productDetailsModel
+                      .data.productData.variants[variantIndex].quantity
+                      .toString(),
+                  style: Theme.of(context)
+                      .textTheme
+                      .tinier
+                      .copyWith(fontWeight: FontWeight.w500),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               const Icon(Icons.keyboard_arrow_down,
                   color: AppColor.primary, size: kForwardIconSize)

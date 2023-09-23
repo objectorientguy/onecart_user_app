@@ -42,7 +42,9 @@ class SelectVarientBody extends StatelessWidget {
                         Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              SizedBox(
+                                width: kAddressTileWidth,
+                                child: Text(
                                   productDetailsModel
                                       .data.productData.variants[index].quantity
                                       .toString(),
@@ -51,7 +53,9 @@ class SelectVarientBody extends StatelessWidget {
                                       .xxxTinier
                                       .copyWith(
                                           fontSize: 12.5,
-                                          fontWeight: FontWeight.w600)),
+                                          fontWeight: FontWeight.w600),
+                                ),
+                              ),
                               const SizedBox(height: xxxTiniestSpacing),
                               Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
