@@ -42,8 +42,8 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
       Map wishlistDetails = {
         "product_id": event.productId,
         "variant_id": event.variantId,
-        "shop_id": event.shopId,
-        "user_id": event.userId,
+        "shop_id": 2,
+        "user_id": 9898989898,
       };
       AddWishlistModel addWishlistModel =
           await _wishlistRepository.addWishlistItems(wishlistDetails);
@@ -59,6 +59,5 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
     } catch (e) {
       emit(AddWishlistError(message: e.toString()));
     }
-
   }
 }

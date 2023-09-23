@@ -38,7 +38,6 @@ class ViewWishlistRepositoryImpl implements ViewWishlistRepository {
     return WishlistModel.fromJson(response);
   }
 
-
   @override
   Future<AddWishlistModel> addWishlistItems(Map wishlistDetails) async {
     final response = await DioClient().get(
@@ -46,5 +45,4 @@ class ViewWishlistRepositoryImpl implements ViewWishlistRepository {
         wishlistDetails);
     return AddWishlistModel.fromJson(response);
   }
-
 }

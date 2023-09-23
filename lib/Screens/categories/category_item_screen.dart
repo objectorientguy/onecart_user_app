@@ -93,7 +93,12 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                             storedata: state.productsList, toShow: price))
                   ]);
             } else {
-              return const Text('No data found');
+              return Center(
+                  child: Text(
+                'Sorry! No Products found',
+                style: Theme.of(context).textTheme.xTinier.copyWith(
+                    color: AppColor.mediumBlack, fontWeight: FontWeight.w500),
+              ));
             }
           }
           if (state is FetchProductError) {
