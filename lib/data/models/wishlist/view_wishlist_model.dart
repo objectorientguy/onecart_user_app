@@ -19,10 +19,8 @@ class WishlistModel {
   factory WishlistModel.fromJson(Map<String, dynamic> json) => WishlistModel(
         status: json["status"],
         message: json["message"],
-        data: json["data"] == null
-            ? []
-            : List<WishlistData>.from(
-                json["data"].map((x) => WishlistData.fromJson(x))),
+        data: List<WishlistData>.from(
+            json["data"].map((x) => WishlistData.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -35,7 +33,7 @@ class WishlistModel {
 class WishlistData {
   final int productId;
   final String productName;
-  final String image;
+  final List<String> image;
   final double variantCost;
   final double discountedCost;
   final int discount;
@@ -56,7 +54,7 @@ class WishlistData {
   factory WishlistData.fromJson(Map<String, dynamic> json) => WishlistData(
         productId: json["product_id"],
         productName: json["product_name"],
-        image: json["image"],
+        image: List<String>.from(json["image"].map((x) => x)),
         variantCost: json["variant_cost"],
         discountedCost: json["discounted_cost"],
         discount: json["discount"],
@@ -67,7 +65,7 @@ class WishlistData {
   Map<String, dynamic> toJson() => {
         "product_id": productId,
         "product_name": productName,
-        "image": image,
+        "image": List<dynamic>.from(image.map((x) => x)),
         "variant_cost": variantCost,
         "discounted_cost": discountedCost,
         "discount": discount,

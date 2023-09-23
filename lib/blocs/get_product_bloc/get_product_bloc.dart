@@ -25,9 +25,17 @@ class GetProductBloc extends Bloc<GetProduct, GetProductStates> {
     try {
       GetProductByIdModel getProductListModel =
           await _productsRepository.fetchProducts(event.cateId);
-      add(SortByPrice(
-          categoryModel: getProductListModel,
-          productsList: getProductListModel.products));
+
+      if (getProductListModel.products.isNotEmpty) {
+        add(SortByPrice(
+            categoryModel: getProductListModel,
+            productsList: getProductListModel.products));
+      } else {
+        emit(FilterPriceLoaded(
+          getProductByIdModel: getProductListModel,
+          productsList: getProductListModel.products,
+        ));
+      }
     } catch (e) {
       log(e.toString());
       emit(FetchProductError(message: e.toString()));

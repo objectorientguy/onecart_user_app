@@ -9,8 +9,8 @@ import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
 class CounterScreen extends StatefulWidget {
-  final double? height;
-  final double? width;
+  final double height;
+  final double width;
   final String title;
   final int? prodId;
   final int? variantId;

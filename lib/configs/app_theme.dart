@@ -61,6 +61,11 @@ extension AppTextTheme on TextTheme {
         fontSize: 12, color: AppColor.black, fontWeight: FontWeight.w400);
   }
 
+  TextStyle get mTinier {
+    return const TextStyle(
+        fontSize: 12.5, color: AppColor.black, fontWeight: FontWeight.w400);
+  }
+
   TextStyle get xxTinier {
     return const TextStyle(
         fontSize: 13, color: AppColor.black, fontWeight: FontWeight.w400);
