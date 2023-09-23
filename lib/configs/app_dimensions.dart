@@ -100,3 +100,5 @@ const double kBackArrow = 18.0;
 const double kContainerHeight = 25.0;
 const double kSmallWidth = 20.0;
 const double kSizedWidth = 250.0;
+const double kGeneralWidth = 100.0;
+const double kOrderWidth = 95.0;

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
-import '../../../common_widgets/button_widget.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/wishlist/view_wishlist_model.dart';
+import '../../home/widgets/counter_widget.dart';
 
 class GridViewScreen extends StatelessWidget {
   final List<WishlistData> wishlistData;
@@ -83,9 +83,12 @@ class GridViewScreen extends StatelessWidget {
                                     fontWeight: FontWeight.w500,
                                     color: AppColor.lightestGrey)),
                         const SizedBox(height: xxTiniestSpacing),
-                        const ButtonWidget(
+                        CounterScreen(
+                          width: kGeneralWidth,
                           title: 'Add to Cart',
-                        )
+                          prodId: wishlistData[index].productId,
+                          variantId: wishlistData[index].variantId,
+                        ),
                       ]),
                 ),
                 const Icon(Icons.close,

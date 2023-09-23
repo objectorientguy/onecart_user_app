@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
-import '../../../common_widgets/button_widget.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/wishlist/view_wishlist_model.dart';
+import '../../home/widgets/counter_widget.dart';
 
 class ListViewScreen extends StatelessWidget {
   final List<WishlistData> wishlistData;
@@ -65,40 +65,44 @@ class ListViewScreen extends StatelessWidget {
                                             overflow: TextOverflow.ellipsis,
                                             softWrap: false)),
                                   ]),
-                              Row(children: [
-                                Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: kTextboxHeightSmall,
-                                        child: Text(
-                                          wishlistData[index].quantity,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .tiniest
-                                              .copyWith(
-                                                  color: AppColor.primary),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                      const SizedBox(height: xxxTiniestSpacing),
-                                      Text(
-                                          '₹${wishlistData[index].discountedCost}',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .xxTinier
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      AppColor.lightestGrey)),
-                                    ]),
-                                const ButtonWidget(
-                                  title: 'Add to Cart',
-                                  showRatingScreen: true,
-                                ),
-                              ])
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            wishlistData[index].quantity,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .tiniest
+                                                .copyWith(
+                                                    color: AppColor.primary),
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          const SizedBox(
+                                              height: xxxTiniestSpacing),
+                                          Text(
+                                              '₹${wishlistData[index].discountedCost}',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .xxTinier
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: AppColor
+                                                          .lightestGrey)),
+                                        ]),
+                                    CounterScreen(
+                                      width: kGeneralWidth,
+                                      title: 'Add to Cart',
+                                      prodId: wishlistData[index].productId,
+                                      variantId: wishlistData[index].variantId,
+                                    ),
+                                  ])
                             ]),
                       ),
                     )

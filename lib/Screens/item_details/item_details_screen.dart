@@ -35,14 +35,17 @@ class ItemDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: GenericAppBar(
         actions: [
-          FavoriteButton(
-            valueChanged: () {
+          InkWell(
+            onTap: () {
               context.read<WishlistBloc>().add(AddWishlist(
                     productId: itemDetails.productId,
                     variantId: itemDetails.variants[0].variantId,
                   ));
             },
-            iconSize: kFavouriteButton,
+            child: FavoriteButton(
+              valueChanged: () {},
+              iconSize: kFavouriteButton,
+            ),
           ),
           const SizedBox(
             width: xxxTinierSpacing,

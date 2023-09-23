@@ -86,6 +86,7 @@ class OrderPlacedTile extends StatelessWidget {
                           ],
                         ),
                         ButtonWidget(
+                          width: kOrderWidth,
                           title: title,
                           showRatingScreen: true,
                         ),
