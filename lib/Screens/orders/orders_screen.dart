@@ -7,6 +7,7 @@ import '../../blocs/orders/orders_bloc.dart';
 import '../../blocs/orders/orders_events.dart';
 import '../../blocs/orders/orders_states.dart';
 import '../../configs/app_color.dart';
+import '../../data/models/orders/order_details_model.dart';
 import 'order_details_screen.dart';
 
 class OrdersScreen extends StatelessWidget {
@@ -89,12 +90,13 @@ class OrdersScreen extends StatelessWidget {
                             itemBuilder: (context, index) {
                               return InkWell(
                                   onTap: () {
-                                    Navigator.of(context).push(MaterialPageRoute(
-                                        builder: (context) =>
-                                        const OrdersDetailsScreen()));
+                                    context.read<GetAllOrdersBloc>().add(GetAllOrderDetails());
+                                    Navigator.pushNamed(context, OrdersDetailsScreen.routeName,
+                                    arguments: OrderDetailsData
+                                    );
                                   },
-                                  child: OrderTile(orderList: state.getAllOrdersListModel.data.orders));
-                            }),
+                                  child: OrderTile(orderList: state.getAllOrdersListModel.data.orders[index]));
+                            })
                       );
                   }
                   if (state is GetAllOrdersError) {

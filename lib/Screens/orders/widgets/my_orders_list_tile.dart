@@ -6,7 +6,7 @@ import '../../../configs/app_spacing.dart';
 import '../../../data/models/orders/get_all_orders_model.dart';
 
 class OrderTile extends StatelessWidget {
-  final List<Order> orderList;
+  final Order orderList;
 
   const OrderTile({
     super.key,
@@ -31,13 +31,14 @@ class OrderTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(children: [
-                    Padding(
+                     Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: tinierSpacing),
                         child: SizedBox(
                             height: kImageHeight,
                             width: kImageWidth,
-                            child: Image.network(orderList[0].image))),
+                            child: Image.network(orderList.image)
+                        )),
                     const SizedBox(
                       width: xxxTinierSpacing,
                     ),
@@ -45,11 +46,11 @@ class OrderTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          (orderList[0].orderStatus  == "Returned" ||
-                              orderList[0].orderStatus  ==
+                          (orderList.orderStatus  == "Returned" ||
+                              orderList.orderStatus  ==
                                       "Cancelled by Operations")
                               ? Text(
-                            orderList[0].orderStatus,
+                            orderList.orderStatus,
                                   style: Theme.of(context)
                                       .textTheme
                                       .xxTinier
@@ -58,7 +59,7 @@ class OrderTile extends StatelessWidget {
                                       ),
                                 )
                               : Text(
-                            orderList[0].orderStatus ,
+                            orderList.orderStatus ,
                                   style: Theme.of(context)
                                       .textTheme
                                       .xxTinier
@@ -66,7 +67,7 @@ class OrderTile extends StatelessWidget {
                                         fontWeight: FontWeight.w500,
                                       ),
                                 ),
-                          (orderList[0].orderStatus == "Delivered")
+                          (orderList.orderStatus == "Delivered")
                               ? Text(('Aug 1 2023'),
                                   style: Theme.of(context)
                                       .textTheme
@@ -76,7 +77,7 @@ class OrderTile extends StatelessWidget {
                                           fontWeight: FontWeight.w500))
                               : const SizedBox(),
                           Text(
-                              "${orderList[0].category} (${orderList[0].itemCount} items)",
+                              "${orderList.category} (${orderList.itemCount} items)",
                               style: Theme.of(context)
                                   .textTheme
                                   .xxxTinier

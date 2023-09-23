@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/common_widgets/stepper_widget.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import 'package:onecart_user_app/data/models/orders/order_details_model.dart';
 
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
 
 class OrderTrackingExpansionTile extends StatelessWidget {
+  final TrackingData trackData;
   const OrderTrackingExpansionTile({
-    super.key,
+    
+    super.key, required this.trackData,
   });
 
   @override
@@ -25,10 +28,10 @@ class OrderTrackingExpansionTile extends StatelessWidget {
           title:
               Text('Order Tracking', style: Theme.of(context).textTheme.xxTiny),
           trailing: const Icon(Icons.keyboard_arrow_down),
-          children: const [
+          children:  [
             Padding(
-              padding: EdgeInsets.only(left: tinierSpacing),
-              child: StepperWidget(),
+              padding: const EdgeInsets.only(left: tinierSpacing),
+              child: StepperWidget(trackedData:trackData ),
             )
           ]),
     );

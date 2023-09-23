@@ -5,55 +5,57 @@ import 'package:onecart_user_app/Screens/orders/widgets/order_details_bottom_app
 import 'package:onecart_user_app/common_widgets/oder_detail_screen_card_two.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-import '../../blocs/order_details_/order_detail_bloc.dart';
-import '../../blocs/order_details_/order_detail_states.dart';
-import '../../blocs/order_details_/order_details_event.dart';
+import '../../blocs/orders/orders_bloc.dart';
+import '../../blocs/orders/orders_events.dart';
+import '../../blocs/orders/orders_states.dart';
 import '../../common_widgets/order_detail_screen_card.dart';
 import '../../configs/app_color.dart';
+import '../../data/models/orders/order_details_model.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
   static const routeName = 'OrdersDetailsScreen';
+  final OrderDetailsData orderDetailsData;
 
-  const OrdersDetailsScreen({Key? key}) : super(key: key);
+  const OrdersDetailsScreen({Key? key, required this.orderDetailsData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-    context.read<GetAllOrderDetailsBloc>().add(GetAllOrderDetails());
-    List orderData = [
-      {
-        'title': 'Name',
-        'status': 'Ayushi Chintawar',
-      },
-      {
-        'title': 'Order Number',
-        'status': '1661587456982A2',
-      },
-      {
-        'title': 'Order Date',
-        'status': '29 August 2022',
-      },
-      {
-        'title': 'Product Total',
-        'status': '₹ 583.00',
-      },
-      {
-        'title': 'Order Amount',
-        'status': '₹ 583.00 (3 items)',
-      },
-      {
-        'title': 'Delivery Fee',
-        'status': 'Free',
-      },
-      {
-        'title': 'Invoice Number',
-        'status': 'TFM511455884510',
-      },
-      {
-        'title': 'Invoice Amount',
-        'status': '₹ 575.00',
-      }
-    ];
+    context.read<GetAllOrdersBloc>().add(GetAllOrderDetails());
+    // List orderData = [
+    //   {
+    //     'title': 'Name',
+    //     'status': 'Ayushi Chintawar',
+    //   },
+    //   {
+    //     'title': 'Order Number',
+    //     'status': '1661587456982A2',
+    //   },
+    //   {
+    //     'title': 'Order Date',
+    //     'status': '29 August 2022',
+    //   },
+    //   {
+    //     'title': 'Product Total',
+    //     'status': '₹ 583.00',
+    //   },
+    //   {
+    //     'title': 'Order Amount',
+    //     'status': '₹ 583.00 (3 items)',
+    //   },
+    //   {
+    //     'title': 'Delivery Fee',
+    //     'status': 'Free',
+    //   },
+    //   {
+    //     'title': 'Invoice Number',
+    //     'status': 'TFM511455884510',
+    //   },
+    //   {
+    //     'title': 'Invoice Amount',
+    //     'status': '₹ 575.00',
+    //   }
+    // ];
 
     return Scaffold(
         appBar: AppBar(
@@ -80,7 +82,7 @@ class OrdersDetailsScreen extends StatelessWidget {
               )
             ]),
         bottomNavigationBar: const OrderDetailsBottomAppBar(),
-        body: BlocBuilder<GetAllOrderDetailsBloc, OrdersDetailsStates>(
+        body: BlocBuilder<GetAllOrdersBloc, OrdersStates>(
             builder: (context, state) {
               if (state is GetAllOrdersDetailsLoading) {
                 return const Center(child: CircularProgressIndicator());
@@ -120,13 +122,14 @@ class OrdersDetailsScreen extends StatelessWidget {
                               Theme(
                                   data: Theme.of(context)
                                       .copyWith(dividerColor: AppColor.transparent),
-                                  child: const OrderTrackingExpansionTile()),
+                                  child:  OrderTrackingExpansionTile(trackData: state.getOrdersDetailsModel.data.trackingData)),
                               const SizedBox(height: xxTinierSpacing),
                               Theme(
                                   data: Theme.of(context)
                                       .copyWith(dividerColor: AppColor.transparent),
                                   child: OderDetailExpansionTile(
-                                    orderData: orderData,
+                                    orderData: state.getOrdersDetailsModel.data.order,
+                                   // orderData: orderData,
                                   )),
                               const SizedBox(height: xxTinierSpacing),
                               Theme(

@@ -10,7 +10,7 @@ String getAllOrdersListModelToJson(GetAllOrdersListModel data) => json.encode(da
 class GetAllOrdersListModel {
   final int status;
   final String message;
-  final OrderListData data;
+  final Data data;
 
   GetAllOrdersListModel({
     required this.status,
@@ -21,7 +21,7 @@ class GetAllOrdersListModel {
   factory GetAllOrdersListModel.fromJson(Map<String, dynamic> json) => GetAllOrdersListModel(
     status: json["status"],
     message: json["message"],
-    data: OrderListData.fromJson(json["data"]),
+    data: Data.fromJson(json["data"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -31,14 +31,14 @@ class GetAllOrdersListModel {
   };
 }
 
-class OrderListData {
+class Data {
   final List<Order> orders;
 
-  OrderListData({
+  Data({
     required this.orders,
   });
 
-  factory OrderListData.fromJson(Map<String, dynamic> json) => OrderListData(
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
     orders: List<Order>.from(json["orders"].map((x) => Order.fromJson(x))),
   );
 
@@ -50,9 +50,9 @@ class OrderListData {
 class Order {
   final int orderId;
   final String orderStatus;
-  final dynamic image;
-  final List<dynamic> category;
-  final List<dynamic> itemCount;
+  final String image;
+  final String category;
+  final int itemCount;
 
   Order({
     required this.orderId,
@@ -66,15 +66,15 @@ class Order {
     orderId: json["order_id"],
     orderStatus: json["order_status"],
     image: json["image"],
-    category: List<dynamic>.from(json["category"].map((x) => x)),
-    itemCount: List<dynamic>.from(json["item_count"].map((x) => x)),
+    category: json["category"],
+    itemCount: json["item_count"],
   );
 
   Map<String, dynamic> toJson() => {
     "order_id": orderId,
     "order_status": orderStatus,
     "image": image,
-    "category": List<dynamic>.from(category.map((x) => x)),
-    "item_count": List<dynamic>.from(itemCount.map((x) => x)),
+    "category": category,
+    "item_count": itemCount,
   };
 }

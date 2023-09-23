@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
+import '../data/models/orders/order_details_model.dart';
 
 class StepperWidget extends StatelessWidget {
+  final TrackingData trackedData;
   const StepperWidget({
-    super.key,
+    super.key, required this.trackedData,
   });
 
   @override

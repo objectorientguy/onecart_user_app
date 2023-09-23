@@ -1,7 +1,6 @@
 // To parse this JSON data, do
 //
 //     final orderDetailsModel = orderDetailsModelFromJson(jsonString);
-
 import 'dart:convert';
 
 OrderDetailsModel orderDetailsModelFromJson(String str) => OrderDetailsModel.fromJson(json.decode(str));
@@ -11,7 +10,7 @@ String orderDetailsModelToJson(OrderDetailsModel data) => json.encode(data.toJso
 class OrderDetailsModel {
   final int status;
   final String message;
-  final Data data;
+  final OrderDetailsData data;
 
   OrderDetailsModel({
     required this.status,
@@ -22,7 +21,7 @@ class OrderDetailsModel {
   factory OrderDetailsModel.fromJson(Map<String, dynamic> json) => OrderDetailsModel(
     status: json["status"],
     message: json["message"],
-    data: Data.fromJson(json["data"]),
+    data: OrderDetailsData.fromJson(json["data"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -32,58 +31,58 @@ class OrderDetailsModel {
   };
 }
 
-class Data {
+class OrderDetailsData {
   final TrackingData trackingData;
-  final Order order;
-  final List<String> products;
+  final OrderDetails order;
+  final List<OrderProduct> products;
 
-  Data({
+  OrderDetailsData({
     required this.trackingData,
     required this.order,
     required this.products,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory OrderDetailsData.fromJson(Map<String, dynamic> json) => OrderDetailsData(
     trackingData: TrackingData.fromJson(json["tracking_data"]),
-    order: Order.fromJson(json["order"]),
-    products: List<String>.from(json["products"].map((x) => x)),
+    order: OrderDetails.fromJson(json["order"]),
+    products: List<OrderProduct>.from(json["products"].map((x) => OrderProduct.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "tracking_data": trackingData.toJson(),
     "order": order.toJson(),
-    "products": List<dynamic>.from(products.map((x) => x)),
+    "products": List<dynamic>.from(products.map((x) => x.toJson())),
   };
 }
 
-class Order {
+class OrderDetails {
   final int orderId;
   final int userContact;
-  final String userName;
+  final dynamic addressId;
   final dynamic imageStatus;
   final DateTime orderDate;
   final int orderAmount;
   final String invoiceNumber;
-  final List<String> products;
+  final List<OrderProduct> products;
   final int cartId;
-  final dynamic addressId;
+  final String userName;
   final String orderStatus;
   final String orderNumber;
   final int productTotal;
   final int deliveryFees;
   final int invoiceAmount;
 
-  Order({
+  OrderDetails({
     required this.orderId,
     required this.userContact,
-    required this.userName,
+    required this.addressId,
     required this.imageStatus,
     required this.orderDate,
     required this.orderAmount,
     required this.invoiceNumber,
     required this.products,
     required this.cartId,
-    required this.addressId,
+    required this.userName,
     required this.orderStatus,
     required this.orderNumber,
     required this.productTotal,
@@ -91,17 +90,17 @@ class Order {
     required this.invoiceAmount,
   });
 
-  factory Order.fromJson(Map<String, dynamic> json) => Order(
+  factory OrderDetails.fromJson(Map<String, dynamic> json) => OrderDetails(
     orderId: json["order_id"],
     userContact: json["user_contact"],
-    userName: json["user_name"],
+    addressId: json["address_id"],
     imageStatus: json["image_status"],
     orderDate: DateTime.parse(json["order_date"]),
     orderAmount: json["order_amount"],
     invoiceNumber: json["invoice_number"],
-    products: List<String>.from(json["products"].map((x) => x)),
+    products: List<OrderProduct>.from(json["products"].map((x) => OrderProduct.fromJson(x))),
     cartId: json["cart_id"],
-    addressId: json["address_id"],
+    userName: json["user_name"],
     orderStatus: json["order_status"],
     orderNumber: json["order_number"],
     productTotal: json["product_total"],
@@ -112,14 +111,14 @@ class Order {
   Map<String, dynamic> toJson() => {
     "order_id": orderId,
     "user_contact": userContact,
-    "user_name": userName,
+    "address_id": addressId,
     "image_status": imageStatus,
     "order_date": "${orderDate.year.toString().padLeft(4, '0')}-${orderDate.month.toString().padLeft(2, '0')}-${orderDate.day.toString().padLeft(2, '0')}",
     "order_amount": orderAmount,
     "invoice_number": invoiceNumber,
-    "products": List<dynamic>.from(products.map((x) => x)),
+    "products": List<dynamic>.from(products.map((x) => x.toJson())),
     "cart_id": cartId,
-    "address_id": addressId,
+    "user_name": userName,
     "order_status": orderStatus,
     "order_number": orderNumber,
     "product_total": productTotal,
@@ -128,38 +127,90 @@ class Order {
   };
 }
 
+class OrderProduct {
+  final int variantId;
+  final int variantCost;
+  final int count;
+  final String brandName;
+  final int discountedCost;
+  final int discount;
+  final String quantity;
+  final String description;
+  final List<String> image;
+  final int ratings;
+
+  OrderProduct({
+    required this.variantId,
+    required this.variantCost,
+    required this.count,
+    required this.brandName,
+    required this.discountedCost,
+    required this.discount,
+    required this.quantity,
+    required this.description,
+    required this.image,
+    required this.ratings,
+  });
+
+  factory OrderProduct.fromJson(Map<String, dynamic> json) => OrderProduct(
+    variantId: json["variant_id"],
+    variantCost: json["variant_cost"],
+    count: json["count"],
+    brandName: json["brand_name"],
+    discountedCost: json["discounted_cost"],
+    discount: json["discount"],
+    quantity: json["quantity"],
+    description: json["description"],
+    image: List<String>.from(json["image"].map((x) => x)),
+    ratings: json["ratings"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "variant_id": variantId,
+    "variant_cost": variantCost,
+    "count": count,
+    "brand_name": brandName,
+    "discounted_cost": discountedCost,
+    "discount": discount,
+    "quantity": quantity,
+    "description": description,
+    "image": List<dynamic>.from(image.map((x) => x)),
+    "ratings": ratings,
+  };
+}
+
 class TrackingData {
-  final DateTime underProcess;
   final DateTime ordered;
-  final DateTime shipped;
-  final int bookingId;
   final int trackId;
+  final int bookingId;
+  final DateTime underProcess;
+  final DateTime shipped;
   final DateTime delivered;
 
   TrackingData({
-    required this.underProcess,
     required this.ordered,
-    required this.shipped,
-    required this.bookingId,
     required this.trackId,
+    required this.bookingId,
+    required this.underProcess,
+    required this.shipped,
     required this.delivered,
   });
 
   factory TrackingData.fromJson(Map<String, dynamic> json) => TrackingData(
-    underProcess: DateTime.parse(json["under_process"]),
     ordered: DateTime.parse(json["ordered"]),
-    shipped: DateTime.parse(json["shipped"]),
-    bookingId: json["booking_id"],
     trackId: json["track_id"],
+    bookingId: json["booking_id"],
+    underProcess: DateTime.parse(json["under_process"]),
+    shipped: DateTime.parse(json["shipped"]),
     delivered: DateTime.parse(json["delivered"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "under_process": underProcess.toIso8601String(),
     "ordered": ordered.toIso8601String(),
-    "shipped": shipped.toIso8601String(),
-    "booking_id": bookingId,
     "track_id": trackId,
+    "booking_id": bookingId,
+    "under_process": underProcess.toIso8601String(),
+    "shipped": shipped.toIso8601String(),
     "delivered": delivered.toIso8601String(),
   };
 }
