@@ -76,29 +76,43 @@ class ItemDetailsScreen extends StatelessWidget {
                           builder: (context) => const CartScreen()));
                     },
                   ),
-                  Positioned(
-                    left: 25,
-                    child: Container(
-                      height: kContainerHeight,
-                      width: kSmallWidth,
-                      decoration: const BoxDecoration(
-                        color: AppColor.primary,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(xxxTiniestSpacing),
-                          child: Text("99",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .xxxTinier
-                                  .copyWith(
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColor.white)),
+                  BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
+                      builder: (context, state) {
+                    if (state is ItemDetailsLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (state is ItemDetailsLoaded) {
+                      return Positioned(
+                        left: 25,
+                        child: Container(
+                          height: kContainerHeight,
+                          width: kSmallWidth,
+                          decoration: const BoxDecoration(
+                            color: AppColor.primary,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(xxxTiniestSpacing),
+                              child: Text(
+                                  state.productDetailsModel.data.items
+                                      .toString(),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .xxxTinier
+                                      .copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          color: AppColor.white)),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
+                      );
+                    }
+                    if (state is ItemDetailsError) {
+                      return Container();
+                    } else {
+                      return const SizedBox();
+                    }
+                  }),
                 ],
               ),
             ),

@@ -126,7 +126,9 @@ class ItemDetailsBody extends StatelessWidget {
       const SizedBox(
         height: xxTinierSpacing,
       ),
-      const FrequentlyBoughtItems()
+      FrequentlyBoughtItems(
+        productDetailsModel: productDetailsModel,
+      )
     ]);
   }
 }
