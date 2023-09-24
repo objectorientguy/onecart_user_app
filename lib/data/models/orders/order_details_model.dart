@@ -61,16 +61,16 @@ class OrderDetails {
   final dynamic addressId;
   final dynamic imageStatus;
   final DateTime orderDate;
-  final int orderAmount;
+  final double orderAmount;
   final String invoiceNumber;
   final List<OrderProduct> products;
   final int cartId;
   final String userName;
   final String orderStatus;
   final String orderNumber;
-  final int productTotal;
-  final int deliveryFees;
-  final int invoiceAmount;
+  final double productTotal;
+  final double deliveryFees;
+  final double invoiceAmount;
 
   OrderDetails({
     required this.orderId,
@@ -129,10 +129,10 @@ class OrderDetails {
 
 class OrderProduct {
   final int variantId;
-  final int variantCost;
+  final double variantCost;
   final int count;
   final String brandName;
-  final int discountedCost;
+  final double discountedCost;
   final int discount;
   final String quantity;
   final String description;

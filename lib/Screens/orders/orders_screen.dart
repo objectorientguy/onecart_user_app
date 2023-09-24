@@ -92,7 +92,7 @@ class OrdersScreen extends StatelessWidget {
                                   onTap: () {
                                     context.read<GetAllOrdersBloc>().add(GetAllOrderDetails());
                                     Navigator.pushNamed(context, OrdersDetailsScreen.routeName,
-                                    arguments: OrderDetailsData
+                                    arguments: OrderDetailsData,
                                     );
                                   },
                                   child: OrderTile(orderList: state.getAllOrdersListModel.data.orders[index]));
