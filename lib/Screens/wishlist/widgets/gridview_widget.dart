@@ -100,6 +100,7 @@ class GridViewScreen extends StatelessWidget {
                   onTap: () {
                     context.read<WishlistBloc>().add(DeleteWishlist(
                         deleteId: wishlistData[index].favItemId.toString()));
+                    context.read<WishlistBloc>().add(GetAllWishlistItems());
                   },
                   child: const Icon(Icons.close,
                       size: kIconSizeSmall, color: AppColor.grey),

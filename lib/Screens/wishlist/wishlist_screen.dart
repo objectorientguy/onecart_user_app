@@ -79,22 +79,27 @@ class _WishlistScreenState extends State<WishlistScreen> {
           const SizedBox(
             height: xxxSmallestSpacing,
           ),
-          BlocBuilder<WishlistBloc, WishlistStates>(builder: (context, state) {
-            if (state is GetAllWishListItemsLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is GetAllWishlistItemsLoaded) {
-              return Expanded(
-                child: isListView
-                    ? ListViewScreen(wishlistData: state.wishlistModel.data)
-                    : GridViewScreen(wishlistData: state.wishlistModel.data),
-              );
-            }
-            if (state is GetAllWishListItemsError) {
-              return Container();
-            } else {
-              return const SizedBox();
-            }
-          }),
+          BlocBuilder<WishlistBloc, WishlistStates>(
+              buildWhen: (pre, curr) =>
+                  (curr is GetAllWishListItemsLoading) ||
+                  curr is GetAllWishlistItemsLoaded,
+              builder: (context, state) {
+                if (state is GetAllWishListItemsLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state is GetAllWishlistItemsLoaded) {
+                  return Expanded(
+                    child: isListView
+                        ? ListViewScreen(wishlistData: state.wishlistModel.data)
+                        : GridViewScreen(
+                            wishlistData: state.wishlistModel.data),
+                  );
+                }
+                if (state is GetAllWishListItemsError) {
+                  return Container();
+                } else {
+                  return const SizedBox();
+                }
+              }),
         ]),
       ),
     );

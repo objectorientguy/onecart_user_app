@@ -21,10 +21,8 @@ import '../../data/models/general_data_model/general_category_data.dart';
 class ItemDetailsScreen extends StatelessWidget {
   static const routeName = 'ItemDetailsScreen';
   final Product itemDetails;
-  final bool isFirstTimeLoaded;
 
-  const ItemDetailsScreen(
-      {Key? key, required this.itemDetails, this.isFirstTimeLoaded = false})
+  const ItemDetailsScreen({Key? key, required this.itemDetails})
       : super(key: key);
 
   @override
@@ -32,108 +30,88 @@ class ItemDetailsScreen extends StatelessWidget {
     context
         .read<ItemDetailsBloc>()
         .add(FetchItemDetails(itemDetails.productId));
-
+    bool isFirstTimeLoaded = true;
     return Scaffold(
-      appBar: GenericAppBar(
-        actions: [
+        appBar: GenericAppBar(actions: [
           FavouriteIconWidget(
-            productId: itemDetails.productId,
-            variantId: itemDetails.variants[0].variantId,
-          ),
+              productId: itemDetails.productId,
+              variantId: itemDetails.variants[0].variantId),
           IconButton(
-            onPressed: () {
-              Share.share('https://onecart-8ac19.web.app');
-            },
-            icon: const Icon(
-              Icons.share,
-              color: AppColor.primary,
-            ),
-          ),
+              onPressed: () {
+                Share.share('https://onecart-8ac19.web.app');
+              },
+              icon: const Icon(Icons.share, color: AppColor.primary)),
           Padding(
-            padding:
-                const EdgeInsets.only(left: kZero, right: xxxTinierSpacing),
-            child: Container(
-              alignment: Alignment.center,
-              child: Stack(
-                children: <Widget>[
-                  IconButton(
-                    icon: const Icon(
-                      Icons.shopping_cart_sharp,
-                      color: AppColor.primary,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const CartScreen()));
-                    },
-                  ),
-                  BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
-                      builder: (context, state) {
-                    if (state is ItemDetailsLoaded) {
-                      return Positioned(
-                        left: smallestSpacing,
-                        child: Container(
-                          height: kContainerHeight,
-                          width: kSmallWidth,
-                          decoration: const BoxDecoration(
-                            color: AppColor.primary,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: Padding(
-                              padding: const EdgeInsets.all(xxxTiniestSpacing),
-                              child: Text(
-                                  state.productDetailsModel.data.items
-                                      .toString(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .xxxTinier
-                                      .copyWith(
-                                          fontWeight: FontWeight.w600,
-                                          color: AppColor.white)),
-                            ),
-                          ),
-                        ),
-                      );
-                    }
-                    if (state is ItemDetailsError) {
-                      return Container();
-                    } else {
-                      return const SizedBox();
-                    }
-                  }),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-      body: BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
-          buildWhen: (pre, curr) =>
-              (curr is ItemDetailsLoading && isFirstTimeLoaded == true) ||
-              curr is ItemDetailsLoaded,
-          builder: (context, state) {
-            if (state is ItemDetailsLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is ItemDetailsLoaded) {
-              return SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(children: [
-                    ImageCarouselSlider(
-                      imageList: state.productDetailsModel.data.productData
-                          .variants[state.variantIndex].image,
-                    ),
-                    ItemDetailsSection(
-                      productDetailsModel: state.productDetailsModel,
-                      variantIndex: state.variantIndex,
-                    )
-                  ]));
-            }
-            if (state is ItemDetailsError) {
-              return Container();
-            } else {
-              return const SizedBox();
-            }
-          }),
-    );
+              padding:
+                  const EdgeInsets.only(left: kZero, right: xxxTinierSpacing),
+              child: Container(
+                  alignment: Alignment.center,
+                  child: Stack(children: <Widget>[
+                    IconButton(
+                        icon: const Icon(Icons.shopping_cart_sharp,
+                            color: AppColor.primary),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const CartScreen()));
+                        }),
+                    BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
+                        builder: (context, state) {
+                      if (state is ItemDetailsLoaded) {
+                        return Positioned(
+                            left: smallestSpacing,
+                            child: Container(
+                                height: kContainerHeight,
+                                width: kSmallWidth,
+                                decoration: const BoxDecoration(
+                                    color: AppColor.primary,
+                                    shape: BoxShape.circle),
+                                child: Center(
+                                    child: Padding(
+                                        padding: const EdgeInsets.all(
+                                            xxxTiniestSpacing),
+                                        child: Text(
+                                            state.productDetailsModel.data.items
+                                                .toString(),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .xxxTinier
+                                                .copyWith(
+                                                    fontWeight: FontWeight.w600,
+                                                    color: AppColor.white))))));
+                      }
+                      if (state is ItemDetailsError) {
+                        return Container();
+                      } else {
+                        return const SizedBox();
+                      }
+                    })
+                  ])))
+        ]),
+        body: BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
+            buildWhen: (pre, curr) =>
+                (curr is ItemDetailsLoading && isFirstTimeLoaded == true) ||
+                (curr is ItemDetailsLoaded && isFirstTimeLoaded == true),
+            builder: (context, state) {
+              if (state is ItemDetailsLoading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state is ItemDetailsLoaded) {
+                isFirstTimeLoaded = false;
+                return SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Column(children: [
+                      ImageCarouselSlider(
+                          imageList: state.productDetailsModel.data.productData
+                              .variants[state.variantIndex].image),
+                      ItemDetailsSection(
+                          productDetailsModel: state.productDetailsModel,
+                          variantIndex: state.variantIndex)
+                    ]));
+              }
+              if (state is ItemDetailsError) {
+                return Container();
+              } else {
+                return const SizedBox();
+              }
+            }));
   }
 }
