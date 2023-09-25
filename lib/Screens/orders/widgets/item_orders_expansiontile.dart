@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
+import '../../../data/models/orders/order_details_model.dart';
 import 'order_placed_tile.dart';
 
 class ItemOrderedExpansionTile extends StatelessWidget {
   final index;
-
+  final List<Product> orderProductData;
   const ItemOrderedExpansionTile({
     super.key,
     this.index,
+    required this.orderProductData,
   });
 
   @override
@@ -26,8 +28,11 @@ class ItemOrderedExpansionTile extends StatelessWidget {
           title:
               Text('Item Ordered', style: Theme.of(context).textTheme.xxTiny),
           trailing: const Icon(Icons.keyboard_arrow_down),
-          children: List.generate(3, (index) {
-            return const OrderPlacedTile(title: 'Add Review');
+          children: List.generate(orderProductData.length, (index) {
+            return OrderPlacedTile(
+              title: 'Add Review',
+              orderProductData: orderProductData[index],
+            );
           })),
     );
   }

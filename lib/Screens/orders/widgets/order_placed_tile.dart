@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../../../common_widgets/button_widget.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/orders/order_details_model.dart';
 import '../../ratings/ratings_screen.dart';
 
 class OrderPlacedTile extends StatelessWidget {
   final String title;
+  final Product orderProductData;
 
-  const OrderPlacedTile({super.key, required this.title});
+  const OrderPlacedTile(
+      {super.key, required this.title, required this.orderProductData});
 
   @override
   Widget build(BuildContext context) {
@@ -33,71 +35,64 @@ class OrderPlacedTile extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius:
                                 BorderRadius.circular(kBorderRadiusSmall)),
-                        child: Image.asset('assets/img_2.png',
+                        child: Image.network(orderProductData.variants.image[0],
                             fit: BoxFit.fill)))),
             const SizedBox(width: xxxTinySpacing),
             Expanded(
-              child: SizedBox(
-                height: kHeight,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                child: Text(
-                                    'Lays American Style Cream and Onion Potato Chips  ',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .xxTinier
-                                        .copyWith(
-                                            fontWeight: FontWeight.w500,
-                                            color: AppColor.black),
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    softWrap: false)),
-                          ]),
-                      Row(children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              width: kTextboxHeightSmall,
-                              child: Text(
-                                '196 gm',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .tiniest
-                                    .copyWith(color: AppColor.primary),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                            const SizedBox(height: xxxTiniestSpacing),
-                            Text('₹29',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .xxTinier
-                                    .copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        color: AppColor.lightestGrey)),
-                          ],
-                        ),
-                        ButtonWidget(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => AddRatingsScreen()));
-                          },
-                          width: kOrderWidth,
-                          title: title,
-                        ),
-                      ])
-                    ]),
-              ),
-            )
+                child: SizedBox(
+                    height: kHeight,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                    child: Text(orderProductData.productName,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .xxTinier
+                                            .copyWith(
+                                                fontWeight: FontWeight.w500,
+                                                color: AppColor.black),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        softWrap: false)),
+                              ]),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      orderProductData.variants.quantity,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .tiniest
+                                          .copyWith(color: AppColor.primary),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    const SizedBox(height: xxxTiniestSpacing),
+                                    Text(
+                                        "₹ ${orderProductData.variants.quantity}",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .xxTinier
+                                            .copyWith(
+                                                fontWeight: FontWeight.w500,
+                                                color: AppColor.lightestGrey)),
+                                  ],
+                                ),
+                                SizedBox(
+                                    width: kTextboxHeightSmall,
+                                    child: ButtonWidget(
+                                        title: title, showRatingScreen: true))
+                              ])
+                        ])))
           ]),
     );
   }
