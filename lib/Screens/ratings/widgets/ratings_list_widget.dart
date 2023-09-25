@@ -5,10 +5,13 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/ratings_model/view_ratings_model.dart';
 import '../../item_details/widgets/star_widget.dart';
 
 class RatingsListWidget extends StatefulWidget {
-  const RatingsListWidget({super.key});
+  final List<RatingsData> ratingsDetails;
+
+  const RatingsListWidget({super.key, required this.ratingsDetails});
 
   @override
   State<RatingsListWidget> createState() => _RatingsListWidgetState();
@@ -29,7 +32,7 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
       child: ListView.separated(
           physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
-          itemCount: 4,
+          itemCount: widget.ratingsDetails.length,
           separatorBuilder: (context, index) =>
               const SizedBox(height: smallestSpacing),
           itemBuilder: (context, index) {
@@ -71,36 +74,35 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
                               ),
                             ],
                           ),
-                          const StarDisplayWidget(
-                              filledStar: Icon(
+                          StarDisplayWidget(
+                              filledStar: const Icon(
                                 Icons.star_rounded,
                                 color: Colors.amber,
                                 size: kRatingIcon,
                               ),
-                              unfilledStar: Icon(
+                              unfilledStar: const Icon(
                                 Icons.star_border_rounded,
                                 color: Colors.amber,
                                 size: kRatingIcon,
                               ),
-                              halfFilledStar: Icon(
+                              halfFilledStar: const Icon(
                                 Icons.star_half_rounded,
                                 color: Colors.amber,
                                 size: kRatingIcon,
                               ),
-                              value: 4),
+                              value: widget.ratingsDetails[index].rating
+                                  .toDouble()),
                         ],
                       ),
                       const SizedBox(
                         height: xxxTinierSpacing,
                       ),
-                      Text(
-                          '“I got a pair of boots from store '
-                          'X and I’m very satisfied. They are high-quality '
-                          'and worth the money. The store also offered'
-                          ' free shipping at that price so that’s a plus!”',
+                      Text(widget.ratingsDetails[index].reviewText,
                           maxLines: isExpanded ? null : 2,
                           style: Theme.of(context).textTheme.tiniest),
-                      const RatingsListBody()
+                      RatingsListBody(
+                        ratingsDetails: widget.ratingsDetails,
+                      )
                     ]));
           }),
     );

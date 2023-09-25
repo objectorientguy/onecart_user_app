@@ -11,11 +11,15 @@ class ButtonWidget extends StatelessWidget {
 
   final String title;
   final bool showRatingScreen;
+  final bool isToBePosted;
+  final bool isFromCancel;
 
   const ButtonWidget(
       {super.key,
       required this.title,
       this.showRatingScreen = false,
+      this.isToBePosted = false,
+      this.isFromCancel = false,
       this.width = kHeight});
 
   @override
@@ -28,6 +32,9 @@ class ButtonWidget extends StatelessWidget {
           if (showRatingScreen == true) {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const AddRatingsScreen()));
+          } else if (isToBePosted == true) {
+          } else if (isFromCancel == true) {
+            Navigator.pop(context);
           }
         },
         style: TextButton.styleFrom(

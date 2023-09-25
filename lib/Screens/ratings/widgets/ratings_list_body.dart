@@ -4,10 +4,13 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/ratings_model/view_ratings_model.dart';
 import '../../item_details/widgets/star_widget.dart';
 
 class RatingsListBody extends StatelessWidget {
-  const RatingsListBody({super.key});
+  final List<RatingsData> ratingsDetails;
+
+  const RatingsListBody({super.key, required this.ratingsDetails});
 
   @override
   Widget build(BuildContext context) {
@@ -58,30 +61,26 @@ class RatingsListBody extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const StarDisplayWidget(
-                      filledStar: Icon(
+                  StarDisplayWidget(
+                      filledStar: const Icon(
                         Icons.star_rounded,
                         color: Colors.amber,
                         size: kRatingIcon,
                       ),
-                      unfilledStar: Icon(
+                      unfilledStar: const Icon(
                         Icons.star_border_rounded,
                         color: Colors.amber,
                         size: kRatingIcon,
                       ),
-                      halfFilledStar: Icon(
+                      halfFilledStar: const Icon(
                         Icons.star_half_rounded,
                         color: Colors.amber,
                         size: kRatingIcon,
                       ),
-                      value: 4),
+                      value: ratingsDetails[0].rating.toDouble()),
                 ],
               ),
-              content: Text(
-                  '“I got a pair of boots from store '
-                  'X and I’m very satisfied. They are high-quality '
-                  'and worth the money. The store also offered'
-                  ' free shipping at that price so that’s a plus!”',
+              content: Text(ratingsDetails[0].reviewText,
                   style: Theme.of(context).textTheme.tiniest.copyWith(
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.w500)),

@@ -17,6 +17,7 @@ import 'blocs/home/home_bloc.dart';
 import 'blocs/onboarding_bloc/onboarding_events.dart';
 import 'blocs/orders/orders_bloc.dart';
 
+import 'blocs/ratings_bloc/ratings_bloc.dart';
 import 'blocs/search_product_bloc/search_product_bloc.dart';
 import 'blocs/varient_bloc/varient_bloc.dart';
 import 'blocs/item_details_bloc/item_details_bloc.dart';
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(lazy: false, create: (context) => CheckoutBloc()),
         BlocProvider(lazy: false, create: (context) => SearchProductsBloc()),
         BlocProvider(lazy: false, create: (context) => AddToCartBloc()),
+        BlocProvider(lazy: false, create: (context) => RatingsBloc()),
         BlocProvider(lazy: false, create: (context) => WishlistBloc()),
         BlocProvider(
             lazy: false,
