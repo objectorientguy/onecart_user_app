@@ -5,11 +5,12 @@ import '../../../common_widgets/button_widget.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/orders/order_details_model.dart';
 
 class OrderPlacedTile extends StatelessWidget {
   final String title;
-
-  const OrderPlacedTile({super.key, required this.title});
+final OrderProduct orderProductData;
+  const OrderPlacedTile({super.key, required this.title, required this.orderProductData});
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +48,8 @@ class OrderPlacedTile extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
-                                child: Text(
-                                    'Lays American Style Cream and Onion Potato Chips  ',
-                                    style: Theme.of(context)
+                                child: Text(orderProductData.brandName,
+                    style: Theme.of(context)
                                         .textTheme
                                         .xxTinier
                                         .copyWith(
@@ -59,24 +59,23 @@ class OrderPlacedTile extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis,
                                     softWrap: false)),
                           ]),
-                      Row(children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              width: kTextboxHeightSmall,
-                              child: Text(
-                                '196 gm',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .tiniest
-                                    .copyWith(color: AppColor.primary),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                            Text(
+                              orderProductData.quantity,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .tiniest
+                                  .copyWith(color: AppColor.primary),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                             const SizedBox(height: xxxTiniestSpacing),
-                            Text('₹29',
+                            Text(orderProductData.discountedCost.toString(),
                                 style: Theme.of(context)
                                     .textTheme
                                     .xxTinier

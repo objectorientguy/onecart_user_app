@@ -10,17 +10,15 @@ import '../../blocs/orders/orders_events.dart';
 import '../../blocs/orders/orders_states.dart';
 import '../../common_widgets/order_detail_screen_card.dart';
 import '../../configs/app_color.dart';
-import '../../data/models/orders/order_details_model.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
   static const routeName = 'OrdersDetailsScreen';
-  final OrderDetailsData orderDetailsData;
+  // final OrderDetailsData orderDetailsData;
 
-  const OrdersDetailsScreen({Key? key, required this.orderDetailsData}) : super(key: key);
+  const OrdersDetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     context.read<GetAllOrdersBloc>().add(GetAllOrderDetails());
     // List orderData = [
     //   {
@@ -83,11 +81,15 @@ class OrdersDetailsScreen extends StatelessWidget {
             ]),
         bottomNavigationBar: const OrderDetailsBottomAppBar(),
         body: BlocBuilder<GetAllOrdersBloc, OrdersStates>(
+            buildWhen: (previousState, currentState) =>
+                currentState is GetAllOrdersDetailsLoading ||
+                currentState is GetAllOrdersDetailsLoaded ||
+                currentState is GetAllOrdersDetailsError,
             builder: (context, state) {
               if (state is GetAllOrdersDetailsLoading) {
                 return const Center(child: CircularProgressIndicator());
               } else if (state is GetAllOrdersDetailsLoaded) {
-                return  SingleChildScrollView(
+                return SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
                     child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -96,7 +98,8 @@ class OrdersDetailsScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: tiniestSpacing),
+                                padding:
+                                    const EdgeInsets.only(left: tiniestSpacing),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -105,37 +108,40 @@ class OrdersDetailsScreen extends StatelessWidget {
                                             .textTheme
                                             .xxTiny
                                             .copyWith(
-                                            color: AppColor.black,
-                                            fontWeight: FontWeight.w500)),
+                                                color: AppColor.black,
+                                                fontWeight: FontWeight.w500)),
                                     const SizedBox(height: xxxTinierSpacing),
                                     Text('Delivered on Aug 29',
                                         style: Theme.of(context)
                                             .textTheme
                                             .tinier
                                             .copyWith(
-                                            fontWeight: FontWeight.w600,
-                                            color: AppColor.primary)),
+                                                fontWeight: FontWeight.w600,
+                                                color: AppColor.primary)),
                                     const SizedBox(height: xxxSmallestSpacing),
                                   ],
                                 ),
                               ),
                               Theme(
-                                  data: Theme.of(context)
-                                      .copyWith(dividerColor: AppColor.transparent),
-                                  child:  OrderTrackingExpansionTile(trackData: state.getOrdersDetailsModel.data.trackingData)),
+                                  data: Theme.of(context).copyWith(
+                                      dividerColor: AppColor.transparent),
+                                  child: OrderTrackingExpansionTile(
+                                      trackData: state.getOrdersDetailsModel
+                                          .data.trackingData)),
                               const SizedBox(height: xxTinierSpacing),
                               Theme(
-                                  data: Theme.of(context)
-                                      .copyWith(dividerColor: AppColor.transparent),
+                                  data: Theme.of(context).copyWith(
+                                      dividerColor: AppColor.transparent),
                                   child: OderDetailExpansionTile(
-                                    orderData: state.getOrdersDetailsModel.data.order,
-                                   // orderData: orderData,
+                                    orderData:
+                                        state.getOrdersDetailsModel.data.order,
+                                    // orderData: orderData,
                                   )),
                               const SizedBox(height: xxTinierSpacing),
                               Theme(
-                                  data: Theme.of(context)
-                                      .copyWith(dividerColor: AppColor.transparent),
-                                  child: const ItemOrderedExpansionTile()),
+                                  data: Theme.of(context).copyWith(
+                                      dividerColor: AppColor.transparent),
+                                  child:  ItemOrderedExpansionTile(orderProductData: state.getOrdersDetailsModel.data.products,)),
                             ])));
               }
               if (state is GetAllOrdersDetailsError) {
@@ -143,19 +149,6 @@ class OrdersDetailsScreen extends StatelessWidget {
               } else {
                 return const SizedBox();
               }
-            })
-
-
-
-
-
-
-
-
-
-
-
-
-       );
+            }));
   }
 }

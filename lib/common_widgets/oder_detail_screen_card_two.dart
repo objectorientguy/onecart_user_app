@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import 'package:onecart_user_app/data/models/orders/order_details_model.dart';
 
@@ -36,6 +37,7 @@ class OderDetailExpansionTile extends StatelessWidget {
                                 horizontal: topBottomPadding,
                                 vertical: xxxTiniestSpacing),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Row(children: [
                                   Expanded(
@@ -59,7 +61,7 @@ class OderDetailExpansionTile extends StatelessWidget {
                                 Row(children: [
                                   Expanded(
                                       flex: 5,
-                                      child: Text('Name',
+                                      child: Text('Order Number',
                                           style: Theme.of(context)
                                               .textTheme
                                               .tinier
@@ -68,7 +70,7 @@ class OderDetailExpansionTile extends StatelessWidget {
                                               fontWeight: FontWeight.w400))),
                                   Expanded(
                                     flex: 5,
-                                    child: Text(orderData.userName,
+                                    child: Text(orderData.orderNumber,
                                         style: Theme.of(context)
                                             .textTheme
                                             .tinier
@@ -78,7 +80,7 @@ class OderDetailExpansionTile extends StatelessWidget {
                                 Row(children: [
                                   Expanded(
                                       flex: 5,
-                                      child: Text('Name',
+                                      child: Text('Order Date',
                                           style: Theme.of(context)
                                               .textTheme
                                               .tinier
@@ -87,7 +89,7 @@ class OderDetailExpansionTile extends StatelessWidget {
                                               fontWeight: FontWeight.w400))),
                                   Expanded(
                                     flex: 5,
-                                    child: Text(orderData.userName,
+                                    child: Text(DateFormat.yMMMMd().format(orderData.orderDate),
                                         style: Theme.of(context)
                                             .textTheme
                                             .tinier
@@ -97,7 +99,7 @@ class OderDetailExpansionTile extends StatelessWidget {
                                 Row(children: [
                                   Expanded(
                                       flex: 5,
-                                      child: Text('Name',
+                                      child: Text('Product Total',
                                           style: Theme.of(context)
                                               .textTheme
                                               .tinier
@@ -106,7 +108,7 @@ class OderDetailExpansionTile extends StatelessWidget {
                                               fontWeight: FontWeight.w400))),
                                   Expanded(
                                     flex: 5,
-                                    child: Text(orderData.userName,
+                                    child: Text(orderData.productTotal.toString(),
                                         style: Theme.of(context)
                                             .textTheme
                                             .tinier
@@ -116,7 +118,7 @@ class OderDetailExpansionTile extends StatelessWidget {
                                 Row(children: [
                                   Expanded(
                                       flex: 5,
-                                      child: Text('Name',
+                                      child: Text('Order Amount',
                                           style: Theme.of(context)
                                               .textTheme
                                               .tinier
@@ -125,7 +127,7 @@ class OderDetailExpansionTile extends StatelessWidget {
                                               fontWeight: FontWeight.w400))),
                                   Expanded(
                                     flex: 5,
-                                    child: Text(orderData.userName,
+                                    child: Text(orderData.orderAmount.toString(),
                                         style: Theme.of(context)
                                             .textTheme
                                             .tinier
@@ -135,7 +137,7 @@ class OderDetailExpansionTile extends StatelessWidget {
                                 Row(children: [
                                   Expanded(
                                       flex: 5,
-                                      child: Text('Name',
+                                      child: Text('Delivery Fee',
                                           style: Theme.of(context)
                                               .textTheme
                                               .tinier
@@ -144,7 +146,45 @@ class OderDetailExpansionTile extends StatelessWidget {
                                               fontWeight: FontWeight.w400))),
                                   Expanded(
                                     flex: 5,
-                                    child: Text(orderData.userName,
+                                    child: Text(orderData.deliveryFees.toString(),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .tinier
+                                            .copyWith(fontWeight: FontWeight.w500)),
+                                  )
+                                ]),
+                                Row(children: [
+                                  Expanded(
+                                      flex: 5,
+                                      child: Text('Invoice Number',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .tinier
+                                              .copyWith(
+                                              color: AppColor.darkGrey,
+                                              fontWeight: FontWeight.w400))),
+                                  Expanded(
+                                    flex: 5,
+                                    child: Text(orderData.invoiceNumber.toString(),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .tinier
+                                            .copyWith(fontWeight: FontWeight.w500)),
+                                  )
+                                ]),
+                                Row(children: [
+                                  Expanded(
+                                      flex: 5,
+                                      child: Text('Invoice Amount',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .tinier
+                                              .copyWith(
+                                              color: AppColor.darkGrey,
+                                              fontWeight: FontWeight.w400))),
+                                  Expanded(
+                                    flex: 5,
+                                    child: Text(orderData.invoiceAmount.toString(),
                                         style: Theme.of(context)
                                             .textTheme
                                             .tinier

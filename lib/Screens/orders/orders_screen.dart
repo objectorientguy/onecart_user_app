@@ -75,6 +75,10 @@ class OrdersScreen extends StatelessWidget {
               ],
             ),
             body:  BlocBuilder<GetAllOrdersBloc, OrdersStates>(
+              buildWhen: (previousState, currentState) =>
+              currentState is GetAllOrdersLoading ||
+                  currentState is GetAllOrdersLoaded ||
+                  currentState is GetAllOrdersError,
                 builder: (context, state) {
                   if (state is GetAllOrdersLoading) {
                     return const Center(child: CircularProgressIndicator());
@@ -90,7 +94,6 @@ class OrdersScreen extends StatelessWidget {
                             itemBuilder: (context, index) {
                               return InkWell(
                                   onTap: () {
-                                    context.read<GetAllOrdersBloc>().add(GetAllOrderDetails());
                                     Navigator.pushNamed(context, OrdersDetailsScreen.routeName,
                                     arguments: OrderDetailsData,
                                     );
