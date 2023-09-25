@@ -5,7 +5,6 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/orders/order_details_model.dart';
-import '../../ratings/ratings_screen.dart';
 
 class OrderPlacedTile extends StatelessWidget {
   final String title;
@@ -89,8 +88,7 @@ class OrderPlacedTile extends StatelessWidget {
                                 ),
                                 SizedBox(
                                     width: kTextboxHeightSmall,
-                                    child: ButtonWidget(
-                                        title: title, showRatingScreen: true))
+                                    child: ButtonWidget(title: title))
                               ])
                         ])))
           ]),
