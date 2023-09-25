@@ -5,10 +5,10 @@ import 'package:intl/intl.dart';
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
-import '../data/models/orders/order_details_model.dart';
+import '../data/models/orders/order_products.dart';
 
 class StepperWidget extends StatelessWidget {
-  final TrackingData trackedData;
+  final OrderTrackingData trackedData;
   const StepperWidget({
     super.key,
     required this.trackedData,

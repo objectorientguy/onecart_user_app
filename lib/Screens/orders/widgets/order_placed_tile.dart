@@ -4,11 +4,11 @@ import '../../../common_widgets/button_widget.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/orders/order_details_model.dart';
+import '../../../data/models/orders/order_products.dart';
 
 class OrderPlacedTile extends StatelessWidget {
   final String title;
-  final OrderProduct orderProductData;
+  final Product orderProductData;
 
   const OrderPlacedTile(
       {super.key, required this.title, required this.orderProductData});
@@ -34,7 +34,7 @@ class OrderPlacedTile extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius:
                                 BorderRadius.circular(kBorderRadiusSmall)),
-                        child: Image.network(orderProductData.image[0],
+                        child: Image.network(orderProductData.variants.image[0],
                             fit: BoxFit.fill)))),
             const SizedBox(width: xxxTinySpacing),
             Expanded(
@@ -49,7 +49,7 @@ class OrderPlacedTile extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Expanded(
-                                    child: Text(orderProductData.brandName,
+                                    child: Text(orderProductData.productName,
                                         style: Theme.of(context)
                                             .textTheme
                                             .xxTinier
@@ -67,7 +67,7 @@ class OrderPlacedTile extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      orderProductData.quantity,
+                                      orderProductData.variants.quantity,
                                       style: Theme.of(context)
                                           .textTheme
                                           .tiniest
@@ -77,7 +77,7 @@ class OrderPlacedTile extends StatelessWidget {
                                     ),
                                     const SizedBox(height: xxxTiniestSpacing),
                                     Text(
-                                        "₹ ${orderProductData.discountedCost.toString()}",
+                                        "₹ ${orderProductData.variants.quantity}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .xxTinier

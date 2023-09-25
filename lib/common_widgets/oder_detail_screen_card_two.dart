@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-import 'package:onecart_user_app/data/models/orders/order_details_model.dart';
 import '../Screens/orders/widgets/order_details_row_widget.dart';
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
+import '../data/models/orders/order_products.dart';
 
 class OderDetailExpansionTile extends StatelessWidget {
-  final OrderDetails orderData;
+  final OrderedProducts orderData;
 
   const OderDetailExpansionTile({super.key, required this.orderData});
 

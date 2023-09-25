@@ -1,5 +1,5 @@
 import '../../data/models/orders/get_all_orders_model.dart';
-import '../../data/models/orders/order_details_model.dart';
+import '../../data/models/orders/order_products.dart';
 
 abstract class OrdersStates {}
 
@@ -24,7 +24,7 @@ class GetAllOrdersDetailsInitial extends OrdersStates {}
 class GetAllOrdersDetailsLoading extends OrdersStates {}
 
 class GetAllOrdersDetailsLoaded extends OrdersStates {
-  final OrderDetailsModel getOrdersDetailsModel;
+  final OrderProductsModel getOrdersDetailsModel;
 
   GetAllOrdersDetailsLoaded({required this.getOrdersDetailsModel});
 }

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/common_widgets/stepper_widget.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-import 'package:onecart_user_app/data/models/orders/order_details_model.dart';
 
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
+import '../data/models/orders/order_products.dart';
 
 class OrderTrackingExpansionTile extends StatelessWidget {
-  final TrackingData trackData;
+  final OrderTrackingData trackData;
   const OrderTrackingExpansionTile({
     super.key,
     required this.trackData,

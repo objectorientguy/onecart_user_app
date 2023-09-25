@@ -17,43 +17,6 @@ class OrdersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<GetAllOrdersBloc>().add(GetAllOrders());
 
-    // List orderData = [
-    //   {
-    //     'title': 'Order Placed',
-    //     'deliveryDate': 'Delivered,Aug 1',
-    //     'image': 'assets/order_time.png',
-    //     'category': 'Healthcare',
-    //     'quantity': 43
-    //   },
-    //   {
-    //     'title': 'Delivered',
-    //     'deliveryDate': 'Delivered,Jun 12',
-    //     'image': 'assets/order_check.png',
-    //     'category': 'Groceries',
-    //     'quantity': 12
-    //   },
-    //   {
-    //     'title': 'Cancelled by Operations',
-    //     'deliveryDate': 'Delivered,Dec 25',
-    //     'image': 'assets/order_cross.png',
-    //     'category': 'Staples',
-    //     'quantity': 14
-    //   },
-    //   {
-    //     'title': 'Returned',
-    //     'deliveryDate': 'Delivered,Feb 14',
-    //     'image': 'assets/order_share.png',
-    //     'category': 'Dairy Product',
-    //     'quantity': 20
-    //   },
-    //   {
-    //     'title': 'Delivered',
-    //     'deliveryDate': 'Delivered,Jun 12',
-    //     'image': 'assets/order_check.png',
-    //     'category': 'Groceries',
-    //     'quantity': 12
-    //   },
-    // ];
     return WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(

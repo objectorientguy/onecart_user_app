@@ -14,71 +14,31 @@ import '../../configs/app_color.dart';
 
 class OrdersDetailsScreen extends StatelessWidget {
   static const routeName = 'OrdersDetailsScreen';
-  // final OrderDetailsData orderDetailsData;
 
   const OrdersDetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     context.read<GetAllOrdersBloc>().add(GetAllOrderDetails());
-    // List orderData = [
-    //   {
-    //     'title': 'Name',
-    //     'status': 'Ayushi Chintawar',
-    //   },
-    //   {
-    //     'title': 'Order Number',
-    //     'status': '1661587456982A2',
-    //   },
-    //   {
-    //     'title': 'Order Date',
-    //     'status': '29 August 2022',
-    //   },
-    //   {
-    //     'title': 'Product Total',
-    //     'status': '₹ 583.00',
-    //   },
-    //   {
-    //     'title': 'Order Amount',
-    //     'status': '₹ 583.00 (3 items)',
-    //   },
-    //   {
-    //     'title': 'Delivery Fee',
-    //     'status': 'Free',
-    //   },
-    //   {
-    //     'title': 'Invoice Number',
-    //     'status': 'TFM511455884510',
-    //   },
-    //   {
-    //     'title': 'Invoice Amount',
-    //     'status': '₹ 575.00',
-    //   }
-    // ];
 
     return Scaffold(
         appBar: AppBar(
             leading: InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: const Icon(
-                Icons.arrow_back,
-                color: AppColor.black,
-              ),
-            ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: const Icon(Icons.arrow_back, color: AppColor.black)),
             title: Text('Order Details',
                 style: Theme.of(context).textTheme.xxTiny),
             actions: [
               Padding(
-                padding: const EdgeInsets.only(right: xxTinierSpacing),
-                child: TextButton(
-                    onPressed: () {},
-                    child: const Text('Help',
-                        style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: AppColor.darkGrey))),
-              )
+                  padding: const EdgeInsets.only(right: xxTinierSpacing),
+                  child: TextButton(
+                      onPressed: () {},
+                      child: const Text('Help',
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: AppColor.darkGrey))))
             ]),
         bottomNavigationBar: const OrderDetailsBottomAppBar(),
         body: BlocBuilder<GetAllOrdersBloc, OrdersStates>(
@@ -99,31 +59,33 @@ class OrdersDetailsScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(left: tiniestSpacing),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Order Status',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .xxTiny
-                                            .copyWith(
-                                                color: AppColor.black,
-                                                fontWeight: FontWeight.w500)),
-                                    const SizedBox(height: xxxTinierSpacing),
-                                    Text(
-                                        "Delivered on, ${DateFormat('MMM d').format(state.getOrdersDetailsModel.data.trackingData.delivered)}",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .tinier
-                                            .copyWith(
-                                                fontWeight: FontWeight.w600,
-                                                color: AppColor.primary)),
-                                    const SizedBox(height: xxxSmallestSpacing),
-                                  ],
-                                ),
-                              ),
+                                  padding: const EdgeInsets.only(
+                                      left: tiniestSpacing),
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Order Status',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .xxTiny
+                                                .copyWith(
+                                                    color: AppColor.black,
+                                                    fontWeight:
+                                                        FontWeight.w500)),
+                                        const SizedBox(
+                                            height: xxxTinierSpacing),
+                                        Text(
+                                            "Delivered on, ${DateFormat('MMM d').format(state.getOrdersDetailsModel.data.trackingData.delivered)}",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .tinier
+                                                .copyWith(
+                                                    fontWeight: FontWeight.w600,
+                                                    color: AppColor.primary)),
+                                        const SizedBox(
+                                            height: xxxSmallestSpacing)
+                                      ])),
                               Theme(
                                   data: Theme.of(context).copyWith(
                                       dividerColor: AppColor.transparent),
@@ -137,16 +99,16 @@ class OrdersDetailsScreen extends StatelessWidget {
                                   child: OderDetailExpansionTile(
                                     orderData:
                                         state.getOrdersDetailsModel.data.order,
-                                    // orderData: orderData,
                                   )),
                               const SizedBox(height: xxTinierSpacing),
                               Theme(
                                   data: Theme.of(context).copyWith(
                                       dividerColor: AppColor.transparent),
                                   child: ItemOrderedExpansionTile(
-                                    orderProductData: state
-                                        .getOrdersDetailsModel.data.products,
-                                  )),
+                                      orderProductData: state
+                                          .getOrdersDetailsModel
+                                          .data
+                                          .productsList)),
                             ])));
               }
               if (state is GetAllOrdersDetailsError) {
