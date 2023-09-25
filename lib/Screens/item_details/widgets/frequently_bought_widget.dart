@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import 'package:onecart_user_app/utils/varient_index_util.dart';
 
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
@@ -101,8 +102,8 @@ class FrequentlyBoughtItems extends StatelessWidget {
                         width: kGeneralWidth,
                         title: 'Add to Cart',
                         prodId: productDetailsModel.data.productData.productId,
-                        variantId: productDetailsModel
-                            .data.productData.variants[index].variantId,
+                        variantId: VariantIndexUtil().getVariantIndex(
+                            productDetailsModel.data.productData),
                       ),
                     ],
                   ),

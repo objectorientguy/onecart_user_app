@@ -70,7 +70,7 @@ class AddRatingsScreen extends StatelessWidget {
                 height: tinierSpacing,
               ),
               TextFieldWidget(
-                onTextFieldChanged: (String textField) {},
+                onTextFieldChanged: (String reviewText) {},
                 maxLines: 5,
                 hintText: 'Type here...',
                 hintStyle: Theme.of(context).textTheme.xxTinier.copyWith(
