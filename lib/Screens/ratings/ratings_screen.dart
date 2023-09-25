@@ -88,8 +88,10 @@ class AddRatingsScreen extends StatelessWidget {
                 children: [
                   ButtonWidget(
                     title: 'Cancel',
+                    isFromCancel: true,
                   ),
                   ButtonWidget(
+                    isToBePosted: true,
                     title: 'Post',
                   ),
                 ],
