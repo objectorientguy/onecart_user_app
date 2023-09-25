@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:onecart_user_app/Screens/ratings/widgets/ratings_list_widget.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_spacing.dart';
@@ -12,7 +13,6 @@ import '../../common_widgets/button_widget.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../widgets/text_field_widget.dart';
-import '../item_details/widgets/star_widget.dart';
 
 class AddRatingsScreen extends StatelessWidget {
   const AddRatingsScreen({super.key});
@@ -41,23 +41,15 @@ class AddRatingsScreen extends StatelessWidget {
               const SizedBox(
                 height: tinierSpacing,
               ),
-              StarDisplayWidget(
-                  filledStar: const Icon(
-                    Icons.star_rounded,
-                    color: Colors.amber,
-                    size: kRatingIconBig,
-                  ),
-                  unfilledStar: const Icon(
-                    Icons.star_rounded,
-                    color: AppColor.lighterGrey,
-                    size: kRatingIconBig,
-                  ),
-                  halfFilledStar: const Icon(
-                    Icons.star_half_rounded,
-                    color: Colors.amber,
-                    size: kRatingIconBig,
-                  ),
-                  value: state.viewRatingsModel.data[0].rating.toDouble()),
+              RatingBar.builder(
+                itemSize: kRatingIconBig,
+                itemBuilder: (context, index) => const Icon(
+                  Icons.star_rounded,
+                  color: Colors.amber,
+                ),
+                onRatingUpdate: (rating) {},
+                maxRating: 1,
+              ),
               const SizedBox(
                 height: tinierSpacing,
               ),
