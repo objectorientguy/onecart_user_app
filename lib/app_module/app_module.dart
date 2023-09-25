@@ -21,6 +21,8 @@ import '../repositories/product_list/product_list_repository.dart';
 import '../repositories/categories/categories_repository.dart';
 import '../repositories/categories/categories_repository_impl.dart';
 
+import '../repositories/ratings/ratings_repository.dart';
+import '../repositories/ratings/ratings_repository_impl.dart';
 import '../repositories/search_products/search_products_repository.dart';
 import '../repositories/varient/varient_repository.dart';
 import '../repositories/varient/varient_repository_impl.dart';
@@ -42,6 +44,9 @@ configurableDependencies() {
       () => ProductsRepositoryImpl());
   getIt.registerLazySingleton<ViewWishlistRepository>(
       () => ViewWishlistRepositoryImpl());
+
+  getIt.registerLazySingleton<ViewRatingsRepository>(
+      () => ViewRatingsRepositoryImpl());
 
   getIt.registerLazySingleton<ProductDetailsRepository>(
       () => ProductDetailsRepositoryImpl());
