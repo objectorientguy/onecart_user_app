@@ -1,4 +1,5 @@
 import '../../data/models/wishlist/add_wishlist_model.dart';
+import '../../data/models/wishlist/delete_wishlist_model.dart';
 import '../../data/models/wishlist/view_wishlist_model.dart';
 
 abstract class WishlistStates {}
@@ -33,4 +34,18 @@ class AddWishlistError extends WishlistStates {
   final String message;
 
   AddWishlistError({required this.message});
+}
+
+class DeleteWishlistLoading extends WishlistStates {}
+
+class DeleteWishlistLoaded extends WishlistStates {
+  final DeleteWishlistModel deleteWishlistModel;
+
+  DeleteWishlistLoaded({required this.deleteWishlistModel});
+}
+
+class DeleteWishlistError extends WishlistStates {
+  final String message;
+
+  DeleteWishlistError({required this.message});
 }

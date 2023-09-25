@@ -31,6 +31,7 @@ class WishlistModel {
 }
 
 class WishlistData {
+  final int favItemId;
   final int productId;
   final String productName;
   final List<String> image;
@@ -41,6 +42,7 @@ class WishlistData {
   final int variantId;
 
   WishlistData({
+    required this.favItemId,
     required this.productId,
     required this.productName,
     required this.image,
@@ -60,6 +62,7 @@ class WishlistData {
         discount: json["discount"],
         quantity: json["quantity"],
         variantId: json["variant_id"],
+        favItemId: json["fav_item_id"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -71,5 +74,6 @@ class WishlistData {
         "discount": discount,
         "quantity": quantity,
         "variant_id": variantId,
+        "fav_item_id": favItemId,
       };
 }

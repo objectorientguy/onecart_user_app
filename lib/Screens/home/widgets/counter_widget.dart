@@ -4,6 +4,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../blocs/add_cart_item_bloc/add_cart_item_bloc.dart';
 import '../../../blocs/add_cart_item_bloc/add_cart_item_event.dart';
+
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
@@ -110,6 +111,7 @@ class _CounterScreenState extends State<CounterScreen> {
                 prodId: widget.prodId!,
                 variantId: widget.variantId!,
                 count: _count));
+
             _incrementCount();
             setState(() {
               isVisible = !isVisible;

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../../blocs/wishlist_bloc/wishlist_bloc.dart';
+import '../../../blocs/wishlist_bloc/wishlist_events.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
@@ -50,6 +53,7 @@ class GridViewScreen extends StatelessWidget {
                                     wishlistData[index].image[0].toString(),
                                     fit: BoxFit.fill))),
                         SizedBox(
+                            width: kShopBox,
                             child: Text(wishlistData[index].productName,
                                 style: Theme.of(context)
                                     .textTheme
@@ -57,13 +61,14 @@ class GridViewScreen extends StatelessWidget {
                                     .copyWith(
                                         fontWeight: FontWeight.w500,
                                         color: AppColor.black),
-                                maxLines: 2,
+                                maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 softWrap: false)),
                         const SizedBox(
                           height: xxTinierSpacing,
                         ),
                         SizedBox(
+                          width: kShopBox,
                           child: Text(
                             wishlistData[index].quantity,
                             style: Theme.of(context)
@@ -91,8 +96,14 @@ class GridViewScreen extends StatelessWidget {
                         ),
                       ]),
                 ),
-                const Icon(Icons.close,
-                    size: kIconSizeSmall, color: AppColor.grey)
+                InkWell(
+                  onTap: () {
+                    context.read<WishlistBloc>().add(DeleteWishlist(
+                        deleteId: wishlistData[index].favItemId.toString()));
+                  },
+                  child: const Icon(Icons.close,
+                      size: kIconSizeSmall, color: AppColor.grey),
+                )
               ]),
             ),
           );

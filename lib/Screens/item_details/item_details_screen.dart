@@ -1,7 +1,7 @@
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/cart/cart_screen.dart';
+import 'package:onecart_user_app/Screens/item_details/widgets/favourite_icon_widget.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/image_carousel_slider.dart';
 import 'package:onecart_user_app/Screens/item_details/widgets/item_details_section.dart';
 
@@ -12,8 +12,6 @@ import 'package:share_plus/share_plus.dart';
 import '../../blocs/item_details_bloc/item_details_bloc.dart';
 import '../../blocs/item_details_bloc/item_details_events.dart';
 import '../../blocs/item_details_bloc/item_details_states.dart';
-import '../../blocs/wishlist_bloc/wishlist_bloc.dart';
-import '../../blocs/wishlist_bloc/wishlist_events.dart';
 import '../../configs/app_color.dart';
 
 import '../../configs/app_dimensions.dart';
@@ -23,8 +21,10 @@ import '../../data/models/general_data_model/general_category_data.dart';
 class ItemDetailsScreen extends StatelessWidget {
   static const routeName = 'ItemDetailsScreen';
   final Product itemDetails;
+  final bool isFirstTimeLoaded;
 
-  const ItemDetailsScreen({Key? key, required this.itemDetails})
+  const ItemDetailsScreen(
+      {Key? key, required this.itemDetails, this.isFirstTimeLoaded = false})
       : super(key: key);
 
   @override
@@ -32,23 +32,13 @@ class ItemDetailsScreen extends StatelessWidget {
     context
         .read<ItemDetailsBloc>()
         .add(FetchItemDetails(itemDetails.productId));
+
     return Scaffold(
       appBar: GenericAppBar(
         actions: [
-          InkWell(
-            onTap: () {
-              context.read<WishlistBloc>().add(AddWishlist(
-                    productId: itemDetails.productId,
-                    variantId: itemDetails.variants[0].variantId,
-                  ));
-            },
-            child: FavoriteButton(
-              valueChanged: () {},
-              iconSize: kFavouriteButton,
-            ),
-          ),
-          const SizedBox(
-            width: xxxTinierSpacing,
+          FavouriteIconWidget(
+            productId: itemDetails.productId,
+            variantId: itemDetails.variants[0].variantId,
           ),
           IconButton(
             onPressed: () {
@@ -78,9 +68,7 @@ class ItemDetailsScreen extends StatelessWidget {
                   ),
                   BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
                       builder: (context, state) {
-                    if (state is ItemDetailsLoading) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else if (state is ItemDetailsLoaded) {
+                    if (state is ItemDetailsLoaded) {
                       return Positioned(
                         left: smallestSpacing,
                         child: Container(
@@ -120,29 +108,32 @@ class ItemDetailsScreen extends StatelessWidget {
         ],
       ),
       body: BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
+          buildWhen: (pre, curr) =>
+              (curr is ItemDetailsLoading && isFirstTimeLoaded == true) ||
+              curr is ItemDetailsLoaded,
           builder: (context, state) {
-        if (state is ItemDetailsLoading) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state is ItemDetailsLoaded) {
-          return SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(children: [
-                ImageCarouselSlider(
-                  imageList: state.productDetailsModel.data.productData
-                      .variants[state.variantIndex].image,
-                ),
-                ItemDetailsSection(
-                  productDetailsModel: state.productDetailsModel,
-                  variantIndex: state.variantIndex,
-                )
-              ]));
-        }
-        if (state is ItemDetailsError) {
-          return Container();
-        } else {
-          return const SizedBox();
-        }
-      }),
+            if (state is ItemDetailsLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is ItemDetailsLoaded) {
+              return SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(children: [
+                    ImageCarouselSlider(
+                      imageList: state.productDetailsModel.data.productData
+                          .variants[state.variantIndex].image,
+                    ),
+                    ItemDetailsSection(
+                      productDetailsModel: state.productDetailsModel,
+                      variantIndex: state.variantIndex,
+                    )
+                  ]));
+            }
+            if (state is ItemDetailsError) {
+              return Container();
+            } else {
+              return const SizedBox();
+            }
+          }),
     );
   }
 }
