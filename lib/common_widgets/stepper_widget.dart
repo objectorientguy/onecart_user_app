@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
-import '../data/models/orders/order_products.dart';
+import '../data/models/orders/order_details_model.dart';
 
 class StepperWidget extends StatelessWidget {
   final OrderTrackingData trackedData;

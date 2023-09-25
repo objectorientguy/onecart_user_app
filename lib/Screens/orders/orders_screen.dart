@@ -61,7 +61,7 @@ class OrdersScreen extends StatelessWidget {
                                     Navigator.pushNamed(
                                       context,
                                       OrdersDetailsScreen.routeName,
-                                      arguments: OrderDetailsData,
+                                      arguments: OrderProductsModel,
                                     );
                                   },
                                   child: OrderTile(

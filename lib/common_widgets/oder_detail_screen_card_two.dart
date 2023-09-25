@@ -5,7 +5,7 @@ import '../Screens/orders/widgets/order_details_row_widget.dart';
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
-import '../data/models/orders/order_products.dart';
+import '../data/models/orders/order_details_model.dart';
 
 class OderDetailExpansionTile extends StatelessWidget {
   final OrderedProducts orderData;

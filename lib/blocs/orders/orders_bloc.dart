@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../app_module/app_module.dart';
 import '../../data/models/orders/get_all_orders_model.dart';
-import '../../data/models/orders/order_products.dart';
+import '../../data/models/orders/order_details_model.dart';
 import '../../repositories/orders/orders_repository.dart';
 import 'orders_events.dart';
 import 'orders_states.dart';

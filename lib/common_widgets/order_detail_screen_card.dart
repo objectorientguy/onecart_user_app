@@ -5,7 +5,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
-import '../data/models/orders/order_products.dart';
+import '../data/models/orders/order_details_model.dart';
 
 class OrderTrackingExpansionTile extends StatelessWidget {
   final OrderTrackingData trackData;

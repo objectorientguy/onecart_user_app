@@ -1,30 +1,27 @@
-// To parse this JSON data, do
-//
-//     final orderDetailsModel = orderDetailsModelFromJson(jsonString);
 import 'dart:convert';
 
-OrderDetailsModel orderDetailsModelFromJson(String str) =>
-    OrderDetailsModel.fromJson(json.decode(str));
+OrderProductsModel orderProductsModelFromJson(String str) =>
+    OrderProductsModel.fromJson(json.decode(str));
 
-String orderDetailsModelToJson(OrderDetailsModel data) =>
+String orderProductsModelToJson(OrderProductsModel data) =>
     json.encode(data.toJson());
 
-class OrderDetailsModel {
+class OrderProductsModel {
   final int status;
   final String message;
-  final OrderDetailsData data;
+  final Data data;
 
-  OrderDetailsModel({
+  OrderProductsModel({
     required this.status,
     required this.message,
     required this.data,
   });
 
-  factory OrderDetailsModel.fromJson(Map<String, dynamic> json) =>
-      OrderDetailsModel(
+  factory OrderProductsModel.fromJson(Map<String, dynamic> json) =>
+      OrderProductsModel(
         status: json["status"],
         message: json["message"],
-        data: OrderDetailsData.fromJson(json["data"]),
+        data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -34,41 +31,41 @@ class OrderDetailsModel {
       };
 }
 
-class OrderDetailsData {
-  final TrackingData trackingData;
-  final OrderDetails order;
-  final List<OrderProduct> products;
+class Data {
+  final OrderTrackingData trackingData;
+  final OrderedProducts order;
+  final List<Product> productsList;
 
-  OrderDetailsData({
+  Data({
     required this.trackingData,
     required this.order,
-    required this.products,
+    required this.productsList,
   });
 
-  factory OrderDetailsData.fromJson(Map<String, dynamic> json) =>
-      OrderDetailsData(
-        trackingData: TrackingData.fromJson(json["tracking_data"]),
-        order: OrderDetails.fromJson(json["order"]),
-        products: List<OrderProduct>.from(
-            json["products"].map((x) => OrderProduct.fromJson(x))),
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+        trackingData: OrderTrackingData.fromJson(json["tracking_data"]),
+        order: OrderedProducts.fromJson(json["order"]),
+        productsList: List<Product>.from(
+            json["products_list"].map((x) => Product.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "tracking_data": trackingData.toJson(),
         "order": order.toJson(),
-        "products": List<dynamic>.from(products.map((x) => x.toJson())),
+        "products_list":
+            List<dynamic>.from(productsList.map((x) => x.toJson())),
       };
 }
 
-class OrderDetails {
+class OrderedProducts {
   final int orderId;
   final int userContact;
   final dynamic addressId;
-  final dynamic imageStatus;
+  final String imageStatus;
   final DateTime orderDate;
   final double orderAmount;
   final String invoiceNumber;
-  final List<OrderProduct> products;
+  final List<Product> products;
   final int cartId;
   final String userName;
   final String orderStatus;
@@ -77,7 +74,7 @@ class OrderDetails {
   final double deliveryFees;
   final double invoiceAmount;
 
-  OrderDetails({
+  OrderedProducts({
     required this.orderId,
     required this.userContact,
     required this.addressId,
@@ -95,7 +92,8 @@ class OrderDetails {
     required this.invoiceAmount,
   });
 
-  factory OrderDetails.fromJson(Map<String, dynamic> json) => OrderDetails(
+  factory OrderedProducts.fromJson(Map<String, dynamic> json) =>
+      OrderedProducts(
         orderId: json["order_id"],
         userContact: json["user_contact"],
         addressId: json["address_id"],
@@ -103,8 +101,8 @@ class OrderDetails {
         orderDate: DateTime.parse(json["order_date"]),
         orderAmount: json["order_amount"],
         invoiceNumber: json["invoice_number"],
-        products: List<OrderProduct>.from(
-            json["products"].map((x) => OrderProduct.fromJson(x))),
+        products: List<Product>.from(
+            json["products"].map((x) => Product.fromJson(x))),
         cartId: json["cart_id"],
         userName: json["user_name"],
         orderStatus: json["order_status"],
@@ -134,7 +132,35 @@ class OrderDetails {
       };
 }
 
-class OrderProduct {
+class Product {
+  final int productId;
+  final String productName;
+  final String details;
+  final Variants variants;
+
+  Product({
+    required this.productId,
+    required this.productName,
+    required this.details,
+    required this.variants,
+  });
+
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+        productId: json["product_id"],
+        productName: json["product_name"],
+        details: json["details"],
+        variants: Variants.fromJson(json["variants"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "product_id": productId,
+        "product_name": productName,
+        "details": details,
+        "variants": variants.toJson(),
+      };
+}
+
+class Variants {
   final int variantId;
   final double variantCost;
   final int count;
@@ -146,7 +172,7 @@ class OrderProduct {
   final List<String> image;
   final int ratings;
 
-  OrderProduct({
+  Variants({
     required this.variantId,
     required this.variantCost,
     required this.count,
@@ -159,7 +185,7 @@ class OrderProduct {
     required this.ratings,
   });
 
-  factory OrderProduct.fromJson(Map<String, dynamic> json) => OrderProduct(
+  factory Variants.fromJson(Map<String, dynamic> json) => Variants(
         variantId: json["variant_id"],
         variantCost: json["variant_cost"],
         count: json["count"],
@@ -186,7 +212,7 @@ class OrderProduct {
       };
 }
 
-class TrackingData {
+class OrderTrackingData {
   final DateTime ordered;
   final int trackId;
   final int bookingId;
@@ -194,7 +220,7 @@ class TrackingData {
   final DateTime shipped;
   final DateTime delivered;
 
-  TrackingData({
+  OrderTrackingData({
     required this.ordered,
     required this.trackId,
     required this.bookingId,
@@ -203,7 +229,8 @@ class TrackingData {
     required this.delivered,
   });
 
-  factory TrackingData.fromJson(Map<String, dynamic> json) => TrackingData(
+  factory OrderTrackingData.fromJson(Map<String, dynamic> json) =>
+      OrderTrackingData(
         ordered: DateTime.parse(json["ordered"]),
         trackId: json["track_id"],
         bookingId: json["booking_id"],

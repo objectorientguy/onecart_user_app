@@ -4,7 +4,7 @@ import '../../../common_widgets/button_widget.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
-import '../../../data/models/orders/order_products.dart';
+import '../../../data/models/orders/order_details_model.dart';
 
 class OrderPlacedTile extends StatelessWidget {
   final String title;
