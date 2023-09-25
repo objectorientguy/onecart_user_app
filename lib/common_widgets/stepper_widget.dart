@@ -1,7 +1,7 @@
 import 'package:another_stepper/dto/stepper_data.dart';
 import 'package:another_stepper/widgets/another_stepper.dart';
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart';
 import '../configs/app_color.dart';
 import '../configs/app_dimensions.dart';
 import '../configs/app_spacing.dart';
@@ -10,7 +10,8 @@ import '../data/models/orders/order_details_model.dart';
 class StepperWidget extends StatelessWidget {
   final TrackingData trackedData;
   const StepperWidget({
-    super.key, required this.trackedData,
+    super.key,
+    required this.trackedData,
   });
 
   @override
@@ -20,7 +21,8 @@ class StepperWidget extends StatelessWidget {
         title: StepperText(
           "Ordered",
         ),
-        subtitle: StepperText("Mon,29 Aug 11:59 AM"),
+        subtitle: StepperText(
+            DateFormat('EEE, d MMM h:mm a').format(trackedData.ordered)),
         iconWidget: Container(
             height: kContainer,
             width: kContainer,
@@ -38,7 +40,8 @@ class StepperWidget extends StatelessWidget {
               color: Colors.grey,
             ),
           ),
-          subtitle: StepperText("Mon,29 Aug 11:59 AM"),
+          subtitle: StepperText(
+              DateFormat('EEE, d MMM h:mm a').format(trackedData.underProcess)),
           iconWidget: Image.asset('assets/order_placed.png')),
       StepperData(
           title: StepperText(
@@ -47,12 +50,14 @@ class StepperWidget extends StatelessWidget {
               color: Colors.grey,
             ),
           ),
-          subtitle: StepperText("Mon,29 Aug 11:59 AM"),
+          subtitle: StepperText(
+              DateFormat('EEE, d MMM h:mm a').format(trackedData.shipped)),
           iconWidget: Image.asset('assets/order_shipped.png')),
       StepperData(
           title: StepperText("Delivered",
               textStyle: const TextStyle(color: Colors.grey)),
-          subtitle: StepperText("Mon,29 Aug 11:59 AM"),
+          subtitle: StepperText(
+              DateFormat('EEE, d MMM h:mm a').format(trackedData.delivered)),
           iconWidget: Image.asset('assets/confirmation.png')),
     ];
     return AnotherStepper(

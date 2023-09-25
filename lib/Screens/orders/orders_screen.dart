@@ -74,40 +74,43 @@ class OrdersScreen extends StatelessWidget {
                 SizedBox(width: smallestSpacing)
               ],
             ),
-            body:  BlocBuilder<GetAllOrdersBloc, OrdersStates>(
-              buildWhen: (previousState, currentState) =>
-              currentState is GetAllOrdersLoading ||
-                  currentState is GetAllOrdersLoaded ||
-                  currentState is GetAllOrdersError,
+            body: BlocBuilder<GetAllOrdersBloc, OrdersStates>(
+                buildWhen: (previousState, currentState) =>
+                    currentState is GetAllOrdersLoading ||
+                    currentState is GetAllOrdersLoaded ||
+                    currentState is GetAllOrdersError,
                 builder: (context, state) {
                   if (state is GetAllOrdersLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is GetAllOrdersLoaded) {
-                      return Padding(
+                    return Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: xxxTinierSpacing,
                         ),
                         child: ListView.builder(
                             physics: const BouncingScrollPhysics(),
                             shrinkWrap: true,
-                            itemCount: state.getAllOrdersListModel.data.orders.length,
+                            itemCount:
+                                state.getAllOrdersListModel.data.orders.length,
                             itemBuilder: (context, index) {
                               return InkWell(
                                   onTap: () {
-                                    Navigator.pushNamed(context, OrdersDetailsScreen.routeName,
-                                    arguments: OrderDetailsData,
+                                    Navigator.pushNamed(
+                                      context,
+                                      OrdersDetailsScreen.routeName,
+                                      arguments: OrderDetailsData,
                                     );
                                   },
-                                  child: OrderTile(orderList: state.getAllOrdersListModel.data.orders[index]));
-                            })
-                      );
+                                  child: OrderTile(
+                                      orderList: state.getAllOrdersListModel
+                                          .data.orders[index]));
+                            }));
                   }
                   if (state is GetAllOrdersError) {
                     return Container();
                   } else {
                     return const SizedBox();
                   }
-                })
-            ));
+                })));
   }
 }

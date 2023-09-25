@@ -18,33 +18,32 @@ class GetAllOrdersBloc extends Bloc<OrdersEvent, OrdersStates> {
   GetAllOrdersBloc() : super(GetAllOrdersInitial()) {
     on<GetAllOrders>(_getAllOrders);
     on<GetAllOrderDetails>(_getAllOrderDetails);
-
   }
 
   FutureOr<void> _getAllOrders(
       GetAllOrders event, Emitter<OrdersStates> emit) async {
     emit(GetAllOrdersLoading());
     // try {
-      GetAllOrdersListModel getAllOrdersListModel =
-          await _ordersRepository.getAllOrders();
-      log(getAllOrdersListModel.data.toString());
-      emit(GetAllOrdersLoaded(getAllOrdersListModel: getAllOrdersListModel));
+    GetAllOrdersListModel getAllOrdersListModel =
+        await _ordersRepository.getAllOrders();
+    log(getAllOrdersListModel.data.toString());
+    emit(GetAllOrdersLoaded(getAllOrdersListModel: getAllOrdersListModel));
     // } catch (e) {
     //   emit(GetAllOrdersError(message: e.toString()));
     // }
   }
+
   FutureOr<void> _getAllOrderDetails(
       GetAllOrderDetails event, Emitter<OrdersStates> emit) async {
     emit(GetAllOrdersDetailsLoading());
     // try {
-      OrderDetailsModel getOrdersDetailsModel =
-      await _ordersRepository.getOrdersDetails();
-      log(getOrdersDetailsModel.data.toString());
-      emit(GetAllOrdersDetailsLoaded(getOrdersDetailsModel: getOrdersDetailsModel));
+    OrderDetailsModel getOrdersDetailsModel =
+        await _ordersRepository.getOrdersDetails();
+    log(getOrdersDetailsModel.data.toString());
+    emit(GetAllOrdersDetailsLoaded(
+        getOrdersDetailsModel: getOrdersDetailsModel));
     // } catch (e) {
     //   emit(GetAllOrdersDetailsError(message: e.toString()));
     // }
   }
-
-
 }

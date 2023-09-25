@@ -7,10 +7,11 @@ import 'order_placed_tile.dart';
 
 class ItemOrderedExpansionTile extends StatelessWidget {
   final index;
-final List<OrderProduct> orderProductData;
+  final List<OrderProduct> orderProductData;
   const ItemOrderedExpansionTile({
     super.key,
-    this.index, required this.orderProductData,
+    this.index,
+    required this.orderProductData,
   });
 
   @override
@@ -27,11 +28,12 @@ final List<OrderProduct> orderProductData;
           title:
               Text('Item Ordered', style: Theme.of(context).textTheme.xxTiny),
           trailing: const Icon(Icons.keyboard_arrow_down),
-          children: List.generate(3, (index)
-          //{
-           // return  OrderPlacedTile(title: 'Add Review', orderProductData: orderProductData[index],);
-          //}
-          )),
+          children: List.generate(orderProductData.length, (index) {
+            return OrderPlacedTile(
+              title: 'Add Review',
+              orderProductData: orderProductData[index],
+            );
+          })),
     );
   }
 }

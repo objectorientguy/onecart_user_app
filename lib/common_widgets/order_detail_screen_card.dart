@@ -10,8 +10,8 @@ import '../configs/app_spacing.dart';
 class OrderTrackingExpansionTile extends StatelessWidget {
   final TrackingData trackData;
   const OrderTrackingExpansionTile({
-    
-    super.key, required this.trackData,
+    super.key,
+    required this.trackData,
   });
 
   @override
@@ -28,10 +28,10 @@ class OrderTrackingExpansionTile extends StatelessWidget {
           title:
               Text('Order Tracking', style: Theme.of(context).textTheme.xxTiny),
           trailing: const Icon(Icons.keyboard_arrow_down),
-          children:  [
+          children: [
             Padding(
               padding: const EdgeInsets.only(left: tinierSpacing),
-              child: StepperWidget(trackedData:trackData ),
+              child: StepperWidget(trackedData: trackData),
             )
           ]),
     );

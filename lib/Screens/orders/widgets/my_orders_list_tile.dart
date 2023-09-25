@@ -8,11 +8,7 @@ import '../../../data/models/orders/get_all_orders_model.dart';
 class OrderTile extends StatelessWidget {
   final Order orderList;
 
-  const OrderTile({
-    super.key,
-     required this.orderList
-  });
-
+  const OrderTile({super.key, required this.orderList});
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +27,13 @@ class OrderTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(children: [
-                     Padding(
+                    Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: tinierSpacing),
                         child: SizedBox(
                             height: kImageHeight,
                             width: kImageWidth,
-                            child: Image.network(orderList.image)
-                        )),
+                            child: Image.network(orderList.image))),
                     const SizedBox(
                       width: xxxTinierSpacing,
                     ),
@@ -46,11 +41,11 @@ class OrderTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          (orderList.orderStatus  == "Returned" ||
-                              orderList.orderStatus  ==
+                          (orderList.orderStatus == "Returned" ||
+                                  orderList.orderStatus ==
                                       "Cancelled by Operations")
                               ? Text(
-                            orderList.orderStatus,
+                                  orderList.orderStatus,
                                   style: Theme.of(context)
                                       .textTheme
                                       .xxTinier
@@ -59,7 +54,7 @@ class OrderTile extends StatelessWidget {
                                       ),
                                 )
                               : Text(
-                            orderList.orderStatus ,
+                                  orderList.orderStatus,
                                   style: Theme.of(context)
                                       .textTheme
                                       .xxTinier

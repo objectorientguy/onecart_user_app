@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:onecart_user_app/Screens/orders/widgets/item_orders_expansiontile.dart';
 import 'package:onecart_user_app/Screens/orders/widgets/order_details_bottom_appbar.dart';
 import 'package:onecart_user_app/common_widgets/oder_detail_screen_card_two.dart';
@@ -111,7 +112,8 @@ class OrdersDetailsScreen extends StatelessWidget {
                                                 color: AppColor.black,
                                                 fontWeight: FontWeight.w500)),
                                     const SizedBox(height: xxxTinierSpacing),
-                                    Text('Delivered on Aug 29',
+                                    Text(
+                                        "Delivered on, ${DateFormat('MMM d').format(state.getOrdersDetailsModel.data.trackingData.delivered)}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .tinier
@@ -141,7 +143,10 @@ class OrdersDetailsScreen extends StatelessWidget {
                               Theme(
                                   data: Theme.of(context).copyWith(
                                       dividerColor: AppColor.transparent),
-                                  child:  ItemOrderedExpansionTile(orderProductData: state.getOrdersDetailsModel.data.products,)),
+                                  child: ItemOrderedExpansionTile(
+                                    orderProductData: state
+                                        .getOrdersDetailsModel.data.products,
+                                  )),
                             ])));
               }
               if (state is GetAllOrdersDetailsError) {

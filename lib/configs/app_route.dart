@@ -54,8 +54,8 @@ class AppRoutes {
       case NoFavoritesScreen.routeName:
         return _createRoute(const NoFavoritesScreen());
       case OrdersDetailsScreen.routeName:
-        return _createRoute( const OrdersDetailsScreen());
-        case ImageZoomSection.routeName:
+        return _createRoute(const OrdersDetailsScreen());
+      case ImageZoomSection.routeName:
         return _createRoute(ImageZoomSection(
             imageListOne: settings.arguments as List<dynamic>));
 

@@ -3,9 +3,11 @@
 //     final getAllOrdersListModel = getAllOrdersListModelFromJson(jsonString);
 import 'dart:convert';
 
-GetAllOrdersListModel getAllOrdersListModelFromJson(String str) => GetAllOrdersListModel.fromJson(json.decode(str));
+GetAllOrdersListModel getAllOrdersListModelFromJson(String str) =>
+    GetAllOrdersListModel.fromJson(json.decode(str));
 
-String getAllOrdersListModelToJson(GetAllOrdersListModel data) => json.encode(data.toJson());
+String getAllOrdersListModelToJson(GetAllOrdersListModel data) =>
+    json.encode(data.toJson());
 
 class GetAllOrdersListModel {
   final int status;
@@ -18,17 +20,18 @@ class GetAllOrdersListModel {
     required this.data,
   });
 
-  factory GetAllOrdersListModel.fromJson(Map<String, dynamic> json) => GetAllOrdersListModel(
-    status: json["status"],
-    message: json["message"],
-    data: Data.fromJson(json["data"]),
-  );
+  factory GetAllOrdersListModel.fromJson(Map<String, dynamic> json) =>
+      GetAllOrdersListModel(
+        status: json["status"],
+        message: json["message"],
+        data: Data.fromJson(json["data"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    "message": message,
-    "data": data.toJson(),
-  };
+        "status": status,
+        "message": message,
+        "data": data.toJson(),
+      };
 }
 
 class Data {
@@ -39,12 +42,12 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    orders: List<Order>.from(json["orders"].map((x) => Order.fromJson(x))),
-  );
+        orders: List<Order>.from(json["orders"].map((x) => Order.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "orders": List<dynamic>.from(orders.map((x) => x.toJson())),
-  };
+        "orders": List<dynamic>.from(orders.map((x) => x.toJson())),
+      };
 }
 
 class Order {
@@ -63,18 +66,18 @@ class Order {
   });
 
   factory Order.fromJson(Map<String, dynamic> json) => Order(
-    orderId: json["order_id"],
-    orderStatus: json["order_status"],
-    image: json["image"],
-    category: json["category"],
-    itemCount: json["item_count"],
-  );
+        orderId: json["order_id"],
+        orderStatus: json["order_status"],
+        image: json["image"],
+        category: json["category"],
+        itemCount: json["item_count"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "order_id": orderId,
-    "order_status": orderStatus,
-    "image": image,
-    "category": category,
-    "item_count": itemCount,
-  };
+        "order_id": orderId,
+        "order_status": orderStatus,
+        "image": image,
+        "category": category,
+        "item_count": itemCount,
+      };
 }
