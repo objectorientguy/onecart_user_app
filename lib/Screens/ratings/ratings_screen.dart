@@ -6,6 +6,7 @@ import 'package:onecart_user_app/configs/app_spacing.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../blocs/ratings_bloc/ratings_bloc.dart';
+import '../../blocs/ratings_bloc/ratings_events.dart';
 import '../../blocs/ratings_bloc/ratings_states.dart';
 import '../../common_widgets/button_widget.dart';
 import '../../configs/app_color.dart';
@@ -18,6 +19,8 @@ class AddRatingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<RatingsBloc>().add(GetAllRatings());
+
     return Scaffold(
       appBar: const GenericAppBar(
         title: 'Ratings and Reviews',
@@ -104,7 +107,7 @@ class AddRatingsScreen extends StatelessWidget {
               ),
               RatingsListWidget(
                 ratingsDetails: state.viewRatingsModel.data,
-              )
+              ),
             ]),
           );
         }

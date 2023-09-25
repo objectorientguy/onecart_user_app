@@ -21,13 +21,13 @@ class RatingsBloc extends Bloc<RatingsEvent, RatingsStates> {
   FutureOr<void> _getAllRatings(
       GetAllRatings event, Emitter<RatingsStates> emit) async {
     emit(GetAllRatingsLoading());
-    try {
-      ViewRatingsModel viewRatingsModel =
-          await _viewRatingsRepository.getAllRatings();
+    //try {
+    ViewRatingsModel viewRatingsModel =
+        await _viewRatingsRepository.getAllRatings();
 
-      emit(GetAllRatingsLoaded(viewRatingsModel: viewRatingsModel));
-    } catch (e) {
-      emit(GetAllRatingsError(message: e.toString()));
-    }
+    emit(GetAllRatingsLoaded(viewRatingsModel: viewRatingsModel));
+    // } catch (e) {
+    //   emit(GetAllRatingsError(message: e.toString()));
+    // }
   }
 }

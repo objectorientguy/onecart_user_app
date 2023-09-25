@@ -100,7 +100,9 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
                       Text(widget.ratingsDetails[index].reviewText,
                           maxLines: isExpanded ? null : 2,
                           style: Theme.of(context).textTheme.tiniest),
-                      const RatingsListBody()
+                      RatingsListBody(
+                        ratingsDetails: widget.ratingsDetails,
+                      )
                     ]));
           }),
     );
