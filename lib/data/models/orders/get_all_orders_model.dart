@@ -1,7 +1,6 @@
 // To parse this JSON data, do
 //
 //     final getAllOrdersListModel = getAllOrdersListModelFromJson(jsonString);
-
 import 'dart:convert';
 
 GetAllOrdersListModel getAllOrdersListModelFromJson(String str) =>
@@ -11,85 +10,74 @@ String getAllOrdersListModelToJson(GetAllOrdersListModel data) =>
     json.encode(data.toJson());
 
 class GetAllOrdersListModel {
-  final int? status;
-  final String? message;
-  final List<OrderDatum>? data;
+  final int status;
+  final String message;
+  final Data data;
 
   GetAllOrdersListModel({
-    this.status,
-    this.message,
-    this.data,
+    required this.status,
+    required this.message,
+    required this.data,
   });
 
   factory GetAllOrdersListModel.fromJson(Map<String, dynamic> json) =>
       GetAllOrdersListModel(
         status: json["status"],
         message: json["message"],
-        data: json["data"] == null
-            ? []
-            : List<OrderDatum>.from(
-                json["data"]!.map((x) => OrderDatum.fromJson(x))),
+        data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
-        "data": data == null
-            ? []
-            : List<dynamic>.from(data!.map((x) => x.toJson())),
+        "data": data.toJson(),
       };
 }
 
-class OrderDatum {
-  final int? orderId;
-  final int? userContact;
-  final int? itemCount;
-  final dynamic orderConfirmation;
-  final dynamic orderShipped;
-  final String? paymentType;
-  final int? cartItemsId;
-  final int? addressId;
-  final DateTime? orderPlaced;
-  final String? totalPrice;
+class Data {
+  final List<Order> orders;
 
-  OrderDatum({
-    this.orderId,
-    this.userContact,
-    this.itemCount,
-    this.orderConfirmation,
-    this.orderShipped,
-    this.paymentType,
-    this.cartItemsId,
-    this.addressId,
-    this.orderPlaced,
-    this.totalPrice,
+  Data({
+    required this.orders,
   });
 
-  factory OrderDatum.fromJson(Map<String, dynamic> json) => OrderDatum(
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+        orders: List<Order>.from(json["orders"].map((x) => Order.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "orders": List<dynamic>.from(orders.map((x) => x.toJson())),
+      };
+}
+
+class Order {
+  final int orderId;
+  final String orderStatus;
+  final String image;
+  final String category;
+  final int itemCount;
+
+  Order({
+    required this.orderId,
+    required this.orderStatus,
+    required this.image,
+    required this.category,
+    required this.itemCount,
+  });
+
+  factory Order.fromJson(Map<String, dynamic> json) => Order(
         orderId: json["order_id"],
-        userContact: json["user_contact"],
+        orderStatus: json["order_status"],
+        image: json["image"],
+        category: json["category"],
         itemCount: json["item_count"],
-        orderConfirmation: json["order_confirmation"],
-        orderShipped: json["order_shipped"],
-        paymentType: json["payment_type"],
-        cartItemsId: json["cartItems_id"],
-        addressId: json["address_id"],
-        orderPlaced: json["order_placed"] == null
-            ? null
-            : DateTime.parse(json["order_placed"]),
-        totalPrice: json["total_price"],
       );
 
   Map<String, dynamic> toJson() => {
         "order_id": orderId,
-        "user_contact": userContact,
+        "order_status": orderStatus,
+        "image": image,
+        "category": category,
         "item_count": itemCount,
-        "order_confirmation": orderConfirmation,
-        "order_shipped": orderShipped,
-        "payment_type": paymentType,
-        "cartItems_id": cartItemsId,
-        "address_id": addressId,
-        "order_placed": orderPlaced?.toIso8601String(),
-        "total_price": totalPrice,
       };
 }
