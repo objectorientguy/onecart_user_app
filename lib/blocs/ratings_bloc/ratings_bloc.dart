@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/ratings_bloc/ratings_events.dart';
@@ -38,14 +39,13 @@ class RatingsBloc extends Bloc<RatingsEvent, RatingsStates> {
     emit(AddRatingsLoading());
 
     try {
-      Map ratingsDetails = {
-        "rating": event.rating,
-        "review_text": event.reviewText
-      };
+      Map ratingsDetails = {"rating": event.rating, "review_text": 'hi'};
+      log(ratingsDetails.toString());
       AddRatingsModel addRatingsModel =
           await _ratingsRepository.addRatings(ratingsDetails);
 
       if (addRatingsModel.status == '200') {
+        // emit(GetAllRatingsLoaded(viewRatingsModel: event.viewRatingsModel));
         emit(AddRatingsLoaded(
           addRatingsModel: addRatingsModel,
           ratingsDetails: ratingsDetails,

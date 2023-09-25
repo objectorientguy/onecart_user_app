@@ -88,8 +88,7 @@ class OrderPlacedTile extends StatelessWidget {
                                 ),
                                 SizedBox(
                                     width: kTextboxHeightSmall,
-                                    child: ButtonWidget(
-                                        title: title, showRatingScreen: true))
+                                    child: ButtonWidget(title: title))
                               ])
                         ])))
           ]),
