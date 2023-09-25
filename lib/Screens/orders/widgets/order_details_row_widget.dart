@@ -21,13 +21,12 @@ class OrderDetailRowWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.tinier.copyWith(
                   color: AppColor.darkGrey, fontWeight: FontWeight.w400))),
       Expanded(
-        flex: 5,
-        child: Text(orderData,
-            style: Theme.of(context)
-                .textTheme
-                .tinier
-                .copyWith(fontWeight: FontWeight.w500)),
-      )
+          flex: 5,
+          child: Text(orderData,
+              style: Theme.of(context)
+                  .textTheme
+                  .tinier
+                  .copyWith(fontWeight: FontWeight.w400)))
     ]);
   }
 }
