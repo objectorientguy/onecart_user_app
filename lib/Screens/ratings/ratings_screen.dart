@@ -19,6 +19,8 @@ class AddRatingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     context.read<RatingsBloc>().add(GetAllRatings());
 
     return Scaffold(
