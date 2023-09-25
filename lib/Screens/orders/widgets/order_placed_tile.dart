@@ -5,6 +5,7 @@ import '../../../common_widgets/button_widget.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../ratings/ratings_screen.dart';
 
 class OrderPlacedTile extends StatelessWidget {
   final String title;
@@ -86,9 +87,12 @@ class OrderPlacedTile extends StatelessWidget {
                           ],
                         ),
                         ButtonWidget(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => AddRatingsScreen()));
+                          },
                           width: kOrderWidth,
                           title: title,
-                          showRatingScreen: true,
                         ),
                       ])
                     ]),

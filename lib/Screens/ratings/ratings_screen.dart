@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -15,7 +17,9 @@ import '../../configs/app_dimensions.dart';
 import '../../widgets/text_field_widget.dart';
 
 class AddRatingsScreen extends StatelessWidget {
-  const AddRatingsScreen({super.key});
+  int postRating;
+
+  AddRatingsScreen({super.key, this.postRating = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +51,10 @@ class AddRatingsScreen extends StatelessWidget {
                   Icons.star_rounded,
                   color: Colors.amber,
                 ),
-                onRatingUpdate: (rating) {},
+                onRatingUpdate: (rating) {
+                  postRating = rating.toInt();
+                  log(postRating.toString());
+                },
                 maxRating: 1,
               ),
               const SizedBox(
@@ -75,15 +82,22 @@ class AddRatingsScreen extends StatelessWidget {
               const SizedBox(
                 height: tinierSpacing,
               ),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ButtonWidget(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     title: 'Cancel',
-                    isFromCancel: true,
                   ),
                   ButtonWidget(
-                    isToBePosted: true,
+                    onPressed: () {
+                      context.read<RatingsBloc>().add(AddRatings(
+                            rating: postRating,
+                            reviewText: '',
+                          ));
+                    },
                     title: 'Post',
                   ),
                 ],
