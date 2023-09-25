@@ -27,9 +27,11 @@ final List<OrderProduct> orderProductData;
           title:
               Text('Item Ordered', style: Theme.of(context).textTheme.xxTiny),
           trailing: const Icon(Icons.keyboard_arrow_down),
-          children: List.generate(3, (index) {
-            return  OrderPlacedTile(title: 'Add Review', orderProductData: orderProductData[index],);
-          })),
+          children: List.generate(3, (index)
+          //{
+           // return  OrderPlacedTile(title: 'Add Review', orderProductData: orderProductData[index],);
+          //}
+          )),
     );
   }
 }
