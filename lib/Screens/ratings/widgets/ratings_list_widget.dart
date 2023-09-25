@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onecart_user_app/Screens/ratings/widgets/ratings_list_body.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../configs/app_color.dart';
@@ -99,15 +100,7 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
                           ' free shipping at that price so that’s a plus!”',
                           maxLines: isExpanded ? null : 2,
                           style: Theme.of(context).textTheme.tiniest),
-                      GestureDetector(
-                        onTap: toggleTextVisibility,
-                        child: Text(
-                          isExpanded ? 'Read Less' : 'Read More...',
-                          style: Theme.of(context).textTheme.tiniest.copyWith(
-                              color: AppColor.primary,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
+                      const RatingsListBody()
                     ]));
           }),
     );

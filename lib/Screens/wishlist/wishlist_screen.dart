@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/wishlist/widgets/gridview_widget.dart';
 import 'package:onecart_user_app/Screens/wishlist/widgets/horizontal_wishlist_category.dart';
 import 'package:onecart_user_app/Screens/wishlist/widgets/list_view_widget.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 
+import '../../blocs/wishlist_bloc/wishlist_bloc.dart';
+import '../../blocs/wishlist_bloc/wishlist_events.dart';
+import '../../blocs/wishlist_bloc/wishlist_states.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_spacing.dart';
 
@@ -27,6 +31,8 @@ class _WishlistScreenState extends State<WishlistScreen> {
 
   @override
   Widget build(BuildContext context) {
+    context.read<WishlistBloc>().add(GetAllWishlistItems());
+
     List wishlistData = [
       {
         'title': 'All',
@@ -73,9 +79,22 @@ class _WishlistScreenState extends State<WishlistScreen> {
           const SizedBox(
             height: xxxSmallestSpacing,
           ),
-          Expanded(
-            child: isListView ? const ListViewScreen() : const GridViewScreen(),
-          ),
+          BlocBuilder<WishlistBloc, WishlistStates>(builder: (context, state) {
+            if (state is GetAllWishListItemsLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is GetAllWishlistItemsLoaded) {
+              return Expanded(
+                child: isListView
+                    ? ListViewScreen(wishlistData: state.wishlistModel.data)
+                    : GridViewScreen(wishlistData: state.wishlistModel.data),
+              );
+            }
+            if (state is GetAllWishListItemsError) {
+              return Container();
+            } else {
+              return const SizedBox();
+            }
+          }),
         ]),
       ),
     );

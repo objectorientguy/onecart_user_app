@@ -16,6 +16,7 @@ import '../../common_widgets/address_bottom_sheet.dart';
 import '../../common_widgets/carousel_slider.dart';
 import '../../configs/app_dimensions.dart';
 import '../../widgets/search_text_field.dart';
+import '../shops/shops_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -59,6 +60,58 @@ class HomeScreen extends StatelessWidget {
                                     });
                               },
                               child: const AddressBar()),
+                          const SizedBox(
+                            height: xxxSmallerSpacing,
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Padding(
+                                  padding:
+                                      EdgeInsets.only(left: xxTiniestSpacing),
+                                  child: Icon(
+                                    Icons.arrow_back_ios,
+                                    size: kBackArrow,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: tiniestSpacing,
+                              ),
+                              Text(
+                                "Haldirams",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .xTiny
+                                    .copyWith(
+                                        color: AppColor.mediumBlack,
+                                        fontWeight: FontWeight.w500),
+                              ),
+                              const SizedBox(
+                                width: tiniestSpacing,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SelectShops()));
+                                },
+                                child: Text(
+                                  "(Change Shop)",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .xTinier
+                                      .copyWith(
+                                        color: AppColor.primary,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
                           const SizedBox(
                             height: xxxSmallerSpacing,
                           ),

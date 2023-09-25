@@ -4,10 +4,13 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../../data/models/item_details/item_details_model.dart';
 import '../../home/widgets/counter_widget.dart';
 
 class FrequentlyBoughtItems extends StatelessWidget {
-  const FrequentlyBoughtItems({super.key});
+  final ProductDetailsModel productDetailsModel;
+
+  const FrequentlyBoughtItems({super.key, required this.productDetailsModel});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class FrequentlyBoughtItems extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
-          itemCount: 5,
+          itemCount: productDetailsModel.data.recommendedProducts.length,
           itemBuilder: (context, index) {
             return Card(
               elevation: kContainerElevation,
@@ -25,41 +28,45 @@ class FrequentlyBoughtItems extends StatelessWidget {
                 Padding(
                     padding: const EdgeInsets.all(tiniestSpacing),
                     child: Container(
+                        width: kShopBox,
                         height: kCardHeightItem,
                         decoration: BoxDecoration(
                             borderRadius:
                                 BorderRadius.circular(kBorderRadiusSmall)),
-                        child:
-                            Image.asset('assets/img_2.png', fit: BoxFit.fill))),
+                        child: Image.network(
+                            productDetailsModel
+                                .data.recommendedProducts[index].image[0]
+                                .toString(),
+                            fit: BoxFit.fill))),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: leftRightMargin, vertical: xxTiniestSpacing),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        width: kGeneralBox,
-                        child: Text(
-                          'Lays American Style Creame and Onion Potato Chips ',
-                          style: Theme.of(context)
-                              .textTheme
-                              .xTinier
-                              .copyWith(fontWeight: FontWeight.w500),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                      Text(
+                        productDetailsModel
+                            .data.recommendedProducts[index].brandName,
+                        style: Theme.of(context)
+                            .textTheme
+                            .xTinier
+                            .copyWith(fontWeight: FontWeight.w500),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(
                         height: xxxTiniestSpacing,
                       ),
-                      Text('₹249.00',
+                      Text(
+                          "₹${productDetailsModel.data.recommendedProducts[index].discountedCost}",
                           style: Theme.of(context)
                               .textTheme
                               .tinier
                               .copyWith(fontWeight: FontWeight.w500)),
                       Row(
                         children: [
-                          Text('₹498',
+                          Text(
+                              "₹${productDetailsModel.data.recommendedProducts[index].variantCost}",
                               style: Theme.of(context)
                                   .textTheme
                                   .xxxTinier
@@ -79,7 +86,8 @@ class FrequentlyBoughtItems extends StatelessWidget {
                                   vertical: xxxTiniestSpacing,
                                   horizontal: xxxTiniestSpacing),
                               child: Center(
-                                  child: Text('50 % off',
+                                  child: Text(
+                                      "${productDetailsModel.data.recommendedProducts[index].discount} % off",
                                       style: Theme.of(context)
                                           .textTheme
                                           .xxxTiniest
@@ -89,7 +97,13 @@ class FrequentlyBoughtItems extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: tinierSpacing),
-                      const CounterScreen(width: kGeneralBox)
+                      CounterScreen(
+                        width: kGeneralWidth,
+                        title: 'Add to Cart',
+                        prodId: productDetailsModel.data.productData.productId,
+                        variantId: productDetailsModel
+                            .data.productData.variants[index].variantId,
+                      ),
                     ],
                   ),
                 )

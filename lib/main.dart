@@ -21,6 +21,7 @@ import 'blocs/search_product_bloc/search_product_bloc.dart';
 import 'blocs/varient_bloc/varient_bloc.dart';
 import 'blocs/item_details_bloc/item_details_bloc.dart';
 import 'blocs/view_cart_bloc/view_cart_bloc.dart';
+import 'blocs/wishlist_bloc/wishlist_bloc.dart';
 
 Future<void> main() async {
   await _initApp();
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(lazy: false, create: (context) => CheckoutBloc()),
         BlocProvider(lazy: false, create: (context) => SearchProductsBloc()),
         BlocProvider(lazy: false, create: (context) => AddToCartBloc()),
+        BlocProvider(lazy: false, create: (context) => WishlistBloc()),
         BlocProvider(
             lazy: false,
             create: (context) => OnBoardingBloc()..add(CheckLoggedIn())),

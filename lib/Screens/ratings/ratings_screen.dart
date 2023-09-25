@@ -79,7 +79,6 @@ class AddRatingsScreen extends StatelessWidget {
                 title: 'Cancel',
               ),
               ButtonWidget(
-                showRatingAlertBox: true,
                 title: 'Post',
               ),
             ],
