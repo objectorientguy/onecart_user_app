@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:onecart_user_app/blocs/add_cart_item_bloc/add_cart_item_states.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../../blocs/add_cart_item_bloc/add_cart_item_bloc.dart';
 import '../../../blocs/add_cart_item_bloc/add_cart_item_event.dart';
+
+import '../../../blocs/item_details_bloc/item_details_bloc.dart';
+import '../../../blocs/item_details_bloc/item_details_events.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
@@ -104,31 +108,41 @@ class _CounterScreenState extends State<CounterScreen> {
       child: SizedBox(
         height: widget.height,
         width: widget.width,
-        child: TextButton(
-          onPressed: () {
-            context.read<AddToCartBloc>().add(AddItemsToCart(
-                prodId: widget.prodId!,
-                variantId: widget.variantId!,
-                count: _count));
-            _incrementCount();
-            setState(() {
-              isVisible = !isVisible;
-            });
+        child: BlocListener<AddToCartBloc, AddItemsToCartStates>(
+          listener: (context, state) {
+            if (state is AddItemLoaded) {
+              context
+                  .read<ItemDetailsBloc>()
+                  .add(FetchItemDetails(widget.prodId!));
+            }
           },
-          style: TextButton.styleFrom(
-            minimumSize: Size.zero,
-            padding: const EdgeInsets.symmetric(
-                horizontal: tinierSpacing, vertical: tiniestSpacing),
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(kAddRadius)),
-            backgroundColor: AppColor.primary,
+          child: TextButton(
+            onPressed: () {
+              context.read<AddToCartBloc>().add(AddItemsToCart(
+                  prodId: widget.prodId!,
+                  variantId: widget.variantId!,
+                  count: _count));
+
+              _incrementCount();
+              setState(() {
+                isVisible = !isVisible;
+              });
+            },
+            style: TextButton.styleFrom(
+              minimumSize: Size.zero,
+              padding: const EdgeInsets.symmetric(
+                  horizontal: tinierSpacing, vertical: tiniestSpacing),
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(kAddRadius)),
+              backgroundColor: AppColor.primary,
+            ),
+            child: Text(widget.title,
+                style: Theme.of(context)
+                    .textTheme
+                    .xxxTinier
+                    .copyWith(color: AppColor.white)),
           ),
-          child: Text(widget.title,
-              style: Theme.of(context)
-                  .textTheme
-                  .xxxTinier
-                  .copyWith(color: AppColor.white)),
         ),
       ),
     );

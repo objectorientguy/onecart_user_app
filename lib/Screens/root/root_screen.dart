@@ -28,9 +28,14 @@ class _RootScreenState extends State<RootScreen> {
   }
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index == 4) {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => const CartScreen()));
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
   }
 
   static final List _widgetOptions = [
@@ -38,7 +43,6 @@ class _RootScreenState extends State<RootScreen> {
     const CategoryGridScreen(),
     const OrdersScreen(),
     const ProfileScreen(),
-    const CartScreen(),
   ];
 
   @override
