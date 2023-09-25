@@ -11,3 +11,9 @@ class AddWishlist extends WishlistEvent {
     required this.variantId,
   });
 }
+
+class DeleteWishlist extends WishlistEvent {
+  final String deleteId;
+
+  DeleteWishlist({required this.deleteId});
+}

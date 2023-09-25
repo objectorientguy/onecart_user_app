@@ -63,6 +63,23 @@ class DioClient {
     return jsonResponse;
   }
 
+  Future<dynamic> delete(String requestUrl) async {
+    dynamic jsonResponse;
+    try {
+      final response =
+          await dio.delete(requestUrl, options: Options(headers: headers));
+      jsonResponse = (response.data);
+    } on DioException catch (e) {
+      if (e.response != null) {
+        e.response!.statusCode;
+        e.response!.data;
+      } else {
+        e.message.toString();
+      }
+    }
+    return jsonResponse;
+  }
+
   Future<dynamic> multiPart(
       String requestUrl, File imageFile, String hashCode) async {
     dynamic jsonResponse;

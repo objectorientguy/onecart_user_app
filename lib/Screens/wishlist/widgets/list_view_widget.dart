@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../../blocs/wishlist_bloc/wishlist_bloc.dart';
+import '../../../blocs/wishlist_bloc/wishlist_events.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
@@ -52,7 +55,8 @@ class ListViewScreen extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Expanded(
+                                    SizedBox(
+                                        width: kGeneralBoxOne,
                                         child: Text(
                                             wishlistData[index].productName,
                                             style: Theme.of(context)
@@ -73,15 +77,18 @@ class ListViewScreen extends StatelessWidget {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            wishlistData[index].quantity,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .tiniest
-                                                .copyWith(
-                                                    color: AppColor.primary),
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
+                                          SizedBox(
+                                            width: kCardHeightItem,
+                                            child: Text(
+                                              wishlistData[index].quantity,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .tiniest
+                                                  .copyWith(
+                                                      color: AppColor.primary),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
                                           ),
                                           const SizedBox(
                                               height: xxxTiniestSpacing),
@@ -107,10 +114,17 @@ class ListViewScreen extends StatelessWidget {
                       ),
                     )
                   ]),
-              const Positioned(
+              Positioned(
                 right: kZero,
-                child: Icon(Icons.close,
-                    size: kIconSizeSmall, color: AppColor.grey),
+                child: InkWell(
+                  onTap: () {
+                    context.read<WishlistBloc>().add(DeleteWishlist(
+                        deleteId: wishlistData[index].favItemId.toString()));
+                    context.read<WishlistBloc>().add(GetAllWishlistItems());
+                  },
+                  child: const Icon(Icons.close,
+                      size: kIconSizeSmall, color: AppColor.grey),
+                ),
               )
             ]),
           );
