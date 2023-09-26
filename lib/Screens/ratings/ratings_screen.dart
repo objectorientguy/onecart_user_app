@@ -17,6 +17,8 @@ import '../../configs/app_dimensions.dart';
 import '../../widgets/text_field_widget.dart';
 
 class AddRatingsScreen extends StatelessWidget {
+  static const routeName = 'AddRatingsScreen';
+
   int postRating;
 
   AddRatingsScreen({super.key, this.postRating = 0});

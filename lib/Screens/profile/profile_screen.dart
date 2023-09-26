@@ -44,7 +44,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: xxSmallerSpacing,
+                  height: xxTinierSpacing,
                 ),
                 Container(
                   decoration:

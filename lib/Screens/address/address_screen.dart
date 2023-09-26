@@ -39,7 +39,14 @@ class _AddressScreenState extends State<AddressScreen> {
                   child: BlocBuilder<AddressBloc, AddressStates>(
                       builder: (context, state) {
                     if (state is FetchAddressLoading) {
-                      return const Center(child: CircularProgressIndicator());
+                      return const Column(
+                        children: [
+                          SizedBox(
+                            height: kCircularBox,
+                          ),
+                          Center(child: CircularProgressIndicator()),
+                        ],
+                      );
                     } else if (state is FetchAddressLoaded) {
                       return ListView.separated(
                           physics: const BouncingScrollPhysics(),

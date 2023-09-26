@@ -7,7 +7,6 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
-import '../profile/profile_screen.dart';
 
 class SelectShops extends StatelessWidget {
   const SelectShops({super.key});
@@ -39,7 +38,11 @@ class SelectShops extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Image.asset('assets/app_logo.png'),
+                      Image.asset(
+                        'assets/app_logo.png',
+                        height: kLogoHeight,
+                        width: kLogoWidth,
+                      ),
                       const SizedBox(
                         width: xxTinierSpacing,
                       ),
@@ -51,20 +54,6 @@ class SelectShops extends StatelessWidget {
                       ),
                     ],
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ProfileScreen()));
-                    },
-                    child: const CircleAvatar(
-                      radius: kUserAvatar,
-                      backgroundColor: AppColor.lighterGrey,
-                      child: Icon(
-                        Icons.person,
-                        color: AppColor.primary,
-                      ),
-                    ),
-                  )
                 ],
               ),
               const SizedBox(

@@ -17,6 +17,7 @@ import '../Screens/profile/edit_field_screen.dart';
 import '../Screens/profile/edit_profie_screen.dart';
 import '../Screens/profile/widgets/privacy_policy_screen.dart';
 import '../Screens/profile/widgets/terms_and_conditions_screen.dart';
+import '../Screens/ratings/ratings_screen.dart';
 import '../Screens/root/root_screen.dart';
 import '../Screens/varient/select_varient_screen.dart';
 import '../Screens/wishlist/wishlist_screen.dart';
@@ -43,6 +44,9 @@ class AppRoutes {
         ));
       case AddressScreen.routeName:
         return _createRoute(const AddressScreen());
+
+      case AddRatingsScreen.routeName:
+        return _createRoute(AddRatingsScreen());
 
       case TermsOfServiceScreen.routeName:
         return _createRoute(const TermsOfServiceScreen());
