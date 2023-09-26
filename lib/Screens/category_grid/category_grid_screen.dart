@@ -53,7 +53,7 @@ class CategoryGridScreen extends StatelessWidget {
                   return const Column(
                     children: [
                       SizedBox(
-                        height: 200,
+                        height: kSizedBoxInfinite,
                       ),
                       Center(child: CircularProgressIndicator()),
                     ],
