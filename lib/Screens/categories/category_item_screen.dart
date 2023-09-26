@@ -94,10 +94,17 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
                   ]);
             } else {
               return Center(
-                  child: Text(
-                'Sorry! No Products found',
-                style: Theme.of(context).textTheme.xTinier.copyWith(
-                    color: AppColor.mediumBlack, fontWeight: FontWeight.w500),
+                  child: Column(
+                children: [
+                  const SizedBox(height: kEmptyBox),
+                  Image.asset('assets/empty_icon.png'),
+                  Text(
+                    'Sorry! No Products found',
+                    style: Theme.of(context).textTheme.xTinier.copyWith(
+                        color: AppColor.mediumBlack,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ],
               ));
             }
           }

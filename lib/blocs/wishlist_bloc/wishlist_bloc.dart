@@ -31,7 +31,9 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
       WishlistModel wishlistModel =
           await _wishlistRepository.getAllWishlistItems();
 
-      emit(GetAllWishlistItemsLoaded(wishlistModel: wishlistModel));
+      if (wishlistModel.data.isNotEmpty) {
+        emit(GetAllWishlistItemsLoaded(wishlistModel: wishlistModel));
+      }
     } catch (e) {
       emit(GetAllWishListItemsError(message: e.toString()));
     }
