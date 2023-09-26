@@ -27,10 +27,10 @@ class ItemDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isFirstTimeLoaded = true;
     context
         .read<ItemDetailsBloc>()
         .add(FetchItemDetails(itemDetails.productId));
-    bool isFirstTimeLoaded = true;
     return Scaffold(
         appBar: GenericAppBar(actions: [
           FavouriteIconWidget(
@@ -88,30 +88,30 @@ class ItemDetailsScreen extends StatelessWidget {
                   ])))
         ]),
         body: BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
-            buildWhen: (pre, curr) =>
-                (curr is ItemDetailsLoading && isFirstTimeLoaded == true) ||
-                (curr is ItemDetailsLoaded && isFirstTimeLoaded == true),
+            // buildWhen: (pre, curr) =>
+            //     (curr is ItemDetailsLoading ) ||
+            //     (curr is ItemDetailsLoaded),
             builder: (context, state) {
-              if (state is ItemDetailsLoading) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (state is ItemDetailsLoaded) {
-                isFirstTimeLoaded = false;
-                return SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    child: Column(children: [
-                      ImageCarouselSlider(
-                          imageList: state.productDetailsModel.data.productData
-                              .variants[state.variantIndex].image),
-                      ItemDetailsSection(
-                          productDetailsModel: state.productDetailsModel,
-                          variantIndex: state.variantIndex)
-                    ]));
-              }
-              if (state is ItemDetailsError) {
-                return Container();
-              } else {
-                return const SizedBox();
-              }
-            }));
+          if (state is ItemDetailsLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is ItemDetailsLoaded) {
+            isFirstTimeLoaded = false;
+            return SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(children: [
+                  ImageCarouselSlider(
+                      imageList: state.productDetailsModel.data.productData
+                          .variants[state.variantIndex].image),
+                  ItemDetailsSection(
+                      productDetailsModel: state.productDetailsModel,
+                      variantIndex: state.variantIndex)
+                ]));
+          }
+          if (state is ItemDetailsError) {
+            return Container();
+          } else {
+            return const SizedBox();
+          }
+        }));
   }
 }
