@@ -4,6 +4,7 @@ import 'package:onecart_user_app/configs/app_theme.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
+import '../../address/widget/address_edit_button.dart';
 import '../edit_profie_screen.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -39,25 +40,10 @@ class ProfileHeader extends StatelessWidget {
             ],
           ),
           InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, EditProfileScreen.routeName);
-            },
-            child: Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: xxTinierSpacing, vertical: tiniestSpacing),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: AppColor.primary, width: kFeatureDivider),
-                  borderRadius: BorderRadius.circular(kEditRadius),
-                ),
-                child: Text(
-                  'EDIT',
-                  style: Theme.of(context)
-                      .textTheme
-                      .xTinier
-                      .copyWith(color: AppColor.primary),
-                )),
-          ),
+              onTap: () {
+                Navigator.pushNamed(context, EditProfileScreen.routeName);
+              },
+              child: const AddressEditButton()),
         ],
       ),
       const SizedBox(height: xxSmallestSpacing),
