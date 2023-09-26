@@ -26,7 +26,6 @@ class WishlistCategory extends StatelessWidget {
             SizedBox(
               height: 200,
             ),
-            // Center(child: CircularProgressIndicator()),
           ],
         );
       } else if (state is GetAllCategoriesLoaded) {

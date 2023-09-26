@@ -51,7 +51,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
             horizontal: leftRightMargin, vertical: topBottomPadding),
         child: Column(children: [
           const WishlistCategory(
-              // wishlistData: wishlistData,
               ),
           const SizedBox(
             height: xxxSmallestSpacing,
