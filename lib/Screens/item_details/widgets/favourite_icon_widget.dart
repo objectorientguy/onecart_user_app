@@ -29,7 +29,7 @@ class _FavouriteIconWidgetState extends State<FavouriteIconWidget> {
     return IconButton(
         onPressed: () {
           setState(() {
-            isFavouriteTapped = true;
+            isFavouriteTapped = !isFavouriteTapped;
           });
           context.read<WishlistBloc>().add(AddWishlist(
                 productId: widget.productId,
