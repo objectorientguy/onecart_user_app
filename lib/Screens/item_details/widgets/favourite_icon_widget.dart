@@ -28,13 +28,14 @@ class _FavouriteIconWidgetState extends State<FavouriteIconWidget> {
   Widget build(BuildContext context) {
     return IconButton(
         onPressed: () {
-          setState(() {
-            isFavouriteTapped = true;
-          });
-          context.read<WishlistBloc>().add(AddWishlist(
-                productId: widget.productId,
-                variantId: widget.variantId,
-              ));
+          if (isFavouriteTapped == false) {
+            context.read<WishlistBloc>().add(AddWishlist(
+                  productId: widget.productId,
+                  variantId: widget.variantId,
+                ));
+          }
+
+          isFavouriteTapped = !isFavouriteTapped;
         },
         icon: (isFavouriteTapped == true)
             ? const Icon(

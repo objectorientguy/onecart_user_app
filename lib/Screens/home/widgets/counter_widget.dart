@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/add_cart_item_bloc/add_cart_item_states.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+import 'package:onecart_user_app/utils/snackbar_util.dart';
+import 'package:onecart_user_app/widgets/progress_bar.dart';
 
 import '../../../blocs/add_cart_item_bloc/add_cart_item_bloc.dart';
 import '../../../blocs/add_cart_item_bloc/add_cart_item_event.dart';
@@ -114,6 +116,13 @@ class _CounterScreenState extends State<CounterScreen> {
               context
                   .read<ItemDetailsBloc>()
                   .add(FetchItemDetails(widget.prodId!));
+              ProgressBar.dismiss(context);
+            }
+            if (state is AddItemLoading) {
+              ProgressBar.show(context);
+            }
+            if (state is AddItemsError) {
+              showCustomSnackBar(context, state.message);
             }
           },
           child: TextButton(

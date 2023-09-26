@@ -21,16 +21,21 @@ class OrdersScreen extends StatelessWidget {
         onWillPop: () async => false,
         child: Scaffold(
             appBar: AppBar(
-              title: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: xxTinierSpacing),
-                child: Text(
-                  "My Orders",
-                  style: Theme.of(context)
-                      .textTheme
-                      .tiny
-                      .copyWith(fontWeight: FontWeight.w500),
+              leading: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: const Icon(
+                  Icons.arrow_back,
+                  color: AppColor.black,
                 ),
+              ),
+              title: Text(
+                "My Orders",
+                style: Theme.of(context)
+                    .textTheme
+                    .tiny
+                    .copyWith(fontWeight: FontWeight.w500),
               ),
               actions: const [
                 Icon(Icons.filter_alt, color: AppColor.primary),

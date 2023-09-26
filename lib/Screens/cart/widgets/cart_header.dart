@@ -22,48 +22,41 @@ class CartHeader extends StatelessWidget {
           borderRadius: BorderRadius.circular(kBigRadius)),
       padding: const EdgeInsets.symmetric(
           vertical: xxTinierSpacing, horizontal: xxxTinySpacing),
-      child: Column(children: [
-        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
             Text('Subtotal', style: Theme.of(context).textTheme.tinier),
-            const SizedBox(height: xxxTinierSpacing),
-            Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              Text('₹',
-                  style: Theme.of(context)
-                      .textTheme
-                      .xxMedium
-                      .copyWith(fontWeight: FontWeight.w100)),
-              Text(cartDetails.totalPrice.toString(),
-                  style: Theme.of(context)
-                      .textTheme
-                      .xxMedium
-                      .copyWith(fontWeight: FontWeight.w700)),
-              Text('.43',
-                  style: Theme.of(context)
-                      .textTheme
-                      .xxTiny
-                      .copyWith(color: AppColor.mediumBlack)),
-              const SizedBox(
-                width: xxxTinierSpacing,
+            Container(
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: AppColor.grey,
+                  ),
+                  color: AppColor.white,
+                  borderRadius: BorderRadius.circular(kBigRadius)),
+              padding: const EdgeInsets.symmetric(
+                  vertical: xxTiniestSpacing, horizontal: xxTinierSpacing),
+              child: Center(
+                child: Text(
+                    '${cartDetails.cartItemCount.toString()} Total Items',
+                    style: Theme.of(context).textTheme.xxTinier.copyWith(
+                        color: AppColor.primary, fontWeight: FontWeight.w500)),
               ),
-              Container(
-                decoration: BoxDecoration(
-                    border: Border.all(
-                      color: AppColor.grey,
-                    ),
-                    color: AppColor.white,
-                    borderRadius: BorderRadius.circular(kBigRadius)),
-                padding: const EdgeInsets.symmetric(
-                    vertical: xxTiniestSpacing, horizontal: xxTinierSpacing),
-                child: Center(
-                  child: Text(cartDetails.cartItemCount.toString(),
-                      style: Theme.of(context).textTheme.xxTinier.copyWith(
-                          color: AppColor.primary,
-                          fontWeight: FontWeight.w500)),
-                ),
-              )
-            ])
-          ])
+            ),
+          ],
+        ),
+        const SizedBox(height: xxxTinierSpacing),
+        Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+          Text('₹',
+              style: Theme.of(context)
+                  .textTheme
+                  .xxMedium
+                  .copyWith(fontWeight: FontWeight.w100)),
+          Text(cartDetails.totalPrice.toString(),
+              style: Theme.of(context)
+                  .textTheme
+                  .xxMedium
+                  .copyWith(fontWeight: FontWeight.w700)),
         ])
       ]),
     );

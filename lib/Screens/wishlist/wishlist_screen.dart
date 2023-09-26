@@ -9,6 +9,7 @@ import '../../blocs/wishlist_bloc/wishlist_bloc.dart';
 import '../../blocs/wishlist_bloc/wishlist_events.dart';
 import '../../blocs/wishlist_bloc/wishlist_states.dart';
 import '../../configs/app_color.dart';
+import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 
 class WishlistScreen extends StatefulWidget {
@@ -85,7 +86,14 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   curr is GetAllWishlistItemsLoaded,
               builder: (context, state) {
                 if (state is GetAllWishListItemsLoading) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Column(
+                    children: [
+                      SizedBox(
+                        height: kCircularBox,
+                      ),
+                      Center(child: CircularProgressIndicator()),
+                    ],
+                  );
                 } else if (state is GetAllWishlistItemsLoaded) {
                   return Expanded(
                     child: isListView

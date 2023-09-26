@@ -49,7 +49,7 @@ class AddAddressScreen extends StatelessWidget {
               const SnackBar(content: Text('Enter the Data'));
             },
             buttonWidth: double.maxFinite,
-            buttonHeight: kElevatedButtonHeight,
+            buttonHeight: kElevatedButtonHeightSmall,
             child: Text(
               'SAVE',
               style: Theme.of(context)
