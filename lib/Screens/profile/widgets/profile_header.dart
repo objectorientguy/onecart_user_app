@@ -14,12 +14,6 @@ class ProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text('Account',
-          style: Theme.of(context)
-              .textTheme
-              .xxxTiny
-              .copyWith(fontWeight: FontWeight.w700, color: AppColor.grey)),
-      const SizedBox(height: xxSmallSpacing),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

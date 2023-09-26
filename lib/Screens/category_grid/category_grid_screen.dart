@@ -7,7 +7,6 @@ import '../../blocs/categories_bloc/categories_events.dart';
 import '../../blocs/categories_bloc/categories_states.dart';
 import '../../blocs/get_product_bloc/get_product_bloc.dart';
 import '../../blocs/get_product_bloc/get_product_events.dart';
-import '../address/widget/address_bar.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
 
@@ -33,9 +32,8 @@ class CategoryGridScreen extends StatelessWidget {
                   horizontal: leftRightMargin, vertical: topBottomPadding),
               child: Column(
                 children: [
-                  const AddressBar(),
                   const SizedBox(
-                    height: xxxSmallerSpacing,
+                    height: tinierSpacing,
                   ),
                   SearchTextField(
                     hintText: 'Search Categories',

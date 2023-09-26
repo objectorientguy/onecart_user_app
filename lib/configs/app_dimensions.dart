@@ -103,3 +103,5 @@ const double kSizedWidth = 250.0;
 const double kGeneralWidth = 100.0;
 const double kOrderWidth = 95.0;
 const double kGeneralBoxOne = 160.0;
+const double kLogoHeight = 40.0;
+const double kLogoWidth = 40.0;

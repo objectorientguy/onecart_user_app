@@ -54,7 +54,7 @@ class EditAddressScreen extends StatelessWidget {
                   log(saveAddress.toString());
                 },
                 buttonWidth: double.maxFinite,
-                buttonHeight: kElevatedButtonHeight,
+                buttonHeight: kElevatedButtonHeightSmall,
                 child: Text('SAVE',
                     style: Theme.of(context).textTheme.xxTiny.copyWith(
                         fontWeight: FontWeight.w600, color: AppColor.white)))),
