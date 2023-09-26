@@ -34,29 +34,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
   Widget build(BuildContext context) {
     context.read<WishlistBloc>().add(GetAllWishlistItems());
 
-    List wishlistData = [
-      {
-        'title': 'All',
-      },
-      {
-        'title': 'Fruits',
-      },
-      {
-        'title': 'Staples',
-      },
-      {
-        'title': 'Stationaries',
-      },
-      {
-        'title': 'Beverages',
-      },
-      {
-        'title': 'Home Care',
-      },
-      {
-        'title': 'Dairy and Bakery',
-      },
-    ];
     return Scaffold(
       appBar: GenericAppBar(
         title: 'WishList',
@@ -74,9 +51,8 @@ class _WishlistScreenState extends State<WishlistScreen> {
         padding: const EdgeInsets.symmetric(
             horizontal: leftRightMargin, vertical: topBottomPadding),
         child: Column(children: [
-          WishlistCategory(
-            wishlistData: wishlistData,
-          ),
+          const WishlistCategory(
+              ),
           const SizedBox(
             height: xxxSmallestSpacing,
           ),
