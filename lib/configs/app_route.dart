@@ -20,6 +20,7 @@ import '../Screens/profile/widgets/terms_and_conditions_screen.dart';
 import '../Screens/ratings/ratings_screen.dart';
 import '../Screens/root/root_screen.dart';
 import '../Screens/varient/select_varient_screen.dart';
+import '../Screens/wishlist/wishlist_screen.dart';
 import '../data/models/general_data_model/general_category_data.dart';
 import '../data/models/item_details/item_details_model.dart';
 
@@ -76,6 +77,10 @@ class AppRoutes {
         return _createRoute(AddAddressScreen());
       case AddAddressMapScreen.routeName:
         return _createRoute(const AddAddressMapScreen());
+
+      case WishlistScreen.routeName:
+        return _createRoute(const WishlistScreen());
+
       case CurrentLocation.routeName:
         return _createRoute(const CurrentLocation());
       case RootScreen.routeName:
