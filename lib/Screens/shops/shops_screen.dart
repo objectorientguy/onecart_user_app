@@ -54,20 +54,6 @@ class SelectShops extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // InkWell(
-                  //   onTap: () {
-                  //     Navigator.of(context).push(MaterialPageRoute(
-                  //         builder: (context) => const ProfileScreen()));
-                  //   },
-                  //   child: const CircleAvatar(
-                  //     radius: kUserAvatar,
-                  //     backgroundColor: AppColor.lighterGrey,
-                  //     child: Icon(
-                  //       Icons.person,
-                  //       color: AppColor.primary,
-                  //     ),
-                  //   ),
-                  // )
                 ],
               ),
               const SizedBox(
