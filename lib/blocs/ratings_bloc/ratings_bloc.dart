@@ -37,24 +37,26 @@ class RatingsBloc extends Bloc<RatingsEvent, RatingsStates> {
   FutureOr<void> _addRatings(
       AddRatings event, Emitter<RatingsStates> emit) async {
     emit(AddRatingsLoading());
+    // try {
+    Map ratingsDetails = {
+      "rating": event.rating,
+      "reviewtext": event.reviewTextMap
+    };
+    log(ratingsDetails.toString());
+    AddRatingsModel addRatingsModel =
+        await _ratingsRepository.addRatings(event.reviewTextMap, 9898989898);
 
-    try {
-      Map ratingsDetails = {"rating": event.rating, "review_text": 'hi'};
-      log(ratingsDetails.toString());
-      AddRatingsModel addRatingsModel =
-          await _ratingsRepository.addRatings(ratingsDetails);
-
-      if (addRatingsModel.status == '200') {
-        // emit(GetAllRatingsLoaded(viewRatingsModel: event.viewRatingsModel));
-        emit(AddRatingsLoaded(
-          addRatingsModel: addRatingsModel,
-          ratingsDetails: ratingsDetails,
-        ));
-      } else {
-        emit(AddRatingsError(message: addRatingsModel.message));
-      }
-    } catch (e) {
-      emit(AddRatingsError(message: e.toString()));
+    if (addRatingsModel.status == '200') {
+      // emit(GetAllRatingsLoaded(viewRatingsModel: event.viewRatingsModel));
+      emit(AddRatingsLoaded(
+        addRatingsModel: addRatingsModel,
+        reviewTextMap: {},
+      ));
+    } else {
+      emit(AddRatingsError(message: addRatingsModel.message));
     }
+    // } catch (e) {
+    //   emit(AddRatingsError(message: e.toString()));
+    // }
   }
 }

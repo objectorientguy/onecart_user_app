@@ -13,10 +13,10 @@ class ViewRatingsRepositoryImpl implements ViewRatingsRepository {
   }
 
   @override
-  Future<AddRatingsModel> addRatings(Map ratingsDetails) async {
+  Future<AddRatingsModel> addRatings(Map reviewTextMap, int userID) async {
     final response = await DioClient().post(
         "https://oneart.onrender.com/addReview?product_id=3&user_id=9898989898",
-        ratingsDetails);
+        reviewTextMap);
     return AddRatingsModel.fromJson(response);
   }
 }

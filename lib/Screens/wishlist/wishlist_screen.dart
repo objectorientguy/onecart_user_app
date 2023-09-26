@@ -51,8 +51,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
         padding: const EdgeInsets.symmetric(
             horizontal: leftRightMargin, vertical: topBottomPadding),
         child: Column(children: [
-          const WishlistCategory(
-              ),
+          const WishlistCategory(),
           const SizedBox(
             height: xxxSmallestSpacing,
           ),

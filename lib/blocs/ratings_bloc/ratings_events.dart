@@ -4,10 +4,10 @@ class GetAllRatings extends RatingsEvent {}
 
 class AddRatings extends RatingsEvent {
   final int rating;
-  final String reviewText;
+  final Map reviewTextMap;
 
   AddRatings({
     required this.rating,
-    required this.reviewText,
+    required this.reviewTextMap,
   });
 }

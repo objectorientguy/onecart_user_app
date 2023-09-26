@@ -27,6 +27,14 @@ class AddRatingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<RatingsBloc>().add(GetAllRatings());
 
+    Map reviewTextMap = {
+      'product_id': "1",
+      'user_id': "9898989898",
+      "rating": "",
+      "review_text": ""
+    };
+    log('response===============>$reviewTextMap');
+
     return Scaffold(
       appBar: const GenericAppBar(
         title: 'Ratings and Reviews',
@@ -71,7 +79,9 @@ class AddRatingsScreen extends StatelessWidget {
                 height: tinierSpacing,
               ),
               TextFieldWidget(
-                onTextFieldChanged: (String reviewText) {},
+                onTextFieldChanged: (value) {
+                  reviewTextMap["review_text"] = value;
+                },
                 maxLines: 5,
                 hintText: 'Type here...',
                 hintStyle: Theme.of(context).textTheme.xxTinier.copyWith(
@@ -97,7 +107,7 @@ class AddRatingsScreen extends StatelessWidget {
                     onPressed: () {
                       context.read<RatingsBloc>().add(AddRatings(
                             rating: postRating,
-                            reviewText: '',
+                            reviewTextMap: {},
                           ));
                     },
                     title: 'Post',
