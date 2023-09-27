@@ -110,7 +110,7 @@ class _CounterScreenState extends State<CounterScreen> {
       child: SizedBox(
         height: widget.height,
         width: widget.width,
-        child: BlocListener<AddToCartBloc, AddItemsToCartStates>(
+        child: BlocListener<AddToCartBloc, CartStates>(
           listener: (context, state) {
             if (state is AddItemLoaded) {
               context
