@@ -33,8 +33,8 @@ class WishlistDatum {
   final int productId;
   final String productName;
   final List<String> image;
-  final int variantCost;
-  final int discountedCost;
+  final double variantCost;
+  final double discountedCost;
   final int discount;
   final String quantity;
   final int variantId;

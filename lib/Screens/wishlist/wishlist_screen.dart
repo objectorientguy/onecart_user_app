@@ -35,6 +35,29 @@ class _WishlistScreenState extends State<WishlistScreen> {
   Widget build(BuildContext context) {
     context.read<WishlistBloc>().add(GetAllWishlistItems());
 
+    // List wishlistData = [
+    //   {
+    //     'title': 'All',
+    //   },
+    //   {
+    //     'title': 'Fruits',
+    //   },
+    //   {
+    //     'title': 'Staples',
+    //   },
+    //   {
+    //     'title': 'Stationaries',
+    //   },
+    //   {
+    //     'title': 'Beverages',
+    //   },
+    //   {
+    //     'title': 'Home Care',
+    //   },
+    //   {
+    //     'title': 'Dairy and Bakery',
+    //   },
+    // ];
     return Scaffold(
       appBar: GenericAppBar(
         title: 'WishList',
@@ -48,40 +71,44 @@ class _WishlistScreenState extends State<WishlistScreen> {
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: leftRightMargin, vertical: topBottomPadding),
-        child: Column(children: [
-          const WishlistCategory(),
-          const SizedBox(
-            height: xxxSmallestSpacing,
-          ),
-          BlocBuilder<WishlistBloc, WishlistStates>(
-              buildWhen: (pre, curr) =>
-                  (curr is GetAllWishListItemsLoading) ||
-                  curr is GetAllWishlistItemsLoaded,
-              builder: (context, state) {
-                if (state is GetAllWishListItemsLoading) {
-                  return const Column(
-                    children: [
-                      SizedBox(
-                        height: kCircularBox,
-                      ),
-                      Center(child: CircularProgressIndicator()),
-                    ],
-                  );
-                } else if (state is GetAllWishlistItemsLoaded) {
-                  if (state.wishlistModel.data.isNotEmpty) {
-                    return Expanded(
-                      child: isListView
-                          ? ListViewScreen(
-                              wishlistData: state.wishlistModel.data)
-                          : GridViewScreen(
-                              wishlistData: state.wishlistModel.data),
-                    );
-                  } else {
-                    return Center(
-                        child: Column(
+      body: BlocBuilder<WishlistBloc, WishlistStates>(
+          buildWhen: (pre, curr) =>
+          (curr is GetAllWishListItemsLoading) ||
+              curr is GetAllWishlistItemsLoaded,
+          builder: (context, state) {
+            if (state is GetAllWishListItemsLoading) {
+              return const Column(
+                children: [
+                  SizedBox(
+                    height: kCircularBox,
+                  ),
+                  Center(child: CircularProgressIndicator()),
+                ],
+              );
+            } else if (state is GetAllWishlistItemsLoaded) {
+              if (state.wishlistModel.data.isNotEmpty) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: leftRightMargin, vertical: topBottomPadding),
+                  child: Column(children: [
+                    WishlistCategory(
+                      wishlistData: state.wishlistModel.data,
+                    ),
+                    const SizedBox(
+                      height: xxxSmallestSpacing,
+                    ),
+                    Expanded(
+                child: isListView
+                ? ListViewScreen(
+                wishlistData: state.wishlistModel.data)
+                : GridViewScreen(
+            wishlistData: state.wishlistModel.data),
+            )
+            ])
+                );
+              } else {
+                return Center(
+                    child: Column(
                       children: [
                         const SizedBox(height: kEmptyBox),
                         Image.asset('assets/empty_icon.png'),
@@ -93,16 +120,14 @@ class _WishlistScreenState extends State<WishlistScreen> {
                         ),
                       ],
                     ));
-                  }
-                }
-                if (state is GetAllWishListItemsError) {
-                  return Container();
-                } else {
-                  return const SizedBox();
-                }
-              }),
-        ]),
-      ),
+              }
+            }
+            if (state is GetAllWishListItemsError) {
+              return Container();
+            } else {
+              return const SizedBox();
+            }
+          }),
     );
   }
 }

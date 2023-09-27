@@ -27,16 +27,16 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
   FutureOr<void> _getAllWishlistItems(
       GetAllWishlistItems event, Emitter<WishlistStates> emit) async {
     emit(GetAllWishListItemsLoading());
-    try {
+    // try {
       WishlistModel wishlistModel =
           await _wishlistRepository.getAllWishlistItems();
 
       if (wishlistModel.data.isNotEmpty) {
         emit(GetAllWishlistItemsLoaded(wishlistModel: wishlistModel));
       }
-    } catch (e) {
-      emit(GetAllWishListItemsError(message: e.toString()));
-    }
+    // } catch (e) {
+    //   emit(GetAllWishListItemsError(message: e.toString()));
+    // }
   }
 
   FutureOr<void> _addItemsToWishlist(
