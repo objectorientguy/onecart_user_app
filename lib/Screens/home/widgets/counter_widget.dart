@@ -63,7 +63,14 @@ class _CounterScreenState extends State<CounterScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton(
-              onPressed: _decrementCount,
+              onPressed: () {
+                // context.read<AddToCartBloc>().add(DecrementCartItemCount(
+                //     productId: widget.prodId!,
+                //     cartItemId: null,
+                //     variantId: widget.variantId!));
+
+                _decrementCount();
+              },
               style: TextButton.styleFrom(
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -85,10 +92,8 @@ class _CounterScreenState extends State<CounterScreen> {
             ),
             TextButton(
               onPressed: () {
-                context.read<AddToCartBloc>().add(AddItemsToCart(
-                    prodId: widget.prodId!,
-                    variantId: widget.variantId!,
-                    count: _count));
+                // context.read<AddToCartBloc>().add(IncrementCartItemCount(
+                //      productId: widget.prodId!, cartItemId: null, variantId: widget.variantId!));
                 _incrementCount();
               },
               style: TextButton.styleFrom(
@@ -128,9 +133,9 @@ class _CounterScreenState extends State<CounterScreen> {
           child: TextButton(
             onPressed: () {
               context.read<AddToCartBloc>().add(AddItemsToCart(
-                  prodId: widget.prodId!,
-                  variantId: widget.variantId!,
-                  count: _count));
+                    prodId: widget.prodId!,
+                    variantId: widget.variantId!,
+                  ));
 
               _incrementCount();
               setState(() {

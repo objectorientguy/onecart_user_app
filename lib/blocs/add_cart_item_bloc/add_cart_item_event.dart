@@ -3,10 +3,8 @@ abstract class CartEvents {}
 class AddItemsToCart extends CartEvents {
   final int prodId;
   final int variantId;
-  final int count;
 
-  AddItemsToCart(
-      {required this.prodId, required this.variantId, required this.count});
+  AddItemsToCart({required this.prodId, required this.variantId});
 }
 
 class IncrementCartItemCount extends CartEvents {

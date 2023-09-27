@@ -31,7 +31,6 @@ class AddToCartBloc extends Bloc<CartEvents, CartStates> {
       Map cartDetails = {
         "product_id": event.prodId,
         "variant_id": event.variantId,
-        "count": event.count,
       };
       AddToCartModel addToCartModel =
           await _cartRepository.addToCart(cartDetails);

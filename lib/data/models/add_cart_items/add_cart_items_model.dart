@@ -31,14 +31,12 @@ class AddToCartModel {
 
 class CartData {
   final int cartItemId;
-  final int count;
   final int cartId;
   final int productId;
   final int variantId;
 
   CartData({
     required this.cartItemId,
-    required this.count,
     required this.cartId,
     required this.productId,
     required this.variantId,
@@ -46,7 +44,6 @@ class CartData {
 
   factory CartData.fromJson(Map<String, dynamic> json) => CartData(
         cartItemId: json["cartItem_id"],
-        count: json["count"],
         cartId: json["cart_id"],
         productId: json["product_id"],
         variantId: json["variant_id"],
@@ -54,7 +51,6 @@ class CartData {
 
   Map<String, dynamic> toJson() => {
         "cartItem_id": cartItemId,
-        "count": count,
         "cart_id": cartId,
         "product_id": productId,
         "variant_id": variantId,
