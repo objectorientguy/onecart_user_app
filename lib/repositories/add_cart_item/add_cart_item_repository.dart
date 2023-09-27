@@ -7,10 +7,10 @@ abstract class AddToCartRepository {
   Future<AddToCartModel> addToCart(Map cartdetails);
 
   Future<IncrementCartCountModel> incrementCartItemCount(
-      Map incrementCountDetails, int cartItemId, int productId, int variantId);
+      int cartItemId, int productId, int variantId);
 
   Future<DecrementCartCountModel> decrementCartItemCount(
-      Map decrementCountDetails, int cartItemId, int productId, int variantId);
+      int cartItemId, int productId, int variantId);
 
   Future<DeleteCartItemModel> deleteCartItem(deleteCartItemId);
 }

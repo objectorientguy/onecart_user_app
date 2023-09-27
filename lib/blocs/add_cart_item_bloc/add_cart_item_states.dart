@@ -29,10 +29,7 @@ class IncrementCartItemLoading extends CartStates {}
 class IncrementCartItemLoaded extends CartStates {
   final IncrementCartCountModel incrementCartCountModel;
 
-  final Map incrementCountDetails;
-
   IncrementCartItemLoaded({
-    required this.incrementCountDetails,
     required this.incrementCartCountModel,
     required variantId,
     required productId,
@@ -51,10 +48,7 @@ class DecrementCartItemLoading extends CartStates {}
 class DecrementCartItemLoaded extends CartStates {
   final DecrementCartCountModel decrementCartCountModel;
 
-  final Map decrementCountDetails;
-
   DecrementCartItemLoaded({
-    required this.decrementCountDetails,
     required this.decrementCartCountModel,
     required variantId,
     required productId,

@@ -53,12 +53,8 @@ class AddToCartBloc extends Bloc<CartEvents, CartStates> {
     try {
       IncrementCartCountModel incrementCartCount =
           await _cartRepository.incrementCartItemCount(
-              event.incrementCountDetails,
-              event.cartItemId,
-              event.productId,
-              event.variantId);
+              event.cartItemId, event.productId, event.variantId);
       emit(IncrementCartItemLoaded(
-          incrementCountDetails: {},
           incrementCartCountModel: incrementCartCount,
           variantId: null,
           productId: null,
@@ -74,12 +70,8 @@ class AddToCartBloc extends Bloc<CartEvents, CartStates> {
     try {
       DecrementCartCountModel decrementCartCount =
           await _cartRepository.decrementCartItemCount(
-              event.decrementCountDetails,
-              event.cartItemId,
-              event.productId,
-              event.variantId);
+              event.cartItemId, event.productId, event.variantId);
       emit(DecrementCartItemLoaded(
-          decrementCountDetails: {},
           decrementCartCountModel: decrementCartCount,
           variantId: null,
           productId: null,

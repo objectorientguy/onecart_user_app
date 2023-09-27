@@ -17,22 +17,16 @@ class AddToCartRepositoryImpl implements AddToCartRepository {
 
   @override
   Future<IncrementCartCountModel> incrementCartItemCount(
-      Map incrementCountDetails,
-      int cartItemId,
-      int productId,
-      int variantId) async {
+      int cartItemId, int productId, int variantId) async {
     final response = await DioClient().put(
         "https://oneart.onrender.com/increment_cart_item_count?cart_item_id=$cartItemId&product_id=$productId&variant_id=$variantId",
-        incrementCountDetails);
+        {});
     return IncrementCartCountModel.fromJson(response);
   }
 
   @override
   Future<DecrementCartCountModel> decrementCartItemCount(
-      Map decrementCountDetails,
-      int cartItemId,
-      int productId,
-      int variantId) async {
+      int cartItemId, int productId, int variantId) async {
     final response = await DioClient().put(
         "https://oneart.onrender.com/decrement_cart_item_count?cart_item_id=$cartItemId&product_id=$productId&variant_id=$variantId",
         {});
