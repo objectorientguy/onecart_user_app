@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../../../blocs/wishlist_bloc/wishlist_bloc.dart';
 import '../../../blocs/wishlist_bloc/wishlist_events.dart';
 import '../../../configs/app_color.dart';
@@ -11,7 +10,7 @@ import '../../../data/models/wishlist/view_wishlist_model.dart';
 import '../../home/widgets/counter_widget.dart';
 
 class GridViewScreen extends StatelessWidget {
-  final List<WishlistData> wishlistData;
+  final List<WishlistDatum> wishlistData;
 
   const GridViewScreen({super.key, required this.wishlistData});
 

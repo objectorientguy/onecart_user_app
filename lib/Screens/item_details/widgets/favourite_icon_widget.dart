@@ -41,6 +41,7 @@ class _FavouriteIconWidgetState extends State<FavouriteIconWidget> {
             ? const Icon(
                 Icons.favorite,
                 color: AppColor.primary,
+          // fill: AppColor.primaryLight,
               )
             : const Icon(
                 Icons.favorite_border_outlined,
