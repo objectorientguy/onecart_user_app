@@ -7,30 +7,47 @@ class AddItemsToCart extends CartEvents {
   AddItemsToCart({required this.prodId, required this.variantId});
 }
 
-class IncrementCartItemCount extends CartEvents {
-  final int cartItemId;
+class IncrementProductCounter extends CartEvents {
+  int count;
   final int productId;
   final int variantId;
 
-  IncrementCartItemCount(
-      {required this.variantId,
-      required this.productId,
-      required this.cartItemId});
+  IncrementProductCounter(
+      {required this.productId, required this.variantId, required this.count});
+}
+
+class DecrementProductCounter extends CartEvents {
+  int count;
+  final int productId;
+  final int variantId;
+
+  DecrementProductCounter(
+      {required this.productId, required this.variantId, required this.count});
+}
+
+class IncrementCartItemCount extends CartEvents {
+  final int productId;
+  final int variantId;
+
+  IncrementCartItemCount({
+    required this.variantId,
+    required this.productId,
+  });
 }
 
 class DecrementCartItemCount extends CartEvents {
-  final int cartItemId;
   final int productId;
   final int variantId;
 
-  DecrementCartItemCount(
-      {required this.variantId,
-      required this.productId,
-      required this.cartItemId});
+  DecrementCartItemCount({
+    required this.variantId,
+    required this.productId,
+  });
 }
 
 class DeleteCartItem extends CartEvents {
-  final String deleteId;
+  final int productId;
+  final int variantId;
 
-  DeleteCartItem({required this.deleteId});
+  DeleteCartItem({required this.productId, required this.variantId});
 }

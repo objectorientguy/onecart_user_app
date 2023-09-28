@@ -18,10 +18,36 @@ class AddItemLoaded extends CartStates {
       {required this.addToTheCartModel, required this.cartItemDetails});
 }
 
+class ProductAlreadyExists extends CartStates {
+  final String message;
+
+  ProductAlreadyExists({required this.message});
+}
+
 class AddItemsError extends CartStates {
   final String message;
 
   AddItemsError({required this.message});
+}
+
+class IncrementCounter extends CartStates {
+  int count = 1;
+
+  IncrementCounter({
+    required this.count,
+    required variantId,
+    required productId,
+  });
+}
+
+class DecrementCounter extends CartStates {
+  int count = 1;
+
+  DecrementCounter({
+    required this.count,
+    required variantId,
+    required productId,
+  });
 }
 
 class IncrementCartItemLoading extends CartStates {}
@@ -33,7 +59,6 @@ class IncrementCartItemLoaded extends CartStates {
     required this.incrementCartCountModel,
     required variantId,
     required productId,
-    required cartItemId,
   });
 }
 
@@ -52,7 +77,6 @@ class DecrementCartItemLoaded extends CartStates {
     required this.decrementCartCountModel,
     required variantId,
     required productId,
-    required cartItemId,
   });
 }
 

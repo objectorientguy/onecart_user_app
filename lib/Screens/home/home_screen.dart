@@ -66,19 +66,6 @@ class HomeScreen extends StatelessWidget {
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              InkWell(
-                                onTap: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Padding(
-                                  padding:
-                                      EdgeInsets.only(left: xxTiniestSpacing),
-                                  child: Icon(
-                                    Icons.arrow_back_ios,
-                                    size: kBackArrow,
-                                  ),
-                                ),
-                              ),
                               const SizedBox(
                                 width: tiniestSpacing,
                               ),

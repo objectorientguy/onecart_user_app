@@ -7,37 +7,37 @@ import 'add_cart_item_repository.dart';
 
 class AddToCartRepositoryImpl implements AddToCartRepository {
   @override
-  Future<AddToCartModel> addToCart(Map cartdetails) async {
+  Future<AddToCartModel> addToCart(Map cartDetails) async {
     final response = await DioClient().post(
-        "https://oneart.onrender.com/add_to_cart?customer_contact=9898989898",
-        cartdetails);
-
+        "https://oneart.onrender.com/add_to_cart?user_contact=9898989898",
+        cartDetails);
     return AddToCartModel.fromJson(response);
   }
 
   @override
   Future<IncrementCartCountModel> incrementCartItemCount(
-      int cartItemId, int productId, int variantId) async {
+      int productId, int variantId) async {
     final response = await DioClient().put(
-        "https://oneart.onrender.com/increment_cart_item_count?cart_item_id=$cartItemId&product_id=$productId&variant_id=$variantId",
+        "https://oneart.onrender.com/increment_cart_item_count?user_contact=9898989898&product_id=$productId&variant_id=$variantId",
         {});
     return IncrementCartCountModel.fromJson(response);
   }
 
   @override
   Future<DecrementCartCountModel> decrementCartItemCount(
-      int cartItemId, int productId, int variantId) async {
+      int productId, int variantId) async {
     final response = await DioClient().put(
-        "https://oneart.onrender.com/decrement_cart_item_count?cart_item_id=$cartItemId&product_id=$productId&variant_id=$variantId",
+        "https://oneart.onrender.com/decrement_cart_item_count?user_contact=9898989898&product_id=$productId&variant_id=$variantId",
         {});
     return DecrementCartCountModel.fromJson(response);
   }
 
   @override
-  Future<DeleteCartItemModel> deleteCartItem(deleteCartItemId) async {
+  Future<DeleteCartItemModel> deleteCartItem(
+      int productId, int variantId) async {
     try {
       final response = await DioClient().delete(
-          "https://oneart.onrender.com/delete_cart_item?cart_item_id=$deleteCartItemId");
+          "https://oneart.onrender.com/delete_cart_item?user_contact=9898989898&product_id=$productId&variant_id=$variantId");
       return DeleteCartItemModel.fromJson(response);
     } catch (error) {
       rethrow;

@@ -14,7 +14,7 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 
-class CounterScreen extends StatefulWidget {
+class CounterScreen extends StatelessWidget {
   final double height;
   final double width;
   final String title;
@@ -23,142 +23,125 @@ class CounterScreen extends StatefulWidget {
 
   const CounterScreen({
     super.key,
-    this.height = kAddButtonHeight,
-    this.width = kAddButtonWidth,
-    this.title = 'ADD',
-    this.prodId,
-    this.variantId,
+    required this.height,
+    required this.width,
+    required this.title,
+    required this.prodId,
+    required this.variantId,
   });
 
   @override
-  State<CounterScreen> createState() => _CounterScreenState();
-}
-
-class _CounterScreenState extends State<CounterScreen> {
-  bool isVisible = true;
-  int _count = 0;
-
-  void _incrementCount() {
-    setState(() {
-      _count++;
-    });
-  }
-
-  void _decrementCount() {
-    if (_count == 1) {
-      isVisible = true;
-    }
-    setState(() {
-      _count--;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Visibility(
-      replacement: SizedBox(
-        height: widget.height,
-        width: widget.width,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            TextButton(
-              onPressed: () {
-                // context.read<AddToCartBloc>().add(DecrementCartItemCount(
-                //     productId: widget.prodId!,
-                //     cartItemId: null,
-                //     variantId: widget.variantId!));
+    int count = 0;
+    bool isVisible = true;
+    return BlocConsumer<AddToCartBloc, CartStates>(
+        buildWhen: (pre, curr) => (curr is AddItemLoading ||
+            curr is AddItemLoaded ||
+            curr is IncrementCartItemLoaded ||
+            curr is DecrementCartItemLoaded ||
+            curr is IncrementCartItemLoading ||
+            curr is DecrementCartItemLoading),
+        listener: (context, state) {
+          if (state is AddItemLoading) {
+            ProgressBar.show(context);
+          } else if (state is AddItemLoaded) {
+            ProgressBar.dismiss(context);
+            context.read<ItemDetailsBloc>().add(FetchItemDetails(prodId!));
+            if (state.addToTheCartModel.message == "Product already exists!") {
+              showCustomSnackBar(context, state.addToTheCartModel.message);
+            }
+          }
+        },
+        builder: (context, state) {
+          if (count == 0) {
+            isVisible = true;
+          }
+          return Visibility(
+              replacement: SizedBox(
+                  height: kAddButtonHeight,
+                  width: kAddButtonWidth,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            count--;
+                            if (count == 0) {
+                              context.read<AddToCartBloc>().add(DeleteCartItem(
+                                  productId: prodId!, variantId: variantId!));
+                              isVisible = true;
+                            } else {
+                              context.read<AddToCartBloc>().add(
+                                  DecrementCartItemCount(
+                                      variantId: variantId!,
+                                      productId: prodId!));
+                            }
+                          },
+                          style: TextButton.styleFrom(
+                              minimumSize: Size.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(kAddRadius),
+                              ),
+                              side: const BorderSide(color: AppColor.primary)),
+                          child: const Icon(
+                            Icons.remove,
+                            size: kCounterIcon,
+                          ),
+                        ),
+                        Text(
+                          count.toString(),
+                          style: Theme.of(context).textTheme.xxTinier.copyWith(
+                              fontWeight: FontWeight.w500,
+                              color: AppColor.black),
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              count++;
+                              context.read<AddToCartBloc>().add(
+                                  IncrementCartItemCount(
+                                      variantId: variantId!,
+                                      productId: prodId!));
+                            },
+                            style: TextButton.styleFrom(
+                                minimumSize: Size.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.circular(kAddRadius),
+                                ),
+                                side:
+                                    const BorderSide(color: AppColor.primary)),
+                            child: const Icon(Icons.add, size: kCounterIcon))
+                      ])),
+              visible: isVisible,
+              child: SizedBox(
+                  height: height,
+                  width: width,
+                  child: TextButton(
+                      onPressed: () {
+                        count++;
+                        context.read<AddToCartBloc>().add(AddItemsToCart(
+                              prodId: prodId!,
+                              variantId: variantId!,
+                            ));
 
-                _decrementCount();
-              },
-              style: TextButton.styleFrom(
-                  minimumSize: Size.zero,
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(kAddRadius),
-                  ),
-                  side: const BorderSide(color: AppColor.primary)),
-              child: const Icon(
-                Icons.remove,
-                size: kCounterIcon,
-              ),
-            ),
-            Text(
-              '$_count',
-              style: Theme.of(context)
-                  .textTheme
-                  .xxTinier
-                  .copyWith(fontWeight: FontWeight.w500, color: AppColor.black),
-            ),
-            TextButton(
-              onPressed: () {
-                // context.read<AddToCartBloc>().add(IncrementCartItemCount(
-                //      productId: widget.prodId!, cartItemId: null, variantId: widget.variantId!));
-                _incrementCount();
-              },
-              style: TextButton.styleFrom(
-                  minimumSize: Size.zero,
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(kAddRadius),
-                  ),
-                  side: const BorderSide(color: AppColor.primary)),
-              child: const Icon(
-                Icons.add,
-                size: kCounterIcon,
-              ),
-            ),
-          ],
-        ),
-      ),
-      visible: isVisible,
-      child: SizedBox(
-        height: widget.height,
-        width: widget.width,
-        child: BlocListener<AddToCartBloc, CartStates>(
-          listener: (context, state) {
-            if (state is AddItemLoaded) {
-              context
-                  .read<ItemDetailsBloc>()
-                  .add(FetchItemDetails(widget.prodId!));
-              ProgressBar.dismiss(context);
-            }
-            if (state is AddItemLoading) {
-              ProgressBar.show(context);
-            }
-            if (state is AddItemsError) {
-              showCustomSnackBar(context, state.message);
-            }
-          },
-          child: TextButton(
-            onPressed: () {
-              context.read<AddToCartBloc>().add(AddItemsToCart(
-                    prodId: widget.prodId!,
-                    variantId: widget.variantId!,
-                  ));
-
-              _incrementCount();
-              setState(() {
-                isVisible = !isVisible;
-              });
-            },
-            style: TextButton.styleFrom(
-              minimumSize: Size.zero,
-              padding: const EdgeInsets.symmetric(
-                  horizontal: tinierSpacing, vertical: tiniestSpacing),
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(kAddRadius)),
-              backgroundColor: AppColor.primary,
-            ),
-            child: Text(widget.title,
-                style: Theme.of(context)
-                    .textTheme
-                    .xxxTinier
-                    .copyWith(color: AppColor.white)),
-          ),
-        ),
-      ),
-    );
+                        isVisible = !isVisible;
+                      },
+                      style: TextButton.styleFrom(
+                          minimumSize: Size.zero,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: tinierSpacing,
+                              vertical: tiniestSpacing),
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(kAddRadius)),
+                          backgroundColor: AppColor.primary),
+                      child: Text(title,
+                          style: Theme.of(context)
+                              .textTheme
+                              .xxxTinier
+                              .copyWith(color: AppColor.white)))));
+        });
   }
 }

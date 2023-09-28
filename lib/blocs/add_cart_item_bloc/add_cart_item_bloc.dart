@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/add_cart_item_bloc/add_cart_item_event.dart';
@@ -16,11 +17,16 @@ class AddToCartBloc extends Bloc<CartEvents, CartStates> {
 
   CartStates get initialState => AddItemInitial();
 
+  int count = 0;
+  bool isVisible = true;
+
   AddToCartBloc() : super(AddItemInitial()) {
     on<AddItemsToCart>(_addItemsToCart);
     on<IncrementCartItemCount>(_incrementCartItemCount);
     on<DecrementCartItemCount>(_decrementCartItemCount);
     on<DeleteCartItem>(_deleteCartItem);
+    on<IncrementProductCounter>(_incrementProductCount);
+    on<DecrementProductCounter>(_decrementProductCount);
   }
 
   FutureOr<void> _addItemsToCart(
@@ -34,8 +40,8 @@ class AddToCartBloc extends Bloc<CartEvents, CartStates> {
       };
       AddToCartModel addToCartModel =
           await _cartRepository.addToCart(cartDetails);
-
       if (addToCartModel.status == 200) {
+        log("addToCartModel==========>${addToCartModel.status}");
         emit(AddItemLoaded(
             addToTheCartModel: addToCartModel, cartItemDetails: cartDetails));
       } else {
@@ -46,18 +52,35 @@ class AddToCartBloc extends Bloc<CartEvents, CartStates> {
     }
   }
 
+  FutureOr<void> _incrementProductCount(
+      IncrementProductCounter event, Emitter<CartStates> emit) async {
+    count = event.count;
+    emit(IncrementCounter(
+        count: event.count,
+        variantId: event.variantId,
+        productId: event.productId));
+  }
+
+  FutureOr<void> _decrementProductCount(
+      DecrementProductCounter event, Emitter<CartStates> emit) async {
+    count = event.count;
+    emit(DecrementCounter(
+        count: event.count,
+        variantId: event.variantId,
+        productId: event.productId));
+  }
+
   FutureOr<void> _incrementCartItemCount(
       IncrementCartItemCount event, Emitter<CartStates> emit) async {
     emit(IncrementCartItemLoading());
     try {
-      IncrementCartCountModel incrementCartCount =
-          await _cartRepository.incrementCartItemCount(
-              event.cartItemId, event.productId, event.variantId);
+      IncrementCartCountModel incrementCartCount = await _cartRepository
+          .incrementCartItemCount(event.productId, event.variantId);
       emit(IncrementCartItemLoaded(
-          incrementCartCountModel: incrementCartCount,
-          variantId: null,
-          productId: null,
-          cartItemId: null));
+        incrementCartCountModel: incrementCartCount,
+        variantId: null,
+        productId: null,
+      ));
     } catch (e) {
       emit(IncrementCartItemError(message: e.toString()));
     }
@@ -67,14 +90,13 @@ class AddToCartBloc extends Bloc<CartEvents, CartStates> {
       DecrementCartItemCount event, Emitter<CartStates> emit) async {
     emit(DecrementCartItemLoading());
     try {
-      DecrementCartCountModel decrementCartCount =
-          await _cartRepository.decrementCartItemCount(
-              event.cartItemId, event.productId, event.variantId);
+      DecrementCartCountModel decrementCartCount = await _cartRepository
+          .decrementCartItemCount(event.productId, event.variantId);
       emit(DecrementCartItemLoaded(
-          decrementCartCountModel: decrementCartCount,
-          variantId: null,
-          productId: null,
-          cartItemId: null));
+        decrementCartCountModel: decrementCartCount,
+        variantId: null,
+        productId: null,
+      ));
     } catch (e) {
       emit(DecrementCartItemError(message: e.toString()));
     }
@@ -84,8 +106,8 @@ class AddToCartBloc extends Bloc<CartEvents, CartStates> {
       DeleteCartItem event, Emitter<CartStates> emit) async {
     emit(DeleteCartItemLoading());
     try {
-      DeleteCartItemModel deleteCartItemModel =
-          await _cartRepository.deleteCartItem(event.deleteId);
+      DeleteCartItemModel deleteCartItemModel = await _cartRepository
+          .deleteCartItem(event.productId, event.variantId);
       emit(DeleteCartItemLoaded(deleteCartItemModel: deleteCartItemModel));
     } catch (e) {
       emit(DeleteCartItemError(message: e.toString()));

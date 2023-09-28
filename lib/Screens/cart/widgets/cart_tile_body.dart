@@ -5,7 +5,6 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/view_cart/view_cart_model.dart';
-import '../../home/widgets/counter_widget.dart';
 
 class CartTileWidgetBody extends StatefulWidget {
   final bool ratingShow;
@@ -117,7 +116,7 @@ class _ProductTileWidgetBodyState extends State<CartTileWidgetBody> {
                                             color: AppColor.primary,
                                             fontWeight: FontWeight.w500))))
                       ]),
-                  const CounterScreen()
+                  // const CounterScreen()
                 ])
           ]),
     );

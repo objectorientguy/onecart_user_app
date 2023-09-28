@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-import 'package:onecart_user_app/utils/varient_index_util.dart';
 
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/item_details/item_details_model.dart';
-import '../../home/widgets/counter_widget.dart';
 
 class FrequentlyBoughtItems extends StatelessWidget {
   final ProductDetailsModel productDetailsModel;
@@ -98,13 +96,13 @@ class FrequentlyBoughtItems extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: tinierSpacing),
-                      CounterScreen(
-                        width: kGeneralWidth,
-                        title: 'Add to Cart',
-                        prodId: productDetailsModel.data.productData.productId,
-                        variantId: VariantIndexUtil().getVariantIndex(
-                            productDetailsModel.data.productData),
-                      ),
+                      // CounterScreen(
+                      //   width: kGeneralWidth,
+                      //   title: 'Add to Cart',
+                      //   prodId: productDetailsModel.data.productData.productId,
+                      //   variantId: VariantIndexUtil().getVariantIndex(
+                      //       productDetailsModel.data.productData),
+                      // ),
                     ],
                   ),
                 )
