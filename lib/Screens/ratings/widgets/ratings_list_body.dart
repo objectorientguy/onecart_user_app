@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
+
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/ratings_model/view_ratings_model.dart';
 import '../../item_details/widgets/star_widget.dart';
-import '../ratings_screen.dart';
 
 class RatingsListBody extends StatelessWidget {
   final List<RatingsData> ratingsDetails;
-  final int index;
 
-  const RatingsListBody(
-      {super.key, required this.ratingsDetails, required this.index});
+  const RatingsListBody({super.key, required this.ratingsDetails});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +53,7 @@ class RatingsListBody extends StatelessWidget {
                         width: xxxTinierSpacing,
                       ),
                       Text(
-                        ratingsDetails[index].customerName,
+                        'Dave',
                         style: Theme.of(context).textTheme.xTinier.copyWith(
                             color: AppColor.mediumBlack,
                             fontWeight: FontWeight.w500,
@@ -79,10 +77,10 @@ class RatingsListBody extends StatelessWidget {
                         color: Colors.amber,
                         size: kRatingIcon,
                       ),
-                      value: ratingsDetails[index].rating.toDouble()),
+                      value: ratingsDetails[0].rating.toDouble()),
                 ],
               ),
-              content: Text(AddRatingsScreen.reviewTextMap["review_text"],
+              content: Text(ratingsDetails[0].reviewText,
                   style: Theme.of(context).textTheme.tiniest.copyWith(
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.w500)),

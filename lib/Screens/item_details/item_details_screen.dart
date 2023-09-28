@@ -88,6 +88,9 @@ class ItemDetailsScreen extends StatelessWidget {
                   ])))
         ]),
         body: BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
+            // buildWhen: (pre, curr) =>
+            //     (curr is ItemDetailsLoading ) ||
+            //     (curr is ItemDetailsLoaded),
             builder: (context, state) {
           if (state is ItemDetailsLoading) {
             return const Center(child: CircularProgressIndicator());
