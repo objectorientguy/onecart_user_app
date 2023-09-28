@@ -7,7 +7,7 @@ String viewRatingsModelToJson(ViewRatingsModel data) =>
     json.encode(data.toJson());
 
 class ViewRatingsModel {
-  final String status;
+  final int status;
   final String message;
   final List<RatingsData> data;
 
@@ -33,37 +33,41 @@ class ViewRatingsModel {
 }
 
 class RatingsData {
-  final int userId;
-  final int rating;
-  final DateTime reviewTimestamp;
   final int reviewId;
   final int productId;
+  final int userId;
+  final int rating;
   final String reviewText;
+  final String customerName;
+  final dynamic profileImage;
 
   RatingsData({
-    required this.userId,
-    required this.rating,
-    required this.reviewTimestamp,
     required this.reviewId,
     required this.productId,
+    required this.userId,
+    required this.rating,
     required this.reviewText,
+    required this.customerName,
+    required this.profileImage,
   });
 
   factory RatingsData.fromJson(Map<String, dynamic> json) => RatingsData(
-        userId: json["user_id"],
-        rating: json["rating"],
-        reviewTimestamp: DateTime.parse(json["review_timestamp"]),
         reviewId: json["review_id"],
         productId: json["product_id"],
+        userId: json["user_id"],
+        rating: json["rating"],
         reviewText: json["review_text"],
+        customerName: json["customer_name"],
+        profileImage: json["profile_image"],
       );
 
   Map<String, dynamic> toJson() => {
-        "user_id": userId,
-        "rating": rating,
-        "review_timestamp": reviewTimestamp.toIso8601String(),
         "review_id": reviewId,
         "product_id": productId,
+        "user_id": userId,
+        "rating": rating,
         "review_text": reviewText,
+        "customer_name": customerName,
+        "profile_image": profileImage,
       };
 }

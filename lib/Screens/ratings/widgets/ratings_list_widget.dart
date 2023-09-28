@@ -63,13 +63,13 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
                                 width: xxxTinierSpacing,
                               ),
                               Text(
-                                'Dave',
+                                widget.ratingsDetails[index].customerName,
                                 style: Theme.of(context)
                                     .textTheme
                                     .xTinier
                                     .copyWith(
                                         color: AppColor.mediumBlack,
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.w400,
                                         fontStyle: FontStyle.italic),
                               ),
                             ],
@@ -102,6 +102,7 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
                           style: Theme.of(context).textTheme.tiniest),
                       RatingsListBody(
                         ratingsDetails: widget.ratingsDetails,
+                        index: index,
                       )
                     ]));
           }),
