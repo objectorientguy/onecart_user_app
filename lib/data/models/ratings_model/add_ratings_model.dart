@@ -9,7 +9,7 @@ String addRatingsModelToJson(AddRatingsModel data) =>
 class AddRatingsModel {
   final String status;
   final String message;
-  final AddRatingsData data;
+  final Data data;
 
   AddRatingsModel({
     required this.status,
@@ -21,7 +21,7 @@ class AddRatingsModel {
       AddRatingsModel(
         status: json["status"],
         message: json["message"],
-        data: AddRatingsData.fromJson(json["data"]),
+        data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -31,7 +31,7 @@ class AddRatingsModel {
       };
 }
 
-class AddRatingsData {
+class Data {
   final int userId;
   final int rating;
   final DateTime reviewTimestamp;
@@ -39,7 +39,7 @@ class AddRatingsData {
   final int productId;
   final String reviewText;
 
-  AddRatingsData({
+  Data({
     required this.userId,
     required this.rating,
     required this.reviewTimestamp,
@@ -48,7 +48,7 @@ class AddRatingsData {
     required this.reviewText,
   });
 
-  factory AddRatingsData.fromJson(Map<String, dynamic> json) => AddRatingsData(
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
         userId: json["user_id"],
         rating: json["rating"],
         reviewTimestamp: DateTime.parse(json["review_timestamp"]),

@@ -1,13 +1,14 @@
 abstract class RatingsEvent {}
 
-class GetAllRatings extends RatingsEvent {}
+class GetAllRatings extends RatingsEvent {
+  final int productId;
+  GetAllRatings({required this.productId});
+}
 
 class AddRatings extends RatingsEvent {
-  final int rating;
-  final Map reviewTextMap;
+  final Map reviewMap;
 
   AddRatings({
-    required this.rating,
-    required this.reviewTextMap,
+    required this.reviewMap,
   });
 }
