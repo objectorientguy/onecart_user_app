@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/wishlist/widgets/gridview_widget.dart';
@@ -50,7 +52,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
       ),
       body: BlocBuilder<WishlistBloc, WishlistStates>(
           buildWhen: (pre, curr) =>
-          (curr is GetAllWishListItemsLoading) ||
+              (curr is GetAllWishListItemsLoading) ||
               curr is GetAllWishlistItemsLoaded,
           builder: (context, state) {
             if (state is GetAllWishListItemsLoading) {
@@ -64,39 +66,38 @@ class _WishlistScreenState extends State<WishlistScreen> {
               );
             } else if (state is GetAllWishlistItemsLoaded) {
               if (state.wishlistModel.data.isNotEmpty) {
+                // log("response================>$state");
                 return Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: leftRightMargin, vertical: topBottomPadding),
-                  child: Column(children: [
-                    WishlistCategory(
-                      wishlistData: state.wishlistModel.data,
-                    ),
-                    const SizedBox(
-                      height: xxxSmallestSpacing,
-                    ),
-                    Expanded(
-                child: isListView
-                ? ListViewScreen(
-                wishlistData: state.wishlistModel.data)
-                : GridViewScreen(
-            wishlistData: state.wishlistModel.data),
-            )
-            ])
-                );
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: leftRightMargin,
+                        vertical: topBottomPadding),
+                    child: Column(children: [
+                      const WishlistCategory(),
+                      const SizedBox(
+                        height: xxxSmallestSpacing,
+                      ),
+                      Expanded(
+                        child: isListView
+                            ? ListViewScreen(
+                                wishlistData: state.wishlistModel.data)
+                            : GridViewScreen(
+                                wishlistData: state.wishlistModel.data),
+                      )
+                    ]));
               } else {
                 return Center(
                     child: Column(
-                      children: [
-                        const SizedBox(height: kEmptyBox),
-                        Image.asset('assets/empty_icon.png'),
-                        Text(
-                          'Sorry! No Products found',
-                          style: Theme.of(context).textTheme.xTinier.copyWith(
-                              color: AppColor.mediumBlack,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ));
+                  children: [
+                    const SizedBox(height: kEmptyBox),
+                    Image.asset('assets/empty_icon.png'),
+                    Text(
+                      'Sorry! No Products found',
+                      style: Theme.of(context).textTheme.xTinier.copyWith(
+                          color: AppColor.mediumBlack,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ));
               }
             }
             if (state is GetAllWishListItemsError) {

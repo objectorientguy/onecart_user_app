@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/wishlist_bloc/wishlist_events.dart';
 import 'package:onecart_user_app/blocs/wishlist_bloc/wishlist_states.dart';
@@ -10,6 +8,7 @@ import '../../app_module/app_module.dart';
 import '../../data/models/wishlist/add_wishlist_model.dart';
 import '../../data/models/wishlist/delete_wishlist_model.dart';
 import '../../data/models/wishlist/view_wishlist_model.dart';
+import '../../data/models/wishlist/wishlist_category_model.dart';
 import '../../repositories/wishlist/wishlist_repository.dart';
 
 class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
@@ -22,21 +21,22 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
     on<GetAllWishlistItems>(_getAllWishlistItems);
     on<AddWishlist>(_addItemsToWishlist);
     on<DeleteWishlist>(_deleteWishlist);
+    on<GetWishlistCategory>(_getWishlistCategory);
   }
 
   FutureOr<void> _getAllWishlistItems(
       GetAllWishlistItems event, Emitter<WishlistStates> emit) async {
     emit(GetAllWishListItemsLoading());
-    // try {
-      WishlistModel wishlistModel =
+    try {
+      WishlistAllModel wishlistModel =
           await _wishlistRepository.getAllWishlistItems();
 
       if (wishlistModel.data.isNotEmpty) {
         emit(GetAllWishlistItemsLoaded(wishlistModel: wishlistModel));
       }
-    // } catch (e) {
-    //   emit(GetAllWishListItemsError(message: e.toString()));
-    // }
+    } catch (e) {
+      emit(GetAllWishListItemsError(message: e.toString()));
+    }
   }
 
   FutureOr<void> _addItemsToWishlist(
@@ -50,7 +50,6 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
         "shop_id": 2,
         "user_id": 9898989898,
       };
-      log('addMap==============>$wishlistDetails');
       AddWishlistModel addWishlistModel =
           await _wishlistRepository.addWishlistItems(wishlistDetails);
 
@@ -76,6 +75,18 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
       emit(DeleteWishlistLoaded(deleteWishlistModel: deleteWishlistModel));
     } catch (e) {
       emit(DeleteWishlistError(message: e.toString()));
+    }
+  }
+
+  FutureOr<void> _getWishlistCategory(
+      GetWishlistCategory event, Emitter<WishlistStates> emit) async {
+    emit(GetWishlistCategoryLoading());
+    try {
+      WishlistCategoryModel wishlistCategoryModel =
+      await _wishlistRepository.wishlistCategoryModel();
+      emit(GetWishlistCategoryLoaded(wishlistCategoryModel: wishlistCategoryModel));
+    } catch (e) {
+      emit(GetWishlistCategoryError(message: e.toString()));
     }
   }
 }

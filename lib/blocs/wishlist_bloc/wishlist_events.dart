@@ -17,3 +17,8 @@ class DeleteWishlist extends WishlistEvent {
 
   DeleteWishlist({required this.deleteId});
 }
+
+class GetWishlistCategory extends WishlistEvent {
+
+}
+
