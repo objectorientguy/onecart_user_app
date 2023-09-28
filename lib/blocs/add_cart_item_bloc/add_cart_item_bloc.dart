@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/add_cart_item_bloc/add_cart_item_event.dart';
@@ -41,7 +40,6 @@ class AddToCartBloc extends Bloc<CartEvents, CartStates> {
       AddToCartModel addToCartModel =
           await _cartRepository.addToCart(cartDetails);
       if (addToCartModel.status == 200) {
-        log("addToCartModel==========>${addToCartModel.status}");
         emit(AddItemLoaded(
             addToTheCartModel: addToCartModel, cartItemDetails: cartDetails));
       } else {

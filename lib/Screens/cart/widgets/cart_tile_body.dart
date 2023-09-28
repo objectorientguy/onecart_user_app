@@ -116,7 +116,6 @@ class _ProductTileWidgetBodyState extends State<CartTileWidgetBody> {
                                             color: AppColor.primary,
                                             fontWeight: FontWeight.w500))))
                       ]),
-                  // const CounterScreen()
                 ])
           ]),
     );
