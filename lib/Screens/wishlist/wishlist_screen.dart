@@ -4,6 +4,7 @@ import 'package:onecart_user_app/Screens/wishlist/widgets/gridview_widget.dart';
 import 'package:onecart_user_app/Screens/wishlist/widgets/horizontal_wishlist_category.dart';
 import 'package:onecart_user_app/Screens/wishlist/widgets/list_view_widget.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
 
 import '../../blocs/wishlist_bloc/wishlist_bloc.dart';
 import '../../blocs/wishlist_bloc/wishlist_events.dart';
@@ -70,12 +71,29 @@ class _WishlistScreenState extends State<WishlistScreen> {
                     ],
                   );
                 } else if (state is GetAllWishlistItemsLoaded) {
-                  return Expanded(
-                    child: isListView
-                        ? ListViewScreen(wishlistData: state.wishlistModel.data)
-                        : GridViewScreen(
-                            wishlistData: state.wishlistModel.data),
-                  );
+                  if (state.wishlistModel.data.isNotEmpty) {
+                    return Expanded(
+                      child: isListView
+                          ? ListViewScreen(
+                              wishlistData: state.wishlistModel.data)
+                          : GridViewScreen(
+                              wishlistData: state.wishlistModel.data),
+                    );
+                  } else {
+                    return Center(
+                        child: Column(
+                      children: [
+                        const SizedBox(height: kEmptyBox),
+                        Image.asset('assets/empty_icon.png'),
+                        Text(
+                          'Sorry! No Products found',
+                          style: Theme.of(context).textTheme.xTinier.copyWith(
+                              color: AppColor.mediumBlack,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ));
+                  }
                 }
                 if (state is GetAllWishListItemsError) {
                   return Container();
