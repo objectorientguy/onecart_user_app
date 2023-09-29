@@ -5,7 +5,6 @@ import 'package:onecart_user_app/Screens/wishlist/widgets/horizontal_wishlist_ca
 import 'package:onecart_user_app/Screens/wishlist/widgets/list_view_widget.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../../blocs/wishlist_bloc/wishlist_bloc.dart';
 import '../../blocs/wishlist_bloc/wishlist_events.dart';
 import '../../blocs/wishlist_bloc/wishlist_states.dart';
