@@ -40,7 +40,9 @@ class CounterScreen extends StatelessWidget {
             curr is IncrementCartItemLoaded ||
             curr is DecrementCartItemLoaded ||
             curr is IncrementCartItemLoading ||
-            curr is DecrementCartItemLoading),
+            curr is DecrementCartItemLoading ||
+            curr is DeleteCartItemLoading ||
+            curr is DeleteCartItemLoaded),
         listener: (context, state) {
           if (state is AddItemLoading) {
             ProgressBar.show(context);
@@ -66,7 +68,7 @@ class CounterScreen extends StatelessWidget {
                         TextButton(
                           onPressed: () {
                             count--;
-                            if (count == 0) {
+                            if (count == 1) {
                               context.read<AddToCartBloc>().add(DeleteCartItem(
                                   productId: prodId!, variantId: variantId!));
                               isVisible = true;
