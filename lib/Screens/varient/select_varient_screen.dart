@@ -42,13 +42,10 @@ class SelectVariantScreen extends StatelessWidget {
                 CachedNetworkImage(
                     imageUrl: productDetailsModel
                         .data.productData.variants[variantIndex].image[0],
-                    errorWidget: (context, url, error) => const Center(
+                    errorWidget: (context, url, error) => Center(
                         child: SizedBox(
                             width: kCacheImageWidth,
-                            child: Text(
-                              'No image',
-                              textAlign: TextAlign.center,
-                            ))),
+                            child: Image.asset('assets/variantNoImage.JPG'))),
                     height: xxLargeSpacing),
                 const SizedBox(
                   width: tinierSpacing,
