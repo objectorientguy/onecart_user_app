@@ -109,3 +109,4 @@ const double kLogoHeight = 40.0;
 const double kLogoWidth = 40.0;
 const double kCircularBox = 250.0;
 const double kEmptyBox = 240.0;
+const double kCartIcon = 18.0;
