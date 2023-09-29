@@ -37,13 +37,9 @@ class OrdersScreen extends StatelessWidget {
                     .tiny
                     .copyWith(fontWeight: FontWeight.w500),
               ),
-              actions: [
-                IconButton(
-                  icon: const Icon(Icons.filter_alt),
-                  color: AppColor.primary,
-                  onPressed: () {},
-                ),
-                const SizedBox(width: smallestSpacing)
+              actions: const [
+                Icon(Icons.filter_alt, color: AppColor.primary),
+                SizedBox(width: smallestSpacing)
               ],
             ),
             body: BlocBuilder<GetAllOrdersBloc, OrdersStates>(

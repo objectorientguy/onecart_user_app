@@ -85,6 +85,7 @@ class ItemDetailsBody extends StatelessWidget {
         itemData:
             productDetailsModel.data.productData.variants[variantIndex].ratings,
         variantIndex: variantIndex,
+        productId: productDetailsModel.data.productData.productId,
       ),
       Text('Product Details',
           style: Theme.of(context)
