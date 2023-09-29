@@ -8,7 +8,6 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/wishlist/view_wishlist_model.dart';
-import '../../home/widgets/counter_widget.dart';
 
 class ListViewScreen extends StatelessWidget {
   final List<WishlistData> wishlistData;
@@ -103,12 +102,12 @@ class ListViewScreen extends StatelessWidget {
                                                       color: AppColor
                                                           .lightestGrey)),
                                         ]),
-                                    CounterScreen(
-                                      width: kGeneralWidth,
-                                      title: 'Add to Cart',
-                                      prodId: wishlistData[index].productId,
-                                      variantId: wishlistData[index].variantId,
-                                    ),
+                                    // CounterScreen(
+                                    //   width: kGeneralWidth,
+                                    //   title: 'Add to Cart',
+                                    //   prodId: wishlistData[index].productId,
+                                    //   variantId: wishlistData[index].variantId,
+                                    // ),
                                   ])
                             ]),
                       ),
