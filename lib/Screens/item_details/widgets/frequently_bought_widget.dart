@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-import 'package:onecart_user_app/utils/varient_index_util.dart';
 
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/item_details/item_details_model.dart';
+import '../../../utils/varient_index_util.dart';
 import '../../home/widgets/counter_widget.dart';
 
 class FrequentlyBoughtItems extends StatelessWidget {
@@ -104,6 +104,7 @@ class FrequentlyBoughtItems extends StatelessWidget {
                         prodId: productDetailsModel.data.productData.productId,
                         variantId: VariantIndexUtil().getVariantIndex(
                             productDetailsModel.data.productData),
+                        height: kAddButtonHeight,
                       ),
                     ],
                   ),

@@ -93,6 +93,7 @@ class GridViewScreen extends StatelessWidget {
                           title: 'Add to Cart',
                           prodId: wishlistData[index].productId,
                           variantId: wishlistData[index].variantId,
+                          height: kAddButtonHeight,
                         ),
                       ]),
                 ),
