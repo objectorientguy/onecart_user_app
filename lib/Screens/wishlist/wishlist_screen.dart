@@ -5,7 +5,6 @@ import 'package:onecart_user_app/Screens/wishlist/widgets/horizontal_wishlist_ca
 import 'package:onecart_user_app/Screens/wishlist/widgets/list_view_widget.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../../blocs/wishlist_bloc/wishlist_bloc.dart';
 import '../../blocs/wishlist_bloc/wishlist_events.dart';
 import '../../blocs/wishlist_bloc/wishlist_states.dart';
@@ -63,7 +62,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                 ],
               );
             } else if (state is GetAllWishlistItemsLoaded) {
-              if (state.wishlistModel.data.isNotEmpty) {
+              if (state.wishlistModel.data.all.isNotEmpty) {
                 return Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: leftRightMargin,
@@ -73,13 +72,13 @@ class _WishlistScreenState extends State<WishlistScreen> {
                       const SizedBox(
                         height: xxxSmallestSpacing,
                       ),
-                      Expanded(
-                        child: isListView
-                            ? ListViewScreen(
-                                wishlistData: state.wishlistModel.data)
-                            : GridViewScreen(
-                                wishlistData: state.wishlistModel.data),
-                      )
+                      // Expanded(
+                      //   child: isListView
+                      //       ? ListViewScreen(
+                      //           wishlistData: state.wishlistModel.data.all)
+                      //       : GridViewScreen(
+                      //           wishlistData: state.wishlistModel.data),
+                      // )
                     ]));
               } else {
                 return Center(

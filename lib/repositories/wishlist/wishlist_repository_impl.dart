@@ -9,7 +9,7 @@ class ViewWishlistRepositoryImpl implements ViewWishlistRepository {
   @override
   Future<WishlistAllModel> getAllWishlistItems() async {
     final response = await DioClient()
-        .get("https://oneart.onrender.com/get_all_favitem?user_id=9898989898");
+        .get("https://oneart.onrender.com/getall_favitem/?user_id=9898989898");
     return WishlistAllModel.fromJson(response);
   }
 

@@ -27,14 +27,14 @@ class WishlistCategory extends StatelessWidget {
               ],
             );
           } else if (state is GetAllWishlistItemsLoaded) {
-            if (state.wishlistModel.data.isNotEmpty) {
+            if (state.wishlistModel.data.all.isNotEmpty) {
               return SizedBox(
                 height: kImage,
                 child: ListView.separated(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  itemCount: state.wishlistModel.data.length,
+                  itemCount: state.wishlistModel.data.all.length,
                   itemBuilder: (context, index) {
                     return Container(
                       decoration: BoxDecoration(
@@ -43,7 +43,7 @@ class WishlistCategory extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           vertical: tiniestSpacing,
                           horizontal: xxxSmallestSpacing),
-                      child: Text(state.wishlistModel.data[index].categoryName.toString()),
+                      child: Text(state.wishlistModel.data.all[index].categoryName.toString()),
                     );
                   },
                   separatorBuilder: (context, index) {
