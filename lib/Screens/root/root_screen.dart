@@ -1,9 +1,11 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/orders/orders_screen.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-import '../../blocs/item_details_bloc/item_details_bloc.dart';
-import '../../blocs/item_details_bloc/item_details_states.dart';
+import '../../blocs/home/home_bloc.dart';
+import '../../blocs/home/home_events.dart';
+import '../../blocs/home/home_states.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
 import '../../configs/app_spacing.dart';
@@ -52,6 +54,8 @@ class _RootScreenState extends State<RootScreen> {
 
   @override
   Widget build(BuildContext context) {
+    context.read<GetHomeDetailsBloc>().add(GetHomeDetails());
+
     return Scaffold(
       bottomNavigationBar: Container(
         height: kBottomNavBarHeightX,
@@ -87,14 +91,16 @@ class _RootScreenState extends State<RootScreen> {
                   icon: Icon(Icons.person), label: 'Account'),
               BottomNavigationBarItem(
                   icon: Center(
-                    child: Stack(alignment: Alignment.topCenter, children: [
-                      const Padding(
-                          padding: EdgeInsets.only(top: xxTiniestSpacing),
-                          child: Icon(Icons.shopping_cart_sharp)),
-                      BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
-                        buildWhen: (previousState, currentState) =>
-                            currentState is ItemDetailsLoaded,
-                        builder: (context, state) {
+                      child: Stack(alignment: Alignment.topCenter, children: [
+                    const Padding(
+                        padding: EdgeInsets.only(top: xxTiniestSpacing),
+                        child: Icon(Icons.shopping_cart_sharp,
+                            size: kStarIconSize)),
+                    BlocBuilder<GetHomeDetailsBloc, HomeStates>(
+                      buildWhen: (previousState, currentState) =>
+                          currentState is GetHomeDetailsLoaded,
+                      builder: (context, state) {
+                        if (state is GetHomeDetailsLoaded) {
                           return Padding(
                               padding:
                                   const EdgeInsets.only(left: smallerSpacing),
@@ -106,7 +112,9 @@ class _RootScreenState extends State<RootScreen> {
                                     decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: AppColor.primary)),
-                                Text('2',
+                                Text(
+                                    state.homeModel.data.totalCartCount
+                                        .toString(),
                                     style: Theme.of(context)
                                         .textTheme
                                         .xxxTinier
@@ -114,11 +122,13 @@ class _RootScreenState extends State<RootScreen> {
                                             fontWeight: FontWeight.w500,
                                             color: AppColor.white))
                               ]));
-                        },
-                      ),
-                    ]),
-                  ),
-                  label: 'Cart'),
+                        } else {
+                          return const SizedBox();
+                        }
+                      },
+                    )
+                  ])),
+                  label: 'Cart')
             ],
           ),
         ),
