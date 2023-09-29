@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/ratings_bloc/ratings_events.dart';
 import 'package:onecart_user_app/blocs/ratings_bloc/ratings_states.dart';
-
 import '../../app_module/app_module.dart';
 import '../../data/models/ratings_model/add_ratings_model.dart';
 import '../../data/models/ratings_model/view_ratings_model.dart';
@@ -26,7 +23,7 @@ class RatingsBloc extends Bloc<RatingsEvent, RatingsStates> {
     emit(GetAllRatingsLoading());
     try {
       ViewRatingsModel viewRatingsModel =
-          await _ratingsRepository.getAllRatings();
+          await _ratingsRepository.getAllRatings(event.productId);
 
       emit(GetAllRatingsLoaded(viewRatingsModel: viewRatingsModel));
     } catch (e) {
@@ -37,18 +34,18 @@ class RatingsBloc extends Bloc<RatingsEvent, RatingsStates> {
   FutureOr<void> _addRatings(
       AddRatings event, Emitter<RatingsStates> emit) async {
     emit(AddRatingsLoading());
-
     try {
-      Map ratingsDetails = {"rating": event.rating, "review_text": 'hi'};
-      log(ratingsDetails.toString());
+      Map reviewTextMap = {
+        "rating": event.reviewMap["rating"],
+        "review_text": event.reviewMap["review_text"],
+      };
       AddRatingsModel addRatingsModel =
-          await _ratingsRepository.addRatings(ratingsDetails);
+          await _ratingsRepository.addRatings(reviewTextMap, 1, 9898989898);
 
       if (addRatingsModel.status == '200') {
-        // emit(GetAllRatingsLoaded(viewRatingsModel: event.viewRatingsModel));
         emit(AddRatingsLoaded(
           addRatingsModel: addRatingsModel,
-          ratingsDetails: ratingsDetails,
+          reviewTextMap: reviewTextMap,
         ));
       } else {
         emit(AddRatingsError(message: addRatingsModel.message));

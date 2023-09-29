@@ -23,10 +23,10 @@ class AddRatingsLoading extends RatingsStates {}
 
 class AddRatingsLoaded extends RatingsStates {
   final AddRatingsModel addRatingsModel;
-  final Map ratingsDetails;
+  final Map reviewTextMap;
 
   AddRatingsLoaded(
-      {required this.ratingsDetails, required this.addRatingsModel});
+      {required this.reviewTextMap, required this.addRatingsModel});
 }
 
 class AddRatingsError extends RatingsStates {

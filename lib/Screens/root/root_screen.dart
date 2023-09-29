@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/orders/orders_screen.dart';
+import 'package:onecart_user_app/configs/app_theme.dart';
+import '../../blocs/home/home_bloc.dart';
+import '../../blocs/home/home_events.dart';
+import '../../blocs/home/home_states.dart';
 import '../../configs/app_color.dart';
 import '../../configs/app_dimensions.dart';
+import '../../configs/app_spacing.dart';
 import '../cart/cart_screen.dart';
 import '../category_grid/category_grid_screen.dart';
 import '../home/home_screen.dart';
@@ -47,6 +53,8 @@ class _RootScreenState extends State<RootScreen> {
 
   @override
   Widget build(BuildContext context) {
+    context.read<GetHomeDetailsBloc>().add(GetHomeDetails());
+
     return Scaffold(
       bottomNavigationBar: Container(
         height: kBottomNavBarHeightX,
@@ -71,20 +79,55 @@ class _RootScreenState extends State<RootScreen> {
             type: BottomNavigationBarType.fixed,
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
-            items: const [
-              BottomNavigationBarItem(
+            items: [
+              const BottomNavigationBarItem(
                   icon: Icon(Icons.home_filled), label: 'Home'),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                   icon: Icon(Icons.grid_view_rounded), label: 'Categories'),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                   icon: Icon(Icons.my_library_books), label: 'Orders'),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                   icon: Icon(Icons.person), label: 'Account'),
               BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.shopping_cart_rounded,
-                  ),
-                  label: 'Cart'),
+                  icon: Center(
+                      child: Stack(alignment: Alignment.topCenter, children: [
+                    const Padding(
+                        padding: EdgeInsets.only(top: xxTiniestSpacing),
+                        child: Icon(Icons.shopping_cart_sharp,
+                            size: kStarIconSize)),
+                    BlocBuilder<GetHomeDetailsBloc, HomeStates>(
+                      buildWhen: (previousState, currentState) =>
+                          currentState is GetHomeDetailsLoaded,
+                      builder: (context, state) {
+                        if (state is GetHomeDetailsLoaded) {
+                          return Padding(
+                              padding:
+                                  const EdgeInsets.only(left: smallerSpacing),
+                              child:
+                                  Stack(alignment: Alignment.center, children: [
+                                Container(
+                                    height: kCartIcon,
+                                    width: kCartIcon,
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColor.primary)),
+                                Text(
+                                    state.homeModel.data.totalCartCount
+                                        .toString(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .xxxTinier
+                                        .copyWith(
+                                            fontWeight: FontWeight.w500,
+                                            color: AppColor.white))
+                              ]));
+                        } else {
+                          return const SizedBox();
+                        }
+                      },
+                    )
+                  ])),
+                  label: 'Cart')
             ],
           ),
         ),

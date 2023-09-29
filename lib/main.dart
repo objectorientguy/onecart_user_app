@@ -19,9 +19,11 @@ import 'blocs/orders/orders_bloc.dart';
 
 import 'blocs/ratings_bloc/ratings_bloc.dart';
 import 'blocs/search_product_bloc/search_product_bloc.dart';
-import 'blocs/varient_bloc/varient_bloc.dart';
 import 'blocs/item_details_bloc/item_details_bloc.dart';
 import 'blocs/view_cart_bloc/view_cart_bloc.dart';
+import 'blocs/wifiConnectivity/wifi_connectivity_bloc.dart';
+import 'blocs/wifiConnectivity/wifi_connectivity_events.dart';
+import 'blocs/wifiConnectivity/wifi_connectivity_states.dart';
 import 'blocs/wishlist_bloc/wishlist_bloc.dart';
 
 Future<void> main() async {
@@ -47,11 +49,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+            lazy: false,
+            create: (context) => WifiConnectivityBloc()..add(ObserveNetwork())),
         BlocProvider(lazy: false, create: (context) => AuthenticationBloc()),
         BlocProvider(lazy: false, create: (context) => AddressBloc()),
         BlocProvider(lazy: false, create: (context) => GetProductBloc()),
         BlocProvider(lazy: false, create: (context) => GetAllCategoriesBloc()),
-        BlocProvider(lazy: false, create: (context) => SelectVarientBloc()),
         BlocProvider(lazy: false, create: (context) => GetProductBloc()),
         BlocProvider(lazy: false, create: (context) => GetAllCategoriesBloc()),
         BlocProvider(lazy: false, create: (context) => ItemDetailsBloc()),
@@ -75,7 +79,10 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: appTheme,
           onGenerateRoute: AppRoutes.onGenerateRoutes,
-          home: const SelectShops(),
+          home: BlocBuilder<WifiConnectivityBloc, WifiConnectivityState>(
+              builder: (context, state) {
+            return const SelectShops();
+          }),
         ),
       ),
     );

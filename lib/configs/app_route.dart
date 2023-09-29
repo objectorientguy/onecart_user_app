@@ -46,7 +46,9 @@ class AppRoutes {
         return _createRoute(const AddressScreen());
 
       case AddRatingsScreen.routeName:
-        return _createRoute(AddRatingsScreen());
+        return _createRoute(AddRatingsScreen(
+          productId: settings.arguments as int,
+        ));
 
       case TermsOfServiceScreen.routeName:
         return _createRoute(const TermsOfServiceScreen());

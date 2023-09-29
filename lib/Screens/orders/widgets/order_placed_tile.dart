@@ -95,6 +95,7 @@ class OrderPlacedTile extends StatelessWidget {
                                         Navigator.pushNamed(
                                           context,
                                           AddRatingsScreen.routeName,
+                                          arguments: orderProductData.productId,
                                         );
                                       },
                                     ))
