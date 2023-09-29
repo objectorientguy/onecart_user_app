@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../blocs/wishlist_bloc/wishlist_bloc.dart';
@@ -26,15 +27,15 @@ class WishlistCategory extends StatelessWidget {
                 Center(child: CircularProgressIndicator()),
               ],
             );
-          } else if (state is GetAllWishlistItemsLoaded) {
-            if (state.wishlistModel.data.all.isNotEmpty) {
+          } else if (state is GetWishlistCategoryLoaded) {
+            if (state.wishlistCategoryModel.data.isNotEmpty) {
               return SizedBox(
                 height: kImage,
                 child: ListView.separated(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  itemCount: state.wishlistModel.data.all.length,
+                  itemCount: state.wishlistCategoryModel.data.length,
                   itemBuilder: (context, index) {
                     return Container(
                       decoration: BoxDecoration(
@@ -43,7 +44,7 @@ class WishlistCategory extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           vertical: tiniestSpacing,
                           horizontal: xxxSmallestSpacing),
-                      child: Text(state.wishlistModel.data.all[index].categoryName.toString()),
+                      child: Text(state.wishlistCategoryModel.data[index].categoryName),
                     );
                   },
                   separatorBuilder: (context, index) {
@@ -53,6 +54,8 @@ class WishlistCategory extends StatelessWidget {
                   },
                 ),
               );
+            }else{
+              return const SizedBox();
             }
           }
           if (state is GetWishlistCategoryError) {

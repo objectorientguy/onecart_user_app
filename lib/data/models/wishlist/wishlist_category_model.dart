@@ -7,7 +7,7 @@ String wishlistCategoryModelToJson(WishlistCategoryModel data) => json.encode(da
 class WishlistCategoryModel {
   final int status;
   final String message;
-  final List<WishlistCategoryDatum> data;
+  final List<Datum> data;
 
   WishlistCategoryModel({
     required this.status,
@@ -18,7 +18,7 @@ class WishlistCategoryModel {
   factory WishlistCategoryModel.fromJson(Map<String, dynamic> json) => WishlistCategoryModel(
     status: json["status"],
     message: json["message"],
-    data: List<WishlistCategoryDatum>.from(json["data"].map((x) => WishlistCategoryDatum.fromJson(x))),
+    data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -28,16 +28,16 @@ class WishlistCategoryModel {
   };
 }
 
-class WishlistCategoryDatum {
+class Datum {
   final int categoryId;
   final String categoryName;
 
-  WishlistCategoryDatum({
+  Datum({
     required this.categoryId,
     required this.categoryName,
   });
 
-  factory WishlistCategoryDatum.fromJson(Map<String, dynamic> json) => WishlistCategoryDatum(
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
     categoryId: json["category_id"],
     categoryName: json["category_name"],
   );

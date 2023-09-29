@@ -34,7 +34,7 @@ class Data {
   final List<Category> categories;
   final List<PopularShop> popularShops;
   final List<Product> todaySDeals;
-  final int totalCartCount;
+  final dynamic totalCartCount;
 
   Data({
     required this.categories,
