@@ -48,7 +48,9 @@ class CounterScreen extends StatelessWidget {
             ProgressBar.show(context);
           } else if (state is AddItemLoaded) {
             ProgressBar.dismiss(context);
-            context.read<ItemDetailsBloc>().add(FetchItemDetails(prodId!));
+            context
+                .read<ItemDetailsBloc>()
+                .add(FetchItemDetails(prodId!, variantId!));
             if (state.addToTheCartModel.message == "Product already exists!") {
               showCustomSnackBar(context, state.addToTheCartModel.message);
             }
@@ -67,12 +69,13 @@ class CounterScreen extends StatelessWidget {
                       children: [
                         TextButton(
                           onPressed: () {
-                            count--;
                             if (count == 1) {
+                              count--;
                               context.read<AddToCartBloc>().add(DeleteCartItem(
                                   productId: prodId!, variantId: variantId!));
                               isVisible = true;
                             } else {
+                              count--;
                               context.read<AddToCartBloc>().add(
                                   DecrementCartItemCount(
                                       variantId: variantId!,

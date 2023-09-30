@@ -34,29 +34,23 @@ class Data {
   final List<Category> categories;
   final List<PopularShop> popularShops;
   final List<Product> todaySDeals;
-  final int totalCartCount;
+  final int cartItemCount;
 
   Data({
     required this.categories,
     required this.popularShops,
     required this.todaySDeals,
-    required this.totalCartCount,
+    required this.cartItemCount,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        categories: json["categories"] == null
-            ? []
-            : List<Category>.from(
-                json["categories"].map((x) => Category.fromJson(x))),
-        popularShops: json["popular shops"] == null
-            ? []
-            : List<PopularShop>.from(
-                json["popular shops"].map((x) => PopularShop.fromJson(x))),
-        todaySDeals: json["today's deals"] == null
-            ? []
-            : List<Product>.from(
-                json["today's deals"].map((x) => Product.fromJson(x))),
-        totalCartCount: json["total_cart_count"],
+        categories: List<Category>.from(
+            json["categories"].map((x) => Category.fromJson(x))),
+        popularShops: List<PopularShop>.from(
+            json["popular shops"].map((x) => PopularShop.fromJson(x))),
+        todaySDeals: List<Product>.from(
+            json["today's deals"].map((x) => Product.fromJson(x))),
+        cartItemCount: json["cart_item_count"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -64,7 +58,7 @@ class Data {
         "popular shops":
             List<dynamic>.from(popularShops.map((x) => x.toJson())),
         "today's deals": List<dynamic>.from(todaySDeals.map((x) => x.toJson())),
-        "total_cart_count": totalCartCount,
+        "cart_item_count": cartItemCount,
       };
 }
 
@@ -74,9 +68,9 @@ class Category {
   final String categoryName;
 
   Category({
+    required this.categoryName,
     required this.categoryId,
     required this.categoryImage,
-    required this.categoryName,
   });
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
