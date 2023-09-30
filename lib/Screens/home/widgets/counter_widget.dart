@@ -43,6 +43,7 @@ class CounterScreen extends StatelessWidget {
     bool isVisible = true;
     return BlocConsumer<AddToCartBloc, CartStates>(
         buildWhen: (pre, curr) => (curr is AddItemLoading ||
+            curr is AddItemInitial ||
             curr is AddItemLoaded ||
             curr is IncrementCartItemLoaded ||
             curr is DecrementCartItemLoaded ||
@@ -66,6 +67,8 @@ class CounterScreen extends StatelessWidget {
         builder: (context, state) {
           if (count == 0) {
             isVisible = true;
+          } else {
+            isVisible = false;
           }
           return Visibility(
               replacement: SizedBox(
