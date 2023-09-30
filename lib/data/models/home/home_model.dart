@@ -70,7 +70,6 @@ class Category {
   Category({
     required this.categoryId,
     required this.categoryImage,
-    required this.categoryName,
   });
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
