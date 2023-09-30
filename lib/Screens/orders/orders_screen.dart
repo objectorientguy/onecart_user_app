@@ -17,68 +17,57 @@ class OrdersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<GetAllOrdersBloc>().add(GetAllOrders());
 
-    return WillPopScope(
-        onWillPop: () async => false,
-        child: Scaffold(
-            appBar: AppBar(
-              leading: InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(
-                  Icons.arrow_back,
-                  color: AppColor.black,
-                ),
-              ),
-              title: Text(
-                "My Orders",
-                style: Theme.of(context)
-                    .textTheme
-                    .tiny
-                    .copyWith(fontWeight: FontWeight.w500),
-              ),
-              actions: const [
-                Icon(Icons.filter_alt, color: AppColor.primary),
-                SizedBox(width: smallestSpacing)
-              ],
-            ),
-            body: BlocBuilder<GetAllOrdersBloc, OrdersStates>(
-                buildWhen: (previousState, currentState) =>
-                    currentState is GetAllOrdersLoading ||
-                    currentState is GetAllOrdersLoaded ||
-                    currentState is GetAllOrdersError,
-                builder: (context, state) {
-                  if (state is GetAllOrdersLoading) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (state is GetAllOrdersLoaded) {
-                    return Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: xxxTinierSpacing,
-                        ),
-                        child: ListView.builder(
-                            physics: const BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount:
-                                state.getAllOrdersListModel.data.orders.length,
-                            itemBuilder: (context, index) {
-                              return InkWell(
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                      context,
-                                      OrdersDetailsScreen.routeName,
-                                      arguments: OrderProductsModel,
-                                    );
-                                  },
-                                  child: OrderTile(
-                                      orderList: state.getAllOrdersListModel
-                                          .data.orders[index]));
-                            }));
-                  }
-                  if (state is GetAllOrdersError) {
-                    return Container();
-                  } else {
-                    return const SizedBox();
-                  }
-                })));
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "My Orders",
+            style: Theme.of(context)
+                .textTheme
+                .tiny
+                .copyWith(fontWeight: FontWeight.w500),
+          ),
+          actions: const [
+            Icon(Icons.filter_alt, color: AppColor.primary),
+            SizedBox(width: smallestSpacing)
+          ],
+        ),
+        body: BlocBuilder<GetAllOrdersBloc, OrdersStates>(
+            buildWhen: (previousState, currentState) =>
+                currentState is GetAllOrdersLoading ||
+                currentState is GetAllOrdersLoaded ||
+                currentState is GetAllOrdersError,
+            builder: (context, state) {
+              if (state is GetAllOrdersLoading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state is GetAllOrdersLoaded) {
+                return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: xxxTinierSpacing,
+                    ),
+                    child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount:
+                            state.getAllOrdersListModel.data.orders.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  OrdersDetailsScreen.routeName,
+                                  arguments: OrderProductsModel,
+                                );
+                              },
+                              child: OrderTile(
+                                  orderList: state.getAllOrdersListModel.data
+                                      .orders[index]));
+                        }));
+              }
+              if (state is GetAllOrdersError) {
+                return Container();
+              } else {
+                return const SizedBox();
+              }
+            }));
   }
 }

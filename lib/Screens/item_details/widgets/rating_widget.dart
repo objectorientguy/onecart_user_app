@@ -23,14 +23,14 @@ class RatingWidget extends StatelessWidget {
     return Padding(
       padding:
           const EdgeInsets.symmetric(horizontal: kZero, vertical: tinySpacing),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          InkWell(
-            onTap: () {
-              PeoplesReviews(productId: productId);
-            },
-            child: Row(
+      child: InkWell(
+        onTap: () {
+          PeoplesReviews(productId: productId);
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
               children: [
                 StarDisplayWidget(
                     filledStar: const Icon(
@@ -61,8 +61,8 @@ class RatingWidget extends StatelessWidget {
                 )
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
