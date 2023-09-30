@@ -28,9 +28,8 @@ class ItemDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isFirstTimeLoaded = true;
-    context
-        .read<ItemDetailsBloc>()
-        .add(FetchItemDetails(itemDetails.productId));
+    context.read<ItemDetailsBloc>().add(FetchItemDetails(
+        itemDetails.productId, itemDetails.variants[0].variantId));
     return Scaffold(
         appBar: GenericAppBar(actions: [
           FavouriteIconWidget(
@@ -70,7 +69,8 @@ class ItemDetailsScreen extends StatelessWidget {
                                         padding: const EdgeInsets.all(
                                             xxxTiniestSpacing),
                                         child: Text(
-                                            state.productDetailsModel.data.items
+                                            state.productDetailsModel.data
+                                                .cartItemCount
                                                 .toString(),
                                             style: Theme.of(context)
                                                 .textTheme

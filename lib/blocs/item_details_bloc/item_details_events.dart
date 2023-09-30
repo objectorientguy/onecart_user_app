@@ -4,8 +4,9 @@ abstract class ItemDetails {}
 
 class FetchItemDetails extends ItemDetails {
   final int itemId;
+  final int variantId;
 
-  FetchItemDetails(this.itemId);
+  FetchItemDetails(this.itemId, this.variantId);
 }
 
 class ChangeVariantIndex extends ItemDetails {
