@@ -59,23 +59,27 @@ class CartItem {
   final int cartItemId;
   final Product product;
   final Variant variant;
+  final int totalItemCountVariant;
 
   CartItem({
     required this.cartItemId,
     required this.product,
     required this.variant,
+    required this.totalItemCountVariant,
   });
 
   factory CartItem.fromJson(Map<String, dynamic> json) => CartItem(
         cartItemId: json["cartItemId"],
         product: Product.fromJson(json["product"]),
         variant: Variant.fromJson(json["variant"]),
+        totalItemCountVariant: json["total_item_count_variant"],
       );
 
   Map<String, dynamic> toJson() => {
         "cartItemId": cartItemId,
         "product": product.toJson(),
         "variant": variant.toJson(),
+        "total_item_count_variant": totalItemCountVariant,
       };
 }
 
@@ -108,26 +112,26 @@ class Product {
 }
 
 class Variant {
-  final int count;
   final String brandName;
-  final int variantId;
+  final int count;
   final int discount;
   final String description;
   final int ratings;
   final double variantCost;
+  final int variantId;
   final double discountedCost;
   final String quantity;
   final List<String> image;
   final int productId;
 
   Variant({
-    required this.count,
     required this.brandName,
-    required this.variantId,
+    required this.count,
     required this.discount,
     required this.description,
     required this.ratings,
     required this.variantCost,
+    required this.variantId,
     required this.discountedCost,
     required this.quantity,
     required this.image,
@@ -135,13 +139,13 @@ class Variant {
   });
 
   factory Variant.fromJson(Map<String, dynamic> json) => Variant(
-        count: json["count"],
         brandName: json["brand_name"],
-        variantId: json["variant_id"],
+        count: json["count"],
         discount: json["discount"],
         description: json["description"],
         ratings: json["ratings"],
         variantCost: json["variant_cost"],
+        variantId: json["variant_id"],
         discountedCost: json["discounted_cost"],
         quantity: json["quantity"],
         image: List<String>.from(json["image"].map((x) => x)),
@@ -149,13 +153,13 @@ class Variant {
       );
 
   Map<String, dynamic> toJson() => {
-        "count": count,
         "brand_name": brandName,
-        "variant_id": variantId,
+        "count": count,
         "discount": discount,
         "description": description,
         "ratings": ratings,
         "variant_cost": variantCost,
+        "variant_id": variantId,
         "discounted_cost": discountedCost,
         "quantity": quantity,
         "image": List<dynamic>.from(image.map((x) => x)),

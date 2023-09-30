@@ -59,6 +59,8 @@ class ItemDetailsPrice extends StatelessWidget {
           height: kCartButtonHeight,
           width: kCartButtonWidth,
           title: 'ADD TO CART',
+          counter: productDetailsModel
+              .data.productData.variants[variantIndex].cartItemQuantityCount,
         ),
       ],
     );

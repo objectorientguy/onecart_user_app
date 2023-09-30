@@ -105,6 +105,8 @@ class FrequentlyBoughtItems extends StatelessWidget {
                         variantId: VariantIndexUtil().getVariantIndex(
                             productDetailsModel.data.productData),
                         height: kAddButtonHeight,
+                        counter: productDetailsModel.data.productData
+                            .variants[index].cartItemQuantityCount,
                       ),
                     ],
                   ),

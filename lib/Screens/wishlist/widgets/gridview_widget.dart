@@ -8,7 +8,6 @@ import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/wishlist/view_wishlist_model.dart';
-import '../../home/widgets/counter_widget.dart';
 
 class GridViewScreen extends StatelessWidget {
   final List<WishlistData> wishlistData;
@@ -88,13 +87,13 @@ class GridViewScreen extends StatelessWidget {
                                     fontWeight: FontWeight.w500,
                                     color: AppColor.lightestGrey)),
                         const SizedBox(height: xxTiniestSpacing),
-                        CounterScreen(
-                          width: kGeneralWidth,
-                          title: 'Add to Cart',
-                          prodId: wishlistData[index].productId,
-                          variantId: wishlistData[index].variantId,
-                          height: kAddButtonHeight,
-                        ),
+                        // CounterScreen(
+                        //   width: kGeneralWidth,
+                        //   title: 'Add to Cart',
+                        //   prodId: wishlistData[index].productId,
+                        //   variantId: wishlistData[index].variantId,
+                        //   height: kAddButtonHeight,
+                        // ),
                       ]),
                 ),
                 InkWell(

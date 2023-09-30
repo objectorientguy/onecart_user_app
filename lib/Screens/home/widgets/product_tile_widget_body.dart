@@ -120,11 +120,14 @@ class ProductTileWidgetBody extends StatelessWidget {
                                               fontWeight: FontWeight.w500))))
                         ]),
                     CounterScreen(
-                        prodId: data.productId,
-                        variantId: data.variants[variantIndex].variantId,
-                        height: kAddButtonHeight,
-                        width: kTileAddButtonWidth,
-                        title: 'Add to Cart')
+                      prodId: data.productId,
+                      variantId: data.variants[variantIndex].variantId,
+                      height: kAddButtonHeight,
+                      width: kTileAddButtonWidth,
+                      title: 'Add to Cart',
+                      counter:
+                          data.variants[variantIndex].cartItemQuantityCount,
+                    )
                   ])
             ]));
   }
