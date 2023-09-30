@@ -25,144 +25,143 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final myController = TextEditingController();
     context.read<GetHomeDetailsBloc>().add(GetHomeDetails());
-    return WillPopScope(
-        onWillPop: () async => false,
-        child: SafeArea(child: BlocBuilder<GetHomeDetailsBloc, HomeStates>(
-          builder: (context, state) {
-            if (state is GetHomeDetailsLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is GetHomeDetailsLoaded) {
-              return Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: topBottomPadding),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: leftRightMargin),
-                            child: Column(children: [
-                              InkWell(
-                                  onTap: () {
-                                    showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        isDismissible: true,
-                                        context: context,
-                                        shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(
-                                                    smallCardCurve),
-                                                topLeft: Radius.circular(
-                                                    smallCardCurve))),
-                                        builder: (BuildContext context) {
-                                          return const AddressBottomSheet();
-                                        });
-                                  },
-                                  child: const AddressBar()),
-                              const SizedBox(height: xxxSmallerSpacing),
-                              Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+
+    return SafeArea(child: BlocBuilder<GetHomeDetailsBloc, HomeStates>(
+        builder: (context, state) {
+          if (state is GetHomeDetailsLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is GetHomeDetailsLoaded) {
+            return Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: topBottomPadding),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: leftRightMargin),
+                          child: Column(children: [
+                            InkWell(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      isDismissible: true,
+                                      context: context,
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(
+                                                  smallCardCurve),
+                                              topLeft: Radius.circular(
+                                                  smallCardCurve))),
+                                      builder: (BuildContext context) {
+                                        return const AddressBottomSheet();
+                                      });
+                                },
+                                child: const AddressBar()),
+                            const SizedBox(height: xxxSmallerSpacing),
+                            Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  const SizedBox(width: tiniestSpacing),
+                                  Text("Haldirams",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .xTiny
+                                          .copyWith(
+                                              color: AppColor.mediumBlack,
+                                              fontWeight: FontWeight.w500)),
+                                  const SizedBox(width: tiniestSpacing),
+                                  InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const SelectShops()));
+                                      },
+                                      child: Text("(Change Shop)",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .xTinier
+                                              .copyWith(
+                                                  color: AppColor.primary)))
+                                ]),
+                            const SizedBox(height: xxxSmallerSpacing),
+                            SearchTextField(
+                                hintText: "Search for groceries",
+                                hintStyle: Theme.of(context)
+                                    .textTheme
+                                    .xTinier
+                                    .copyWith(fontWeight: FontWeight.w300),
+                                textcontroller: myController,
+                                prefixicon: InkWell(
+                                    onTap: () {
+                                      FocusScopeNode currentFocus =
+                                          FocusScope.of(context);
+                                      if (!currentFocus.hasPrimaryFocus) {
+                                        currentFocus.unfocus();
+                                      }
+                                      if (myController.text.isNotEmpty) {
+                                        context
+                                            .read<SearchProductsBloc>()
+                                            .add(SearchAllProducts(
+                                                searchTerm:
+                                                    myController.text));
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const SearchScreen()));
+                                      }
+                                    },
+                                    child: const Icon(Icons.search_sharp))),
+                            const SizedBox(height: tinySpacing),
+                          ])),
+                      Expanded(
+                          child: SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
+                              child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
                                   children: [
-                                    const SizedBox(width: tiniestSpacing),
-                                    Text("Haldirams",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .xTiny
-                                            .copyWith(
-                                                color: AppColor.mediumBlack,
-                                                fontWeight: FontWeight.w500)),
-                                    const SizedBox(width: tiniestSpacing),
-                                    InkWell(
-                                        onTap: () {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const SelectShops()));
-                                        },
-                                        child: Text("(Change Shop)",
+                                    HorizontalCategoryList(
+                                        data:
+                                            state.homeModel.data.categories),
+                                    Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: smallestSpacing),
+                                        child: Text("Popular Shops",
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .xTinier
                                                 .copyWith(
-                                                    color: AppColor.primary)))
-                                  ]),
-                              const SizedBox(height: xxxSmallerSpacing),
-                              SearchTextField(
-                                  hintText: "Search for groceries",
-                                  hintStyle: Theme.of(context)
-                                      .textTheme
-                                      .xTinier
-                                      .copyWith(fontWeight: FontWeight.w300),
-                                  textcontroller: myController,
-                                  prefixicon: InkWell(
-                                      onTap: () {
-                                        FocusScopeNode currentFocus =
-                                            FocusScope.of(context);
-                                        if (!currentFocus.hasPrimaryFocus) {
-                                          currentFocus.unfocus();
-                                        }
-                                        if (myController.text.isNotEmpty) {
-                                          context
-                                              .read<SearchProductsBloc>()
-                                              .add(SearchAllProducts(
-                                                  searchTerm:
-                                                      myController.text));
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const SearchScreen()));
-                                        }
-                                      },
-                                      child: const Icon(Icons.search_sharp))),
-                              const SizedBox(height: tinySpacing),
-                            ])),
-                        Expanded(
-                            child: SingleChildScrollView(
-                                physics: const BouncingScrollPhysics(),
-                                child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      HorizontalCategoryList(
-                                          data:
-                                              state.homeModel.data.categories),
-                                      Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: smallestSpacing),
-                                          child: Text("Popular Shops",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .xTinier
-                                                  .copyWith(
-                                                      color:
-                                                          AppColor.mediumBlack,
-                                                      fontWeight:
-                                                          FontWeight.w500))),
-                                      const SizedBox(
-                                          height: xxxSmallestSpacing),
-                                      SizedBox(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.55,
-                                          child: CarouselSlider(state
-                                              .homeModel.data.popularShops)),
-                                      const SizedBox(height: smallestSpacing),
-                                      Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: leftRightMargin,
-                                              vertical: topBottomPadding),
-                                          child: TodayDealsSection(
-                                              state.homeModel.data.todaySDeals))
-                                    ])))
-                      ]));
-            }
-            if (state is GetHomeDetailsError) {
-              return Container();
-            } else {
-              return const SizedBox();
-            }
-          },
-        )));
+                                                    color:
+                                                        AppColor.mediumBlack,
+                                                    fontWeight:
+                                                        FontWeight.w500))),
+                                    const SizedBox(
+                                        height: xxxSmallestSpacing),
+                                    SizedBox(
+                                        height: MediaQuery.of(context)
+                                                .size
+                                                .width *
+                                            0.55,
+                                        child: CarouselSlider(state
+                                            .homeModel.data.popularShops)),
+                                    const SizedBox(height: smallestSpacing),
+                                    Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: leftRightMargin,
+                                            vertical: topBottomPadding),
+                                        child: TodayDealsSection(
+                                            state.homeModel.data.todaySDeals))
+                                  ])))
+                    ]));
+          }
+          if (state is GetHomeDetailsError) {
+            return Container();
+          } else {
+            return const SizedBox();
+          }
+        },
+      ));
   }
 }

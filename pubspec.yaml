@@ -54,6 +54,7 @@ dependencies:
   go_router: ^10.1.2
   badges: ^3.1.2
   flutter_rating_bar: ^4.0.1
+  double_back_to_close_app: ^2.1.0
 
 
 dev_dependencies:
