@@ -40,47 +40,50 @@ class CartScreen extends StatelessWidget {
         }
       }),
       body: BlocBuilder<GetAllCartItemsBloc, ViewCartStates>(
+          buildWhen: (pre, curr) =>
+              (curr is GetAllCartItemsLoaded || curr is GetAllCartItemsLoading),
           builder: (context, state) {
-        if (state is GetAllCartItemsLoading) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state is GetAllCartItemsLoaded) {
-          if (state.viewCartModel.data.cartItemCount != 0) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: leftRightMargin, vertical: xxxTinierSpacing),
-              child: Column(children: [
-                CartHeader(
-                  cartDetails: state.viewCartModel.data,
-                ),
-                const SizedBox(
-                  height: xxxSmallestSpacing,
-                ),
-                CartItemList(
-                  cartDetails: state.viewCartModel.data.cartItems,
-                )
-              ]),
-            );
-          } else {
-            return Center(
-                child: Column(
-              children: [
-                const SizedBox(height: kSuccessImageHeight),
-                Image.asset('assets/empty_icon.png'),
-                Text(
-                  'Sorry! No Products found in your Cart',
-                  style: Theme.of(context).textTheme.xTinier.copyWith(
-                      color: AppColor.mediumBlack, fontWeight: FontWeight.w500),
-                ),
-              ],
-            ));
-          }
-        }
-        if (state is GetAllCartItemsError) {
-          return Container();
-        } else {
-          return const SizedBox();
-        }
-      }),
+            if (state is GetAllCartItemsLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is GetAllCartItemsLoaded) {
+              if (state.viewCartModel.data.cartItemCount != 0) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: leftRightMargin, vertical: xxxTinierSpacing),
+                  child: Column(children: [
+                    CartHeader(
+                      cartDetails: state.viewCartModel.data,
+                    ),
+                    const SizedBox(
+                      height: xxxSmallestSpacing,
+                    ),
+                    CartItemList(
+                      cartDetails: state.viewCartModel.data.cartItems,
+                    )
+                  ]),
+                );
+              } else {
+                return Center(
+                    child: Column(
+                  children: [
+                    const SizedBox(height: kSuccessImageHeight),
+                    Image.asset('assets/empty_icon.png'),
+                    Text(
+                      'Sorry! No Products found in your Cart',
+                      style: Theme.of(context).textTheme.xTinier.copyWith(
+                          color: AppColor.mediumBlack,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ));
+              }
+            }
+            if (state is GetAllCartItemsError) {
+              return Container();
+            } else {
+              return const SizedBox();
+            }
+          }),
     );
   }
 }

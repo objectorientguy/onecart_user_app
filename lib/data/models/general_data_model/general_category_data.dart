@@ -15,10 +15,8 @@ class Product {
         productId: json["product_id"],
         productName: json["product_name"],
         details: json["details"],
-        variants: json["variants"] == null
-            ? []
-            : List<Variant>.from(
-                json["variants"].map((x) => Variant.fromJson(x))),
+        variants: List<Variant>.from(
+            json["variants"].map((x) => Variant.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -32,8 +30,9 @@ class Product {
 class Variant {
   final int variantId;
   final double variantCost;
-  final int count;
+  final int? count;
   final String brandName;
+  final int cartItemQuantityCount;
   final double discountedCost;
   final int discount;
   final String quantity;
@@ -46,6 +45,7 @@ class Variant {
     required this.variantCost,
     required this.count,
     required this.brandName,
+    required this.cartItemQuantityCount,
     required this.discountedCost,
     required this.discount,
     required this.quantity,
@@ -59,6 +59,7 @@ class Variant {
         variantCost: json["variant_cost"],
         count: json["count"],
         brandName: json["brand_name"],
+        cartItemQuantityCount: json["cart_item_quantity_count"],
         discountedCost: json["discounted_cost"],
         discount: json["discount"],
         quantity: json["quantity"],
@@ -72,6 +73,7 @@ class Variant {
         "variant_cost": variantCost,
         "count": count,
         "brand_name": brandName,
+        "cart_item_quantity_count": cartItemQuantityCount,
         "discounted_cost": discountedCost,
         "discount": discount,
         "quantity": quantity,

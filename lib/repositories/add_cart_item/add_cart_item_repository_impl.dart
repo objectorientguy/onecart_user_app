@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import '../../data/models/add_cart_items/add_cart_items_model.dart';
 import '../../data/models/add_cart_items/decrement_cart_item_model.dart';
 import '../../data/models/add_cart_items/delete_cart_item_model.dart';
@@ -38,6 +40,8 @@ class AddToCartRepositoryImpl implements AddToCartRepository {
     try {
       final response = await DioClient().delete(
           "https://oneart.onrender.com/delete_cart_item?user_contact=9898989898&product_id=$productId&variant_id=$variantId");
+
+      log('=========>$response');
       return DeleteCartItemModel.fromJson(response);
     } catch (error) {
       rethrow;

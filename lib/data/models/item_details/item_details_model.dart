@@ -36,14 +36,14 @@ class ProductDetailsModel {
 class ProductDetailsData {
   final Product productData;
   final List<Feature> feature;
-  final List<RecommendedProduct> recommendedProducts;
-  final int items;
+  final List<Variant> recommendedProducts;
+  final int cartItemCount;
 
   ProductDetailsData({
     required this.productData,
     required this.feature,
     required this.recommendedProducts,
-    required this.items,
+    required this.cartItemCount,
   });
 
   factory ProductDetailsData.fromJson(Map<String, dynamic> json) =>
@@ -51,10 +51,9 @@ class ProductDetailsData {
         productData: Product.fromJson(json["product_data"]),
         feature:
             List<Feature>.from(json["feature"].map((x) => Feature.fromJson(x))),
-        recommendedProducts: List<RecommendedProduct>.from(
-            json["recommended_products"]
-                .map((x) => RecommendedProduct.fromJson(x))),
-        items: json["items"],
+        recommendedProducts: List<Variant>.from(
+            json["recommended_products"].map((x) => Variant.fromJson(x))),
+        cartItemCount: json["cart_item_count"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -62,83 +61,30 @@ class ProductDetailsData {
         "feature": List<dynamic>.from(feature.map((x) => x.toJson())),
         "recommended_products":
             List<dynamic>.from(recommendedProducts.map((x) => x.toJson())),
-        "items": items,
+        "cart_item_count": cartItemCount,
       };
 }
 
 class Feature {
-  final List<String> featureImage;
-  final int featureId;
   final int shopId;
+  final int featureId;
+  final List<String> featureImage;
 
   Feature({
-    required this.featureImage,
-    required this.featureId,
     required this.shopId,
+    required this.featureId,
+    required this.featureImage,
   });
 
   factory Feature.fromJson(Map<String, dynamic> json) => Feature(
-        featureImage: List<String>.from(json["feature_image"].map((x) => x)),
-        featureId: json["feature_id"],
         shopId: json["shop_id"],
+        featureId: json["feature_id"],
+        featureImage: List<String>.from(json["feature_image"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
-        "feature_image": List<dynamic>.from(featureImage.map((x) => x)),
-        "feature_id": featureId,
         "shop_id": shopId,
-      };
-}
-
-class RecommendedProduct {
-  final int variantId;
-  final double variantCost;
-  final int count;
-  final String brandName;
-  final double discountedCost;
-  final int discount;
-  final String quantity;
-  final String description;
-  final List<String> image;
-  final int ratings;
-
-  RecommendedProduct({
-    required this.variantId,
-    required this.variantCost,
-    required this.count,
-    required this.brandName,
-    required this.discountedCost,
-    required this.discount,
-    required this.quantity,
-    required this.description,
-    required this.image,
-    required this.ratings,
-  });
-
-  factory RecommendedProduct.fromJson(Map<String, dynamic> json) =>
-      RecommendedProduct(
-        variantId: json["variant_id"],
-        variantCost: json["variant_cost"].toDouble(),
-        count: json["count"],
-        brandName: json["brand_name"],
-        discountedCost: json["discounted_cost"].toDouble(),
-        discount: json["discount"],
-        quantity: json["quantity"],
-        description: json["description"],
-        image: List<String>.from(json["image"].map((x) => x)),
-        ratings: json["ratings"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "variant_id": variantId,
-        "variant_cost": variantCost,
-        "count": count,
-        "brand_name": brandName,
-        "discounted_cost": discountedCost,
-        "discount": discount,
-        "quantity": quantity,
-        "description": description,
-        "image": List<dynamic>.from(image.map((x) => x)),
-        "ratings": ratings,
+        "feature_id": featureId,
+        "feature_image": List<dynamic>.from(featureImage.map((x) => x)),
       };
 }

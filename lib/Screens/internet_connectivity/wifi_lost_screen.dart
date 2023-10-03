@@ -35,11 +35,7 @@ class WifiLostScreen extends StatelessWidget {
               Text('Please check your network settings.',
                   style: Theme.of(context).textTheme.xTinier.copyWith()),
               const SizedBox(height: xMediumSpacing),
-              ButtonWidget(
-                  title: 'Refresh',
-                  onPressed: () {
-                    Navigator.pop(context);
-                  })
+              ButtonWidget(title: 'Refresh', onPressed: () {})
             ]))));
   }
 }

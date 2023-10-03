@@ -28,7 +28,8 @@ class ItemDetailsBloc extends Bloc<ItemDetails, ItemDetailsStates> {
     emit(ItemDetailsLoading());
     try {
       ProductDetailsModel getProductDetailsModel =
-          await _productDetailsRepository.getProductDetails(event.itemId);
+          await _productDetailsRepository.getProductDetails(
+              event.itemId, event.variantId);
       log(getProductDetailsModel.data.toString());
       variantIndex = VariantIndexUtil()
           .getVariantIndex(getProductDetailsModel.data.productData);
