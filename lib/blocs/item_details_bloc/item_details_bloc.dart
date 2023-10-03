@@ -26,18 +26,19 @@ class ItemDetailsBloc extends Bloc<ItemDetails, ItemDetailsStates> {
   FutureOr<void> _getItemDetails(
       FetchItemDetails event, Emitter<ItemDetailsStates> emit) async {
     emit(ItemDetailsLoading());
-    //try {
-    ProductDetailsModel getProductDetailsModel = await _productDetailsRepository
-        .getProductDetails(event.itemId, event.variantId);
-    log(getProductDetailsModel.data.toString());
-    variantIndex = VariantIndexUtil()
-        .getVariantIndex(getProductDetailsModel.data.productData);
-    emit(ItemDetailsLoaded(
-        productDetailsModel: getProductDetailsModel,
-        variantIndex: variantIndex));
-    // } catch (e) {
-    //   emit(ItemDetailsError(message: e.toString()));
-    // }
+    try {
+      ProductDetailsModel getProductDetailsModel =
+          await _productDetailsRepository.getProductDetails(
+              event.itemId, event.variantId);
+      log(getProductDetailsModel.data.toString());
+      variantIndex = VariantIndexUtil()
+          .getVariantIndex(getProductDetailsModel.data.productData);
+      emit(ItemDetailsLoaded(
+          productDetailsModel: getProductDetailsModel,
+          variantIndex: variantIndex));
+    } catch (e) {
+      emit(ItemDetailsError(message: e.toString()));
+    }
   }
 
   FutureOr<void> _changeVariantIndex(

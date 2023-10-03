@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
@@ -106,6 +108,9 @@ class SelectVarientBody extends StatelessWidget {
                             ]),
                         TextButton(
                           onPressed: () {
+                            log(productDetailsModel.data.productData
+                                .variants[index].cartItemQuantityCount
+                                .toString());
                             context.read<ItemDetailsBloc>().add(
                                 ChangeVariantIndex(
                                     variantIndex: index,

@@ -32,7 +32,7 @@ class Variant {
   final double variantCost;
   final int? count;
   final String brandName;
-  final int? cartItemQuantityCount;
+  final int cartItemQuantityCount;
   final double discountedCost;
   final int discount;
   final String quantity;

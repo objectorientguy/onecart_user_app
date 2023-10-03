@@ -3,9 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/internet_connectivity/wifi_lost_screen.dart';
 import 'package:onecart_user_app/Screens/orders/orders_screen.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-import '../../blocs/home/home_bloc.dart';
-import '../../blocs/home/home_events.dart';
-import '../../blocs/home/home_states.dart';
+
+import '../../blocs/view_cart_bloc/view_cart_bloc.dart';
+import '../../blocs/view_cart_bloc/view_cart_events.dart';
+import '../../blocs/view_cart_bloc/view_cart_states.dart';
 import '../../blocs/wifiConnectivity/wifi_connectivity_bloc.dart';
 import '../../blocs/wifiConnectivity/wifi_connectivity_states.dart';
 import '../../configs/app_color.dart';
@@ -56,7 +57,7 @@ class _RootScreenState extends State<RootScreen> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<GetHomeDetailsBloc>().add(GetHomeDetails());
+    context.read<GetAllCartItemsBloc>().add(GetAllCartItems());
 
     return Scaffold(
       bottomNavigationBar:
@@ -108,11 +109,11 @@ class _RootScreenState extends State<RootScreen> {
                                       EdgeInsets.only(top: xxTiniestSpacing),
                                   child: Icon(Icons.shopping_cart_sharp,
                                       size: kStarIconSize)),
-                              BlocBuilder<GetHomeDetailsBloc, HomeStates>(
+                              BlocBuilder<GetAllCartItemsBloc, ViewCartStates>(
                                 buildWhen: (previousState, currentState) =>
-                                    currentState is GetHomeDetailsLoaded,
+                                    currentState is GetAllCartItemsLoaded,
                                 builder: (context, state) {
-                                  if (state is GetHomeDetailsLoaded) {
+                                  if (state is GetAllCartItemsLoaded) {
                                     return Padding(
                                         padding: const EdgeInsets.only(
                                             left: smallerSpacing),
@@ -129,7 +130,7 @@ class _RootScreenState extends State<RootScreen> {
                                                           color: AppColor
                                                               .primary)),
                                               Text(
-                                                  state.homeModel.data
+                                                  state.viewCartModel.data
                                                       .cartItemCount
                                                       .toString(),
                                                   style: Theme.of(context)
