@@ -6,7 +6,7 @@ import '../../../data/models/orders/order_details_model.dart';
 import 'order_placed_tile.dart';
 
 class ItemOrderedExpansionTile extends StatelessWidget {
-  final  index;
+  final index;
   final List<Product> orderProductData;
   const ItemOrderedExpansionTile({
     super.key,
