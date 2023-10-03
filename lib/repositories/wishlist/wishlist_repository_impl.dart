@@ -1,18 +1,15 @@
 import 'package:onecart_user_app/repositories/wishlist/wishlist_repository.dart';
-
 import 'package:onecart_user_app/utils/dio_client.dart';
-
 import '../../data/models/wishlist/add_wishlist_model.dart';
-
 import '../../data/models/wishlist/delete_wishlist_model.dart';
 import '../../data/models/wishlist/view_wishlist_model.dart';
 
 class ViewWishlistRepositoryImpl implements ViewWishlistRepository {
   @override
-  Future<WishlistModel> getAllWishlistItems() async {
+  Future<WishlistAllModel> getAllWishlistItems() async {
     final response = await DioClient()
-        .get("https://oneart.onrender.com/getall_favitem/9898989898");
-    return WishlistModel.fromJson(response);
+        .get("https://oneart.onrender.com/getall_favitem/?user_id=9898989898");
+    return WishlistAllModel.fromJson(response);
   }
 
   @override

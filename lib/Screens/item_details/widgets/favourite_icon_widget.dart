@@ -20,11 +20,6 @@ class _FavouriteIconWidgetState extends State<FavouriteIconWidget> {
   bool isFavouriteTapped = false;
 
   @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return IconButton(
         onPressed: () {
@@ -35,7 +30,9 @@ class _FavouriteIconWidgetState extends State<FavouriteIconWidget> {
                 ));
           }
 
-          isFavouriteTapped = !isFavouriteTapped;
+          setState(() {
+            isFavouriteTapped = !isFavouriteTapped;
+          });
         },
         icon: (isFavouriteTapped == true)
             ? const Icon(

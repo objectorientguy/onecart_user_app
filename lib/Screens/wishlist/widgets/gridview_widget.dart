@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../../../blocs/wishlist_bloc/wishlist_bloc.dart';
 import '../../../blocs/wishlist_bloc/wishlist_events.dart';
 import '../../../configs/app_color.dart';
@@ -11,7 +10,7 @@ import '../../../data/models/wishlist/view_wishlist_model.dart';
 import '../../home/widgets/counter_widget.dart';
 
 class GridViewScreen extends StatelessWidget {
-  final List<WishlistData> wishlistData;
+  final WishlistDatum wishlistData;
 
   const GridViewScreen({super.key, required this.wishlistData});
 
@@ -25,7 +24,7 @@ class GridViewScreen extends StatelessWidget {
             childAspectRatio: 0.73),
         physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
-        itemCount: wishlistData.length,
+        itemCount: wishlistData.all.length,
         itemBuilder: (context, index) {
           return Container(
             decoration: BoxDecoration(
@@ -50,11 +49,12 @@ class GridViewScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(
                                         kBorderRadiusSmall)),
                                 child: Image.network(
-                                    wishlistData[index].image[0].toString(),
+                                    wishlistData.all[index].image[index]
+                                        .toString(),
                                     fit: BoxFit.fill))),
                         SizedBox(
                             width: kShopBox,
-                            child: Text(wishlistData[index].productName,
+                            child: Text(wishlistData.all[index].productName,
                                 style: Theme.of(context)
                                     .textTheme
                                     .xxTinier
@@ -70,7 +70,7 @@ class GridViewScreen extends StatelessWidget {
                         SizedBox(
                           width: kShopBox,
                           child: Text(
-                            wishlistData[index].quantity,
+                            wishlistData.all[index].quantity,
                             style: Theme.of(context)
                                 .textTheme
                                 .tiniest
@@ -80,7 +80,7 @@ class GridViewScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: xxxTiniestSpacing),
-                        Text('₹${wishlistData[index].discountedCost}',
+                        Text('₹${wishlistData.all[index].discountedCost}',
                             style: Theme.of(context)
                                 .textTheme
                                 .xxTinier
@@ -91,9 +91,9 @@ class GridViewScreen extends StatelessWidget {
                         CounterScreen(
                           width: kGeneralWidth,
                           title: 'Add to Cart',
-                          prodId: wishlistData[index].productId,
-                          variantId: wishlistData[index].variantId,
-                          height: kAddButtonHeight,
+                          prodId: wishlistData.all[index].productId,
+                          variantId: wishlistData.all[index].variantId,
+                          height: 0,
                           counter: 0,
                         ),
                       ]),
@@ -101,7 +101,8 @@ class GridViewScreen extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     context.read<WishlistBloc>().add(DeleteWishlist(
-                        deleteId: wishlistData[index].favItemId.toString()));
+                        deleteId:
+                            wishlistData.all[index].productId.toString()));
                     context.read<WishlistBloc>().add(GetAllWishlistItems());
                   },
                   child: const Icon(Icons.close,

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-
 import '../../../blocs/wishlist_bloc/wishlist_bloc.dart';
 import '../../../blocs/wishlist_bloc/wishlist_events.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
 import '../../../data/models/wishlist/view_wishlist_model.dart';
+import '../../home/widgets/counter_widget.dart';
 
 class ListViewScreen extends StatelessWidget {
-  final List<WishlistData> wishlistData;
+  final WishlistDatum wishlistData;
 
   const ListViewScreen({super.key, required this.wishlistData});
 
@@ -39,7 +39,8 @@ class ListViewScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(
                                         kBorderRadiusSmall)),
                                 child: Image.network(
-                                    wishlistData[index].image[0].toString(),
+                                    wishlistData.all[index].image[index]
+                                        .toString(),
                                     fit: BoxFit.fill)))),
                     const SizedBox(width: xxxTinySpacing),
                     Expanded(
@@ -57,7 +58,7 @@ class ListViewScreen extends StatelessWidget {
                                     SizedBox(
                                         width: kGeneralBoxOne,
                                         child: Text(
-                                            wishlistData[index].productName,
+                                            wishlistData.all[index].productName,
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .xxTinier
@@ -79,7 +80,7 @@ class ListViewScreen extends StatelessWidget {
                                           SizedBox(
                                             width: kCardHeightItem,
                                             child: Text(
-                                              wishlistData[index].quantity,
+                                              wishlistData.all[index].quantity,
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .tiniest
@@ -92,7 +93,7 @@ class ListViewScreen extends StatelessWidget {
                                           const SizedBox(
                                               height: xxxTiniestSpacing),
                                           Text(
-                                              '₹${wishlistData[index].discountedCost}',
+                                              '₹${wishlistData.all[index].discountedCost}',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .xxTinier
@@ -102,12 +103,15 @@ class ListViewScreen extends StatelessWidget {
                                                       color: AppColor
                                                           .lightestGrey)),
                                         ]),
-                                    // CounterScreen(
-                                    //   width: kGeneralWidth,
-                                    //   title: 'Add to Cart',
-                                    //   prodId: wishlistData[index].productId,
-                                    //   variantId: wishlistData[index].variantId,
-                                    // ),
+                                    CounterScreen(
+                                      width: kGeneralWidth,
+                                      title: 'Add to Cart',
+                                      prodId: wishlistData.all[index].productId,
+                                      variantId:
+                                          wishlistData.all[index].variantId,
+                                      height: 0,
+                                      counter: 0,
+                                    ),
                                   ])
                             ]),
                       ),
@@ -118,7 +122,8 @@ class ListViewScreen extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     context.read<WishlistBloc>().add(DeleteWishlist(
-                        deleteId: wishlistData[index].favItemId.toString()));
+                        deleteId:
+                            wishlistData.all[index].productId.toString()));
                     context.read<WishlistBloc>().add(GetAllWishlistItems());
                   },
                   child: const Icon(Icons.close,
@@ -131,6 +136,6 @@ class ListViewScreen extends StatelessWidget {
         separatorBuilder: (BuildContext context, int index) => const SizedBox(
               height: xxxSmallestSpacing,
             ),
-        itemCount: wishlistData.length);
+        itemCount: wishlistData.all.length);
   }
 }
