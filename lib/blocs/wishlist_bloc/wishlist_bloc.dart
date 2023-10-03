@@ -1,12 +1,8 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/wishlist_bloc/wishlist_events.dart';
 import 'package:onecart_user_app/blocs/wishlist_bloc/wishlist_states.dart';
-
 import '../../app_module/app_module.dart';
-
 import '../../data/models/wishlist/add_wishlist_model.dart';
 import '../../data/models/wishlist/delete_wishlist_model.dart';
 import '../../data/models/wishlist/view_wishlist_model.dart';
@@ -28,10 +24,10 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
       GetAllWishlistItems event, Emitter<WishlistStates> emit) async {
     emit(GetAllWishListItemsLoading());
     try {
-      WishlistModel wishlistModel =
+      WishlistAllModel wishlistModel =
           await _wishlistRepository.getAllWishlistItems();
 
-      if (wishlistModel.data.isNotEmpty) {
+      if (wishlistModel.data.all.isNotEmpty) {
         emit(GetAllWishlistItemsLoaded(wishlistModel: wishlistModel));
       }
     } catch (e) {
@@ -50,7 +46,6 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
         "shop_id": 2,
         "user_id": 9898989898,
       };
-      log('addMap==============>$wishlistDetails');
       AddWishlistModel addWishlistModel =
           await _wishlistRepository.addWishlistItems(wishlistDetails);
 
