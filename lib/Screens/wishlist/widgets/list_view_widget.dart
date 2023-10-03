@@ -110,6 +110,7 @@ class ListViewScreen extends StatelessWidget {
                                       variantId:
                                           wishlistData.all[index].variantId,
                                       height: 0,
+                                      counter: 0,
                                     ),
                                   ])
                             ]),
