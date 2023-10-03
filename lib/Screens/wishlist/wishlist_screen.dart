@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/wishlist/widgets/gridview_widget.dart';
@@ -60,7 +58,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
             ],
           );
         } else if (state is GetAllWishlistItemsLoaded) {
-          log("state=====================>$State");
           if (state.wishlistModel.data.all.isNotEmpty) {
             return Padding(
                 padding: const EdgeInsets.symmetric(
