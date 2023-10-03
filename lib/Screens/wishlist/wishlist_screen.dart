@@ -1,7 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/wishlist/widgets/gridview_widget.dart';
-import 'package:onecart_user_app/Screens/wishlist/widgets/horizontal_wishlist_category.dart';
 import 'package:onecart_user_app/Screens/wishlist/widgets/list_view_widget.dart';
 import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
@@ -59,16 +60,12 @@ class _WishlistScreenState extends State<WishlistScreen> {
             ],
           );
         } else if (state is GetAllWishlistItemsLoaded) {
+          log("state=====================>$State");
           if (state.wishlistModel.data.all.isNotEmpty) {
             return Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: leftRightMargin, vertical: topBottomPadding),
                 child: Column(children: [
-                  WishlistCategory(
-                      wishlistCategory: state.wishlistModel.data.categories),
-                  const SizedBox(
-                    height: xxxSmallestSpacing,
-                  ),
                   Expanded(
                     child: isListView
                         ? ListViewScreen(wishlistData: state.wishlistModel.data)

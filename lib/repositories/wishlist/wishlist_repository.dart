@@ -7,5 +7,5 @@ abstract class ViewWishlistRepository {
 
   Future<AddWishlistModel> addWishlistItems(Map wishlistDetails);
 
-  Future<DeleteWishlistModel> deleteWishlistItems(deleteWishlistId);
+  Future<DeleteWishlistModel> deleteWishlistItems(deleteWishlistId,int productId, int variantId);
 }

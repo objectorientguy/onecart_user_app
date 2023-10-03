@@ -37,11 +37,11 @@ class _FavouriteIconWidgetState extends State<FavouriteIconWidget> {
         icon: (isFavouriteTapped == true)
             ? const Icon(
                 Icons.favorite,
-                color: AppColor.primary,
+                color: AppColor.lighterRed,
               )
             : const Icon(
                 Icons.favorite_border_outlined,
-                color: AppColor.primary,
+                color: AppColor.lighterRed,
               ));
   }
 }
