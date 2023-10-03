@@ -67,7 +67,8 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
     emit(DeleteWishlistLoading());
     try {
       DeleteWishlistModel deleteWishlistModel =
-          await _wishlistRepository.deleteWishlistItems(event.deleteId);
+          await _wishlistRepository.deleteWishlistItems(
+              event.deleteId, event.productId, event.variantId);
       emit(DeleteWishlistLoaded(deleteWishlistModel: deleteWishlistModel));
     } catch (e) {
       emit(DeleteWishlistError(message: e.toString()));
