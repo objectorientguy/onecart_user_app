@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
-import '../../../blocs/wishlist_bloc/wishlist_bloc.dart';
-import '../../../blocs/wishlist_bloc/wishlist_events.dart';
 import '../../../configs/app_color.dart';
 import '../../../configs/app_dimensions.dart';
 import '../../../configs/app_spacing.dart';
@@ -120,12 +117,12 @@ class ListViewScreen extends StatelessWidget {
               Positioned(
                 right: kZero,
                 child: InkWell(
-                  onTap: () {
-                    context.read<WishlistBloc>().add(DeleteWishlist(
-                        deleteId:
-                            wishlistData.all[index].productId.toString()));
-                    context.read<WishlistBloc>().add(GetAllWishlistItems());
-                  },
+                  // onTap: () {
+                  //   context.read<WishlistBloc>().add(DeleteWishlist(
+                  //       deleteId:
+                  //           wishlistData.all[index].productId.toString()));
+                  //   context.read<WishlistBloc>().add(GetAllWishlistItems());
+                  // },
                   child: const Icon(Icons.close,
                       size: kIconSizeSmall, color: AppColor.grey),
                 ),

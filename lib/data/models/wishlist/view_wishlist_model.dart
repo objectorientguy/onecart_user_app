@@ -33,21 +33,32 @@ class WishlistAllModel {
 
 class WishlistDatum {
   final List<All> all;
-  final Categories categories;
+  final List<All> snacks;
+  final List<All> stationaries;
+  final List<All> dairyBakery;
 
   WishlistDatum({
     required this.all,
-    required this.categories,
+    required this.snacks,
+    required this.stationaries,
+    required this.dairyBakery,
   });
 
   factory WishlistDatum.fromJson(Map<String, dynamic> json) => WishlistDatum(
         all: List<All>.from(json["All"].map((x) => All.fromJson(x))),
-        categories: Categories.fromJson(json["Categories"]),
+        snacks: List<All>.from(json["Snacks"].map((x) => All.fromJson(x))),
+        stationaries:
+            List<All>.from(json["Stationaries"].map((x) => All.fromJson(x))),
+        dairyBakery:
+            List<All>.from(json["Dairy & Bakery"].map((x) => All.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "All": List<dynamic>.from(all.map((x) => x.toJson())),
-        "Categories": categories.toJson(),
+        "Snacks": List<dynamic>.from(snacks.map((x) => x.toJson())),
+        "Stationaries": List<dynamic>.from(stationaries.map((x) => x.toJson())),
+        "Dairy & Bakery":
+            List<dynamic>.from(dairyBakery.map((x) => x.toJson())),
       };
 }
 
@@ -56,8 +67,8 @@ class All {
   final int productId;
   final String productName;
   final List<String> image;
-  final int variantCost;
-  final int discountedCost;
+  final double variantCost;
+  final double discountedCost;
   final int discount;
   final String quantity;
   final int variantId;
@@ -96,57 +107,5 @@ class All {
         "discount": discount,
         "quantity": quantity,
         "variant_id": variantId,
-      };
-}
-
-class Categories {
-  final List<All> snacks;
-  final String staples;
-  final List<All> stationaries;
-  final List<All> beverages;
-  final String personalCare;
-  final String homeCare;
-  final String momBabyCare;
-  final String homeKitchen;
-  final List<All> dairyBakery;
-
-  Categories({
-    required this.snacks,
-    required this.staples,
-    required this.stationaries,
-    required this.beverages,
-    required this.personalCare,
-    required this.homeCare,
-    required this.momBabyCare,
-    required this.homeKitchen,
-    required this.dairyBakery,
-  });
-
-  factory Categories.fromJson(Map<String, dynamic> json) => Categories(
-        snacks: List<All>.from(json["Snacks"].map((x) => All.fromJson(x))),
-        staples: json["Staples"],
-        stationaries:
-            List<All>.from(json["Stationaries"].map((x) => All.fromJson(x))),
-        beverages:
-            List<All>.from(json["Beverages"].map((x) => All.fromJson(x))),
-        personalCare: json["Personal Care"],
-        homeCare: json["Home Care"],
-        momBabyCare: json["Mom & Baby Care"],
-        homeKitchen: json["Home & Kitchen"],
-        dairyBakery:
-            List<All>.from(json["Dairy & Bakery"].map((x) => All.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "Snacks": List<dynamic>.from(snacks.map((x) => x.toJson())),
-        "Staples": staples,
-        "Stationaries": List<dynamic>.from(stationaries.map((x) => x.toJson())),
-        "Beverages": List<dynamic>.from(beverages.map((x) => x.toJson())),
-        "Personal Care": personalCare,
-        "Home Care": homeCare,
-        "Mom & Baby Care": momBabyCare,
-        "Home & Kitchen": homeKitchen,
-        "Dairy & Bakery":
-            List<dynamic>.from(dairyBakery.map((x) => x.toJson())),
       };
 }

@@ -91,6 +91,7 @@ const double kAddressTileWidth = 230.0;
 const double kImageHeight = 25.0;
 const double kImageWidth = 30.0;
 const double kSizedBoxWidth = 180.0;
+const double kOrdersWidth = 190.0;
 const double kWidth = 70.0;
 const double kHeight = 80.0;
 const double kThickness = 1.0;
