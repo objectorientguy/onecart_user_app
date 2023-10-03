@@ -2,13 +2,10 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/blocs/wishlist_bloc/wishlist_events.dart';
 import 'package:onecart_user_app/blocs/wishlist_bloc/wishlist_states.dart';
-
 import '../../app_module/app_module.dart';
-
 import '../../data/models/wishlist/add_wishlist_model.dart';
 import '../../data/models/wishlist/delete_wishlist_model.dart';
 import '../../data/models/wishlist/view_wishlist_model.dart';
-import '../../data/models/wishlist/wishlist_category_model.dart';
 import '../../repositories/wishlist/wishlist_repository.dart';
 
 class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
@@ -21,7 +18,6 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
     on<GetAllWishlistItems>(_getAllWishlistItems);
     on<AddWishlist>(_addItemsToWishlist);
     on<DeleteWishlist>(_deleteWishlist);
-    on<GetWishlistCategory>(_getWishlistCategory);
   }
 
   FutureOr<void> _getAllWishlistItems(
@@ -76,17 +72,5 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
     } catch (e) {
       emit(DeleteWishlistError(message: e.toString()));
     }
-  }
-
-  FutureOr<void> _getWishlistCategory(
-      GetWishlistCategory event, Emitter<WishlistStates> emit) async {
-    emit(GetWishlistCategoryLoading());
-    // try {
-      WishlistCategoryModel wishlistCategoryModel =
-      await _wishlistRepository.wishlistCategoryModel();
-      emit(GetWishlistCategoryLoaded(wishlistCategoryModel: wishlistCategoryModel));
-    // } catch (e) {
-    //   emit(GetWishlistCategoryError(message: e.toString()));
-    // }
   }
 }

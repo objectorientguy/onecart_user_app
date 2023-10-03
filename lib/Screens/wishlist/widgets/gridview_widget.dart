@@ -49,11 +49,12 @@ class GridViewScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(
                                         kBorderRadiusSmall)),
                                 child: Image.network(
-                                    wishlistData.all[index].favItems[index].image[index].toString(),
+                                    wishlistData.all[index].image[index]
+                                        .toString(),
                                     fit: BoxFit.fill))),
                         SizedBox(
                             width: kShopBox,
-                            child: Text(wishlistData.all[index].favItems[index].productName,
+                            child: Text(wishlistData.all[index].productName,
                                 style: Theme.of(context)
                                     .textTheme
                                     .xxTinier
@@ -69,7 +70,7 @@ class GridViewScreen extends StatelessWidget {
                         SizedBox(
                           width: kShopBox,
                           child: Text(
-                            wishlistData.all[index].favItems[index].quantity,
+                            wishlistData.all[index].quantity,
                             style: Theme.of(context)
                                 .textTheme
                                 .tiniest
@@ -79,7 +80,7 @@ class GridViewScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: xxxTiniestSpacing),
-                        Text('₹${wishlistData.all[index].favItems[index].discountedCost}',
+                        Text('₹${wishlistData.all[index].discountedCost}',
                             style: Theme.of(context)
                                 .textTheme
                                 .xxTinier
@@ -90,15 +91,17 @@ class GridViewScreen extends StatelessWidget {
                         CounterScreen(
                           width: kGeneralWidth,
                           title: 'Add to Cart',
-                          prodId: wishlistData.all[index].favItems[index].productId,
-                          variantId: wishlistData.all[index].favItems[index].variantId, height: 0,
+                          prodId: wishlistData.all[index].productId,
+                          variantId: wishlistData.all[index].variantId,
+                          height: 0,
                         ),
                       ]),
                 ),
                 InkWell(
                   onTap: () {
                     context.read<WishlistBloc>().add(DeleteWishlist(
-                        deleteId: wishlistData.all[index].favItems.toString()));
+                        deleteId:
+                            wishlistData.all[index].productId.toString()));
                     context.read<WishlistBloc>().add(GetAllWishlistItems());
                   },
                   child: const Icon(Icons.close,
