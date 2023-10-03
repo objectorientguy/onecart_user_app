@@ -7,6 +7,7 @@ import '../../blocs/orders/orders_bloc.dart';
 import '../../blocs/orders/orders_events.dart';
 import '../../blocs/orders/orders_states.dart';
 import '../../configs/app_color.dart';
+import '../../configs/app_dimensions.dart';
 import '../../data/models/orders/order_details_model.dart';
 import 'order_details_screen.dart';
 
@@ -21,25 +22,20 @@ class OrdersScreen extends StatelessWidget {
         onWillPop: () async => false,
         child: Scaffold(
             appBar: AppBar(
-              leading: InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(
-                  Icons.arrow_back,
-                  color: AppColor.black,
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.all(xxxTinySpacing),
+                  child: Text(
+                    "My Orders",
+                    style: Theme.of(context)
+                        .textTheme
+                        .tiny
+                        .copyWith(fontWeight: FontWeight.w500),
+                  ),
                 ),
-              ),
-              title: Text(
-                "My Orders",
-                style: Theme.of(context)
-                    .textTheme
-                    .tiny
-                    .copyWith(fontWeight: FontWeight.w500),
-              ),
-              actions: const [
-                Icon(Icons.filter_alt, color: AppColor.primary),
-                SizedBox(width: smallestSpacing)
+                const SizedBox(width: kOrdersWidth),
+                const Icon(Icons.filter_alt, color: AppColor.primary),
+                const SizedBox(width: xxTinySpacing)
               ],
             ),
             body: BlocBuilder<GetAllOrdersBloc, OrdersStates>(
