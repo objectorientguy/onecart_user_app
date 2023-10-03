@@ -6,8 +6,8 @@ import '../../utils/dio_client.dart';
 class ProductsRepositoryImpl extends ProductsRepository {
   @override
   Future<GetProductByIdModel> fetchProducts(categoryId) async {
-    final response = await DioClient()
-        .get("https://oneart.onrender.com/products/categories/$categoryId");
+    final response = await DioClient().get(
+        "https://oneart.onrender.com/products/categories/9898989898/$categoryId");
     return GetProductByIdModel.fromJson(response);
   }
 }
