@@ -23,16 +23,16 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
   FutureOr<void> _getAllWishlistItems(
       GetAllWishlistItems event, Emitter<WishlistStates> emit) async {
     emit(GetAllWishListItemsLoading());
-    try {
-      WishlistAllModel wishlistModel =
-          await _wishlistRepository.getAllWishlistItems();
+    //try {
+    ViewWishlistModel wishlistModel =
+        await _wishlistRepository.getAllWishlistItems();
 
-      if (wishlistModel.data.all.isNotEmpty) {
-        emit(GetAllWishlistItemsLoaded(wishlistModel: wishlistModel));
-      }
-    } catch (e) {
-      emit(GetAllWishListItemsError(message: e.toString()));
+    if (wishlistModel.data.isNotEmpty) {
+      emit(GetAllWishlistItemsLoaded(wishlistModel: wishlistModel));
     }
+    // } catch (e) {
+    //   emit(GetAllWishListItemsError(message: e.toString()));
+    // }
   }
 
   FutureOr<void> _addItemsToWishlist(
@@ -66,9 +66,8 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistStates> {
       DeleteWishlist event, Emitter<WishlistStates> emit) async {
     emit(DeleteWishlistLoading());
     try {
-      DeleteWishlistModel deleteWishlistModel =
-          await _wishlistRepository.deleteWishlistItems(
-              event.deleteId, event.productId, event.variantId);
+      DeleteWishlistModel deleteWishlistModel = await _wishlistRepository
+          .deleteWishlistItems(event.productId, event.variantId);
       emit(DeleteWishlistLoaded(deleteWishlistModel: deleteWishlistModel));
     } catch (e) {
       emit(DeleteWishlistError(message: e.toString()));

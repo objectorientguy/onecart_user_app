@@ -32,22 +32,22 @@ class AddToCartBloc extends Bloc<CartEvents, CartStates> {
       AddItemsToCart event, Emitter<CartStates> emit) async {
     emit(AddItemLoading());
 
-    try {
-      Map cartDetails = {
-        "product_id": event.prodId,
-        "variant_id": event.variantId,
-      };
-      AddToCartModel addToCartModel =
-          await _cartRepository.addToCart(cartDetails);
-      if (addToCartModel.status == 200) {
-        emit(AddItemLoaded(
-            addToTheCartModel: addToCartModel, cartItemDetails: cartDetails));
-      } else {
-        emit(AddItemsError(message: addToCartModel.message));
-      }
-    } catch (e) {
-      emit(AddItemsError(message: e.toString()));
+    //try {
+    Map cartDetails = {
+      "product_id": event.prodId,
+      "variant_id": event.variantId,
+    };
+    AddToCartModel addToCartModel =
+        await _cartRepository.addToCart(cartDetails);
+    if (addToCartModel.status == 200) {
+      emit(AddItemLoaded(
+          addToTheCartModel: addToCartModel, cartItemDetails: cartDetails));
+    } else {
+      emit(AddItemsError(message: addToCartModel.message));
     }
+    // } catch (e) {
+    //   emit(AddItemsError(message: e.toString()));
+    // }
   }
 
   FutureOr<void> _incrementProductCount(

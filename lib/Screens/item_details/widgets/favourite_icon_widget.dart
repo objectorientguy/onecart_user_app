@@ -30,6 +30,13 @@ class _FavouriteIconWidgetState extends State<FavouriteIconWidget> {
                 ));
           }
 
+          if (isFavouriteTapped == true) {
+            context.read<WishlistBloc>().add(DeleteWishlist(
+                  productId: widget.productId,
+                  variantId: widget.variantId,
+                ));
+          }
+
           setState(() {
             isFavouriteTapped = !isFavouriteTapped;
           });

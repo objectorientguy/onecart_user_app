@@ -58,7 +58,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
             ],
           );
         } else if (state is GetAllWishlistItemsLoaded) {
-          if (state.wishlistModel.data.all.isNotEmpty) {
+          if (state.wishlistModel.data.isNotEmpty) {
             return Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: leftRightMargin, vertical: topBottomPadding),

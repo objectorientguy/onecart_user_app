@@ -1,1 +1,1 @@
-Map userDetails = {};
+int cartTotalCount = 0;

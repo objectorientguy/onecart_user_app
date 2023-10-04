@@ -1,4 +1,3 @@
-
 import 'package:onecart_user_app/repositories/wishlist/wishlist_repository.dart';
 import 'package:onecart_user_app/utils/dio_client.dart';
 import '../../data/models/wishlist/add_wishlist_model.dart';
@@ -7,10 +6,10 @@ import '../../data/models/wishlist/view_wishlist_model.dart';
 
 class ViewWishlistRepositoryImpl implements ViewWishlistRepository {
   @override
-  Future<WishlistAllModel> getAllWishlistItems() async {
+  Future<ViewWishlistModel> getAllWishlistItems() async {
     final response = await DioClient()
         .get("https://oneart.onrender.com/getall_favitem/?user_id=9898989898");
-    return WishlistAllModel.fromJson(response);
+    return ViewWishlistModel.fromJson(response);
   }
 
   @override
@@ -23,10 +22,10 @@ class ViewWishlistRepositoryImpl implements ViewWishlistRepository {
 
   @override
   Future<DeleteWishlistModel> deleteWishlistItems(
-      deleteWishlistId, int productId, int variantId) async {
+      int productId, int variantId) async {
     try {
       final response = await DioClient().delete(
-          "https://oneart.onrender.com/favitem?user_id=9898989898&product_id=$productId&variant_id=$variantId/$deleteWishlistId");
+          "https://oneart.onrender.com/favitem?user_id=9898989898&product_id=$productId&variant_id=$variantId");
       return DeleteWishlistModel.fromJson(response);
     } catch (error) {
       rethrow;

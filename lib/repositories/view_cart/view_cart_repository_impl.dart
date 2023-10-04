@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:onecart_user_app/repositories/view_cart/view_cart_repository.dart';
 
 import '../../data/models/view_cart/view_cart_model.dart';
@@ -8,6 +10,8 @@ class ViewCartRepositoryImpl implements ViewCartRepository {
   Future<ViewCartModel> getAllCartItems() async {
     final response = await DioClient()
         .get("https://oneart.onrender.com/your_cart/9898989898");
+
+    log('==============>$response');
     return ViewCartModel.fromJson(response);
   }
 }

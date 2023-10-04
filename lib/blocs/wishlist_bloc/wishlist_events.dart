@@ -13,11 +13,8 @@ class AddWishlist extends WishlistEvent {
 }
 
 class DeleteWishlist extends WishlistEvent {
-  final String deleteId;
   final int productId;
   final int variantId;
 
-  DeleteWishlist(this.productId, this.variantId, {required this.deleteId});
+  DeleteWishlist({required this.productId, required this.variantId});
 }
-
-class GetWishlistCategory extends WishlistEvent {}

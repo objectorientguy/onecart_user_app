@@ -42,125 +42,119 @@ class CounterScreen extends StatelessWidget {
     int count = counter;
     bool isVisible = true;
     return BlocConsumer<AddToCartBloc, CartStates>(
-        buildWhen: (pre, curr) => (curr is AddItemLoading ||
-            curr is AddItemInitial ||
-            curr is AddItemLoaded ||
-            curr is IncrementCartItemLoaded ||
-            curr is DecrementCartItemLoaded ||
-            curr is IncrementCartItemLoading ||
-            curr is DecrementCartItemLoading ||
-            curr is DeleteCartItemLoading ||
-            curr is DeleteCartItemLoaded),
+        // buildWhen: (pre, curr) => (
+        //     //curr is AddItemLoading ||
+        //     //curr is AddItemInitial ||
+        //     //curr is AddItemLoaded ||
+        //     curr is IncrementCartItemLoaded ||
+        //     curr is DecrementCartItemLoaded ||
+        //     curr is IncrementCartItemLoading ||
+        //     curr is DecrementCartItemLoading ||
+        //     curr is DeleteCartItemLoading ||
+        //     curr is DeleteCartItemLoaded),
         listener: (context, state) {
-          if (state is AddItemLoading) {
-            ProgressBar.show(context);
-          } else if (state is AddItemLoaded) {
-            ProgressBar.dismiss(context);
-            context
-                .read<ItemDetailsBloc>()
-                .add(FetchItemDetails(prodId!, variantId!));
-            if (state.addToTheCartModel.message == "Product already exists!") {
-              showCustomSnackBar(context, state.addToTheCartModel.message);
-            }
-          }
-        },
-        builder: (context, state) {
-          if (count == 0) {
-            isVisible = true;
-          } else {
-            isVisible = false;
-          }
-          return Visibility(
-              replacement: SizedBox(
-                  height: kAddButtonHeight,
-                  width: kAddButtonWidth,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            if (count == 1) {
-                              context.read<AddToCartBloc>().add(DeleteCartItem(
-                                  productId: prodId!, variantId: variantId!));
-                              count--;
-                              isVisible = true;
-                            } else {
-                              count--;
-                              context.read<AddToCartBloc>().add(
-                                  DecrementCartItemCount(
-                                      variantId: variantId!,
-                                      productId: prodId!));
-                            }
-                          },
-                          style: TextButton.styleFrom(
-                              minimumSize: Size.zero,
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(kAddRadius),
-                              ),
-                              side: const BorderSide(color: AppColor.primary)),
-                          child: const Icon(
-                            Icons.remove,
-                            size: kCounterIcon,
-                          ),
-                        ),
-                        Text(
-                          count.toString(),
-                          style: Theme.of(context).textTheme.xxTinier.copyWith(
-                              fontWeight: FontWeight.w500,
-                              color: AppColor.black),
-                        ),
-                        TextButton(
-                            onPressed: () {
-                              count++;
-                              context.read<AddToCartBloc>().add(
-                                  IncrementCartItemCount(
-                                      variantId: variantId!,
-                                      productId: prodId!));
-                            },
-                            style: TextButton.styleFrom(
-                                minimumSize: Size.zero,
-                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(kAddRadius),
-                                ),
-                                side:
-                                    const BorderSide(color: AppColor.primary)),
-                            child: const Icon(Icons.add, size: kCounterIcon))
-                      ])),
-              visible: isVisible,
-              child: SizedBox(
-                  height: height,
-                  width: width,
-                  child: TextButton(
+      if (state is AddItemLoading) {
+        ProgressBar.show(context);
+      } else if (state is AddItemLoaded) {
+        ProgressBar.dismiss(context);
+        context
+            .read<ItemDetailsBloc>()
+            .add(FetchItemDetails(prodId!, variantId!));
+        if (state.addToTheCartModel.message == "Product already exists!") {
+          showCustomSnackBar(context, state.addToTheCartModel.message);
+        }
+      }
+    }, builder: (context, state) {
+      if (count == 0) {
+        isVisible = true;
+      } else {
+        isVisible = false;
+      }
+      return Visibility(
+          replacement: SizedBox(
+              height: kAddButtonHeight,
+              width: kAddButtonWidth,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
                       onPressed: () {
-                        count++;
-                        context.read<AddToCartBloc>().add(AddItemsToCart(
-                              prodId: prodId!,
-                              variantId: variantId!,
-                            ));
+                        if (count == 1) {
+                          context.read<AddToCartBloc>().add(DeleteCartItem(
+                              productId: prodId!, variantId: variantId!));
+                          context
+                              .read<GetAllCartItemsBloc>()
+                              .add(GetAllCartItems());
 
-                        context
-                            .read<GetAllCartItemsBloc>()
-                            .add(GetAllCartItems());
-
-                        isVisible = !isVisible;
+                          count--;
+                          isVisible = true;
+                        } else {
+                          count--;
+                          context.read<AddToCartBloc>().add(
+                              DecrementCartItemCount(
+                                  variantId: variantId!, productId: prodId!));
+                        }
                       },
                       style: TextButton.styleFrom(
                           minimumSize: Size.zero,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: tinierSpacing,
-                              vertical: tiniestSpacing),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(kAddRadius)),
-                          backgroundColor: AppColor.primary),
-                      child: Text(title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .xxxTinier
-                              .copyWith(color: AppColor.white)))));
-        });
+                            borderRadius: BorderRadius.circular(kAddRadius),
+                          ),
+                          side: const BorderSide(color: AppColor.primary)),
+                      child: const Icon(
+                        Icons.remove,
+                        size: kCounterIcon,
+                      ),
+                    ),
+                    Text(
+                      count.toString(),
+                      style: Theme.of(context).textTheme.xxTinier.copyWith(
+                          fontWeight: FontWeight.w500, color: AppColor.black),
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          count++;
+                          context.read<AddToCartBloc>().add(
+                              IncrementCartItemCount(
+                                  variantId: variantId!, productId: prodId!));
+                        },
+                        style: TextButton.styleFrom(
+                            minimumSize: Size.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(kAddRadius),
+                            ),
+                            side: const BorderSide(color: AppColor.primary)),
+                        child: const Icon(Icons.add, size: kCounterIcon))
+                  ])),
+          visible: isVisible,
+          child: SizedBox(
+              height: height,
+              width: width,
+              child: TextButton(
+                  onPressed: () {
+                    count++;
+                    context.read<AddToCartBloc>().add(AddItemsToCart(
+                          prodId: prodId!,
+                          variantId: variantId!,
+                        ));
+
+                    isVisible = !isVisible;
+                  },
+                  style: TextButton.styleFrom(
+                      minimumSize: Size.zero,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: tinierSpacing, vertical: tiniestSpacing),
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(kAddRadius)),
+                      backgroundColor: AppColor.primary),
+                  child: Text(title,
+                      style: Theme.of(context)
+                          .textTheme
+                          .xxxTinier
+                          .copyWith(color: AppColor.white)))));
+    });
   }
 }

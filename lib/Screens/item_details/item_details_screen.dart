@@ -9,6 +9,8 @@ import 'package:onecart_user_app/common_widgets/generic_app_bar.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../blocs/add_cart_item_bloc/add_cart_item_bloc.dart';
+import '../../blocs/add_cart_item_bloc/add_cart_item_states.dart';
 import '../../blocs/item_details_bloc/item_details_bloc.dart';
 import '../../blocs/item_details_bloc/item_details_events.dart';
 import '../../blocs/item_details_bloc/item_details_states.dart';
@@ -53,9 +55,9 @@ class ItemDetailsScreen extends StatelessWidget {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const CartScreen()));
                         }),
-                    BlocBuilder<ItemDetailsBloc, ItemDetailsStates>(
+                    BlocBuilder<AddToCartBloc, CartStates>(
                         builder: (context, state) {
-                      if (state is ItemDetailsLoaded) {
+                      if (state is AddItemLoaded) {
                         return Positioned(
                             left: smallestSpacing,
                             child: Container(
@@ -69,7 +71,7 @@ class ItemDetailsScreen extends StatelessWidget {
                                         padding: const EdgeInsets.all(
                                             xxxTiniestSpacing),
                                         child: Text(
-                                            state.productDetailsModel.data
+                                            state.addToTheCartModel.data
                                                 .cartItemCount
                                                 .toString(),
                                             style: Theme.of(context)

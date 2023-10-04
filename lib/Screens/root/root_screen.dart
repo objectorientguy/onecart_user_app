@@ -1,12 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onecart_user_app/Screens/internet_connectivity/wifi_lost_screen.dart';
 import 'package:onecart_user_app/Screens/orders/orders_screen.dart';
 import 'package:onecart_user_app/configs/app_theme.dart';
 
+import '../../blocs/add_cart_item_bloc/add_cart_item_bloc.dart';
+import '../../blocs/add_cart_item_bloc/add_cart_item_states.dart';
 import '../../blocs/view_cart_bloc/view_cart_bloc.dart';
 import '../../blocs/view_cart_bloc/view_cart_events.dart';
-import '../../blocs/view_cart_bloc/view_cart_states.dart';
 import '../../blocs/wifiConnectivity/wifi_connectivity_bloc.dart';
 import '../../blocs/wifiConnectivity/wifi_connectivity_states.dart';
 import '../../configs/app_color.dart';
@@ -109,11 +112,12 @@ class _RootScreenState extends State<RootScreen> {
                                       EdgeInsets.only(top: xxTiniestSpacing),
                                   child: Icon(Icons.shopping_cart_sharp,
                                       size: kStarIconSize)),
-                              BlocBuilder<GetAllCartItemsBloc, ViewCartStates>(
+                              BlocBuilder<AddToCartBloc, CartStates>(
                                 buildWhen: (previousState, currentState) =>
-                                    currentState is GetAllCartItemsLoaded,
+                                    currentState is AddItemLoaded,
                                 builder: (context, state) {
-                                  if (state is GetAllCartItemsLoaded) {
+                                  if (state is AddItemLoaded) {
+                                    log('=======>$state');
                                     return Padding(
                                         padding: const EdgeInsets.only(
                                             left: smallerSpacing),
@@ -130,7 +134,7 @@ class _RootScreenState extends State<RootScreen> {
                                                           color: AppColor
                                                               .primary)),
                                               Text(
-                                                  state.viewCartModel.data
+                                                  state.addToTheCartModel.data
                                                       .cartItemCount
                                                       .toString(),
                                                   style: Theme.of(context)

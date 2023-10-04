@@ -9,7 +9,7 @@ class GetAllWishlistItemsInitial extends WishlistStates {}
 class GetAllWishListItemsLoading extends WishlistStates {}
 
 class GetAllWishlistItemsLoaded extends WishlistStates {
-  final WishlistAllModel wishlistModel;
+  final ViewWishlistModel wishlistModel;
 
   GetAllWishlistItemsLoaded({required this.wishlistModel});
 }

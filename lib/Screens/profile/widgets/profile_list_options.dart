@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:onecart_user_app/Screens/internet_connectivity/wifi_lost_screen.dart';
 import 'package:onecart_user_app/Screens/profile/widgets/profile_list_widget.dart';
 import 'package:onecart_user_app/Screens/wishlist/wishlist_screen.dart';
 
@@ -43,16 +42,10 @@ class ProfileOptionsList extends StatelessWidget {
           ),
         ),
         const Divider(height: kDivider, thickness: kFeatureDivider),
-        InkWell(
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const WifiLostScreen()));
-          },
-          child: const ProfileListWidget(
-            title: 'Help',
-            description: 'Find answers to all your queries here',
-            icon: Icons.help,
-          ),
+        const ProfileListWidget(
+          title: 'Help',
+          description: 'Find answers to all your queries here',
+          icon: Icons.help,
         ),
         const Divider(height: kDivider, thickness: kFeatureDivider),
         const ProfileListWidget(
